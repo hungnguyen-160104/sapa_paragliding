@@ -83,7 +83,7 @@
 
                 <!-- Image 3 -->
                 <div class="relative overflow-hidden group hidden md:block">
-                    <img src="/images/gallery/3. Mountain peak.JPG" alt="Paragliding Experience 3"
+                    <img src="/images/gallery/3. Mountain peak.jpg" alt="Paragliding Experience 3"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
