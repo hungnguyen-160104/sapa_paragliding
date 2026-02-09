@@ -1,0 +1,892 @@
+{
+  "hero": {
+    "title": "DÙ LƯỢN SAPA",
+    "subtitle": "Dù lượn là môn thể thao mạo hiểm, vì vậy việc lựa chọn đơn vị tổ chức chuyên nghiệp với đội ngũ phi công hàng đầu Việt Nam là yếu tố quan trọng để đảm bảo an toàn cho trải nghiệm bay. Điểm cất cánh dù lượn Sapa được thiết kế đạt tiêu chuẩn cao nhất tại Việt Nam, sở hữu vị trí đón gió thuận lợi, mang đến hành trình bay hấp dẫn và giúp quá trình cất cánh diễn ra an toàn nhất.",
+    "bookNow": "Đặt Lịch Ngay",
+    "chatZalo": "Chat qua Zalo",
+    "chatWhatsApp": "Chat qua WhatsApp"
+  },
+  "common": {
+    "scroll": "Cuộn xuống"
+  },
+  "menu": {
+    "home": "Trang Chủ",
+    "booking": "Đặt Lịch",
+    "pilots": "Phi Công",
+    "posts": "Bài Viết",
+    "preNotice": "Lưu Ý Trước Bay",
+    "about": "Về Chúng Tôi"
+  },
+  "buttons": {
+    "book": "Đặt Ngay",
+    "learnMore": "Khám Phá Thêm",
+    "viewMore": "Xem Thêm",
+    "next": "Tiếp Theo",
+    "back": "Quay Lại",
+    "backToHome": "Về Trang Chủ",
+    "confirm": "Xác Nhận",
+    "submit": "Gửi",
+    "close": "Đóng",
+    "save": "Lưu",
+    "cancel": "Hủy"
+  },
+  "booking": {
+    "title": "Đặt Chuyến Bay",
+    "step1": "Chọn Dịch Vụ",
+    "step2": "Lịch bay",
+    "step3": "Thông Tin Hành Khách",
+    "step4": "Xác Nhận Đặt Chỗ",
+    "step5": "Hoàn Tất",
+    "selectService": "Vui lòng lựa chọn dịch vụ bay",
+    "contactInfo": "Nhập thông tin liên hệ",
+    "passengerInfo": "Thông tin hành khách",
+    "confirmDetails": "Xem lại và xác nhận",
+    "bookingComplete": "Đặt chỗ hoàn tất!",
+    "thankYou": "Cảm ơn bạn đã đặt chỗ với chúng tôi!",
+    "confirmationSent": "Email xác nhận đã được gửi đến địa chỉ email của bạn.",
+    "contactUs": "Chúng tôi sẽ liên hệ với bạn sớm để xác nhận chi tiết chuyến bay.",
+    "scanQR": "Hoặc quét mã QR để chat với chúng tôi:",
+    "step1Details": {
+      "numberOfPassengers": "Số lượng",
+      "numberOfPeople": "Số người",
+      "people": "người",
+      "estimatedTotal": "Tổng giá dự kiến",
+      "flightPrice": "Giá bay",
+      "from": "Chỉ từ",
+      "perFlight": "/lượt",
+      "tourDuration": "Thời gian tour",
+      "durationText": "Từ 90 phút tuỳ vào điều kiện thời tiết",
+      "included": "Đã bao gồm:",
+      "optionalServices": "Dịch vụ tuỳ chọn:",
+      "locations": "Địa điểm:",
+      "takeoffPoint": "Toạ độ điểm cất cánh: Núi Hầu Thào",
+      "landingPoint": "Toạ độ điểm hạ cánh: Bản Lao Chải",
+      "viewMap": "Xem bản đồ →",
+      "promotionInfo": "Giảm giá trực tiếp khi đăng ký theo nhóm",
+      "youSave": "🎉 Bạn được giảm:",
+      "priceSummary": "Tổng kết giá",
+      "flightPriceFor": "Giá bay",
+      "optionalServicesTotal": "Dịch vụ tuỳ chọn",
+      "groupDiscount": "Giảm giá nhóm",
+      "discount": "Giảm giá",
+      "total": "Tổng cộng:",
+      "continue": "Tiếp tục →",
+      "includedItems": {
+        "flight": "01 chuyến bay dù lượn 8–15 phút (có thể lâu hơn tùy điều kiện thời tiết, sức khỏe hành khách và quyết định của phi công)",
+        "photoVideo": "Quay phim & chụp hình bằng GoPro, cung cấp bởi Dù Lượn Sapa",
+        "drinks": "Đồ uống tại điểm bay",
+        "insurance": "Bảo hiểm dù lượn",
+        "certificate": "Giấy chứng nhận tham gia trải nghiệm",
+        "equipment": "Trang thiết bị bay dù lượn đạt chuẩn",
+        "reschedulePolicy": "Không phụ phí đổi lịch bay và miễn phí hủy trong trường hợp thời tiết xấu"
+      },
+      "optionalItems": {
+        "hotelTransfer": {
+          "name": "Khu vực đón: Trung tâm Sapa, bản Lao Chải, bản Tả Van.",
+          "description": "(Đối với các điểm đón khác, chúng tôi sẽ liên hệ trước để trao đổi và thống nhất phụ phí phù hợp.)"
+        },
+        "drone": {
+          "name": "Chuyến bay được ghi lại bằng thiết bị flycam/drone chuyên nghiệp",
+          "description": "Quay chuyến bay của bạn bằng Flycam, toàn bộ dữ liệu gốc sẽ gửi cho bạn"
+        },
+        "camera360": {
+          "name": "Chuyến bay được ghi lại bằng camera 360°, quay trọn vẹn toàn bộ hành trình. ",
+          "description": "Video sẽ được chỉnh sửa trước khi gửi lại cho bạn."
+        }
+      },
+      "promotions": {
+        "group2": "Nhóm từ 2 người trở lên",
+        "group3": "Nhóm từ 3 người trở lên",
+        "group4": "Nhóm từ 4 người trở lên",
+        "group6": "Nhóm từ 6 người trở lên"
+      }
+    },
+    "step2Details": {
+      "pickupLocation": "Địa điểm đón *",
+      "pickupPlaceholder": "Ví dụ: Khách sạn Sapa Charm, Trung tâm Sapa",
+      "pickupNote": "Vui lòng nhập tên khách sạn hoặc địa chỉ cụ thể tại Sapa, bản Lao Chải, hoặc bản Tả Van",
+      "importantNotice": "Lưu Ý Quan Trọng",
+      "weatherNotice": {
+        "item1": "Sau khi đặt chỗ, chúng tôi sẽ liên hệ để sắp xếp lịch bay, bao gồm thời gian bay, điểm đón và giờ đón.",
+        "item2": "Thời gian đón khách trước giờ bay khoảng 30 phút.",
+        "item3": "Vào ngày bay, chúng tôi sẽ gửi tên tài xế, số điện thoại và biển số xe/xe máy qua SMS, WhatsApp hoặc Email.",
+        "item4": "Vui lòng có mặt tại điểm hẹn trước 5 phút so với giờ đón để tránh chậm trễ.",
+        "item5": "Trong trường hợp điều kiện thời tiết thay đổi, chúng tôi sẽ liên hệ để đổi lịch bay hoàn toàn miễn phí."
+      },
+      "selectTime": "Chọn giờ",
+      "contactName": "Tên Liên Hệ",
+      "email": "Email",
+      "phone": "Số Điện Thoại/Whatsapp/Zalo"
+    },
+    "step3Details": {
+      "passenger": "Hành khách",
+      "selectGender": "Chọn giới tính",
+      "weightLimit": "Giới hạn cân nặng: < 100 kg",
+      "safetyRequirements": "Yêu Cầu An Toàn",
+      "minAge": "Độ tuổi tối thiểu: 4 tuổi ( có sự đồng ý của người bảo hộ)",
+      "goodHealth": "Hoạt động không phù hợp cho: người huyết áp cao / bệnh động kinh / bệnh tim / bệnh hen suyễn / các tình trạng bệnh lý nghiêm trọng khác / phụ nữ mang thai / NKT (người khuyết tật) / người cao tuổi / trẻ sơ sinh",
+      "personalInfoNotice": "Vui lòng điền đúng thông tin cá nhân theo giấy tờ tùy thân. Nếu sai, bảo hiểm sẽ không có hiệu lực.",
+      "fullName": "Họ và Tên",
+      "dateOfBirth": "Ngày Sinh",
+      "weight": "Cân Nặng",
+      "fillContactInfo": "Điền thông tin người đặt"
+    },
+    "step4Details": {
+      "serviceDetails": "Chi Tiết Dịch Vụ",
+      "service": "Dịch vụ",
+      "passengers": "Số hành khách",
+      "date": "Ngày",
+      "time": "Giờ cất cánh",
+      "flexible": "Linh hoạt",
+      "contactInformation": "Thông Tin Liên Hệ",
+      "name": "Tên:",
+      "email": "Email:",
+      "phone": "Số điện thoại:",
+      "specialRequests": "Yêu cầu đặc biệt:",
+      "passengerInformation": "Thông Tin Hành Khách",
+      "fullName": "Họ và tên:",
+      "dateOfBirth": "Ngày sinh:",
+      "gender": "Giới tính:",
+      "weight": "Cân nặng:",
+      "nationality": "Quốc tịch:",
+      "priceSummary": "Tổng Kết Giá",
+      "basePrice": "Giá cơ bản",
+      "discount": "Giảm giá",
+      "paymentInfo": "Thông Tin Thanh Toán",
+      "paymentText": "Thanh toán sẽ được thực hiện tại chỗ trước khi bay. Chúng tôi chấp nhận tiền mặt  và các loại thẻ tín dụng chính. Email xác nhận sẽ được gửi sau khi đặt chỗ.",
+      "processing": "Đang xử lý..."
+    },
+    "step5Details": {
+      "bookingId": "Mã Đặt Chỗ",
+      "bookingSummary": "Tóm Tắt Đặt Chỗ",
+      "service": "Dịch vụ:",
+      "date": "Ngày:",
+      "time": "Giờ cất cánh:",
+      "passengers": "Số hành khách:",
+      "total": "Tổng cộng:",
+      "whatsNext": "Tiếp Theo Là Gì?",
+      "step1": "Kiểm tra email để xem xác nhận đặt chỗ và chi tiết",
+      "step2": "Chúng tôi sẽ liên hệ với bạn 24 giờ trước để xác nhận điều kiện thời tiết",
+      "step3": "Có mặt tại điểm hẹn trước 5 phút so với giờ đón để tránh chậm trễ.",
+      "step4": "Tận hưởng trải nghiệm dù lượn tuyệt vời!",
+      "backToHome": "Về Trang Chủ",
+      "makeAnother": "Đặt Chỗ Khác",
+      "openZalo": "Mở Zalo",
+      "openWhatsApp": "Mở WhatsApp"
+    },
+    "ticket": {
+      "title": "VÉ BAY",
+      "subtitle": "Sapa Paragliding - Trải Nghiệm Bay Dù Lượn",
+      "bookingId": "Mã Đặt Chỗ",
+      "flightDetails": "Chi Tiết Chuyến Bay",
+      "passengerInfo": "Thông Tin Hành Khách",
+      "passengersList": "Danh Sách Hành Khách",
+      "validationDate": "Ngày Cấp",
+      "footer": "Vé này có giá trị khi được xác nhận bởi Sapa Paragliding. Vui lòng giữ vé này để sử dụng khi bay.",
+      "downloadPDF": "Tải Xuống PDF",
+      "downloadImage": "Tải Xuống Ảnh"
+    },
+    "fields": {
+      "fullName": "Họ và Tên",
+      "email": "Email",
+      "phone": "Số Điện Thoại / WhatsApp / Zalo",
+      "date": "Ngày bay",
+      "time": "Giờ bay",
+      "passengers": "Số Hành Khách",
+      "specialRequests": "Yêu Cầu Đặc Biệt",
+      "dateOfBirth": "Ngày Sinh",
+      "gender": "Giới Tính",
+      "nationality": "Quốc Tịch",
+      "passportOrId": "Passport/CCCD",
+      "passportOrIdPlaceholder": "Nhập số Passport hoặc CCCD",
+      "weight": "Cân Nặng (kg)",
+      "male": "Nam",
+      "female": "Nữ",
+      "other": "Khác"
+    },
+    "terms": {
+      "agree": "Tôi đồng ý với",
+      "termsAndConditions": "Điều Khoản và Điều Kiện",
+      "and": "và",
+      "privacyPolicy": "Chính Sách Bảo Mật"
+    },
+    "captcha": {
+      "verify": "Vui lòng xác minh bạn không phải robot",
+      "error": "Xác minh thất bại. Vui lòng thử lại.",
+      "required": "Vui lòng hoàn thành xác minh."
+    },
+    "services": {
+      "discovery": {
+        "name": "Chuyến Bay Khám Phá",
+        "description": "Hoàn hảo cho người bay lần đầu. Trải nghiệm cảm giác bay dù lượn trong 15-20 phút.",
+        "duration": "15-20 phút",
+        "price": "1.200.000 VNĐ"
+      },
+      "adventure": {
+        "name": "Chuyến Bay Mạo Hiểm",
+        "description": "Thời gian bay dài hơn với các động tác nhào lộn cho người thích cảm giác mạnh.",
+        "duration": "25-30 phút",
+        "price": "1.800.000 VNĐ"
+      },
+      "premium": {
+        "name": "Trải Nghiệm Cao Cấp",
+        "description": "Chuyến bay dài nhất với gói ảnh/video và tầm nhìn đẹp nhất Sapa.",
+        "duration": "35-40 phút",
+        "price": "2.500.000 VNĐ"
+      }
+    },
+    "discount": {
+      "group2": "2 người: Giảm 5%",
+      "group3": "3+ người: Giảm 10%",
+      "group5": "5+ người: Giảm 15%"
+    }
+  },
+  "pilots": {
+    "title": "Đội Ngũ Phi Công",
+    "subtitle": "Gặp gỡ đội ngũ phi công chuyên nghiệp được chứng nhận",
+    "experience": "Kinh Nghiệm",
+    "records": "Thành Tích",
+    "personality": "Tính Cách",
+    "backToList": "Quay Lại Danh Sách",
+    "pilot1": {
+      "name": "Đặng Văn Mỹ",
+      "nickname": "Đội trưởng Mỹ",
+      "role": "Đội trưởng",
+      "des": "Leader tổ chức các giải dù lượn toàn quốc, đồng thời dịch hơn 1000 trang sách chuyên môn từ top 3 tài liệu hàng đầu thế giới, đóng góp lớn cho cộng đồng bay thể thao Việt Nam.",
+      "img": "Dang Van My_Team Leader.jpg",
+      "fullname": "ĐẶNG VĂN MỸ",
+      "experience": "Hơn 10 năm kinh nghiệm bay dù lượn, với hơn 1.000 chuyến bay đơn và 10.000 chuyến bay đôi. Là phi công Heli đầu tiên tại Việt Nam và cũng là phi công nhảy dây (tumbling) đầu tiên và duy nhất tại Việt Nam. Anh có thể thực hiện các động tác kỹ thuật cao và những màn nhào lộn trên không hiếm có. Sở hữu kỹ năng bay dù lượn và dù lượn gắn động cơ. Là dịch giả của hơn 1.000 trang tài liệu chuyên sâu về dù lượn và sở hữu 3 đầu sách bán chạy nhất trong lĩnh vực: 'Bay Thermal', 'Bay đường trường' và 'Thấu hiểu bầu trời'. Dịch rất nhiều tài liệu bay, có kiến thức chuyên môn sâu, và là phi công Việt Nam đầu tiên nhận chứng chỉ bay IPPI5 tại Nhật Bản.",
+      "records": "Hiện đang nắm giữ kỷ lục chuyến bay tam giác khép kín lớn nhất tại khu vực Tây Nguyên (trên 100 km) và là phi công có số giờ bay nhiều nhất tại Việt Nam.",
+      "personality": "Khi ở dưới mặt đất, anh là người cực kỳ kỷ luật, nghiêm túc trong công việc và vai trò điều hành. Nhưng chỉ cần cất cánh, anh liền hóa thân thành 'người con của gió' — mang theo niềm vui, năng lượng tích cực và truyền cảm hứng đam mê cho mọi hành khách bay cùng."
+    },
+    "pilot2": {
+      "name": "Alish Thapa",
+      "nickname": "Phantom bầu trời",
+      "role": "Huấn luyện viên quốc tế APPI",
+      "des": "Huấn luyện viên dù lượn chuyên nghiệp với chứng chỉ APPI quốc tế, được nhiều tổ chức mời giảng dạy. Không chỉ giỏi chuyên môn, anh còn là phi công vui tính, thân thiện, luôn mang đến những chuyến bay an toàn, thú vị và khiến hành khách quý mến ngay từ lần gặp đầu tiên.",
+      "img": "Alish Thapa_Team Pilot.jpg",
+      "fullname": "ALISH THAPA",
+      "experience": "Anh là người hướng dẫn chính và chuyên gia S&TA (Safety and Training Advisor – An toàn & Đánh giá bay) tại Skydive Chiang Mai. Đồng thời, anh giữ vai trò Giám đốc điều hành tại Insky Skydive và Everest Paragliding, cũng như là huấn luyện viên chuyên nghiệp tại Fishtail Nepal Paragliding. Là huấn luyện viên dù lượn được chứng nhận APPI quốc tế, đồng thời là huấn luyện viên nhảy dù (AFF-I, TAN-I) theo chuẩn USPA. Anh đã có hàng nghìn giờ huấn luyện và bay thực tế tại nhiều quốc gia châu Á, bao gồm Việt Nam, Thái Lan và Nepal.",
+      "records": "Huấn luyện viên APPI quốc tế, từng giảng dạy tại nhiều điểm bay lớn ở Việt Nam, Thái Lan và Trung Quốc. Giữ vai trò quản lý và điều hành tại nhiều tổ chức dù lượn – nhảy dù uy tín trong khu vực.",
+      "personality": "Anh là một trong những phi công dù lượn hàng đầu của Nepal, với phong cách huấn luyện vui vẻ và truyền cảm hứng. Anh giúp học viên cảm nhận việc bay như một điệu nhảy giữa không trung — không chỉ học kỹ thuật mà còn học cách yêu bầu trời. Anh mang đến năng lượng tích cực cho mọi chuyến bay, khiến du khách không chỉ nhớ chuyến đi, mà còn nhớ luôn người bạn đồng hành đặc biệt ấy."
+    },
+    "pilot3": {
+      "name": "Subash Thapa",
+      "nickname": "Kỵ sỹ không trung",
+      "role": "Huấn luyện viên dù lượn chuyên nghiệp",
+      "des": "Huấn luyện viên dù lượn chuyên nghiệp đã đào tạo rất nhiều phi công dù lượn trên thế giới. Anh không chỉ có đam mê dù lượn mà còn yêu thích âm nhạc, chính vì thế mọi chuyến bay đôi cùng anh đều sống động và đầy cảm hứng.",
+      "img": "Subash Thapa_Team Pilot.jpg",
+      "fullname": "SUBASH THAPA",
+      "experience": "Anh là phi công trưởng, huấn luyện viên dù lượn và nhảy dù tại Pokhara. Đồng thời từng đảm nhiệm vị trí phi công trưởng tại Acro Paragliding và New Para World Paragliding. Sở hữu hơn 1.000 giờ bay tandem chuyên nghiệp và luôn đặt an toàn lên hàng đầu. Với hơn 3 năm kinh nghiệm hoạt động tại Việt Nam, Subash có kiến thức vững chắc về địa hình và điều kiện thời tiết tại các điểm bay.",
+      "records": "Hơn 1.000 giờ bay tandem chuyên nghiệp, từng giữ vai trò phi công trưởng tại nhiều tổ chức dù lượn uy tín và có 3+ năm hoạt động tại Việt Nam.",
+      "personality": "Subash Thapa không chỉ là huấn luyện viên dù lượn siêu đỉnh mà còn là 'DJ trên không' với tình yêu âm nhạc cháy bỏng, khiến mỗi chuyến bay đôi như một bữa tiệc vui nhộn giữa trời xanh. Anh luôn đảm bảo an toàn tuyệt đối, giúp bạn bay mà không phải lo lắng. Bay cùng anh, bạn không chỉ trải nghiệm sải cánh trên bầu trời mà còn có thêm một người bạn vui tính, tràn đầy năng lượng tích cực!"
+    },
+    "pilot4": {
+      "name": "Suman Thapa",
+      "nickname": "Sky Ryder",
+      "role": "Phi công biểu diễn",
+      "des": "Những video nhào lộn ngoạn mục tại Sapa hầu hết đều là của anh – phi công dày dạn kinh nghiệm, am hiểu sâu về dù lượn. Với anh, bay không chỉ là đam mê mà là sự nghiệp. Khách hàng gọi anh bằng cái tên đặc biệt: 'Con của thần gió'.",
+      "img": "Suman Thapa_Team Pilot.jpg",
+      "fullname": "SUMAN THAPA",
+      "experience": "Hoàn thành khóa đào tạo huấn luyện phi công chuyên nghiệp tại Nepal. Là phi công acro với kỹ năng nhào lộn siêu đẳng, thuần thục nhiều động tác kỹ thuật phức tạp. Anh có hơn 1.000 giờ bay đôi chuyên nghiệp, luôn đảm bảo an toàn tuyệt đối cho hành khách. Đã hoạt động hơn 3 năm tại Việt Nam, am hiểu sâu sắc về địa hình và điều kiện khí tượng tại các điểm bay trong nước. Hiện anh đặt mục tiêu trở thành huấn luyện viên dù lượn được chứng nhận quốc tế APPI.",
+      "records": "Phi công acro (nhào lộn) hàng đầu tại Việt Nam, nổi tiếng với các màn trình diễn ngoạn mục tại Sapa. Sở hữu hơn 1.000 giờ bay đôi và 3 năm hoạt động chuyên nghiệp tại Việt Nam.",
+      "personality": "Anh là người mà khi gió nổi lên — dù chưa cất cánh — cũng có thể nghe thấy tiếng trái tim anh reo: 'Chúng ta cùng bay nhé!'. Anh đam mê dù lượn như người ta say tách cà phê buổi sáng — không thể thiếu, không thể ngừng. Với anh, mỗi cú nhào lộn là một nụ cười khẳng định rằng: 'Mình sống là để bay.'"
+    },
+    "pilot5": {
+      "name": "Bishal Thapa",
+      "nickname": "Đặc nhiệm cánh gió",
+      "role": "Chuyên gia hạ cánh chính xác",
+      "des": "Đam mê hạ cánh chính xác, anh luôn đặt mục tiêu chạm đúng tâm với sai số tối thiểu. Nhờ đó, mỗi chuyến bay đều an toàn, hạ chuẩn như lập trình. Vui vẻ, dễ gần, anh luôn lắng nghe và quan tâm đến cảm xúc của khách để mang lại trải nghiệm bay trọn vẹn nhất.",
+      "img": "Bishal Thapa.jpg",
+      "fullname": "BISHAL THAPA",
+      "experience": "Anh bắt đầu học dù lượn từ năm 2016 và trở thành phi công tandem chuyên nghiệp từ năm 2019. Với hơn 2.000 chuyến bay đôi và tổng thời gian bay hơn 800 giờ, anh là một trong những phi công giàu kinh nghiệm và ổn định nhất trong đội. Bishal đã đạt nhiều thành tích ấn tượng tại các giải đấu trong nước và quốc tế, bao gồm: Giải Pre-World Cup Mizoram Open Accuracy Championship 2018 (hạng Nhì cá nhân, Nhất toàn đoàn), Giải Accuracy Paragliding Pre-World Cup 2023 (hạng Nhì cá nhân, Nhất toàn đoàn), và Giải Indian Accuracy Cup Bilaspur (Vô địch cá nhân).",
+      "records": "Chuyên gia hạ cánh chính xác hàng đầu – từng giành nhiều danh hiệu tại các giải Pre-World Cup và Accuracy Cup quốc tế. Sở hữu hơn 2.000 chuyến bay và 800+ giờ bay an toàn.",
+      "personality": "Bishal Thapa luôn mang theo 'cục pin năng lượng' và nụ cười rạng rỡ trong mỗi chuyến bay. Anh vui tính, dễ mến và luôn khiến khách hàng cảm thấy như đang bay cùng một người bạn thân. Đam mê hạ cánh chuẩn từng milimet, anh biến mỗi cú đáp đất thành một 'vũ điệu' đẹp mắt trên bầu trời. Bay cùng anh, bạn không chỉ trải nghiệm cảm giác bay, mà còn có cả một chuyến phiêu lưu đầy tiếng cười và cảm xúc."
+    },
+    "pilot6": {
+      "name": "Bishal Skyboy",
+      "nickname": "Skyboy",
+      "role": "Phi công Acro",
+      "des": "Phi công chuyên nghiệp đến từ Nepal, nổi tiếng toàn cầu với kỹ năng nhào lộn Acro mãn nhãn. Không chỉ chinh phục bầu trời bằng kỹ thuật đỉnh cao, anh còn là phi công bay đôi dày dạn, mang đến trải nghiệm bay hưng phấn và khó quên cho mọi hành khách.",
+      "img": "Bishal Skyboy_Team Pilot.jpg",
+      "fullname": "BISHAL SKYBOY",
+      "experience": "Phi công Acro chuyên nghiệp đến từ Nepal, với nhiều năm kinh nghiệm biểu diễn và huấn luyện bay đôi. Anh đã tham gia nhiều sự kiện bay quốc tế, nổi tiếng với các kỹ thuật nhào lộn phức tạp và an toàn tuyệt đối cho hành khách. Anh mang đến trải nghiệm bay thú vị, đầy cảm xúc và hứng khởi.",
+      "records": "Phi công Acro nổi tiếng toàn cầu với kỹ năng nhào lộn xuất sắc. Kinh nghiệm bay đôi dày dạn và an toàn, tham gia nhiều sự kiện bay quốc tế.",
+      "personality": "Bishal Skyboy nổi bật với kỹ năng bay điêu luyện và phong thái tự tin trên không trung. Anh mang đến trải nghiệm bay sảng khoái, phấn khích và đáng nhớ cho mọi hành khách, luôn giữ thái độ chuyên nghiệp nhưng gần gũi và thân thiện."
+    },
+    "pilot7": {
+      "name": "Đinh Thế Anh",
+      "nickname": "Thợ săn mây",
+      "role": "Phi công đội",
+      "des": "Phi công giàu năng lượng thể thao, từ đua xe đạp, bơi lội đến dù lượn, với 2000 chuyến bay, hơn 1500 giờ bay an toàn và 3 lần vô địch hạ cánh chính xác tại Việt Nam.",
+      "img": "The Anh_Team Pilot.jpg",
+      "fullname": "ĐINH THẾ ANH",
+      "experience": "Thực hiện hơn 2.000 chuyến bay, với tổng thời gian bay an toàn vượt mốc 1.000 giờ. Đại diện Việt Nam bay thẳng sang Olympic 2023 tại Hàn Quốc. Ba lần vô địch nội dung hạ cánh chính xác trong các giải đấu quốc gia. Đã từng cất cánh tại nhiều quốc gia trên thế giới như: Thụy Sĩ, Hàn Quốc, Hoa Kỳ, Thái Lan, Indonesia…",
+      "records": "Ba lần vô địch hạ cánh chính xác tại Việt Nam và là đại diện của Việt Nam tham dự Olympic Dù lượn 2023 tại Hàn Quốc.",
+      "personality": "Được mệnh danh là 'anh trai quốc dân' – sinh ra và lớn lên tại Đà Nẵng, chàng trai miền Trung mang trong mình nét dịu dàng, ấm áp đúng chất gió biển và nắng vàng quê hương. Ấn tượng với nụ cười hiền khô, giọng nói trầm ấm và sự chu đáo, tinh tế trong từng hành động. Không chỉ là phi công đỉnh cao mà còn là nhiếp ảnh gia chuyên nghiệp. Khi bay cùng anh, bạn có thể yên tâm rằng sẽ có vô số tấm hình siêu chất, góc nào cũng đẹp và khoảnh khắc nào cũng đáng nhớ!"
+    },
+    "pilot8": {
+      "name": "Tuấn Nguyễn",
+      "nickname": "Nhị ca",
+      "role": "Phi công đội",
+      "des": "Phi công nhẹ nhàng, ân cần, luôn lắng nghe yêu cầu khách. Bạn thích bay mạnh tay hay 'chill' nhẹ nhàng, anh đều có cách chọn góc quay và đường bay siêu phẩm, đảm bảo bay xong ai cũng muốn… làm fan cứng!",
+      "img": "Tuan Nguyen_Team Pilot.jpg",
+      "fullname": "TUẤN NGUYỄN",
+      "experience": "Đã thực hiện thành công hơn 1.000 chuyến bay đôi (tandem) an toàn tại Việt Nam. Hiểu biết sâu về khí tượng tại các điểm bay trên toàn quốc, với khả năng đánh giá và dự báo thời tiết chính xác phục vụ cho hoạt động bay. Thuần thục kỹ năng bay dù lượn không động cơ và có động cơ. Là hướng dẫn viên dù lượn chuyên nghiệp, đã đào tạo và đồng hành cùng nhiều phi công trên hành trình chinh phục bầu trời Việt Nam.",
+      "records": "Hơn 1.000 chuyến bay tandem an toàn, chuyên gia dự báo khí tượng hàng đầu trong cộng đồng bay, và là huấn luyện viên giàu kinh nghiệm tại các điểm bay lớn trên cả nước.",
+      "personality": "Biệt danh mang đậm chất kiếm hiệp 'Nhị ca' nhưng tính cách anh vô cùng thân thiện và dễ thương. Anh đặc biệt yêu quý trẻ nhỏ — sau mỗi chuyến bay, các thiên thần nhỏ đều nhớ đến chú phi công hiền lành và gửi thư cảm ơn. Nếu cha mẹ đang tìm kiếm một người đáng tin cậy, tận tâm và tràn đầy năng lượng tích cực để đồng hành cùng bé yêu trên hành trình chạm mây — thì không ai khác, Nhị ca chính là lựa chọn tuyệt vời!"
+    },
+    "pilot9": {
+      "name": "Minh Trung",
+      "nickname": "Chiến thần không gian",
+      "role": "Phi công đội",
+      "des": "Hơn 2.000 chuyến bay đôi, 7 năm bám dây lơ lửng trên trời, hơn 1.000 giờ “tán mây, thả gió”. Bí danh Trung Chocolate – bay cùng anh, bạn sẽ được chém gió vui hết nấc, cười mỏi miệng!",
+      "img": "Minh Trung_Team Pilot.jpg",
+      "fullname": "MINH TRUNG",
+      "experience": "Hơn 2.000 chuyến bay đôi an toàn cùng hành khách. 7 năm kinh nghiệm bay dù lượn, chuyên sâu trong lĩnh vực bay đôi và bay đường trường. Tích lũy hơn 1.000 giờ bay thực tế, làm chủ nhiều điều kiện thời tiết và địa hình phức tạp. Tốt nghiệp khóa huấn luyện An toàn bay tại Nepal – quốc gia có điều kiện bay khắt khe và tiêu chuẩn quốc tế cao.",
+      "records": "Hơn 2.000 chuyến bay đôi an toàn, hơn 1.000 giờ bay tích lũy, và là phi công Việt Nam hiếm hoi hoàn thành khóa huấn luyện An toàn bay tại Nepal.",
+      "personality": "Cánh dù anh đang bay là cờ đỏ sao vàng rực rỡ — bay là truyền cảm hứng yêu nước, yêu trời, yêu luôn cả cuộc đời. Bay cùng anh, clip dễ lên triệu view TikTok, ảnh và video thì 'xịn xò' khỏi chỉnh, đủ làm crush cũng phải lỡ nhịp tim. Tính cách hòa đồng, vui vẻ, bảo đảm bạn vừa bay vừa cười toe toét, quên luôn cả sợ độ cao. Nhược điểm duy nhất? Nắng làm đen da, mưa làm tóc xù — nhưng thần thái vẫn đỉnh, nụ cười thì không chỗ nào chê!"
+    },
+    "pilot10": {
+      "name": "Phan Hùng",
+      "nickname": "Lãng khách bầu trời",
+      "role": "Phi công đội",
+      "des": "Bay cùng anh, bạn sẽ có clip triệu view triệu like với góc quay siêu nghệ thuật. Trải nghiệm an toàn tuyệt đối và khoảnh khắc bầu trời tuyệt đẹp được lưu giữ, mang về những tư liệu quý giá khó quên trên từng chuyến bay đôi.",
+      "img": "phan_hung.jpg",
+      "fullname": "PHAN HÙNG",
+      "experience": "Bắt đầu theo đuổi đam mê dù lượn từ năm 2018 và hiện là phi công chuyên nghiệp với nhiều năm kinh nghiệm bay tại Việt Nam. Anh am hiểu sâu sắc về khí tượng và địa hình tại các điểm bay trên khắp cả nước — yếu tố then chốt giúp đảm bảo mỗi chuyến bay đều an toàn và mang lại trải nghiệm tối ưu. Đã thực hiện hơn 1.000 chuyến bay đôi chuyên nghiệp và liên tục tham gia các khóa huấn luyện, đào tạo đạt chuẩn quốc tế về dù lượn.",
+      "records": "Hơn 1.000 chuyến bay đôi chuyên nghiệp, chuyên gia phân tích khí tượng và địa hình, thành viên tích cực trong các chương trình huấn luyện đạt chuẩn quốc tế.",
+      "personality": "Gặp Phan Hùng – 'rocker' của bầu trời, mái tóc dài bay trong gió như chính đôi cánh dù lượn. Bay cùng anh, bạn không chỉ có clip triệu view mà còn triệu cảm xúc. Hơn 1.000 chuyến bay – mỗi chuyến là một câu chuyện, một khoảnh khắc để đời. Giàu năng lượng, am hiểu địa hình, đam mê 'cháy' – luôn sẵn sàng đưa bạn chạm mây!"
+    },
+    "pilot11": {
+      "name": "Ngô Văn Đội",
+      "nickname": "Chiến binh lượn lách",
+      "role": "Phi công đội",
+      "des": "Tham gia mọi giải đấu dù lượn tại Việt Nam, giữ kỷ lục 7 giờ bay liên tục tại Đồi Bù – Chương Mỹ. Anh đam mê dù lượn, mang đến cho khách hàng trải nghiệm bay đầy phấn khích, an toàn và ngập tràn tiếng cười.",
+      "img": "Ngo Van Doi_Team Pilot.jpeg",
+      "fullname": "NGÔ VĂN ĐỘI",
+      "experience": "Từ năm 2023 đến 2025, anh đã thực hiện hơn 500 chuyến bay đơn và đôi tại hầu hết các điểm bay nổi tiếng trên khắp Việt Nam. Tích lũy hơn 300 giờ bay thực tế cùng 5 năm kinh nghiệm vững chắc trong lĩnh vực dù lượn. Là gương mặt quen thuộc tại tất cả các giải đấu dù lượn từ Nam ra Bắc, luôn góp mặt với tinh thần thi đấu chuyên nghiệp và niềm đam mê mãnh liệt. Đặc biệt, anh đã lập kỷ lục bay liên tục 7 giờ tại Đồi Bù – Chương Mỹ, đánh dấu một cột mốc đáng tự hào trong sự nghiệp bay của mình.",
+      "records": "Kỷ lục 7 giờ bay liên tục tại Đồi Bù – Chương Mỹ, hơn 500 chuyến bay trong 2 năm và là phi công tích cực tham gia mọi giải đấu dù lượn trên toàn quốc.",
+      "personality": "Chàng trai trẻ mang gió vào nụ cười — bay cao chẳng cần 'đi thang máy'! Đam mê dù lượn cháy bỏng, với anh mỗi chuyến bay là một lần trái tim được 'cất cánh'. Bay cùng anh, bạn sẽ cảm nhận niềm vui lan tỏa giữa trời xanh — nơi gió lùa mạnh như đang vỗ tay cổ vũ bạn. Một người bạn đồng hành siêu tận tâm, luôn sẵn sàng biến giấc mơ bay lơ lửng thành một chuyến phiêu lưu kỳ thú!"
+    },
+    "pilot12": {
+      "name": "Minh Võ",
+      "nickname": "Đại bàng thép",
+      "role": "Phi công đội",
+      "des": "Bay cùng 'phi công triệu like' với 14 năm kinh nghiệm. Đam mê bầu trời từ nhỏ, anh truyền lửa qua từng chuyến bay đôi, mang đến trải nghiệm tuyệt đỉnh và khoảnh khắc đáng nhớ trên cao cho mọi khách hàng.",
+      "img": "Minh Vo_Team Pilot.jpg",
+      "fullname": "MINH VÕ",
+      "experience": "Với 14 năm kinh nghiệm bay dù lượn và hơn 2.000 chuyến bay đôi an toàn, anh là một trong những phi công kỳ cựu và đáng tin cậy hàng đầu tại Việt Nam. Là một trong Top 5 phi công đời đầu, anh đã góp phần đặt nền móng cho cộng đồng dù lượn trong nước. Năm 2023, anh cùng đồng đội xuất sắc giành giải Nhất nội dung Hạ Cánh Chính Xác tại giải đấu MCC, khẳng định kỹ năng chuyên môn và bản lĩnh thi đấu vững vàng.",
+      "records": "14 năm kinh nghiệm, hơn 2.000 chuyến bay đôi an toàn. Top 5 phi công đời đầu của Việt Nam và đạt giải Nhất nội dung Hạ Cánh Chính Xác tại MCC 2023.",
+      "personality": "Minh Võ – 'phi công triệu like' với niềm đam mê bầu trời từ bé, lớn lên chỉ thích trò chuyện với mây và chơi đùa với gió. Bay cùng anh không chỉ là lên cao, mà còn lên luôn tâm trạng! View đẹp, tiếng cười rộn ràng, và năng lượng tích cực lan tỏa suốt chuyến đi. Anh truyền lửa nhẹ tênh mà chất lừ — khiến ai bay xong cũng chỉ muốn… bay thêm lần nữa cho đã!"
+    },
+    "pilot13": {
+      "name": "Toàn Nguyễn",
+      "nickname": "Rambo",
+      "role": "Phi công đội",
+      "des": "Hơn 10 năm cày gió cưỡi mây, gần 5.000 chuyến bay. Bay khắp Việt Nam: Kon Tum, Lý Sơn, Điện Biên… GPS còn chưa kịp load, anh đã đặt chân tới! Dù lượn với anh không chỉ là đam mê — là phong cách sống trên mây.",
+      "img": "Toan Nguyen_team Pilot.jpg",
+      "fullname": "TOÀN NGUYỄN",
+      "experience": "Với hơn 10 năm kinh nghiệm chinh phục bầu trời và gần 5.000 chuyến bay đơn cùng bay đôi, anh là một trong những phi công giàu trải nghiệm và đáng tin cậy nhất tại Việt Nam. Tốt nghiệp khóa huấn luyện an toàn bay đạt tiêu chuẩn quốc tế. Đã từng bay qua hầu hết các điểm dù lượn nổi tiếng trong nước như Kon Tum, Đắk Nông, Nha Trang, Lý Sơn, Điện Biên Phủ. Thường xuyên tham gia các giải thi đấu hạ cánh chính xác tại Hà Nội, Mù Cang Chải và Đà Nẵng, khẳng định kỹ năng bay vững vàng và bản lĩnh thi đấu ổn định.",
+      "records": "Hơn 10 năm kinh nghiệm và gần 5.000 chuyến bay trên khắp Việt Nam. Tham dự hầu hết các giải đấu hạ cánh chính xác và hoàn thành khóa huấn luyện an toàn bay đạt chuẩn quốc tế.",
+      "personality": "Bay cùng Toàn Nguyễn – 'Rambo' của bầu trời, bạn không chỉ được 'cưỡi mây' mà còn được cười mỏi miệng! Anh ấy bay như gió, nói như gió, mang lại cảm giác vừa an toàn vừa vui không tưởng. Bay xong, ai cũng muốn gọi anh làm 'phi công ruột' cho mọi chuyến đi. Đảm bảo một điều: lên cùng Toàn, xuống không muốn rời!"
+    },
+    "pilot14": {
+      "name": "Chiến Thắng",
+      "nickname": "Thắng thần sét",
+      "role": "Phi công đội",
+      "des": "7 năm sống cùng mây gió, hơn 1.500 chuyến bay đôi an toàn, 1.000+ giờ lơ lửng trên trời. Anh từng giữ kỷ lục bay đơn 9 tiếng rưỡi tại Việt Nam! “Càn quét” các giải đấu dù lượn từ Bắc chí Nam, phong độ luôn ở đỉnh cao.",
+      "img": "Chien Thang_Team Pilot.jpg",
+      "fullname": "CHIẾN THẮNG",
+      "experience": "Với 7 năm kinh nghiệm làm bạn cùng trời mây, anh đã thực hiện hơn 1.500 chuyến bay đôi an toàn và chuyên nghiệp, tích lũy hơn 1.000 giờ bay. Anh từng giữ kỷ lục Việt Nam #2 về thời gian bay đơn lâu nhất — 9 tiếng rưỡi liên tục, thể hiện sự bền bỉ và kỹ năng điều khiển dù xuất sắc. Am hiểu sâu sắc về kỹ thuật dù lượn và điều kiện khí tượng tại các điểm bay trên toàn quốc, anh luôn đảm bảo mỗi chuyến bay vừa an toàn vừa thăng hoa cảm xúc.",
+      "records": "Giữ kỷ lục Việt Nam #2 về thời gian bay đơn lâu nhất – 9 tiếng rưỡi liên tục. Hơn 1.500 chuyến bay đôi và hơn 1.000 giờ bay tích lũy trong 7 năm chinh phục bầu trời.",
+      "personality": "Chiến Thắng – 'Thắng thần sét', bay nhanh như tia chớp mà vẫn khiến bạn yên tâm tuyệt đối. Lơ lửng trên trời cùng anh, bạn sẽ cười tít mắt vì vui chẳng muốn xuống. Bay với anh không chỉ là trải nghiệm mà còn là chuyến phiêu lưu tràn ngập tiếng cười. Bay lâu đến mức mây cũng phải thán phục: 'Này, anh có nghỉ không đấy?'"
+    }
+  },
+  "preNotice": {
+    "title": "Chuẩn bị trước khi bay",
+    "subtitle": "Thông tin quan trọng trước chuyến bay của bạn",
+    "items": {
+      "photoSupport": {
+        "title": "Hỗ trợ chụp ảnh trên không",
+        "description": "Phi công sẽ hỗ trợ góc chụp đẹp nhất trên không, bạn hãy nhắn phi công hỗ trợ chụp khoảnh khắc đẹp nhất!"
+      },
+      "timing": {
+        "title": "Có mặt đúng giờ",
+        "description": "Hãy có mặt trước giờ đón 5 phút để đảm bảo không chậm trễ"
+      },
+      "storage": {
+        "title": "Bộ nhớ điện thoại",
+        "description": "Điện thoại cần trống tối thiểu 4GB để lưu ảnh/video sau chuyến bay"
+      },
+      "baggage": {
+        "title": "Túi xách cá nhân",
+        "description": "Được mang túi cá nhân nhỏ (1–2kg) đựng vật dụng cần thiết (điện thoại, chìa khóa, giấy tờ)"
+      },
+      "clothing": {
+        "title": "Trang phục phù hợp",
+        "description": "Trang phục thoải mái, thể thao (áo tay dài, quần dài); không mặc váy, không đi giày cao gót; nên mang giày thể thao hoặc giày leo núi (mẹo: đồ sáng màu lên hình rất đẹp)"
+      },
+      "beginner": {
+        "title": "Phù hợp cho người mới",
+        "description": "Phù hợp cho người bay lần đầu"
+      },
+      "weather": {
+        "title": "Điều kiện thời tiết",
+        "description": "Chuyến bay phụ thuộc thời tiết (gió, mưa, sương mù). Nếu cần đổi lịch, khách sẽ được thông báo trước ít nhất 1 ngày, miễn phí; không muốn đổi lịch sẽ được hoàn tiền 100%"
+      }
+    },
+    "tabs": {
+      "requirements": {
+        "title": "Điều kiện",
+        "subtitle": "Điều kiện tham gia bay",
+        "items": {
+          "weight": {
+            "title": "Cân nặng",
+            "desc": "Dưới 120kg. Trường hợp trên 95kg vui lòng thông báo trước để sắp xếp phi công và trang thiết bị phù hợp."
+          },
+          "health": {
+            "title": "Thể lực",
+            "desc": "Mức độ thể lực cơ bản, có khả năng chạy ngắn. Không phù hợp với người thừa cân nhiều hoặc gặp vấn đề nghiêm trọng về vận động."
+          },
+          "age": {
+            "title": "Độ tuổi",
+            "desc": "Từ 2 tuổi trở lên có thể tham gia bay cùng phi công."
+          }
+        }
+      },
+      "booking": {
+        "title": "Đặt vé",
+        "subtitle": "Thông tin đặt vé bay",
+        "items": {
+          "method": {
+            "title": "Phương thức đặt vé",
+            "desc": "Đặt vé trực tiếp qua website hoặc liên hệ hotline / Zalo / WhatsApp."
+          },
+          "payment": {
+            "title": "Thanh toán",
+            "desc": "Tiền mặt, chuyển khoản ngân hàng hoặc thẻ tín dụng. Không yêu cầu thanh toán trước."
+          },
+          "confirmation": {
+            "title": "Xác nhận",
+            "desc": "Chúng tôi sẽ liên hệ trong vòng 3 giờ ngay sau khi nhận được booking đặt vé."
+          }
+        }
+      },
+      "cancellation": {
+        "title": "Huỷ bay",
+        "subtitle": "Chính sách huỷ và đổi lịch",
+        "items": {
+          "byUs": {
+            "title": "Huỷ bay do Sapa Paragliding",
+            "desc": "Khách hàng không phải thanh toán chi phí. Vé sẽ được hoàn tiền đầy đủ. Không phát sinh bất kỳ khoản phí nào."
+          },
+          "byCustomer": {
+            "title": "Huỷ bay do khách hàng",
+            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp. Trước 1 ngày: Miễn phí. Trong ngày bay: Phí 50% giá trị đặt vé."
+          },
+          "reschedule": {
+            "title": "Đổi lịch bay",
+            "desc": "Miễn phí đổi lịch bay theo yêu cầu của khách hàng."
+          }
+        }
+      },
+      "weather": {
+        "title": "Thời tiết",
+        "subtitle": "Điều kiện thời tiết bay",
+        "items": {
+          "condition": {
+            "title": "Điều kiện bay",
+            "desc": "Hướng gió và cường độ gió là yếu tố quan trọng quyết định việc bay. Nếu dự báo phù hợp, chuyến bay sẽ diễn ra đúng lịch."
+          },
+          "cancel": {
+            "title": "Huỷ do thời tiết",
+            "desc": "Quyết định cuối cùng đưa ra trong ngày bay. Nếu huỷ: Không phát sinh phí, có thể dời lịch hoặc hoàn tiền 100%."
+          }
+        }
+      },
+      "clothing": {
+        "title": "Trang phục",
+        "subtitle": "Hướng dẫn trang phục bay",
+        "items": {
+          "clothes": {
+            "title": "Quần áo",
+            "desc": "Trang phục thoải mái, thể thao (áo tay dài, quần dài); không mặc váy. Mẹo: Đồ sáng màu lên hình rất đẹp."
+          },
+          "shoes": {
+            "title": "Giày dép",
+            "desc": "Không đi giày cao gót. Nên mang giày thể thao hoặc giày leo núi. Chúng tôi có thể cho mượn giày miễn phí nếu cần."
+          },
+          "glasses": {
+            "title": "Kính mắt",
+            "desc": "Kính râm bảo vệ mắt khỏi tia UV và gió mạnh (~40 km/h). Có thể mang kính cận."
+          }
+        }
+      },
+      "schedule": {
+        "title": "Lịch trình",
+        "subtitle": "Thông tin lịch trình bay",
+        "items": {
+          "duration": {
+            "title": "Thời gian trải nghiệm",
+            "desc": "Toàn bộ trải nghiệm khoảng 1 giờ 30 phút."
+          },
+          "contact": {
+            "title": "Liên hệ",
+            "desc": "Kiểm tra email/tin nhắn để nhận thông báo về thay đổi hoặc huỷ chuyến (nếu có)."
+          },
+          "spectators": {
+            "title": "Khán giả",
+            "desc": "Người thân có thể chờ tại khu vực cất cánh để xem bay."
+          },
+          "parking": {
+            "title": "Bãi đỗ xe",
+            "desc": "Đỗ xe miễn phí (hoạt động từ 6:00 – 22:00, không cho cắm trại)."
+          }
+        }
+      },
+      "transport": {
+        "title": "Xe đưa đón",
+        "subtitle": "Dịch vụ xe trung chuyển",
+        "items": {
+          "shuttle": {
+            "title": "Đón/Trả khách",
+            "desc": "Có dịch vụ đón và trả khách từ khách sạn theo thông tin đặt vé."
+          },
+          "companion": {
+            "title": "Người đi cùng",
+            "desc": "Đối với người đi cùng (không bay), vui lòng thông báo số lượng để sắp xếp và báo phí phù hợp."
+          }
+        }
+      },
+      "meetingPoint": {
+        "title": "Điểm gặp",
+        "subtitle": "Điểm hẹn gặp mặt",
+        "items": {
+          "center": {
+            "title": "Trung tâm Sapa",
+            "desc": "Trung tâm thương mại Sun Plaza tại trung tâm Sapa."
+          },
+          "hotel": {
+            "title": "Khách sạn/Homestay",
+            "desc": "Khu vực Sapa, Lao Chải, Tả Van: vui lòng báo địa điểm khi đặt bay."
+          }
+        }
+      },
+      "flyingSpot": {
+        "title": "Điểm bay",
+        "subtitle": "Điểm cất cánh & hạ cánh",
+        "items": {
+          "takeoff": {
+            "title": "Điểm cất cánh",
+            "desc": "Thiết kế theo tiêu chuẩn an toàn cao nhất tại Việt Nam, vị trí đón gió lý tưởng, đảm bảo cất cánh an toàn và trải nghiệm ấn tượng."
+          },
+          "landing": {
+            "title": "Điểm hạ cánh",
+            "desc": "Hạ cánh tại bản văn hoá Lao Chải, gần chợ truyền thống – nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay."
+          }
+        }
+      },
+      "faq": {
+        "title": "Quy trình",
+        "subtitle": "Quy trình bay chi tiết",
+        "items": {
+          "meet": {
+            "title": "Gặp gỡ phi công",
+            "desc": "Tại điểm cất cánh, khách làm quen với phi công, có thời gian đặt câu hỏi và gửi hành lý."
+          },
+          "baggage": {
+            "title": "Hướng dẫn cất cánh",
+            "desc": "Nghe hướng dẫn, mặc trang bị bay và tập động tác cất cánh."
+          },
+          "takeoff": {
+            "title": "Cất cánh",
+            "desc": "Chạy đà mạnh, liên tục và không dừng lại cho đến khi phi công yêu cầu. Sau khi bay lên, thư giãn và ngắm cảnh."
+          },
+          "safety": {
+            "title": "Hạ cánh",
+            "desc": "Trang bị an toàn, thoải mái. Hạ cánh nhẹ nhàng, có thể đứng hoặc ngồi tuỳ điều kiện."
+          }
+        }
+      }
+    },
+    "locations": {
+      "title": "Địa Điểm Bay",
+      "takeoff": "Điểm Cất Cánh",
+      "landing": "Khu Vực Hạ Cánh",
+      "getDirections": "Chỉ Đường"
+    }
+  },
+  "about": {
+    "title": "Về Dù Lượn Sapa",
+    "subtitle": "Nơi giấc mơ bay trở thành hiện thực",
+    "tagline": "Bay cao hơn. Cảm nhận nhiều hơn. Sống trọn vẹn hơn.",
+    "intro": {
+      "title": "Chào Mừng Đến Với Dù Lượn Sapa",
+      "description": "Chúng tôi không chỉ đơn thuần mang đến những chuyến bay - chúng tôi tạo nên những khoảnh khắc khó quên giữa bầu trời Sapa hùng vĩ. Với đội ngũ phi công chuyên nghiệp được chứng nhận quốc tế và thiết bị hiện đại hàng đầu, mỗi chuyến bay cùng chúng tôi là một hành trình an toàn, đầy cảm xúc và trọn vẹn.",
+      "highlight": "Hơn 50.000 chuyến bay an toàn • 15+ năm kinh nghiệm • Đội ngũ phi công quốc tế"
+    },
+    "mission": {
+      "title": "Sứ Mệnh",
+      "description": "Mang đến trải nghiệm dù lượn đẳng cấp quốc tế ngay tại Sapa, nơi mỗi chuyến bay không chỉ là cuộc phiêu lưu mà còn là cơ hội để bạn kết nối với thiên nhiên, vượt qua giới hạn bản thân và tạo nên những kỷ niệm trọn đời.",
+      "points": {
+        "safety": "An toàn tuyệt đối trong mọi chuyến bay",
+        "experience": "Trải nghiệm đẳng cấp với dịch vụ chuyên nghiệp",
+        "nature": "Giới thiệu vẻ đẹp Sapa từ góc nhìn độc đáo nhất"
+      }
+    },
+    "vision": {
+      "title": "Tầm Nhìn",
+      "description": "Trở thành điểm đến dù lượn hàng đầu Đông Nam Á, được công nhận bởi chuẩn mực an toàn quốc tế, đội ngũ phi công xuất sắc và trải nghiệm khách hàng vượt trội.",
+      "goals": {
+        "leader": "Dẫn đầu ngành dù lượn tại Việt Nam",
+        "international": "Đạt chứng nhận an toàn quốc tế",
+        "community": "Xây dựng cộng đồng yêu thích dù lượn"
+      }
+    },
+    "values": {
+      "title": "Giá Trị Cốt Lõi",
+      "safety": {
+        "title": "An Toàn Là Tối Thượng",
+        "description": "100% chuyến bay tuân thủ tiêu chuẩn an toàn quốc tế. Thiết bị được kiểm tra định kỳ, phi công được đào tạo bài bản."
+      },
+      "excellence": {
+        "title": "Xuất Sắc Trong Dịch Vụ",
+        "description": "Từ lúc đặt chỗ đến khi kết thúc chuyến bay, chúng tôi cam kết mang đến trải nghiệm hoàn hảo nhất."
+      },
+      "passion": {
+        "title": "Đam Mê Và Tận Tâm",
+        "description": "Mỗi phi công không chỉ là chuyên gia mà còn là người yêu bầu trời, sẵn sàng chia sẻ niềm đam mê với bạn."
+      },
+      "innovation": {
+        "title": "Đổi Mới Không Ngừng",
+        "description": "Cập nhật công nghệ mới nhất, phương pháp bay tiên tiến để nâng cao chất lượng dịch vụ."
+      }
+    },
+    "story": {
+      "title": "Câu Chuyện Của Chúng Tôi",
+      "founded": "Thành lập năm 2010",
+      "description": "Khởi đầu từ niềm đam mê bay lượn và tình yêu với Sapa, chúng tôi đã xây dựng đội ngũ phi công chuyên nghiệp đầu tiên tại khu vực. Qua hơn 15 năm phát triển, Dù Lượn Sapa đã trở thành địa chỉ tin cậy cho hàng chục nghìn du khách trong và ngoài nước.",
+      "milestones": {
+        "2010": "Thành lập với 3 phi công đầu tiên",
+        "2015": "Đạt chứng nhận an toàn quốc tế APPI",
+        "2020": "Mở rộng đội ngũ với phi công quốc tế",
+        "2024": "Hoàn thành 50.000+ chuyến bay an toàn"
+      }
+    },
+    "commitment": {
+      "title": "Cam Kết Của Chúng Tôi",
+      "safety": "An toàn tuyệt đối - Không thỏa hiệp",
+      "quality": "Chất lượng dịch vụ đẳng cấp quốc tế",
+      "support": "Hỗ trợ khách hàng 24/7",
+      "satisfaction": "Đảm bảo sự hài lòng hoặc hoàn tiền 100%"
+    },
+    "whyChoose": {
+      "title": "Tại Sao Chọn Dù Lượn Sapa?",
+      "cta": {
+        "title": "Sẵn Sàng Chinh Phục Bầu Trời Sapa?",
+        "description": "Hơn 50.000 khách hàng đã tin tưởng và trải nghiệm cùng chúng tôi. Bạn sẽ là người tiếp theo?"
+      }
+    },
+    "features": {
+      "safety": {
+        "title": "An Toàn Tuyệt Đối",
+        "description": "100% chuyến bay an toàn với phi công chứng nhận quốc tế"
+      },
+      "expertTeam": {
+        "title": "Đội Ngũ Chuyên Gia",
+        "description": "15+ phi công quốc tế với hơn 50.000 chuyến bay"
+      },
+      "bestExperience": {
+        "title": "Trải Nghiệm Đỉnh Cao",
+        "description": "Dịch vụ 5 sao từ đặt chỗ đến hạ cánh"
+      },
+      "professionalPhoto": {
+        "title": "Ảnh & Video Chuyên Nghiệp",
+        "description": "GoPro, Drone, Camera 360° ghi lại mọi khoảnh khắc"
+      },
+      "bestValue": {
+        "title": "Giá Trị Tốt Nhất",
+        "description": "Giá cạnh tranh với ưu đãi hấp dẫn cho nhóm"
+      },
+      "multiLanguage": {
+        "title": "Đa Ngôn Ngữ",
+        "description": "Hỗ trợ Việt, Anh, Pháp, Nga, Trung, Hàn"
+      }
+    },
+    "process": {
+      "title": "Quy Trình Bay Chuyên Nghiệp",
+      "step1": {
+        "title": "Hướng Dẫn An Toàn",
+        "description": "Phi công hướng dẫn chi tiết, kiểm tra thiết bị kỹ lưỡng"
+      },
+      "step2": {
+        "title": "Chuẩn Bị Cất Cánh",
+        "description": "Trang bị dây an toàn, mũ bảo hiểm và di chuyển đến điểm bay"
+      },
+      "step3": {
+        "title": "Cất Cánh",
+        "description": "Chạy vài bước nhẹ nhàng và bay lên trời cùng phi công"
+      },
+      "step4": {
+        "title": "Tận Hưởng Bay Lượn",
+        "description": "Ngắm cảnh Sapa tuyệt đẹp, chụp ảnh và tận hưởng cảm giác tự do"
+      },
+      "step5": {
+        "title": "Hạ Cánh An Toàn",
+        "description": "Phi công điều khiển hạ cánh êm ái tại khu vực an toàn"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Giá bay",
+    "subtitle": "Đặt chỗ trước - Thanh toán sau - Không yêu cầu đặt cọc",
+    "packages": {
+      "basic": {
+        "name": "Gói Cơ Bản",
+        "price": "2.090k",
+        "priceUsd": "80 USD/lượt",
+        "duration": "Thời gian: 20 phút",
+        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
+        "included": "Đã bao gồm:",
+        "items": {
+          "flight": "Chuyến bay dù lượn 8-15 phút",
+          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "drinks": "Đồ uống tại điểm bay",
+          "insurance": "Bảo hiểm dù lượn",
+          "certificate": "Giấy chứng nhận tham gia trải nghiệm"
+        }
+      },
+      "standard": {
+        "name": "Gói Tiêu Chuẩn",
+        "badge": "PHỔ BIẾN",
+        "price": "2.190k",
+        "priceUsd": "85 USD/lượt",
+        "duration": "Thời gian: 30 phút",
+        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
+        "included": "Đã bao gồm:",
+        "items": {
+          "flight": "Chuyến bay dù lượn 8-15 phút",
+          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "drinks": "Đồ uống tại điểm bay",
+          "insurance": "Bảo hiểm dù lượn",
+          "certificate": "Giấy chứng nhận tham gia trải nghiệm",
+          "hotelTransfer": "Xe đón trả tại khách sạn"
+        }
+      },
+      "premium": {
+        "name": "Gói Premium",
+        "price": "2.990k",
+        "priceUsd": "113 USD/lượt",
+        "duration": "Thời gian: 35 phút",
+        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
+        "included": "Đã bao gồm:",
+        "items": {
+          "flight": "Chuyến bay dù lượn 8-15 phút",
+          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "drinks": "Đồ uống tại điểm bay",
+          "insurance": "Bảo hiểm dù lượn",
+          "certificate": "Giấy chứng nhận tham gia trải nghiệm",
+          "hotelTransfer": "Xe đón trả tại khách sạn",
+          "drone": "FLYCAM (DRONE camera)",
+          "camera360": "Camera 360 độ"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "Dịch Vụ Của Chúng Tôi",
+    "subtitle": "Chọn trải nghiệm bay hoàn hảo cho bạn"
+  },
+  "gallery": {
+    "title": "Khoảnh Khắc Dù Lượn",
+    "subtitle": "Những trải nghiệm đáng nhớ"
+  },
+  "cta": {
+    "title": "Sẵn Sàng Cho Cuộc Phiêu Lưu?",
+    "description": "Đặt trải nghiệm dù lượn của bạn ngay hôm nay và tạo những kỷ niệm sẽ tồn tại mãi mãi",
+    "readyToFly": {
+      "title": "Sẵn Sàng Bay?",
+      "description": "Đặt cuộc phiêu lưu dù lượn của bạn ngay bây giờ và trải nghiệm cảm giác hồi hộp của việc bay"
+    }
+  },
+  "preNoticeSection": {
+    "safetyRequirements": {
+      "title": "Yêu Cầu An Toàn",
+      "minAge": "Tuổi tối thiểu: 5 tuổi (có sự đồng ý của cha mẹ đối với trẻ vị thành niên)",
+      "weightRange": "Phạm vi cân nặng: < 100 kg",
+      "goodHealth": "Phải có sức khỏe thể chất và tinh thần tốt",
+      "noPregnant": "Phụ nữ mang thai không thể tham gia",
+      "notRecommended": "Không khuyến khích cho người có bệnh tim, vấn đề về lưng hoặc sợ độ cao"
+    }
+  },
+  "footer": {
+    "contact": "Liên Hệ",
+    "email": "Email",
+    "phone": "Điện Thoại",
+    "address": "Địa Chỉ",
+    "followUs": "Theo Dõi",
+    "quickLinks": "Liên Kết Nhanh",
+    "copyright": "Đơn vị được cấp phép bay bởi Cục Tác chiến – Bộ Tổng Tham mưu, Bộ Quốc phòng Việt Nam. Giấy phép kinh doanh dù lượn số 02/GCN-SVHTT do Sở Văn hoá, Thể thao và Du lịch tỉnh Lào Cai cấp"
+  },
+  "validation": {
+    "required": "Trường này là bắt buộc",
+    "email": "Vui lòng nhập địa chỉ email hợp lệ",
+    "phone": "Vui lòng nhập số điện thoại hợp lệ",
+    "minLength": "Độ dài tối thiểu là {min} ký tự",
+    "maxLength": "Độ dài tối đa là {max} ký tự"
+  },
+  "posts": {
+    "latestPosts": "Bài Viết Mới Nhất",
+    "latestPostsDescription": "Khám phá những câu chuyện, mẹo và hướng dẫn mới nhất về bay dù lượn tại Sapa",
+    "readMore": "Đọc Thêm",
+    "relatedPosts": "Bài Viết Liên Quan",
+    "notFound": "Không Tìm Thấy Bài Viết"
+  },
+  "admin": {
+    "login": {
+      "title": "Đăng Nhập Admin",
+      "subtitle": "Quản lý bài viết và nội dung",
+      "username": "Tên Đăng Nhập",
+      "usernamePlaceholder": "Nhập tên đăng nhập",
+      "password": "Mật Khẩu",
+      "passwordPlaceholder": "Nhập mật khẩu",
+      "submit": "Đăng Nhập",
+      "loading": "Đang xử lý...",
+      "demo": "Tài khoản demo:"
+    },
+    "dashboard": {
+      "title": "Bảng Điều Khiển Admin",
+      "welcome": "Xin chào",
+      "logout": "Đăng Xuất",
+      "managePosts": "Quản Lý Bài Viết",
+      "addPost": "Thêm Bài Viết",
+      "editPost": "Chỉnh Sửa Bài Viết",
+      "published": "Đã Xuất Bản",
+      "draft": "Bản Nháp",
+      "publish": "Xuất Bản",
+      "unpublish": "Hủy Xuất Bản",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "table": {
+        "title": "Tiêu Đề",
+        "category": "Danh Mục",
+        "date": "Ngày",
+        "status": "Trạng Thái",
+        "actions": "Hành Động"
+      },
+      "form": {
+        "titleEn": "Tiêu Đề (English)",
+        "titleVi": "Tiêu Đề (Tiếng Việt)",
+        "excerptEn": "Tóm Tắt (English)",
+        "excerptVi": "Tóm Tắt (Tiếng Việt)",
+        "contentEn": "Nội Dung (English)",
+        "contentVi": "Nội Dung (Tiếng Việt)",
+        "image": "URL Hình Ảnh",
+        "category": "Danh Mục",
+        "author": "Tác Giả",
+        "published": "Xuất bản ngay"
+      }
+    }
+  }
+}

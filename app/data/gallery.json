@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "image": "/images/gallery/1. Soar above Sapa valley.JPG",
+    "titleVi": "Bay Lượn Trên Thung Lũng Sapa",
+    "titleEn": "Soaring Above Sapa Valley",
+    "titleFr": "Survoler la Vallée de Sapa",
+    "titleRu": "Паря Над Долиной Сапа",
+    "descriptionVi": "Chiêm ngưỡng khung cảnh ngoạn mục của ruộng bậc thang Sapa từ trên cao",
+    "descriptionEn": "Experience the breathtaking views of Sapa's terraced rice fields from above",
+    "descriptionFr": "Découvrez les vues à couper le souffle des rizières en terrasses de Sapa",
+    "descriptionRu": "Насладитесь захватывающими видами террасных рисовых полей Сапы сверху"
+  },
+  {
+    "id": 2,
+    "image": "/images/gallery/2. Sunset flight.jpg",
+    "titleVi": "Chuyến Bay Hoàng Hôn",
+    "titleEn": "Sunset Flight",
+    "titleFr": "Vol au Coucher du Soleil",
+    "titleRu": "Полёт на Закате",
+    "descriptionVi": "Chuyến bay lúc hoàng hôn mang đến những màu sắc và ánh sáng tuyệt vời nhất",
+    "descriptionEn": "Golden hour flights offer the most spectacular colors and lighting",
+    "descriptionFr": "Les vols à l'heure dorée offrent les couleurs et l'éclairage les plus spectaculaires",
+    "descriptionRu": "Полёты в золотой час предлагают самые впечатляющие цвета и освещение"
+  },
+  {
+    "id": 3,
+    "image": "/images/gallery/3. Mountain peak.JPG",
+    "titleVi": "Đỉnh Núi",
+    "titleEn": "Mountain Peaks",
+    "titleFr": "Sommets des Montagnes",
+    "titleRu": "Горные Вершины",
+    "descriptionVi": "Bay bên cạnh những đỉnh núi hùng vĩ của dãy Hoàng Liên Sơn",
+    "descriptionEn": "Fly alongside the majestic peaks of the Hoang Lien Son mountain range",
+    "descriptionFr": "Volez le long des sommets majestueux de la chaîne de montagnes Hoang Lien Son",
+    "descriptionRu": "Летите рядом с величественными вершинами горного хребта Хоанг Лиен Шон"
+  },
+  {
+    "id": 4,
+    "image": "/images/gallery/4. Tandem joy.jpg",
+    "titleVi": "Niềm Vui Bay Đôi",
+    "titleEn": "Tandem Joy",
+    "titleFr": "Joie du Vol en Tandem",
+    "titleRu": "Радость Тандемного Полёта",
+    "descriptionVi": "Chia sẻ niềm vui thú với các phi công giàu kinh nghiệm của chúng tôi",
+    "descriptionEn": "Share the excitement with our experienced pilots",
+    "descriptionFr": "Partagez l'excitation avec nos pilotes expérimentés",
+    "descriptionRu": "Разделите восторг с нашими опытными пилотами"
+  },
+  {
+    "id": 5,
+    "image": "/images/gallery/5. Cloud dancing.JPG",
+    "titleVi": "Nhảy Múa Với Mây",
+    "titleEn": "Cloud Dancing",
+    "titleFr": "Danse avec les Nuages",
+    "titleRu": "Танец с Облаками",
+    "descriptionVi": "Chạm vào mây và cảm nhận sự tự do của chuyến bay",
+    "descriptionEn": "Touch the clouds and feel the freedom of flight",
+    "descriptionFr": "Touchez les nuages et ressentez la liberté du vol",
+    "descriptionRu": "Прикоснитесь к облакам и почувствуйте свободу полёта"
+  },
+  {
+    "id": 6,
+    "image": "/images/gallery/6. valley view.jpg",
+    "titleVi": "Toàn Cảnh Thung Lũng",
+    "titleEn": "Valley Views",
+    "titleFr": "Vues de la Vallée",
+    "titleRu": "Виды Долины",
+    "descriptionVi": "Khung cảnh toàn cảnh tuyệt đẹp của Sapa",
+    "descriptionEn": "Panoramic views of Sapa's stunning landscape",
+    "descriptionFr": "Vues panoramiques du paysage époustouflant de Sapa",
+    "descriptionRu": "Панорамные виды потрясающего ландшафта Сапы"
+  },
+  {
+    "id": 7,
+    "image": "/images/gallery/7. Perfect landing.jpg",
+    "titleVi": "Hạ Cánh Hoàn Hảo",
+    "titleEn": "Perfect Landing",
+    "titleFr": "Atterrissage Parfait",
+    "titleRu": "Идеальная Посадка",
+    "descriptionVi": "Hạ cánh êm ái và an toàn mỗi lần",
+    "descriptionEn": "Smooth and safe landings every time",
+    "descriptionFr": "Atterrissages en douceur et en toute sécurité à chaque fois",
+    "descriptionRu": "Плавные и безопасные посадки каждый раз"
+  },
+  {
+    "id": 8,
+    "image": "/images/gallery/8. Adventure await.jpg",
+    "titleVi": "Cuộc Phiêu Lưu Đang Chờ",
+    "titleEn": "Adventure Awaits",
+    "titleFr": "L'Aventure Vous Attend",
+    "titleRu": "Приключения Ждут",
+    "descriptionVi": "Cuộc phiêu lưu tiếp theo của bạn bắt đầu từ đây",
+    "descriptionEn": "Your next adventure starts here",
+    "descriptionFr": "Votre prochaine aventure commence ici",
+    "descriptionRu": "Ваше следующее приключение начинается здесь"
+  }
+]

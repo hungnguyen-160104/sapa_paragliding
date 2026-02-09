@@ -1,0 +1,90 @@
+{
+  "discovery": {
+    "id": "discovery",
+    "name": "Discovery Flight",
+    "nameVi": "Chuyến Bay Khám Phá",
+    "nameFr": "Vol Découverte",
+    "nameRu": "Ознакомительный Полет",
+    "description": "Perfect for first-time flyers. Experience the thrill of paragliding with a short 15-20 minute flight over Sapa's stunning landscapes.",
+    "duration": "15-20 minutes",
+    "price": 1200000,
+    "priceUSD": 50,
+    "features": [
+      "Safety briefing and equipment check",
+      "15-20 minutes flight time",
+      "Scenic views of Sapa valley",
+      "Professional pilot guidance",
+      "Basic photo service"
+    ],
+    "suitable": "Beginners, families, anyone wanting to try paragliding",
+    "minWeight": 20,
+    "maxWeight": 110,
+    "image": "discovery-flight.jpg"
+  },
+  "adventure": {
+    "id": "adventure",
+    "name": "Adventure Flight",
+    "nameVi": "Chuyến Bay Mạo Hiểm",
+    "nameFr": "Vol Aventure",
+    "nameRu": "Приключенческий Полет",
+    "description": "Extended flight time with optional acrobatic maneuvers for thrill-seekers. Feel the adrenaline rush!",
+    "duration": "25-30 minutes",
+    "price": 1800000,
+    "priceUSD": 75,
+    "features": [
+      "Comprehensive safety briefing",
+      "25-30 minutes flight time",
+      "Optional acrobatic maneuvers",
+      "Extended scenic tour",
+      "Photo and short video service",
+      "Souvenir flight certificate"
+    ],
+    "suitable": "Adventure seekers, experienced flyers, thrill enthusiasts",
+    "minWeight": 30,
+    "maxWeight": 110,
+    "image": "adventure-flight.jpg"
+  },
+  "premium": {
+    "id": "premium",
+    "name": "Premium Experience",
+    "nameVi": "Trải Nghiệm Cao Cấp",
+    "nameFr": "Expérience Premium",
+    "nameRu": "Премиум Опыт",
+    "description": "The ultimate paragliding experience with longest flight time, professional photo/video package, and the best views of Sapa.",
+    "duration": "35-40 minutes",
+    "price": 2500000,
+    "priceUSD": 105,
+    "features": [
+      "VIP safety briefing and preparation",
+      "35-40 minutes flight time",
+      "Full acrobatic experience (optional)",
+      "Professional photo and video package",
+      "GoPro footage of entire flight",
+      "Edited video with music",
+      "Premium flight certificate",
+      "Complimentary refreshments",
+      "Priority booking and scheduling"
+    ],
+    "suitable": "Photography enthusiasts, special occasions, premium experience seekers",
+    "minWeight": 30,
+    "maxWeight": 110,
+    "image": "premium-flight.jpg"
+  },
+  "discounts": {
+    "group2": {
+      "minPeople": 2,
+      "discount": 0.05,
+      "description": "5% discount for 2 people"
+    },
+    "group3": {
+      "minPeople": 3,
+      "discount": 0.10,
+      "description": "10% discount for 3-4 people"
+    },
+    "group5": {
+      "minPeople": 5,
+      "discount": 0.15,
+      "description": "15% discount for 5+ people"
+    }
+  }
+}

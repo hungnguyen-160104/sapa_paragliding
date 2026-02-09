@@ -1,0 +1,906 @@
+{
+  "hero": {
+    "title": "SAPA PARAGLIDING",
+    "subtitle": "Paragliding is an adventure sport, so choosing a professional organization with Vietnam's top pilots is crucial for a safe flying experience. The Sapa paragliding take-off point is designed to the highest standards in Vietnam, with an ideal wind-catching location that offers an exciting flight journey and ensures the safest take-off process.",
+    "bookNow": "Book Online",
+    "chatZalo": "Chat on Zalo",
+    "chatWhatsApp": "Chat on WhatsApp"
+  },
+  "common": {
+    "scroll": "Scroll"
+  },
+  "menu": {
+    "home": "Home",
+    "booking": "Booking",
+    "pilots": "Pilots",
+    "posts": "Blog",
+    "preNotice": "Pre-flight Notice",
+    "about": "About Us"
+  },
+  "buttons": {
+    "book": "Book Now",
+    "learnMore": "Explore Now",
+    "viewMore": "View More",
+    "next": "Next",
+    "back": "Back",
+    "backToHome": "Back to Home",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "booking": {
+    "title": "Book Your Flight",
+    "step1": "Select Service",
+    "step2": "Flight Schedule",
+    "step3": "Passenger Details",
+    "step4": "Confirm Booking",
+    "step5": "Complete",
+    "selectService": "Please select your flight service",
+    "contactInfo": "Enter your contact details",
+    "passengerInfo": "Passenger information",
+    "confirmDetails": "Review and confirm",
+    "bookingComplete": "Booking completed!",
+    "thankYou": "Thank you for booking with us!",
+    "confirmationSent": "A confirmation email has been sent to your email address.",
+    "contactUs": "We will contact you shortly to confirm your flight details.",
+    "scanQR": "Or scan QR code to chat with us:",
+    "step1Details": {
+      "numberOfPassengers": "Number of",
+      "numberOfPeople": "Number of People",
+      "people": "people",
+      "estimatedTotal": "Estimated Total",
+      "flightPrice": "Flight Price",
+      "from": "From",
+      "perFlight": "/flight",
+      "tourDuration": "Tour Duration",
+      "durationText": "From 90 minutes depending on weather conditions",
+      "included": "Included:",
+      "optionalServices": "Optional Services:",
+      "locations": "Locations:",
+      "takeoffPoint": "Take-off Point: Hau Thao Mountain",
+      "landingPoint": "Landing Point: Lao Chai Village",
+      "viewMap": "View Map →",
+      "promotionInfo": "Direct discount for group bookings",
+      "youSave": "🎉 You save:",
+      "priceSummary": "Price Summary",
+      "flightPriceFor": "Flight Price",
+      "optionalServicesTotal": "Optional Services",
+      "groupDiscount": "Group Discount",
+      "discount": "Discount",
+      "total": "Total:",
+      "continue": "Continue →",
+      "includedItems": {
+        "flight": "01 paragliding flight 8-15 minutes (may be longer depending on weather, passenger health, and pilot's decision)",
+        "photoVideo": "Video & photo recording with GoPro, provided by Sapa Paragliding",
+        "drinks": "Beverages at the flight site",
+        "insurance": "Paragliding insurance",
+        "certificate": "Experience participation certificate",
+        "equipment": "Standard certified paragliding equipment",
+        "reschedulePolicy": "No rescheduling fee and free cancellation in case of bad weather"
+      },
+      "optionalItems": {
+        "hotelTransfer": {
+          "name": "Pickup area: Sapa town center, Lao Chai village, Ta Van village.",
+          "description": "(For other pickup locations, we will contact you in advance to discuss and agree on a suitable additional fee.)"
+        },
+        "drone": {
+          "name": "Flight recorded using professional flycam/drone equipment",
+          "description": "Your flight will be filmed by a flycam, and all original footage will be sent to you"
+        },
+        "camera360": {
+          "name": "Flight recorded with a 360° camera, capturing the entire journey.",
+          "description": "The video will be edited before being sent to you."
+        }
+      },
+      "promotions": {
+        "group2": "Group of 2 or more",
+        "group3": "Group of 3 or more",
+        "group4": "Group of 4 or more",
+        "group6": "Group of 6 or more"
+      }
+    },
+    "step2Details": {
+      "pickupLocation": "Pickup Location *",
+      "pickupPlaceholder": "Example: Sapa Charm Hotel, Sapa Center",
+      "pickupNote": "Please enter hotel name or specific address in Sapa, Lao Chai village, or Ta Van village",
+      "importantNotice": "Important Notice",
+      "weatherNotice": {
+        "item1": "After booking, we will contact you to arrange the flight schedule, including flight time, pickup point, and pickup time.",
+        "item2": "Pickup time is approximately 30 minutes before the flight.",
+        "item3": "On the flight day, we will send you the driver's name, phone number, and vehicle/motorbike license plate via SMS, WhatsApp, or Email.",
+        "item4": "Please arrive at the meeting point 5 minutes before pickup time to avoid delays.",
+        "item5": "In case of weather changes, we will contact you to reschedule completely free of charge."
+      },
+      "selectTime": "Select time",
+      "contactName": "Contact Name",
+      "email": "Email",
+      "phone": "Phone Number"
+    },
+    "step3Details": {
+      "passenger": "Passenger",
+      "selectGender": "Select gender",
+      "weightLimit": "Weight limit: < 100 kg",
+      "safetyRequirements": "Safety Requirements",
+      "minAge": "Minimum age: 5 years old (with parental consent)",
+      "weightRange": "Weight range: < 100 kg",
+      "goodHealth": "Passengers must be in good health",
+      "noPregnant": "Pregnant women cannot participate",
+      "personalInfoNotice": "Please fill in your personal information correctly according to your identification documents. If incorrect, insurance will not be valid.",
+      "fullName": "Full Name",
+      "dateOfBirth": "Date of Birth",
+      "weight": "Weight",
+      "fillContactInfo": "Fill in booker's information"
+    },
+    "step4Details": {
+      "serviceDetails": "Service Details",
+      "service": "Service",
+      "passengers": "Passengers",
+      "date": "Date",
+      "time": "Time",
+      "flexible": "Flexible",
+      "contactInformation": "Contact Information",
+      "name": "Name:",
+      "email": "Email:",
+      "phone": "Phone:",
+      "specialRequests": "Special Requests:",
+      "passengerInformation": "Passenger Information",
+      "fullName": "Full Name:",
+      "dateOfBirth": "Date of Birth:",
+      "gender": "Gender:",
+      "weight": "Weight:",
+      "nationality": "Nationality:",
+      "priceSummary": "Price Summary",
+      "basePrice": "Base Price",
+      "discount": "Discount",
+      "paymentInfo": "Payment Information",
+      "paymentText": "Payment will be made on-site before the flight. We accept cash  and major credit cards. A confirmation email will be sent after booking.",
+      "processing": "Processing..."
+    },
+    "step5Details": {
+      "bookingId": "Booking ID",
+      "bookingSummary": "Booking Summary",
+      "service": "Service:",
+      "date": "Date:",
+      "time": "Take-off Time:",
+      "passengers": "Passengers:",
+      "total": "Total:",
+      "whatsNext": "What's Next?",
+      "step1": "Check your email for booking confirmation and details",
+      "step2": "We will contact you 24 hours before to confirm weather conditions",
+      "step3": "Please arrive at the meeting point at least 5 minutes before the pickup time to avoid delays.",
+      "step4": "Enjoy your amazing paragliding experience!",
+      "backToHome": "Back to Home",
+      "makeAnother": "Make Another Booking",
+      "openZalo": "Open Zalo",
+      "openWhatsApp": "Open WhatsApp"
+    },
+    "ticket": {
+      "title": "FLIGHT TICKET",
+      "subtitle": "Sapa Paragliding - Paragliding Experience",
+      "bookingId": "Booking ID",
+      "flightDetails": "Flight Details",
+      "passengerInfo": "Passenger Information",
+      "passengersList": "Passengers List",
+      "validationDate": "Issue Date",
+      "footer": "This ticket is valid when confirmed by Sapa Paragliding. Please keep this ticket for your flight.",
+      "downloadPDF": "Download PDF",
+      "downloadImage": "Download Image"
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number / Whatsapp / Zalo",
+      "date": "Flight date",
+      "time": "Flight time",
+      "passengers": "Number of Passengers",
+      "specialRequests": "Special Requests",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "nationality": "Nationality",
+      "passportOrId": "Passport/ID Card",
+      "passportOrIdPlaceholder": "Enter passport or ID card number",
+      "weight": "Weight (kg)",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other"
+    },
+    "terms": {
+      "agree": "I agree to the",
+      "termsAndConditions": "Terms and Conditions",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "captcha": {
+      "verify": "Please verify you are not a robot",
+      "error": "Verification failed. Please try again.",
+      "required": "Please complete the verification."
+    },
+    "services": {
+      "discovery": {
+        "name": "Discovery Flight",
+        "description": "Perfect for first-time flyers. Experience the thrill of paragliding with a short 15-20 minute flight.",
+        "duration": "15-20 minutes",
+        "price": "1,200,000 VND"
+      },
+      "adventure": {
+        "name": "Adventure Flight",
+        "description": "Extended flight time with acrobatic maneuvers for thrill-seekers.",
+        "duration": "25-30 minutes",
+        "price": "1,800,000 VND"
+      },
+      "premium": {
+        "name": "Premium Experience",
+        "description": "Longest flight with photo/video package and best views of Sapa.",
+        "duration": "35-40 minutes",
+        "price": "2,500,000 VND"
+      }
+    },
+    "discount": {
+      "group2": "2 people: 5% discount",
+      "group3": "3+ people: 10% discount",
+      "group5": "5+ people: 15% discount"
+    }
+  },
+  "pilots": {
+    "title": "Our Expert Pilots",
+    "subtitle": "Meet our professional team of certified paragliding pilots",
+    "experience": "Experience",
+    "records": "Achievements",
+    "personality": "Personality",
+    "backToList": "Back to Pilots",
+    "pilot1": {
+      "name": "Dang Van My",
+      "nickname": "Captain America",
+      "role": "Team Leader",
+      "des": "Leader organizing national paragliding competitions, while translating over 1000 pages of professional books from the world's top 3 resources, making a significant contribution to Vietnam's sports aviation community.",
+      "img": "Dang Van My_Team Leader.jpg",
+      "fullname": "DANG VAN MY",
+      "experience": "Over 10 years of paragliding experience, with over 1,000 solo flights and 10,000 tandem flights. First Heli pilot in Vietnam and also the first and only tumbling pilot in Vietnam. He can perform high-level technical maneuvers and rare aerial acrobatics. Possesses paragliding and powered paragliding skills. Translator of over 1,000 pages of in-depth paragliding documentation and author of 3 bestselling books: 'Thermal Flying', 'Cross-Country Flying', and 'Understanding the Sky'. Has translated extensive flying materials with deep professional knowledge, and is the first Vietnamese pilot to receive IPPI5 certification in Japan.",
+      "records": "Currently holds the record for the largest closed triangle flight in the Central Highlands region (over 100 km) and is the pilot with the most flying hours in Vietnam.",
+      "personality": "On the ground, he is extremely disciplined and serious in his work and leadership role. But as soon as he takes off, he transforms into a 'child of the wind' — bringing joy, positive energy, and inspiring passion for all passengers who fly with him."
+    },
+    "pilot2": {
+      "name": "Alish Thapa",
+      "nickname": "Sky Phantom",
+      "role": "International APPI Instructor",
+      "des": "Professional paragliding instructor with international APPI certification, invited by many organizations to teach. Not only professionally skilled, he is also a cheerful, friendly pilot, always bringing safe, interesting flights and making passengers love him from the first meeting.",
+      "img": "Alish Thapa_Team Pilot.jpg",
+      "fullname": "ALISH THAPA",
+      "experience": "He is the lead instructor and S&TA (Safety and Training Advisor) expert at Skydive Chiang Mai. At the same time, he holds the position of Operations Director at Insky Skydive and Everest Paragliding, as well as a professional instructor at Fishtail Nepal Paragliding. An internationally certified APPI paragliding instructor, and also a skydiving instructor (AFF-I, TAN-I) according to USPA standards. He has thousands of hours of training and actual flying experience in many Asian countries, including Vietnam, Thailand, and Nepal.",
+      "records": "International APPI instructor, has taught at many major flying sites in Vietnam, Thailand, and China. Holds management and operational positions at several reputable paragliding and skydiving organizations in the region.",
+      "personality": "He is one of Nepal's leading paragliding pilots, with a fun and inspiring teaching style. He helps students feel flying like a dance in the air — not just learning techniques but learning to love the sky. He brings positive energy to every flight, making visitors not only remember the trip but also remember that special companion."
+    },
+    "pilot3": {
+      "name": "Subash Thapa",
+      "nickname": "Sky Knight",
+      "role": "Professional Paragliding Instructor",
+      "des": "Professional paragliding instructor who has trained many paragliding pilots around the world. He not only has a passion for paragliding but also loves music, which is why every tandem flight with him is lively and full of inspiration.",
+      "img": "Subash Thapa_Team Pilot.jpg",
+      "fullname": "SUBASH THAPA",
+      "experience": "He is a chief pilot, paragliding instructor, and skydiving instructor in Pokhara. He has also served as chief pilot at Acro Paragliding and New Para World Paragliding. He possesses over 1,000 hours of professional tandem flying and always prioritizes safety. With over 3 years of experience operating in Vietnam, Subash has solid knowledge of terrain and weather conditions at various flying sites.",
+      "records": "Over 1,000 hours of professional tandem flying, previously held the position of chief pilot at several reputable paragliding organizations, and has 3+ years of operating experience in Vietnam.",
+      "personality": "Subash Thapa is not only a top-notch paragliding instructor but also a 'DJ in the sky' with a burning passion for music, making every tandem flight feel like a lively party in the clouds. He always ensures absolute safety, helping you fly without worry. Flying with him, you not only experience soaring through the sky but also gain a cheerful friend full of positive energy!"
+    },
+    "pilot4": {
+      "name": "Suman Thapa",
+      "nickname": "Sky Ryder",
+      "role": "Acro Pilot",
+      "des": "Most of the spectacular acrobatic videos at Sapa are from him – an experienced pilot with deep understanding of paragliding. With him, flying is not just passion — it's a career. Customers call him by a special name: 'Child of the Wind God'.",
+      "img": "Suman Thapa_Team Pilot.jpg",
+      "fullname": "SUMAN THAPA",
+      "experience": "Completed professional pilot training course in Nepal. An acro pilot with exceptional acrobatic skills, proficient in many complex technical maneuvers. He has over 1,000 hours of professional tandem flying, always ensuring absolute safety for passengers. Has been active for over 3 years in Vietnam, with deep understanding of terrain and weather conditions at flying sites in the country. Currently aims to become an internationally certified APPI paragliding instructor.",
+      "records": "Leading acro (acrobatic) pilot in Vietnam, famous for spectacular performances at Sapa. Possesses over 1,000 hours of tandem flying and 3 years of professional activity in Vietnam.",
+      "personality": "He is someone who when the wind rises — even before taking off — you can hear his heart cheering: 'Let's fly together!'. He is passionate about paragliding like someone addicted to morning coffee — indispensable, unstoppable. With him, each acrobatic maneuver is a smile affirming: 'We live to fly.'"
+    },
+    "pilot5": {
+      "name": "Bishal Thapa",
+      "nickname": "Wind Commando",
+      "role": "Precision Landing Expert",
+      "des": "Passionate about precision landing, he always aims to touch down at the exact center with minimal error. This ensures every flight is safe and executed like a program. Cheerful and approachable, he always listens and cares about his passengers' feelings to provide the most complete flying experience.",
+      "img": "Bishal Thapa.jpg",
+      "fullname": "BISHAL THAPA",
+      "experience": "He started learning paragliding in 2016 and became a professional tandem pilot in 2019. With over 2,000 tandem flights and more than 800 hours of flight time, he is one of the most experienced and stable pilots on the team. Bishal has achieved impressive results at domestic and international competitions, including: Pre-World Cup Mizoram Open Accuracy Championship 2018 (2nd place individual, 1st place team), Accuracy Paragliding Pre-World Cup 2023 (2nd place individual, 1st place team), and Indian Accuracy Cup Bilaspur (Individual Champion).",
+      "records": "Leading precision landing expert – has won numerous titles at Pre-World Cup and international Accuracy Cup competitions. Possesses over 2,000 flights and 800+ hours of safe flying.",
+      "personality": "Bishal Thapa always carries a 'battery of energy' and a radiant smile on every flight. He is cheerful, likeable, and always makes passengers feel like they're flying with a close friend. Passionate about precision landing down to the millimeter, he transforms each landing into a beautiful 'dance' in the sky. Flying with him, you not only experience the sensation of flying, but also have an adventure full of laughter and emotions."
+    },
+    "pilot6": {
+      "name": "Bishal Skyboy",
+      "nickname": "Skyboy",
+      "role": "Acro Pilot",
+      "des": "Professional pilot from Nepal, renowned worldwide for his impressive Acro aerobatic skills. Not only does he conquer the sky with top-notch technique, but he is also an experienced tandem pilot, bringing thrilling and unforgettable flying experiences to every passenger.",
+      "img": "Bishal Skyboy_Team Pilot.jpg",
+      "fullname": "BISHAL SKYBOY",
+      "experience": "Professional Acro pilot from Nepal with many years of experience in aerobatic performances and tandem flight instruction. He has participated in numerous international flying events, renowned for his complex aerobatic techniques and absolute safety for passengers. He delivers exciting, emotional, and thrilling flying experiences.",
+      "records": "Renowned Acro pilot worldwide with exceptional aerobatic skills. Extensive tandem flying experience and safety record, participating in numerous international flying events.",
+      "personality": "Bishal Skyboy stands out with his skillful flying abilities and confident demeanor in the air. He delivers refreshing, exciting, and memorable flying experiences for all passengers, always maintaining a professional yet approachable and friendly attitude."
+    },
+    "pilot7": {
+      "name": "Dinh The Anh",
+      "nickname": "Cloud Hunter",
+      "role": "Team Pilot",
+      "des": "A pilot full of athletic energy, from cycling, swimming to paragliding, with 2000 flights, over 1500 hours of safe flying, and 3 times precision landing champion in Vietnam.",
+      "img": "The Anh_Team Pilot.jpg",
+      "fullname": "DINH THE ANH",
+      "experience": "Completed over 2,000 flights, with total safe flying time exceeding 1,000 hours. Vietnam's representative who flew directly to the 2023 Olympics in South Korea. Three-time champion in precision landing at national competitions. Has taken off from many countries around the world including: Switzerland, South Korea, USA, Thailand, Indonesia...",
+      "records": "Three-time precision landing champion in Vietnam and Vietnam's representative at the 2023 Paragliding Olympics in South Korea.",
+      "personality": "Known as the 'national brother' – born and raised in Da Nang, this Central Vietnamese guy carries the gentleness and warmth of sea breeze and golden sunshine of his homeland. Impressive with a gentle smile, warm voice, and thoughtfulness in every action. Not only a top-notch pilot but also a professional photographer. Flying with him, you can be sure you'll have countless amazing photos, every angle is beautiful and every moment is memorable!"
+    },
+    "pilot8": {
+      "name": "Tuan Nguyen",
+      "nickname": "Nhi Ca",
+      "role": "Team Pilot",
+      "des": "A gentle, caring pilot who always listens to passenger requests. Whether you like aggressive flying or gentle 'chill', he has the perfect camera angle and flight path, guaranteed everyone wants to... become a hardcore fan!",
+      "img": "Tuan Nguyen_Team Pilot.jpg",
+      "fullname": "TUAN NGUYEN",
+      "experience": "Has successfully completed over 1,000 tandem flights safely in Vietnam. Deep understanding of meteorology at flying sites across the country, with the ability to accurately assess and forecast weather for flying activities. Proficient in motorless and powered paragliding skills. A professional paragliding instructor who has trained and guided many pilots on their journey to conquer Vietnam's skies.",
+      "records": "Over 1,000 safe tandem flights, leading weather forecasting expert in the flying community, and experienced instructor at major flying sites across the country.",
+      "personality": "His nickname carries the chivalrous spirit of 'Second Voice' but his personality is extremely friendly and adorable. He especially loves children — after each flight, the little angels remember the kind pilot and send thank you letters. If parents are looking for someone trustworthy, dedicated, and full of positive energy to accompany their child on a journey to touch the clouds — then no one else, Second Voice is the perfect choice!"
+    },
+    "pilot9": {
+      "name": "Minh Trung",
+      "nickname": "Space Warrior",
+      "role": "Team Pilot",
+      "des": "Over 2,000 tandem flights, 7 years hanging in the sky, over 1,000 hours of 'playing with clouds and wind'. Nicknamed Trung Chocolate – flying with him, you'll have fun chatting, laughing till your cheeks hurt!",
+      "img": "Minh Trung_Team Pilot.jpg",
+      "fullname": "MINH TRUNG",
+      "experience": "Over 2,000 safe tandem flights with passengers. 7 years of paragliding experience, specializing in tandem and cross-country flying. Accumulated over 1,000 hours of actual flying, mastering various weather conditions and complex terrain. Graduated from a flight safety training course in Nepal – a country with strict flying conditions and high international standards.",
+      "records": "Over 2,000 safe tandem flights, over 1,000 accumulated flying hours, and one of the rare Vietnamese pilots to complete the flight safety training course in Nepal.",
+      "personality": "The paraglide he's flying is a bright red and yellow flag — flying is spreading the inspiration of loving the country, loving the sky, loving life itself. Flying with him, your video easily gets millions of views on TikTok, photos and videos are 'top-notch' without editing, enough to make your crush miss a heartbeat. Friendly personality, cheerful, guaranteed you'll fly and laugh with your mouth wide open, forgetting all fear of heights. The only downside? Sun makes him dark, rain makes his hair frizzy — but his demeanor is still top-notch, his smile is flawless!"
+    },
+    "pilot10": {
+      "name": "Phan Hung",
+      "nickname": "Sky Wanderer",
+      "role": "Team Pilot",
+      "des": "Flying with him, you'll have million-view clips with super artistic camera angles. Absolute safe experience and beautiful sky moments captured, bringing back precious and unforgettable footage from each tandem flight.",
+      "img": "phan_hung.jpg",
+      "fullname": "PHAN HUNG",
+      "experience": "Started pursuing his passion for paragliding in 2018 and is now a professional pilot with many years of flying experience in Vietnam. He has deep understanding of meteorology and terrain at flying sites across the country — key factors ensuring every flight is safe and provides optimal experience. Has completed over 1,000 professional tandem flights and continuously participates in international standard paragliding training and education programs.",
+      "records": "Over 1,000 professional tandem flights, expert in weather and terrain analysis, active member in international standard training programs.",
+      "personality": "Meet Phan Hung – the 'rocker' of the sky, long hair flying in the wind like the paraglide itself. Flying with him, you not only get million-view clips but also million emotions. Over 1,000 flights – each one is a story, a moment for life. Full of energy, understands terrain, passionate 'burning' – always ready to take you touch the clouds!"
+    },
+    "pilot11": {
+      "name": "Ngo Van Doi",
+      "nickname": "Maneuver Warrior",
+      "role": "Team Pilot",
+      "des": "Participates in every paragliding competition in Vietnam, holds the record of 7 hours of continuous flying at Buu Hill – Chuong My. He is passionate about paragliding, bringing passengers thrilling, safe, and laughter-filled flying experiences.",
+      "img": "Ngo Van Doi_Team Pilot.jpeg",
+      "fullname": "NGO VAN DOI",
+      "experience": "From 2023 to 2025, he has completed over 500 solo and tandem flights at most famous flying sites across Vietnam. Accumulated over 300 hours of actual flying with 5 years of solid experience in paragliding. A familiar face at all paragliding competitions from South to North, always participating with professional competitive spirit and intense passion. Notably, he set a record of 7 hours of continuous flying at Buu Hill – Chuong My, marking a proud milestone in his flying career.",
+      "records": "Record of 7 hours of continuous flying at Buu Hill – Chuong My, over 500 flights in 2 years, and an active pilot participating in all paragliding competitions across the country.",
+      "personality": "A young man bringing wind into his smile — flying high without needing an 'elevator'! Burning passion for paragliding, with him every flight is a time his heart 'takes off'. Flying with him, you'll feel joy spreading in the blue sky — where strong winds are like applause cheering you on. A super dedicated friend, always ready to turn your flying dream into an exciting adventure!"
+    },
+    "pilot12": {
+      "name": "Minh Vo",
+      "nickname": "Steel Eagle",
+      "role": "Team Pilot",
+      "des": "Fly with the 'million-like pilot' with 14 years of experience. Passionate about the sky since childhood, he spreads the fire through each tandem flight, bringing peak experience and memorable moments high in the sky for every customer.",
+      "img": "Minh Vo_Team Pilot.jpg",
+      "fullname": "MINH VO",
+      "experience": "With 14 years of paragliding experience and over 2,000 safe tandem flights, he is one of the most veteran and reliable pilots in Vietnam. One of the Top 5 first-generation pilots, he contributed to laying the foundation for the domestic paragliding community. In 2023, he and his team excellently won first place in the Precision Landing event at the MCC competition, affirming solid professional skills and competitive spirit.",
+      "records": "14 years of experience, over 2,000 safe tandem flights. Top 5 first-generation pilot of Vietnam and won first place in Precision Landing at MCC 2023.",
+      "personality": "Minh Vo – the 'million-like pilot' with passion for the sky since childhood, grew up only liking to chat with clouds and play with wind. Flying with him is not just going high, but also lifting your mood! Beautiful views, loud laughter, and positive energy spread throughout the trip. He spreads the fire lightly but powerfully — making everyone who flies want to... fly again!"
+    },
+    "pilot13": {
+      "name": "Toan Nguyen",
+      "nickname": "Rambo",
+      "role": "Team Pilot",
+      "des": "Over 10 years of riding clouds, nearly 5,000 flights. Flying across Vietnam: Kon Tum, Ly Son, Dien Bien... GPS hasn't even loaded yet, he's already landed! Paragliding with him is not just passion — it's a lifestyle in the clouds.",
+      "img": "Toan Nguyen_team Pilot.jpg",
+      "fullname": "TOAN NGUYEN",
+      "experience": "With over 10 years of experience conquering the sky and nearly 5,000 solo and tandem flights, he is one of the most experienced and reliable pilots in Vietnam. Graduated from an international standard flight safety training course. Has flown over most famous paragliding sites in the country including Kon Tum, Dak Nong, Nha Trang, Ly Son, Dien Bien Phu. Regularly participates in precision landing competitions in Hanoi, Mu Cang Chai, and Da Nang, affirming solid flying skills and stable competitive spirit.",
+      "records": "Over 10 years of experience and nearly 5,000 flights across Vietnam. Participated in most precision landing competitions and completed international standard flight safety training.",
+      "personality": "Flying with Toan Nguyen – the 'Rambo' of the sky, you not only get to 'ride clouds' but also laugh till your cheeks hurt! He flies like wind, talks like wind, bringing a feeling of both safety and incredible fun. After flying, everyone wants to call him their 'personal pilot' for every trip. One guarantee: fly with Toan, you won't want to come down!"
+    },
+    "pilot14": {
+      "name": "Chien Thang",
+      "nickname": "Lightning Victor",
+      "role": "Team Pilot",
+      "des": "7 years living with clouds and wind, over 1,500 safe tandem flights, 1,000+ hours hovering in the sky. He once held the record for 9.5 hours of solo flying in Vietnam! 'Sweeping' paragliding competitions from North to South, always at peak performance.",
+      "img": "Chien Thang_Team Pilot.jpg",
+      "fullname": "CHIEN THANG",
+      "experience": "With 7 years of experience as a companion to sky and clouds, he has completed over 1,500 safe and professional tandem flights, accumulating over 1,000 hours of flying. He once held Vietnam's #2 record for longest solo flight time — 9.5 hours continuous, demonstrating remarkable perseverance and excellent paraglide control skills. Deep understanding of paragliding techniques and weather conditions at flying sites across the country, he always ensures each flight is both safe and emotionally uplifting.",
+      "records": "Holds Vietnam's #2 record for longest solo flight time – 9.5 hours continuous. Over 1,500 tandem flights and over 1,000 accumulated flying hours in 7 years of sky conquest.",
+      "personality": "Chien Thang – 'Thunder God', flies fast as lightning yet makes you feel absolutely safe. Hovering in the sky with him, you'll laugh with joy not wanting to come down. Flying with him is not just an experience but an adventure full of laughter. Flying so long that even the clouds have to admire: 'Hey, don't you need a break?'"
+    }
+  },
+  "preNotice": {
+    "title": "Pre-Flight Preparation",
+    "subtitle": "Important information before your flight",
+    "items": {
+      "photoSupport": {
+        "title": "Aerial Photography Support",
+        "description": "Our pilots will help you get the best angles from the sky - just ask them to capture your perfect moments!"
+      },
+      "timing": {
+        "title": "Arrive On Time",
+        "description": "Please arrive 5 minutes before pickup time to ensure no delays"
+      },
+      "storage": {
+        "title": "Phone Storage",
+        "description": "Your phone needs at least 4GB of free space to store photos/videos after the flight"
+      },
+      "baggage": {
+        "title": "Personal Bag",
+        "description": "You can bring a small personal bag (1-2kg) for essentials (phone, keys, documents)"
+      },
+      "clothing": {
+        "title": "Appropriate Attire",
+        "description": "Comfortable sportswear (long sleeves, long pants); no skirts, no high heels; wear sneakers or hiking boots (tip: bright colors look great in photos)"
+      },
+      "beginner": {
+        "title": "Beginner Friendly",
+        "description": "Suitable for first-time flyers"
+      },
+      "weather": {
+        "title": "Weather Conditions",
+        "description": "Flights depend on weather (wind, rain, fog). If rescheduling is needed, you'll be notified at least 1 day in advance, free of charge; if you prefer not to reschedule, you'll receive a 100% refund"
+      }
+    },
+    "tabs": {
+      "requirements": {
+        "title": "Requirements",
+        "subtitle": "Participation requirements",
+        "items": {
+          "weight": {
+            "title": "Weight",
+            "desc": "Under 120kg. If over 95kg, please notify us in advance to arrange suitable pilot and equipment."
+          },
+          "health": {
+            "title": "Physical Fitness",
+            "desc": "Basic physical fitness required, ability to run briefly. Not suitable for overweight individuals or those with serious mobility issues."
+          },
+          "age": {
+            "title": "Age",
+            "desc": "From 2 years old and above can participate in tandem flights with a pilot."
+          }
+        }
+      },
+      "booking": {
+        "title": "Booking",
+        "subtitle": "Booking information",
+        "items": {
+          "method": {
+            "title": "Booking Method",
+            "desc": "Book directly via website or contact hotline / Zalo / WhatsApp."
+          },
+          "payment": {
+            "title": "Payment",
+            "desc": "Cash, bank transfer, or credit card. No prepayment required."
+          },
+          "confirmation": {
+            "title": "Confirmation",
+            "desc": "We will contact you within 3 hours after receiving your booking."
+          }
+        }
+      },
+      "cancellation": {
+        "title": "Cancellation",
+        "subtitle": "Cancellation & rescheduling policy",
+        "items": {
+          "byUs": {
+            "title": "Cancelled by Sapa Paragliding",
+            "desc": "No charges for customers. Full refund provided. No additional fees apply."
+          },
+          "byCustomer": {
+            "title": "Cancelled by Customer",
+            "desc": "Notify via email/hotline/Zalo/WhatsApp. 1+ day before: Free. Same day: 50% of booking value."
+          },
+          "reschedule": {
+            "title": "Rescheduling",
+            "desc": "Free rescheduling upon customer request."
+          }
+        }
+      },
+      "weather": {
+        "title": "Weather",
+        "subtitle": "Weather conditions for flying",
+        "items": {
+          "condition": {
+            "title": "Flight Conditions",
+            "desc": "Wind direction and intensity are crucial factors. If forecast is suitable, the flight will proceed as scheduled."
+          },
+          "cancel": {
+            "title": "Weather Cancellation",
+            "desc": "Final decision made on flight day. If cancelled: No charges, option to reschedule or 100% refund."
+          }
+        }
+      },
+      "clothing": {
+        "title": "Clothing",
+        "subtitle": "Dress code guidelines",
+        "items": {
+          "clothes": {
+            "title": "Attire",
+            "desc": "Comfortable sportswear (long sleeves, long pants); no skirts. Tip: Bright colors photograph beautifully."
+          },
+          "shoes": {
+            "title": "Footwear",
+            "desc": "No high heels. Sneakers or hiking boots recommended. We can lend shoes for free if needed."
+          },
+          "glasses": {
+            "title": "Eyewear",
+            "desc": "Sunglasses protect your eyes from UV and strong wind (~40 km/h). Prescription glasses can be worn."
+          }
+        }
+      },
+      "schedule": {
+        "title": "Schedule",
+        "subtitle": "Flight schedule information",
+        "items": {
+          "duration": {
+            "title": "Experience Duration",
+            "desc": "The entire experience takes approximately 1 hour 30 minutes."
+          },
+          "contact": {
+            "title": "Communication",
+            "desc": "Check email/messages for notifications about changes or cancellations (if any)."
+          },
+          "spectators": {
+            "title": "Spectators",
+            "desc": "Family members can wait at the take-off area to watch the flight."
+          },
+          "parking": {
+            "title": "Parking",
+            "desc": "Free parking available (operating from 6:00 – 22:00, no camping allowed)."
+          }
+        }
+      },
+      "transport": {
+        "title": "Transport",
+        "subtitle": "Shuttle service",
+        "items": {
+          "shuttle": {
+            "title": "Pick-up/Drop-off",
+            "desc": "Pick-up and drop-off service from your hotel as per booking information."
+          },
+          "companion": {
+            "title": "Companions",
+            "desc": "For non-flying companions, please notify us of the number so we can arrange and quote appropriate fees."
+          }
+        }
+      },
+      "meetingPoint": {
+        "title": "Meeting Point",
+        "subtitle": "Where to meet",
+        "items": {
+          "center": {
+            "title": "Sapa Center",
+            "desc": "Sun Plaza shopping center in Sapa town center."
+          },
+          "hotel": {
+            "title": "Hotel/Homestay",
+            "desc": "Sapa, Lao Chai, Ta Van areas: please provide your location when booking."
+          }
+        }
+      },
+      "flyingSpot": {
+        "title": "Flying Spots",
+        "subtitle": "Take-off & landing points",
+        "items": {
+          "takeoff": {
+            "title": "Take-off Point",
+            "desc": "Designed to Vietnam's highest safety standards, ideal wind-catching location, ensuring safe take-off and impressive experience."
+          },
+          "landing": {
+            "title": "Landing Point",
+            "desc": "Landing at Lao Chai cultural village, near traditional market – displaying handmade crafts by local villagers."
+          }
+        }
+      },
+      "faq": {
+        "title": "Process",
+        "subtitle": "Detailed flight process",
+        "items": {
+          "meet": {
+            "title": "Meet Your Pilot",
+            "desc": "At the take-off point, you'll meet your pilot, have time for questions, and can leave your baggage."
+          },
+          "baggage": {
+            "title": "Take-off Briefing",
+            "desc": "Listen to instructions, put on flight gear, and practice take-off movements."
+          },
+          "takeoff": {
+            "title": "Take-off",
+            "desc": "Run firmly, continuously, and don't stop until the pilot instructs. After take-off, relax and enjoy the views."
+          },
+          "safety": {
+            "title": "Landing",
+            "desc": "Safe and comfortable equipment. Gentle landing, can stand or sit depending on conditions."
+          }
+        }
+      }
+    },
+    "locations": {
+      "title": "Flight Locations",
+      "takeoff": "Take-off Point",
+      "landing": "Landing Zone",
+      "getDirections": "Get Directions"
+    }
+  },
+  "about": {
+    "title": "About Sapa Paragliding",
+    "subtitle": "Your trusted partner for unforgettable flying experiences",
+    "tagline": "Fly higher. Feel more. Live fully.",
+    "intro": {
+      "title": "Welcome to Sapa Paragliding",
+      "description": "We are a professional paragliding team based in Sapa, Vietnam. With years of experience and a passion for flight, we offer safe and thrilling paragliding experiences over the stunning landscapes of Sapa.",
+      "highlight": "50,000+ safe flights • 15+ years of experience • International pilot team"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To provide safe, memorable, and exhilarating paragliding experiences while showcasing the breathtaking beauty of Sapa from a bird's eye view.",
+      "points": {
+        "safety": "Absolute safety in every flight",
+        "experience": "World-class experience with professional service",
+        "nature": "Showcasing Sapa's beauty from a unique perspective"
+      }
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the leading paragliding service in Vietnam, known for safety, professionalism, and exceptional customer experiences.",
+      "goals": {
+        "leader": "Lead the paragliding industry in Vietnam",
+        "international": "Achieve international safety certification",
+        "community": "Build a paragliding enthusiast community"
+      }
+    },
+    "values": {
+      "title": "Core Values",
+      "safety": {
+        "title": "Safety Is Supreme",
+        "description": "100% of flights comply with international safety standards. Equipment is regularly inspected, pilots are professionally trained."
+      },
+      "excellence": {
+        "title": "Excellence In Service",
+        "description": "From booking to landing, we commit to delivering the most perfect experience."
+      },
+      "passion": {
+        "title": "Passion And Dedication",
+        "description": "Each pilot is not just an expert but also a sky lover, ready to share the passion with you."
+      },
+      "innovation": {
+        "title": "Continuous Innovation",
+        "description": "Updating the latest technology, advanced flying methods to improve service quality."
+      }
+    },
+    "story": {
+      "title": "Our Story",
+      "founded": "Founded in 2010",
+      "description": "Starting from a passion for flying and love for Sapa, we built the first professional pilot team in the region. Over 15 years of development, Sapa Paragliding has become a trusted destination for tens of thousands of domestic and international visitors.",
+      "milestones": {
+        "2010": "Founded with 3 initial pilots",
+        "2015": "Achieved APPI international safety certification",
+        "2020": "Expanded team with international pilots",
+        "2024": "Completed 50,000+ safe flights"
+      }
+    },
+    "commitment": {
+      "title": "Our Commitment",
+      "safety": "Absolute safety - No compromise",
+      "quality": "International-class service quality",
+      "support": "24/7 customer support",
+      "satisfaction": "100% satisfaction guarantee or money back"
+    },
+    "whyChoose": {
+      "title": "Why Choose Sapa Paragliding?",
+      "cta": {
+        "title": "Ready to Experience Sapa from Above?",
+        "description": "Join thousands of satisfied customers who have experienced the thrill of paragliding in Sapa"
+      }
+    },
+    "features": {
+      "safety": {
+        "title": "Safety First",
+        "description": "Professional pilots with thousands of safe flights"
+      },
+      "photoVideo": {
+        "title": "Photo & Video",
+        "description": "Capture your unforgettable moments in the sky"
+      },
+      "bestViews": {
+        "title": "Best Views",
+        "description": "Stunning panoramic views of Sapa valley"
+      },
+      "expertTeam": {
+        "title": "Expert Team",
+        "description": "Professional pilots with thousands of successful flights"
+      },
+      "bestExperience": {
+        "title": "Best Experience",
+        "description": "Unforgettable views and memories that last a lifetime"
+      },
+      "professionalPhoto": {
+        "title": "Photo & Video",
+        "description": "Professional photography to capture your adventure"
+      },
+      "bestValue": {
+        "title": "Best Value",
+        "description": "Competitive prices with group discounts available"
+      },
+      "multiLanguage": {
+        "title": "Multi-Language",
+        "description": "Support in English, Vietnamese, French, and Russian"
+      },
+      "safetyRecord": {
+        "title": "Safety First",
+        "description": "100% safety record with certified pilots and top-quality equipment"
+      }
+    },
+    "process": {
+      "title": "Flight Process",
+      "step1": {
+        "title": "Safety Briefing",
+        "description": "Comprehensive safety instructions and equipment check"
+      },
+      "step2": {
+        "title": "Preparation",
+        "description": "Gear up and walk to the take-off point"
+      },
+      "step3": {
+        "title": "Take-off",
+        "description": "Run a few steps and soar into the sky"
+      },
+      "step4": {
+        "title": "Flight",
+        "description": "Enjoy the breathtaking views and the sensation of flying"
+      },
+      "step5": {
+        "title": "Landing",
+        "description": "Smooth landing with your pilot's guidance"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Flight Pricing",
+    "subtitle": "Book in advance - Pay later - No deposit required",
+    "packages": {
+      "basic": {
+        "name": "Basic Package",
+        "price": "2.090k",
+        "priceUsd": "80 USD/flight",
+        "duration": "Duration: 20 minutes",
+        "weatherNote": "(Depending on weather conditions)",
+        "included": "Included:",
+        "items": {
+          "flight": "Paragliding flight 8-15 minutes",
+          "photoVideo": "GOPRO video & photo recording",
+          "drinks": "Beverages at the flight site",
+          "insurance": "Paragliding insurance",
+          "certificate": "Certificate"
+        }
+      },
+      "standard": {
+        "name": "Standard Package",
+        "badge": "POPULAR",
+        "price": "2.190k",
+        "priceUsd": "85 USD/flight",
+        "duration": "Duration: 30 minutes",
+        "weatherNote": "(Depending on weather conditions)",
+        "included": "Included:",
+        "items": {
+          "flight": "Paragliding flight 8-15 minutes",
+          "photoVideo": "GOPRO video & photo recording",
+          "drinks": "Beverages at the flight site",
+          "insurance": "Paragliding insurance",
+          "certificate": "Certificate",
+          "hotelTransfer": "Hotel pick-up and drop-off"
+        }
+      },
+      "premium": {
+        "name": "Premium Package",
+        "price": "2.990k",
+        "priceUsd": "113 USD/flight",
+        "duration": "Duration: 35 minutes",
+        "weatherNote": "(Depending on weather conditions)",
+        "included": "Included:",
+        "items": {
+          "flight": "Paragliding flight 8-15 minutes",
+          "photoVideo": "GOPRO video & photo recording",
+          "drinks": "Beverages at the flight site",
+          "insurance": "Paragliding insurance",
+          "certificate": "Certificate",
+          "hotelTransfer": "Hotel pick-up and drop-off",
+          "drone": "FLYCAM (DRONE camera)",
+          "camera360": "360 degree camera"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Choose the perfect flight experience for you"
+  },
+  "gallery": {
+    "title": "Paragliding Moments",
+    "subtitle": "Memorable experiences"
+  },
+  "cta": {
+    "title": "Ready for Your Adventure?",
+    "description": "Book your paragliding experience today and create memories that will last a lifetime",
+    "readyToFly": {
+      "title": "Ready to Fly?",
+      "description": "Book your paragliding adventure now and experience the thrill of flying"
+    }
+  },
+  "preNoticeSection": {
+    "safetyRequirements": {
+      "title": "Safety Requirements",
+      "minAge": "Minimum age: 5 years old (with parental consent for minors)",
+      "weightRange": "Weight range: < 100 kg",
+      "goodHealth": "Must be in good physical and mental health",
+      "noPregnant": "Pregnant women cannot participate",
+      "notRecommended": "Not recommended for people with heart conditions, back problems, or fear of heights"
+    }
+  },
+  "footer": {
+    "contact": "Contact Us",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "copyright": "Licensed to fly by the Operations Department – General Staff, Ministry of National Defense of Vietnam. Paragliding business license No. 02/GCN-SVHTT issued by the Department of Culture, Sports and Tourism of Lao Cai Province"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number",
+    "minLength": "Minimum length is {min} characters",
+    "maxLength": "Maximum length is {max} characters"
+  },
+  "posts": {
+    "latestPosts": "Latest Posts",
+    "latestPostsDescription": "Discover the latest stories, tips, and guides about paragliding in Sapa",
+    "readMore": "Read More",
+    "relatedPosts": "Related Posts",
+    "notFound": "Post Not Found"
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Login",
+      "subtitle": "Manage posts and content",
+      "username": "Username",
+      "usernamePlaceholder": "Enter username",
+      "password": "Password",
+      "passwordPlaceholder": "Enter password",
+      "submit": "Login",
+      "loading": "Loading...",
+      "demo": "Demo account:"
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "welcome": "Welcome",
+      "logout": "Logout",
+      "managePosts": "Manage Posts",
+      "addPost": "Add Post",
+      "editPost": "Edit Post",
+      "published": "Published",
+      "draft": "Draft",
+      "publish": "Publish",
+      "unpublish": "Unpublish",
+      "edit": "Edit",
+      "delete": "Delete",
+      "table": {
+        "title": "Title",
+        "category": "Category",
+        "date": "Date",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "form": {
+        "titleEn": "Title (English)",
+        "titleVi": "Title (Vietnamese)",
+        "excerptEn": "Excerpt (English)",
+        "excerptVi": "Excerpt (Vietnamese)",
+        "contentEn": "Content (English)",
+        "contentVi": "Content (Vietnamese)",
+        "image": "Image URL",
+        "category": "Category",
+        "author": "Author",
+        "published": "Publish immediately"
+      }
+    }
+  }
+}

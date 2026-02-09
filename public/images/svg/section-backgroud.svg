@@ -1,0 +1,52 @@
+<svg width="1400" height="560" viewBox="0 0 1400 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient nền pastel xanh lá nhạt -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dcfce7" />
+      <stop offset="35%" stop-color="#bbf7d0" />
+      <stop offset="70%" stop-color="#86efac" />
+      <stop offset="100%" stop-color="#d1fae5" />
+    </linearGradient>
+
+    <!-- Soft white glow để tạo độ sâu nhẹ -->
+    <radialGradient id="softGlow" cx="50%" cy="40%" r="85%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Clip path: viền trên/dưới răng cưa dày (~20px/đỉnh), trong suốt -->
+    <clipPath id="jaggedClip">
+      <path d="
+        M0,45
+        L20,42 L40,48 L60,38 L80,50 L100,43 L120,49 L140,36 L160,46 L180,41
+        L200,51 L220,44 L240,47 L260,39 L280,52 L300,45 L320,48 L340,40 L360,50
+        L380,43 L400,49 L420,36 L440,46 L460,41 L480,51 L500,44 L520,47 L540,39
+        L560,52 L580,45 L600,48 L620,40 L640,50 L660,43 L680,49 L700,32 L720,49
+        L740,43 L760,50 L780,39 L800,47 L820,44 L840,51 L860,41 L880,46 L900,36
+        L920,49 L940,43 L960,50 L980,40 L1000,48 L1020,42 L1040,51 L1060,44
+        L1080,47 L1100,39 L1120,52 L1140,45 L1160,48 L1180,40 L1200,50 L1220,43
+        L1240,49 L1260,36 L1280,46 L1300,41 L1320,51 L1340,44 L1360,47 L1380,39
+        L1400,45
+
+        L1400,515
+        L1380,521 L1360,514 L1340,522 L1320,511 L1300,519 L1280,512 L1260,523
+        L1240,510 L1220,518 L1200,513 L1180,524 L1160,515 L1140,517 L1120,509
+        L1100,520 L1080,512 L1060,519 L1040,508 L1020,521 L1000,514 L980,522
+        L960,511 L940,519 L920,512 L900,523 L880,510 L860,518 L840,513 L820,524
+        L800,515 L780,517 L760,509 L740,520 L720,512 L700,535 L680,512 L660,520
+        L640,509 L620,517 L600,515 L580,524 L560,513 L540,521 L520,514 L500,522
+        L480,511 L460,519 L440,512 L420,523 L400,510 L380,518 L360,513 L340,524
+        L320,515 L300,517 L280,509 L260,520 L240,512 L220,519 L200,508 L180,521
+        L160,514 L140,522 L120,511 L100,519 L80,512 L60,523 L40,510 L20,518 L0,515
+
+        Z
+      " />
+    </clipPath>
+  </defs>
+
+  <!-- Áp clipPath: chỉ phần trung tâm được hiển thị, viền răng cưa → trong suốt -->
+  <g clip-path="url(#jaggedClip)">
+    <rect width="1400" height="560" fill="url(#mainGradient)" />
+    <rect width="1400" height="560" fill="url(#softGlow)" />
+  </g>
+</svg>

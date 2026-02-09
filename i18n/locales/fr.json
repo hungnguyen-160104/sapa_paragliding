@@ -1,0 +1,906 @@
+{
+  "hero": {
+    "title": "PARAPENTE SAPA",
+    "subtitle": "Le parapente est un sport d'aventure, c'est pourquoi le choix d'une organisation professionnelle avec les meilleurs pilotes du Vietnam est crucial pour une expérience de vol sécurisée. Le point de décollage de parapente de Sapa est conçu selon les normes les plus élevées au Vietnam, avec un emplacement idéal pour capter le vent, offrant un parcours de vol passionnant et garantissant le processus de décollage le plus sûr.",
+    "bookNow": "Réserver en Ligne",
+    "chatZalo": "Chat sur Zalo",
+    "chatWhatsApp": "Chat sur WhatsApp"
+  },
+  "common": {
+    "scroll": "Défiler"
+  },
+  "menu": {
+    "home": "Accueil",
+    "booking": "Réservation",
+    "pilots": "Pilotes",
+    "posts": "Blog",
+    "preNotice": "Avis Pré-vol",
+    "about": "À Propos"
+  },
+  "buttons": {
+    "book": "Réserver",
+    "learnMore": "En Savoir Plus",
+    "viewMore": "Voir Plus",
+    "next": "Suivant",
+    "back": "Retour",
+    "backToHome": "Retour à l'Accueil",
+    "confirm": "Confirmer",
+    "submit": "Soumettre",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
+  },
+  "booking": {
+    "title": "Réservez Votre Vol",
+    "step1": "Sélectionner le Service",
+    "step2": "Programme de vol",
+    "step3": "Détails du Passager",
+    "step4": "Confirmer la Réservation",
+    "step5": "Terminé",
+    "selectService": "Veuillez sélectionner votre service de vol",
+    "contactInfo": "Entrez vos coordonnées",
+    "passengerInfo": "Informations sur le passager",
+    "confirmDetails": "Vérifier et confirmer",
+    "bookingComplete": "Réservation terminée!",
+    "thankYou": "Merci d'avoir réservé avec nous!",
+    "confirmationSent": "Un email de confirmation a été envoyé à votre adresse.",
+    "contactUs": "Nous vous contacterons bientôt pour confirmer les détails de votre vol.",
+    "scanQR": "Ou scannez le code QR pour discuter avec nous:",
+    "step1Details": {
+      "numberOfPassengers": "Nombre de",
+      "numberOfPeople": "Nombre de Personnes",
+      "people": "personnes",
+      "estimatedTotal": "Total Estimé",
+      "flightPrice": "Prix du Vol",
+      "from": "À partir de",
+      "perFlight": "/vol",
+      "tourDuration": "Durée du Tour",
+      "durationText": "À partir de 90 minutes selon les conditions météorologiques",
+      "included": "Inclus:",
+      "optionalServices": "Services Optionnels:",
+      "locations": "Lieux:",
+      "takeoffPoint": "Point de Décollage: Montagne Hau Thao",
+      "landingPoint": "Point d'Atterrissage: Village de Lao Chai",
+      "viewMap": "Voir la Carte →",
+      "promotionInfo": "Réduction directe pour les réservations de groupe",
+      "youSave": "🎉 Vous économisez:",
+      "priceSummary": "Résumé des Prix",
+      "flightPriceFor": "Prix du Vol",
+      "optionalServicesTotal": "Services Optionnels",
+      "groupDiscount": "Réduction de Groupe",
+      "discount": "Réduction",
+      "total": "Total:",
+      "continue": "Continuer →",
+      "includedItems": {
+        "flight": "01 vol en parapente de 8-15 minutes (peut être plus long selon la météo, la santé du passager et la décision du pilote)",
+        "photoVideo": "Enregistrement vidéo et photo avec GoPro, fourni par Sapa Paragliding",
+        "drinks": "Boissons sur le site de vol",
+        "insurance": "Assurance parapente",
+        "certificate": "Certificat de participation à l'expérience",
+        "equipment": "Équipement de parapente certifié aux normes",
+        "reschedulePolicy": "Pas de frais de report et annulation gratuite en cas de mauvais temps"
+      },
+      "optionalItems": {
+        "hotelTransfer": {
+          "name": "Zone de prise en charge : centre-ville de Sapa, village de Lao Chai, village de Ta Van.",
+          "description": "(Pour les autres lieux de prise en charge, nous vous contacterons à l’avance afin de discuter et convenir d’un supplément approprié.)"
+        },
+        "drone": {
+          "name": "Vol enregistré à l’aide d’un flycam/drone professionnel",
+          "description": "Votre vol sera filmé par flycam et toutes les données originales vous seront envoyées"
+        },
+        "camera360": {
+          "name": "Vol enregistré avec une caméra 360°, capturant l’intégralité du parcours.",
+          "description": "La vidéo sera montée avant de vous être envoyée."
+        }
+      },
+      "promotions": {
+        "group2": "Groupe de 2 ou plus",
+        "group3": "Groupe de 3 ou plus",
+        "group4": "Groupe de 4 ou plus",
+        "group6": "Groupe de 6 ou plus"
+      }
+    },
+    "step2Details": {
+      "pickupLocation": "Lieu de Prise en Charge *",
+      "pickupPlaceholder": "Exemple: Hôtel Sapa Charm, Centre de Sapa",
+      "pickupNote": "Veuillez entrer le nom de l'hôtel ou l'adresse spécifique à Sapa, village de Lao Chai ou village de Ta Van",
+      "importantNotice": "Avis Important",
+      "weatherNotice": {
+        "item1": "Après la réservation, nous vous contacterons pour organiser le planning du vol, y compris l'heure du vol, le point de prise en charge et l'heure de prise en charge.",
+        "item2": "L'heure de prise en charge est environ 30 minutes avant le vol.",
+        "item3": "Le jour du vol, nous vous enverrons le nom du chauffeur, son numéro de téléphone et la plaque d'immatriculation du véhicule/moto par SMS, WhatsApp ou Email.",
+        "item4": "Veuillez arriver au point de rendez-vous 5 minutes avant l'heure de prise en charge pour éviter tout retard.",
+        "item5": "En cas de changement météorologique, nous vous contacterons pour reprogrammer entièrement gratuitement."
+      },
+      "selectTime": "Sélectionner l'heure",
+      "contactName": "Nom de Contact",
+      "email": "Email",
+      "phone": "Numéro de Téléphone"
+    },
+    "step3Details": {
+      "passenger": "Passager",
+      "selectGender": "Sélectionner le genre",
+      "weightLimit": "Limite de poids: < 100 kg",
+      "safetyRequirements": "Exigences de Sécurité",
+      "minAge": "Âge minimum: 5 ans (avec consentement parental)",
+      "weightRange": "Poids: < 100 kg",
+      "goodHealth": "Les passagers doivent être en bonne santé",
+      "noPregnant": "Les femmes enceintes ne peuvent pas participer",
+      "personalInfoNotice": "Veuillez remplir vos informations personnelles correctement selon vos documents d'identification. Si incorrect, l'assurance ne sera pas valide.",
+      "fullName": "Nom Complet",
+      "dateOfBirth": "Date de Naissance",
+      "weight": "Poids",
+      "fillContactInfo": "Remplir les informations du réservant"
+    },
+    "step4Details": {
+      "serviceDetails": "Détails du Service",
+      "service": "Service",
+      "passengers": "Passagers",
+      "date": "Date",
+      "time": "Heure",
+      "flexible": "Flexible",
+      "contactInformation": "Informations de Contact",
+      "name": "Nom:",
+      "email": "Email:",
+      "phone": "Téléphone:",
+      "specialRequests": "Demandes Spéciales:",
+      "passengerInformation": "Informations sur les Passagers",
+      "fullName": "Nom Complet:",
+      "dateOfBirth": "Date de Naissance:",
+      "gender": "Genre:",
+      "weight": "Poids:",
+      "nationality": "Nationalité:",
+      "priceSummary": "Résumé des Prix",
+      "basePrice": "Prix de Base",
+      "discount": "Réduction",
+      "paymentInfo": "Informations de Paiement",
+      "paymentText": "Le paiement sera effectué sur place avant le vol. Nous acceptons les espèces  et les principales cartes de crédit. Un email de confirmation sera envoyé après la réservation.",
+      "processing": "Traitement en cours..."
+    },
+    "step5Details": {
+      "bookingId": "ID de Réservation",
+      "bookingSummary": "Résumé de la Réservation",
+      "service": "Service:",
+      "date": "Date:",
+      "time": "Heure de Décollage:",
+      "passengers": "Passagers:",
+      "total": "Total:",
+      "whatsNext": "Et Après?",
+      "step1": "Vérifiez votre email pour la confirmation et les détails de la réservation",
+      "step2": "Nous vous contacterons 24 heures avant pour confirmer les conditions météorologiques",
+      "step3": "Пожалуйста, прибудьте к месту встречи как минимум за 5 минут до времени посадки, чтобы избежать задержек.",
+      "step4": "Profitez de votre incroyable expérience de parapente!",
+      "backToHome": "Retour à l'Accueil",
+      "makeAnother": "Faire une Autre Réservation",
+      "openZalo": "Ouvrir Zalo",
+      "openWhatsApp": "Ouvrir WhatsApp"
+    },
+    "ticket": {
+      "title": "BILLET DE VOL",
+      "subtitle": "Sapa Paragliding - Expérience de Parapente",
+      "bookingId": "ID de Réservation",
+      "flightDetails": "Détails du Vol",
+      "passengerInfo": "Informations du Passager",
+      "passengersList": "Liste des Passagers",
+      "validationDate": "Date d'Émission",
+      "footer": "Ce billet est valide lorsqu'il est confirmé par Sapa Paragliding. Veuillez conserver ce billet pour votre vol.",
+      "downloadPDF": "Télécharger PDF",
+      "downloadImage": "Télécharger l'Image"
+    },
+    "fields": {
+      "fullName": "Nom Complet",
+      "email": "Email",
+      "phone": "Numéro de Téléphone / Whatsapp / Zalo",
+      "date": "Date du vol",
+      "time": "Heure du vol",
+      "passengers": "Nombre de Passagers",
+      "specialRequests": "Demandes Spéciales",
+      "dateOfBirth": "Date de Naissance",
+      "gender": "Genre",
+      "nationality": "Nationalité",
+      "passportOrId": "Passeport/Carte d'Identité",
+      "passportOrIdPlaceholder": "Entrez le numéro de passeport ou de carte d'identité",
+      "weight": "Poids (kg)",
+      "male": "Homme",
+      "female": "Femme",
+      "other": "Autre"
+    },
+    "terms": {
+      "agree": "J'accepte les",
+      "termsAndConditions": "Termes et Conditions",
+      "and": "et",
+      "privacyPolicy": "Politique de Confidentialité"
+    },
+    "captcha": {
+      "verify": "Veuillez vérifier que vous n'êtes pas un robot",
+      "error": "La vérification a échoué. Veuillez réessayer.",
+      "required": "Veuillez compléter la vérification."
+    },
+    "services": {
+      "discovery": {
+        "name": "Vol Découverte",
+        "description": "Parfait pour les débutants. Découvrez le parapente avec un vol court de 15-20 minutes.",
+        "duration": "15-20 minutes",
+        "price": "1 200 000 VND"
+      },
+      "adventure": {
+        "name": "Vol Aventure",
+        "description": "Temps de vol prolongé avec manœuvres acrobatiques pour les amateurs de sensations fortes.",
+        "duration": "25-30 minutes",
+        "price": "1 800 000 VND"
+      },
+      "premium": {
+        "name": "Expérience Premium",
+        "description": "Vol le plus long avec forfait photo/vidéo et meilleures vues de Sapa.",
+        "duration": "35-40 minutes",
+        "price": "2 500 000 VND"
+      }
+    },
+    "discount": {
+      "group2": "2 personnes: 5% de réduction",
+      "group3": "3+ personnes: 10% de réduction",
+      "group5": "5+ personnes: 15% de réduction"
+    }
+  },
+  "pilots": {
+    "title": "Nos Pilotes Experts",
+    "subtitle": "Rencontrez notre équipe professionnelle de pilotes certifiés",
+    "experience": "Expérience",
+    "records": "Réalisations",
+    "personality": "Personnalité",
+    "backToList": "Retour aux Pilotes",
+    "pilot1": {
+      "name": "Dang Van My",
+      "nickname": "Captain America",
+      "role": "Chef d'équipe",
+      "des": "Leader organisant les compétitions nationales de parapente, tout en traduisant plus de 1000 pages de livres professionnels des 3 meilleures ressources mondiales, apportant une contribution significative à la communauté de l'aviation sportive du Vietnam.",
+      "img": "Dang Van My_Team Leader.jpg",
+      "fullname": "DANG VAN MY",
+      "experience": "Plus de 10 ans d'expérience en parapente, avec plus de 1 000 vols en solo et 10 000 vols en tandem. Premier pilote d'hélicoptère au Vietnam et aussi le premier et seul pilote de voltige au Vietnam. Il peut effectuer des manœuvres techniques de haut niveau et des acrobaties aériennes rares. Possède des compétences en parapente et parapente motorisé. Traducteur de plus de 1 000 pages de documentation approfondie sur le parapente et auteur de 3 best-sellers : 'Vol Thermique', 'Vol de Fond' et 'Comprendre le Ciel'. Premier pilote vietnamien à recevoir la certification IPPI5 au Japon.",
+      "records": "Détient actuellement le record du plus grand vol triangulaire fermé dans la région des Hauts Plateaux du Centre (plus de 100 km) et est le pilote avec le plus d'heures de vol au Vietnam.",
+      "personality": "Sur terre, il est extrêmement discipliné et sérieux dans son travail et son rôle de leader. Mais dès qu'il décolle, il se transforme en 'enfant du vent' — apportant de la joie, de l'énergie positive et inspirant la passion pour tous les passagers qui volent avec lui."
+    },
+    "pilot2": {
+      "name": "Alish Thapa",
+      "nickname": "Fantôme du Ciel",
+      "role": "Instructeur International APPI",
+      "des": "Instructeur professionnel de parapente avec certification internationale APPI, invité par de nombreuses organisations pour enseigner. Non seulement compétent professionnellement, mais aussi un pilote joyeux et amical, apportant toujours des vols sûrs et intéressants et faisant aimer les passagers dès la première rencontre.",
+      "img": "Alish Thapa_Team Pilot.jpg",
+      "fullname": "ALISH THAPA",
+      "experience": "Il est l'instructeur principal et expert S&TA (Safety and Training Advisor) chez Skydive Chiang Mai. En même temps, il occupe le poste de directeur des opérations chez Insky Skydive et Everest Paragliding, ainsi qu'instructeur professionnel chez Fishtail Nepal Paragliding. Instructeur de parapente certifié APPI, et aussi instructeur de parachutisme (AFF-I, TAN-I) selon les normes USPA. Il a des milliers d'heures de formation et d'expérience de vol réel dans de nombreux pays asiatiques, notamment le Vietnam, la Thaïlande et le Népal.",
+      "records": "Instructeur APPI international, a enseigné sur de nombreux grands sites de vol au Vietnam, en Thaïlande et en Chine. Occupe des postes de gestion et d'exploitation dans plusieurs organisations réputées de parapente et de parachutisme dans la région.",
+      "personality": "Il est l'un des pilotes de parapente de premier plan du Népal, avec un style d'enseignement amusant et inspirant. Il aide les étudiants à ressentir le vol comme une danse dans les airs — non seulement apprendre les techniques mais apprendre à aimer le ciel. Il apporte de l'énergie positive à chaque vol, faisant que les visiteurs non seulement se souviennent du voyage mais aussi se souviennent de ce compagnon spécial."
+    },
+    "pilot3": {
+      "name": "Subash Thapa",
+      "nickname": "Chevalier du Ciel",
+      "role": "Instructeur Professionnel de Parapente",
+      "des": "Instructeur professionnel de parapente qui a formé de nombreux pilotes de parapente dans le monde entier. Il ne se contente pas d'avoir une passion pour le parapente, mais il aime aussi la musique, c'est pourquoi chaque vol en tandem avec lui est vivant et plein d'inspiration.",
+      "img": "Subash Thapa_Team Pilot.jpg",
+      "fullname": "SUBASH THAPA",
+      "experience": "Il est pilote en chef, instructeur de parapente et instructeur de parachutisme à Pokhara. Il a également servi comme pilote en chef chez Acro Paragliding et New Para World Paragliding. Il possède plus de 1 000 heures de vol en tandem professionnel et place toujours la sécurité en premier. Avec plus de 3 ans d'expérience d'exploitation au Vietnam, Subash possède une solide connaissance du terrain et des conditions météorologiques sur les différents sites de vol.",
+      "records": "Plus de 1 000 heures de vol en tandem professionnel, ancien pilote en chef dans plusieurs organisations de parapente réputées et 3+ ans d'expérience d'exploitation au Vietnam.",
+      "personality": "Subash Thapa n'est pas seulement un instructeur de parapente de premier ordre, mais aussi un 'DJ dans le ciel' avec une passion brûlante pour la musique, transformant chaque vol en tandem en une fête joyeuse dans les nuages. Il assure toujours une sécurité absolue, vous aidant à voler sans souci. Voler avec lui, c'est non seulement expérimenter le vol dans le ciel, mais aussi gagner un ami joyeux plein d'énergie positive!"
+    },
+    "pilot4": {
+      "name": "Suman Thapa",
+      "nickname": "Cavalier du Ciel",
+      "role": "Pilote de Démonstration",
+      "des": "La plupart des vidéos acrobatiques spectaculaires à Sapa viennent de lui – un pilote expérimenté avec une compréhension approfondie du parapente. Avec lui, voler n'est pas juste une passion — c'est une carrière. Les clients l'appellent par un nom spécial : 'Enfant du Dieu du Vent'.",
+      "img": "Suman Thapa_Team Pilot.jpg",
+      "fullname": "SUMAN THAPA",
+      "experience": "Complété un cours de formation de pilote professionnel au Népal. Un pilote acro avec des compétences acrobatiques exceptionnelles, maîtrisant de nombreuses manœuvres techniques complexes. Il a plus de 1 000 heures de vol en tandem professionnel, assurant toujours la sécurité absolue des passagers. Actif depuis plus de 3 ans au Vietnam, avec une compréhension approfondie du terrain et des conditions météorologiques sur les sites de vol du pays. Vise actuellement à devenir un instructeur de parapente certifié APPI.",
+      "records": "Pilote acro (acrobatique) de premier plan au Vietnam, célèbre pour les performances spectaculaires à Sapa. Possède plus de 1 000 heures de vol en tandem et 3 ans d'activité professionnelle au Vietnam.",
+      "personality": "Il est quelqu'un qui quand le vent se lève — même avant le décollage — vous pouvez entendre son cœur crier : 'Volons ensemble!'. Il aime le parapente comme quelqu'un accro au café du matin — indispensable, irrépressible. Avec lui, chaque manœuvre acrobatique est un sourire affirmant : 'Nous vivons pour voler.'"
+    },
+    "pilot5": {
+      "name": "Bishal Thapa",
+      "nickname": "Commando du Vent",
+      "role": "Expert en Atterrissage de Précision",
+      "des": "Passionné par l'atterrissage de précision, il vise toujours à toucher le centre exact avec une erreur minimale. Cela garantit que chaque vol est sûr et exécuté comme un programme. Joyeux et accessible, il écoute toujours et se soucie des sentiments de ses passagers pour offrir l'expérience de vol la plus complète.",
+      "img": "Bishal Thapa.jpg",
+      "fullname": "BISHAL THAPA",
+      "experience": "Il a commencé à apprendre le parapente en 2016 et est devenu pilote de tandem professionnel en 2019. Avec plus de 2 000 vols en tandem et plus de 800 heures de vol, il est l'un des pilotes les plus expérimentés et les plus stables de l'équipe. Bishal a obtenu des résultats impressionnants aux compétitions nationales et internationales, notamment : Pre-World Cup Mizoram Open Accuracy Championship 2018 (2e place individuelle, 1ère place équipe), Accuracy Paragliding Pre-World Cup 2023 (2e place individuelle, 1ère place équipe) et Indian Accuracy Cup Bilaspur (Champion individuel).",
+      "records": "Expert en atterrissage de précision de premier plan – a remporté de nombreux titres aux compétitions Pre-World Cup et Accuracy Cup internationales. Possède plus de 2 000 vols et 800+ heures de vol en toute sécurité.",
+      "personality": "Bishal Thapa porte toujours une 'batterie d'énergie' et un sourire radieux à chaque vol. Il est joyeux, attachant et fait toujours sentir aux passagers qu'ils volent avec un ami proche. Passionné par l'atterrissage de précision au millimètre près, il transforme chaque atterrissage en une belle 'danse' dans le ciel. Voler avec lui, c'est non seulement ressentir la sensation de voler, mais aussi vivre une aventure pleine de rires et d'émotions."
+    },
+    "pilot6": {
+      "name": "Bishal Skyboy",
+      "nickname": "Skyboy",
+      "role": "Pilote Acro",
+      "des": "Pilote professionnel du Népal, réputé mondialement pour ses impressionnantes compétences en acrobatie aérienne. Non seulement il conquiert le ciel avec une technique de haut niveau, mais il est aussi un pilote de tandem expérimenté, offrant des expériences de vol palpitantes et inoubliables à chaque passager.",
+      "img": "Bishal Skyboy_Team Pilot.jpg",
+      "fullname": "BISHAL SKYBOY",
+      "experience": "Pilote Acro professionnel du Népal avec de nombreuses années d'expérience en performances acrobatiques et en instruction de vol en tandem. Il a participé à de nombreux événements aériens internationaux, réputé pour ses techniques acrobatiques complexes et sa sécurité absolue pour les passagers. Il offre des expériences de vol excitantes, émouvantes et palpitantes.",
+      "records": "Pilote Acro réputé mondialement avec des compétences acrobatiques exceptionnelles. Expérience extensive des vols en tandem et dossier de sécurité, participation à de nombreux événements aériens internationaux.",
+      "personality": "Bishal Skyboy se distingue par ses compétences de vol habiles et son attitude confiante dans les airs. Il offre des expériences de vol rafraîchissantes, excitantes et mémorables pour tous les passagers, en maintenant toujours une attitude professionnelle mais accessible et amicale."
+    },
+    "pilot7": {
+      "name": "Dinh The Anh",
+      "nickname": "Chasseur de Nuages",
+      "role": "Pilote d'équipe",
+      "des": "Un pilote plein d'énergie athlétique, du cyclisme, la natation au parapente, avec 2000 vols, plus de 1500 heures de vol sécurisé et 3 fois champion d'atterrissage de précision au Vietnam.",
+      "img": "The Anh_Team Pilot.jpg",
+      "fullname": "DINH THE ANH",
+      "experience": "A effectué plus de 2 000 vols, avec un temps de vol sécurisé total dépassant 1 000 heures. Représentant du Vietnam qui a volé directement aux Jeux olympiques 2023 en Corée du Sud. Triple champion d'atterrissage de précision aux compétitions nationales. A décollé de nombreux pays du monde, notamment : Suisse, Corée du Sud, États-Unis, Thaïlande, Indonésie...",
+      "records": "Triple champion d'atterrissage de précision au Vietnam et représentant du Vietnam aux Jeux olympiques de parapente 2023 en Corée du Sud.",
+      "personality": "Connu sous le nom de 'frère national' – né et élevé à Da Nang, ce gars du Centre-Vietnam porte la douceur et la chaleur de la brise marine et du soleil doré de sa patrie. Impressionnant par son sourire doux, sa voix chaleureuse et son attention dans chaque action. Non seulement un pilote de premier ordre, mais aussi un photographe professionnel. En volant avec lui, vous pouvez être sûr d'avoir d'innombrables photos étonnantes, chaque angle est beau et chaque moment est mémorable!"
+    },
+    "pilot8": {
+      "name": "Tuan Nguyen",
+      "nickname": "Nhi Ca",
+      "role": "Pilote d'équipe",
+      "des": "Un pilote doux et attentionné qui écoute toujours les demandes des passagers. Que vous aimiez un vol agressif ou un 'chill' doux, il a l'angle de caméra parfait et la trajectoire de vol, garantissant que tout le monde voudra... devenir un fan hardcore!",
+      "img": "Tuan Nguyen_Team Pilot.jpg",
+      "fullname": "TUAN NGUYEN",
+      "experience": "A complété avec succès plus de 1 000 vols en tandem en toute sécurité au Vietnam. Compréhension approfondie de la météorologie sur les sites de vol du pays, avec la capacité d'évaluer et de prévoir avec précision la météo pour les activités de vol. Compétent en parapente sans moteur et motorisé. Instructeur professionnel de parapente qui a formé et guidé de nombreux pilotes dans leur quête de conquérir les cieux du Vietnam.",
+      "records": "Plus de 1 000 vols en tandem sécurisés, expert météorologique de premier plan dans la communauté aérienne et instructeur expérimenté sur les principaux sites de vol du pays.",
+      "personality": "Son surnom porte l'esprit chevaleresque de 'Deuxième Voix', mais sa personnalité est extrêmement amicale et adorable. Il aime particulièrement les enfants — après chaque vol, les petits anges se souviennent du gentil pilote et envoient des lettres de remerciement. Si les parents cherchent quelqu'un de fiable, dévoué et plein d'énergie positive pour accompagner leur enfant dans un voyage pour toucher les nuages — alors personne d'autre, Deuxième Voix est le choix parfait!"
+    },
+    "pilot9": {
+      "name": "Minh Trung",
+      "nickname": "Guerrier de l'Espace",
+      "role": "Pilote d'équipe",
+      "des": "Plus de 2 000 vols en tandem, 7 ans suspendu dans le ciel, plus de 1 000 heures de 'jeu avec les nuages et le vent'. Surnommé Minh Chocolat – en volant avec lui, vous aurez du plaisir à discuter, à rire jusqu'à vous faire mal aux joues!",
+      "img": "Minh Trung_Team Pilot.jpg",
+      "fullname": "MINH TRUNG",
+      "experience": "Plus de 2 000 vols en tandem sécurisés avec les passagers. 7 ans d'expérience en parapente, se spécialisant dans les vols en tandem et les vols de fond. Accumulé plus de 1 000 heures de vol réel, maîtrisant diverses conditions météorologiques et terrains complexes. Diplômé d'un cours de formation à la sécurité des vols au Népal – un pays aux conditions de vol strictes et aux normes internationales élevées.",
+      "records": "Plus de 2 000 vols en tandem sécurisés, plus de 1 000 heures de vol accumulées et l'un des rares pilotes vietnamiens à avoir complété le cours de formation à la sécurité des vols au Népal.",
+      "personality": "Le parapente qu'il vole est un drapeau rouge et jaune brillant — voler propage l'inspiration d'aimer le pays, aimer le ciel, aimer la vie elle-même. En volant avec lui, votre vidéo obtient facilement des millions de vues sur TikTok, les photos et vidéos sont 'haut de gamme' sans édition, suffisant pour faire manquer un battement à votre béguin. Personnalité amicale, joyeuse, garantissant que vous volerez et rirez la bouche grande ouverte, oubliant toute peur de la hauteur. Le seul inconvénient? Le soleil le rend noir, la pluie rend ses cheveux frisés — mais son port est toujours haut de gamme, son sourire est impeccable!"
+    },
+    "pilot10": {
+      "name": "Phan Hung",
+      "nickname": "Vagabond du Ciel",
+      "role": "Pilote d'équipe",
+      "des": "En volant avec lui, vous aurez des clips avec des millions de vues avec des angles de caméra super artistiques. Expérience absolument sécurisée et beaux moments du ciel capturés, apportant des séquences précieuses et inoubliables de chaque vol en tandem.",
+      "img": "phan_hung.jpg",
+      "fullname": "PHAN HUNG",
+      "experience": "A commencé à poursuivre sa passion pour le parapente en 2018 et est maintenant un pilote professionnel avec de nombreuses années d'expérience de vol au Vietnam. Il a une compréhension approfondie de la météorologie et du terrain sur les sites de vol du pays — des facteurs clés garantissant que chaque vol est sûr et offre une expérience optimale. A complété plus de 1 000 vols en tandem professionnels et participe continuellement à des programmes de formation en parapente aux normes internationales.",
+      "records": "Plus de 1 000 vols en tandem professionnels, expert en analyse météorologique et terrain, membre actif des programmes de formation aux normes internationales.",
+      "personality": "Rencontrez Phan Hung – le 'rocker' du ciel, les longs cheveux volant dans le vent comme le parapente lui-même. En volant avec lui, vous n'obtenez pas seulement des clips avec des millions de vues, mais aussi un million d'émotions. Plus de 1 000 vols – chacun est une histoire, un moment pour la vie. Plein d'énergie, comprend le terrain, passionné 'brûlant' – toujours prêt à vous emmener toucher les nuages!"
+    },
+    "pilot11": {
+      "name": "Ngo Van Doi",
+      "nickname": "Guerrier de la Manœuvre",
+      "role": "Pilote d'équipe",
+      "des": "Participe à chaque compétition de parapente au Vietnam, détient le record de 7 heures de vol continu à la colline Buu – Chuong My. Il est passionné par le parapente, apportant aux passagers des expériences de vol palpitantes, sûres et pleines de rires.",
+      "img": "Ngo Van Doi_Team Pilot.jpeg",
+      "fullname": "NGO VAN DOI",
+      "experience": "De 2023 à 2025, il a complété plus de 500 vols en solo et en tandem sur les sites de vol les plus célèbres du Vietnam. Accumulé plus de 300 heures de vol réel avec 5 ans d'expérience solide en parapente. Un visage familier à toutes les compétitions de parapente du sud au nord, participant toujours avec un esprit compétitif professionnel et une passion intense. Notamment, il a établi un record de 7 heures de vol continu à la colline Buu – Chuong My, marquant un jalon fier dans sa carrière de pilote.",
+      "records": "Record de 7 heures de vol continu à la colline Buu – Chuong My, plus de 500 vols en 2 ans et pilote actif participant à toutes les compétitions de parapente du pays.",
+      "personality": "Un jeune homme apportant le vent dans son sourire — volant haut sans avoir besoin d'un 'ascenseur'! Passion brûlante pour le parapente, avec lui chaque vol est un moment où son cœur 'décolle'. En volant avec lui, vous sentirez la joie se propager dans le ciel bleu — où les vents forts sont comme des applaudissements vous soutenant. Un ami super dévoué, toujours prêt à transformer votre rêve de vol en une aventure passionnante!"
+    },
+    "pilot12": {
+      "name": "Minh Vo",
+      "nickname": "Aigle d'Acier",
+      "role": "Pilote d'équipe",
+      "des": "Volez avec le 'pilote aux millions de likes' avec 14 ans d'expérience. Passionné par le ciel depuis l'enfance, il propage le feu à travers chaque vol en tandem, apportant une expérience de pointe et des moments inoubliables haut dans le ciel pour chaque client.",
+      "img": "Minh Vo_Team Pilot.jpg",
+      "fullname": "MINH VO",
+      "experience": "Avec 14 ans d'expérience en parapente et plus de 2 000 vols en tandem sécurisés, il est l'un des pilotes les plus vétérans et les plus fiables du Vietnam. L'un des 5 meilleurs pilotes de première génération, il a contribué à poser les fondations de la communauté de parapente nationale. En 2023, lui et son équipe ont excellemment remporté la première place à l'épreuve d'atterrissage de précision à la compétition MCC, affirmant des compétences professionnelles solides et un esprit compétitif.",
+      "records": "14 ans d'expérience, plus de 2 000 vols en tandem sécurisés. Pilote de première génération du top 5 du Vietnam et vainqueur de l'atterrissage de précision à MCC 2023.",
+      "personality": "Minh Vo – le 'pilote aux millions de likes' avec passion pour le ciel depuis l'enfance, a grandi en aimant seulement discuter avec les nuages et jouer avec le vent. Voler avec lui n'est pas juste monter haut, mais aussi relever votre moral! Belles vues, rires forts et énergie positive se propagent tout au long du voyage. Il propage le feu légèrement mais puissamment — faisant que tout le monde qui vole veuille... voler à nouveau!"
+    },
+    "pilot13": {
+      "name": "Toan Nguyen",
+      "nickname": "Rambo",
+      "role": "Pilote d'équipe",
+      "des": "Plus de 10 ans à chevaucher les nuages, près de 5 000 vols. Volant à travers le Vietnam : Kon Tum, Ly Son, Dien Bien... Le GPS n'a pas encore chargé, il a déjà atterri! Le parapente avec lui n'est pas juste une passion — c'est un mode de vie dans les nuages.",
+      "img": "Toan Nguyen_team Pilot.jpg",
+      "fullname": "TOAN NGUYEN",
+      "experience": "Avec plus de 10 ans d'expérience conquérant le ciel et près de 5 000 vols en solo et en tandem, il est l'un des pilotes les plus expérimentés et les plus fiables du Vietnam. Diplômé d'un cours de formation à la sécurité des vols aux normes internationales. A volé sur la plupart des sites de parapente célèbres du pays, notamment Kon Tum, Dak Nong, Nha Trang, Ly Son, Dien Bien Phu. Participe régulièrement aux compétitions d'atterrissage de précision à Hanoi, Mu Cang Chai et Da Nang, affirmant des compétences de vol solides et un esprit compétitif stable.",
+      "records": "Plus de 10 ans d'expérience et près de 5 000 vols à travers le Vietnam. Participé à la plupart des compétitions d'atterrissage de précision et complété la formation à la sécurité des vols aux normes internationales.",
+      "personality": "En volant avec Toan Nguyen – le 'Rambo' du ciel, vous n'obtenez pas seulement 'chevaucher les nuages' mais aussi rire jusqu'à vous faire mal aux joues! Il vole comme le vent, parle comme le vent, apportant une sensation à la fois de sécurité et de plaisir incroyable. Après le vol, tout le monde veut l'appeler son 'pilote personnel' pour chaque voyage. Une garantie : volez avec Toan, vous ne voudrez pas descendre!"
+    },
+    "pilot14": {
+      "name": "Chien Thang",
+      "nickname": "Victor Foudroyant",
+      "role": "Pilote d'équipe",
+      "des": "7 ans vivant avec les nuages et le vent, plus de 1 500 vols en tandem sécurisés, 1 000+ heures planant dans le ciel. Il a autrefois détenu le record de 9,5 heures de vol en solo au Vietnam! 'Balayant' les compétitions de parapente du nord au sud, toujours au sommet de ses performances.",
+      "img": "Chien Thang_Team Pilot.jpg",
+      "fullname": "CHIEN THANG",
+      "experience": "Avec 7 ans d'expérience en tant que compagnon du ciel et des nuages, il a complété plus de 1 500 vols en tandem sûrs et professionnels, accumulant plus de 1 000 heures de vol. Il a autrefois détenu le record du Vietnam #2 pour le temps de vol en solo le plus long — 9,5 heures continu, démontrant une persévérance remarquable et d'excellentes compétences de contrôle de parapente. Compréhension approfondie des techniques de parapente et des conditions météorologiques sur les sites de vol du pays, il assure toujours que chaque vol soit à la fois sûr et émotionnellement élevant.",
+      "records": "Détient le record du Vietnam #2 pour le temps de vol en solo le plus long – 9,5 heures continu. Plus de 1 500 vols en tandem et plus de 1 000 heures de vol accumulées en 7 ans de conquête du ciel.",
+      "personality": "Chien Thang – 'Dieu du Tonnerre', vole vite comme l'éclair mais vous fait sentir absolument en sécurité. Planant dans le ciel avec lui, vous rirez de joie sans vouloir descendre. Voler avec lui n'est pas juste une expérience mais une aventure pleine de rires. Vole si longtemps que même les nuages doivent admirer : 'Hé, tu n'as pas besoin d'une pause?'"
+    }
+  },
+  "preNotice": {
+    "title": "Préparation Avant le Vol",
+    "subtitle": "Informations importantes avant votre vol",
+    "items": {
+      "photoSupport": {
+        "title": "Support Photographique Aérien",
+        "description": "Nos pilotes vous aideront à obtenir les meilleurs angles depuis le ciel - demandez-leur simplement de capturer vos moments parfaits!"
+      },
+      "timing": {
+        "title": "Arrivez à l'Heure",
+        "description": "Veuillez arriver 5 minutes avant l'heure de prise en charge pour éviter tout retard"
+      },
+      "storage": {
+        "title": "Stockage Téléphone",
+        "description": "Votre téléphone doit avoir au moins 4 Go d'espace libre pour stocker les photos/vidéos après le vol"
+      },
+      "baggage": {
+        "title": "Sac Personnel",
+        "description": "Vous pouvez apporter un petit sac personnel (1-2 kg) pour les essentiels (téléphone, clés, documents)"
+      },
+      "clothing": {
+        "title": "Tenue Appropriée",
+        "description": "Vêtements de sport confortables (manches longues, pantalons longs); pas de jupes, pas de talons hauts; portez des baskets ou des chaussures de randonnée (astuce: les couleurs vives sont superbes en photo)"
+      },
+      "beginner": {
+        "title": "Adapté aux Débutants",
+        "description": "Convient aux pilotes débutants"
+      },
+      "weather": {
+        "title": "Conditions Météorologiques",
+        "description": "Les vols dépendent de la météo (vent, pluie, brouillard). Si un report est nécessaire, vous serez informé au moins 1 jour à l'avance, gratuitement; si vous préférez ne pas reporter, vous recevrez un remboursement à 100%"
+      }
+    },
+    "tabs": {
+      "requirements": {
+        "title": "Conditions",
+        "subtitle": "Conditions de participation",
+        "items": {
+          "weight": {
+            "title": "Poids",
+            "desc": "Moins de 120 kg. Si plus de 95 kg, veuillez nous informer à l'avance pour organiser pilote et équipement adaptés."
+          },
+          "health": {
+            "title": "Condition Physique",
+            "desc": "Condition physique de base requise, capacité à courir brièvement. Non adapté aux personnes en surpoids important ou ayant des problèmes de mobilité sérieux."
+          },
+          "age": {
+            "title": "Âge",
+            "desc": "À partir de 2 ans, participation possible en vol tandem avec un pilote."
+          }
+        }
+      },
+      "booking": {
+        "title": "Réservation",
+        "subtitle": "Informations de réservation",
+        "items": {
+          "method": {
+            "title": "Méthode de Réservation",
+            "desc": "Réservez directement via le site web ou contactez hotline / Zalo / WhatsApp."
+          },
+          "payment": {
+            "title": "Paiement",
+            "desc": "Espèces, virement bancaire ou carte de crédit. Aucun prépaiement requis."
+          },
+          "confirmation": {
+            "title": "Confirmation",
+            "desc": "Nous vous contacterons dans les 3 heures après réception de votre réservation."
+          }
+        }
+      },
+      "cancellation": {
+        "title": "Annulation",
+        "subtitle": "Politique d'annulation et report",
+        "items": {
+          "byUs": {
+            "title": "Annulé par Sapa Paragliding",
+            "desc": "Aucun frais pour les clients. Remboursement complet fourni. Aucun frais supplémentaire."
+          },
+          "byCustomer": {
+            "title": "Annulé par le Client",
+            "desc": "Notification via email/hotline/Zalo/WhatsApp. 1+ jour avant : Gratuit. Même jour : 50% de la valeur de réservation."
+          },
+          "reschedule": {
+            "title": "Report",
+            "desc": "Report gratuit sur demande du client."
+          }
+        }
+      },
+      "weather": {
+        "title": "Météo",
+        "subtitle": "Conditions météo pour voler",
+        "items": {
+          "condition": {
+            "title": "Conditions de Vol",
+            "desc": "La direction et l'intensité du vent sont des facteurs cruciaux. Si les prévisions sont favorables, le vol aura lieu comme prévu."
+          },
+          "cancel": {
+            "title": "Annulation Météo",
+            "desc": "Décision finale prise le jour du vol. Si annulé : Aucun frais, option de report ou remboursement 100%."
+          }
+        }
+      },
+      "clothing": {
+        "title": "Tenue",
+        "subtitle": "Conseils vestimentaires",
+        "items": {
+          "clothes": {
+            "title": "Vêtements",
+            "desc": "Vêtements de sport confortables (manches longues, pantalons longs) ; pas de jupes. Astuce : Les couleurs vives sont superbes en photo."
+          },
+          "shoes": {
+            "title": "Chaussures",
+            "desc": "Pas de talons hauts. Baskets ou chaussures de randonnée recommandées. Nous pouvons prêter des chaussures gratuitement si nécessaire."
+          },
+          "glasses": {
+            "title": "Lunettes",
+            "desc": "Les lunettes de soleil protègent vos yeux des UV et du vent fort (~40 km/h). Les lunettes de vue peuvent être portées."
+          }
+        }
+      },
+      "schedule": {
+        "title": "Horaires",
+        "subtitle": "Informations sur le programme",
+        "items": {
+          "duration": {
+            "title": "Durée de l'Expérience",
+            "desc": "L'expérience complète dure environ 1 heure 30 minutes."
+          },
+          "contact": {
+            "title": "Communication",
+            "desc": "Vérifiez email/messages pour les notifications de changements ou annulations (le cas échéant)."
+          },
+          "spectators": {
+            "title": "Spectateurs",
+            "desc": "Les membres de la famille peuvent attendre à la zone de décollage pour regarder le vol."
+          },
+          "parking": {
+            "title": "Parking",
+            "desc": "Parking gratuit disponible (fonctionne de 6h00 à 22h00, camping interdit)."
+          }
+        }
+      },
+      "transport": {
+        "title": "Transport",
+        "subtitle": "Service de navette",
+        "items": {
+          "shuttle": {
+            "title": "Prise en charge/Retour",
+            "desc": "Service de prise en charge et retour depuis votre hôtel selon les informations de réservation."
+          },
+          "companion": {
+            "title": "Accompagnateurs",
+            "desc": "Pour les accompagnateurs ne volant pas, veuillez nous informer du nombre pour organiser et établir les frais appropriés."
+          }
+        }
+      },
+      "meetingPoint": {
+        "title": "Point de RDV",
+        "subtitle": "Où se rencontrer",
+        "items": {
+          "center": {
+            "title": "Centre de Sapa",
+            "desc": "Centre commercial Sun Plaza au centre-ville de Sapa."
+          },
+          "hotel": {
+            "title": "Hôtel/Homestay",
+            "desc": "Zones de Sapa, Lao Chai, Ta Van : veuillez indiquer votre emplacement lors de la réservation."
+          }
+        }
+      },
+      "flyingSpot": {
+        "title": "Sites de Vol",
+        "subtitle": "Points de décollage et atterrissage",
+        "items": {
+          "takeoff": {
+            "title": "Point de Décollage",
+            "desc": "Conçu selon les normes de sécurité les plus élevées du Vietnam, emplacement idéal pour capter le vent, garantissant un décollage sûr et une expérience impressionnante."
+          },
+          "landing": {
+            "title": "Point d'Atterrissage",
+            "desc": "Atterrissage au village culturel de Lao Chai, près du marché traditionnel – exposant l'artisanat fait main par les villageois locaux."
+          }
+        }
+      },
+      "faq": {
+        "title": "Processus",
+        "subtitle": "Processus de vol détaillé",
+        "items": {
+          "meet": {
+            "title": "Rencontrez Votre Pilote",
+            "desc": "Au point de décollage, vous rencontrerez votre pilote, aurez du temps pour les questions et pourrez laisser vos bagages."
+          },
+          "baggage": {
+            "title": "Briefing Décollage",
+            "desc": "Écoutez les instructions, enfilez l'équipement de vol et pratiquez les mouvements de décollage."
+          },
+          "takeoff": {
+            "title": "Décollage",
+            "desc": "Courez fermement, continuellement, sans vous arrêter jusqu'à l'instruction du pilote. Après le décollage, détendez-vous et profitez des vues."
+          },
+          "safety": {
+            "title": "Atterrissage",
+            "desc": "Équipement sûr et confortable. Atterrissage en douceur, debout ou assis selon les conditions."
+          }
+        }
+      }
+    },
+    "locations": {
+      "title": "Lieux de Vol",
+      "takeoff": "Point de Décollage",
+      "landing": "Zone d'Atterrissage",
+      "getDirections": "Obtenir l'Itinéraire"
+    }
+  },
+  "about": {
+    "title": "À Propos de Parapente Sapa",
+    "subtitle": "Votre partenaire de confiance pour des expériences de vol inoubliables",
+    "tagline": "Volez plus haut. Ressentez plus. Vivez pleinement.",
+    "intro": {
+      "title": "Bienvenue chez Parapente Sapa",
+      "description": "Nous sommes une équipe professionnelle de parapente basée à Sapa, Vietnam. Avec des années d'expérience et une passion pour le vol, nous offrons des expériences de parapente sûres et passionnantes sur les paysages magnifiques de Sapa.",
+      "highlight": "50 000+ vols en sécurité • 15+ ans d'expérience • Équipe de pilotes internationale"
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Fournir des expériences de parapente sûres, mémorables et exaltantes tout en présentant la beauté à couper le souffle de Sapa vue du ciel.",
+      "points": {
+        "safety": "Sécurité absolue dans chaque vol",
+        "experience": "Expérience de classe mondiale avec service professionnel",
+        "nature": "Présenter la beauté de Sapa sous un angle unique"
+      }
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Devenir le service de parapente leader au Vietnam, connu pour la sécurité, le professionnalisme et les expériences client exceptionnelles.",
+      "goals": {
+        "leader": "Diriger l'industrie du parapente au Vietnam",
+        "international": "Obtenir la certification de sécurité internationale",
+        "community": "Construire une communauté de passionnés de parapente"
+      }
+    },
+    "values": {
+      "title": "Valeurs Fondamentales",
+      "safety": {
+        "title": "La Sécurité Est Primordiale",
+        "description": "100% des vols respectent les normes de sécurité internationales. L'équipement est régulièrement inspecté, les pilotes sont formés professionnellement."
+      },
+      "excellence": {
+        "title": "Excellence Dans Le Service",
+        "description": "De la réservation à l'atterrissage, nous nous engageons à offrir l'expérience la plus parfaite."
+      },
+      "passion": {
+        "title": "Passion Et Dévouement",
+        "description": "Chaque pilote n'est pas seulement un expert mais aussi un amoureux du ciel, prêt à partager sa passion avec vous."
+      },
+      "innovation": {
+        "title": "Innovation Continue",
+        "description": "Mise à jour des dernières technologies, méthodes de vol avancées pour améliorer la qualité du service."
+      }
+    },
+    "story": {
+      "title": "Notre Histoire",
+      "founded": "Fondée en 2010",
+      "description": "Partant d'une passion pour le vol et l'amour de Sapa, nous avons construit la première équipe de pilotes professionnels de la région. Au cours de 15 ans de développement, Parapente Sapa est devenu une destination de confiance pour des dizaines de milliers de visiteurs nationaux et internationaux.",
+      "milestones": {
+        "2010": "Fondée avec 3 pilotes initiaux",
+        "2015": "Obtention de la certification de sécurité internationale APPI",
+        "2020": "Expansion de l'équipe avec des pilotes internationaux",
+        "2024": "Plus de 50 000 vols en sécurité accomplis"
+      }
+    },
+    "commitment": {
+      "title": "Notre Engagement",
+      "safety": "Sécurité absolue - Sans compromis",
+      "quality": "Qualité de service de classe internationale",
+      "support": "Support client 24/7",
+      "satisfaction": "Garantie de satisfaction à 100% ou remboursement"
+    },
+    "whyChoose": {
+      "title": "Pourquoi Choisir Parapente Sapa?",
+      "cta": {
+        "title": "Prêt à Découvrir Sapa d'en Haut?",
+        "description": "Rejoignez des milliers de clients satisfaits qui ont vécu le frisson du parapente à Sapa"
+      }
+    },
+    "features": {
+      "safety": {
+        "title": "Sécurité Avant Tout",
+        "description": "Pilotes professionnels avec des milliers de vols sûrs"
+      },
+      "photoVideo": {
+        "title": "Photo & Vidéo",
+        "description": "Capturez vos moments inoubliables dans le ciel"
+      },
+      "bestViews": {
+        "title": "Meilleures Vues",
+        "description": "Vues panoramiques époustouflantes de la vallée de Sapa"
+      },
+      "expertTeam": {
+        "title": "Équipe d'Experts",
+        "description": "Pilotes professionnels avec des milliers de vols réussis"
+      },
+      "bestExperience": {
+        "title": "Meilleure Expérience",
+        "description": "Vues inoubliables et souvenirs qui durent toute une vie"
+      },
+      "professionalPhoto": {
+        "title": "Photo & Vidéo",
+        "description": "Photographie professionnelle pour capturer votre aventure"
+      },
+      "bestValue": {
+        "title": "Meilleur Rapport Qualité-Prix",
+        "description": "Prix compétitifs avec réductions de groupe disponibles"
+      },
+      "multiLanguage": {
+        "title": "Multilingue",
+        "description": "Support en anglais, vietnamien, français et russe"
+      },
+      "safetyRecord": {
+        "title": "Sécurité Avant Tout",
+        "description": "100% de sécurité avec des pilotes certifiés et un équipement de qualité supérieure"
+      }
+    },
+    "process": {
+      "title": "Processus de Vol",
+      "step1": {
+        "title": "Briefing de Sécurité",
+        "description": "Instructions de sécurité complètes et vérification de l'équipement"
+      },
+      "step2": {
+        "title": "Préparation",
+        "description": "Équipement et marche jusqu'au point de décollage"
+      },
+      "step3": {
+        "title": "Décollage",
+        "description": "Courez quelques pas et envolez-vous dans le ciel"
+      },
+      "step4": {
+        "title": "Vol",
+        "description": "Profitez des vues à couper le souffle et de la sensation de voler"
+      },
+      "step5": {
+        "title": "Atterrissage",
+        "description": "Atterrissage en douceur avec les conseils de votre pilote"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Tarifs de vol",
+    "subtitle": "Réservez à l'avance - Payez plus tard - Aucun acompte requis",
+    "packages": {
+      "basic": {
+        "name": "Forfait de base",
+        "price": "2.090k",
+        "priceUsd": "80 USD/vol",
+        "duration": "Durée: 20 minutes",
+        "weatherNote": "(Selon les conditions météorologiques)",
+        "included": "Inclus:",
+        "items": {
+          "flight": "Vol en parapente 8-15 minutes",
+          "photoVideo": "Enregistrement vidéo et photo GOPRO",
+          "drinks": "Boissons sur le site de vol",
+          "insurance": "Assurance parapente",
+          "certificate": "Certificat"
+        }
+      },
+      "standard": {
+        "name": "Forfait standard",
+        "badge": "POPULAIRE",
+        "price": "2.190k",
+        "priceUsd": "85 USD/vol",
+        "duration": "Durée: 30 minutes",
+        "weatherNote": "(Selon les conditions météorologiques)",
+        "included": "Inclus:",
+        "items": {
+          "flight": "Vol en parapente 8-15 minutes",
+          "photoVideo": "Enregistrement vidéo et photo GOPRO",
+          "drinks": "Boissons sur le site de vol",
+          "insurance": "Assurance parapente",
+          "certificate": "Certificat",
+          "hotelTransfer": "Transfert hôtel aller-retour"
+        }
+      },
+      "premium": {
+        "name": "Forfait Premium",
+        "price": "2.990k",
+        "priceUsd": "113 USD/vol",
+        "duration": "Durée: 35 minutes",
+        "weatherNote": "(Selon les conditions météorologiques)",
+        "included": "Inclus:",
+        "items": {
+          "flight": "Vol en parapente 8-15 minutes",
+          "photoVideo": "Enregistrement vidéo et photo GOPRO",
+          "drinks": "Boissons sur le site de vol",
+          "insurance": "Assurance parapente",
+          "certificate": "Certificat",
+          "hotelTransfer": "Transfert hôtel aller-retour",
+          "drone": "FLYCAM (Caméra DRONE)",
+          "camera360": "Caméra 360 degrés"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Choisissez l'expérience de vol parfaite pour vous"
+  },
+  "gallery": {
+    "title": "Moments de Parapente",
+    "subtitle": "Expériences mémorables"
+  },
+  "cta": {
+    "title": "Prêt pour Votre Aventure?",
+    "description": "Réservez votre expérience de parapente aujourd'hui et créez des souvenirs qui dureront toute une vie",
+    "readyToFly": {
+      "title": "Prêt à Voler?",
+      "description": "Réservez votre aventure de parapente maintenant et vivez le frisson du vol"
+    }
+  },
+  "preNoticeSection": {
+    "safetyRequirements": {
+      "title": "Exigences de Sécurité",
+      "minAge": "Âge minimum: 5 ans (avec consentement parental pour les mineurs)",
+      "weightRange": "Poids: < 100 kg",
+      "goodHealth": "Doit être en bonne santé physique et mentale",
+      "noPregnant": "Les femmes enceintes ne peuvent pas participer",
+      "notRecommended": "Non recommandé pour les personnes ayant des problèmes cardiaques, de dos ou peur des hauteurs"
+    }
+  },
+  "footer": {
+    "contact": "Contactez-nous",
+    "email": "Email",
+    "phone": "Téléphone",
+    "address": "Adresse",
+    "followUs": "Suivez-nous",
+    "quickLinks": "Liens Rapides",
+    "copyright": "Autorisé à voler par le Département des Opérations – État-major général, Ministère de la Défense nationale du Vietnam. Licence de parapente n° 02/GCN-SVHTT délivrée par le Département de la Culture, des Sports et du Tourisme de la province de Lao Cai"
+  },
+  "validation": {
+    "required": "Ce champ est obligatoire",
+    "email": "Veuillez entrer une adresse email valide",
+    "phone": "Veuillez entrer un numéro de téléphone valide",
+    "minLength": "La longueur minimale est de {min} caractères",
+    "maxLength": "La longueur maximale est de {max} caractères"
+  },
+  "posts": {
+    "latestPosts": "Derniers Articles",
+    "latestPostsDescription": "Découvrez les dernières histoires, conseils et guides sur le parapente à Sapa",
+    "readMore": "Lire Plus",
+    "relatedPosts": "Articles Connexes",
+    "notFound": "Article Non Trouvé"
+  },
+  "admin": {
+    "login": {
+      "title": "Connexion Admin",
+      "subtitle": "Gérer les articles et le contenu",
+      "username": "Nom d'utilisateur",
+      "usernamePlaceholder": "Entrez le nom d'utilisateur",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "Entrez le mot de passe",
+      "submit": "Connexion",
+      "loading": "Chargement...",
+      "demo": "Compte de démonstration:"
+    },
+    "dashboard": {
+      "title": "Tableau de Bord Admin",
+      "welcome": "Bienvenue",
+      "logout": "Déconnexion",
+      "managePosts": "Gérer les Articles",
+      "addPost": "Ajouter un Article",
+      "editPost": "Modifier l'Article",
+      "published": "Publié",
+      "draft": "Brouillon",
+      "publish": "Publier",
+      "unpublish": "Dépublier",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "table": {
+        "title": "Titre",
+        "category": "Catégorie",
+        "date": "Date",
+        "status": "Statut",
+        "actions": "Actions"
+      },
+      "form": {
+        "titleEn": "Titre (Anglais)",
+        "titleVi": "Titre (Vietnamien)",
+        "excerptEn": "Extrait (Anglais)",
+        "excerptVi": "Extrait (Vietnamien)",
+        "contentEn": "Contenu (Anglais)",
+        "contentVi": "Contenu (Vietnamien)",
+        "image": "URL de l'image",
+        "category": "Catégorie",
+        "author": "Auteur",
+        "published": "Publier immédiatement"
+      }
+    }
+  }
+}

@@ -1,0 +1,221 @@
+<template>
+  <div class="h-[calc(100vh-180px)]">
+    <!-- 2-Pane Layout -->
+    <div class="flex gap-4 h-full">
+      <!-- Left Pane: Post List -->
+      <div 
+        class="transition-all duration-300 ease-in-out h-full"
+        :class="store.editorMode !== 'closed' ? 'w-[42%] hidden lg:block' : 'w-full'"
+      >
+        <PostList 
+          @create="handleCreate"
+          @select="handleSelectPost"
+        />
+      </div>
+
+      <!-- Right Pane: Editor -->
+      <Transition
+        enter-active-class="transition-all duration-300 ease-out"
+        enter-from-class="opacity-0 translate-x-8"
+        enter-to-class="opacity-100 translate-x-0"
+        leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-x-0"
+        leave-to-class="opacity-0 translate-x-8"
+      >
+        <div 
+          v-if="store.editorMode !== 'closed'"
+          class="flex-1 h-full lg:block"
+          :class="{ 'fixed inset-0 z-40 bg-gray-100 p-4 lg:relative lg:p-0': isMobileEditor }"
+        >
+          <!-- Mobile Header -->
+          <div v-if="isMobileEditor" class="lg:hidden flex items-center justify-between mb-4">
+            <button 
+              class="flex items-center gap-2 text-slate-600"
+              @click="handleBackToList"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Quay lại danh sách
+            </button>
+          </div>
+          
+          <PostEditor 
+            :class="{ 'h-[calc(100%-48px)] lg:h-full': isMobileEditor }"
+            @close="handleEditorClose"
+          />
+        </div>
+      </Transition>
+
+      <!-- Empty State for Editor -->
+      <div 
+        v-if="store.editorMode === 'closed'"
+        class="hidden lg:flex flex-1 items-center justify-center bg-white rounded-xl border border-slate-200"
+      >
+        <div class="text-center p-8">
+          <span class="text-6xl">📝</span>
+          <p class="mt-4 text-slate-500">Chọn một bài viết để sửa</p>
+          <p class="text-slate-400 text-sm">hoặc</p>
+          <button class="btn-primary mt-4" @click="handleCreate">
+            + Tạo bài viết mới
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unsaved Changes Confirm (when switching posts) -->
+    <ConfirmModal
+      :open="showSwitchConfirm"
+      title="Thay đổi chưa lưu"
+      description="Bạn có muốn lưu trước khi chuyển sang bài khác?"
+      @cancel="cancelSwitch"
+      @confirm="saveAndSwitch"
+    >
+      <div class="flex gap-3 mt-4">
+        <button class="btn-secondary flex-1" @click="cancelSwitch">Hủy</button>
+        <button class="btn-secondary flex-1 text-red-600 border-red-200" @click="discardAndSwitch">Bỏ thay đổi</button>
+        <button class="btn-primary flex-1" @click="saveAndSwitch">Lưu nháp</button>
+      </div>
+    </ConfirmModal>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
+import { usePostsAdminStore } from '~/stores/postsAdmin'
+import PostList from '~/components/admin/posts/PostList.vue'
+import PostEditor from '~/components/admin/posts/PostEditor.vue'
+import ConfirmModal from '~/components/admin/ui/ConfirmModal.vue'
+
+definePageMeta({
+  layout: 'admin'
+})
+
+const store = usePostsAdminStore()
+
+// Mobile detection
+const isMobileEditor = computed(() => {
+  if (typeof window === 'undefined') return false
+  return window.innerWidth < 1024 && store.editorMode !== 'closed'
+})
+
+// Switching post confirm
+const showSwitchConfirm = ref(false)
+const pendingSwitchId = ref<string | null>(null)
+
+// Initial data fetch
+onMounted(() => {
+  store.fetchPosts()
+  store.fetchStats()
+  
+  // Warn before leaving page with unsaved changes
+  window.addEventListener('beforeunload', handleBeforeUnload)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload)
+})
+
+function handleBeforeUnload(e: BeforeUnloadEvent) {
+  if (store.dirty) {
+    e.preventDefault()
+    e.returnValue = ''
+  }
+}
+
+function handleCreate() {
+  if (store.dirty) {
+    pendingSwitchId.value = null
+    showSwitchConfirm.value = true
+  } else {
+    store.openCreateEditor()
+  }
+}
+
+async function handleSelectPost(postId: string) {
+  if (postId === store.selectedPostId) return
+  
+  if (store.dirty) {
+    pendingSwitchId.value = postId
+    showSwitchConfirm.value = true
+  } else {
+    await store.openEditEditor(postId)
+  }
+}
+
+function handleEditorClose() {
+  // Editor component handles its own close
+}
+
+function handleBackToList() {
+  if (store.dirty) {
+    showSwitchConfirm.value = true
+    pendingSwitchId.value = '__close__'
+  } else {
+    store.closeEditor(true)
+  }
+}
+
+// Switch confirm handlers
+function cancelSwitch() {
+  showSwitchConfirm.value = false
+  pendingSwitchId.value = null
+}
+
+async function discardAndSwitch() {
+  showSwitchConfirm.value = false
+  store.closeEditor(true)
+  
+  if (pendingSwitchId.value === '__close__') {
+    // Just close
+  } else if (pendingSwitchId.value === null) {
+    store.openCreateEditor()
+  } else {
+    await store.openEditEditor(pendingSwitchId.value)
+  }
+  
+  pendingSwitchId.value = null
+}
+
+async function saveAndSwitch() {
+  showSwitchConfirm.value = false
+  const success = await store.saveDraft()
+  
+  if (success) {
+    if (pendingSwitchId.value === '__close__') {
+      store.closeEditor(true)
+    } else if (pendingSwitchId.value === null) {
+      store.openCreateEditor()
+    } else {
+      await store.openEditEditor(pendingSwitchId.value)
+    }
+  }
+  
+  pendingSwitchId.value = null
+}
+</script>
+
+<style scoped>
+/* Custom scrollbar for the panes */
+:deep(.overflow-y-auto) {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+:deep(.overflow-y-auto::-webkit-scrollbar) {
+  width: 6px;
+}
+
+:deep(.overflow-y-auto::-webkit-scrollbar-track) {
+  background: transparent;
+}
+
+:deep(.overflow-y-auto::-webkit-scrollbar-thumb) {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+:deep(.overflow-y-auto::-webkit-scrollbar-thumb:hover) {
+  background-color: #94a3b8;
+}
+</style>
