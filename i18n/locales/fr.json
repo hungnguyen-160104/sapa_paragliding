@@ -770,8 +770,6 @@
         "name": "Forfait de base",
         "price": "2.090k",
         "priceUsd": "80 USD/vol",
-        "duration": "Durée: 20 minutes",
-        "weatherNote": "(Selon les conditions météorologiques)",
         "included": "Inclus:",
         "items": {
           "flight": "Vol en parapente 8-15 minutes",
@@ -786,8 +784,6 @@
         "badge": "POPULAIRE",
         "price": "2.190k",
         "priceUsd": "85 USD/vol",
-        "duration": "Durée: 30 minutes",
-        "weatherNote": "(Selon les conditions météorologiques)",
         "included": "Inclus:",
         "items": {
           "flight": "Vol en parapente 8-15 minutes",
@@ -802,8 +798,6 @@
         "name": "Forfait Premium",
         "price": "2.990k",
         "priceUsd": "113 USD/vol",
-        "duration": "Durée: 35 minutes",
-        "weatherNote": "(Selon les conditions météorologiques)",
         "included": "Inclus:",
         "items": {
           "flight": "Vol en parapente 8-15 minutes",

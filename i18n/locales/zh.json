@@ -798,8 +798,6 @@
         "name": "基础套餐",
         "price": "2.090k",
         "priceUsd": "80 USD/次飞行",
-        "duration": "时长：20 分钟",
-        "weatherNote": "（视天气情况而定）",
         "included": "包含：",
         "items": {
           "flight": "滑翔伞飞行 8–15 分钟",
@@ -814,8 +812,6 @@
         "badge": "热门",
         "price": "2.190k",
         "priceUsd": "85 USD/次飞行",
-        "duration": "时长：30 分钟",
-        "weatherNote": "（视天气情况而定）",
         "included": "包含：",
         "items": {
           "flight": "滑翔伞飞行 8–15 分钟",
@@ -830,8 +826,6 @@
         "name": "尊享套餐",
         "price": "2.990k",
         "priceUsd": "113 USD/次飞行",
-        "duration": "时长：35 分钟",
-        "weatherNote": "（视天气情况而定）",
         "included": "包含：",
         "items": {
           "flight": "滑翔伞飞行 8–15 分钟",

@@ -13,8 +13,8 @@ const dbPosts = ref<any[]>([])
 const currentPostIndex = ref(0)
 
 const basicItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate']
-const standardItemKeys = ['flight', 'photoVideo', 'insurance', 'certificate', 'drinks', 'hotelTransfer']
-const premiumItemKeys = ['flight', 'photoVideo', 'insurance', 'certificate', 'hotelTransfer', 'drone', 'drinks', 'camera360']
+const standardItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate', 'hotelTransfer']
+const premiumItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate', 'hotelTransfer', 'drone', 'camera360']
 
 const latestPosts = computed(() => {
   const posts = dbPosts.value.length > 0 ? dbPosts.value : postsStore.latestPosts
@@ -277,11 +277,6 @@ useHead({
               <p class="text-sm text-slate-500 mt-1">{{ $t('pricing.packages.basic.priceUsd') }}</p>
             </div>
 
-            <div class="border-t border-slate-200 pt-4 mb-4">
-              <p class="text-sm font-semibold text-slate-700 mb-2">{{ $t('pricing.packages.basic.duration') }}</p>
-              <p class="text-xs text-slate-500">{{ $t('pricing.packages.basic.weatherNote') }}</p>
-            </div>
-
             <div class="flex-grow mb-4">
               <p class="text-sm font-semibold text-slate-700 mb-3">{{ $t('pricing.packages.basic.included') }}</p>
               <ul class="space-y-2">
@@ -318,11 +313,6 @@ useHead({
               <p class="text-sm text-red-200 mt-1">{{ $t('pricing.packages.standard.priceUsd') }}</p>
             </div>
 
-            <div class="border-t border-red-500 pt-4 mb-4">
-              <p class="text-sm font-semibold text-white mb-2">{{ $t('pricing.packages.standard.duration') }}</p>
-              <p class="text-xs text-red-200">{{ $t('pricing.packages.standard.weatherNote') }}</p>
-            </div>
-
             <div class="flex-grow mb-4">
               <p class="text-sm font-semibold text-white mb-3">{{ $t('pricing.packages.standard.included') }}</p>
               <ul class="space-y-2">
@@ -350,11 +340,6 @@ useHead({
                 <span class="text-4xl font-black text-red-600">{{ $t('pricing.packages.premium.price') }}</span>
               </div>
               <p class="text-sm text-slate-500 mt-1">{{ $t('pricing.packages.premium.priceUsd') }}</p>
-            </div>
-
-            <div class="border-t border-slate-200 pt-4 mb-4">
-              <p class="text-sm font-semibold text-slate-700 mb-2">{{ $t('pricing.packages.premium.duration') }}</p>
-              <p class="text-xs text-slate-500">{{ $t('pricing.packages.premium.weatherNote') }}</p>
             </div>
 
             <div class="flex-grow mb-4">

@@ -784,8 +784,6 @@
         "name": "Gói Cơ Bản",
         "price": "2.090k",
         "priceUsd": "80 USD/lượt",
-        "duration": "Thời gian: 20 phút",
-        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",
@@ -800,8 +798,6 @@
         "badge": "PHỔ BIẾN",
         "price": "2.190k",
         "priceUsd": "85 USD/lượt",
-        "duration": "Thời gian: 30 phút",
-        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",
@@ -816,8 +812,6 @@
         "name": "Gói Premium",
         "price": "2.990k",
         "priceUsd": "113 USD/lượt",
-        "duration": "Thời gian: 35 phút",
-        "weatherNote": "(Tuỳ vào điều kiện thời tiết)",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",

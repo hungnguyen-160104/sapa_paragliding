@@ -796,8 +796,6 @@
         "name": "Basic Package",
         "price": "2.090k",
         "priceUsd": "80 USD/flight",
-        "duration": "Duration: 20 minutes",
-        "weatherNote": "(Depending on weather conditions)",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
@@ -812,8 +810,6 @@
         "badge": "POPULAR",
         "price": "2.190k",
         "priceUsd": "85 USD/flight",
-        "duration": "Duration: 30 minutes",
-        "weatherNote": "(Depending on weather conditions)",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
@@ -828,8 +824,6 @@
         "name": "Premium Package",
         "price": "2.990k",
         "priceUsd": "113 USD/flight",
-        "duration": "Duration: 35 minutes",
-        "weatherNote": "(Depending on weather conditions)",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
