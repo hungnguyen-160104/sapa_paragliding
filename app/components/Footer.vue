@@ -180,59 +180,29 @@ const menuItems = [
 const contactData = computed(() => {
   const currentLocale = locale.value || 'vi' // mặc định là vi
 
-  if (currentLocale === 'vi') {
-    return {
-      title: 'Hotline / WhatsApp / Zalo (Hỗ trợ 24/7)',
-      list: [
-        {
-          name: 'Ms. Judy',
-          role: 'Nhân viên Chăm sóc Khách hàng',
-          phone: '+84 386 887 489',
-          note: '(Đặt bay)'
-        },
-        {
-          name: 'Ms. Linh Lee',
-          role: 'Nhân viên Chăm sóc Khách hàng',
-          phone: '+84 776 499 562',
-          note: '(Đặt bay)'
-        },
-        {
-          name: 'Mr. Mỹ',
-          role: 'Phi công trưởng',
-          phone: '+84 964 073 555'
-        },
-        {
-          name: 'Mr. Trường',
-          role: 'Điều phối bay',
-          phone: '+84 336 233 789'
-        }
-      ]
-    }
-  }
-
   return {
-    title: 'Hotline / WhatsApp / Zalo (Available 24/7)',
+    title: t('footerContact.titleVi'),
     list: [
       {
         name: 'Ms. Judy',
-        role: 'Customer Service',
+        role: t('footerContact.customerService'),
         phone: '+84 386 887 489',
-        note: '(Paragliding bookings)'
+        note: t('footerContact.bookingNote')
       },
       {
         name: 'Ms. Linh Lee',
-        role: 'Customer Service',
+        role: t('footerContact.customerService'),
         phone: '+84 776 499 562',
-        note: '(Paragliding bookings)'
+        note: t('footerContact.bookingNote')
       },
       {
-        name: 'Mr. My',
-        role: 'Chief Pilot',
+        name: currentLocale === 'vi' ? 'Mr. Mỹ' : 'Mr. My',
+        role: t('footerContact.chiefPilot'),
         phone: '+84 964 073 555'
       },
       {
-        name: 'Mr. Truong',
-        role: 'Flight Coordinator',
+        name: currentLocale === 'vi' ? 'Mr. Trường' : 'Mr. Truong',
+        role: t('footerContact.flightCoordinator'),
         phone: '+84 336 233 789'
       }
     ]

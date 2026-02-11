@@ -15,7 +15,7 @@
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-400/30 mb-8">
             <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
             <span class="text-red-300 text-sm font-medium uppercase tracking-wider">
-              {{ currentLocale === 'vi' ? 'Đội ngũ chuyên nghiệp' : 'Professional Team' }}
+              {{ $t('pilotPage.professionalTeam') }}
             </span>
           </div>
 
@@ -34,19 +34,19 @@
             <div class="text-center">
               <p class="text-4xl font-black text-red-400">10+</p>
               <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">
-                {{ currentLocale === 'vi' ? 'Phi công' : 'Pilots' }}
+                {{ $t('homePage.statsPilots') }}
               </p>
             </div>
             <div class="text-center">
               <p class="text-4xl font-black text-red-400">15K+</p>
               <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">
-                {{ currentLocale === 'vi' ? 'Chuyến bay' : 'Flights' }}
+                {{ $t('homePage.statsFlights') }}
               </p>
             </div>
             <div class="text-center">
               <p class="text-4xl font-black text-red-400">100%</p>
               <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">
-                {{ currentLocale === 'vi' ? 'An toàn' : 'Safety' }}
+                {{ $t('homePage.statsSafety') }}
               </p>
             </div>
           </div>
@@ -69,10 +69,9 @@
             </div>
             <div>
               <h2 class="text-2xl lg:text-3xl font-black text-slate-900">
-                {{ currentLocale === 'vi' ? 'Gặp gỡ đội ngũ' : 'Meet The Team' }}
+                {{ $t('pilotPage.meetTheTeam') }}
               </h2>
-              <p class="text-slate-500">{{ totalPilots }} {{ currentLocale === 'vi' ? 'phi công chuyên nghiệp' :
-                'professional pilots' }}</p>
+              <p class="text-slate-500">{{ totalPilots }} {{ $t('pilotPage.professionalPilots') }}</p>
             </div>
           </div>
         </div>
@@ -88,16 +87,14 @@
     <section class="py-16 lg:py-24 bg-gradient-to-r from-red-600 to-orange-600 relative z-10">
       <div class="container mx-auto px-6 lg:px-12 text-center">
         <h2 class="text-3xl lg:text-4xl font-black text-white mb-4">
-          {{ currentLocale === 'vi' ? 'Sẵn sàng trải nghiệm?' : 'Ready for Your Adventure?' }}
+          {{ $t('pilotPage.readyToExperience') }}
         </h2>
         <p class="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
-          {{ currentLocale === 'vi' ?
-            'Đặt lịch bay ngay hôm nay và tận hưởng trải nghiệm dù lượn tuyệt vời cùng đội ngũ phi công chuyên nghiệp của chúng tôi' :
-          'Book your flight today and enjoy an amazing paragliding experience with our professional pilot team' }}
+          {{ $t('pilotPage.ctaDescription') }}
         </p>
         <button @click="navigateToBooking"
           class="px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg">
-          {{ currentLocale === 'vi' ? 'Đặt lịch ngay' : 'Book Now' }}
+          {{ $t('pilotPage.bookNow') }}
         </button>
       </div>
     </section>

@@ -34,6 +34,16 @@
                                 {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
                             </p>
                         </div>
+                        <div>
+                            <p class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupLocation') }}</p>
+                            <p class="font-semibold text-gray-900">
+                                {{ bookingData.pickupLocation || $t('booking.step4Details.launchSite') }}
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupTime') }}</p>
+                            <p class="font-semibold text-gray-900">{{ $t('booking.step4Details.pickupTimeDefault') }}</p>
+                        </div>
                     </div>
                 </div>
 
@@ -79,22 +89,37 @@
                 </button>
 
                 <Transition name="collapse">
-                    <div v-if="showPassengers" class="border-t border-gray-200 max-h-48 overflow-y-auto">
+                    <div v-if="showPassengers" class="border-t border-gray-200 max-h-64 overflow-y-auto">
                         <div v-for="(passenger, index) in bookingData.passengers" :key="index"
-                            class="px-4 py-3 border-b border-gray-100 last:border-b-0 hover:bg-gray-50">
-                            <div class="flex items-center gap-3">
+                            class="px-4 py-4 border-b border-gray-100 last:border-b-0 hover:bg-gray-50">
+                            <div class="flex items-start gap-3">
                                 <div
-                                    class="w-7 h-7 bg-red-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                                    class="w-8 h-8 bg-red-600 text-white flex items-center justify-center font-bold text-sm flex-shrink-0 rounded-full">
                                     {{ index + 1 }}
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <p class="font-semibold text-gray-900 text-sm truncate">{{ passenger.fullName }}</p>
-                                    <div class="flex items-center gap-3 text-xs text-gray-500">
-                                        <span>{{ passenger.nationality }}</span>
-                                        <span>•</span>
-                                        <span>{{ passenger.weight }}kg</span>
-                                        <span>•</span>
-                                        <span class="capitalize">{{ passenger.gender }}</span>
+                                    <p class="font-semibold text-gray-900 text-sm mb-2">{{ passenger.fullName }}</p>
+                                    <div class="grid grid-cols-2 gap-2 text-xs text-gray-600">
+                                        <div>
+                                            <span class="font-medium">{{ $t('booking.step4Details.dateOfBirth') }}:</span>
+                                            <span class="ml-1">{{ passenger.dateOfBirth }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">{{ $t('booking.step4Details.gender') }}:</span>
+                                            <span class="ml-1 capitalize">{{ passenger.gender }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">{{ $t('booking.step4Details.idNumber') }}:</span>
+                                            <span class="ml-1">{{ passenger.passportOrId }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">{{ $t('booking.step4Details.nationality') }}:</span>
+                                            <span class="ml-1">{{ passenger.nationality }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="font-medium">{{ $t('booking.step4Details.weight') }}:</span>
+                                            <span class="ml-1">{{ passenger.weight }}kg</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,25 +135,114 @@
                 <p class="text-sm text-yellow-900">{{ bookingData.specialRequests }}</p>
             </div>
 
-            <!-- Price Summary: Compact -->
-            <div class="bg-gray-900 text-white p-4">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-xs text-gray-400 uppercase tracking-wide">{{
-                            $t('booking.step4Details.priceSummary') }}</p>
-                        <div class="flex items-baseline gap-2 mt-1">
-                            <span class="text-2xl font-bold">{{ formatPrice(bookingData.totalPrice) }}</span>
-                            <span v-if="bookingData.discount > 0" class="text-xs text-red-400 line-through">
-                                {{ formatPrice(bookingData.servicePrice * bookingData.numberOfPassengers) }}
-                            </span>
-                        </div>
+            <!-- Additional Services -->
+            <div class="bg-white border border-gray-200 p-4">
+                <h3 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                    {{ $t('booking.step4Details.additionalServices') }}
+                </h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.hotelTransfer') }}</span>
+                        <span class="font-semibold" :class="bookingData.selectedOptions.includes('hotel-transfer') ? 'text-green-600' : 'text-gray-400'">
+                            {{ bookingData.selectedOptions.includes('hotel-transfer') ? $t('booking.step4Details.yes') : $t('booking.step4Details.no') }}
+                        </span>
                     </div>
-                    <div v-if="bookingData.discount > 0"
-                        class="bg-red-600 text-white px-3 py-1 text-xs font-bold uppercase">
-                        -{{ Math.round(bookingData.discount / 10000) }}%
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.camera360') }}</span>
+                        <span class="font-semibold" :class="bookingData.selectedOptions.includes('camera360') ? 'text-green-600' : 'text-gray-400'">
+                            {{ bookingData.selectedOptions.includes('camera360') ? getSelectedOptionsCount('camera360') : 0 }}
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.droneCamera') }}</span>
+                        <span class="font-semibold" :class="bookingData.selectedOptions.includes('drone') ? 'text-green-600' : 'text-gray-400'">
+                            {{ bookingData.selectedOptions.includes('drone') ? getSelectedOptionsCount('drone') : 0 }}
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.gopro') }}</span>
+                        <span class="text-blue-600 font-semibold">{{ $t('booking.step4Details.free') }}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.drinks') }}</span>
+                        <span class="text-blue-600 font-semibold">{{ $t('booking.step4Details.free') }}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.certificate') }}</span>
+                        <span class="text-blue-600 font-semibold">{{ $t('booking.step4Details.included') }}</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Price Breakdown -->
+            <div class="bg-white border border-gray-200 p-4">
+                <h3 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                    {{ $t('booking.step4Details.priceBreakdown') }}
+                </h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.flightCost') }} ({{ bookingData.numberOfPassengers }}x)</span>
+                        <span class="font-semibold">{{ formatPrice(bookingData.servicePrice * bookingData.numberOfPassengers) }}</span>
+                    </div>
+                    <div v-if="bookingData.selectedOptions.includes('hotel-transfer')" class="flex justify-between">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.transferCost') }} ({{ bookingData.numberOfPassengers }}x)</span>
+                        <span class="font-semibold">{{ formatPrice(getTransferPrice() * bookingData.numberOfPassengers) }}</span>
+                    </div>
+                    <div v-if="bookingData.selectedOptions.includes('camera360')" class="flex justify-between">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.camera360Cost') }} ({{ getSelectedOptionsCount('camera360') }}x)</span>
+                        <span class="font-semibold">{{ formatPrice(getCamera360Price() * getSelectedOptionsCount('camera360')) }}</span>
+                    </div>
+                    <div v-if="bookingData.selectedOptions.includes('drone')" class="flex justify-between">
+                        <span class="text-gray-600">{{ $t('booking.step4Details.droneCost') }} ({{ getSelectedOptionsCount('drone') }}x)</span>
+                        <span class="font-semibold">{{ formatPrice(getDronePrice() * getSelectedOptionsCount('drone')) }}</span>
+                    </div>
+                    <div v-if="bookingData.discount > 0" class="flex justify-between text-red-600">
+                        <span>{{ $t('booking.step4Details.groupDiscount') }}</span>
+                        <span class="font-semibold">-{{ formatPrice(calculateDiscountAmount()) }}</span>
+                    </div>
+                    <hr class="my-2">
+                    <div class="flex justify-between font-bold text-lg">
+                        <span>{{ $t('booking.step4Details.totalCost') }}</span>
+                        <span>{{ formatPrice(bookingData.totalPrice) }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="bg-white border border-gray-200 p-4">
+                <h3 class="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                    {{ $t('booking.step4Details.paymentMethod') }}
+                </h3>
+                <div class="space-y-2 text-sm text-gray-600">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ $t('booking.step4Details.cashPayment') }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ $t('booking.step4Details.bankTransfer') }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ $t('booking.step4Details.paypalPayment') }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ $t('booking.step4Details.creditCard') }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Summary: Compact - REMOVED AS REPLACED BY DETAILED BREAKDOWN ABOVE -->
+
         </div>
 
         <!-- Footer: Fixed -->
@@ -142,9 +256,6 @@
                     <a href="/Mien tru trach nhiem bay doi 2025 Sapa.pdf" target="_blank" rel="noopener noreferrer"
                         class="text-red-600 hover:underline font-semibold">{{ $t('booking.terms.termsAndConditions')
                         }}</a>
-                    {{ $t('booking.terms.and') }}
-                    <a href="/Mien tru trach nhiem bay doi 2025 Sapa.pdf" target="_blank" rel="noopener noreferrer"
-                        class="text-red-600 hover:underline font-semibold">{{ $t('booking.terms.privacyPolicy') }}</a>
                 </label>
             </div>
 
@@ -247,6 +358,41 @@ const formatPrice = (price: number) => {
         style: 'currency',
         currency: 'VND'
     }).format(price)
+}
+
+// Helper functions for price calculation
+const getSelectedOptionsCount = (option: string) => {
+    return bookingData.value.selectedOptions.includes(option) ? bookingData.value.numberOfPassengers : 0
+}
+
+const getTransferPrice = () => {
+    return 100000 // 100k VND per person
+}
+
+const getCamera360Price = () => {
+    return 500000 // 500k VND per person
+}
+
+const getDronePrice = () => {
+    return 300000 // 300k VND per person
+}
+
+const calculateDiscountAmount = () => {
+    const baseTotal = bookingData.value.servicePrice * bookingData.value.numberOfPassengers
+    let additionalCosts = 0
+    
+    if (bookingData.value.selectedOptions.includes('hotel-transfer')) {
+        additionalCosts += getTransferPrice() * bookingData.value.numberOfPassengers
+    }
+    if (bookingData.value.selectedOptions.includes('camera360')) {
+        additionalCosts += getCamera360Price() * getSelectedOptionsCount('camera360')
+    }
+    if (bookingData.value.selectedOptions.includes('drone')) {
+        additionalCosts += getDronePrice() * getSelectedOptionsCount('drone')
+    }
+    
+    const grossTotal = baseTotal + additionalCosts
+    return grossTotal - bookingData.value.totalPrice
 }
 
 const handleBack = () => {

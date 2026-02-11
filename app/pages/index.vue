@@ -154,7 +154,7 @@ useHead({
           class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-400/30 mb-6 animate-fade-in">
           <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
           <span class="text-red-300 text-sm font-medium uppercase tracking-wider">
-            {{ currentLocale === 'vi' ? 'Trải nghiệm dù lượn tuyệt vời' : 'Amazing Paragliding Experience' }}
+            {{ $t('homePage.heroBadge') }}
           </span>
         </div>
 
@@ -186,18 +186,15 @@ useHead({
         <div class="grid grid-cols-3 gap-6 mt-8 max-w-2xl mx-auto animate-fade-in-delay-2">
           <div class="text-center">
             <p class="text-3xl font-black text-red-400">15+</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ currentLocale === 'vi' ? 'Phi công' :
-              'Pilots' }}</p>
+            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsPilots') }}</p>
           </div>
           <div class="text-center">
             <p class="text-3xl font-black text-red-400">50K+</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ currentLocale === 'vi' ? 'Chuyến bay' :
-              'Flights' }}</p>
+            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsFlights') }}</p>
           </div>
           <div class="text-center">
             <p class="text-3xl font-black text-red-400">100%</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ currentLocale === 'vi' ? 'An toàn' :
-              'Safety' }}</p>
+            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsSafety') }}</p>
           </div>
         </div>
       </div>
@@ -263,7 +260,7 @@ useHead({
             <span class="text-red-300 text-sm font-medium uppercase tracking-wider">{{ $t('pricing.title') }}</span>
           </div>
           <h2 class="text-3xl lg:text-4xl font-black text-white mb-3">
-            {{ currentLocale === 'vi' ? 'Bảng Giá Dịch Vụ' : 'Our Pricing Plans' }}
+            {{ $t('homePage.pricingHeading') }}
           </h2>
           <p class="text-lg text-slate-400 max-w-2xl mx-auto">{{ $t('pricing.subtitle') }}</p>
         </div>
@@ -422,7 +419,7 @@ useHead({
                     <!-- New Badge -->
                     <div v-if="index === 0" class="absolute top-4 left-4">
                       <span class="px-3 py-1.5 text-xs font-bold text-white bg-amber-500 animate-pulse">
-                        {{ currentLocale === 'vi' ? 'MỚI' : 'NEW' }}
+                        {{ $t('homePage.newBadge') }}
                       </span>
                     </div>
                   </div>
@@ -502,16 +499,14 @@ useHead({
           <div
             class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-400/20 rounded-full mb-4">
             <span class="text-red-500 text-sm font-medium uppercase tracking-wider">
-              {{ currentLocale === 'vi' ? 'Liên hệ' : 'Contact' }}
+              {{ $t('homePage.contactBadge') }}
             </span>
           </div>
           <h2 class="text-2xl lg:text-3xl font-black text-slate-900 mb-2">
-            {{ currentLocale === 'vi' ? 'Thông Tin Liên Hệ' : 'Contact Information' }}
+            {{ $t('homePage.contactTitle') }}
           </h2>
           <p class="text-slate-500 max-w-xl mx-auto">
-            {{ currentLocale === 'vi' ?
-              'Kết nối với chúng tôi qua các kênh sau' :
-              'Connect with us through these channels' }}
+            {{ $t('homePage.contactSubtitle') }}
           </p>
         </div>
 
@@ -529,12 +524,10 @@ useHead({
               </svg>
             </div>
             <h3 class="text-sm font-bold text-slate-900 text-center mb-1">Zalo</h3>
-            <p class="text-slate-400 text-xs text-center mb-3">{{ currentLocale === 'vi' ?
-              'Chat trực tiếp' :
-              'Direct chat' }}</p>
+            <p class="text-slate-400 text-xs text-center mb-3">{{ $t('homePage.zaloDesc') }}</p>
             <a href="https://zalo.me/84386887489" target="_blank" rel="noopener noreferrer"
               class="block w-full py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs font-semibold text-center rounded-lg transition-colors">
-              {{ currentLocale === 'vi' ? 'Nhắn tin' : 'Message' }}
+              {{ $t('homePage.zaloBtn') }}
             </a>
           </div>
 
@@ -550,11 +543,10 @@ useHead({
               </svg>
             </div>
             <h3 class="text-sm font-bold text-slate-900 text-center mb-1">Facebook</h3>
-            <p class="text-slate-400 text-xs text-center mb-3">{{ currentLocale === 'vi' ? 'Fanpage chính thức' :
-              'Official fanpage' }}</p>
+            <p class="text-slate-400 text-xs text-center mb-3">{{ $t('homePage.facebookDesc') }}</p>
             <a href="https://www.facebook.com/bayduluonsapa/" target="_blank" rel="noopener noreferrer"
               class="block w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold text-center rounded-lg transition-colors">
-              {{ currentLocale === 'vi' ? 'Theo dõi' : 'Follow' }}
+              {{ $t('homePage.followBtn') }}
             </a>
           </div>
 
@@ -570,11 +562,10 @@ useHead({
               </svg>
             </div>
             <h3 class="text-sm font-bold text-slate-900 text-center mb-1">TikTok</h3>
-            <p class="text-slate-400 text-xs text-center mb-3">{{ currentLocale === 'vi' ?
-              'Video bay lượn' : 'Flying videos' }}</p>
+            <p class="text-slate-400 text-xs text-center mb-3">{{ $t('homePage.tiktokDesc') }}</p>
             <a href="https://www.tiktok.com/@sapa_paragliding" target="_blank" rel="noopener noreferrer"
               class="block w-full py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold text-center rounded-lg transition-colors">
-              {{ currentLocale === 'vi' ? 'Theo dõi' : 'Follow' }}
+              {{ $t('homePage.followBtn') }}
             </a>
           </div>
 
@@ -590,11 +581,10 @@ useHead({
               </svg>
             </div>
             <h3 class="text-sm font-bold text-slate-900 text-center mb-1">YouTube</h3>
-            <p class="text-slate-400 text-xs text-center mb-3">{{ currentLocale === 'vi' ?
-              'Kênh chính thức' : 'Official channel' }}</p>
+            <p class="text-slate-400 text-xs text-center mb-3">{{ $t('homePage.youtubeDesc') }}</p>
             <a href="https://www.youtube.com/@sapa.paragliding" target="_blank" rel="noopener noreferrer"
               class="block w-full py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold text-center rounded-lg transition-colors">
-              {{ currentLocale === 'vi' ? 'Đăng ký' : 'Subscribe' }}
+              {{ $t('homePage.subscribeBtn') }}
             </a>
           </div>
 
@@ -610,11 +600,10 @@ useHead({
               </svg>
             </div>
             <h3 class="text-sm font-bold text-slate-900 text-center mb-1">Instagram</h3>
-            <p class="text-slate-400 text-xs text-center mb-3">{{ currentLocale === 'vi' ?
-              'Ảnh đẹp mỗi ngày' : 'Daily photos' }}</p>
+            <p class="text-slate-400 text-xs text-center mb-3">{{ $t('homePage.instagramDesc') }}</p>
             <a href="https://www.instagram.com/SAPA_PARAGLIDING" target="_blank" rel="noopener noreferrer"
               class="block w-full py-2 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 hover:opacity-90 text-white text-xs font-semibold text-center rounded-lg transition-colors">
-              {{ currentLocale === 'vi' ? 'Theo dõi' : 'Follow' }}
+              {{ $t('homePage.followBtn') }}
             </a>
           </div>
         </div>
@@ -632,7 +621,7 @@ useHead({
               </svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 text-center mb-3">
-              {{ currentLocale === 'vi' ? 'Hotline 24/7' : 'Hotline 24/7' }}
+              Hotline 24/7
             </h3>
             <div class="space-y-2 text-center">
               <a href="tel:+84386887489" class="block text-slate-600 text-sm hover:text-green-600 transition-colors">
@@ -671,7 +660,7 @@ useHead({
               </svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 text-center mb-3">
-              {{ currentLocale === 'vi' ? 'Địa chỉ' : 'Address' }}
+              {{ $t('homePage.address') }}
             </h3>
             <p class="text-slate-600 text-sm text-center">Sapa, Lao Cai, Vietnam</p>
           </div>
@@ -687,11 +676,11 @@ useHead({
               </svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 text-center mb-3">
-              {{ currentLocale === 'vi' ? 'Giờ bay' : 'Flight Hours' }}
+              {{ $t('homePage.flightHours') }}
             </h3>
             <p class="text-slate-600 text-sm text-center">7:00 AM - 6:00 PM</p>
             <p class="text-slate-400 text-xs text-center mt-1">
-              {{ currentLocale === 'vi' ? '(Tùy thời tiết)' : '(Weather dependent)' }}
+              {{ $t('homePage.weatherDependent') }}
             </p>
           </div>
         </div>
@@ -703,12 +692,10 @@ useHead({
       style="background-image: url('/images/svg/hero-shape-short.svg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
       <div class="container mx-auto px-6 lg:px-12 text-center scroll-reveal">
         <h2 class="text-3xl lg:text-4xl font-black text-white mb-5">
-          {{ currentLocale === 'vi' ? 'Sẵn Sàng Cho Cuộc Phiêu Lưu?' : 'Ready for Your Adventure?' }}
+          {{ $t('homePage.ctaTitle') }}
         </h2>
         <p class="text-lg text-red-100 mb-8 max-w-2xl mx-auto">
-          {{ currentLocale === 'vi' ?
-            'Đặt lịch bay ngay hôm nay và tạo nên những kỷ niệm đáng nhớ' :
-            'Book your paragliding experience today and create memories that will last a lifetime' }}
+          {{ $t('homePage.ctaSubtitle') }}
         </p>
         <button @click="localizedNavigateTo('/booking')"
           class="px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg">

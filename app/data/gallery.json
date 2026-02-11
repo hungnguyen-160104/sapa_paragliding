@@ -6,10 +6,12 @@
     "titleEn": "Soaring Above Sapa Valley",
     "titleFr": "Survoler la Vallée de Sapa",
     "titleRu": "Паря Над Долиной Сапа",
+    "titleZh": "翱翔在沙巴山谷上空",
     "descriptionVi": "Chiêm ngưỡng khung cảnh ngoạn mục của ruộng bậc thang Sapa từ trên cao",
     "descriptionEn": "Experience the breathtaking views of Sapa's terraced rice fields from above",
     "descriptionFr": "Découvrez les vues à couper le souffle des rizières en terrasses de Sapa",
-    "descriptionRu": "Насладитесь захватывающими видами террасных рисовых полей Сапы сверху"
+    "descriptionRu": "Насладитесь захватывающими видами террасных рисовых полей Сапы сверху",
+    "descriptionZh": "从高空欣赏沙巴壮观的梯田美景"
   },
   {
     "id": 2,
@@ -18,10 +20,12 @@
     "titleEn": "Sunset Flight",
     "titleFr": "Vol au Coucher du Soleil",
     "titleRu": "Полёт на Закате",
+    "titleZh": "日落飞行",
     "descriptionVi": "Chuyến bay lúc hoàng hôn mang đến những màu sắc và ánh sáng tuyệt vời nhất",
     "descriptionEn": "Golden hour flights offer the most spectacular colors and lighting",
     "descriptionFr": "Les vols à l'heure dorée offrent les couleurs et l'éclairage les plus spectaculaires",
-    "descriptionRu": "Полёты в золотой час предлагают самые впечатляющие цвета и освещение"
+    "descriptionRu": "Полёты в золотой час предлагают самые впечатляющие цвета и освещение",
+    "descriptionZh": "黄金时刻的飞行呈现最绚丽的色彩与光线"
   },
   {
     "id": 3,
@@ -30,10 +34,12 @@
     "titleEn": "Mountain Peaks",
     "titleFr": "Sommets des Montagnes",
     "titleRu": "Горные Вершины",
+    "titleZh": "群山之巅",
     "descriptionVi": "Bay bên cạnh những đỉnh núi hùng vĩ của dãy Hoàng Liên Sơn",
     "descriptionEn": "Fly alongside the majestic peaks of the Hoang Lien Son mountain range",
     "descriptionFr": "Volez le long des sommets majestueux de la chaîne de montagnes Hoang Lien Son",
-    "descriptionRu": "Летите рядом с величественными вершинами горного хребта Хоанг Лиен Шон"
+    "descriptionRu": "Летите рядом с величественными вершинами горного хребта Хоанг Лиен Шон",
+    "descriptionZh": "与雄伟的黄连山脉山峰并肩飞行"
   },
   {
     "id": 4,
@@ -42,10 +48,12 @@
     "titleEn": "Tandem Joy",
     "titleFr": "Joie du Vol en Tandem",
     "titleRu": "Радость Тандемного Полёта",
+    "titleZh": "双人飞行的喜悦",
     "descriptionVi": "Chia sẻ niềm vui thú với các phi công giàu kinh nghiệm của chúng tôi",
     "descriptionEn": "Share the excitement with our experienced pilots",
     "descriptionFr": "Partagez l'excitation avec nos pilotes expérimentés",
-    "descriptionRu": "Разделите восторг с нашими опытными пилотами"
+    "descriptionRu": "Разделите восторг с нашими опытными пилотами",
+    "descriptionZh": "与我们经验丰富的飞行员一起分享飞行的兴奋"
   },
   {
     "id": 5,
@@ -54,10 +62,12 @@
     "titleEn": "Cloud Dancing",
     "titleFr": "Danse avec les Nuages",
     "titleRu": "Танец с Облаками",
+    "titleZh": "与云共舞",
     "descriptionVi": "Chạm vào mây và cảm nhận sự tự do của chuyến bay",
     "descriptionEn": "Touch the clouds and feel the freedom of flight",
     "descriptionFr": "Touchez les nuages et ressentez la liberté du vol",
-    "descriptionRu": "Прикоснитесь к облакам и почувствуйте свободу полёта"
+    "descriptionRu": "Прикоснитесь к облакам и почувствуйте свободу полёта",
+    "descriptionZh": "触摸云朵，感受飞行的自由"
   },
   {
     "id": 6,
@@ -66,10 +76,12 @@
     "titleEn": "Valley Views",
     "titleFr": "Vues de la Vallée",
     "titleRu": "Виды Долины",
+    "titleZh": "山谷全景",
     "descriptionVi": "Khung cảnh toàn cảnh tuyệt đẹp của Sapa",
     "descriptionEn": "Panoramic views of Sapa's stunning landscape",
     "descriptionFr": "Vues panoramiques du paysage époustouflant de Sapa",
-    "descriptionRu": "Панорамные виды потрясающего ландшафта Сапы"
+    "descriptionRu": "Панорамные виды потрясающего ландшафта Сапы",
+    "descriptionZh": "尽览沙巴令人惊叹的壮丽全景"
   },
   {
     "id": 7,
@@ -78,10 +90,12 @@
     "titleEn": "Perfect Landing",
     "titleFr": "Atterrissage Parfait",
     "titleRu": "Идеальная Посадка",
+    "titleZh": "完美着陆",
     "descriptionVi": "Hạ cánh êm ái và an toàn mỗi lần",
     "descriptionEn": "Smooth and safe landings every time",
     "descriptionFr": "Atterrissages en douceur et en toute sécurité à chaque fois",
-    "descriptionRu": "Плавные и безопасные посадки каждый раз"
+    "descriptionRu": "Плавные и безопасные посадки каждый раз",
+    "descriptionZh": "每一次都平稳且安全地着陆"
   },
   {
     "id": 8,
@@ -90,9 +104,11 @@
     "titleEn": "Adventure Awaits",
     "titleFr": "L'Aventure Vous Attend",
     "titleRu": "Приключения Ждут",
+    "titleZh": "冒险在等待",
     "descriptionVi": "Cuộc phiêu lưu tiếp theo của bạn bắt đầu từ đây",
     "descriptionEn": "Your next adventure starts here",
     "descriptionFr": "Votre prochaine aventure commence ici",
-    "descriptionRu": "Ваше следующее приключение начинается здесь"
+    "descriptionRu": "Ваше следующее приключение начинается здесь",
+    "descriptionZh": "你的下一段冒险从这里开始"
   }
 ]

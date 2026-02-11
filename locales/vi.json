@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "title": "DÙ LƯỢN SAPA",
+    "subtitle": "Dù lượn là môn thể thao mạo hiểm, vì vậy việc lựa chọn đơn vị tổ chức chuyên nghiệp với đội ngũ phi công hàng đầu Việt Nam là yếu tố quan trọng để đảm bảo an toàn cho trải nghiệm bay. Điểm cất cánh dù lượn Sapa được thiết kế đạt tiêu chuẩn cao nhất tại Việt Nam, sở hữu vị trí đón gió thuận lợi, mang đến hành trình bay hấp dẫn và giúp quá trình cất cánh diễn ra an toàn nhất.",
+    "bookNow": "Đặt Lịch Ngay",
+    "chatZalo": "Chat qua Zalo",
+    "chatWhatsApp": "Chat qua WhatsApp"
+  },
+  "menu": {
+    "home": "Trang Chủ",
+    "booking": "Đặt Lịch",
+    "pilots": "Phi Công",
+    "posts": "Bài Viết",
+    "preNotice": "Lưu Ý Trước Bay",
+    "about": "Về Chúng Tôi"
+  },
+  "languages": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "fr": "Français", 
+    "ru": "Русский",
+    "zh": "中文"
+  }
+}

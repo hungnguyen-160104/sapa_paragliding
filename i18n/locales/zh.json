@@ -1,0 +1,1012 @@
+{
+  "hero": {
+    "title": "SAPA 滑翔伞",
+    "subtitle": "滑翔伞属于冒险运动，因此选择拥有越南顶级飞行员的专业机构，对获得安全的飞行体验至关重要。Sapa 滑翔伞起飞点按越南最高标准打造，拥有理想的迎风位置，既能带来刺激的飞行旅程，也能确保最安全的起飞流程。",
+    "bookNow": "在线预订",
+    "chatZalo": "在 Zalo 上聊天",
+    "chatWhatsApp": "在 WhatsApp 上聊天"
+  },
+  "common": {
+    "scroll": "向下滚动"
+  },
+  "menu": {
+    "home": "首页",
+    "booking": "预订",
+    "pilots": "飞行员",
+    "posts": "博客",
+    "preNotice": "飞行前须知",
+    "about": "关于我们"
+  },
+  "buttons": {
+    "book": "立即预订",
+    "learnMore": "立即探索",
+    "viewMore": "查看更多",
+    "next": "下一步",
+    "back": "返回",
+    "backToHome": "返回首页",
+    "confirm": "确认",
+    "submit": "提交",
+    "close": "关闭",
+    "save": "保存",
+    "cancel": "取消"
+  },
+  "booking": {
+    "title": "预订您的飞行",
+    "step1": "选择服务",
+    "step2": "飞行时间安排",
+    "step3": "乘客信息",
+    "step4": "确认预订",
+    "step5": "完成",
+    "selectService": "请选择您的飞行服务",
+    "contactInfo": "填写您的联系方式",
+    "passengerInfo": "乘客信息",
+    "confirmDetails": "核对并确认",
+    "bookingComplete": "预订完成！",
+    "thankYou": "感谢您的预订！",
+    "confirmationSent": "确认邮件已发送至您的邮箱。",
+    "contactUs": "我们将尽快联系您确认飞行细节。",
+    "scanQR": "或扫描二维码与我们聊天：",
+    "step1Details": {
+      "serviceName": "Sapa 滑翔伞",
+      "numberOfPassengers": "人数",
+      "numberOfPeople": "人数",
+      "people": "人",
+      "estimatedTotal": "预计总价",
+      "flightPrice": "飞行价格",
+      "from": "起",
+      "perFlight": "/次飞行",
+      "tourDuration": "行程时长",
+      "durationText": "根据天气情况约 90 分钟起",
+      "included": "包含：",
+      "optionalServices": "可选服务：",
+      "locations": "地点：",
+      "takeoffPoint": "起飞点：Hau Thao 山",
+      "landingPoint": "降落点：Lao Chai 村",
+      "viewMap": "查看地图 →",
+      "promotionInfo": "团体预订可享直减优惠",
+      "youSave": "🎉 您节省：",
+      "priceSummary": "费用明细",
+      "flightPriceFor": "飞行费用",
+      "optionalServicesTotal": "可选服务",
+      "groupDiscount": "团体折扣",
+      "discount": "折扣",
+      "total": "合计：",
+      "continue": "继续 →",
+      "includedItems": {
+        "flight": "01 次滑翔伞飞行 8–15 分钟（可能更长，视天气、乘客健康状况及飞行员决定而定）",
+        "photoVideo": "GoPro 全程视频与照片记录，由 Sapa Paragliding 提供",
+        "drinks": "飞行点饮品",
+        "insurance": "滑翔伞保险",
+        "certificate": "体验参与证书",
+        "equipment": "标准认证滑翔伞设备",
+        "reschedulePolicy": "如遇恶劣天气，免费改期且可免费取消"
+      },
+      "optionalItems": {
+        "hotelTransfer": {
+          "name": "接送范围：沙巴镇中心、Lao Chai 村、Ta Van 村。",
+          "description": "（如需其他接送地点，我们将提前联系您协商并确认合适的附加费用。）"
+        },
+        "drone": {
+          "name": "使用专业航拍/无人机设备记录飞行",
+          "description": "您的飞行将由航拍记录，并将全部原始素材发送给您"
+        },
+        "camera360": {
+          "name": "使用 360° 相机记录飞行，捕捉全程旅程。",
+          "description": "视频将剪辑后发送给您。"
+        }
+      },
+      "promotions": {
+        "group2": "2 人及以上团体",
+        "group3": "3 人及以上团体",
+        "group4": "4 人及以上团体",
+        "group6": "6 人及以上团体"
+      }
+    },
+    "step2Details": {
+      "pickupLocation": "接送地点 *",
+      "pickupPlaceholder": "例如：Sapa Charm Hotel, Sapa Center",
+      "pickupNote": "请输入沙巴、Lao Chai 村或 Ta Van 村的酒店名称或具体地址",
+      "importantNotice": "重要提示",
+      "weatherNotice": {
+        "item1": "预订后，我们将联系您安排飞行计划，包括飞行时间、接送点和接送时间。",
+        "item2": "接送时间约为飞行前 30 分钟。",
+        "item3": "飞行当天，我们将通过短信、WhatsApp 或邮件发送司机姓名、电话及车辆/摩托车车牌号。",
+        "item4": "请在接送时间前 5 分钟到达集合点，避免延误。",
+        "item5": "如遇天气变化，我们将联系您免费改期。"
+      },
+      "selectTime": "选择时间",
+      "contactName": "联系人姓名",
+      "email": "邮箱",
+      "phone": "电话号码"
+    },
+    "step3Details": {
+      "passenger": "乘客",
+      "selectGender": "选择性别",
+      "weightLimit": "体重限制：< 100 公斤",
+      "safetyRequirements": "安全要求",
+      "minAge": "最低年龄：5 岁（需监护人同意）",
+      "weightRange": "体重范围：< 100 公斤",
+      "goodHealth": "乘客须身体健康",
+      "noPregnant": "孕妇不可参加",
+      "personalInfoNotice": "请按身份证明文件准确填写个人信息，否则保险将无效。",
+      "fullName": "姓名",
+      "dateOfBirth": "出生日期",
+      "weight": "体重",
+      "fillContactInfo": "填写预订人信息"
+    },
+    "step4Details": {
+      "serviceDetails": "服务详情",
+      "service": "服务",
+      "passengers": "乘客",
+      "date": "日期",
+      "time": "时间",
+      "flexible": "灵活",
+      "contactInformation": "联系信息",
+      "name": "姓名：",
+      "email": "邮箱：",
+      "phone": "电话：",
+      "specialRequests": "特殊需求：",
+      "passengerInformation": "乘客信息",
+      "fullName": "姓名：",
+      "dateOfBirth": "出生日期：",
+      "gender": "性别：",
+      "weight": "体重：",
+      "nationality": "国籍：",
+      "idNumber": "身份证/护照号码：",
+      "pickupLocation": "接送地点：",
+      "launchSite": "起飞点",
+      "pickupTime": "接送时间：",
+      "pickupTimeDefault": "飞行前 30 分钟",
+      "additionalServices": "附加服务",
+      "hotelTransfer": "酒店接送：",
+      "camera360": "360° 相机：",
+      "droneCamera": "无人机航拍：",
+      "gopro": "GoPro：",
+      "drinks": "饮品：",
+      "certificate": "证书：",
+      "yes": "是",
+      "no": "否",
+      "free": "免费",
+      "included": "已包含",
+      "priceBreakdown": "费用明细",
+      "flightCost": "飞行费用",
+      "transferCost": "接送",
+      "camera360Cost": "360° 相机",
+      "droneCost": "无人机航拍",
+      "groupDiscount": "团体折扣",
+      "totalCost": "总费用",
+      "paymentMethod": "支付方式",
+      "cashPayment": "现金",
+      "bankTransfer": "银行转账",
+      "paypalPayment": "PayPal",
+      "creditCard": "信用卡",
+      "priceSummary": "费用汇总",
+      "basePrice": "基础价格",
+      "discount": "折扣",
+      "paymentInfo": "支付信息",
+      "paymentText": "费用将在现场飞行前支付。我们接受现金及主要信用卡。预订后将发送确认邮件。",
+      "processing": "处理中..."
+    },
+    "step5Details": {
+      "bookingId": "预订编号",
+      "bookingSummary": "预订摘要",
+      "service": "服务：",
+      "date": "日期：",
+      "time": "起飞时间：",
+      "passengers": "乘客：",
+      "total": "合计：",
+      "whatsNext": "接下来？",
+      "step1": "查看您的邮箱以获取预订确认和详情",
+      "step2": "我们将在 24 小时前联系您确认天气情况",
+      "step3": "请至少在接送时间前 5 分钟到达集合点，避免延误。",
+      "step4": "祝您享受精彩的滑翔伞体验！",
+      "backToHome": "返回首页",
+      "makeAnother": "再次预订",
+      "openZalo": "打开 Zalo",
+      "openWhatsApp": "打开 WhatsApp"
+    },
+    "ticket": {
+      "title": "飞行票",
+      "subtitle": "Sapa Paragliding - 滑翔伞体验",
+      "bookingId": "预订编号",
+      "flightDetails": "飞行详情",
+      "passengerInfo": "乘客信息",
+      "passengersList": "乘客列表",
+      "validationDate": "开票日期",
+      "footer": "本票在经 Sapa Paragliding 确认后有效。请妥善保管以便飞行使用。",
+      "downloadPDF": "下载 PDF",
+      "downloadImage": "下载图片",
+      "preFlightInfo": {
+        "title": "飞行前须知",
+        "pickup": "预订后，我们将与您联系以安排飞行时间表，包括接送时间和地点。接送地点在萨帕镇中心或您的酒店，具体以预订确认为准。",
+        "clothing": "建议着装：舒适、防风、防晒的衣物，运动鞋（请勿穿高跟鞋）",
+        "storage": "请确保您的手机至少有 4GB 的可用存储空间，以便在飞行后保存照片和视频",
+        "belongings": "您可以携带一个小型个人包（1-2公斤），装有手机、钥匙、身份证等必需品",
+        "launchLanding": "起飞场和降落场的位置将在确认预订时通知，具体取决于当天的天气条件和风向。",
+        "transport": "前往起飞场或降落场的详细交通路线将会提供。交通费用（如有）将提前告知，以便您做好准备。"
+      }
+    },
+    "fields": {
+      "fullName": "姓名",
+      "email": "邮箱",
+      "phone": "电话号码 / Whatsapp / Zalo",
+      "date": "飞行日期",
+      "time": "飞行时间",
+      "passengers": "乘客人数",
+      "specialRequests": "特殊需求",
+      "dateOfBirth": "出生日期",
+      "gender": "性别",
+      "nationality": "国籍",
+      "passportOrId": "护照/身份证",
+      "passportOrIdPlaceholder": "请输入护照或身份证号码",
+      "weight": "体重（kg）",
+      "male": "男",
+      "female": "女",
+      "other": "其他"
+    },
+    "terms": {
+      "agree": "我同意",
+      "termsAndConditions": "条款与条件",
+      "and": "以及",
+      "privacyPolicy": "隐私政策"
+    },
+    "captcha": {
+      "verify": "请验证您不是机器人",
+      "error": "验证失败，请重试。",
+      "required": "请完成验证。"
+    },
+    "services": {
+      "discovery": {
+        "name": "探索飞行",
+        "description": "适合首次体验。通过短程 15–20 分钟飞行感受滑翔伞的刺激。",
+        "duration": "15–20 分钟",
+        "price": "1,200,000 越南盾"
+      },
+      "adventure": {
+        "name": "冒险飞行",
+        "description": "更长飞行时间，并包含特技动作，适合追求刺激者。",
+        "duration": "25–30 分钟",
+        "price": "1,800,000 越南盾"
+      },
+      "premium": {
+        "name": "尊享体验",
+        "description": "最长飞行时间，含照片/视频套餐，尽览沙巴最佳景色。",
+        "duration": "35–40 分钟",
+        "price": "2,500,000 越南盾"
+      }
+    },
+    "discount": {
+      "group2": "2 人：95 折",
+      "group3": "3 人及以上：9 折",
+      "group5": "5 人及以上：85 折"
+    }
+  },
+  "pilots": {
+    "title": "我们的专业飞行员",
+    "subtitle": "认识我们的认证滑翔伞专业飞行员团队",
+    "experience": "经验",
+    "records": "成就",
+    "personality": "性格",
+    "backToList": "返回飞行员列表",
+    "pilot1": {
+      "name": "Dang Van My",
+      "nickname": "美国队长",
+      "role": "队长",
+      "des": "组织全国滑翔伞比赛的领队，并翻译来自全球三大权威资源的 1000+ 页专业书籍，为越南航模与运动航空社区做出重要贡献。",
+      "img": "Dang Van My_Team Leader.jpg",
+      "fullname": "DANG VAN MY",
+      "experience": "拥有 10+ 年滑翔伞经验，完成 1,000+ 次单飞与 10,000 次双人伞飞行。越南首位直升机飞行员，也是越南首位且唯一的 tumbling 特技飞行员，能够完成高阶技术动作与罕见空中特技。具备滑翔伞与动力伞技能。翻译 1,000+ 页深度滑翔伞资料，并著有 3 本畅销书：《Thermal Flying》《Cross-Country Flying》《Understanding the Sky》。以深厚专业知识翻译大量飞行教材，并成为首位在日本获得 IPPI5 认证的越南飞行员。",
+      "records": "目前保持越南中部高原地区最大闭合三角航线飞行纪录（超过 100 公里），也是越南累计飞行时长最多的飞行员。",
+      "personality": "在地面上，他极其自律、严谨，认真履行工作与管理职责；但一旦起飞，他就会化身“风之子”——带来快乐与正能量，点燃每位乘客对飞行的热情。"
+    },
+    "pilot2": {
+      "name": "Alish Thapa",
+      "nickname": "天空幻影",
+      "role": "国际 APPI 教练",
+      "des": "拥有国际 APPI 认证的专业滑翔伞教练，受多家机构邀请授课。不仅技术过硬，也开朗友好，总能带来安全、有趣的飞行体验，让乘客一见就喜欢。",
+      "img": "Alish Thapa_Team Pilot.jpg",
+      "fullname": "ALISH THAPA",
+      "experience": "他是清迈 Skydive Chiang Mai 的首席教练与 S&TA（安全与训练顾问）专家，同时担任 Insky Skydive 与 Everest Paragliding 的运营总监，并在 Fishtail Nepal Paragliding 担任专业教练。拥有国际 APPI 滑翔伞教练资质，同时也是符合 USPA 标准的跳伞教练（AFF-I, TAN-I）。在越南、泰国、尼泊尔等多个亚洲国家拥有数千小时训练与实飞经验。",
+      "records": "国际 APPI 教练，曾在越南、泰国、中国等多个大型飞行点授课；在区域内多家知名滑翔伞与跳伞机构担任管理与运营职务。",
+      "personality": "尼泊尔顶尖滑翔伞飞行员之一，教学风格有趣且充满感染力。他让学员把飞行当作空中舞蹈——不仅学技术，更学会爱上天空。每次飞行都充满正能量，让游客不仅记住旅程，也记住这位特别的伙伴。"
+    },
+    "pilot3": {
+      "name": "Subash Thapa",
+      "nickname": "天空骑士",
+      "role": "专业滑翔伞教练",
+      "des": "培养了世界各地众多飞行员的专业教练。热爱滑翔伞，也热爱音乐，因此与他一起的双人飞行总是充满活力与灵感。",
+      "img": "Subash Thapa_Team Pilot.jpg",
+      "fullname": "SUBASH THAPA",
+      "experience": "他是博卡拉的首席飞行员、滑翔伞教练与跳伞教练，也曾任 Acro Paragliding 与 New Para World Paragliding 的首席飞行员。拥有 1,000+ 小时专业双人伞飞行经验并始终将安全放在首位。在越南运营 3+ 年，对各飞行点地形与气象条件非常熟悉。",
+      "records": "1,000+ 小时专业双人伞飞行经验，曾在多家知名滑翔伞机构担任首席飞行员，并拥有 3+ 年越南运营经验。",
+      "personality": "他不仅是顶尖滑翔伞教练，还是“天空 DJ”，对音乐充满热情，让每次双人飞行都像云端派对般热闹。他始终确保绝对安全，让你放心翱翔。与他一起飞，你不仅能体验飞行，还会收获一位充满正能量的快乐朋友！"
+    },
+    "pilot4": {
+      "name": "Suman Thapa",
+      "nickname": "天空骑手",
+      "role": "特技飞行员",
+      "des": "沙巴大多数震撼的特技视频都出自他之手——经验丰富、对滑翔伞理解深刻。对他而言，飞行不仅是热爱，更是一份职业。顾客给他一个特别称号：“风神之子”。",
+      "img": "Suman Thapa_Team Pilot.jpg",
+      "fullname": "SUMAN THAPA",
+      "experience": "在尼泊尔完成专业飞行员训练课程。特技能力突出，精通多种复杂技术动作。拥有 1,000+ 小时专业双人伞飞行经验，始终确保乘客绝对安全。在越南活跃 3+ 年，深入了解各飞行点地形与天气。目标是获得国际 APPI 滑翔伞教练认证。",
+      "records": "越南顶尖特技（Acro）飞行员，以沙巴的精彩表演闻名。拥有 1,000+ 小时双人伞飞行经验与 3 年越南专业活动经验。",
+      "personality": "他是那种风一起来——甚至还没起飞——你就能听见他的心在欢呼：“一起飞吧！”他对滑翔伞的热爱就像离不开的晨咖——不可或缺、势不可挡。每一个特技动作都像带着微笑在宣告：“我们为飞而生。”"
+    },
+    "pilot5": {
+      "name": "Bishal Thapa",
+      "nickname": "风之突击队",
+      "role": "精准降落专家",
+      "des": "热衷于精准降落，始终追求以最小误差落在中心点，让每一次飞行都安全且像程序般执行。开朗亲和，愿意倾听并在意乘客感受，带来最完整的飞行体验。",
+      "img": "Bishal Thapa.jpg",
+      "fullname": "BISHAL THAPA",
+      "experience": "2016 年开始学习滑翔伞，2019 年成为专业双人伞飞行员。累计 2,000+ 次双人伞飞行与 800+ 小时飞行时间，是团队中最稳定、经验最丰富的飞行员之一。曾在国内外赛事取得优异成绩：Pre-World Cup Mizoram Open Accuracy Championship 2018（个人第 2、团体第 1）、Accuracy Paragliding Pre-World Cup 2023（个人第 2、团体第 1）、Indian Accuracy Cup Bilaspur（个人冠军）。",
+      "records": "顶尖精准降落专家——在多项 Pre-World Cup 与国际 Accuracy Cup 赛事中斩获多项冠军。累计 2,000+ 次飞行与 800+ 小时安全飞行记录。",
+      "personality": "他像随身带着“能量电池”，每次飞行都带着灿烂笑容。开朗讨喜，让乘客像和好友一起飞。对精准降落痴迷到毫米级，把每一次落地都变成空中的优美“舞步”。与他一起飞，你不仅体验飞行，更收获一段充满笑声与情绪张力的冒险。"
+    },
+    "pilot6": {
+      "name": "Bishal Skyboy",
+      "nickname": "Skyboy",
+      "role": "特技飞行员",
+      "des": "来自尼泊尔的专业飞行员，以惊艳的特技飞行能力闻名全球。不仅以顶级技术征服天空，也是一位经验丰富的双人伞飞行员，为每位乘客带来刺激且难忘的飞行体验。",
+      "img": "Bishal Skyboy_Team Pilot.jpg",
+      "fullname": "BISHAL SKYBOY",
+      "experience": "来自尼泊尔的专业特技飞行员，拥有多年空中特技表演与双人飞行教学经验。参加过众多国际飞行活动，以复杂特技动作和对乘客的绝对安全著称，带来激动人心、情绪饱满且刺激的飞行体验。",
+      "records": "全球知名特技飞行员，拥有卓越空中特技能力。双人伞经验丰富、安全记录良好，参与多项国际飞行活动。",
+      "personality": "以精湛飞行技巧和空中自信气场著称，为乘客带来清爽刺激、难忘的飞行体验，始终保持专业且亲和友好的态度。"
+    },
+    "pilot7": {
+      "name": "Dinh The Anh",
+      "nickname": "追云者",
+      "role": "团队飞行员",
+      "des": "充满运动能量的飞行员，从骑行、游泳到滑翔伞，累计 2000 次飞行、1500+ 小时安全飞行，并 3 次获得越南精准降落冠军。",
+      "img": "The Anh_Team Pilot.jpg",
+      "fullname": "DINH THE ANH",
+      "experience": "完成 2,000+ 次飞行，累计安全飞行时长超过 1,000 小时。越南代表选手，曾直飞参加 2023 年韩国滑翔伞奥林匹克赛事。三次获得全国赛事精准降落冠军。曾在瑞士、韩国、美国、泰国、印尼等多国起飞飞行。",
+      "records": "越南三届精准降落冠军，越南代表参加 2023 年韩国滑翔伞奥林匹克赛事。",
+      "personality": "人称“国民哥哥”——出生并成长于岘港的中部男孩，带着海风与金色阳光般的温柔与热情。温暖的笑容、柔和的声音、处处体贴令人印象深刻。不仅是顶尖飞行员，还是专业摄影师。与他一起飞，你一定会收获无数精彩大片，每个角度都好看、每个瞬间都值得纪念！"
+    },
+    "pilot8": {
+      "name": "Tuan Nguyen",
+      "nickname": "二哥",
+      "role": "团队飞行员",
+      "des": "温柔体贴、善于倾听乘客需求的飞行员。无论你喜欢刺激飞行还是轻松“chill”，他都能给你最完美的机位与航线，让每个人都想成为他的铁粉！",
+      "img": "Tuan Nguyen_Team Pilot.jpg",
+      "fullname": "TUAN NGUYEN",
+      "experience": "在越南安全完成 1,000+ 次双人伞飞行。对全国各飞行点气象有深入理解，能准确判断与预测飞行活动天气。精通无动力与动力伞飞行技能。作为专业滑翔伞教练，曾训练并指导多位飞行员征服越南天空。",
+      "records": "1,000+ 次安全双人伞飞行、飞行圈内领先的天气预报专家、全国多处飞行点经验丰富的教练。",
+      "personality": "外号带着“二哥”的侠气，但性格非常亲切可爱。他特别喜欢孩子——每次飞行后，小天使们都会记住这位温柔的飞行员，还会寄来感谢信。如果家长在找一位值得信赖、认真负责、正能量满满的伙伴陪孩子去触碰云端——那就非“二哥”莫属！"
+    },
+    "pilot9": {
+      "name": "Minh Trung",
+      "nickname": "太空战士",
+      "role": "团队飞行员",
+      "des": "2,000+ 次双人伞飞行，7 年“挂在天空”，1,000+ 小时“和云与风玩耍”。外号“Trung Chocolate”——和他一起飞，聊天笑到脸颊酸！",
+      "img": "Minh Trung_Team Pilot.jpg",
+      "fullname": "MINH TRUNG",
+      "experience": "与乘客完成 2,000+ 次安全双人伞飞行。7 年滑翔伞经验，擅长双人伞与越野飞行。累计 1,000+ 小时实飞，熟练应对多种天气与复杂地形。毕业于尼泊尔飞行安全培训课程——该国飞行条件严格、国际标准高。",
+      "records": "2,000+ 次安全双人伞飞行、累计 1,000+ 小时飞行时长，是少数完成尼泊尔飞行安全培训课程的越南飞行员之一。",
+      "personality": "他飞的伞像一面红黄相间的旗帜——飞行就是在传播热爱祖国、热爱天空、热爱生活的灵感。跟他飞，你的视频轻松上 TikTok 百万播放；照片视频不用修图就“顶级”；足以让心上人心跳漏一拍。性格友好、爱笑，保证你飞着飞着就笑到张嘴忘记恐高。唯一缺点？太阳一晒就黑、下雨头发会炸——但气质仍然在线，笑容无敌！"
+    },
+    "pilot10": {
+      "name": "Phan Hung",
+      "nickname": "天空旅人",
+      "role": "团队飞行员",
+      "des": "跟他飞，你会收获百万播放的超艺术机位视频。绝对安全、唯美天空瞬间统统记录，为每次双人伞飞行带回珍贵难忘的影像。",
+      "img": "phan_hung.jpg",
+      "fullname": "PHAN HUNG",
+      "experience": "2018 年开始追逐滑翔伞梦想，如今已成为在越南拥有多年飞行经验的专业飞行员。对全国飞行点气象与地形有深刻理解——这是确保每次飞行安全与体验最佳的关键。完成 1,000+ 次专业双人伞飞行，并持续参加国际标准培训与教育课程。",
+      "records": "1,000+ 次专业双人伞飞行、擅长天气与地形分析、积极参与国际标准培训项目。",
+      "personality": "Phan Hung——“天空摇滚客”，长发随风飘起就像伞翼一样。跟他飞，你不仅拿到百万播放的片子，还收获百万种情绪。1,000+ 次飞行——每一次都是故事、都是一生的瞬间。能量满格、懂地形、热情燃烧——随时准备带你触碰云端！"
+    },
+    "pilot11": {
+      "name": "Ngo Van Doi",
+      "nickname": "动作战士",
+      "role": "团队飞行员",
+      "des": "参加越南所有滑翔伞比赛，在 Buu Hill – Chuong My 创下连续飞行 7 小时纪录。热爱滑翔伞，为乘客带来刺激、安全且充满笑声的飞行体验。",
+      "img": "Ngo Van Doi_Team Pilot.jpeg",
+      "fullname": "NGO VAN DOI",
+      "experience": "2023–2025 年间，在越南各大知名飞行点完成 500+ 次单飞与双人伞飞行。拥有 5 年扎实经验，累计 300+ 小时实飞。是全国南北各类滑翔伞赛事的常客，始终以专业竞技精神与强烈热情参赛。尤其在 Buu Hill – Chuong My 创下连续飞行 7 小时纪录，成为其飞行生涯的骄傲里程碑。",
+      "records": "Buu Hill – Chuong My 连续飞行 7 小时纪录，2 年 500+ 次飞行，全国各地赛事活跃飞行员。",
+      "personality": "一个把风装进笑容里的年轻人——不需要“电梯”也能飞很高！对滑翔伞的热爱在燃烧，有他在每次飞行都是心在“起飞”。和他一起飞，你会感到快乐在蓝天扩散——强风都像掌声在为你喝彩。超级投入、随时准备把你的飞行梦想变成刺激冒险的伙伴！"
+    },
+    "pilot12": {
+      "name": "Minh Vo",
+      "nickname": "钢铁雄鹰",
+      "role": "团队飞行员",
+      "des": "与“百万点赞飞行员”一起飞，拥有 14 年经验。自小热爱天空，将激情融入每一次双人伞飞行，为每位客户带来巅峰体验与难忘云端瞬间。",
+      "img": "Minh Vo_Team Pilot.jpg",
+      "fullname": "MINH VO",
+      "experience": "拥有 14 年滑翔伞经验与 2,000+ 次安全双人伞飞行，是越南最资深、最可靠的飞行员之一。作为第一代飞行员 Top 5 之一，为国内滑翔伞社群奠定基础。2023 年与团队在 MCC 比赛精准降落项目中夺得冠军，体现稳固的专业技能与竞技精神。",
+      "records": "14 年经验、2,000+ 次安全双人伞飞行。越南第一代飞行员 Top 5 之一，并在 MCC 2023 精准降落项目夺冠。",
+      "personality": "Minh Vo——从小就爱跟云聊天、跟风玩耍的“百万点赞飞行员”。跟他飞不只是升空，更是把心情也带飞！美景、笑声、正能量贯穿全程。他点燃热情的方式轻松却强大——让每个飞过的人都想……再飞一次！"
+    },
+    "pilot13": {
+      "name": "Toan Nguyen",
+      "nickname": "兰博",
+      "role": "团队飞行员",
+      "des": "10+ 年驾驭云海，近 5,000 次飞行。飞遍越南：Kon Tum、Ly Son、Dien Bien……GPS 还没加载完，他已经落地！与他滑翔伞，不只是热爱——更是一种云端生活方式。",
+      "img": "Toan Nguyen_team Pilot.jpg",
+      "fullname": "TOAN NGUYEN",
+      "experience": "拥有 10+ 年征服天空经验与近 5,000 次单飞与双人伞飞行，是越南最有经验、最可靠的飞行员之一。毕业于国际标准飞行安全培训课程。飞行覆盖越南多处著名飞行点：Kon Tum、Dak Nong、Nha Trang、Ly Son、Dien Bien Phu 等。经常参加河内、Mu Cang Chai、岘港等地精准降落比赛，展现扎实技术与稳定竞技状态。",
+      "records": "10+ 年经验、近 5,000 次飞行遍布越南。参加多数精准降落赛事，并完成国际标准飞行安全培训。",
+      "personality": "跟“天空兰博”Toan Nguyen 一起飞，你不仅能“骑云”，还会笑到脸颊酸！他飞得像风、说话也像风，让人既安心又好玩。飞完大家都想把他当“私人飞行员”带着去旅行。保证：跟 Toan 飞一次，你就不想下来！"
+    },
+    "pilot14": {
+      "name": "Chien Thang",
+      "nickname": "闪电胜者",
+      "role": "团队飞行员",
+      "des": "与云与风相伴 7 年，1,500+ 次安全双人伞飞行，1,000+ 小时空中悬停。他曾保持越南 9.5 小时单飞纪录！从北到南“横扫”滑翔伞比赛，状态始终巅峰。",
+      "img": "Chien Thang_Team Pilot.jpg",
+      "fullname": "CHIEN THANG",
+      "experience": "拥有 7 年与天空为伴的经验，完成 1,500+ 次安全、专业的双人伞飞行，累计 1,000+ 小时飞行时长。他曾保持越南最长单飞时间第 2 纪录——连续 9.5 小时，展现惊人的耐力与卓越控伞技术。对全国飞行点技术与天气条件了解深入，始终确保每次飞行既安全又充满情绪张力。",
+      "records": "越南最长单飞时间第 2 纪录——连续 9.5 小时。7 年累计 1,500+ 次双人伞飞行与 1,000+ 小时飞行时长。",
+      "personality": "Chien Thang——“雷神”，飞得像闪电一样快，却让你感觉绝对安全。和他一起悬停云端，你会开心得不想下来。跟他飞不只是体验，而是一场笑声不断的冒险。飞得久到连云都要佩服：‘嘿，你不需要休息吗？’"
+    }
+  },
+  "preNotice": {
+    "title": "飞行前准备",
+    "subtitle": "飞行前的重要信息",
+    "items": {
+      "photoSupport": {
+        "title": "空中拍摄支持",
+        "description": "我们的飞行员会帮您在空中拍到最佳角度——只要告诉他们想要的画面，就能记录您的完美瞬间！"
+      },
+      "timing": {
+        "title": "准时到达",
+        "description": "请在接送时间前 5 分钟到达，以确保不延误"
+      },
+      "storage": {
+        "title": "手机存储空间",
+        "description": "飞行后保存照片/视频需至少 4GB 可用空间"
+      },
+      "baggage": {
+        "title": "随身小包",
+        "description": "可携带 1–2kg 的小包放置必需品（手机、钥匙、证件）"
+      },
+      "clothing": {
+        "title": "合适着装",
+        "description": "舒适运动装（长袖、长裤）；不穿裙子、不穿高跟鞋；建议穿运动鞋或登山鞋（小贴士：亮色衣服更上镜）"
+      },
+      "beginner": {
+        "title": "新手友好",
+        "description": "适合首次体验者"
+      },
+      "weather": {
+        "title": "天气条件",
+        "description": "飞行受天气影响（风、雨、雾）。如需改期，将至少提前 1 天通知且免费；如您不想改期，将获得 100% 退款"
+      }
+    },
+    "tabs": {
+      "requirements": {
+        "title": "要求",
+        "subtitle": "参与条件",
+        "items": {
+          "weight": {
+            "title": "体重",
+            "desc": "120kg 以下。若超过 95kg，请提前告知以便安排合适的飞行员与装备。"
+          },
+          "health": {
+            "title": "身体状况",
+            "desc": "需具备基本体能，可短距离跑动。不适合过度肥胖或行动不便者。"
+          },
+          "age": {
+            "title": "年龄",
+            "desc": "2 岁及以上可与飞行员进行双人伞飞行。"
+          }
+        }
+      },
+      "booking": {
+        "title": "预订",
+        "subtitle": "预订信息",
+        "items": {
+          "method": {
+            "title": "预订方式",
+            "desc": "可通过网站直接预订或联系热线 / Zalo / WhatsApp。"
+          },
+          "payment": {
+            "title": "支付",
+            "desc": "支持现金、银行转账或信用卡。无需预付。"
+          },
+          "confirmation": {
+            "title": "确认",
+            "desc": "收到预订后，我们将在 3 小时内联系您。"
+          }
+        }
+      },
+      "cancellation": {
+        "title": "取消",
+        "subtitle": "取消与改期政策",
+        "items": {
+          "byUs": {
+            "title": "由 Sapa Paragliding 取消",
+            "desc": "客户不收取任何费用。全额退款，不产生额外费用。"
+          },
+          "byCustomer": {
+            "title": "客户取消",
+            "desc": "通过邮件/热线/Zalo/WhatsApp 通知。提前 1 天及以上：免费。"
+          },
+          "reschedule": {
+            "title": "改期",
+            "desc": "客户提出改期可免费安排。"
+          }
+        }
+      },
+      "weather": {
+        "title": "天气",
+        "subtitle": "飞行天气条件",
+        "items": {
+          "condition": {
+            "title": "飞行条件",
+            "desc": "风向与风力是关键因素。如预报适合，飞行将按计划进行。"
+          },
+          "cancel": {
+            "title": "因天气取消",
+            "desc": "最终决定在飞行当天做出。如取消：不收费，可选择改期或 100% 退款。"
+          }
+        }
+      },
+      "clothing": {
+        "title": "着装",
+        "subtitle": "穿着指南",
+        "items": {
+          "clothes": {
+            "title": "衣着",
+            "desc": "舒适运动装（长袖、长裤）；不穿裙子。小贴士：亮色更上镜。"
+          },
+          "shoes": {
+            "title": "鞋子",
+            "desc": "不穿高跟鞋。建议运动鞋或登山鞋。如需要可免费借鞋。"
+          },
+          "glasses": {
+            "title": "眼镜",
+            "desc": "太阳镜可防紫外线与强风（约 40 km/h）。可佩戴近视眼镜。"
+          }
+        }
+      },
+      "schedule": {
+        "title": "行程",
+        "subtitle": "飞行安排信息",
+        "items": {
+          "duration": {
+            "title": "体验时长",
+            "desc": "整个体验约 1 小时 30 分钟。"
+          },
+          "contact": {
+            "title": "沟通",
+            "desc": "请查看邮箱/消息，获取变更或取消（如有）通知。"
+          },
+          "spectators": {
+            "title": "观众",
+            "desc": "家属可在起飞区域等待并观看飞行。"
+          },
+          "parking": {
+            "title": "停车",
+            "desc": "提供免费停车（运营时间 6:00–22:00，不允许露营）。"
+          }
+        }
+      },
+      "transport": {
+        "title": "交通",
+        "subtitle": "接驳服务",
+        "items": {
+          "shuttle": {
+            "title": "接送",
+            "desc": "按照预订信息提供酒店接送服务。"
+          },
+          "companion": {
+            "title": "同行人员",
+            "desc": "如有不飞行的同行人员，请告知人数以便安排并报价。"
+          }
+        }
+      },
+      "meetingPoint": {
+        "title": "集合点",
+        "subtitle": "集合地点",
+        "items": {
+          "center": {
+            "title": "Sapa Center",
+            "desc": "沙巴镇中心 Sun Plaza 购物中心。"
+          },
+          "hotel": {
+            "title": "酒店/民宿",
+            "desc": "沙巴、Lao Chai、Ta Van 区域：预订时请提供您的位置。"
+          }
+        }
+      },
+      "flyingSpot": {
+        "title": "飞行地点",
+        "subtitle": "起飞与降落点",
+        "items": {
+          "takeoff": {
+            "title": "起飞点",
+            "desc": "按越南最高安全标准设计，理想迎风位置，确保安全起飞并带来震撼体验。"
+          },
+          "landing": {
+            "title": "降落点",
+            "desc": "降落在 Lao Chai 文化村附近的传统集市——展示当地村民手工艺品。"
+          }
+        }
+      },
+      "faq": {
+        "title": "流程",
+        "subtitle": "详细飞行流程",
+        "items": {
+          "meet": {
+            "title": "与飞行员会合",
+            "desc": "在起飞点与飞行员见面，可提问并寄存行李。"
+          },
+          "baggage": {
+            "title": "起飞讲解",
+            "desc": "听取指示、穿戴装备，并练习起飞动作。"
+          },
+          "takeoff": {
+            "title": "起飞",
+            "desc": "坚定、持续地奔跑，直到飞行员指示停止。起飞后放松并欣赏风景。"
+          },
+          "safety": {
+            "title": "降落",
+            "desc": "装备安全舒适。降落平稳，可根据情况站立或坐姿着陆。"
+          }
+        }
+      }
+    },
+    "locations": {
+      "title": "飞行地点",
+      "takeoff": "起飞点",
+      "landing": "降落区",
+      "getDirections": "获取路线"
+    }
+  },
+  "about": {
+    "title": "关于 Sapa Paragliding",
+    "subtitle": "您值得信赖的难忘飞行体验伙伴",
+    "tagline": "飞得更高。感受更多。尽情生活。",
+    "intro": {
+      "title": "欢迎来到 Sapa Paragliding",
+      "description": "我们是驻扎在越南沙巴的专业滑翔伞团队。凭借多年经验与对飞行的热爱，我们提供安全刺激的滑翔伞体验，带您俯瞰沙巴壮丽景观。",
+      "highlight": "50,000+ 次安全飞行 • 15+ 年经验 • 国际飞行员团队"
+    },
+    "mission": {
+      "title": "我们的使命",
+      "description": "在展示沙巴鸟瞰之美的同时，提供安全、难忘且令人兴奋的滑翔伞体验。",
+      "points": {
+        "safety": "每一次飞行都确保绝对安全",
+        "experience": "以专业服务带来世界级体验",
+        "nature": "以独特视角展现沙巴之美"
+      }
+    },
+    "vision": {
+      "title": "我们的愿景",
+      "description": "成为越南领先的滑翔伞服务品牌，以安全、专业与卓越客户体验闻名。",
+      "goals": {
+        "leader": "引领越南滑翔伞行业",
+        "international": "获得国际安全认证",
+        "community": "打造滑翔伞爱好者社区"
+      }
+    },
+    "values": {
+      "title": "核心价值观",
+      "safety": {
+        "title": "安全至上",
+        "description": "100% 飞行符合国际安全标准。设备定期检查，飞行员接受专业训练。"
+      },
+      "excellence": {
+        "title": "卓越服务",
+        "description": "从预订到落地，我们承诺交付最完美的体验。"
+      },
+      "passion": {
+        "title": "热爱与投入",
+        "description": "每位飞行员不仅是专家，更是天空的热爱者，愿与您分享这份激情。"
+      },
+      "innovation": {
+        "title": "持续创新",
+        "description": "更新最新技术与先进飞行方法，不断提升服务质量。"
+      }
+    },
+    "story": {
+      "title": "我们的故事",
+      "founded": "成立于 2010 年",
+      "description": "源于对飞行的热爱与对沙巴的情感，我们建立了该地区首支专业飞行员团队。经过 15 年发展，Sapa Paragliding 已成为数万名国内外游客信赖的目的地。",
+      "milestones": {
+        "2010": "由 3 名初始飞行员成立",
+        "2015": "获得 APPI 国际安全认证",
+        "2020": "引入国际飞行员扩展团队",
+        "2024": "完成 50,000+ 次安全飞行"
+      }
+    },
+    "commitment": {
+      "title": "我们的承诺",
+      "safety": "绝对安全——绝不妥协",
+      "quality": "国际级服务品质",
+      "support": "7×24 小时客服支持",
+      "satisfaction": "100% 满意保障，否则退款"
+    },
+    "whyChoose": {
+      "title": "为什么选择 Sapa Paragliding？",
+      "cta": {
+        "title": "准备从空中体验沙巴了吗？",
+        "description": "加入数千名满意客户，一起感受沙巴滑翔伞的魅力"
+      }
+    },
+    "features": {
+      "safety": {
+        "title": "安全第一",
+        "description": "专业飞行员，累计数千次安全飞行"
+      },
+      "photoVideo": {
+        "title": "照片与视频",
+        "description": "记录您在空中的难忘瞬间"
+      },
+      "bestViews": {
+        "title": "最佳视野",
+        "description": "俯瞰沙巴山谷的震撼全景"
+      },
+      "expertTeam": {
+        "title": "专业团队",
+        "description": "经验丰富的飞行员，成功飞行数千次"
+      },
+      "bestExperience": {
+        "title": "最佳体验",
+        "description": "难忘的风景与终生回忆"
+      },
+      "professionalPhoto": {
+        "title": "照片与视频",
+        "description": "专业摄影记录您的冒险旅程"
+      },
+      "bestValue": {
+        "title": "超值之选",
+        "description": "价格具竞争力，并提供团体折扣"
+      },
+      "multiLanguage": {
+        "title": "多语言支持",
+        "description": "支持英语、越南语、法语和俄语"
+      },
+      "safetyRecord": {
+        "title": "安全第一",
+        "description": "100% 安全记录：认证飞行员与高品质装备"
+      }
+    },
+    "process": {
+      "title": "飞行流程",
+      "step1": {
+        "title": "安全讲解",
+        "description": "全面安全说明与设备检查"
+      },
+      "step2": {
+        "title": "准备",
+        "description": "穿戴装备并前往起飞点"
+      },
+      "step3": {
+        "title": "起飞",
+        "description": "助跑几步，腾空翱翔"
+      },
+      "step4": {
+        "title": "飞行",
+        "description": "欣赏壮丽景色与飞翔的感觉"
+      },
+      "step5": {
+        "title": "降落",
+        "description": "在飞行员指导下平稳着陆"
+      }
+    }
+  },
+  "pricing": {
+    "title": "飞行价格",
+    "subtitle": "提前预订 - 后付费 - 无需定金",
+    "packages": {
+      "basic": {
+        "name": "基础套餐",
+        "price": "2.090k",
+        "priceUsd": "80 USD/次飞行",
+        "duration": "时长：20 分钟",
+        "weatherNote": "（视天气情况而定）",
+        "included": "包含：",
+        "items": {
+          "flight": "滑翔伞飞行 8–15 分钟",
+          "photoVideo": "GoPro 视频与照片记录",
+          "drinks": "飞行点饮品",
+          "insurance": "滑翔伞保险",
+          "certificate": "证书"
+        }
+      },
+      "standard": {
+        "name": "标准套餐",
+        "badge": "热门",
+        "price": "2.190k",
+        "priceUsd": "85 USD/次飞行",
+        "duration": "时长：30 分钟",
+        "weatherNote": "（视天气情况而定）",
+        "included": "包含：",
+        "items": {
+          "flight": "滑翔伞飞行 8–15 分钟",
+          "photoVideo": "GoPro 视频与照片记录",
+          "drinks": "飞行点饮品",
+          "insurance": "滑翔伞保险",
+          "certificate": "证书",
+          "hotelTransfer": "酒店接送"
+        }
+      },
+      "premium": {
+        "name": "尊享套餐",
+        "price": "2.990k",
+        "priceUsd": "113 USD/次飞行",
+        "duration": "时长：35 分钟",
+        "weatherNote": "（视天气情况而定）",
+        "included": "包含：",
+        "items": {
+          "flight": "滑翔伞飞行 8–15 分钟",
+          "photoVideo": "GoPro 视频与照片记录",
+          "drinks": "飞行点饮品",
+          "insurance": "滑翔伞保险",
+          "certificate": "证书",
+          "hotelTransfer": "酒店接送",
+          "drone": "航拍（无人机）",
+          "camera360": "360 度相机"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "选择最适合您的飞行体验"
+  },
+  "gallery": {
+    "title": "滑翔伞精彩瞬间",
+    "subtitle": "难忘体验"
+  },
+  "cta": {
+    "title": "准备开启冒险了吗？",
+    "description": "立即预订滑翔伞体验，留下终生难忘的回忆",
+    "readyToFly": {
+      "title": "准备起飞？",
+      "description": "马上预订您的滑翔伞冒险，体验飞翔的刺激"
+    }
+  },
+  "preNoticeSection": {
+    "safetyRequirements": {
+      "title": "安全要求",
+      "minAge": "最低年龄：5 岁（未成年人需监护人同意）",
+      "weightRange": "体重范围：< 100 公斤",
+      "goodHealth": "身心健康状况良好",
+      "noPregnant": "孕妇不可参加",
+      "notRecommended": "不建议心脏病、背部问题或恐高者参加"
+    }
+  },
+  "footer": {
+    "contact": "联系我们",
+    "email": "邮箱",
+    "phone": "电话",
+    "address": "地址",
+    "followUs": "关注我们",
+    "quickLinks": "快速链接",
+    "copyright": "由越南国防部总参谋部作战部门许可飞行。滑翔伞经营许可证号：02/GCN-SVHTT，由老街省文化、体育与旅游厅颁发"
+  },
+  "validation": {
+    "required": "此字段为必填项",
+    "email": "请输入有效的邮箱地址",
+    "phone": "请输入有效的电话号码",
+    "minLength": "最少 {min} 个字符",
+    "maxLength": "最多 {max} 个字符"
+  },
+  "posts": {
+    "latestPosts": "最新文章",
+    "latestPostsDescription": "探索关于沙巴滑翔伞的最新故事、技巧与指南",
+    "readMore": "阅读更多",
+    "relatedPosts": "相关文章",
+    "notFound": "未找到文章"
+  },
+  "admin": {
+    "login": {
+      "title": "管理员登录",
+      "subtitle": "管理文章与内容",
+      "username": "用户名",
+      "usernamePlaceholder": "请输入用户名",
+      "password": "密码",
+      "passwordPlaceholder": "请输入密码",
+      "submit": "登录",
+      "loading": "加载中...",
+      "demo": "演示账号："
+    },
+    "dashboard": {
+      "title": "管理后台",
+      "welcome": "欢迎",
+      "logout": "退出登录",
+      "managePosts": "管理文章",
+      "addPost": "新增文章",
+      "editPost": "编辑文章",
+      "published": "已发布",
+      "draft": "草稿",
+      "publish": "发布",
+      "unpublish": "取消发布",
+      "edit": "编辑",
+      "delete": "删除",
+      "table": {
+        "title": "标题",
+        "category": "分类",
+        "date": "日期",
+        "status": "状态",
+        "actions": "操作"
+      },
+      "form": {
+        "titleEn": "标题（英文）",
+        "titleVi": "标题（越南语）",
+        "excerptEn": "摘要（英文）",
+        "excerptVi": "摘要（越南语）",
+        "contentEn": "内容（英文）",
+        "contentVi": "内容（越南语）",
+        "image": "图片链接",
+        "category": "分类",
+        "author": "作者",
+        "published": "立即发布"
+      }
+    }
+  },
+  "homePage": {
+    "heroBadge": "精彩滑翔伞体验",
+    "statsPilots": "飞行员",
+    "statsFlights": "飞行次数",
+    "statsSafety": "安全",
+    "pricingHeading": "服务价格",
+    "newBadge": "最新",
+    "contactBadge": "联系",
+    "contactTitle": "联系信息",
+    "contactSubtitle": "通过以下渠道与我们联系",
+    "zaloDesc": "在线聊天",
+    "zaloBtn": "发消息",
+    "facebookDesc": "官方粉丝页",
+    "followBtn": "关注",
+    "tiktokDesc": "飞行视频",
+    "youtubeDesc": "官方频道",
+    "subscribeBtn": "订阅",
+    "instagramDesc": "每日美照",
+    "address": "地址",
+    "flightHours": "飞行时间",
+    "weatherDependent": "（视天气而定）",
+    "ctaTitle": "准备好冒险了吗？",
+    "ctaSubtitle": "立即预订滑翔伞体验，留下终生难忘的回忆"
+  },
+  "pilotPage": {
+    "professionalTeam": "专业团队",
+    "meetTheTeam": "认识团队",
+    "professionalPilots": "专业飞行员",
+    "readyToExperience": "准备好体验了吗？",
+    "ctaDescription": "立即预订飞行，与我们的专业飞行员团队一起享受精彩的滑翔伞体验",
+    "bookNow": "立即预订",
+    "nickname": "昵称：",
+    "flyWithMe": "与我一起飞",
+    "aboutMe": "关于我",
+    "experienceAchievements": "经验与成就",
+    "personality": "个性",
+    "photoGallery": "照片库",
+    "photos": "张照片",
+    "photoLabel": "照片",
+    "memorableMoments": "与{name}飞行的难忘瞬间",
+    "exploreOtherPilots": "探索其他飞行员",
+    "prev": "上一位",
+    "next": "下一位",
+    "notFound": "未找到飞行员",
+    "notFoundDesc": "您查找的飞行员不存在或已被删除。",
+    "backToList": "返回列表"
+  },
+  "footerContact": {
+    "titleVi": "Hotline / WhatsApp / Zalo（24小时服务）",
+    "customerService": "客服专员",
+    "bookingNote": "（预订飞行）",
+    "chiefPilot": "首席飞行员",
+    "flightCoordinator": "飞行调度员"
+  },
+  "postPage": {
+    "all": "全部",
+    "newest": "最新",
+    "oldest": "最早",
+    "loading": "加载中...",
+    "readMore": "阅读全文",
+    "noPosts": "没有文章",
+    "noPostsDesc": "请尝试调整筛选条件或稍后再来查看新文章。",
+    "clearFilters": "清除筛选",
+    "relatedPosts": "相关文章",
+    "latestPosts": "最新文章",
+    "viewAll": "查看全部",
+    "gallery": "照片库"
+  }
+}

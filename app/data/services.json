@@ -5,8 +5,11 @@
     "nameVi": "Chuyến Bay Khám Phá",
     "nameFr": "Vol Découverte",
     "nameRu": "Ознакомительный Полет",
+    "nameZh": "探索飞行",
     "description": "Perfect for first-time flyers. Experience the thrill of paragliding with a short 15-20 minute flight over Sapa's stunning landscapes.",
+    "descriptionZh": "非常适合首次体验者。通过 15–20 分钟的短程飞行，俯瞰沙巴壮丽景观，感受滑翔伞的刺激。",
     "duration": "15-20 minutes",
+    "durationZh": "15–20 分钟",
     "price": 1200000,
     "priceUSD": 50,
     "features": [
@@ -16,7 +19,15 @@
       "Professional pilot guidance",
       "Basic photo service"
     ],
+    "featuresZh": [
+      "安全讲解与装备检查",
+      "飞行时长 15–20 分钟",
+      "沙巴山谷绝美景观",
+      "专业飞行员全程指导",
+      "基础拍照服务"
+    ],
     "suitable": "Beginners, families, anyone wanting to try paragliding",
+    "suitableZh": "新手、家庭、想尝试滑翔伞的所有人",
     "minWeight": 20,
     "maxWeight": 110,
     "image": "discovery-flight.jpg"
@@ -27,8 +38,11 @@
     "nameVi": "Chuyến Bay Mạo Hiểm",
     "nameFr": "Vol Aventure",
     "nameRu": "Приключенческий Полет",
+    "nameZh": "冒险飞行",
     "description": "Extended flight time with optional acrobatic maneuvers for thrill-seekers. Feel the adrenaline rush!",
+    "descriptionZh": "更长飞行时间，并可选择特技动作，适合追求刺激的你。感受肾上腺素飙升！",
     "duration": "25-30 minutes",
+    "durationZh": "25–30 分钟",
     "price": 1800000,
     "priceUSD": 75,
     "features": [
@@ -39,7 +53,16 @@
       "Photo and short video service",
       "Souvenir flight certificate"
     ],
+    "featuresZh": [
+      "全面安全讲解",
+      "飞行时长 25–30 分钟",
+      "可选特技动作",
+      "延长观景航线",
+      "照片与短视频服务",
+      "纪念飞行证书"
+    ],
     "suitable": "Adventure seekers, experienced flyers, thrill enthusiasts",
+    "suitableZh": "冒险爱好者、有经验的体验者、追求刺激的人",
     "minWeight": 30,
     "maxWeight": 110,
     "image": "adventure-flight.jpg"
@@ -50,8 +73,11 @@
     "nameVi": "Trải Nghiệm Cao Cấp",
     "nameFr": "Expérience Premium",
     "nameRu": "Премиум Опыт",
+    "nameZh": "尊享体验",
     "description": "The ultimate paragliding experience with longest flight time, professional photo/video package, and the best views of Sapa.",
+    "descriptionZh": "终极滑翔伞体验：最长飞行时间、专业照片/视频套餐，以及沙巴最震撼的观景视角。",
     "duration": "35-40 minutes",
+    "durationZh": "35–40 分钟",
     "price": 2500000,
     "priceUSD": 105,
     "features": [
@@ -65,7 +91,19 @@
       "Complimentary refreshments",
       "Priority booking and scheduling"
     ],
+    "featuresZh": [
+      "VIP 安全讲解与准备",
+      "飞行时长 35–40 分钟",
+      "全套特技体验（可选）",
+      "专业照片与视频套餐",
+      "GoPro 全程原始素材",
+      "配乐剪辑成片视频",
+      "尊享飞行证书",
+      "免费饮品点心",
+      "优先预订与排期"
+    ],
     "suitable": "Photography enthusiasts, special occasions, premium experience seekers",
+    "suitableZh": "摄影爱好者、纪念日/特殊场合、追求高端体验的人",
     "minWeight": 30,
     "maxWeight": 110,
     "image": "premium-flight.jpg"
@@ -74,17 +112,20 @@
     "group2": {
       "minPeople": 2,
       "discount": 0.05,
-      "description": "5% discount for 2 people"
+      "description": "5% discount for 2 people",
+      "descriptionZh": "2 人享 5% 折扣"
     },
     "group3": {
       "minPeople": 3,
-      "discount": 0.10,
-      "description": "10% discount for 3-4 people"
+      "discount": 0.1,
+      "description": "10% discount for 3-4 people",
+      "descriptionZh": "3–4 人享 10% 折扣"
     },
     "group5": {
       "minPeople": 5,
       "discount": 0.15,
-      "description": "15% discount for 5+ people"
+      "description": "15% discount for 5+ people",
+      "descriptionZh": "5 人及以上享 15% 折扣"
     }
   }
 }

@@ -91,7 +91,7 @@
                     </div>
                 </div>
 
-                <!-- Passengers List: Inline -->
+                <!-- Passengers List: Full Details -->
                 <div v-if="bookingData.passengers.length > 0" class="bg-white rounded p-3 border border-gray-100">
                     <div class="flex items-center justify-between mb-2">
                         <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide">
@@ -101,11 +101,35 @@
                             {{ bookingData.passengers.length }}
                         </span>
                     </div>
-                    <div class="flex flex-wrap gap-1.5">
+                    <div class="space-y-2">
                         <div v-for="(passenger, idx) in bookingData.passengers" :key="idx"
-                            class="bg-gray-50 rounded px-2 py-1 text-xs border border-gray-200">
-                            <span class="font-bold text-gray-500">{{ idx + 1 }}.</span>
-                            <span class="text-gray-900 ml-1">{{ passenger.fullName }}</span>
+                            class="bg-gray-50 rounded p-2 border border-gray-200">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="w-5 h-5 bg-red-600 text-white flex items-center justify-center text-[10px] font-bold rounded-full flex-shrink-0">{{ idx + 1 }}</span>
+                                <span class="font-semibold text-gray-900 text-xs">{{ passenger.fullName }}</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-gray-600 pl-7">
+                                <div>
+                                    <span class="font-medium">{{ $t('booking.step4Details.dateOfBirth') }}</span>
+                                    <span class="ml-1 text-gray-900">{{ passenger.dateOfBirth }}</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ $t('booking.step4Details.gender') }}</span>
+                                    <span class="ml-1 text-gray-900 capitalize">{{ passenger.gender }}</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ $t('booking.step4Details.idNumber') }}</span>
+                                    <span class="ml-1 text-gray-900">{{ passenger.passportOrId }}</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ $t('booking.step4Details.nationality') }}</span>
+                                    <span class="ml-1 text-gray-900">{{ passenger.nationality }}</span>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ $t('booking.step4Details.weight') }}</span>
+                                    <span class="ml-1 text-gray-900">{{ passenger.weight }}kg</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,6 +155,39 @@
                     <div class="text-right">
                         <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step5Details.total') }}</p>
                         <p class="text-lg font-bold text-white">{{ formatPrice(bookingData.totalPrice) }}</p>
+                    </div>
+                </div>
+
+                <!-- Pre-flight Information -->
+                <div class="bg-white rounded p-3 border border-gray-100">
+                    <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
+                        {{ $t('booking.ticket.preFlightInfo.title') }}
+                    </h3>
+                    <div class="space-y-1.5 text-xs text-gray-700">
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.launchLanding') }}</p>
+                        </div>
+                        <div class="flex items-start gap-1.5">
+                            <span class="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p>
+                        </div>
                     </div>
                 </div>
 
@@ -206,7 +263,7 @@ const downloadTicketImage = async () => {
 
         const link = document.createElement('a')
         link.href = canvas.toDataURL('image/png')
-        link.download = `booking-ticket-${bookingData.value.bookingId || 'draft'}.png`
+        link.download = `SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.png`
         link.click()
     } catch (error) {
         console.error('Error generating image:', error)
@@ -238,7 +295,7 @@ const downloadTicketPDF = async () => {
         const imgHeight = (canvas.height * imgWidth) / canvas.width
 
         pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
-        pdf.save(`booking-ticket-${bookingData.value.bookingId || 'draft'}.pdf`)
+        pdf.save(`SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.pdf`)
     } catch (error) {
         console.error('Error generating PDF:', error)
         alert('Failed to download ticket PDF')

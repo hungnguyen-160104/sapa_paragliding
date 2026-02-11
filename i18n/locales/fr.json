@@ -187,7 +187,16 @@
       "validationDate": "Date d'Émission",
       "footer": "Ce billet est valide lorsqu'il est confirmé par Sapa Paragliding. Veuillez conserver ce billet pour votre vol.",
       "downloadPDF": "Télécharger PDF",
-      "downloadImage": "Télécharger l'Image"
+      "downloadImage": "Télécharger l'Image",
+      "preFlightInfo": {
+        "title": "INFORMATIONS AVANT LE VOL",
+        "pickup": "Après la réservation, nous vous contacterons pour organiser le programme de vol, y compris l'heure et le lieu de prise en charge. Le point de prise en charge se trouve au centre-ville de Sa Pa ou à votre hôtel selon la confirmation de la réservation.",
+        "clothing": "Tenue suggérée : Vêtements confortables, coupe-vent, protection solaire, baskets (ne portez pas de talons hauts)",
+        "storage": "Assurez-vous que votre téléphone dispose d'au moins 4 Go d'espace libre pour sauvegarder les photos et vidéos après le vol",
+        "belongings": "Vous pouvez emporter un petit sac personnel (1–2 kg) contenant les essentiels comme téléphone, clés et pièce d'identité",
+        "launchLanding": "Les sites de décollage et d'atterrissage seront confirmés lors de la confirmation de la réservation, en fonction des conditions météorologiques et de la direction du vent du jour.",
+        "transport": "Les indications détaillées pour se rendre au site de décollage ou d'atterrissage seront fournies. Les frais de transport (le cas échéant) seront communiqués à l'avance."
+      }
     },
     "fields": {
       "fullName": "Nom Complet",
@@ -903,5 +912,76 @@
         "published": "Publier immédiatement"
       }
     }
+  },
+  "homePage": {
+    "contactTitle": "Contactez-nous",
+    "contactDesc": "Prêt pour votre aventure en parapente ? Contactez-nous dès maintenant !",
+    "hotlineTitle": "Hotline / Zalo",
+    "hotlineSubtitle": "Appelez ou envoyez un message pour réserver",
+    "emailTitle": "Email",
+    "emailSubtitle": "Envoyez-nous un email, nous répondrons sous 24h",
+    "locationTitle": "Adresse",
+    "locationSubtitle": "Venez nous rendre visite",
+    "address": "Hamlet 8, commune de Lao Chải, Sapa, Lao Cai, Vietnam",
+    "socialTitle": "Médias Sociaux",
+    "socialSubtitle": "Suivez-nous sur les réseaux sociaux",
+    "statsPilots": "Pilotes",
+    "statsFlights": "Vols",
+    "statsSafety": "Sécurité",
+    "ctaTitle": "Prêt pour l'Aventure ?",
+    "ctaSubtitle": "Réservez votre expérience de parapente dès aujourd'hui et créez des souvenirs inoubliables",
+    "ctaBookNow": "Réserver Maintenant",
+    "contactName1": "Judy",
+    "contactName2": "Linh Lee",
+    "contactRole": "Service Client",
+    "contactNote": "(Réservation de vol)",
+    "blogSectionTitle": "Dernières Nouvelles",
+    "blogSectionSubtitle": "Découvrez les dernières nouvelles et histoires",
+    "blogReadMore": "Lire l'article",
+    "blogViewAll": "Voir tout"
+  },
+  "pilotPage": {
+    "professionalTeam": "Équipe Professionnelle",
+    "meetTheTeam": "Rencontrez l'Équipe",
+    "professionalPilots": "pilotes professionnels",
+    "readyToExperience": "Prêt pour l'Aventure ?",
+    "ctaDescription": "Réservez votre vol aujourd'hui et profitez d'une expérience de parapente incroyable avec notre équipe de pilotes professionnels",
+    "bookNow": "Réserver maintenant",
+    "nickname": "Surnom : ",
+    "flyWithMe": "Voler avec moi",
+    "aboutMe": "À Propos de Moi",
+    "experienceAchievements": "Expérience & Réalisations",
+    "personality": "Personnalité",
+    "photoGallery": "Galerie Photos",
+    "photos": "photos",
+    "photoLabel": "Photo",
+    "memorableMoments": "Moments mémorables des vols avec ",
+    "exploreOtherPilots": "Découvrir d'Autres Pilotes",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "notFound": "Pilote Non Trouvé",
+    "notFoundDesc": "Le pilote que vous recherchez n'existe pas ou a été supprimé.",
+    "backToList": "Retour à la liste"
+  },
+  "footerContact": {
+    "titleVi": "Hotline / WhatsApp / Zalo (Disponible 24/7)",
+    "customerService": "Service Client",
+    "bookingNote": "(Réservations de parapente)",
+    "chiefPilot": "Pilote en Chef",
+    "flightCoordinator": "Coordinateur de Vol"
+  },
+  "postPage": {
+    "all": "Tous",
+    "newest": "Plus Récents",
+    "oldest": "Plus Anciens",
+    "loading": "Chargement...",
+    "readMore": "Lire l'article",
+    "noPosts": "Aucun article trouvé",
+    "noPostsDesc": "Essayez d'ajuster vos filtres ou revenez plus tard pour voir de nouveaux articles.",
+    "clearFilters": "Effacer les filtres",
+    "relatedPosts": "Articles Connexes",
+    "latestPosts": "Derniers Articles",
+    "viewAll": "Voir tout",
+    "gallery": "Galerie Photos"
   }
 }

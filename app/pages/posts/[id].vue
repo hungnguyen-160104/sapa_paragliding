@@ -144,7 +144,7 @@
         
         <!-- Gallery Section -->
         <section v-if="postGallery && postGallery.length > 0" class="max-w-5xl mx-auto mt-16">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">📷 Thư viện ảnh</h2>
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">📷 {{ $t('postPage.gallery') }}</h2>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div 
               v-for="(image, idx) in postGallery" 
@@ -170,11 +170,11 @@
         <section v-if="relatedPosts.length > 0" class="max-w-5xl mx-auto">
           <div class="flex items-center justify-between mb-8">
             <h2 class="text-2xl font-bold text-gray-900 tracking-tight">
-              {{ currentLocale === 'vi' ? 'Bài viết liên quan' : 'Related Posts' }}
+              {{ $t('postPage.relatedPosts') }}
             </h2>
             <button @click="localizedNavigateTo('/posts')"
               class="text-sm font-semibold text-red-600 hover:text-red-700">
-              {{ currentLocale === 'vi' ? 'Xem tất cả' : 'View all' }} &rarr;
+              {{ $t('postPage.viewAll') }} &rarr;
             </button>
           </div>
 
@@ -204,11 +204,11 @@
         <section v-else-if="latestPosts.length > 0" class="max-w-5xl mx-auto">
           <div class="flex items-center justify-between mb-8">
             <h2 class="text-2xl font-bold text-gray-900 tracking-tight">
-              {{ currentLocale === 'vi' ? 'Bài viết mới nhất' : 'Latest Posts' }}
+              {{ $t('postPage.latestPosts') }}
             </h2>
             <button @click="localizedNavigateTo('/posts')"
               class="text-sm font-semibold text-red-600 hover:text-red-700">
-              {{ currentLocale === 'vi' ? 'Xem tất cả' : 'View all' }} &rarr;
+              {{ $t('postPage.viewAll') }} &rarr;
             </button>
           </div>
 

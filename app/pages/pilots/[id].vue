@@ -32,7 +32,7 @@
                             <!-- Subtitle -->
                             <div class="space-y-4 max-w-xl">
                                 <p class="text-lg text-slate-300">
-                                    {{ currentLocale === 'vi' ? `Biệt danh: ` : `Nickname: ` }}
+                                    {{ $t('pilotPage.nickname') }}
                                     <span class="font-bold text-red-300 italic">"{{ pilot.nickname }}"</span>
                                 </p>
                             </div>
@@ -41,7 +41,7 @@
                             <div class="pt-4">
                                 <button @click="localizedNavigateTo('/booking')"
                                     class="px-10 py-4 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 shadow-lg shadow-red-500/30">
-                                    {{ currentLocale === 'vi' ? 'Đặt bay cùng tôi' : 'Fly with me' }}
+                                    {{ $t('pilotPage.flyWithMe') }}
                                 </button>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                             <div class="flex items-center gap-4">
                                 <div class="h-1 w-12 bg-gradient-to-r from-red-400 to-red-600 rounded-full"></div>
                                 <h2 class="text-3xl md:text-4xl font-black text-gray-900">
-                                    {{ currentLocale === 'vi' ? 'Về Tôi' : 'About Me' }}
+                                    {{ $t('pilotPage.aboutMe') }}
                                 </h2>
                             </div>
                             <p class="text-lg text-gray-700 leading-relaxed font-medium">
@@ -121,9 +121,7 @@
                             <div
                                 class="inline-block px-6 py-3 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border border-red-200">
                                 <p class="text-base text-gray-700">
-                                    <span class="font-semibold text-gray-900">{{ currentLocale === 'vi' ? 'Biệt danh: '
-                                        : 'Nickname: '
-                                    }}</span>
+                                    <span class="font-semibold text-gray-900">{{ $t('pilotPage.nickname') }}</span>
                                     <span class="italic text-red-700 font-medium">{{ pilot.nickname }}</span>
                                 </p>
                             </div>
@@ -138,8 +136,7 @@
                                         d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                                 </svg>
                                 <h2 class="text-3xl md:text-4xl font-black text-gray-900">
-                                    {{ currentLocale === 'vi' ? 'Kinh Nghiệm & Thành Tích' : 'Experience & Achievements'
-                                    }}
+                                    {{ $t('pilotPage.experienceAchievements') }}
                                 </h2>
                             </div>
                             <ul class="space-y-3">
@@ -161,7 +158,7 @@
                                             d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     <h2 class="text-3xl md:text-4xl font-black text-gray-900">
-                                        {{ currentLocale === 'vi' ? 'Cá Tính' : 'Personality' }}
+                                        {{ $t('pilotPage.personality') }}
                                     </h2>
                                 </div>
                                 <div class="space-y-4">
@@ -190,11 +187,9 @@
                                 </div>
                                 <div>
                                     <h2 class="text-3xl md:text-4xl font-black text-gray-900">
-                                        {{ currentLocale === 'vi' ? 'Thư Viện Ảnh' : 'Photo Gallery' }}
+                                        {{ $t('pilotPage.photoGallery') }}
                                     </h2>
-                                    <p class="text-slate-500 text-sm">{{ galleryImages.length }} {{ currentLocale ===
-                                        'vi' ? 'hình ảnh' :
-                                        'photos' }}</p>
+                                    <p class="text-slate-500 text-sm">{{ galleryImages.length }} {{ $t('pilotPage.photos') }}</p>
                                 </div>
                             </div>
 
@@ -230,9 +225,7 @@
                                     <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900/90 to-transparent transition-all duration-500"
                                         :class="hoveredGalleryImage === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
                                         <p class="text-white font-bold text-sm">{{ pilot.name }}</p>
-                                        <p class="text-slate-300 text-xs">{{ currentLocale === 'vi' ? `Ảnh ${index + 1}`
-                                            : `Photo ${index +
-                                            1}` }}</p>
+                                        <p class="text-slate-300 text-xs">{{ $t('pilotPage.photoLabel') }} {{ index + 1 }}</p>
                                     </div>
                                 </div>
 
@@ -248,10 +241,7 @@
                             <!-- Gallery description -->
                             <div class="text-center pt-8">
                                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                                    {{ currentLocale === 'vi'
-                                        ? 'Những khoảnh khắc đáng nhớ từ các chuyến bay cùng ' + pilot.name
-                                        : 'Memorable moments from flights with ' + pilot.name
-                                    }}
+                                    {{ $t('pilotPage.memorableMoments') }}{{ pilot.name }}
                                 </p>
                             </div>
                         </div>
@@ -259,7 +249,7 @@
                         <!-- Pilot Pagination Navigation -->
                         <div class="bg-white rounded-2xl p-6 md:p-8 border-2 border-gray-100 shadow-lg">
                             <h3 class="text-xl font-bold text-gray-900 mb-6 text-center">
-                                {{ currentLocale === 'vi' ? 'Khám phá các phi công khác' : 'Explore Other Pilots' }}
+                                {{ $t('pilotPage.exploreOtherPilots') }}
                             </h3>
 
                             <!-- Pagination Buttons -->
@@ -303,8 +293,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 19l-7-7 7-7" />
                                     </svg>
-                                    <span class="hidden sm:inline">{{ currentLocale === 'vi' ? 'Trước' : 'Prev'
-                                    }}</span>
+                                    <span class="hidden sm:inline">{{ $t('pilotPage.prev') }}</span>
                                 </button>
 
                                 <span class="text-gray-600 font-medium">
@@ -318,7 +307,7 @@
                                             ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                             : 'bg-white text-red-600 border-red-500 hover:bg-red-600 hover:text-white'
                                     ]">
-                                    <span class="hidden sm:inline">{{ currentLocale === 'vi' ? 'Tiếp' : 'Next' }}</span>
+                                    <span class="hidden sm:inline">{{ $t('pilotPage.next') }}</span>
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
@@ -340,15 +329,10 @@
                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <h2 class="text-4xl font-bold text-gray-900 mb-4">
-                {{
-                    currentLocale === 'vi' ? 'Không tìm thấy phi công' : 'Pilot Not Found' }}
+                {{ $t('pilotPage.notFound') }}
             </h2>
             <p class="text-lg text-gray-600 mb-8">
-                {{
-                    currentLocale === 'vi' ?
-                        'Phi công bạn tìm kiếm không tồn tại hoặc đã bị xóa.' :
-                        'The pilot you are looking for does not exist or has been removed.'
-                }}
+                {{ $t('pilotPage.notFoundDesc') }}
             </p>
             <button @click="localizedNavigateTo('/pilots')"
                 class="text-red-600 hover:text-red-700 font-semibold text-lg inline-flex items-center gap-2 transition-colors">
@@ -356,7 +340,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                {{ currentLocale === 'vi' ? 'Quay lại danh sách' : 'Back to Pilots' }}
+                {{ $t('pilotPage.backToList') }}
             </button>
         </div>
     </div>
@@ -529,7 +513,7 @@ const getGalleryPosition = (index: number): Record<string, string> => {
 
 // Hero background image
 const heroImage = computed(() => {
-    return `/images/G0035374.JPG`
+    return `/images/hinhnen123.jpg`
 })
 
 // Parse achievements from experience text

@@ -26,7 +26,7 @@
               ? 'bg-gray-900 text-white border-gray-900 shadow-sm'
               : 'bg-white text-gray-600 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
           ]">
-            {{ currentLocale === 'vi' ? 'Tất cả' : 'All' }}
+            {{ $t('postPage.all') }}
           </button>
 
           <button v-for="category in categories" :key="category" @click="selectedCategory = category" :class="[
@@ -43,8 +43,8 @@
         <div class="relative w-full lg:w-auto">
           <select v-model="sortBy"
             class="w-full lg:w-48 appearance-none pl-4 pr-10 py-2.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 shadow-sm hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all cursor-pointer">
-            <option value="newest">{{ currentLocale === 'vi' ? 'Mới nhất' : 'Newest' }}</option>
-            <option value="oldest">{{ currentLocale === 'vi' ? 'Cũ nhất' : 'Oldest' }}</option>
+            <option value="newest">{{ $t('postPage.newest') }}</option>
+            <option value="oldest">{{ $t('postPage.oldest') }}</option>
           </select>
           <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray-500">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,7 +57,7 @@
       <!-- Loading State -->
       <div v-if="isLoading" class="flex flex-col items-center justify-center py-20">
         <div class="animate-spin rounded-full h-10 w-10 border-2 border-gray-200 border-b-gray-900 mb-4"></div>
-        <p class="text-sm font-medium text-gray-500">{{ currentLocale === 'vi' ? 'Đang tải...' : 'Loading...' }}</p>
+        <p class="text-sm font-medium text-gray-500">{{ $t('postPage.loading') }}</p>
       </div>
 
       <!-- Posts Grid -->
@@ -102,7 +102,7 @@
             <!-- Footer -->
             <div
               class="flex items-center text-sm font-semibold text-gray-900 group-hover:text-red-600 transition-colors mt-auto">
-              <span>{{ currentLocale === 'vi' ? 'Đọc tiếp' : 'Read article' }}</span>
+              <span>{{ $t('postPage.readMore') }}</span>
               <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -122,16 +122,14 @@
           </svg>
         </div>
         <h3 class="text-lg font-medium text-gray-900 mb-1">
-          {{ currentLocale === 'vi' ? 'Không có bài viết' : 'No posts found' }}
+          {{ $t('postPage.noPosts') }}
         </h3>
         <p class="text-gray-500 max-w-sm mx-auto">
-          {{ currentLocale === 'vi'
-            ? 'Thử điều chỉnh bộ lọc hoặc quay lại sau để xem các bài viết mới.'
-            : 'Try adjusting your search or filters to find what you\'re looking for.' }}
+          {{ $t('postPage.noPostsDesc') }}
         </p>
         <button @click="selectedCategory = null" v-if="selectedCategory"
           class="mt-6 text-sm font-medium text-red-600 hover:text-red-700">
-          {{ currentLocale === 'vi' ? 'Xóa bộ lọc' : 'Clear filters' }}
+          {{ $t('postPage.clearFilters') }}
         </button>
       </div>
 

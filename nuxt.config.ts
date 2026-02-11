@@ -44,10 +44,11 @@ export default defineNuxtConfig({
             { code: 'vi', name: 'Tiếng Việt', iso: 'vi-VN', file: 'vi.json' },
             { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' },
             { code: 'fr', name: 'Français', iso: 'fr-FR', file: 'fr.json' },
-            { code: 'ru', name: 'Русский', iso: 'ru-RU', file: 'ru.json' }
+            { code: 'ru', name: 'Русский', iso: 'ru-RU', file: 'ru.json' },
+            { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' }
         ],
         defaultLocale: 'vi',
-        langDir: 'locales',
+        langDir: 'locales/',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',

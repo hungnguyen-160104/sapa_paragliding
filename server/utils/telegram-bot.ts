@@ -35,151 +35,114 @@ export class TelegramBot {
         this.bot = new TelegramBotAPI(botToken)
     }
 
-    /**
-     * Format booking message for customer
-     */
-    private formatCustomerMessage(booking: BookingData): string {
-        const discountPercent = Math.round(booking.discount * 100)
-        const priceFormatted = booking.totalPrice.toLocaleString('vi-VN')
-        const basePriceFormatted = booking.servicePrice.toLocaleString('vi-VN')
-        const selectedOptionsText = booking.selectedOptions.length > 0 
-            ? booking.selectedOptions.map((opt: string) => {
-                const optionMap: { [key: string]: string } = {
-                    'hotel-transfer': '🚐 Đón từ khách sạn',
-                    'drone': '🚁 Quay video bằng drone',
-                    'camera360': '📷 Máy ảnh 360°'
-                }
-                return optionMap[opt] || opt
-            }).join('\n') 
-            : 'Không có'
-
-        return `
-📋 <b>XÁC NHẬN ĐẶT CHỖ</b>
-
-🎫 <b>Mã Đặt Chỗ:</b> ${booking.bookingId}
-👤 <b>Tên:</b> ${booking.contactName}
-🆔 <b>ID Dịch vụ:</b> ${booking.serviceId}
-
-✈️ <b>CHI TIẾT DỊCH VỤ</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-📌 Dịch vụ: ${booking.serviceName}
-👥 Số hành khách: ${booking.numberOfPassengers}
-📅 Ngày: ${booking.preferredDate}
-🕐 Giờ: ${booking.preferredTime || 'Linh hoạt'}
-
-🎁 <b>DỊCH VỤ THÊM</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
+/**
+ * Format booking message for customer (ngắn gọn, đủ ý)
+ */
+private formatCustomerMessage(booking: BookingData): string {
+  const discountPercent = Math.round(booking.discount * 100)
+  const total = booking.totalPrice.toLocaleString('vi-VN')
+  const base = booking.servicePrice.toLocaleString('vi-VN')
+  const optionMap: Record<string, string> = {
+    'hotel-transfer': '🚐 Đón từ khách sạn',
+    'drone': '🚁 Quay video bằng drone',
+    'camera360': '📷 Máy ảnh 360°'
+  }
+  const selectedOptionsText =
+    booking.selectedOptions?.length
+      ? booking.selectedOptions.map(opt => optionMap[opt] || opt).join('\n')
+      : 'Không có'
+  return `
+✅ <b>XÁC NHẬN ĐẶT CHỖ</b>
+🎫 Mã: <b>${booking.bookingId}</b>
+👤 Tên: <b>${booking.contactName}</b>
+🆔 Dịch vụ ID: <b>${booking.serviceId}</b>
+✈️ <b>Dịch vụ</b>: ${booking.serviceName}
+👥 <b>Số khách</b>: ${booking.numberOfPassengers}
+📅 <b>Ngày</b>: ${booking.preferredDate}
+🕐 <b>Giờ</b>: ${booking.preferredTime || 'Linh hoạt'}
+🎁 <b>Dịch vụ thêm</b>:
 ${selectedOptionsText}
 
-📍 <b>ĐỊA ĐIỂM ĐÓN</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-${booking.pickupLocation || 'Không có'}
+📍 <b>Đón tại</b>: ${booking.pickupLocation || 'Không có'}
 
-💰 <b>GIÁ CẢ</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-Giá cơ bản: ${basePriceFormatted} VND
-Giảm giá: ${discountPercent}%
-<b>Tổng cộng: ${priceFormatted} VND</b>
+💰 <b>Giá</b>:
+• Cơ bản: ${base} VND
+• Giảm: ${discountPercent}%
+• <b>Tổng: ${total} VND</b>
 
-📞 <b>THÔNG TIN LIÊN HỆ</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-Email: ${booking.email}
-Điện thoại: ${booking.phone}
+📞 <b>Liên hệ</b>:
+• Email: ${booking.email}
+• SĐT: ${booking.phone}
 
-📝 <b>YÊU CẦU ĐẶC BIỆT</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-${booking.specialRequests || 'Không có'}
+📝 <b>Yêu cầu</b>: ${booking.specialRequests || 'Không có'}
 
-✅ <b>BƯỚC TIẾP THEO</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-1️⃣ Chúng tôi sẽ liên hệ trong 24 giờ
-2️⃣ Kiểm tra thời tiết 24 giờ trước chuyến bay
-3️⃣ Đến sớm 30 phút
-4️⃣ Thanh toán tại chỗ trước chuyến bay
+📌 <b>Tiếp theo</b>: Chúng tôi liên hệ trong 24h • Đến sớm 30’ • Thanh toán tại chỗ
+⚠️ <b>Lưu ý</b>: Giày kín • Đồ thoải mái • Trống 4GB bộ nhớ • Phụ thuộc thời tiết
 
-⚠️ <b>LƯU Ý</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-• Mặc quần áo thể thao thoải mái
-• Bắt buộc đi giày kín
-• Dung lượng điện thoại trống 4GB cho ảnh
-• Chuyến bay phụ thuộc vào thời tiết
+Cảm ơn bạn! 🪂
+  `.trim()
+}
 
-Cảm ơn bạn đã đặt chỗ tại Dù Lượn Sapa! 🪂
-    `.trim()
-    }
-
-    /**
-     * Format booking message for admin
-     */
-    private formatAdminMessage(booking: BookingData): string {
-        const discountPercent = Math.round(booking.discount * 100)
-        const priceFormatted = booking.totalPrice.toLocaleString('vi-VN')
-        const basePriceFormatted = booking.servicePrice.toLocaleString('vi-VN')
-        const selectedOptionsText = booking.selectedOptions.length > 0 
-            ? booking.selectedOptions.map((opt: string) => {
-                const optionMap: { [key: string]: string } = {
-                    'hotel-transfer': '🚐 Đón từ khách sạn',
-                    'drone': '🚁 Quay video bằng drone',
-                    'camera360': '📷 Máy ảnh 360°'
-                }
-                return optionMap[opt] || opt
-            }).join('\n') 
-            : 'Không có'
-
-        const passengerDetails = booking.passengers
-            .map((p, i) => `
-${i + 1}. ${p.fullName}
-   Ngày sinh: ${p.dateOfBirth} | Giới tính: ${p.gender}
-   Quốc tịch: ${p.nationality} | Cân nặng: ${p.weight}kg
-   ID: ${p.passportOrId}`)
-            .join('\n')
-
-        return `
-🔔 <b>ĐẶT CHỖ MỚI NHẬN ĐƯỢC</b>
-
-🎫 <b>Mã Đặt Chỗ:</b> ${booking.bookingId}
-🆔 <b>ID Dịch vụ:</b> ${booking.serviceId}
-⏰ <b>Thời gian:</b> ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}
-
-👤 <b>THÔNG TIN KHÁCH HÀNG</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-Tên: ${booking.contactName}
-Email: ${booking.email}
-Điện thoại: ${booking.phone}
-
-✈️ <b>CHI TIẾT DỊCH VỤ</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-Dịch vụ: ${booking.serviceName}
-Số hành khách: ${booking.numberOfPassengers}
-Ngày ưa thích: ${booking.preferredDate}
-Giờ ưa thích: ${booking.preferredTime || 'Linh hoạt'}
-
-🎁 <b>DỊCH VỤ THÊM</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-${selectedOptionsText}
-
-📍 <b>ĐỊA ĐIỂM ĐÓN</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-${booking.pickupLocation || 'Không có'}
-
-👥 <b>CHI TIẾT HÀNH KHÁCH</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
+/**
+ * Format booking message for admin (theo format mới)
+ */
+private formatAdminMessage(booking: BookingData): string {
+  const discountPercent = Math.round(booking.discount * 100)
+  const totalFormatted = (booking.totalPrice / 1000).toFixed(0) + 'k'
+  const baseFormatted = (booking.servicePrice / 1000).toFixed(0) + 'k'
+  const now = new Date().toLocaleString('vi-VN', { 
+    timeZone: 'Asia/Ho_Chi_Minh',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit', 
+    second: '2-digit',
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  })
+  // Check options
+  const hasDrone = booking.selectedOptions.includes('drone') ? 1 : 0
+  const hasCamera360 = booking.selectedOptions.includes('camera360') ? 1 : 0
+  const hasTransfer = booking.selectedOptions.includes('hotel-transfer') ? 1 : 0
+  // Passenger details
+  const passengerDetails = booking.passengers?.length
+    ? booking.passengers
+        .map((p, i) => 
+          `${i + 1}. ${p.fullName} | DOB: ${p.dateOfBirth} | ${p.gender} | ${p.nationality} | ${p.weight}kg | ID: ${p.passportOrId}`
+        )
+        .join('\n')
+    : 'Không có'
+  // Price calculation
+  const dronePrice = hasDrone ? '300k x 1' : '300k x 0'
+  const cam360Price = hasCamera360 ? '500k x 1' : '500k x 0'
+  const transferPrice = hasTransfer ? '100k x 1' : '100k x 0'
+  return `🔔 <b>NEW BOOKING:</b> ${booking.bookingId}
+🆔 ${booking.serviceId}	⏰ ${now}
+👤 <b>CONTACT</b>
+${booking.contactName}
+${booking.email}	${booking.phone}
+———
+Điểm bay: ${booking.serviceName}
+Số lượng: ${booking.numberOfPassengers}
+Ngày: ${booking.preferredDate}	${booking.preferredTime || 'Linh hoạt'}
+🚁 Flycam: ${hasDrone}
+Cam360: ${hasCamera360}
+📍ĐÓN: ${hasTransfer ? 'Có' : 'Không'}
+———
+👥 <b>Thông tin khách</b>
 ${passengerDetails}
-
-💰 <b>GIÁ CẢ</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-Giá cơ bản: ${basePriceFormatted} VND × ${booking.numberOfPassengers}
+———
+💰 <b>GIÁ</b>
+Giá bay: ${baseFormatted} × ${booking.numberOfPassengers}
+Đưa đón: 100k x ${hasTransfer ? booking.numberOfPassengers : 0}
+Flycam: ${dronePrice}
+Cam360: ${cam360Price}
 Giảm giá: ${discountPercent}%
-<b>Tổng cộng: ${priceFormatted} VND</b>
+———
+<b>Tổng: ${totalFormatted}</b>
+📝 <b>Note:</b> ${booking.specialRequests || 'Không'}`
+}
 
-📝 <b>YÊU CẦU ĐẶC BIỆT</b>
-━━━━━━━━━━━━━━━━━━━━━━━━
-${booking.specialRequests || 'Không có'}
-
-⚡ <b>CẦN HÀNH ĐỘNG</b>
-Liên hệ khách hàng trong 24 giờ để xác nhận!
-    `.trim()
-    }
 
     /**
      * Send booking information to customer
