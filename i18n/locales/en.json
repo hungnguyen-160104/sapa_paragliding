@@ -47,6 +47,7 @@
     "contactUs": "We will contact you shortly to confirm your flight details.",
     "scanQR": "Or scan QR code to chat with us:",
     "step1Details": {
+      "serviceName": "Sapa Paragliding",
       "numberOfPassengers": "Number of",
       "numberOfPeople": "Number of People",
       "people": "people",
@@ -485,7 +486,7 @@
           },
           "byCustomer": {
             "title": "Cancelled by Customer",
-            "desc": "Notify via email/hotline/Zalo/WhatsApp. 1+ day before: Free. Same day: 50% of booking value."
+            "desc": "Notify via email/hotline/Zalo/WhatsApp. 1+ day before: Free."
           },
           "reschedule": {
             "title": "Rescheduling",

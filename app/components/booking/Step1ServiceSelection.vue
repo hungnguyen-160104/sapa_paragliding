@@ -396,7 +396,7 @@ const decreasePassengers = () => {
 const handleNext = () => {
     bookingStore.setService(
         'paragliding-standard',
-        'Dù lượn Sapa',
+        t('booking.step1Details.serviceName'),
         basePrice
     )
     bookingStore.setNumberOfPassengers(numberOfPassengers.value)

@@ -47,6 +47,7 @@
     "contactUs": "Nous vous contacterons bientôt pour confirmer les détails de votre vol.",
     "scanQR": "Ou scannez le code QR pour discuter avec nous:",
     "step1Details": {
+      "serviceName": "Parapente Sapa",
       "numberOfPassengers": "Nombre de",
       "numberOfPeople": "Nombre de Personnes",
       "people": "personnes",
@@ -485,7 +486,7 @@
           },
           "byCustomer": {
             "title": "Annulé par le Client",
-            "desc": "Notification via email/hotline/Zalo/WhatsApp. 1+ jour avant : Gratuit. Même jour : 50% de la valeur de réservation."
+            "desc": "Notification via email/hotline/Zalo/WhatsApp. 1+ jour avant : Gratuit."
           },
           "reschedule": {
             "title": "Report",

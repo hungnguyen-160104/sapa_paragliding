@@ -185,12 +185,12 @@ useHead({
         <!-- Stats Row -->
         <div class="grid grid-cols-3 gap-6 mt-8 max-w-2xl mx-auto animate-fade-in-delay-2">
           <div class="text-center">
-            <p class="text-3xl font-black text-red-400">10+</p>
+            <p class="text-3xl font-black text-red-400">15+</p>
             <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ currentLocale === 'vi' ? 'Phi công' :
               'Pilots' }}</p>
           </div>
           <div class="text-center">
-            <p class="text-3xl font-black text-red-400">15K+</p>
+            <p class="text-3xl font-black text-red-400">50K+</p>
             <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ currentLocale === 'vi' ? 'Chuyến bay' :
               'Flights' }}</p>
           </div>

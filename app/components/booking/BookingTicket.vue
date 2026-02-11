@@ -45,7 +45,7 @@
                         <div class="space-y-1.5 text-sm">
                             <div class="flex justify-between">
                                 <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.service') }}</span>
-                                <span class="font-semibold text-gray-900 text-xs">{{ bookingData.serviceName }}</span>
+                                <span class="font-semibold text-gray-900 text-xs">{{ $t('booking.step1Details.serviceName') }}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.date') }}</span>
@@ -74,13 +74,13 @@
                             <div>
                                 <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.contactName')
                                 }}</p>
-                                <p class="font-semibold text-gray-900 text-xs truncate">{{ bookingData.contactName }}
+                                <p class="font-semibold text-gray-900 text-xs break-words">{{ bookingData.contactName }}
                                 </p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.email') }}
                                 </p>
-                                <p class="font-mono text-xs text-gray-900 truncate">{{ bookingData.email }}</p>
+                                <p class="font-mono text-xs text-gray-900 break-all">{{ bookingData.email }}</p>
                             </div>
                             <div>
                                 <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.phone') }}
@@ -112,7 +112,7 @@
 
                 <!-- Pricing: Compact Bar -->
                 <div class="bg-gray-900 text-white rounded p-3 flex items-center justify-between">
-                    <div class="flex items-center gap-4 text-xs">
+                    <div class="flex flex-wrap items-center gap-4 text-xs">
                         <div>
                             <span class="text-gray-400">{{ $t('booking.step1Details.flightPrice') }}:</span>
                             <span class="ml-1">{{ formatPrice(bookingData.servicePrice) }} × {{
@@ -122,6 +122,10 @@
                             <span>{{ $t('booking.step1Details.discount') }}:</span>
                             <span class="ml-1">-{{ formatPrice(bookingData.discount *
                                 bookingData.numberOfPassengers) }}</span>
+                        </div>
+                        <div v-if="optionalServicesTotal > 0" class="text-green-400">
+                            <span>{{ $t('booking.step1Details.optionalServicesTotal') }}:</span>
+                            <span class="ml-1">+{{ formatPrice(optionalServicesTotal) }}</span>
                         </div>
                     </div>
                     <div class="text-right">
@@ -166,6 +170,7 @@ import { useBookingStore } from '~/stores/booking'
 
 const bookingStore = useBookingStore()
 const bookingData = computed(() => bookingStore.bookingData)
+const optionalServicesTotal = computed(() => bookingStore.optionalServicesTotal)
 const ticketRef = ref<HTMLElement | null>(null)
 
 const companyName = 'SAPA PARAGLIDING'

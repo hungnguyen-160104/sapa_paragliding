@@ -28,7 +28,12 @@ export interface BookingData {
   preferredTime: string
   specialRequests: string
   pickupLocation: string // Địa điểm đón (if hotel-transfer selected)
-  telegramChatId?: string // Telegram Chat ID for bot notifications
+
+  /**
+   * OPTIONAL: chat id của KHÁCH (chỉ khi khách đã /start bot).
+   * Không dùng để gửi admin. Admin ID sẽ do server đọc từ .env.
+   */
+  telegramChatId?: string
 
   // Step 3: Passenger Details
   passengers: PassengerInfo[]
@@ -41,82 +46,57 @@ export interface BookingData {
   status: 'draft' | 'submitted' | 'confirmed' | 'completed'
 }
 
+function createEmptyPassenger(): PassengerInfo {
+  return {
+    fullName: '',
+    dateOfBirth: '',
+    gender: '',
+    nationality: '',
+    weight: 0,
+    passportOrId: ''
+  }
+}
+
+function createInitialBookingData(): BookingData {
+  return {
+    serviceId: '',
+    serviceName: '',
+    servicePrice: 0,
+    numberOfPassengers: 1,
+    totalPrice: 0,
+    discount: 0,
+    selectedOptions: [],
+    serviceQuantities: {
+      drone: 1,
+      camera360: 1
+    },
+
+    contactName: '',
+    email: '',
+    phone: '',
+    preferredDate: '',
+    preferredTime: '',
+    specialRequests: '',
+    pickupLocation: '',
+
+    // ✅ KHÔNG hardcode telegramChatId
+    telegramChatId: undefined,
+
+    passengers: [],
+    agreedToTerms: false,
+    status: 'draft'
+  }
+}
+
 export const useBookingStore = defineStore('booking', {
   state: (): { currentStep: number; bookingData: BookingData } => ({
     currentStep: 1,
-    bookingData: {
-      serviceId: '',
-      serviceName: '',
-      servicePrice: 0,
-      numberOfPassengers: 1,
-      totalPrice: 0,
-      discount: 0,
-      selectedOptions: [],
-      serviceQuantities: {
-        'drone': 1,
-        'camera360': 1
-      },
-      contactName: '',
-      email: '',
-      phone: '',
-      preferredDate: '',
-      preferredTime: '',
-      specialRequests: '',
-      pickupLocation: '',
-      telegramChatId: '5066728656', // Admin chat ID (hardcoded)
-      passengers: [],
-      agreedToTerms: false,
-      status: 'draft'
-    }
+    bookingData: createInitialBookingData()
   }),
 
   getters: {
-    // Calculate discount per person based on number of passengers (in VND)
+    // Discount per person (VND)
     calculatedDiscountPerPerson: (state): number => {
-      const passengers = state.bookingData.numberOfPassengers
-      if (passengers >= 6) return 150000 // -150k/người for 6+
-      if (passengers >= 4) return 100000 // -100k/người for 4-5
-      if (passengers >= 3) return 70000  // -70k/người for 3
-      if (passengers >= 2) return 50000  // -50k/người for 2
-      return 0
-    },
-
-    // Calculate optional services total
-    optionalServicesTotal: (state): number => {
-      let total = 0
-      const selectedOptions = state.bookingData.selectedOptions || []
-      const quantities = state.bookingData.serviceQuantities || { drone: 1, camera360: 1 }
-      const passengers = state.bookingData.numberOfPassengers
-
-      selectedOptions.forEach(optionId => {
-        if (optionId === 'hotel-transfer') {
-          total += 100000 * passengers // 100k/người
-        } else if (optionId === 'drone') {
-          total += 300000 * (quantities['drone'] || 1) // 300k/chuyến
-        } else if (optionId === 'camera360') {
-          total += 500000 * (quantities['camera360'] || 1) // 500k/chuyến
-        }
-      })
-
-      return total
-    },
-
-    // Calculate total discount amount
-    totalDiscountAmount(state): number {
-      const discountPerPerson = this.calculatedDiscountPerPerson
-      return discountPerPerson * state.bookingData.numberOfPassengers
-    },
-
-    // Calculate total price with discount and optional services
-    finalPrice(state): number {
-      const basePrice = state.bookingData.servicePrice * state.bookingData.numberOfPassengers
-      const discountAmount = this.totalDiscountAmount
-      const optionalTotal = this.optionalServicesTotal
-      return basePrice - discountAmount + optionalTotal
-    },
-
-    // Calculate discount rate (for display purposes)
-    calculatedDiscount: (state): number => {
       const passengers = state.bookingData.numberOfPassengers
       if (passengers >= 6) return 150000
       if (passengers >= 4) return 100000
@@ -125,11 +105,40 @@ export const useBookingStore = defineStore('booking', {
       return 0
     },
 
-    // Check if current step is valid
+    optionalServicesTotal: (state): number => {
+      let total = 0
+      const selectedOptions = state.bookingData.selectedOptions || []
+      const quantities = state.bookingData.serviceQuantities || { drone: 1, camera360: 1 }
+      const passengers = state.bookingData.numberOfPassengers
+
+      selectedOptions.forEach(optionId => {
+        if (optionId === 'hotel-transfer') {
+          total += 100000 * passengers
+        } else if (optionId === 'drone') {
+          total += 300000 * (quantities['drone'] || 1)
+        } else if (optionId === 'camera360') {
+          total += 500000 * (quantities['camera360'] || 1)
+        }
+      })
+
+      return total
+    },
+
+    totalDiscountAmount(): number {
+      return this.calculatedDiscountPerPerson * this.bookingData.numberOfPassengers
+    },
+
+    finalPrice(): number {
+      const basePrice = this.bookingData.servicePrice * this.bookingData.numberOfPassengers
+      return basePrice - this.totalDiscountAmount + this.optionalServicesTotal
+    },
+
+    // Validate steps
     isStepValid: (state): boolean => {
       switch (state.currentStep) {
         case 1:
           return !!state.bookingData.serviceId && state.bookingData.numberOfPassengers > 0
+
         case 2:
           return !!(
             state.bookingData.contactName &&
@@ -137,19 +146,28 @@ export const useBookingStore = defineStore('booking', {
             state.bookingData.phone &&
             state.bookingData.preferredDate
           )
+
         case 3:
-          return state.bookingData.passengers.length === state.bookingData.numberOfPassengers &&
+          return (
+            state.bookingData.passengers.length === state.bookingData.numberOfPassengers &&
             state.bookingData.passengers.every(p =>
-              p.fullName && p.dateOfBirth && p.gender && p.nationality && p.weight > 0 && p.passportOrId
+              p.fullName &&
+              p.dateOfBirth &&
+              p.gender &&
+              p.nationality &&
+              p.weight > 0 &&
+              p.passportOrId
             )
+          )
+
         case 4:
           return state.bookingData.agreedToTerms
+
         default:
           return false
       }
     },
 
-    // Get booking summary for confirmation
     bookingSummary: (state) => ({
       service: state.bookingData.serviceName || '',
       passengers: state.bookingData.numberOfPassengers || 0,
@@ -163,14 +181,14 @@ export const useBookingStore = defineStore('booking', {
       pricing: {
         basePrice: state.bookingData.servicePrice || 0,
         quantity: state.bookingData.numberOfPassengers || 0,
-        discount: state.bookingData.discount || 0,
+        discountPerPerson: state.bookingData.discount || 0,
         total: state.bookingData.totalPrice || 0
       }
     })
   },
 
   actions: {
-    // Set service selection (Step 1)
+    // Step 1
     setService(serviceId: string, serviceName: string, servicePrice: number) {
       this.bookingData.serviceId = serviceId
       this.bookingData.serviceName = serviceName
@@ -178,45 +196,36 @@ export const useBookingStore = defineStore('booking', {
       this.updatePricing()
     },
 
-    // Set number of passengers
     setNumberOfPassengers(count: number) {
-      this.bookingData.numberOfPassengers = count
+      const safeCount = Math.max(1, Math.floor(count || 1))
+      this.bookingData.numberOfPassengers = safeCount
+
+      // init passengers
+      this.bookingData.passengers = Array.from({ length: safeCount }, () => createEmptyPassenger())
+
       this.updatePricing()
-      // Initialize passenger array
-      this.bookingData.passengers = Array(count).fill(null).map(() => ({
-        fullName: '',
-        dateOfBirth: '',
-        gender: '',
-        nationality: '',
-        weight: 0,
-        passportOrId: ''
-      }))
     },
 
-    // Update pricing calculations
     updatePricing() {
       this.bookingData.discount = this.calculatedDiscountPerPerson
       this.bookingData.totalPrice = this.finalPrice
     },
 
-    // Set selected optional services
     setSelectedOptions(options: string[]) {
-      this.bookingData.selectedOptions = options
+      this.bookingData.selectedOptions = Array.isArray(options) ? options : []
       this.updatePricing()
     },
 
-    // Set service quantities (for drone and camera360)
     setServiceQuantities(quantities: Record<string, number>) {
-      this.bookingData.serviceQuantities = quantities
+      this.bookingData.serviceQuantities = quantities || { drone: 1, camera360: 1 }
       this.updatePricing()
     },
 
-    // Set pickup location (for hotel-transfer)
     setPickupLocation(location: string) {
       this.bookingData.pickupLocation = location
     },
 
-    // Set contact information (Step 2)
+    // Step 2
     setContactInfo(data: {
       contactName: string
       email: string
@@ -225,43 +234,44 @@ export const useBookingStore = defineStore('booking', {
       preferredTime: string
       specialRequests?: string
     }) {
-      Object.assign(this.bookingData, data)
+      Object.assign(this.bookingData, {
+        ...data,
+        specialRequests: data.specialRequests ?? this.bookingData.specialRequests
+      })
     },
 
-    // Set passenger information (Step 3)
+    // Step 3
     setPassengerInfo(index: number, passengerData: PassengerInfo) {
-      if (this.bookingData.passengers[index]) {
-        this.bookingData.passengers[index] = passengerData
-      }
+      if (index < 0 || index >= this.bookingData.passengers.length) return
+      this.bookingData.passengers[index] = passengerData
     },
 
-    // Set all passengers at once
     setAllPassengers(passengers: PassengerInfo[]) {
-      this.bookingData.passengers = passengers
+      this.bookingData.passengers = passengers || []
     },
 
-    // Agree to terms (Step 4)
+    // Step 4
     setTermsAgreement(agreed: boolean) {
       this.bookingData.agreedToTerms = agreed
     },
 
+    // OPTIONAL: nếu muốn lưu chat id của khách (không phải admin)
+    setTelegramChatId(chatId?: string) {
+      const v = (chatId || '').trim()
+      this.bookingData.telegramChatId = v ? v : undefined
+    },
+
     // Navigation
     nextStep() {
-      if (this.currentStep < 5 && this.isStepValid) {
-        this.currentStep++
-      }
+      if (this.currentStep < 5 && this.isStepValid) this.currentStep++
     },
 
     previousStep() {
-      if (this.currentStep > 1) {
-        this.currentStep--
-      }
+      if (this.currentStep > 1) this.currentStep--
     },
 
     goToStep(step: number) {
-      if (step >= 1 && step <= 5) {
-        this.currentStep = step
-      }
+      if (step >= 1 && step <= 5) this.currentStep = step
     },
 
     // Submit booking
@@ -269,35 +279,38 @@ export const useBookingStore = defineStore('booking', {
       try {
         this.bookingData.status = 'submitted'
 
-        // Send booking data to API
-        const response = await $fetch('/api/send-booking', {
+        const response: any = await $fetch('/api/send-booking', {
           method: 'POST',
           body: this.bookingData
         })
 
-        if (response.success) {
-          if ('bookingId' in response && response.bookingId) {
-            this.bookingData.bookingId = response.bookingId
-          }
-          this.bookingData.status = 'confirmed'
-          this.currentStep = 5
-
-          // Send booking to Telegram bot (always send to admin)
-          try {
-            await $fetch('/api/send-booking-telegram', {
-              method: 'POST',
-              body: this.bookingData
-            })
-            console.log('✅ Booking notification sent to Telegram bot')
-          } catch (telegramError) {
-            console.warn('⚠️  Failed to send Telegram notification:', telegramError)
-            // Don't fail the booking if Telegram fails
-          }
-
-          return { success: true, bookingId: this.bookingData.bookingId || '' }
+        if (!response?.success) {
+          this.bookingData.status = 'draft'
+          return { success: false, error: 'Booking submission failed' }
         }
 
-        return { success: false, error: 'Booking submission failed' }
+        const bookingId = response.bookingId || ''
+        if (bookingId) this.bookingData.bookingId = bookingId
+        this.bookingData.status = 'confirmed'
+        this.currentStep = 5
+
+        // ✅ Gửi Telegram: KHÔNG gửi adminChatId từ client.
+        // Server sẽ đọc TELEGRAM_ADMIN_CHAT_ID trong .env và gửi cho nhiều người.
+        try {
+          // Tạo plain object từ reactive proxy để $fetch serialize đúng
+          const telegramPayload = JSON.parse(JSON.stringify(this.bookingData))
+          telegramPayload.bookingId = bookingId
+
+          await $fetch('/api/send-booking-telegram', {
+            method: 'POST',
+            body: telegramPayload
+          })
+          console.log('✅ Booking notification requested (server will fan-out to admins)')
+        } catch (telegramError) {
+          console.warn('⚠️ Failed to send Telegram notification:', telegramError)
+        }
+
+        return { success: true, bookingId: this.bookingData.bookingId || '' }
       } catch (error) {
         console.error('Booking error:', error)
         this.bookingData.status = 'draft'
@@ -305,38 +318,9 @@ export const useBookingStore = defineStore('booking', {
       }
     },
 
-    // Reset booking
     resetBooking() {
       this.currentStep = 1
-      this.bookingData = {
-        serviceId: '',
-        serviceName: '',
-        servicePrice: 0,
-        numberOfPassengers: 1,
-        totalPrice: 0,
-        discount: 0,
-        selectedOptions: [],
-        serviceQuantities: {
-          'drone': 1,
-          'camera360': 1
-        },
-        contactName: '',
-        email: '',
-        phone: '',
-        preferredDate: '',
-        preferredTime: '',
-        specialRequests: '',
-        pickupLocation: '',
-        telegramChatId: '5066728656', // Admin chat ID (hardcoded)
-        passengers: [],
-        agreedToTerms: false,
-        status: 'draft'
-      }
-    },
-
-    // Set Telegram Chat ID
-    setTelegramChatId(chatId: string) {
-      this.bookingData.telegramChatId = chatId
+      this.bookingData = createInitialBookingData()
     }
   }
 })

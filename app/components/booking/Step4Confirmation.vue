@@ -18,7 +18,7 @@
                     <div class="grid grid-cols-2 gap-3 text-sm">
                         <div>
                             <p class="text-gray-500 text-xs">{{ $t('booking.step4Details.service') }}</p>
-                            <p class="font-semibold text-gray-900">{{ bookingData.serviceName }}</p>
+                            <p class="font-semibold text-gray-900">{{ $t('booking.step1Details.serviceName') }}</p>
                         </div>
                         <div>
                             <p class="text-gray-500 text-xs">{{ $t('booking.step4Details.passengers') }}</p>

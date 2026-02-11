@@ -65,7 +65,7 @@ export class BookingService {
       })
       
       // Step 2: Generate unique booking ID
-      const bookingId = this.generateBookingId(data.phone)
+      const bookingId = this.generateBookingId(data.phone, data.preferredDate)
       
       // Step 3: Calculate pricing
       const totalPrice = this.calculateTotalPrice(data)
@@ -317,14 +317,19 @@ export class BookingService {
   // PRIVATE HELPERS
   // ==========================================
   
-  private generateBookingId(phone: string): string {
-    const now = new Date()
-    const datePart = now.toISOString().split('T')[0]?.replace(/-/g, '').slice(2) ?? '' // YYMMDD
-    const phoneDigits = phone.replace(/\D/g, '').slice(-4)
-    const timestamp = Date.now().toString(36).toUpperCase() // Unique timestamp in base36
-    const random = Math.random().toString(36).substring(2, 5).toUpperCase()
+  private generateBookingId(phone: string, flightDate: string): string {
+    // Parse flight date to get day and month
+    const date = new Date(flightDate)
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0')
     
-    return `BK${datePart}${phoneDigits}${timestamp}${random}`
+    // Parse phone to extract country code and phone number
+    // Phone format: "+84 973783789" or "+84973783789"
+    const phoneClean = phone.replace(/\s+/g, '') // Remove spaces
+    const phoneDigits = phoneClean.replace(/\D/g, '') // Get only digits (includes country code)
+    
+    // Format: DDMM + countryCode + phoneNumber (all digits)
+    return `${day}${month}${phoneDigits}`
   }
   
   private calculateTotalPrice(data: CreateBookingDTO): number {

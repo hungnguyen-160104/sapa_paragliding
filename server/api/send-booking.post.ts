@@ -13,13 +13,12 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event)
 
-    // Generate booking ID: DDMM.SDT (flight date + phone number)
-    // Example: 0802.0386887489 = ngày 08/02, SDT 0386887489
-    const now = new Date()
-    const phone = body.phone ? body.phone.replace(/\D/g, '') : '0000000000' // Remove non-digits
-    const phoneForId = phone.slice(-10).padStart(10, '0') // Last 10 digits
+    // Generate booking ID: DDMM + countryCode + phone
+    // Example: 021284973783789 = ngày 02, tháng 12, mã quốc gia +84, SDT 973783789
+    const phone = body.phone ? body.phone.replace(/\s+/g, '').replace(/\D/g, '') : '' // Remove spaces and non-digits
     
     // Use flight date if available, otherwise use current date
+    const now = new Date()
     let flightDateForId = now
     if (body.preferredDate) {
       const parsed = new Date(body.preferredDate)
@@ -29,10 +28,7 @@ export default defineEventHandler(async (event) => {
     }
     const dd = String(flightDateForId.getDate()).padStart(2, '0')
     const mm = String(flightDateForId.getMonth() + 1).padStart(2, '0')
-    const yy = String(flightDateForId.getFullYear()).slice(-2)
-    const timestamp = Date.now().toString(36).toUpperCase()
-    const random = Math.random().toString(36).substring(2, 5).toUpperCase()
-    const bookingId = `BK${yy}${mm}${dd}${phoneForId.slice(-4)}${timestamp}${random}`
+    const bookingId = `${dd}${mm}${phone}`
 
     const passengers = Array.isArray(body.passengers) ? body.passengers : []
     const numberOfPassengers = Number(body.numberOfPassengers || passengers.length || 1)

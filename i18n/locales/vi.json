@@ -47,6 +47,7 @@
     "contactUs": "Chúng tôi sẽ liên hệ với bạn sớm để xác nhận chi tiết chuyến bay.",
     "scanQR": "Hoặc quét mã QR để chat với chúng tôi:",
     "step1Details": {
+      "serviceName": "Dù lượn Sapa",
       "numberOfPassengers": "Số lượng",
       "numberOfPeople": "Số người",
       "people": "người",
@@ -483,7 +484,7 @@
           },
           "byCustomer": {
             "title": "Huỷ bay do khách hàng",
-            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp. Trước 1 ngày: Miễn phí. Trong ngày bay: Phí 50% giá trị đặt vé."
+            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp. Trước 1 ngày: Miễn phí."
           },
           "reschedule": {
             "title": "Đổi lịch bay",

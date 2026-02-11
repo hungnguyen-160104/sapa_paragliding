@@ -2,11 +2,17 @@ import { TelegramBot } from '../utils/telegram-bot'
 
 export default defineEventHandler(async (event) => {
   try {
-    const body = await readBody(event)
+    const rawBody = await readBody(event)
     const config = useRuntimeConfig()
+
+    // Hỗ trợ cả { booking: {...} } và {...} format
+    const body = rawBody.booking || rawBody
+
+    console.log('[Telegram] Received fields:', Object.keys(body).join(', '))
 
     // Validate required fields
     if (!body.bookingId || !body.contactName || !body.email) {
+      console.error('[Telegram] Missing fields - bookingId:', !!body.bookingId, ', contactName:', !!body.contactName, ', email:', !!body.email)
       throw createError({
         statusCode: 400,
         statusMessage: 'Missing required booking fields'
@@ -26,7 +32,7 @@ export default defineEventHandler(async (event) => {
 
     // Get chat IDs from config
     const customerChatId = body.telegramChatId // Customer's Telegram chat ID
-    const adminChatId = config.telegramAdminChatId // Admin's Telegram chat ID
+    const adminChatIds = config.telegramAdminChatId // Admin's Telegram chat IDs (comma-separated)
 
     // Send to customer if chat ID provided
     if (customerChatId) {
@@ -38,13 +44,17 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    // Send to admin
-    if (adminChatId) {
-      try {
-        await telegramBot.sendBookingToAdmin(adminChatId, body)
-        console.log(`Booking notification sent to admin: ${adminChatId}`)
-      } catch (error) {
-        console.error('Failed to send admin notification:', error)
+    // Send to all admins (supports multiple chat IDs separated by comma)
+    if (adminChatIds) {
+      const chatIdList = adminChatIds.split(',').map((id: string) => id.trim()).filter((id: string) => id)
+      
+      for (const chatId of chatIdList) {
+        try {
+          await telegramBot.sendBookingToAdmin(chatId, body)
+          console.log(`Booking notification sent to admin: ${chatId}`)
+        } catch (error) {
+          console.error(`Failed to send admin notification to ${chatId}:`, error)
+        }
       }
     }
 
