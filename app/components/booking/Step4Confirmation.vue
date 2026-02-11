@@ -253,7 +253,7 @@
                     class="w-4 h-4 mt-0.5 text-red-600 border-gray-300 focus:ring-red-500 flex-shrink-0" />
                 <label for="terms" class="text-xs text-gray-700 leading-relaxed">
                     {{ $t('booking.terms.agree') }}
-                    <a href="/Mien tru trach nhiem bay doi 2025 Sapa.pdf" target="_blank" rel="noopener noreferrer"
+                    <a href="/dieukhoan1.pdf" target="_blank" rel="noopener noreferrer"
                         class="text-red-600 hover:underline font-semibold">{{ $t('booking.terms.termsAndConditions')
                         }}</a>
                 </label>

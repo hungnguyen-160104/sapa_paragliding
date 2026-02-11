@@ -513,7 +513,7 @@ const getGalleryPosition = (index: number): Record<string, string> => {
 
 // Hero background image
 const heroImage = computed(() => {
-    return `/images/hinhnen123.jpg`
+    return `/images/hinhnen9.jpg`
 })
 
 // Parse achievements from experience text
