@@ -250,6 +250,33 @@
   </div>
 </div>
 
+<!-- Take-off / Landing (Google Maps links) -->
+<div class="flex flex-col md:flex-row gap-3 text-sm">
+  <!-- Take-off -->
+  <a
+    :href="TAKEOFF_MAP_URL"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 text-red-600 hover:underline"
+  >
+    <span class="text-base">↑</span>
+    <span>{{ $t('booking.step1Details.takeoffPoint') }}</span>
+    <span class="text-red-600 font-medium">{{ $t('booking.step1Details.viewMap') }}</span>
+  </a>
+
+  <!-- Landing -->
+  <a
+    :href="LANDING_MAP_URL"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="flex items-center gap-2 text-blue-600 hover:underline"
+  >
+    <span class="text-base">↓</span>
+    <span>{{ $t('booking.step1Details.landingPoint') }}</span>
+    <span class="text-blue-600 font-medium">{{ $t('booking.step1Details.viewMap') }}</span>
+  </a>
+</div>
+
 
     <div class="flex justify-end pt-2">
       <button @click="handleNext" class="btn-primary text-lg px-10 py-3">
@@ -272,6 +299,12 @@ interface OptionalService {
 }
 
 const bookingStore = useBookingStore()
+const TAKEOFF_MAP_URL =
+  'https://www.google.com/maps/place/Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa/@22.3181984,103.8707308,2077m/data=!3m1!1e3!4m6!3m5!1s0x36cd476f881a83e9:0x34a10d4a5bf8d07c!8m2!3d22.3219262!4d103.8766636!16s%2Fg%2F11x2s56ydh?entry=tts&g_ep=EgoyMDI1MTAxNC4wIPu8ASoASAFQAw%3D%3D&skid=2f9cabdf-4e8d-4a0a-8b97-c3a642e61296'
+
+const LANDING_MAP_URL =
+  'https://www.google.com/maps/place/22%C2%B018%2732.9%22N+103%C2%B052%2731.4%22E/@22.309141,103.8747553,226m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d22.309141!4d103.875399?entry=tts&g_ep=EgoyMDI1MTAxNC4wIPu8ASoASAFQAw%3D%3D&skid=1b04510c-3443-445b-b429-d2fc6109b90a'
+
 
 const showIncluded = ref(false)
 const showPromos = ref(false)
