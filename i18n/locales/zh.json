@@ -50,6 +50,7 @@
       "serviceName": "Sapa 滑翔伞",
       "numberOfPassengers": "人数",
       "numberOfPeople": "人数",
+      "quantity": "数量",
       "people": "人",
       "estimatedTotal": "预计总价",
       "flightPrice": "飞行价格",
@@ -83,17 +84,20 @@
       },
       "optionalItems": {
         "hotelTransfer": {
-          "name": "接送范围：沙巴镇中心、Lao Chai 村、Ta Van 村。",
+          "name": "酒店往返接送（沙巴中心、Tả Van、Lao Chải）",
           "description": "（如需其他接送地点，我们将提前联系您协商并确认合适的附加费用。）"
         },
         "drone": {
-          "name": "使用专业航拍/无人机设备记录飞行",
-          "description": "您的飞行将由航拍记录，并将全部原始素材发送给您"
+          "title": "无人机(Flycam)全景山谷及飞行拍摄：",
+          "name": "无人机(Flycam)全景山谷及飞行拍摄",
+          "description": "所有原始素材将发送给您"
         },
         "camera360": {
-          "name": "使用 360° 相机记录飞行，捕捉全程旅程。",
+          "title": "Camera 360独特飞行旅程拍摄（含视频剪辑）：",
+          "name": "Camera 360独特飞行旅程拍摄（含视频剪辑）",
           "description": "视频将剪辑后发送给您。"
-        }
+        },
+        "gopro": "标准GoPro飞行拍摄：免费"
       },
       "promotions": {
         "group2": "2 人及以上团体",
@@ -184,7 +188,7 @@
       "basePrice": "基础价格",
       "discount": "折扣",
       "paymentInfo": "支付信息",
-      "paymentText": "费用将在现场飞行前支付。我们接受现金及主要信用卡。预订后将发送确认邮件。",
+      "paymentText": "费用将在起飞前于现场支付。我们接受现金及主要信用卡/借记卡。预订完成后，我们将通过您提供的 WhatsApp/Zalo 或电子邮箱与您联系以确认预订",
       "processing": "处理中..."
     },
     "step5Details": {

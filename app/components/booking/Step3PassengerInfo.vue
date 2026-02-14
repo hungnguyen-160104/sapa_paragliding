@@ -177,7 +177,7 @@ const isFormValid = computed(() => {
     p.gender !== '' &&
     p.nationality.trim() !== '' &&
     p.passportOrId.trim() !== '' &&
-    p.weight <= 100
+    p.weight > 0
   )
 })
 

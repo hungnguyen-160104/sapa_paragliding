@@ -45,7 +45,8 @@ export default defineNuxtConfig({
             { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' },
             { code: 'fr', name: 'Français', iso: 'fr-FR', file: 'fr.json' },
             { code: 'ru', name: 'Русский', iso: 'ru-RU', file: 'ru.json' },
-            { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' }
+            { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' },
+            {code: 'hi',name: 'हिन्दी',iso: 'hi-IN',file: 'hi.json'}
         ],
         defaultLocale: 'vi',
         langDir: 'locales/',

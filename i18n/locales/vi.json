@@ -50,6 +50,7 @@
       "serviceName": "Dù lượn Sapa",
       "numberOfPassengers": "Số lượng",
       "numberOfPeople": "Số người",
+      "quantity": "Số lượng",
       "people": "người",
       "estimatedTotal": "Tổng giá dự kiến",
       "flightPrice": "Giá bay",
@@ -83,17 +84,20 @@
       },
       "optionalItems": {
         "hotelTransfer": {
-          "name": "Khu vực đón: Trung tâm Sapa, bản Lao Chải, bản Tả Van.",
+          "name": "Đón trả 2 chiều từ khách sạn (trung tâm Sapa, Tả Van, Lao Chải)",
           "description": "(Đối với các điểm đón khác, chúng tôi sẽ liên hệ trước để trao đổi và thống nhất phụ phí phù hợp.)"
         },
         "drone": {
-          "name": "Chuyến bay được ghi lại bằng thiết bị flycam/drone chuyên nghiệp",
-          "description": "Quay chuyến bay của bạn bằng Flycam, toàn bộ dữ liệu gốc sẽ gửi cho bạn"
+          "title": "Quay toàn cảnh thung lũng và chuyến bay bằng Drone (Flycam):",
+          "name": "Quay toàn cảnh thung lũng và chuyến bay bằng Drone (Flycam)",
+          "description": "Toàn bộ dữ liệu gốc sẽ gửi cho bạn"
         },
         "camera360": {
-          "name": "Chuyến bay được ghi lại bằng camera 360°, quay trọn vẹn toàn bộ hành trình. ",
+          "title": "Quay hành trình bay độc đáo bằng Camera 360 (bao gồm edit video):",
+          "name": "Quay hành trình bay độc đáo bằng Camera 360 (bao gồm edit video)",
           "description": "Video sẽ được chỉnh sửa trước khi gửi lại cho bạn."
-        }
+        },
+        "gopro": "Quay chuyến bay bằng Gopro tiêu chuẩn: FREE"
       },
       "promotions": {
         "group2": "Nhóm từ 2 người trở lên",
@@ -182,7 +186,7 @@
       "basePrice": "Giá cơ bản",
       "discount": "Giảm giá",
       "paymentInfo": "Thông Tin Thanh Toán",
-      "paymentText": "Thanh toán sẽ được thực hiện tại chỗ trước khi bay. Chúng tôi chấp nhận tiền mặt  và các loại thẻ tín dụng chính. Email xác nhận sẽ được gửi sau khi đặt chỗ.",
+      "paymentText": "Thanh toán sẽ được thực hiện trực tiếp tại điểm bay trước giờ cất cánh. Chúng tôi chấp nhận tiền mặt và các thẻ tín dụng/thẻ ghi nợ phổ biến. Sau khi đặt chỗ, chúng tôi sẽ liên hệ với bạn qua WhatsApp/Zalo hoặc email bạn cung cấp để xác nhận booking.",
       "processing": "Đang xử lý..."
     },
     "step5Details": {

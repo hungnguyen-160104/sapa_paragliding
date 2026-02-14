@@ -50,6 +50,7 @@
       "serviceName": "Parapente Sapa",
       "numberOfPassengers": "Nombre de",
       "numberOfPeople": "Nombre de Personnes",
+      "quantity": "Quantité",
       "people": "personnes",
       "estimatedTotal": "Total Estimé",
       "flightPrice": "Prix du Vol",
@@ -83,17 +84,20 @@
       },
       "optionalItems": {
         "hotelTransfer": {
-          "name": "Zone de prise en charge : centre-ville de Sapa, village de Lao Chai, village de Ta Van.",
+          "name": "Transfert aller-retour depuis l'hôtel (centre de Sapa, Ta Van, Lao Chai)",
           "description": "(Pour les autres lieux de prise en charge, nous vous contacterons à l’avance afin de discuter et convenir d’un supplément approprié.)"
         },
         "drone": {
-          "name": "Vol enregistré à l’aide d’un flycam/drone professionnel",
-          "description": "Votre vol sera filmé par flycam et toutes les données originales vous seront envoyées"
+          "title": "Enregistrement panoramique de la vallée et du vol par Drone (Flycam) :",
+          "name": "Enregistrement panoramique de la vallée et du vol par Drone (Flycam)",
+          "description": "Toutes les données originales vous seront envoyées"
         },
         "camera360": {
-          "name": "Vol enregistré avec une caméra 360°, capturant l’intégralité du parcours.",
+          "title": "Enregistrement unique du vol par Caméra 360 (montage vidéo inclus) :",
+          "name": "Enregistrement unique du vol par Caméra 360 (montage vidéo inclus)",
           "description": "La vidéo sera montée avant de vous être envoyée."
-        }
+        },
+        "gopro": "Enregistrement du vol par GoPro standard : GRATUIT"
       },
       "promotions": {
         "group2": "Groupe de 2 ou plus",
@@ -156,7 +160,7 @@
       "basePrice": "Prix de Base",
       "discount": "Réduction",
       "paymentInfo": "Informations de Paiement",
-      "paymentText": "Le paiement sera effectué sur place avant le vol. Nous acceptons les espèces  et les principales cartes de crédit. Un email de confirmation sera envoyé après la réservation.",
+      "paymentText": "Le paiement s’effectue sur place avant le vol. Nous acceptons les espèces et les principales cartes de crédit/débit. Après la réservation, nous vous contacterons via WhatsApp/Zalo ou par l’e-mail que vous avez fourni afin de confirmer votre réservation.",
       "processing": "Traitement en cours..."
     },
     "step5Details": {
@@ -960,7 +964,7 @@
   "footerContact": {
     "titleVi": "Hotline / WhatsApp / Zalo (Disponible 24/7)",
     "customerService": "Service Client",
-    "bookingNote": "(Réservations de parapente)",
+    "bookingNote": "(Réservations)",
     "chiefPilot": "Pilote en Chef",
     "flightCoordinator": "Coordinateur de Vol"
   },

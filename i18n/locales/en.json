@@ -50,6 +50,7 @@
       "serviceName": "Sapa Paragliding",
       "numberOfPassengers": "Number of",
       "numberOfPeople": "Number of People",
+      "quantity": "Quantity",
       "people": "people",
       "estimatedTotal": "Estimated Total",
       "flightPrice": "Flight Price",
@@ -83,17 +84,20 @@
       },
       "optionalItems": {
         "hotelTransfer": {
-          "name": "Pickup area: Sapa town center, Lao Chai village, Ta Van village.",
+          "name": "Round-trip hotel transfer (Sapa center, Ta Van, Lao Chai)",
           "description": "(For other pickup locations, we will contact you in advance to discuss and agree on a suitable additional fee.)"
         },
         "drone": {
-          "name": "Flight recorded using professional flycam/drone equipment",
-          "description": "Your flight will be filmed by a flycam, and all original footage will be sent to you"
+          "title": "Panoramic valley & flight recording by Drone (Flycam):",
+          "name": "Panoramic valley & flight recording by Drone (Flycam)",
+          "description": "All original footage will be sent to you"
         },
         "camera360": {
-          "name": "Flight recorded with a 360° camera, capturing the entire journey.",
+          "title": "Unique flight journey recording by Camera 360 (includes video editing):",
+          "name": "Unique flight journey recording by Camera 360 (includes video editing)",
           "description": "The video will be edited before being sent to you."
-        }
+        },
+        "gopro": "Standard GoPro flight recording: FREE"
       },
       "promotions": {
         "group2": "Group of 2 or more",
@@ -182,7 +186,7 @@
       "basePrice": "Base Price",
       "discount": "Discount",
       "paymentInfo": "Payment Information",
-      "paymentText": "Payment will be made on-site before the flight. We accept cash  and major credit cards. A confirmation email will be sent after booking.",
+      "paymentText": "Payment will be made on-site before the flight. We accept cash and major credit/debit cards. After booking, we will contact you via WhatsApp/Zalo or the email you provided to confirm your reservation.",
       "processing": "Processing..."
     },
     "step5Details": {

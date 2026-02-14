@@ -4,18 +4,24 @@
       class="bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
       <div class="flex flex-col gap-2">
         <!-- Current Language (Always Visible) -->
-        <button class="p-2 rounded-full bg-red-500 shadow-md scale-110 ring-1 ring-red-300 transition-all duration-200"
-          :title="currentLocaleName">
+        <button
+          class="p-2 rounded-full bg-red-500 shadow-md scale-110 ring-1 ring-red-300 transition-all duration-200"
+          :title="currentLocaleName"
+        >
           <component :is="getFlagSvg(currentLocale)" class="w-6 h-6" />
         </button>
 
         <!-- Dropdown Other Languages (Slide Down on Hover) -->
         <Transition name="slide-down">
           <div v-if="isOpen" class="flex flex-col gap-2">
-            <button v-for="locale in otherLocales" :key="locale.code" @click="switchLanguage(locale.code)"
+            <button
+              v-for="l in otherLocales"
+              :key="l.code"
+              @click="onPickLocale(l.code)"
               class="p-2 rounded-full transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100"
-              :title="locale.name">
-              <component :is="getFlagSvg(locale.code)" class="w-6 h-6" />
+              :title="l.name"
+            >
+              <component :is="getFlagSvg(l.code)" class="w-6 h-6" />
             </button>
           </div>
         </Transition>
@@ -25,27 +31,56 @@
 </template>
 
 <script setup lang="ts">
-import { h, ref, computed } from 'vue'
+import { h, ref, computed, onMounted, watch } from 'vue'
+
+/** ✅ Khai báo đúng union type locale code để TS không báo lỗi */
+const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+type LocaleCode = typeof SUPPORTED_LOCALES[number]
+
+const isLocaleCode = (code: string): code is LocaleCode =>
+  (SUPPORTED_LOCALES as readonly string[]).includes(code)
 
 const { locale, locales, setLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
-const router = useRouter()
+
+// Cookie nuxt-i18n thường dùng để nhớ ngôn ngữ
+const langCookie = useCookie<LocaleCode>('i18n_redirected')
 
 // Reactive state for dropdown
 const isOpen = ref(false)
 
-const availableLocales = computed(() => locales.value)
-const currentLocale = computed(() => locale.value)
+/** ✅ Ép locales về dạng object list để dùng thống nhất */
+type LocaleItem = { code: string; name?: string }
+const availableLocales = computed<LocaleItem[]>(() => locales.value as unknown as LocaleItem[])
+
+/** currentLocale luôn là LocaleCode (fallback về 'vi' nếu lạ) */
+const currentLocale = computed<LocaleCode>(() => (isLocaleCode(locale.value) ? locale.value : 'vi'))
 
 // Get current locale name
 const currentLocaleName = computed(() => {
   const current = availableLocales.value.find(l => l.code === currentLocale.value)
-  return current?.name || ''
+  return current?.name || currentLocale.value.toUpperCase()
 })
 
-// Get other locales (excluding current) - for dropdown
-const otherLocales = computed(() => {
-  return availableLocales.value.filter(l => l.code !== currentLocale.value)
+// Get other locales (excluding current)
+const otherLocales = computed(() => availableLocales.value.filter(l => l.code !== currentLocale.value))
+
+/** ✅ Đồng bộ cookie mỗi khi locale thay đổi */
+watch(
+  () => currentLocale.value,
+  (val) => {
+    langCookie.value = val
+  },
+  { immediate: true }
+)
+
+/** ✅ Khi mở trang: nếu cookie có locale khác hiện tại -> điều hướng đúng route */
+onMounted(async () => {
+  const saved = langCookie.value
+  if (saved && saved !== currentLocale.value) {
+    const path = switchLocalePath(saved)
+    if (path) await navigateTo(path)
+  }
 })
 
 // SVG flag components
@@ -80,44 +115,45 @@ const getFlagSvg = (code: string) => {
       h('polygon', {
         points: '5,3 6,5.5 8.5,5.5 6.5,7 7.5,9.5 5,8 2.5,9.5 3.5,7 1.5,5.5 4,5.5',
         fill: '#FFDE00'
-      }),
-      h('polygon', {
-        points: '10,1.5 10.3,2.2 11,2.2 10.5,2.7 10.8,3.4 10,3 9.2,3.4 9.5,2.7 9,2.2 9.7,2.2',
-        fill: '#FFDE00'
-      }),
-      h('polygon', {
-        points: '12,3 12.3,3.7 13,3.7 12.5,4.2 12.8,4.9 12,4.5 11.2,4.9 11.5,4.2 11,3.7 11.7,3.7',
-        fill: '#FFDE00'
-      }),
-      h('polygon', {
-        points: '12,6 12.3,6.7 13,6.7 12.5,7.2 12.8,7.9 12,7.5 11.2,7.9 11.5,7.2 11,6.7 11.7,6.7',
-        fill: '#FFDE00'
-      }),
-      h('polygon', {
-        points: '10,8.5 10.3,9.2 11,9.2 10.5,9.7 10.8,10.4 10,10 9.2,10.4 9.5,9.7 9,9.2 9.7,9.2',
-        fill: '#FFDE00'
       })
+    ]),
+    /** ✅ Hindi = India flag */
+    hi: () => h('svg', { viewBox: '0 0 30 20', xmlns: 'http://www.w3.org/2000/svg' }, [
+      h('rect', { width: '30', height: '6.67', y: '0', fill: '#FF9933' }),
+      h('rect', { width: '30', height: '6.67', y: '6.67', fill: '#FFFFFF' }),
+      h('rect', { width: '30', height: '6.67', y: '13.33', fill: '#138808' }),
+      h('circle', { cx: '15', cy: '10', r: '2.2', fill: 'none', stroke: '#000080', 'stroke-width': '0.6' }),
+      h('circle', { cx: '15', cy: '10', r: '0.2', fill: '#000080' })
     ])
   }
 
-  return flags[code] || (() => h('svg', { viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
-    h('circle', { cx: '12', cy: '12', r: '10', fill: '#4A5568' }),
-    h('text', { x: '12', y: '16', 'text-anchor': 'middle', fill: '#FFF', 'font-size': '12' }, '🌐')
-  ]))
+  return flags[code] || (() =>
+    h('svg', { viewBox: '0 0 24 24', xmlns: 'http://www.w3.org/2000/svg' }, [
+      h('circle', { cx: '12', cy: '12', r: '10', fill: '#4A5568' }),
+      h('text', { x: '12', y: '16', 'text-anchor': 'middle', fill: '#FFF', 'font-size': '12' }, '🌐')
+    ])
+  )
 }
 
-const switchLanguage = async (code: string) => {
+/** ✅ Click handler: ép code về LocaleCode an toàn */
+const onPickLocale = (code: string) => {
+  if (!isLocaleCode(code)) return
+  switchLanguage(code)
+}
+
+/** ✅ Chỉ nhận LocaleCode => hết lỗi TS */
+const switchLanguage = async (code: LocaleCode) => {
   try {
-    // Close dropdown
     isOpen.value = false
 
-    // Get the path for the new locale
+    // Lưu cookie để đồng bộ
+    langCookie.value = code
+
+    // Nuxt-i18n: chỉ cần navigate sang switchLocalePath là đồng bộ locale
     const path = switchLocalePath(code)
+    if (path) await navigateTo(path)
 
-    // Navigate to the new locale path
-    await navigateTo(path)
-
-    // Set the locale
+    // (Optional) đảm bảo locale state
     await setLocale(code)
   } catch (error) {
     console.error('Error switching language:', error)
@@ -126,22 +162,15 @@ const switchLanguage = async (code: string) => {
 </script>
 
 <style scoped>
-/* Slide down animation */
 .slide-down-enter-active,
 .slide-down-leave-active {
   transition: all 0.3s ease-out;
 }
-
-.slide-down-enter-from {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
+.slide-down-enter-from,
 .slide-down-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }
-
 .slide-down-enter-to,
 .slide-down-leave-from {
   opacity: 1;

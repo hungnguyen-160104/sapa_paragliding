@@ -113,11 +113,14 @@ export const useBookingStore = defineStore('booking', {
 
       selectedOptions.forEach(optionId => {
         if (optionId === 'hotel-transfer') {
+          // Hotel transfer always × number of passengers
           total += 100000 * passengers
         } else if (optionId === 'drone') {
-          total += 300000 * (quantities['drone'] || 1)
+          // Drone: × user-selected quantity (capped at passengers)
+          total += 300000 * Math.min(quantities['drone'] || 1, passengers)
         } else if (optionId === 'camera360') {
-          total += 500000 * (quantities['camera360'] || 1)
+          // Camera360: × user-selected quantity (capped at passengers)
+          total += 500000 * Math.min(quantities['camera360'] || 1, passengers)
         }
       })
 

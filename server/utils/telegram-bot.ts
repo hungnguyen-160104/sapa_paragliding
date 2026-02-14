@@ -39,7 +39,11 @@ export class TelegramBot {
  * Format booking message for customer (ngắn gọn, đủ ý)
  */
 private formatCustomerMessage(booking: BookingData): string {
-  const discountPercent = Math.round(booking.discount * 100)
+  const discountPerPerson = booking.discount || 0
+  const discountTotal = discountPerPerson * booking.numberOfPassengers
+  const discountText = discountPerPerson > 0
+    ? `-${discountTotal.toLocaleString('vi-VN')} VND (${discountPerPerson.toLocaleString('vi-VN')}/người × ${booking.numberOfPassengers})`
+    : 'Không'
   const total = booking.totalPrice.toLocaleString('vi-VN')
   const base = booking.servicePrice.toLocaleString('vi-VN')
   const optionMap: Record<string, string> = {
@@ -66,8 +70,8 @@ ${selectedOptionsText}
 📍 <b>Đón tại</b>: ${booking.pickupLocation || 'Không có'}
 
 💰 <b>Giá</b>:
-• Cơ bản: ${base} VND
-• Giảm: ${discountPercent}%
+• Cơ bản: ${base} VND × ${booking.numberOfPassengers}
+• Giảm: ${discountText}
 • <b>Tổng: ${total} VND</b>
 
 📞 <b>Liên hệ</b>:
@@ -87,7 +91,11 @@ Cảm ơn bạn! 🪂
  * Format booking message for admin (theo format mới)
  */
 private formatAdminMessage(booking: BookingData): string {
-  const discountPercent = Math.round(booking.discount * 100)
+  const discountPerPerson = booking.discount || 0
+  const discountTotal = discountPerPerson * booking.numberOfPassengers
+  const discountFormatted = discountPerPerson > 0
+    ? `-${(discountPerPerson / 1000).toFixed(0)}k/người × ${booking.numberOfPassengers} = -${(discountTotal / 1000).toFixed(0)}k`
+    : '0'
   const totalFormatted = (booking.totalPrice / 1000).toFixed(0) + 'k'
   const baseFormatted = (booking.servicePrice / 1000).toFixed(0) + 'k'
   const now = new Date().toLocaleString('vi-VN', { 
@@ -137,7 +145,7 @@ Giá bay: ${baseFormatted} × ${booking.numberOfPassengers}
 Đưa đón: 100k x ${hasTransfer ? booking.numberOfPassengers : 0}
 Flycam: ${dronePrice}
 Cam360: ${cam360Price}
-Giảm giá: ${discountPercent}%
+Giảm giá: ${discountFormatted}
 ———
 <b>Tổng: ${totalFormatted}</b>
 📝 <b>Note:</b> ${booking.specialRequests || 'Không'}`
