@@ -42,32 +42,65 @@
       <div class="p-4 space-y-3">
         <!-- Two Column Layout -->
         <div class="grid grid-cols-2 gap-3">
-          <!-- Flight Details -->
-          <div class="bg-white rounded p-3 border border-gray-100">
-            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
-              {{ $t('booking.ticket.flightDetails') }}
-            </h3>
-            <div class="space-y-1.5 text-sm">
-              <div class="flex justify-between">
-                <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.service') }}</span>
-                <span class="font-semibold text-gray-900 text-xs">{{ $t('booking.step1Details.serviceName') }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.date') }}</span>
-                <span class="font-semibold text-gray-900 text-xs">{{ formatDate(bookingData.preferredDate) }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.time') }}</span>
-                <span class="font-semibold text-gray-900 text-xs">
-                  {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
-                </span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.passengers') }}</span>
-                <span class="font-semibold text-gray-900 text-xs">{{ bookingData.numberOfPassengers }}</span>
-              </div>
-            </div>
-          </div>
+<!-- Flight Details -->
+<div class="bg-white rounded p-3 border border-gray-100">
+  <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
+    {{ $t('booking.ticket.flightDetails') }}
+  </h3>
+
+  <div class="space-y-1.5 text-sm">
+    <div class="flex justify-between">
+      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.service') }}</span>
+      <span class="font-semibold text-gray-900 text-xs">
+        {{ $t('booking.step1Details.serviceName') }}
+      </span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.date') }}</span>
+      <span class="font-semibold text-gray-900 text-xs">
+        {{ formatDate(bookingData.preferredDate) }}
+      </span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.time') }}</span>
+      <span class="font-semibold text-gray-900 text-xs">
+        {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
+      </span>
+    </div>
+
+    <div class="flex justify-between">
+      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.passengers') }}</span>
+      <span class="font-semibold text-gray-900 text-xs">
+        {{ bookingData.numberOfPassengers }}
+      </span>
+    </div>
+
+    <!-- ✅ Điểm đón (hiện đúng theo khách nhập) -->
+    <div
+      class="flex justify-between"
+      v-if="bookingData.selectedOptions?.includes('hotel-transfer')"
+    >
+      <span class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupLocation') }}</span>
+      <span class="font-semibold text-gray-900 text-xs text-right">
+        {{ bookingData.pickupLocation || $t('booking.ticket.notProvided') }}
+      </span>
+    </div>
+
+    <!-- ✅ Giờ đón (mặc định 30 phút trước giờ bay) -->
+    <div
+      class="flex justify-between"
+      v-if="bookingData.selectedOptions?.includes('hotel-transfer')"
+    >
+      <span class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupTime') }}</span>
+      <span class="font-semibold text-gray-900 text-xs text-right">
+        {{ $t('booking.step4Details.pickupTimeDefault') }}
+      </span>
+    </div>
+  </div>
+</div>
+
 
           <!-- Contact Info -->
           <div class="bg-white rounded p-3 border border-gray-100">
@@ -178,7 +211,7 @@
             <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
             <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
             <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.launchLanding') }}</p></div>
+            <!--  <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.launchLanding') }}</p></div>-->
             <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
           </div>
         </div>

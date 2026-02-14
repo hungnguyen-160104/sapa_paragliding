@@ -211,6 +211,9 @@
       "title": "फ्लाइट टिकट",
       "subtitle": "Sapa Paragliding - पैराग्लाइडिंग अनुभव",
       "bookingId": "बुकिंग आईडी",
+        "pickupPoint": "पिकअप स्थान",
+  "pickupTime": "पिकअप समय",
+  "notProvided": "उपलब्ध नहीं",
       "flightDetails": "उड़ान विवरण",
       "passengerInfo": "यात्री जानकारी",
       "passengersList": "यात्री सूची",
@@ -241,7 +244,7 @@
       "nationality": "राष्ट्रीयता",
       "passportOrId": "पासपोर्ट/ID",
       "passportOrIdPlaceholder": "पासपोर्ट या ID नंबर दर्ज करें",
-      "weight": "वज़न (किग्रा)",
+      "weight": "वज़न",
       "male": "पुरुष",
       "female": "महिला",
       "other": "अन्य"

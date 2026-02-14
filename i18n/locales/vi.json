@@ -211,6 +211,9 @@
       "title": "VÉ BAY",
       "subtitle": "Sapa Paragliding - Trải Nghiệm Bay Dù Lượn",
       "bookingId": "Mã Đặt Chỗ",
+      "pickupPoint": "Điểm đón",
+      "pickupTime": "Giờ đón",
+      "notProvided": "Không có",
       "flightDetails": "Chi Tiết Chuyến Bay",
       "passengerInfo": "Thông Tin Hành Khách",
       "passengersList": "Danh Sách Hành Khách",
@@ -241,7 +244,7 @@
       "nationality": "Quốc Tịch",
       "passportOrId": "Passport/CCCD",
       "passportOrIdPlaceholder": "Nhập số Passport hoặc CCCD",
-      "weight": "Cân Nặng (kg)",
+      "weight": "Cân Nặng",
       "male": "Nam",
       "female": "Nữ",
       "other": "Khác"

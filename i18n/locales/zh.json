@@ -213,6 +213,9 @@
       "title": "飞行票",
       "subtitle": "Sapa Paragliding - 滑翔伞体验",
       "bookingId": "预订编号",
+        "pickupPoint": "接送地点",
+  "pickupTime": "接送时间",
+  "notProvided": "未填写",
       "flightDetails": "飞行详情",
       "passengerInfo": "乘客信息",
       "passengersList": "乘客列表",
@@ -243,7 +246,7 @@
       "nationality": "国籍",
       "passportOrId": "护照/身份证",
       "passportOrIdPlaceholder": "请输入护照或身份证号码",
-      "weight": "体重（kg）",
+      "weight": "体重",
       "male": "男",
       "female": "女",
       "other": "其他"

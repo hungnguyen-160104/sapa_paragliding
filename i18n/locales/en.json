@@ -51,7 +51,7 @@
       "numberOfPassengers": "Number of",
       "numberOfPeople": "Number of People",
       "quantity": "Quantity",
-      "people": "people",
+      "people": "pax",
       "estimatedTotal": "Estimated Total",
       "flightPrice": "Flight Price",
       "from": "From",
@@ -211,6 +211,9 @@
       "title": "FLIGHT TICKET",
       "subtitle": "Sapa Paragliding - Paragliding Experience",
       "bookingId": "Booking ID",
+        "pickupPoint": "Pickup location",
+  "pickupTime": "Pickup time",
+  "notProvided": "Not provided",
       "flightDetails": "Flight Details",
       "passengerInfo": "Passenger Information",
       "passengersList": "Passengers List",
@@ -241,7 +244,7 @@
       "nationality": "Nationality",
       "passportOrId": "Passport/ID Card",
       "passportOrIdPlaceholder": "Enter passport or ID card number",
-      "weight": "Weight (kg)",
+      "weight": "Weight",
       "male": "Male",
       "female": "Female",
       "other": "Other"
@@ -986,7 +989,7 @@
   },
   "footerContact": {
     "titleVi": "Hotline / WhatsApp / Zalo (Available 24/7)",
-    "customerService": "Customer Service",
+    "customerService": "CS",
     "bookingNote": "(Booking)",
     "chiefPilot": "Chief Pilot",
     "flightCoordinator": "Flight Coordinator"

@@ -32,13 +32,13 @@
           <!-- Stats Row -->
           <div class="grid grid-cols-3 gap-6 mt-12 max-w-2xl mx-auto">
             <div class="text-center">
-              <p class="text-4xl font-black text-red-400">10+</p>
+              <p class="text-4xl font-black text-red-400">15+</p>
               <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">
                 {{ $t('homePage.statsPilots') }}
               </p>
             </div>
             <div class="text-center">
-              <p class="text-4xl font-black text-red-400">15K+</p>
+              <p class="text-4xl font-black text-red-400">50K+</p>
               <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">
                 {{ $t('homePage.statsFlights') }}
               </p>
