@@ -215,7 +215,7 @@
       "pickupTime": "Giờ đón",
       "notProvided": "Không có",
       "flightDetails": "Chi Tiết Chuyến Bay",
-      "passengerInfo": "Thông Tin Hành Khách",
+      "passengerInfo": "Thông Tin Liên Hệ",
       "passengersList": "Danh Sách Hành Khách",
       "validationDate": "Ngày Cấp",
       "footer": "Vé này có giá trị khi được xác nhận bởi Sapa Paragliding. Vui lòng giữ vé này để sử dụng khi bay.",
@@ -362,7 +362,7 @@
     "pilot7": {
       "name": "Đinh Thế Anh",
       "nickname": "Thợ săn mây",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Phi công giàu năng lượng thể thao, từ đua xe đạp, bơi lội đến dù lượn, với 2000 chuyến bay, hơn 1500 giờ bay an toàn và 3 lần vô địch hạ cánh chính xác tại Việt Nam.",
       "img": "The Anh_Team Pilot.jpg",
       "fullname": "ĐINH THẾ ANH",
@@ -373,7 +373,7 @@
     "pilot8": {
       "name": "Tuấn Nguyễn",
       "nickname": "Nhị ca",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Phi công nhẹ nhàng, ân cần, luôn lắng nghe yêu cầu khách. Bạn thích bay mạnh tay hay 'chill' nhẹ nhàng, anh đều có cách chọn góc quay và đường bay siêu phẩm, đảm bảo bay xong ai cũng muốn… làm fan cứng!",
       "img": "Tuan Nguyen_Team Pilot.jpg",
       "fullname": "TUẤN NGUYỄN",
@@ -384,7 +384,7 @@
     "pilot9": {
       "name": "Minh Trung",
       "nickname": "Chiến thần không gian",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Hơn 2.000 chuyến bay đôi, 7 năm bám dây lơ lửng trên trời, hơn 1.000 giờ “tán mây, thả gió”. Bí danh Trung Chocolate – bay cùng anh, bạn sẽ được chém gió vui hết nấc, cười mỏi miệng!",
       "img": "Minh Trung_Team Pilot.jpg",
       "fullname": "MINH TRUNG",
@@ -395,7 +395,7 @@
     "pilot10": {
       "name": "Phan Hùng",
       "nickname": "Lãng khách bầu trời",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Bay cùng anh, bạn sẽ có clip triệu view triệu like với góc quay siêu nghệ thuật. Trải nghiệm an toàn tuyệt đối và khoảnh khắc bầu trời tuyệt đẹp được lưu giữ, mang về những tư liệu quý giá khó quên trên từng chuyến bay đôi.",
       "img": "phan_hung.jpg",
       "fullname": "PHAN HÙNG",
@@ -406,7 +406,7 @@
     "pilot11": {
       "name": "Ngô Văn Đội",
       "nickname": "Chiến binh lượn lách",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Tham gia mọi giải đấu dù lượn tại Việt Nam, giữ kỷ lục 7 giờ bay liên tục tại Đồi Bù – Chương Mỹ. Anh đam mê dù lượn, mang đến cho khách hàng trải nghiệm bay đầy phấn khích, an toàn và ngập tràn tiếng cười.",
       "img": "Ngo Van Doi_Team Pilot.jpeg",
       "fullname": "NGÔ VĂN ĐỘI",
@@ -417,7 +417,7 @@
     "pilot12": {
       "name": "Minh Võ",
       "nickname": "Đại bàng thép",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Bay cùng 'phi công triệu like' với 14 năm kinh nghiệm. Đam mê bầu trời từ nhỏ, anh truyền lửa qua từng chuyến bay đôi, mang đến trải nghiệm tuyệt đỉnh và khoảnh khắc đáng nhớ trên cao cho mọi khách hàng.",
       "img": "Minh Vo_Team Pilot.jpg",
       "fullname": "MINH VÕ",
@@ -428,7 +428,7 @@
     "pilot13": {
       "name": "Toàn Nguyễn",
       "nickname": "Rambo",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "Hơn 10 năm cày gió cưỡi mây, gần 5.000 chuyến bay. Bay khắp Việt Nam: Kon Tum, Lý Sơn, Điện Biên… GPS còn chưa kịp load, anh đã đặt chân tới! Dù lượn với anh không chỉ là đam mê — là phong cách sống trên mây.",
       "img": "Toan Nguyen_team Pilot.jpg",
       "fullname": "TOÀN NGUYỄN",
@@ -439,7 +439,7 @@
     "pilot14": {
       "name": "Chiến Thắng",
       "nickname": "Thắng thần sét",
-      "role": "Phi công đội",
+      "role": "Phi công đội tuyển",
       "des": "7 năm sống cùng mây gió, hơn 1.500 chuyến bay đôi an toàn, 1.000+ giờ lơ lửng trên trời. Anh từng giữ kỷ lục bay đơn 9 tiếng rưỡi tại Việt Nam! “Càn quét” các giải đấu dù lượn từ Bắc chí Nam, phong độ luôn ở đỉnh cao.",
       "img": "Chien Thang_Team Pilot.jpg",
       "fullname": "CHIẾN THẮNG",
