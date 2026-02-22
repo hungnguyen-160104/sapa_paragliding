@@ -70,6 +70,11 @@ export default defineNuxtConfig({
         telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
         telegramAdminChatId: process.env.TELEGRAM_ADMIN_CHAT_ID || '',
         turnstileSecretKey: process.env.TURNSTILE_SECRET_KEY || '',
+        // ✅ EMAIL
+        emailUser: process.env.EMAIL_USER || '',
+        emailPass: process.env.EMAIL_PASS || '',
+        mailFrom: process.env.MAIL_FROM || '',
+        adminEmails: process.env.ADMIN_EMAILS || '',
 
         // Public keys (exposed to client)
         public: {

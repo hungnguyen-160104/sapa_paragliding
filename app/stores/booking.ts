@@ -277,49 +277,65 @@ export const useBookingStore = defineStore('booking', {
       if (step >= 1 && step <= 5) this.currentStep = step
     },
 
-    // Submit booking
-    async submitBooking() {
+// Submit booking
+async submitBooking() {
+  try {
+    this.bookingData.status = 'submitted'
+
+    const response: any = await $fetch('/api/send-booking', {
+      method: 'POST',
+      body: this.bookingData
+    })
+
+    if (!response?.success) {
+      this.bookingData.status = 'draft'
+      return { success: false, error: 'Booking submission failed' }
+    }
+
+    const bookingId = response.bookingId || ''
+    if (bookingId) this.bookingData.bookingId = bookingId
+
+    this.bookingData.status = 'confirmed'
+    this.currentStep = 5
+
+    // Chỉ gửi thông báo khi có bookingId
+    if (bookingId) {
+      // ✅ Telegram
       try {
-        this.bookingData.status = 'submitted'
+        const telegramPayload = JSON.parse(JSON.stringify(this.bookingData))
+        telegramPayload.bookingId = bookingId
 
-        const response: any = await $fetch('/api/send-booking', {
+        await $fetch('/api/send-booking-telegram', {
           method: 'POST',
-          body: this.bookingData
+          body: telegramPayload
         })
-
-        if (!response?.success) {
-          this.bookingData.status = 'draft'
-          return { success: false, error: 'Booking submission failed' }
-        }
-
-        const bookingId = response.bookingId || ''
-        if (bookingId) this.bookingData.bookingId = bookingId
-        this.bookingData.status = 'confirmed'
-        this.currentStep = 5
-
-        // ✅ Gửi Telegram: KHÔNG gửi adminChatId từ client.
-        // Server sẽ đọc TELEGRAM_ADMIN_CHAT_ID trong .env và gửi cho nhiều người.
-        try {
-          // Tạo plain object từ reactive proxy để $fetch serialize đúng
-          const telegramPayload = JSON.parse(JSON.stringify(this.bookingData))
-          telegramPayload.bookingId = bookingId
-
-          await $fetch('/api/send-booking-telegram', {
-            method: 'POST',
-            body: telegramPayload
-          })
-          console.log('✅ Booking notification requested (server will fan-out to admins)')
-        } catch (telegramError) {
-          console.warn('⚠️ Failed to send Telegram notification:', telegramError)
-        }
-
-        return { success: true, bookingId: this.bookingData.bookingId || '' }
-      } catch (error) {
-        console.error('Booking error:', error)
-        this.bookingData.status = 'draft'
-        return { success: false, error: 'Network error' }
+        console.log('✅ Booking notification requested (server will fan-out to admins)')
+      } catch (telegramError) {
+        console.warn('⚠️ Failed to send Telegram notification:', telegramError)
       }
-    },
+
+      // ✅ Email (tách riêng)
+      try {
+        const emailPayload = JSON.parse(JSON.stringify(this.bookingData))
+        emailPayload.bookingId = bookingId
+
+        await $fetch('/api/send-booking-email', {
+          method: 'POST',
+          body: emailPayload
+        })
+        console.log('✅ Booking email requested')
+      } catch (emailError) {
+        console.warn('⚠️ Failed to send Email:', emailError)
+      }
+    }
+
+    return { success: true, bookingId: this.bookingData.bookingId || '' }
+  } catch (error) {
+    console.error('Booking error:', error)
+    this.bookingData.status = 'draft'
+    return { success: false, error: 'Network error' }
+  }
+},
 
     resetBooking() {
       this.currentStep = 1

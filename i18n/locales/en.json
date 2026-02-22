@@ -152,10 +152,10 @@
       "specialRequests": "Special Requests:",
       "passengerInformation": "Passenger Information",
       "fullName": "Full Name:",
-      "dateOfBirth": "Date of Birth:",
-      "gender": "Gender:",
-      "weight": "Weight:",
-      "nationality": "Nationality:",      "idNumber": "ID/Passport Number:",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "weight": "Weight",
+      "nationality": "Nationality",      "idNumber": "ID/Passport Number",
       "pickupLocation": "Pickup Location:",
       "launchSite": "Launch Site",
       "pickupTime": "Pickup Time:",
@@ -990,7 +990,7 @@
   "footerContact": {
     "titleVi": "Hotline / WhatsApp / Zalo (Available 24/7)",
     "customerService": "CS",
-    "bookingNote": "(Booking)",
+    "bookingNote": " (Booking)",
     "chiefPilot": "Chief Pilot",
     "flightCoordinator": "Flight Coordinator"
   },
