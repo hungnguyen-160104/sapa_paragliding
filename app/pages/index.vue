@@ -9,7 +9,6 @@ const router = useRouter()
 const postsStore = usePostsStore()
 
 const currentLocale = computed(() => locale.value || 'vi')
-const dbPosts = ref<any[]>([])
 const currentPostIndex = ref(0)
 
 const basicItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate']
@@ -17,23 +16,12 @@ const standardItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certif
 const premiumItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate', 'hotelTransfer', 'drone', 'camera360']
 
 const latestPosts = computed(() => {
-  const posts = dbPosts.value.length > 0 ? dbPosts.value : postsStore.latestPosts
+  const posts = postsStore.posts
   return posts
-    .filter(p => p.published || p.status === 'PUBLISHED')
-    .sort((a, b) => new Date(b.date || b.updatedAt).getTime() - new Date(a.date || a.updatedAt).getTime())
+    .filter(p => p.published || (p as any).status === 'PUBLISHED')
+    .sort((a, b) => new Date(b.date || (b as any).updatedAt).getTime() - new Date(a.date || (a as any).updatedAt).getTime())
     .slice(0, 6)
 })
-
-const fetchPostsFromDB = async () => {
-  try {
-    const response = await $fetch<any>('/api/admin/posts')
-    if (response?.success && response?.posts) {
-      dbPosts.value = response.posts
-    }
-  } catch (error) {
-    console.error('Error fetching posts from database:', error)
-  }
-}
 
 const localizedNavigateTo = (path: string) => {
   const currentLocale = locale.value || 'vi'
@@ -99,8 +87,10 @@ const scrollToAbout = () => {
 }
 
 // Fetch posts and setup scroll reveal animation
-onMounted(() => {
-  fetchPostsFromDB()
+onMounted(async () => {
+  if (postsStore.posts.length === 0) {
+    await postsStore.fetchPosts()
+  }
 
   const observerOptions = {
     threshold: 0.1,
