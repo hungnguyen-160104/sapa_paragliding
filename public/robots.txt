@@ -1,8 +1,7 @@
-User-Agent: *
+User-agent: *
 Allow: /
 
 Disallow: /admin/
 Disallow: /api/
-Disallow: *.json$
 
 Sitemap: https://www.paraglidingsapa.com/sitemap.xml
