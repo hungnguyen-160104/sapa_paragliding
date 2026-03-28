@@ -18,54 +18,63 @@ const postsStore = usePostsStore()
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
 
-// SEO Meta Tags by Locale
-const getHomeSeoMeta = () => {
-  const localeMetaMap: Record<string, { title: string; description: string }> = {
-    vi: {
-      title: 'Dù lượn Sapa | Đặt vé bay Paragliding | Sapa Paragliding',
-      description:
-        'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại cao độ cao nhất Việt Nam. Ngắm nhìn toàn cảnh Sapa hùng vĩ cùng phi công quốc tế chuyên nghiệp. Hơn 50,000 khách hàng tin tưởng, 100% an toàn.'
-    },
-    en: {
-      title: 'Sapa Paragliding | Best Paragliding Flight | Fly Sapa',
-      description:
-        'BOOK ONLINE. Experience the highest paragliding takeoff in Vietnam. Enjoy breathtaking panoramic views of Sapa with certified professional pilots. 100% safety record with 50K+ satisfied customers.'
-    },
-    fr: {
-      title: 'Parapente Sapa | Vol en Parapente au Vietnam | Sapa Paragliding',
-      description:
-        'RÉSERVEZ EN LIGNE. Le point de décollage de parapente le plus haut du Vietnam. Volez avec des pilotes professionnels internationaux. Sécurité 100% avec plus de 50 000 clients satisfaits.'
-    },
-    ru: {
-      title: 'Парапланеризм Сапа | Полеты на параплане | Sapa Paragliding',
-      description:
-        'БРОНИРУЙТЕ ОНЛАЙН. Самая высокая точка взлета во Вьетнаме. Летайте с профессиональными пилотами и наслаждайтесь захватывающим видом на Сапу. 100% безопасность.'
-    },
-    zh: {
-      title: '沙坝滑翔伞 | 越南最佳滑翔伞飞行航班 | Sapa Paragliding',
-      description:
-        '在线预订。伴随专业国际飞行员，从越南最高起飞点享受沙坝的壮丽全景。100%安全保障，5万多名客户的信赖之选。'
-    },
-    hi: {
-      title: 'सापा पैराग्लाइडिंग | सर्वश्रेष्ठ उड़ान अनुभव | Sapa Paragliding',
-      description:
-        'ऑनलाइन बुक करें। वियतनाम में सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर अंतरराष्ट्रीय पायलटों के साथ सुरक्षित उड़ान भरें और सापा का विहंगम दृश्य देखें। 100% सुरक्षा।'
-    }
-  }
-
-  return localeMetaMap[currentLocale.value] || localeMetaMap.en
+type SeoMetaData = {
+  title: string
+  description: string
 }
 
-const seoData = computed(() => getHomeSeoMeta())
+const localeMetaMap: Record<string, SeoMetaData> = {
+  vi: {
+    title: 'Dù lượn Sapa | Đặt vé bay Paragliding | Sapa Paragliding',
+    description:
+      'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại cao độ cao nhất Việt Nam. Ngắm nhìn toàn cảnh Sapa hùng vĩ cùng phi công quốc tế chuyên nghiệp. Hơn 50,000 khách hàng tin tưởng, 100% an toàn.'
+  },
+  en: {
+    title: 'Sapa Paragliding | Best Paragliding Flight | Fly Sapa',
+    description:
+      'BOOK ONLINE. Experience the highest paragliding takeoff in Vietnam. Enjoy breathtaking panoramic views of Sapa with certified professional pilots. 100% safety record with 50K+ satisfied customers.'
+  },
+  fr: {
+    title: 'Parapente Sapa | Vol en Parapente au Vietnam | Sapa Paragliding',
+    description:
+      'RÉSERVEZ EN LIGNE. Le point de décollage de parapente le plus haut du Vietnam. Volez avec des pilotes professionnels internationaux. Sécurité 100% avec plus de 50 000 clients satisfaits.'
+  },
+  ru: {
+    title: 'Парапланеризм Сапа | Полеты на параплане | Sapa Paragliding',
+    description:
+      'БРОНИРУЙТЕ ОНЛАЙН. Самая высокая точка взлета во Вьетнаме. Летайте с профессиональными пилотами и наслаждайтесь захватывающим видом на Сапу. 100% безопасность.'
+  },
+  zh: {
+    title: '沙坝滑翔伞 | 越南最佳滑翔伞飞行航班 | Sapa Paragliding',
+    description:
+      '在线预订。伴随专业国际飞行员，从越南最高起飞点享受沙坝的壮丽全景。100%安全保障，5万多名客户的信赖之选。'
+  },
+  hi: {
+    title: 'सापा पैराग्लाइडिंग | सर्वश्रेष्ठ उड़ान अनुभव | Sapa Paragliding',
+    description:
+      'ऑनलाइन बुक करें। वियतनाम में सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर अंतरराष्ट्रीय पायलटों के साथ सुरक्षित उड़ान भरें और सापा का विहंगम दृश्य देखें। 100% सुरक्षा।'
+  }
+}
+
+const fallbackSeoMeta = localeMetaMap.en as SeoMetaData
+
+const seoData = computed((): SeoMetaData => {
+  return localeMetaMap[currentLocale.value] ?? fallbackSeoMeta
+})
+
 const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
 const hreflangLinks = computed(() => buildHreflangLinks('/', currentLocale.value))
 
+const bookingPath = computed(() => {
+  return currentLocale.value === 'vi' ? '/booking' : `/${currentLocale.value}/booking`
+})
+
 useHead({
-  title: () => seoData.value!.title,
+  title: () => seoData.value.title,
   meta: [
-    { name: 'description', content: () => seoData.value!.description },
-    { property: 'og:title', content: () => seoData.value!.title },
-    { property: 'og:description', content: () => seoData.value!.description },
+    { name: 'description', content: () => seoData.value.description },
+    { property: 'og:title', content: () => seoData.value.title },
+    { property: 'og:description', content: () => seoData.value.description },
     { property: 'og:url', content: () => canonicalUrl.value },
     { property: 'og:type', content: 'website' }
   ],
@@ -76,11 +85,11 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify(buildWebsiteJsonLD())
+      textContent: JSON.stringify(buildWebsiteJsonLD())
     },
     {
       type: 'application/ld+json',
-      innerHTML: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
+      textContent: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
     }
   ]
 })
@@ -227,12 +236,14 @@ onMounted(async () => {
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-delay-2">
-          <button
-            class="px-8 py-3 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 shadow-lg shadow-red-500/30"
-            @click="localizedNavigateTo('/booking')"
+          <NuxtLink
+            :to="bookingPath"
+            class="inline-flex items-center justify-center px-8 py-3 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 shadow-lg shadow-red-500/30"
+            :aria-label="$t('hero.bookNow')"
           >
             {{ $t('hero.bookNow') }}
-          </button>
+          </NuxtLink>
+
           <button
             class="px-8 py-3 border-2 border-white/40 text-white font-bold uppercase tracking-wider hover:bg-white/10 transition-all duration-300"
             @click="scrollToAbout"
@@ -346,12 +357,12 @@ onMounted(async () => {
               </ul>
             </div>
 
-            <button
-              class="w-full py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
-              @click="localizedNavigateTo('/booking')"
+            <NuxtLink
+              :to="bookingPath"
+              class="inline-flex w-full items-center justify-center py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
             >
               {{ $t('buttons.book') }}
-            </button>
+            </NuxtLink>
           </div>
 
           <div class="bg-red-600 shadow-2xl p-6 scroll-reveal flex flex-col relative" data-delay="200">
@@ -381,12 +392,12 @@ onMounted(async () => {
               </ul>
             </div>
 
-            <button
-              class="w-full py-3 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300"
-              @click="localizedNavigateTo('/booking')"
+            <NuxtLink
+              :to="bookingPath"
+              class="inline-flex w-full items-center justify-center py-3 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300"
             >
               {{ $t('buttons.book') }}
-            </button>
+            </NuxtLink>
           </div>
 
           <div class="bg-white border border-slate-200 shadow-xl p-6 scroll-reveal flex flex-col" data-delay="300">
@@ -410,12 +421,12 @@ onMounted(async () => {
               </ul>
             </div>
 
-            <button
-              class="w-full py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
-              @click="localizedNavigateTo('/booking')"
+            <NuxtLink
+              :to="bookingPath"
+              class="inline-flex w-full items-center justify-center py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
             >
               {{ $t('buttons.book') }}
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -733,12 +744,14 @@ onMounted(async () => {
         <p class="text-lg text-red-100 mb-8 max-w-2xl mx-auto">
           {{ $t('homePage.ctaSubtitle') }}
         </p>
-        <button
-          class="px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg"
-          @click="localizedNavigateTo('/booking')"
+
+        <NuxtLink
+          :to="bookingPath"
+          class="inline-flex items-center justify-center px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg"
+          :aria-label="$t('hero.bookNow')"
         >
           {{ $t('hero.bookNow') }}
-        </button>
+        </NuxtLink>
       </div>
     </section>
   </div>
@@ -770,6 +783,7 @@ onMounted(async () => {
 }
 
 .line-clamp-2 {
+  line-clamp: 2;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -777,6 +791,7 @@ onMounted(async () => {
 }
 
 .line-clamp-3 {
+  line-clamp: 3;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
