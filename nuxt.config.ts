@@ -22,8 +22,10 @@ export default defineNuxtConfig({
                 { name: 'description', content: 'Experience the dream of flying in Sapa - Where you feel freedom and the sky closer than ever.' },
                 { property: 'og:title', content: 'Sapa Paragliding' },
                 { property: 'og:description', content: 'Book your paragliding adventure in Sapa, Vietnam' },
-                { property: 'og:image', content: '/images/hero-bg.jpg' },
-                { property: 'og:type', content: 'website' }
+                { property: 'og:image', content: 'https://www.paraglidingsapa.com/images/hero-bg.jpg' },
+                { property: 'og:type', content: 'website' },
+                { property: 'og:url', content: 'https://www.paraglidingsapa.com' },
+                { name: 'robots', content: 'index, follow' }
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -46,10 +48,11 @@ export default defineNuxtConfig({
             { code: 'fr', name: 'Français', iso: 'fr-FR', file: 'fr.json' },
             { code: 'ru', name: 'Русский', iso: 'ru-RU', file: 'ru.json' },
             { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' },
-            {code: 'hi',name: 'हिन्दी',iso: 'hi-IN',file: 'hi.json'}
+            { code: 'hi', name: 'हिन्दी', iso: 'hi-IN', file: 'hi.json' }
         ],
         defaultLocale: 'vi',
         langDir: 'locales/',
+        baseUrl: 'https://www.paraglidingsapa.com',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'i18n_redirected',

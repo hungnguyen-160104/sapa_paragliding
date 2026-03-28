@@ -2,11 +2,11 @@ import { $fetch, type FetchOptions } from 'ofetch'
 
 const baseURL = '/api'
 
-type ApiFetchOptions<T> = FetchOptions<T> & {
+type ApiFetchOptions = FetchOptions<'json'> & {
   auth?: boolean
 }
 
-export const apiFetch = async <T>(url: string, options: ApiFetchOptions<T> = {}) => {
+export const apiFetch = async <T>(url: string, options: ApiFetchOptions = {}) => {
   const { auth = true, ...rest } = options
   const headers: Record<string, string> = {
     'Content-Type': 'application/json'

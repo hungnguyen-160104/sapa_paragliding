@@ -3,13 +3,76 @@ import { useI18n } from 'vue-i18n'
 import servicesData from '~/data/services.json'
 import galleryData from '~/data/gallery.json'
 import { usePostsStore } from '~/stores/posts'
+import { getCanonicalUrl, buildHreflangLinks, buildOrganizationJsonLD, buildWebsiteJsonLD, DOMAIN } from '~/utils/seo'
 
 const { locale, t } = useI18n()
 const router = useRouter()
+const route = useRoute()
 const postsStore = usePostsStore()
 
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
+
+// SEO Meta Tags by Locale
+const getHomeSeoMeta = () => {
+  const localeMetaMap: Record<string, any> = {
+    vi: {
+      title: 'Sapa Paragliding - Trải Nghiệm Bay Lượn Tuyệt Vời',
+      description: 'Trải nghiệm bay lượn tại Sapa với các phi công chuyên nghiệp. Đặt chuyến bay của bạn ngay hôm nay. 50K+ khách hàng hài lòng, 100% an toàn.'
+    },
+    en: {
+      title: 'Sapa Paragliding - Experience the Dream of Flying',
+      description: 'Book your paragliding adventure in Sapa with professional pilots. Experience freedom and safety. 50K+ satisfied customers.'
+    },
+    fr: {
+      title: 'Sapa Paragliding - Vivez l\'Aventure du Vol à Voile',
+      description: 'Réservez votre aventure de parachutisme à Sapa avec des pilotes professionnels. 50K+ clients satisfaits, 100% sécurité.'
+    },
+    ru: {
+      title: 'Sapa Paragliding - Испытайте Удовольствие Полета',
+      description: 'Забронируйте свой полет на параплане в Сапе с профессиональными пилотами. 50K+ довольных клиентов, 100% безопасность.'
+    },
+    zh: {
+      title: 'Sapa Paragliding - 体验飞行的梦想',
+      description: '在沙坝预订专业滑翔伞飞行。体验自由和安全。50K+ 满意的客户，100% 安全保障。'
+    },
+    hi: {
+      title: 'Sapa Paragliding - उड़ान का सपना देखें',
+      description: 'सापा में पेशेवर पायलटों के साथ पैराग्लाइडिंग की बुकिंग करें। 50K+ संतुष्ट ग्राहक, 100% सुरक्षा।'
+    }
+  }
+  return localeMetaMap[currentLocale.value] || localeMetaMap.en
+}
+
+const seoData = computed(() => getHomeSeoMeta())
+const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
+const hreflangLinks = computed(() => buildHreflangLinks('/', currentLocale.value))
+
+// Setup Head with SEO
+useHead({
+  title: seoData.value.title,
+  meta: [
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:type', content: 'website' }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(buildWebsiteJsonLD())
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
+    }
+  ]
+})
 
 const basicItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate']
 const standardItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate', 'hotelTransfer']
@@ -111,14 +174,6 @@ onMounted(async () => {
 
   const elements = document.querySelectorAll('.scroll-reveal')
   elements.forEach(el => observer.observe(el))
-})
-
-// SEO
-useHead({
-  title: 'Sapa Paragliding',
-  meta: [
-    { name: 'description', content: 'Experience the dream of flying in Sapa - Book your paragliding adventure today' }
-  ]
 })
 </script>
 

@@ -1,5 +1,7 @@
 <template>
     <div class="min-h-screen bg-gray-50">
+        <!-- Main title for accessibility, removed sr-only H1 to keep 1 H1 only -->
+        
         <!-- Hero Section - Large Image + 3 Small Images Grid -->
         <section class="relative min-h-[85vh] lg:min-h-[90vh]">
             <!-- Main Hero Image - Top -->
@@ -281,10 +283,62 @@
 
 <script setup lang="ts">
 import { h } from 'vue'
+import { getCanonicalUrl, buildHreflangLinks } from '~/utils/seo'
 
 const processSteps = [1, 2, 3, 4, 5]
 const router = useRouter()
 const { locale } = useI18n()
+const route = useRoute()
+
+// SEO Meta Tags by Locale
+const getAboutSeoMeta = () => {
+  const localeMetaMap: Record<string, any> = {
+    vi: {
+      title: 'Về Chúng Tôi - Sapa Paragliding',
+      description: 'Tìm hiểu về Sapa Paragliding - đối tác đáng tin cậy cho những trải nghiệm bay lượn tuyệt vời tại Sapa, Việt Nam. 15+ phi công chuyên nghiệp.'
+    },
+    en: {
+      title: 'About Us - Sapa Paragliding',
+      description: 'Learn about Sapa Paragliding - your trusted partner for unforgettable flying experiences in Sapa, Vietnam. 15+ professional pilots.'
+    },
+    fr: {
+      title: 'À Propos - Sapa Paragliding',
+      description: 'En savoir plus sur Sapa Paragliding - votre partenaire de confiance pour des expériences de vol inoubliables à Sapa, Vietnam.'
+    },
+    ru: {
+      title: 'О нас - Sapa Paragliding',
+      description: 'Узнайте больше о Sapa Paragliding - вашем надежном партнере для незабываемых полетов в Сапе, Вьетнам.'
+    },
+    zh: {
+      title: '关于我们 - Sapa Paragliding',
+      description: '了解沙坝滑翔伞 - 在越南沙坝提供难忘飞行体验的可信赖合作伙伴。'
+    },
+    hi: {
+      title: 'हमारे बारे में - Sapa Paragliding',
+      description: 'सापा पैराग्लाइडिंग के बारे में जानें - वियतनाम के सापा में अविस्मरणीय उड़ान अनुभव के लिए आपका विश्वसनीय भागीदार।'
+    }
+  }
+  return localeMetaMap[locale.value] || localeMetaMap.en
+}
+
+const seoData = computed(() => getAboutSeoMeta())
+const canonicalUrl = computed(() => getCanonicalUrl(route, locale.value))
+const hreflangLinks = computed(() => buildHreflangLinks('/about', locale.value))
+
+// Setup Head
+useHead({
+  title: seoData.value.title,
+  meta: [
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value
+  ]
+})
 
 // Feature icons as functional components
 const ShieldIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -326,14 +380,6 @@ const localizedNavigateTo = (path: string) => {
     const fullPath = currentLocale === 'vi' ? path : `/${currentLocale}${path}`
     router.push(fullPath)
 }
-
-// SEO
-useHead({
-    title: 'About Us - Sapa Paragliding',
-    meta: [
-        { name: 'description', content: 'Learn about Sapa Paragliding - your trusted partner for unforgettable flying experiences in Sapa, Vietnam' }
-    ]
-})
 </script>
 
 <style scoped>
@@ -383,3 +429,6 @@ useHead({
     opacity: 0;
 }
 </style>
+< / s c r i p t > 
+ 
+ 

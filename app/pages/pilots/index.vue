@@ -102,22 +102,67 @@
 </template>
 
 <script setup lang="ts">
+import { getCanonicalUrl, buildHreflangLinks } from '~/utils/seo'
+
 const { locale } = useI18n()
 const router = useRouter()
+const route = useRoute()
 
 const currentLocale = computed(() => locale.value || 'vi')
 const totalPilots = 14
+
+// SEO Meta Tags by Locale
+const getPilotsSeoMeta = () => {
+  const localeMetaMap: Record<string, any> = {
+    vi: {
+      title: 'Đội Ngũ Phi Công - Sapa Paragliding',
+      description: 'Gặp gỡ đội ngũ phi công lái được chứng chỉ của chúng tôi. 15+ phi công chuyên nghiệp với kinh nghiệm bay an toàn.'
+    },
+    en: {
+      title: 'Our Expert Pilots - Sapa Paragliding',
+      description: 'Meet our professional team of certified paragliding pilots in Sapa. 15+ experienced pilots ready to guide your adventure.'
+    },
+    fr: {
+      title: 'Notre Équipe de Pilotes - Sapa Paragliding',
+      description: 'Rencontrez notre équipe professionnelle de pilotes de parachutisme certifiés à Sapa.'
+    },
+    ru: {
+      title: 'Наша Команда Пилотов - Sapa Paragliding',
+      description: 'Встречайте нашу профессиональную команду сертифицированных пилотов параплана в Сапе.'
+    },
+    zh: {
+      title: '我们的飞行员 - Sapa Paragliding',
+      description: '见面我们在沙坝认证滑翔伞飞行员的专业团队。'
+    },
+    hi: {
+      title: 'हमारे पायलट - Sapa Paragliding',
+      description: 'सापा में हमारी पेशेवर प्रमाणित पैराग्लाइडिंग पायलटों की टीम से मिलें।'
+    }
+  }
+  return localeMetaMap[locale.value] || localeMetaMap.en
+}
+
+const seoData = computed(() => getPilotsSeoMeta())
+const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
+const hreflangLinks = computed(() => buildHreflangLinks('/pilots', currentLocale.value))
+
+// Setup Head
+useHead({
+  title: seoData.value.title,
+  meta: [
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value
+  ]
+})
 
 const navigateToBooking = () => {
   const path = currentLocale.value === 'vi' ? '/booking' : `/${currentLocale.value}/booking`
   router.push(path)
 }
-
-// SEO
-useHead({
-  title: computed(() => currentLocale.value === 'vi' ? 'Đội ngũ phi công - Dù lượn Sapa' : 'Our Expert Pilots - Sapa Paragliding'),
-  meta: [
-    { name: 'description', content: 'Meet our professional team of certified paragliding pilots in Sapa' }
-  ]
-})
 </script>

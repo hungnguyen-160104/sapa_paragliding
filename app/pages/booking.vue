@@ -2,6 +2,9 @@
   <div class="min-h-screen bg-gray-50 py-12">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
+        <!-- H1 for SEO -->
+        <h1 class="sr-only">{{ $t('menu.booking') }}</h1>
+
         <!-- Progress Steps -->
         <div class="mb-8">
           <div class="flex items-start justify-between">
@@ -52,22 +55,67 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
+import { getCanonicalUrl, buildHreflangLinks, DOMAIN } from '~/utils/seo'
 
 const bookingStore = useBookingStore()
 const currentStep = computed(() => bookingStore.currentStep)
+const { locale } = useI18n()
+const route = useRoute()
+
+// SEO Meta Tags by Locale
+const getBookingSeoMeta = () => {
+  const localeMetaMap: Record<string, any> = {
+    vi: {
+      title: 'Đặt Chuyến Bay Lượn Sapa Paragliding',
+      description: 'Đặt chuyến bay lượn tại Sapa một cách dễ dàng. Thanh toán trực tuyến, xác nhận tức thì. Giá tốt nhất, an toàn 100%.'
+    },
+    en: {
+      title: 'Book Your Paragliding Flight in Sapa',
+      description: 'Easy online paragliding booking in Sapa with instant confirmation. Secure payment, best prices, 100% safe.'
+    },
+    fr: {
+      title: 'Réservez Votre Vol à Voile à Sapa',
+      description: 'Réservation facile de parachutisme en ligne à Sapa avec confirmation instantanée. Paiement sécurisé, meilleurs tarifs.'
+    },
+    ru: {
+      title: 'Забронируйте Свой Полет на Параплане в Сапе',
+      description: 'Легкое онлайн-бронирование полетов на параплане в Сапе с мгновенным подтверждением. Безопасный платеж, лучшие цены.'
+    },
+    zh: {
+      title: '在沙坝预订滑翔伞飞行',
+      description: '在沙坝在线预订滑翔伞飞行，即时确认。安全支付，最优惠的价格，100% 安全。'
+    },
+    hi: {
+      title: 'सापा में पैराग्लाइडिंग बुकिंग करें',
+      description: 'सापा में आसान ऑनलाइन पैराग्लाइडिंग बुकिंग तत्काल पुष्टि के साथ। सुरक्षित भुगतान, सर्वोत्तम कीमतें, 100% सुरक्षा।'
+    }
+  }
+  return localeMetaMap[locale.value] || localeMetaMap.en
+}
+
+const seoData = computed(() => getBookingSeoMeta())
+const canonicalUrl = computed(() => getCanonicalUrl(route, locale.value))
+const hreflangLinks = computed(() => buildHreflangLinks('/booking', locale.value))
+
+// SEO
+useHead({
+  title: seoData.value.title,
+  meta: [
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value
+  ]
+})
 
 // Reset to step 1 when entering booking page (optional)
 onMounted(() => {
   // Uncomment if you want to reset booking on page load
   // bookingStore.resetBooking()
-})
-
-// SEO
-useHead({
-  title: 'Book Your Flight - Sapa Paragliding',
-  meta: [
-    { name: 'description', content: 'Book your paragliding adventure in Sapa. Easy online booking with instant confirmation.' }
-  ]
 })
 </script>
 

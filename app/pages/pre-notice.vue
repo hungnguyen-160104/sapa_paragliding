@@ -116,9 +116,11 @@
 
 <script setup lang="ts">
 import { h, ref } from 'vue'
+import { getCanonicalUrl, buildHreflangLinks } from '~/utils/seo'
 
 const router = useRouter()
 const { locale } = useI18n()
+const route = useRoute()
 
 const localizedNavigateTo = (path: string) => {
   const currentLocale = locale.value || 'vi'
@@ -324,11 +326,53 @@ const getActiveTabContent = () => {
   return tabContents[activeTab.value] || []
 }
 
+// SEO Meta Tags by Locale
+const getPreNoticeSeoMeta = () => {
+  const localeMetaMap: Record<string, any> = {
+    vi: {
+      title: 'Thông Báo Trước Khi Bay - Sapa Paragliding',
+      description: 'Thông tin quan trọng và yêu cầu trước khi bay lượn tại Sapa. Hướng dẫn chi tiết, quy tắc an toàn, điều kiện thời tiết.'
+    },
+    en: {
+      title: 'Pre-Flight Notice - Sapa Paragliding',
+      description: 'Important information and requirements before your paragliding flight in Sapa. Detailed guidance, safety rules, weather conditions.'
+    },
+    fr: {
+      title: 'Avis Pré-Vol - Sapa Paragliding',
+      description: 'Informations et conditions importantes avant votre vol à voile à Sapa. Consignes détaillées, règles de sécurité.'
+    },
+    ru: {
+      title: 'Предполетное уведомление - Sapa Paragliding',
+      description: 'Важная информация и требования перед полетом на параплане в Сапе. Подробные инструкции и правила безопасности.'
+    },
+    zh: {
+      title: '飞行前通知 - Sapa Paragliding',
+      description: '在沙坝滑翔伞飞行前的重要信息和要求。详细指南、安全规则、天气条件。'
+    },
+    hi: {
+      title: 'उड़ान पूर्व सूचना - Sapa Paragliding',
+      description: 'सापा में पैराग्लाइडिंग उड़ान से पहले महत्वपूर्ण जानकारी और आवश्यकताएं। विस्तृत मार्गदर्शन और सुरक्षा नियम।'
+    }
+  }
+  return localeMetaMap[locale.value] || localeMetaMap.en
+}
+
+const seoData = computed(() => getPreNoticeSeoMeta())
+const canonicalUrl = computed(() => getCanonicalUrl(route, locale.value))
+const hreflangLinks = computed(() => buildHreflangLinks('/pre-notice', locale.value))
+
 // SEO
 useHead({
-  title: 'Pre-Flight Notice - Sapa Paragliding',
+  title: seoData.value.title,
   meta: [
-    { name: 'description', content: 'Important information and requirements before your paragliding flight in Sapa' }
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value }
+  ],
+  link: [
+    { rel: 'canonical', href: canonicalUrl.value },
+    ...hreflangLinks.value
   ]
 })
 </script>
