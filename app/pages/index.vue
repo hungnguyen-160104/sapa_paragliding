@@ -17,31 +17,28 @@ const currentPostIndex = ref(0)
 const getHomeSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
-      title: 'Sapa Paragliding - Trải Nghiệm Bay Lượn Tuyệt Vời',
-      description: 'Trải nghiệm bay lượn tại Sapa với các phi công chuyên nghiệp. Đặt chuyến bay của bạn ngay hôm nay. 50K+ khách hàng hài lòng, 100% an toàn.'
+      title: 'Dù lượn Sapa | Đặt vé bay Paragliding | Sapa Paragliding',
+      description: 'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại cao độ cao nhất Việt Nam. Ngắm nhìn toàn cảnh Sapa hùng vĩ cùng phi công quốc tế chuyên nghiệp. Hơn 50,000 khách hàng tin tưởng, 100% an toàn.' 
     },
     en: {
-      title: 'Sapa Paragliding - Experience the Dream of Flying',
-      description: 'Book your paragliding adventure in Sapa with professional pilots. Experience freedom and safety. 50K+ satisfied customers.'
+      title: 'Sapa Paragliding | Best Paragliding Flight | Fly Sapa',
+      description: 'BOOK ONLINE. Experience the highest paragliding takeoff in Vietnam. Enjoy breathtaking panoramic views of Sapa with certified professional pilots. 100% safety record with 50K+ satisfied customers.'
     },
     fr: {
-      title: 'Sapa Paragliding - Vivez l\'Aventure du Vol à Voile',
-      description: 'Réservez votre aventure de parachutisme à Sapa avec des pilotes professionnels. 50K+ clients satisfaits, 100% sécurité.'
+      title: 'Parapente Sapa | Vol en Parapente au Vietnam | Sapa Paragliding',
+      description: 'RÉSERVEZ EN LIGNE. Le point de décollage de parapente le plus haut du Vietnam. Volez avec des pilotes professionnels internationaux. Sécurité 100% avec plus de 50 000 clients satisfaits.'
     },
     ru: {
-      title: 'Sapa Paragliding - Испытайте Удовольствие Полета',
-      description: 'Забронируйте свой полет на параплане в Сапе с профессиональными пилотами. 50K+ довольных клиентов, 100% безопасность.'
+      title: 'Парапланеризм Сапа | Полеты на параплане | Sapa Paragliding',
+      description: 'БРОНИРУЙТЕ ОНЛАЙН. Самая высокая точка взлета во Вьетнаме. Летайте с профессиональными пилотами и наслаждайтесь захватывающим видом на Сапу. 100% безопасность.'
     },
     zh: {
-      title: 'Sapa Paragliding - 体验飞行的梦想',
-      description: '在沙坝预订专业滑翔伞飞行。体验自由和安全。50K+ 满意的客户，100% 安全保障。'
+      title: '沙坝滑翔伞 | 越南最佳滑翔伞飞行航班 | Sapa Paragliding',
+      description: '在线预订。伴随专业国际飞行员，从越南最高起飞点享受沙坝的壮丽全景。100%安全保障，5万多名客户的信赖之选。'
     },
     hi: {
-      title: 'Sapa Paragliding - उड़ान का सपना देखें',
-      description: 'सापा में पेशेवर पायलटों के साथ पैराग्लाइडिंग की बुकिंग करें। 50K+ संतुष्ट ग्राहक, 100% सुरक्षा।'
-    }
-  }
-  return localeMetaMap[currentLocale.value] || localeMetaMap.en
+      title: 'सापा पैराग्लाइडिंग | सर्वश्रेष्ठ उड़ान अनुभव | Sapa Paragliding',
+      description: 'ऑनलाइन बुक करें। वियतनाम में सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर अंतरराष्ट्रीय पायलटों के साथ सुरक्षित उड़ान भरें और सापा का विहंगम दृश्य देखें। 100% सुरक्षा।'
 }
 
 const seoData = computed(() => getHomeSeoMeta())
