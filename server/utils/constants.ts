@@ -3,9 +3,7 @@
  * Centralized configuration values
  */
 
-// ============================================
-// BOOKING CONSTANTS
-// ============================================
+
 
 export const BOOKING_STATUS = {
   PENDING: 'PENDING',
