@@ -55,11 +55,18 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
-import { getCanonicalUrl, buildHreflangLinks, DOMAIN } from '~/utils/seo'
+import {
+  buildBreadcrumbJsonLD,
+  buildHreflangLinks,
+  buildLocalizedUrl,
+  getCanonicalUrl,
+  getDefaultOgImage,
+  getOgLocale
+} from '~/utils/seo'
 
 const bookingStore = useBookingStore()
 const currentStep = computed(() => bookingStore.currentStep)
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const route = useRoute()
 
 // SEO Meta Tags by Locale
@@ -95,22 +102,44 @@ const getBookingSeoMeta = () => {
 
 const seoData = computed(() => getBookingSeoMeta())
 const canonicalUrl = computed(() => getCanonicalUrl(route, locale.value))
-const hreflangLinks = computed(() => buildHreflangLinks('/booking', locale.value))
+const hreflangLinks = computed(() => buildHreflangLinks(route.path, locale.value))
+const ogImage = getDefaultOgImage()
+const breadcrumbJsonLd = computed(() =>
+  buildBreadcrumbJsonLD([
+    { name: t('menu.home'), item: buildLocalizedUrl('/', locale.value) },
+    { name: t('menu.booking'), item: canonicalUrl.value }
+  ])
+)
+
 
 // SEO
-useHead({
+useHead(() => ({
   title: seoData.value.title,
   meta: [
     { name: 'description', content: seoData.value.description },
     { property: 'og:title', content: seoData.value.title },
     { property: 'og:description', content: seoData.value.description },
-    { property: 'og:url', content: canonicalUrl.value }
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: getOgLocale(locale.value) },
+    { property: 'og:image', content: ogImage },
+    { property: 'og:image:alt', content: seoData.value.title },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: seoData.value.title },
+    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(breadcrumbJsonLd.value)
+    }
   ]
-})
+}))
 
 // Reset to step 1 when entering booking page (optional)
 onMounted(() => {

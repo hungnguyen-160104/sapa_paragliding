@@ -283,11 +283,19 @@
 
 <script setup lang="ts">
 import { h } from 'vue'
-import { getCanonicalUrl, buildHreflangLinks } from '~/utils/seo'
+import {
+  DOMAIN,
+  buildBreadcrumbJsonLD,
+  buildHreflangLinks,
+  buildLocalizedUrl,
+  getCanonicalUrl,
+  getOgLocale
+} from '~/utils/seo'
 
 const processSteps = [1, 2, 3, 4, 5]
 const router = useRouter()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
+const localePath = useLocalePath()
 const route = useRoute()
 
 // SEO Meta Tags by Locale
@@ -323,22 +331,44 @@ const getAboutSeoMeta = () => {
 
 const seoData = computed(() => getAboutSeoMeta())
 const canonicalUrl = computed(() => getCanonicalUrl(route, locale.value))
-const hreflangLinks = computed(() => buildHreflangLinks('/about', locale.value))
+const hreflangLinks = computed(() => buildHreflangLinks(route.path, locale.value))
+const ogImage = `${DOMAIN}/images/header-pic.jpeg`
+const breadcrumbJsonLd = computed(() =>
+  buildBreadcrumbJsonLD([
+    { name: t('menu.home'), item: buildLocalizedUrl('/', locale.value) },
+    { name: t('menu.about'), item: canonicalUrl.value }
+  ])
+)
+
 
 // Setup Head
-useHead({
+useHead(() => ({
   title: seoData.value.title,
   meta: [
     { name: 'description', content: seoData.value.description },
     { property: 'og:title', content: seoData.value.title },
     { property: 'og:description', content: seoData.value.description },
-    { property: 'og:url', content: canonicalUrl.value }
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: getOgLocale(locale.value) },
+    { property: 'og:image', content: ogImage },
+    { property: 'og:image:alt', content: seoData.value.title },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: seoData.value.title },
+    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(breadcrumbJsonLd.value)
+    }
   ]
-})
+}))
 
 // Feature icons as functional components
 const ShieldIcon = () => h('svg', { fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -376,9 +406,7 @@ const features = [
 ]
 
 const localizedNavigateTo = (path: string) => {
-    const currentLocale = locale.value || 'vi'
-    const fullPath = currentLocale === 'vi' ? path : `/${currentLocale}${path}`
-    router.push(fullPath)
+    router.push(localePath(path))
 }
 </script>
 
@@ -429,6 +457,4 @@ const localizedNavigateTo = (path: string) => {
     opacity: 0;
 }
 </style>
-< / s c r i p t > 
- 
- 
+

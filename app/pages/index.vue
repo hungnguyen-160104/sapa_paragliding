@@ -7,10 +7,13 @@ import {
   buildHreflangLinks,
   buildOrganizationJsonLD,
   buildWebsiteJsonLD,
-  getCanonicalUrl
+  getCanonicalUrl,
+  getOgLocale,
+  getDefaultOgImage
 } from '~/utils/seo'
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const router = useRouter()
 const route = useRoute()
 const postsStore = usePostsStore()
@@ -65,34 +68,40 @@ const seoData = computed((): SeoMetaData => {
 const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
 const hreflangLinks = computed(() => buildHreflangLinks('/', currentLocale.value))
 
-const bookingPath = computed(() => {
-  return currentLocale.value === 'vi' ? '/booking' : `/${currentLocale.value}/booking`
-})
+const bookingPath = computed(() => localePath('/booking'))
 
-useHead({
-  title: () => seoData.value.title,
+
+useHead(() => ({
+  title: seoData.value.title,
   meta: [
-    { name: 'description', content: () => seoData.value.description },
-    { property: 'og:title', content: () => seoData.value.title },
-    { property: 'og:description', content: () => seoData.value.description },
-    { property: 'og:url', content: () => canonicalUrl.value },
-    { property: 'og:type', content: 'website' }
+    { name: 'description', content: seoData.value.description },
+    { property: 'og:title', content: seoData.value.title },
+    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: getOgLocale(currentLocale.value) },
+    { property: 'og:image', content: getDefaultOgImage() },
+    { property: 'og:image:alt', content: seoData.value.title },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: seoData.value.title },
+    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:image', content: getDefaultOgImage() }
   ],
   link: [
-    { rel: 'canonical', href: () => canonicalUrl.value },
+    { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value
   ],
   script: [
     {
       type: 'application/ld+json',
-      textContent: JSON.stringify(buildWebsiteJsonLD())
+      children: JSON.stringify(buildWebsiteJsonLD())
     },
     {
       type: 'application/ld+json',
-      textContent: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
+      children: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
     }
   ]
-})
+}))
 
 const basicItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate']
 const standardItemKeys = ['flight', 'photoVideo', 'insurance', 'drinks', 'certificate', 'hotelTransfer']
@@ -111,9 +120,7 @@ const latestPosts = computed(() => {
 })
 
 const localizedNavigateTo = (path: string) => {
-  const localeValue = locale.value || 'vi'
-  const fullPath = localeValue === 'vi' ? path : `/${localeValue}${path}`
-  router.push(fullPath)
+  router.push(localePath(path))
 }
 
 const nextPost = () => {

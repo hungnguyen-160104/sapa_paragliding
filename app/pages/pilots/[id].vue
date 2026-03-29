@@ -347,9 +347,19 @@
 </template>
 
 <script setup lang="ts">
+import {
+    DOMAIN,
+    buildBreadcrumbJsonLD,
+    buildHreflangLinks,
+    buildLocalizedUrl,
+    buildPersonJsonLD,
+    getCanonicalUrl,
+    getOgLocale
+} from '~/utils/seo'
 const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
+const localePath = useLocalePath()
 const pilotId = route.params.id as string
 
 const currentLocale = computed(() => locale.value || 'vi')
@@ -359,8 +369,7 @@ const toggleLanguage = () => {
 }
 
 const localizedNavigateTo = (path: string) => {
-    const fullPath = currentLocale.value === 'vi' ? path : `/${currentLocale.value}${path}`
-    router.push(fullPath)
+    router.push(localePath(path))
 }
 
 // Total number of pilots
@@ -375,8 +384,7 @@ const currentPilotNumber = computed(() => {
 // Navigate to specific pilot
 const navigateToPilot = (pilotNum: number) => {
     if (pilotNum < 1 || pilotNum > totalPilots) return
-    const path = `/pilots/pilot${pilotNum}`
-    localizedNavigateTo(path)
+    router.push(localePath(`/pilots/pilot${pilotNum}`))
 }
 
 // Get pilot name for tooltip
@@ -533,14 +541,80 @@ const handleImageError = (event: Event) => {
     target.src = 'https://via.placeholder.com/800x600?text=Pilot'
 }
 
-// SEO
-useHead({
-    title: computed(() => pilot.value ? `${pilot.value.fullname} - Sapa Paragliding` : 'Pilot - Sapa Paragliding'),
-    meta: computed(() => [
-        {
-            name: 'description',
-            content: pilot.value ? pilot.value.des : 'Meet our professional paragliding pilots'
-        }
-    ])
+
+const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
+const hreflangLinks = computed(() => buildHreflangLinks(route.path, currentLocale.value))
+const seoTitle = computed(() => {
+    if (!pilot.value) {
+        return `${t('menu.pilots')} | Sapa Paragliding`
+    }
+
+    return `${pilot.value.fullname} | ${pilot.value.role} | Sapa Paragliding`
 })
+const seoDescription = computed(() => {
+    if (!pilot.value) {
+        return t('pilots.subtitle')
+    }
+
+    return pilot.value.des
+})
+const ogImage = computed(() => {
+    const image = contentImages.value[0] || heroImage.value || '/images/hero-bg.jpg'
+    return image.startsWith('http') ? image : `${DOMAIN}${image}`
+})
+const breadcrumbJsonLd = computed(() =>
+    buildBreadcrumbJsonLD([
+        { name: t('menu.home'), item: buildLocalizedUrl('/', currentLocale.value) },
+        { name: t('menu.pilots'), item: buildLocalizedUrl('/pilots', currentLocale.value) },
+        { name: pilot.value?.fullname || t('menu.pilots'), item: canonicalUrl.value }
+    ])
+)
+const personJsonLd = computed(() => {
+    if (!pilot.value) return null
+
+    return buildPersonJsonLD({
+        name: pilot.value.fullname,
+        description: pilot.value.des,
+        jobTitle: pilot.value.role,
+        url: canonicalUrl.value,
+        image: ogImage.value
+    })
+})
+
+// SEO
+useHead(() => ({
+    title: seoTitle.value,
+    meta: [
+        { name: 'description', content: seoDescription.value },
+        { property: 'og:title', content: seoTitle.value },
+        { property: 'og:description', content: seoDescription.value },
+        { property: 'og:url', content: canonicalUrl.value },
+        { property: 'og:type', content: 'profile' },
+        { property: 'og:locale', content: getOgLocale(currentLocale.value) },
+        { property: 'og:image', content: ogImage.value },
+        { property: 'og:image:alt', content: pilot.value?.fullname || 'Sapa Paragliding' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: seoTitle.value },
+        { name: 'twitter:description', content: seoDescription.value },
+        { name: 'twitter:image', content: ogImage.value }
+    ],
+    link: [
+        { rel: 'canonical', href: canonicalUrl.value },
+        ...hreflangLinks.value
+    ],
+    script: [
+        {
+            type: 'application/ld+json',
+            children: JSON.stringify(breadcrumbJsonLd.value)
+        },
+        ...(personJsonLd.value
+            ? [
+                {
+                    type: 'application/ld+json',
+                    children: JSON.stringify(personJsonLd.value)
+                }
+            ]
+            : [])
+    ]
+}))
 </script>

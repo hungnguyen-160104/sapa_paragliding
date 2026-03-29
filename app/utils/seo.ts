@@ -1,15 +1,15 @@
 /**
  * SEO Utilities for Nuxt / i18n
- * Helper functions for canonical URLs, hreflang, and structured data
+ * Centralized helpers for canonical URLs, hreflang, OG locale and JSON-LD.
  */
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 
-export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi']
-export const DEFAULT_LOCALE = 'vi'
+export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
+export const DEFAULT_LOCALE: SupportedLocale = 'vi'
 
-// Map locale code to hreflang syntax
-export const localeToHreflang: Record<string, string> = {
+export const localeToHreflang: Record<SupportedLocale, string> = {
   vi: 'vi-VN',
   en: 'en-US',
   fr: 'fr-FR',
@@ -18,73 +18,117 @@ export const localeToHreflang: Record<string, string> = {
   hi: 'hi-IN'
 }
 
-/**
- * Build canonical URL for current page
- */
-export const getCanonicalUrl = (route: any, locale: string): string => {
-  if (!route) return DOMAIN
-
-  const rawPath = route.path || '/'
-  // Determine if path has the current locale prefix, strip it for clean path
-  const regex = new RegExp(`^/${locale}(/|$)`)
-  const cleanPath = rawPath.replace(regex, '/')
-  const safeCleanPath = cleanPath === '/' ? '' : cleanPath
-
-  // Since strategy is 'prefix', EVERY language gets a prefix (e.g. /vi/..., /en/...)
-  const url = `${DOMAIN}/${locale}${safeCleanPath}`
-
-  return url.replace(/\/$/, '') || DOMAIN
+type RouteLike = {
+  path?: string
 }
 
-/**
- * Build hreflang links for all locales
- */
-export const buildHreflangLinks = (basePath: string, currentLocale: string) => {
-  const links: any[] = []
+type BreadcrumbItem = {
+  name: string
+  item: string
+}
 
-  // Ensure clean base path
-  const regex = new RegExp(`^/${currentLocale}(/|$)`)
-  const cleanPath = basePath.replace(regex, '/')
-  const safeCleanPath = cleanPath === '/' ? '' : cleanPath
+type PersonSchemaInput = {
+  name: string
+  description: string
+  url: string
+  image?: string
+  jobTitle?: string
+}
 
-  SUPPORTED_LOCALES.forEach(locale => {
-    links.push({
-      rel: 'alternate',
-      hreflang: localeToHreflang[locale],
-      href: `${DOMAIN}/${locale}${safeCleanPath}`.replace(/\/$/, '') || DOMAIN
-    })
-  })
+export const normalizePath = (path?: string): string => {
+  if (typeof path !== 'string' || path.length === 0) return '/'
 
-  // Add x-default (points to vi prefix)
+  const noQuery = path.split('?')[0] ?? ''
+  const noHash = noQuery.split('#')[0] ?? ''
+  const cleanPath = noHash.replace(/\/+/g, '/')
+
+  if (cleanPath.length === 0) return '/'
+
+  return cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`
+}
+
+export const stripLocalePrefix = (path?: string): string => {
+  const normalizedPath = normalizePath(path)
+  const localePattern = SUPPORTED_LOCALES.join('|')
+  const regex = new RegExp(`^/(${localePattern})(?=/|$)`)
+  const strippedPath = normalizedPath.replace(regex, '') || '/'
+
+  return strippedPath.startsWith('/') ? strippedPath : `/${strippedPath}`
+}
+
+export const buildLocalizedPath = (path: string, locale: string): string => {
+  const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)
+    ? (locale as SupportedLocale)
+    : DEFAULT_LOCALE
+
+  const cleanPath = stripLocalePrefix(path)
+
+  return cleanPath === '/' ? `/${normalizedLocale}` : `/${normalizedLocale}${cleanPath}`
+}
+
+const joinUrl = (base: string, path: string): string => {
+  const normalizedBase = base.replace(/\/$/, '')
+  const normalizedPath = path === '/' ? '' : path.replace(/\/$/, '')
+  return `${normalizedBase}${normalizedPath}`
+}
+
+export const buildLocalizedUrl = (path: string, locale: string): string => {
+  return joinUrl(DOMAIN, buildLocalizedPath(path, locale))
+}
+
+export const getCanonicalUrl = (route: RouteLike, locale: string): string => {
+  return buildLocalizedUrl(route.path ?? '/', locale)
+}
+
+export const buildHreflangLinks = (basePath: string, _currentLocale: string) => {
+  const cleanPath = stripLocalePrefix(basePath)
+
+  const links = SUPPORTED_LOCALES.map((locale) => ({
+    rel: 'alternate',
+    hreflang: localeToHreflang[locale],
+    href: joinUrl(DOMAIN, buildLocalizedPath(cleanPath, locale))
+  }))
+
   links.push({
     rel: 'alternate',
     hreflang: 'x-default',
-    href: `${DOMAIN}/${DEFAULT_LOCALE}${safeCleanPath}`.replace(/\/$/, '') || DOMAIN
+    href: joinUrl(DOMAIN, buildLocalizedPath(cleanPath, DEFAULT_LOCALE))
   })
 
   return links
 }
 
-/**
- * Build JSON-LD for Organization
- */
+export const getOgLocale = (locale: string): string => {
+  const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)
+    ? (locale as SupportedLocale)
+    : DEFAULT_LOCALE
+
+  return localeToHreflang[normalizedLocale].replace('-', '_')
+}
+
+export const getDefaultOgImage = (): string => `${DOMAIN}/images/hero-bg.jpg`
+
 export const buildOrganizationJsonLD = (locale: string = 'en') => {
-  const labels: Record<string, any> = {
+  const labels: Record<SupportedLocale, { name: string; description: string }> = {
     vi: {
       name: 'Sapa Paragliding',
-      description: 'Trải nghiệm bay lượn tại Sapa - Nơi bạn cảm nhận tự do và bầu trời gần hơn bao giờ hết'
+      description:
+        'Trải nghiệm bay lượn tại Sapa - Nơi bạn cảm nhận tự do và bầu trời gần hơn bao giờ hết'
     },
     en: {
       name: 'Sapa Paragliding',
-      description: 'Experience the dream of flying in Sapa - Where you feel freedom and the sky closer than ever'
+      description:
+        'Experience the dream of flying in Sapa - Where you feel freedom and the sky closer than ever'
     },
     fr: {
       name: 'Sapa Paragliding',
-      description: 'Vivez l\'aventure du vol à voile à Sapa - Où vous ressentez la liberté et le ciel plus proche que jamais'
+      description:
+        "Vivez l'aventure du vol à voile à Sapa - Où vous ressentez la liberté et le ciel plus proche que jamais"
     },
     ru: {
       name: 'Sapa Paragliding',
-      description: 'Испытайте удовольствие полета на параплане в Сапе - Где вы чувствуете свободу и небо ближе, чем когда-либо'
+      description:
+        'Испытайте удовольствие полета на параплане в Сапе - Где вы чувствуете свободу и небо ближе, чем когда-либо'
     },
     zh: {
       name: 'Sapa Paragliding',
@@ -92,11 +136,16 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
     },
     hi: {
       name: 'Sapa Paragliding',
-      description: 'सापा में पैराग्लाइडिंग का अनुभव लें - जहाँ आप स्वतंत्रता और आकाश को पहले से कहीं अधिक करीब महसूस करते हैं'
+      description:
+        'सापा में पैराग्लाइडिंग का अनुभव लें - जहाँ आप स्वतंत्रता और आकाश को पहले से कहीं अधिक करीब महसूस करते हैं'
     }
   }
 
-  const label = labels[locale] || labels.en
+  const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)
+    ? (locale as SupportedLocale)
+    : DEFAULT_LOCALE
+
+  const label = labels[normalizedLocale]
 
   return {
     '@context': 'https://schema.org',
@@ -104,45 +153,64 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
     name: label.name,
     url: DOMAIN,
     logo: `${DOMAIN}/images/Sapa_logo.png`,
+    image: getDefaultOgImage(),
+    email: 'sapa.paragliding@gmail.com',
     description: label.description,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Customer Service',
-      telephone: '+84-386-887-489'
-    },
     sameAs: [
       'https://facebook.com/sapaparagliding',
       'https://instagram.com/sapaparagliding',
       'https://tiktok.com/@sapaparagliding'
+    ],
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: '+84-386-887-489',
+        areaServed: 'VN',
+        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi']
+      }
     ]
   }
 }
 
-/**
- * Build JSON-LD for Website
- */
 export const buildWebsiteJsonLD = () => {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     url: DOMAIN,
     name: 'Sapa Paragliding',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${DOMAIN}/search?q={search_term_string}`
-      },
-      'query-input': 'required name=search_term_string'
-    }
+    inLanguage: SUPPORTED_LOCALES.map((locale) => localeToHreflang[locale])
   }
 }
 
-/**
- * Generate page title based on locale and route
- */
-export const getPageTitle = (route: any, locale: string, t: Function): string => {
-  const path = route.path.replace(`/${locale}`, '').replace(/\/$/, '') || '/'
+export const buildBreadcrumbJsonLD = (items: BreadcrumbItem[]) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.item
+    }))
+  }
+}
+
+export const buildPersonJsonLD = (person: PersonSchemaInput) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: person.name,
+    description: person.description,
+    jobTitle: person.jobTitle,
+    url: person.url,
+    image: person.image
+  }
+}
+
+export const getPageTitle = (route: RouteLike, _locale: string, t: (key: string) => string): string => {
+  const rawPath = route.path ?? '/'
+  const path = stripLocalePrefix(rawPath).replace(/\/$/, '') || '/'
 
   const titles: Record<string, string> = {
     '/': 'menu.home',

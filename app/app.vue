@@ -12,6 +12,13 @@
 
 <script setup lang="ts">
 const route = useRoute()
+const { locale } = useI18n()
+
+useHead(() => ({
+  htmlAttrs: {
+    lang: locale.value || 'vi'
+  }
+}))
 
 const isAdminRoute = computed(() => {
   return route.path.includes('/admin')
