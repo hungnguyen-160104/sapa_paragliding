@@ -13,12 +13,33 @@
 <script setup lang="ts">
 const route = useRoute()
 const { locale } = useI18n()
+const config = useRuntimeConfig()
 
-useHead(() => ({
-  htmlAttrs: {
-    lang: locale.value || 'vi'
+useHead(() => {
+  const scripts = config.public.gaId
+    ? [
+        {
+          src: `https://www.googletagmanager.com/gtag/js?id=${config.public.gaId}`,
+          async: true
+        },
+        {
+          children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${config.public.gaId}');
+          `
+        }
+      ]
+    : []
+
+  return {
+    htmlAttrs: {
+      lang: locale.value || 'vi'
+    },
+    script: scripts
   }
-}))
+})
 
 const isAdminRoute = computed(() => {
   return route.path.includes('/admin')

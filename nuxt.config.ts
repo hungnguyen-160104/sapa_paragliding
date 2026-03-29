@@ -16,37 +16,36 @@ export default defineNuxtConfig({
     }
   },
 
-  
-app: {
-  head: {
-    title: 'Sapa Paragliding',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        name: 'robots',
-        content:
-          'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-      },
-      {
-        name: 'googlebot',
-        content:
-          'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-      },
-      {
-        name: 'format-detection',
-        content: 'telephone=no'
-      },
-      {
-        name: 'theme-color',
-        content: '#ffffff'
-      },
-      { property: 'og:site_name', content: 'Sapa Paragliding' },
-      { name: 'twitter:card', content: 'summary_large_image' }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  }
-},
+  app: {
+    head: {
+      title: 'Sapa Paragliding',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          name: 'robots',
+          content:
+            'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        },
+        {
+          name: 'googlebot',
+          content:
+            'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        },
+        {
+          name: 'format-detection',
+          content: 'telephone=no'
+        },
+        {
+          name: 'theme-color',
+          content: '#ffffff'
+        },
+        { property: 'og:site_name', content: 'Sapa Paragliding' },
+        { name: 'twitter:card', content: 'summary_large_image' }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
+  },
 
   modules: [
     '@nuxtjs/tailwindcss',
@@ -99,7 +98,8 @@ app: {
       whatsappUrl: process.env.NUXT_PUBLIC_WHATSAPP_URL || 'https://wa.me/84386887489',
       cloudinaryCloudName: process.env.NUXT_PUBLIC_CLOUDINARY_CLOUD_NAME || '',
       cloudinaryUploadPreset: process.env.NUXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || '',
-      turnstileSiteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || ''
+      turnstileSiteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
+      gaId: process.env.NUXT_PUBLIC_GA_ID || 'G-2HK1VGSVMP'
     }
   }
 })
