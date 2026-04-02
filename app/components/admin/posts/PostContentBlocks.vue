@@ -1,215 +1,305 @@
 <template>
   <div class="space-y-3">
-    <!-- Blocks List -->
-    <div 
-      v-for="(block, index) in store.draft.contentBlocks" 
+    <div
+      v-for="(block, index) in englishBlocks"
       :key="block.id"
-      class="group relative border border-slate-200 rounded-xl bg-white hover:border-slate-300 transition-colors"
+      class="group relative rounded-xl border border-slate-200 bg-white transition-colors hover:border-slate-300"
     >
-      <!-- Block Controls -->
-      <div class="absolute -left-10 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col gap-1">
-        <button 
-          class="p-1 hover:bg-slate-100 rounded text-slate-400 hover:text-slate-600"
+      <div class="absolute -left-10 top-1/2 flex -translate-y-1/2 flex-col gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        <button
+          class="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
           :disabled="index === 0"
           title="Di chuyển lên"
-          @click="store.moveBlock(block.id, 'up')"
+          @click="moveBlock(index, 'up')"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
           </svg>
         </button>
-        <button 
-          class="p-1 hover:bg-slate-100 rounded text-slate-400 hover:text-slate-600"
-          :disabled="index === store.draft.contentBlocks.length - 1"
+        <button
+          class="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+          :disabled="index === englishBlocks.length - 1"
           title="Di chuyển xuống"
-          @click="store.moveBlock(block.id, 'down')"
+          @click="moveBlock(index, 'down')"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
       </div>
-      
-      <!-- Block Header -->
-      <div class="flex items-center justify-between px-4 py-2 border-b border-slate-100 bg-slate-50 rounded-t-xl">
-        <span class="text-xs font-medium text-slate-500 uppercase tracking-wide">
+
+      <div class="flex items-center justify-between rounded-t-xl border-b border-slate-100 bg-slate-50 px-4 py-2">
+        <span class="text-xs font-medium uppercase tracking-wide text-slate-500">
           {{ getBlockLabel(block.type) }}
         </span>
-        <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button 
-            class="p-1 hover:bg-slate-200 rounded text-slate-400 hover:text-slate-600"
+        <div class="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <button
+            class="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600"
             title="Nhân bản"
-            @click="store.duplicateBlock(block.id)"
+            @click="duplicateBlock(index)"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
           </button>
-          <button 
-            class="p-1 hover:bg-red-100 rounded text-slate-400 hover:text-red-600"
+          <button
+            class="rounded p-1 text-slate-400 hover:bg-red-100 hover:text-red-600"
             title="Xóa"
-            @click="store.removeBlock(block.id)"
+            @click="removeBlock(index)"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </button>
         </div>
       </div>
-      
-      <!-- Block Content -->
-      <div class="p-4">
-        <!-- Heading Block -->
+
+      <div class="space-y-4 p-4">
         <template v-if="block.type === 'heading'">
-          <div class="flex items-center gap-3">
-            <select 
-              :value="block.data.level"
-              class="input-field w-20 text-sm py-1.5"
-              @change="updateBlockData(block.id, { level: Number(($event.target as HTMLSelectElement).value) })"
+          <div class="mb-3 flex items-center gap-3">
+            <select
+              :value="block.data?.level || 2"
+              class="input-field w-24 py-2 text-sm"
+              @change="updateHeadingLevel(index, Number(($event.target as HTMLSelectElement).value))"
             >
               <option :value="1">H1</option>
               <option :value="2">H2</option>
               <option :value="3">H3</option>
             </select>
-            <input 
-              :value="block.data.text"
-              type="text"
-              class="input-field flex-1"
-              :class="{
-                'text-2xl font-bold': block.data.level === 1,
-                'text-xl font-semibold': block.data.level === 2,
-                'text-lg font-medium': block.data.level === 3
-              }"
-              placeholder="Nhập tiêu đề..."
-              @input="updateBlockData(block.id, { text: ($event.target as HTMLInputElement).value })"
-            />
+            <p class="text-sm text-slate-500">Nhập tiêu đề cho cả tiếng Việt và tiếng Anh</p>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tiếng Việt</label>
+              <input
+                :value="getViBlock(index).data?.text || ''"
+                type="text"
+                class="input-field"
+                placeholder="Nhập tiêu đề tiếng Việt..."
+                @input="updateBlockText(index, 'vi', ($event.target as HTMLInputElement).value)"
+              />
+            </div>
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">English</label>
+              <input
+                :value="block.data?.text || ''"
+                type="text"
+                class="input-field"
+                placeholder="Enter English heading..."
+                @input="updateBlockText(index, 'en', ($event.target as HTMLInputElement).value)"
+              />
+            </div>
           </div>
         </template>
-        
-        <!-- Paragraph Block -->
+
         <template v-else-if="block.type === 'paragraph'">
-          <textarea 
-            :value="block.data.text"
-            rows="3"
-            class="input-field resize-none"
-            placeholder="Nhập nội dung đoạn văn..."
-            @input="updateBlockData(block.id, { text: ($event.target as HTMLTextAreaElement).value })"
-          />
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Đoạn tiếng Việt</label>
+              <textarea
+                :value="getViBlock(index).data?.text || ''"
+                rows="6"
+                class="input-field resize-y"
+                placeholder="Nhập nội dung tiếng Việt..."
+                @input="updateBlockText(index, 'vi', ($event.target as HTMLTextAreaElement).value)"
+              />
+            </div>
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paragraph (English)</label>
+              <textarea
+                :value="block.data?.text || ''"
+                rows="6"
+                class="input-field resize-y"
+                placeholder="Enter English paragraph..."
+                @input="updateBlockText(index, 'en', ($event.target as HTMLTextAreaElement).value)"
+              />
+            </div>
+          </div>
         </template>
-        
-        <!-- Image Block -->
+
         <template v-else-if="block.type === 'image'">
-          <div v-if="!block.data.url" class="border-2 border-dashed border-slate-300 rounded-lg p-6 text-center">
-            <input 
-              :ref="el => imageInputRefs[block.id] = el as HTMLInputElement"
-              type="file"
-              accept="image/*"
-              class="hidden"
-              @change="handleImageUpload($event, block.id)"
-            />
-            <button class="btn-secondary" @click="imageInputRefs[block.id]?.click()">
+          <input
+            :ref="(el) => (imageInputRefs[String(block.id)] = el as HTMLInputElement | null)"
+            type="file"
+            accept="image/*"
+            class="hidden"
+            @change="handleImageUpload($event, index)"
+          />
+
+          <div v-if="!block.data?.url" class="rounded-lg border-2 border-dashed border-slate-300 p-6 text-center">
+            <button class="btn-secondary" @click="imageInputRefs[String(block.id)]?.click()">
               📷 Tải ảnh lên
             </button>
-            <p class="text-xs text-slate-400 mt-2">Hoặc dán URL</p>
-            <input 
+            <p class="mt-2 text-xs text-slate-400">Hoặc dán URL ảnh</p>
+            <input
               type="url"
               class="input-field mt-2 text-sm"
               placeholder="https://res.cloudinary.com/..."
-              @blur="handleImageUrlInput($event, block.id)"
+              @blur="handleImageUrlInput($event, index)"
             />
           </div>
-          <div v-else class="space-y-3">
+
+          <div v-else class="space-y-4">
             <div class="relative inline-block">
-              <img :src="block.data.url" alt="" class="max-h-60 rounded-lg" />
-              <button 
-                class="absolute top-2 right-2 p-1.5 bg-white/90 hover:bg-red-100 rounded-lg shadow"
-                @click="updateBlockData(block.id, { url: '', caption: '', alt: '' })"
-              >
-                ✕
-              </button>
+              <img :src="block.data.url" alt="" class="max-h-72 rounded-lg" />
+              <div class="absolute right-2 top-2 flex gap-1">
+                <button
+                  class="rounded-lg bg-white/90 p-1.5 shadow hover:bg-white"
+                  title="Thay ảnh"
+                  @click="imageInputRefs[String(block.id)]?.click()"
+                >
+                  🔄
+                </button>
+                <button
+                  class="rounded-lg bg-white/90 p-1.5 shadow hover:bg-red-100"
+                  title="Xóa ảnh"
+                  @click="clearImage(index)"
+                >
+                  ✕
+                </button>
+              </div>
             </div>
-            <input 
-              :value="block.data.caption"
-              type="text"
-              class="input-field text-sm"
-              placeholder="Chú thích ảnh (tùy chọn)"
-              @input="updateBlockData(block.id, { caption: ($event.target as HTMLInputElement).value })"
-            />
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Caption tiếng Việt</label>
+                <input
+                  :value="getViBlock(index).data?.caption || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Chú thích tiếng Việt"
+                  @input="updateImageMeta(index, 'caption', 'vi', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Caption English</label>
+                <input
+                  :value="block.data?.caption || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="English caption"
+                  @input="updateImageMeta(index, 'caption', 'en', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+            </div>
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Alt tiếng Việt</label>
+                <input
+                  :value="getViBlock(index).data?.alt || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Alt tiếng Việt"
+                  @input="updateImageMeta(index, 'alt', 'vi', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Alt English</label>
+                <input
+                  :value="block.data?.alt || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="English alt text"
+                  @input="updateImageMeta(index, 'alt', 'en', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+            </div>
           </div>
         </template>
-        
-        <!-- Quote Block -->
+
         <template v-else-if="block.type === 'quote'">
-          <div class="border-l-4 border-red-500 pl-4 space-y-2">
-            <textarea 
-              :value="block.data.text"
-              rows="2"
-              class="input-field resize-none italic"
-              placeholder="Nội dung trích dẫn..."
-              @input="updateBlockData(block.id, { text: ($event.target as HTMLTextAreaElement).value })"
-            />
-            <input 
-              :value="block.data.author"
-              type="text"
-              class="input-field text-sm"
-              placeholder="— Tác giả (tùy chọn)"
-              @input="updateBlockData(block.id, { author: ($event.target as HTMLInputElement).value })"
-            />
+          <div class="space-y-4 rounded-lg border-l-4 border-red-500 bg-slate-50 p-4">
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quote tiếng Việt</label>
+                <textarea
+                  :value="getViBlock(index).data?.text || ''"
+                  rows="4"
+                  class="input-field resize-y italic"
+                  placeholder="Nội dung trích dẫn tiếng Việt..."
+                  @input="updateQuoteText(index, 'vi', ($event.target as HTMLTextAreaElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quote English</label>
+                <textarea
+                  :value="block.data?.text || ''"
+                  rows="4"
+                  class="input-field resize-y italic"
+                  placeholder="English quote..."
+                  @input="updateQuoteText(index, 'en', ($event.target as HTMLTextAreaElement).value)"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tác giả / Author</label>
+              <input
+                :value="block.data?.author || ''"
+                type="text"
+                class="input-field text-sm"
+                placeholder="— Tác giả hoặc nguồn"
+                @input="updateQuoteAuthor(index, ($event.target as HTMLInputElement).value)"
+              />
+            </div>
           </div>
         </template>
-        
-        <!-- Bullet List Block -->
+
         <template v-else-if="block.type === 'bulletList'">
-          <div class="space-y-2">
-            <div 
-              v-for="(item, itemIndex) in block.data.items" 
-              :key="itemIndex"
-              class="flex items-center gap-2"
+          <div class="space-y-3">
+            <div
+              v-for="itemIndex in getMaxListLength(index)"
+              :key="`${block.id}-${itemIndex}`"
+              class="grid gap-3 md:grid-cols-[1fr_1fr_auto]"
             >
-              <span class="text-slate-400">•</span>
-              <input 
-                :value="item"
+              <input
+                :value="getViListItem(index, itemIndex - 1)"
                 type="text"
-                class="input-field flex-1"
-                placeholder="Mục trong danh sách..."
-                @input="updateListItem(block.id, Number(itemIndex), ($event.target as HTMLInputElement).value)"
+                class="input-field"
+                placeholder="Mục tiếng Việt..."
+                @input="updateListItem(index, itemIndex - 1, 'vi', ($event.target as HTMLInputElement).value)"
               />
-              <button 
-                v-if="block.data.items.length > 1"
-                class="p-1 hover:bg-red-100 rounded text-slate-400 hover:text-red-600"
-                @click="removeListItem(block.id, Number(itemIndex))"
+              <input
+                :value="getEnListItem(index, itemIndex - 1)"
+                type="text"
+                class="input-field"
+                placeholder="English item..."
+                @input="updateListItem(index, itemIndex - 1, 'en', ($event.target as HTMLInputElement).value)"
+              />
+              <button
+                class="rounded px-2 py-2 text-slate-400 hover:bg-red-100 hover:text-red-600"
+                title="Xóa dòng"
+                @click="removeListItem(index, itemIndex - 1)"
               >
                 ✕
               </button>
             </div>
-            <button 
-              class="text-sm text-red-600 hover:underline"
-              @click="addListItem(block.id)"
-            >
+
+            <button class="text-sm font-medium text-red-600 hover:underline" @click="addListItem(index)">
               + Thêm mục
             </button>
           </div>
         </template>
-        
-        <!-- Divider Block -->
+
         <template v-else-if="block.type === 'divider'">
           <div class="flex items-center justify-center py-2">
             <hr class="flex-1 border-slate-300" />
-            <span class="px-3 text-slate-400 text-xs">PHÂN CÁCH</span>
+            <span class="px-3 text-xs text-slate-400">PHÂN CÁCH</span>
             <hr class="flex-1 border-slate-300" />
           </div>
         </template>
-        
-        <!-- CTA Block -->
+
         <template v-else-if="block.type === 'cta'">
-          <div class="bg-red-50 rounded-lg p-4 space-y-3">
-            <div class="grid grid-cols-2 gap-3">
+          <div class="space-y-4 rounded-lg bg-red-50 p-4">
+            <div class="grid gap-4 md:grid-cols-2">
               <div>
-                <label class="text-xs font-medium text-slate-500">Loại CTA</label>
-                <select 
-                  :value="block.data.type"
-                  class="input-field text-sm mt-1"
-                  @change="updateBlockData(block.id, { type: ($event.target as HTMLSelectElement).value })"
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Loại CTA</label>
+                <select
+                  :value="block.data?.type || 'booking'"
+                  class="input-field text-sm"
+                  @change="updateCtaShared(index, 'type', ($event.target as HTMLSelectElement).value)"
                 >
                   <option value="booking">Đặt bay</option>
                   <option value="tour">Đặt tour</option>
@@ -217,52 +307,62 @@
                 </select>
               </div>
               <div>
-                <label class="text-xs font-medium text-slate-500">Link</label>
-                <input 
-                  :value="block.data.link"
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Link</label>
+                <input
+                  :value="block.data?.link || ''"
                   type="text"
-                  class="input-field text-sm mt-1"
+                  class="input-field text-sm"
                   placeholder="/booking"
-                  @input="updateBlockData(block.id, { link: ($event.target as HTMLInputElement).value })"
+                  @input="updateCtaShared(index, 'link', ($event.target as HTMLInputElement).value)"
                 />
               </div>
             </div>
-            <div>
-              <label class="text-xs font-medium text-slate-500">Nội dung nút</label>
-              <input 
-                :value="block.data.text"
-                type="text"
-                class="input-field text-sm mt-1"
-                placeholder="Đặt bay ngay"
-                @input="updateBlockData(block.id, { text: ($event.target as HTMLInputElement).value })"
-              />
+
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text tiếng Việt</label>
+                <input
+                  :value="getViBlock(index).data?.text || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Đặt bay ngay"
+                  @input="updateCtaText(index, 'vi', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text English</label>
+                <input
+                  :value="block.data?.text || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Book now"
+                  @input="updateCtaText(index, 'en', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
             </div>
           </div>
         </template>
       </div>
-      
-      <!-- Add Block Button (between blocks) -->
-      <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-        <button 
-          class="p-1.5 bg-white border border-slate-300 rounded-full shadow-sm hover:bg-slate-50 hover:border-red-400"
+
+      <div class="absolute -bottom-4 left-1/2 z-10 -translate-x-1/2 opacity-0 transition-opacity group-hover:opacity-100">
+        <button
+          class="rounded-full border border-slate-300 bg-white p-1.5 shadow-sm hover:border-red-400 hover:bg-slate-50"
           @click="showAddMenu(index)"
         >
-          <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
           </svg>
         </button>
       </div>
     </div>
-    
-    <!-- Add First/Last Block Button -->
-    <button 
-      class="w-full py-3 border-2 border-dashed border-slate-300 rounded-xl text-slate-500 hover:border-red-400 hover:text-red-600 transition-colors"
-      @click="showAddMenu(store.draft.contentBlocks.length - 1)"
+
+    <button
+      class="w-full rounded-xl border-2 border-dashed border-slate-300 py-3 text-slate-500 transition-colors hover:border-red-400 hover:text-red-600"
+      @click="showAddMenu(englishBlocks.length - 1)"
     >
       + Thêm block mới
     </button>
-    
-    <!-- Add Block Menu -->
+
     <Teleport to="body">
       <Transition
         enter-active-class="transition ease-out duration-100"
@@ -272,28 +372,25 @@
         leave-from-class="opacity-100 scale-100"
         leave-to-class="opacity-0 scale-95"
       >
-        <div 
+        <div
           v-if="addMenuVisible"
-          class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 p-4"
           @click.self="addMenuVisible = false"
         >
-          <div class="bg-white rounded-xl shadow-xl w-full max-w-sm p-4">
-            <h4 class="font-semibold text-slate-900 mb-3">Thêm block</h4>
+          <div class="w-full max-w-sm rounded-xl bg-white p-4 shadow-xl">
+            <h4 class="mb-3 font-semibold text-slate-900">Thêm block</h4>
             <div class="grid grid-cols-2 gap-2">
-              <button 
-                v-for="blockType in blockTypes" 
+              <button
+                v-for="blockType in blockTypes"
                 :key="blockType.type"
-                class="flex items-center gap-2 p-3 border border-slate-200 rounded-lg hover:bg-slate-50 hover:border-red-300 transition-colors text-left"
+                class="flex items-center gap-2 rounded-lg border border-slate-200 p-3 text-left transition-colors hover:border-red-300 hover:bg-slate-50"
                 @click="addBlock(blockType.type)"
               >
                 <span class="text-lg">{{ blockType.icon }}</span>
                 <span class="text-sm font-medium">{{ blockType.label }}</span>
               </button>
             </div>
-            <button 
-              class="mt-4 w-full py-2 text-sm text-slate-500 hover:text-slate-700"
-              @click="addMenuVisible = false"
-            >
+            <button class="mt-4 w-full py-2 text-sm text-slate-500 hover:text-slate-700" @click="addMenuVisible = false">
               Hủy
             </button>
           </div>
@@ -304,11 +401,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
-import { usePostsAdminStore, type ContentBlock } from '~/stores/postsAdmin'
+import { computed, reactive, ref, watchEffect } from 'vue'
+import { usePostsAdminStore } from '~/stores/postsAdmin'
 import { useCloudinaryUpload } from '~/composables/useCloudinaryUpload'
 
+type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta'
+
+type ContentBlock = {
+  id: string
+  type: BlockType
+  data: Record<string, any>
+}
+
+type DraftModel = {
+  contentBlocks: ContentBlock[]
+  contentBlocksVi: ContentBlock[]
+}
+
 const store = usePostsAdminStore()
+const draft = store.draft as unknown as DraftModel
 const { uploadImage } = useCloudinaryUpload()
 
 const addMenuVisible = ref(false)
@@ -325,8 +436,135 @@ const blockTypes = [
   { type: 'cta', label: 'Nút CTA', icon: '🎫' }
 ] as const
 
+const englishBlocks = computed(() => draft.contentBlocks)
+
+function createId(): string {
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+}
+
+function clone<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value))
+}
+
+function createEmptyBlock(type: BlockType): ContentBlock {
+  const id = createId()
+
+  switch (type) {
+    case 'heading':
+      return { id, type, data: { level: 2, text: '' } }
+    case 'paragraph':
+      return { id, type, data: { text: '' } }
+    case 'image':
+      return { id, type, data: { url: '', caption: '', alt: '' } }
+    case 'quote':
+      return { id, type, data: { text: '', author: '' } }
+    case 'bulletList':
+      return { id, type, data: { items: [''] } }
+    case 'divider':
+      return { id, type, data: {} }
+    case 'cta':
+      return { id, type, data: { type: 'booking', link: '', text: '' } }
+    default:
+      return { id, type, data: {} }
+  }
+}
+
+function createVietnameseVersion(block: ContentBlock): ContentBlock {
+  const viBlock = clone(block)
+
+  switch (viBlock.type) {
+    case 'heading':
+    case 'paragraph':
+      viBlock.data.text = viBlock.data.text || ''
+      break
+    case 'image':
+      viBlock.data.caption = viBlock.data.caption || ''
+      viBlock.data.alt = viBlock.data.alt || ''
+      break
+    case 'quote':
+      viBlock.data.text = viBlock.data.text || ''
+      viBlock.data.author = viBlock.data.author || ''
+      break
+    case 'bulletList':
+      viBlock.data.items = Array.isArray(viBlock.data.items) ? viBlock.data.items : ['']
+      break
+    case 'cta':
+      viBlock.data.text = viBlock.data.text || ''
+      viBlock.data.type = viBlock.data.type || 'booking'
+      viBlock.data.link = viBlock.data.link || ''
+      break
+    default:
+      break
+  }
+
+  return viBlock
+}
+
+function applySharedFields(enBlock: ContentBlock, viBlock: ContentBlock): ContentBlock {
+  const next = clone(viBlock)
+  next.id = enBlock.id
+  next.type = enBlock.type
+  next.data = next.data || {}
+
+  switch (enBlock.type) {
+    case 'heading':
+      next.data.level = enBlock.data?.level || 2
+      break
+    case 'image':
+      next.data.url = enBlock.data?.url || ''
+      break
+    case 'quote':
+      next.data.author = enBlock.data?.author || ''
+      break
+    case 'bulletList': {
+      const enItems = Array.isArray(enBlock.data?.items) ? enBlock.data.items : []
+      const viItems = Array.isArray(next.data.items) ? next.data.items : []
+      next.data.items = enItems.map((_: string, index: number) => viItems[index] || '')
+      break
+    }
+    case 'cta':
+      next.data.type = enBlock.data?.type || 'booking'
+      next.data.link = enBlock.data?.link || ''
+      break
+    default:
+      break
+  }
+
+  return next
+}
+
+function ensureBilingualBlocks() {
+  draft.contentBlocks = Array.isArray(draft.contentBlocks) ? draft.contentBlocks : []
+  draft.contentBlocksVi = Array.isArray(draft.contentBlocksVi) ? draft.contentBlocksVi : []
+
+  if (!draft.contentBlocksVi.length && draft.contentBlocks.length) {
+    draft.contentBlocksVi = draft.contentBlocks.map(createVietnameseVersion)
+    return
+  }
+
+  const viMap = new Map(draft.contentBlocksVi.map((block) => [block.id, block]))
+  draft.contentBlocksVi = draft.contentBlocks.map((block) => {
+    const existing = viMap.get(block.id)
+    if (!existing || existing.type !== block.type) {
+      return createVietnameseVersion(block)
+    }
+    return applySharedFields(block, existing)
+  })
+}
+
+watchEffect(() => {
+  ensureBilingualBlocks()
+})
+
 function getBlockLabel(type: string): string {
-  return blockTypes.find(b => b.type === type)?.label || type
+  return blockTypes.find((item) => item.type === type)?.label || type
+}
+
+function getViBlock(index: number): ContentBlock {
+  if (!draft.contentBlocksVi[index] && draft.contentBlocks[index]) {
+    draft.contentBlocksVi[index] = createVietnameseVersion(draft.contentBlocks[index])
+  }
+  return draft.contentBlocksVi[index]
 }
 
 function showAddMenu(afterIndex: number) {
@@ -334,55 +572,183 @@ function showAddMenu(afterIndex: number) {
   addMenuVisible.value = true
 }
 
-function addBlock(type: ContentBlock['type']) {
-  store.addBlock(type, addMenuAfterIndex.value)
+function addBlock(type: BlockType) {
+  const englishBlock = createEmptyBlock(type)
+  const vietnameseBlock = createVietnameseVersion(englishBlock)
+  const insertIndex = addMenuAfterIndex.value + 1
+
+  draft.contentBlocks.splice(insertIndex, 0, englishBlock)
+  draft.contentBlocksVi.splice(insertIndex, 0, vietnameseBlock)
   addMenuVisible.value = false
 }
 
-function updateBlockData(blockId: string, data: any) {
-  store.updateBlockData(blockId, data)
+function duplicateBlock(index: number) {
+  const english = clone(draft.contentBlocks[index])
+  const vietnamese = clone(getViBlock(index))
+  const newId = createId()
+
+  english.id = newId
+  vietnamese.id = newId
+
+  draft.contentBlocks.splice(index + 1, 0, english)
+  draft.contentBlocksVi.splice(index + 1, 0, vietnamese)
 }
 
-// List item helpers
-function addListItem(blockId: string) {
-  const block = store.draft.contentBlocks.find(b => b.id === blockId)
-  if (block && block.type === 'bulletList') {
-    block.data.items = [...(block.data.items || []), '']
+function removeBlock(index: number) {
+  draft.contentBlocks.splice(index, 1)
+  draft.contentBlocksVi.splice(index, 1)
+}
+
+function moveBlock(index: number, direction: 'up' | 'down') {
+  const targetIndex = direction === 'up' ? index - 1 : index + 1
+  if (targetIndex < 0 || targetIndex >= draft.contentBlocks.length) return
+
+  const [english] = draft.contentBlocks.splice(index, 1)
+  draft.contentBlocks.splice(targetIndex, 0, english)
+
+  const [vietnamese] = draft.contentBlocksVi.splice(index, 1)
+  draft.contentBlocksVi.splice(targetIndex, 0, vietnamese)
+}
+
+function updateHeadingLevel(index: number, level: number) {
+  draft.contentBlocks[index].data.level = level
+  getViBlock(index).data.level = level
+}
+
+function updateBlockText(index: number, language: 'vi' | 'en', value: string) {
+  if (language === 'vi') {
+    getViBlock(index).data.text = value
+  } else {
+    draft.contentBlocks[index].data.text = value
   }
 }
 
-function removeListItem(blockId: string, index: number) {
-  const block = store.draft.contentBlocks.find(b => b.id === blockId)
-  if (block && block.type === 'bulletList') {
-    block.data.items.splice(index, 1)
+function updateQuoteText(index: number, language: 'vi' | 'en', value: string) {
+  if (language === 'vi') {
+    getViBlock(index).data.text = value
+  } else {
+    draft.contentBlocks[index].data.text = value
   }
 }
 
-function updateListItem(blockId: string, index: number, value: string) {
-  const block = store.draft.contentBlocks.find(b => b.id === blockId)
-  if (block && block.type === 'bulletList') {
-    block.data.items[index] = value
+function updateQuoteAuthor(index: number, value: string) {
+  draft.contentBlocks[index].data.author = value
+  getViBlock(index).data.author = value
+}
+
+function updateImageMeta(index: number, field: 'caption' | 'alt', language: 'vi' | 'en', value: string) {
+  if (language === 'vi') {
+    getViBlock(index).data[field] = value
+  } else {
+    draft.contentBlocks[index].data[field] = value
   }
 }
 
-// Image upload
-async function handleImageUpload(event: Event, blockId: string) {
+function clearImage(index: number) {
+  draft.contentBlocks[index].data.url = ''
+  draft.contentBlocks[index].data.caption = ''
+  draft.contentBlocks[index].data.alt = ''
+
+  const viBlock = getViBlock(index)
+  viBlock.data.url = ''
+  viBlock.data.caption = ''
+  viBlock.data.alt = ''
+}
+
+function getEnItems(index: number): string[] {
+  const items = draft.contentBlocks[index].data?.items
+  return Array.isArray(items) ? items : []
+}
+
+function getViItems(index: number): string[] {
+  const items = getViBlock(index).data?.items
+  return Array.isArray(items) ? items : []
+}
+
+function getMaxListLength(index: number): number {
+  return Math.max(getEnItems(index).length, getViItems(index).length, 1)
+}
+
+function getEnListItem(index: number, itemIndex: number): string {
+  return getEnItems(index)[itemIndex] || ''
+}
+
+function getViListItem(index: number, itemIndex: number): string {
+  return getViItems(index)[itemIndex] || ''
+}
+
+function addListItem(index: number) {
+  const enItems = getEnItems(index)
+  const viItems = getViItems(index)
+
+  enItems.push('')
+  viItems.push('')
+
+  draft.contentBlocks[index].data.items = enItems
+  getViBlock(index).data.items = viItems
+}
+
+function removeListItem(index: number, itemIndex: number) {
+  const enItems = getEnItems(index)
+  const viItems = getViItems(index)
+
+  enItems.splice(itemIndex, 1)
+  viItems.splice(itemIndex, 1)
+
+  draft.contentBlocks[index].data.items = enItems.length ? enItems : ['']
+  getViBlock(index).data.items = viItems.length ? viItems : ['']
+}
+
+function updateListItem(index: number, itemIndex: number, language: 'vi' | 'en', value: string) {
+  if (language === 'vi') {
+    const viItems = getViItems(index)
+    while (viItems.length <= itemIndex) viItems.push('')
+    viItems[itemIndex] = value
+    getViBlock(index).data.items = viItems
+  } else {
+    const enItems = getEnItems(index)
+    while (enItems.length <= itemIndex) enItems.push('')
+    enItems[itemIndex] = value
+    draft.contentBlocks[index].data.items = enItems
+    ensureBilingualBlocks()
+  }
+}
+
+function updateCtaShared(index: number, field: 'type' | 'link', value: string) {
+  draft.contentBlocks[index].data[field] = value
+  getViBlock(index).data[field] = value
+}
+
+function updateCtaText(index: number, language: 'vi' | 'en', value: string) {
+  if (language === 'vi') {
+    getViBlock(index).data.text = value
+  } else {
+    draft.contentBlocks[index].data.text = value
+  }
+}
+
+async function handleImageUpload(event: Event, index: number) {
   const file = (event.target as HTMLInputElement).files?.[0]
   if (!file) return
-  
+
   try {
     const result = await uploadImage(file, { folder: 'posts/content' })
-    updateBlockData(blockId, { url: result.url })
+    draft.contentBlocks[index].data.url = result.url
+    getViBlock(index).data.url = result.url
   } catch (error: any) {
-    alert(error.message || 'Lỗi tải ảnh')
+    alert(error?.message || 'Lỗi tải ảnh')
+  } finally {
+    const target = event.target as HTMLInputElement
+    target.value = ''
   }
 }
 
-function handleImageUrlInput(event: Event, blockId: string) {
+function handleImageUrlInput(event: Event, index: number) {
   const url = (event.target as HTMLInputElement).value
-  if (url && url.startsWith('http')) {
-    updateBlockData(blockId, { url })
-    ;(event.target as HTMLInputElement).value = ''
-  }
+  if (!url || !url.startsWith('http')) return
+
+  draft.contentBlocks[index].data.url = url
+  getViBlock(index).data.url = url
+  ;(event.target as HTMLInputElement).value = ''
 }
 </script>

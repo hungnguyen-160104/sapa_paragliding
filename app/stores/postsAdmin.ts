@@ -1,19 +1,34 @@
 /**
  * Posts Admin Store
- * Quản lý state cho trang admin bài viết với 2-pane layout
+ * Đồng bộ schema song ngữ:
+ * - title = English
+ * - titleVi = Vietnamese
+ * - excerpt = English
+ * - excerptVi = Vietnamese
+ * - contentBlocks = English
+ * - contentBlocksVi = Vietnamese
  */
 import { defineStore } from 'pinia'
 import { ref, reactive, computed, watch } from 'vue'
 
 // Types
 export type PostStatus = 'DRAFT' | 'PUBLISHED' | 'SCHEDULED'
-export type PostCategory = 'news' | 'guide' | 'experience' | 'promotion' | 'adventure' | 'safety' | 'tips'
+export type PostCategory =
+  | 'news'
+  | 'guide'
+  | 'experience'
+  | 'promotion'
+  | 'adventure'
+  | 'safety'
+  | 'tips'
 
 export interface PostSummary {
   id: string
   title: string
+  titleVi?: string
   slug: string
   excerpt?: string
+  excerptVi?: string
   categoryId: string
   status: PostStatus
   updatedAt?: string
@@ -24,7 +39,7 @@ export interface PostSummary {
 export interface ContentBlock {
   id: string
   type: 'heading' | 'paragraph' | 'image' | 'gallery' | 'quote' | 'bulletList' | 'divider' | 'cta'
-  data: any
+  data: Record<string, any>
 }
 
 export interface GalleryImage {
@@ -36,23 +51,28 @@ export interface GalleryImage {
 export interface PostDraft {
   id?: string
   title: string
+  titleVi: string
   slug: string
   excerpt: string
+  excerptVi: string
   categoryId: string
   tags: string[]
   status: PostStatus
-  scheduledAt?: string
+  scheduledAt?: string | null
   thumbnailUrl: string
   thumbnailPublicId?: string
   contentBlocks: ContentBlock[]
+  contentBlocksVi: ContentBlock[]
   galleryUrls: GalleryImage[]
   seo: {
     title: string
+    titleVi: string
     description: string
+    descriptionVi: string
     ogImage: string
   }
-  // Legacy support
   contentHtml?: string
+  contentHtmlVi?: string
 }
 
 export interface PostStats {
@@ -63,42 +83,370 @@ export interface PostStats {
   categories: number
 }
 
-const createEmptyDraft = (): PostDraft => ({
-  title: '',
-  slug: '',
-  excerpt: '',
-  categoryId: '',
-  tags: [],
-  status: 'DRAFT',
-  thumbnailUrl: '',
-  contentBlocks: [
-    { id: crypto.randomUUID(), type: 'paragraph', data: { text: '' } }
-  ],
-  galleryUrls: [],
+type SavePayload = {
+  title: string
+  titleVi: string
+  slug: string
+  excerpt: string
+  excerptVi: string
+  categoryId: string
+  status: PostStatus
+  thumbnailUrl: string
+  galleryUrls: GalleryImage[]
+  contentHtml: string
+  contentHtmlVi: string
+  contentBlocks: ContentBlock[]
+  contentBlocksVi: ContentBlock[]
+  tags: string[]
   seo: {
-    title: '',
-    description: '',
-    ogImage: ''
+    title: string
+    titleVi: string
+    description: string
+    descriptionVi: string
+    ogImage: string
   }
-})
+  scheduledAt: string | null
+}
+
+function createId(): string {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID()
+  }
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+}
+
+function cloneDeep<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value))
+}
+
+function normalizeSlug(text: string): string {
+  return String(text || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '')
+}
+
+function escapeHtml(text: string): string {
+  if (!text) return ''
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
+function getDefaultBlockData(type: ContentBlock['type'], locale: 'en' | 'vi' = 'en'): Record<string, any> {
+  switch (type) {
+    case 'heading':
+      return { level: 2, text: '' }
+    case 'paragraph':
+      return { text: '' }
+    case 'image':
+      return { url: '', caption: '', alt: '' }
+    case 'gallery':
+      return { images: [], layout: 'grid' }
+    case 'quote':
+      return { text: '', author: '' }
+    case 'bulletList':
+      return { items: [''] }
+    case 'divider':
+      return {}
+    case 'cta':
+      return {
+        type: 'booking',
+        text: locale === 'vi' ? 'Đặt ngay' : 'Book now',
+        link: '/booking'
+      }
+    default:
+      return {}
+  }
+}
+
+function createBlock(type: ContentBlock['type'], locale: 'en' | 'vi' = 'en', id = createId()): ContentBlock {
+  return {
+    id,
+    type,
+    data: getDefaultBlockData(type, locale)
+  }
+}
+
+function normalizeBlocks(value: unknown): ContentBlock[] {
+  if (!Array.isArray(value)) return []
+
+  const output: ContentBlock[] = []
+
+  for (const item of value) {
+    if (!item || typeof item !== 'object') continue
+
+    const raw = item as Record<string, any>
+    output.push({
+      id: String(raw.id || createId()),
+      type: raw.type || 'paragraph',
+      data: raw.data && typeof raw.data === 'object' ? raw.data : {}
+    })
+  }
+
+  return output
+}
+
+function normalizeGallery(value: unknown): GalleryImage[] {
+  if (!Array.isArray(value)) return []
+
+  const output: GalleryImage[] = []
+
+  for (const item of value) {
+    if (typeof item === 'string') {
+      const url = item.trim()
+      if (url) {
+        output.push({ url, caption: '' })
+      }
+      continue
+    }
+
+    if (item && typeof item === 'object') {
+      const raw = item as Record<string, unknown>
+      const url = typeof raw.url === 'string' ? raw.url.trim() : ''
+      if (!url) continue
+
+      output.push({
+        url,
+        publicId: typeof raw.publicId === 'string' ? raw.publicId : undefined,
+        caption: typeof raw.caption === 'string' ? raw.caption : ''
+      })
+    }
+  }
+
+  return output
+}
+
+function buildVietnameseBlockFromEnglish(block: ContentBlock): ContentBlock {
+  const vi = cloneDeep(block)
+
+  switch (vi.type) {
+    case 'heading':
+    case 'paragraph':
+      vi.data.text = vi.data?.text || ''
+      break
+    case 'image':
+      vi.data.url = vi.data?.url || ''
+      vi.data.caption = vi.data?.caption || ''
+      vi.data.alt = vi.data?.alt || ''
+      break
+    case 'quote':
+      vi.data.text = vi.data?.text || ''
+      vi.data.author = vi.data?.author || ''
+      break
+    case 'bulletList':
+      vi.data.items = Array.isArray(vi.data?.items) ? vi.data.items : ['']
+      break
+    case 'cta':
+      vi.data.type = vi.data?.type || 'booking'
+      vi.data.link = vi.data?.link || '/booking'
+      vi.data.text = vi.data?.text || 'Đặt ngay'
+      break
+    case 'gallery':
+      vi.data.images = Array.isArray(vi.data?.images) ? vi.data.images : []
+      vi.data.layout = vi.data?.layout || 'grid'
+      break
+    default:
+      break
+  }
+
+  return vi
+}
+
+function ensureBilingualBlocks(
+  enBlocks: ContentBlock[],
+  viBlocks: ContentBlock[]
+): { en: ContentBlock[]; vi: ContentBlock[] } {
+  const normalizedEn = normalizeBlocks(enBlocks)
+  const normalizedVi = normalizeBlocks(viBlocks)
+
+  if (!normalizedEn.length) {
+    const id = createId()
+    return {
+      en: [createBlock('paragraph', 'en', id)],
+      vi: [createBlock('paragraph', 'vi', id)]
+    }
+  }
+
+  const viMap = new Map<string, ContentBlock>()
+  for (const block of normalizedVi) {
+    viMap.set(block.id, block)
+  }
+
+  const nextVi: ContentBlock[] = normalizedEn.map((enBlock) => {
+    const existingVi = viMap.get(enBlock.id)
+
+    if (!existingVi || existingVi.type !== enBlock.type) {
+      return buildVietnameseBlockFromEnglish(enBlock)
+    }
+
+    const mergedVi = cloneDeep(existingVi)
+    mergedVi.id = enBlock.id
+    mergedVi.type = enBlock.type
+    mergedVi.data = mergedVi.data || {}
+
+    switch (enBlock.type) {
+      case 'heading':
+        mergedVi.data.level = enBlock.data?.level || 2
+        break
+      case 'image':
+        mergedVi.data.url = enBlock.data?.url || ''
+        break
+      case 'quote':
+        mergedVi.data.author = enBlock.data?.author || ''
+        break
+      case 'bulletList': {
+        const enItems = Array.isArray(enBlock.data?.items) ? enBlock.data.items : []
+        const viItems = Array.isArray(mergedVi.data?.items) ? mergedVi.data.items : []
+        mergedVi.data.items = enItems.map((_: string, index: number) => viItems[index] || '')
+        break
+      }
+      case 'cta':
+        mergedVi.data.type = enBlock.data?.type || 'booking'
+        mergedVi.data.link = enBlock.data?.link || '/booking'
+        break
+      case 'gallery':
+        mergedVi.data.images = Array.isArray(enBlock.data?.images) ? enBlock.data.images : []
+        mergedVi.data.layout = enBlock.data?.layout || 'grid'
+        break
+      default:
+        break
+    }
+
+    return mergedVi
+  })
+
+  return {
+    en: normalizedEn,
+    vi: nextVi
+  }
+}
+
+function createEmptyDraft(): PostDraft {
+  const id = createId()
+
+  return {
+    title: '',
+    titleVi: '',
+    slug: '',
+    excerpt: '',
+    excerptVi: '',
+    categoryId: '',
+    tags: [],
+    status: 'DRAFT',
+    scheduledAt: null,
+    thumbnailUrl: '',
+    thumbnailPublicId: '',
+    contentBlocks: [{ id, type: 'paragraph', data: { text: '' } }],
+    contentBlocksVi: [{ id, type: 'paragraph', data: { text: '' } }],
+    galleryUrls: [],
+    seo: {
+      title: '',
+      titleVi: '',
+      description: '',
+      descriptionVi: '',
+      ogImage: ''
+    },
+    contentHtml: '',
+    contentHtmlVi: ''
+  }
+}
+
+function normalizeDraftFromApi(post: any): PostDraft {
+  const englishBlocks = normalizeBlocks(post?.contentBlocks)
+  const vietnameseBlocks = normalizeBlocks(post?.contentBlocksVi)
+  const normalizedBlocks = ensureBilingualBlocks(englishBlocks, vietnameseBlocks)
+
+  return {
+    id: post?.id || '',
+    title: post?.title || '',
+    titleVi: post?.titleVi || post?.title || '',
+    slug: post?.slug || '',
+    excerpt: post?.excerpt || '',
+    excerptVi: post?.excerptVi || post?.excerpt || '',
+    categoryId: post?.categoryId || '',
+    tags: Array.isArray(post?.tags) ? post.tags : [],
+    status: (post?.status || 'DRAFT') as PostStatus,
+    scheduledAt: post?.scheduledAt || null,
+    thumbnailUrl: post?.thumbnailUrl || '',
+    thumbnailPublicId: post?.thumbnailPublicId || '',
+    contentBlocks: normalizedBlocks.en,
+    contentBlocksVi: normalizedBlocks.vi,
+    galleryUrls: normalizeGallery(post?.galleryUrls),
+    seo: {
+      title: post?.seo?.title || '',
+      titleVi: post?.seo?.titleVi || '',
+      description: post?.seo?.description || '',
+      descriptionVi: post?.seo?.descriptionVi || '',
+      ogImage: post?.seo?.ogImage || post?.thumbnailUrl || ''
+    },
+    contentHtml: post?.contentHtml || '',
+    contentHtmlVi: post?.contentHtmlVi || ''
+  }
+}
+
+function blocksToHtml(blocks: ContentBlock[]): string {
+  return blocks
+    .map((block) => {
+      switch (block.type) {
+        case 'heading': {
+          const tag = `h${block.data?.level || 2}`
+          return `<${tag}>${escapeHtml(block.data?.text || '')}</${tag}>`
+        }
+        case 'paragraph':
+          return `<p>${escapeHtml(block.data?.text || '')}</p>`
+        case 'image':
+          return `<figure><img src="${block.data?.url || ''}" alt="${escapeHtml(block.data?.alt || '')}" />${
+            block.data?.caption ? `<figcaption>${escapeHtml(block.data.caption)}</figcaption>` : ''
+          }</figure>`
+        case 'quote':
+          return `<blockquote><p>${escapeHtml(block.data?.text || '')}</p>${
+            block.data?.author ? `<cite>${escapeHtml(block.data.author)}</cite>` : ''
+          }</blockquote>`
+        case 'bulletList':
+          return `<ul>${(block.data?.items || [])
+            .map((item: string) => `<li>${escapeHtml(item)}</li>`)
+            .join('')}</ul>`
+        case 'divider':
+          return '<hr />'
+        case 'cta':
+          return `<div class="cta-block"><a href="${block.data?.link || '#'}" class="btn-primary">${escapeHtml(
+            block.data?.text || ''
+          )}</a></div>`
+        case 'gallery': {
+          const images = Array.isArray(block.data?.images) ? block.data.images : []
+          return `<div class="gallery-grid">${images
+            .map((img: any) => `<img src="${img?.url || ''}" alt="${escapeHtml(img?.caption || '')}" />`)
+            .join('')}</div>`
+        }
+        default:
+          return ''
+      }
+    })
+    .join('\n')
+}
 
 export const usePostsAdminStore = defineStore('postsAdmin', () => {
-  // ============================================
-  // LIST STATE
-  // ============================================
   const filters = reactive({
     search: '',
     categoryId: '',
     status: '',
     sort: 'newest' as 'newest' | 'updated' | 'views'
   })
-  
+
   const pagination = reactive({
     page: 1,
     pageSize: 10,
     total: 0
   })
-  
+
   const posts = ref<PostSummary[]>([])
   const stats = ref<PostStats>({
     total: 0,
@@ -107,61 +455,136 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     scheduled: 0,
     categories: 0
   })
-  
+
   const listLoading = ref(false)
   const listError = ref<string | null>(null)
 
-  // ============================================
-  // EDITOR STATE
-  // ============================================
   const selectedPostId = ref<string | null>(null)
   const editorMode = ref<'closed' | 'create' | 'edit'>('closed')
   const draft = ref<PostDraft>(createEmptyDraft())
   const originalDraft = ref<string>('')
-  
+
   const dirty = computed(() => {
     if (editorMode.value === 'closed') return false
     return JSON.stringify(draft.value) !== originalDraft.value
   })
-  
+
   const saving = ref(false)
   const lastSavedAt = ref<Date | null>(null)
   const editorLoading = ref(false)
-  
+
   const uploading = reactive({
     cover: false,
     content: false,
     gallery: false
   })
-  
+
   const uploadProgress = reactive({
     cover: 0,
     content: 0,
     gallery: 0
   })
-  
+
   const validationErrors = ref<Record<string, string>>({})
 
-  // ============================================
-  // COMPUTED
-  // ============================================
   const hasMore = computed(() => pagination.page * pagination.pageSize < pagination.total)
-  
+
   const canPublish = computed(() => {
     const d = draft.value
-    return d.title.trim().length >= 3 &&
-           d.excerpt.trim().length > 0 &&
-           d.categoryId !== '' &&
-           d.thumbnailUrl !== ''
+    return (
+      d.title.trim().length >= 3 &&
+      d.titleVi.trim().length >= 3 &&
+      d.excerpt.trim().length > 0 &&
+      d.excerptVi.trim().length > 0 &&
+      d.categoryId !== '' &&
+      d.thumbnailUrl !== ''
+    )
   })
 
-  // ============================================
-  // LIST ACTIONS
-  // ============================================
+  function syncDraftShape() {
+    draft.value = normalizeDraftFromApi(draft.value)
+  }
+
+  function buildPayload(statusOverride?: PostStatus): SavePayload {
+    syncDraftShape()
+
+    const status = statusOverride || draft.value.status
+    const contentHtml = blocksToHtml(draft.value.contentBlocks)
+    const contentHtmlVi = blocksToHtml(draft.value.contentBlocksVi)
+
+    return {
+      title: draft.value.title,
+      titleVi: draft.value.titleVi,
+      slug: draft.value.slug,
+      excerpt: draft.value.excerpt,
+      excerptVi: draft.value.excerptVi,
+      categoryId: draft.value.categoryId,
+      status,
+      thumbnailUrl: draft.value.thumbnailUrl,
+      galleryUrls: draft.value.galleryUrls
+        .filter((item) => Boolean(item?.url))
+        .map((item) => ({
+          url: item.url,
+          publicId: item.publicId,
+          caption: item.caption || ''
+        })),
+      contentHtml,
+      contentHtmlVi,
+      contentBlocks: draft.value.contentBlocks,
+      contentBlocksVi: draft.value.contentBlocksVi,
+      tags: draft.value.tags,
+      seo: {
+        title: draft.value.seo.title,
+        titleVi: draft.value.seo.titleVi,
+        description: draft.value.seo.description,
+        descriptionVi: draft.value.seo.descriptionVi,
+        ogImage: draft.value.seo.ogImage || draft.value.thumbnailUrl
+      },
+      scheduledAt: draft.value.scheduledAt || null
+    }
+  }
+
+  async function createPostRequest(payload: SavePayload) {
+    return await $fetch<any>('/api/admin/posts', {
+      method: 'POST',
+      body: payload
+    } as any)
+  }
+
+  async function updatePostRequest(postId: string, payload: SavePayload) {
+    const url = `/api/admin/posts/${postId}`
+    return await $fetch<any>(url as any, {
+      method: 'PUT',
+      body: payload
+    } as any)
+  }
+
+  async function updateStatusRequest(postId: string, status: PostStatus) {
+    const url = `/api/admin/posts/${postId}/status`
+    return await $fetch<{ success: boolean }>(url as any, {
+      method: 'PATCH',
+      body: { status }
+    } as any)
+  }
+
+  async function duplicatePostRequest(postId: string) {
+    const url = `/api/admin/posts/${postId}/duplicate`
+    return await $fetch<{ success: boolean }>(url as any, {
+      method: 'POST'
+    } as any)
+  }
+
+  async function deletePostRequest(postId: string) {
+    const url = `/api/admin/posts/${postId}`
+    return await $fetch<{ success: boolean }>(url as any, {
+      method: 'DELETE'
+    } as any)
+  }
+
   async function fetchPosts() {
     listLoading.value = true
     listError.value = null
-    
+
     try {
       const params = new URLSearchParams()
       if (filters.search) params.set('search', filters.search)
@@ -169,13 +592,13 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
       if (filters.status) params.set('status', filters.status)
       params.set('page', pagination.page.toString())
       params.set('pageSize', pagination.pageSize.toString())
-      
+
       const response = await $fetch<{
         success: boolean
         data: PostSummary[]
         total: number
       }>(`/api/admin/posts?${params.toString()}`)
-      
+
       if (response.success) {
         posts.value = response.data
         pagination.total = response.total
@@ -196,7 +619,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
         success: boolean
         data: PostStats
       }>('/api/admin/posts/stats')
-      
+
       if (response.success && response.data) {
         stats.value = response.data
       }
@@ -218,9 +641,6 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     fetchPosts()
   }
 
-  // ============================================
-  // EDITOR ACTIONS
-  // ============================================
   function openCreateEditor() {
     selectedPostId.value = null
     editorMode.value = 'create'
@@ -232,46 +652,23 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
 
   async function openEditEditor(postId: string): Promise<boolean> {
     editorLoading.value = true
-    
+
     try {
       const response = await $fetch<{
         success: boolean
         data: any
       }>(`/api/admin/posts/${postId}`)
-      
+
       if (response.success && response.data) {
-        const post = response.data
         selectedPostId.value = postId
         editorMode.value = 'edit'
-        
-        // Map API response to draft format
-        draft.value = {
-          id: post.id,
-          title: post.title || '',
-          slug: post.slug || '',
-          excerpt: post.excerpt || '',
-          categoryId: post.categoryId || '',
-          tags: post.tags || [],
-          status: post.status || 'DRAFT',
-          scheduledAt: post.scheduledAt,
-          thumbnailUrl: post.thumbnailUrl || '',
-          contentBlocks: post.contentBlocks || [
-            { id: crypto.randomUUID(), type: 'paragraph', data: { text: '' } }
-          ],
-          galleryUrls: (post.galleryUrls || []).map((url: string | GalleryImage) => 
-            typeof url === 'string' ? { url, caption: '' } : url
-          ),
-          seo: post.seo || { title: '', description: '', ogImage: '' },
-          contentHtml: post.contentHtml || ''
-        }
-        
+        draft.value = normalizeDraftFromApi(response.data)
         originalDraft.value = JSON.stringify(draft.value)
         validationErrors.value = {}
-        lastSavedAt.value = post.updatedAt ? new Date(post.updatedAt) : null
-        
+        lastSavedAt.value = response.data.updatedAt ? new Date(response.data.updatedAt) : null
         return true
       }
-      
+
       return false
     } catch (error) {
       console.error('Error loading post:', error)
@@ -282,101 +679,107 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   }
 
   function closeEditor(force = false): boolean {
-    if (!force && dirty.value) {
-      return false // Caller should show confirm dialog
-    }
-    
+    if (!force && dirty.value) return false
+
     selectedPostId.value = null
     editorMode.value = 'closed'
     draft.value = createEmptyDraft()
     originalDraft.value = ''
     validationErrors.value = {}
     lastSavedAt.value = null
-    
+
     return true
   }
 
-  function validateDraft(): boolean {
+  function validateDraft(mode: 'draft' | 'publish' = 'draft'): boolean {
+    syncDraftShape()
+
     const errors: Record<string, string> = {}
-    
-    if (!draft.value.title.trim()) {
-      errors.title = 'Tiêu đề không được để trống'
-    } else if (draft.value.title.length < 3) {
-      errors.title = 'Tiêu đề phải có ít nhất 3 ký tự'
+
+    const hasAnyTitle = draft.value.title.trim() || draft.value.titleVi.trim()
+    if (!hasAnyTitle) {
+      errors.title = 'Cần ít nhất một tiêu đề'
     }
-    
+
+    if (!draft.value.slug.trim()) {
+      generateSlug()
+    }
+
     if (!draft.value.slug.trim()) {
       errors.slug = 'Slug không được để trống'
     }
-    
-    if (draft.value.status === 'PUBLISHED') {
+
+    if (!draft.value.categoryId) {
+      errors.categoryId = 'Chọn danh mục'
+    }
+
+    if (mode === 'publish') {
+      if (!draft.value.title.trim()) {
+        errors.title = 'Cần tiêu đề tiếng Anh để xuất bản'
+      } else if (draft.value.title.trim().length < 3) {
+        errors.title = 'Tiêu đề tiếng Anh phải có ít nhất 3 ký tự'
+      }
+
+      if (!draft.value.titleVi.trim()) {
+        errors.titleVi = 'Cần tiêu đề tiếng Việt để xuất bản'
+      } else if (draft.value.titleVi.trim().length < 3) {
+        errors.titleVi = 'Tiêu đề tiếng Việt phải có ít nhất 3 ký tự'
+      }
+
       if (!draft.value.excerpt.trim()) {
-        errors.excerpt = 'Cần mô tả ngắn để xuất bản'
+        errors.excerpt = 'Cần mô tả ngắn tiếng Anh để xuất bản'
       }
-      if (!draft.value.categoryId) {
-        errors.categoryId = 'Chọn danh mục để xuất bản'
+
+      if (!draft.value.excerptVi.trim()) {
+        errors.excerptVi = 'Cần mô tả ngắn tiếng Việt để xuất bản'
       }
+
       if (!draft.value.thumbnailUrl) {
         errors.thumbnailUrl = 'Cần ảnh bìa để xuất bản'
       }
+
+      if (draft.value.status === 'SCHEDULED' && !draft.value.scheduledAt) {
+        errors.scheduledAt = 'Cần thời gian hẹn giờ'
+      }
     }
-    
+
     validationErrors.value = errors
     return Object.keys(errors).length === 0
   }
 
   async function saveDraft(): Promise<boolean> {
-    if (!validateDraft()) return false
-    
+    draft.value.status = 'DRAFT'
+
+    if (!validateDraft('draft')) return false
+
     saving.value = true
-    
+
     try {
-      // Convert contentBlocks to HTML for legacy support
-      const contentHtml = blocksToHtml(draft.value.contentBlocks)
-      
-      const payload = {
-        title: draft.value.title,
-        slug: draft.value.slug,
-        excerpt: draft.value.excerpt,
-        categoryId: draft.value.categoryId,
-        status: 'DRAFT',
-        thumbnailUrl: draft.value.thumbnailUrl,
-        galleryUrls: draft.value.galleryUrls.map(g => g.url).filter(Boolean),
-        contentHtml,
-        contentBlocks: draft.value.contentBlocks,
-        tags: draft.value.tags,
-        seo: draft.value.seo,
-        scheduledAt: draft.value.scheduledAt
-      }
-      
+      const payload = buildPayload('DRAFT')
       let response: any
-      
+
       if (editorMode.value === 'edit' && selectedPostId.value) {
-        response = await $fetch(`/api/admin/posts/${selectedPostId.value}`, {
-          method: 'PUT' as 'PUT',
-          body: payload
-        } as any)
+        response = await updatePostRequest(selectedPostId.value, payload)
       } else {
-        response = await $fetch('/api/admin/posts', {
-          method: 'POST' as 'POST',
-          body: payload
-        } as any)
-        
+        response = await createPostRequest(payload)
+
         if (response.success && response.post) {
           selectedPostId.value = response.post.id
           draft.value.id = response.post.id
           editorMode.value = 'edit'
         }
       }
-      
+
       if (response.success) {
+        draft.value.contentHtml = payload.contentHtml
+        draft.value.contentHtmlVi = payload.contentHtmlVi
         lastSavedAt.value = new Date()
         originalDraft.value = JSON.stringify(draft.value)
         fetchPosts()
         fetchStats()
         return true
       }
-      
+
       return false
     } catch (error) {
       console.error('Error saving draft:', error)
@@ -387,64 +790,46 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   }
 
   async function publish(): Promise<boolean> {
-    draft.value.status = 'PUBLISHED'
-    
-    if (!validateDraft()) {
-      draft.value.status = 'DRAFT'
+    const previousStatus = draft.value.status
+    draft.value.status = draft.value.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
+
+    if (!validateDraft('publish')) {
+      draft.value.status = previousStatus === 'SCHEDULED' ? 'SCHEDULED' : 'DRAFT'
       return false
     }
-    
+
     saving.value = true
-    
+
     try {
-      const contentHtml = blocksToHtml(draft.value.contentBlocks)
-      
-      const payload = {
-        title: draft.value.title,
-        slug: draft.value.slug,
-        excerpt: draft.value.excerpt,
-        categoryId: draft.value.categoryId,
-        status: 'PUBLISHED',
-        thumbnailUrl: draft.value.thumbnailUrl,
-        galleryUrls: draft.value.galleryUrls.map(g => g.url).filter(Boolean),
-        contentHtml,
-        contentBlocks: draft.value.contentBlocks,
-        tags: draft.value.tags,
-        seo: draft.value.seo
-      }
-      
+      const payload = buildPayload(draft.value.status)
       let response: any
-      
+
       if (editorMode.value === 'edit' && selectedPostId.value) {
-        response = await $fetch(`/api/admin/posts/${selectedPostId.value}`, {
-          method: 'PUT' as 'PUT',
-          body: payload
-        } as any)
+        response = await updatePostRequest(selectedPostId.value, payload)
       } else {
-        response = await $fetch('/api/admin/posts', {
-          method: 'POST' as 'POST',
-          body: payload
-        } as any)
-        
+        response = await createPostRequest(payload)
+
         if (response.success && response.post) {
           selectedPostId.value = response.post.id
           draft.value.id = response.post.id
           editorMode.value = 'edit'
         }
       }
-      
+
       if (response.success) {
+        draft.value.contentHtml = payload.contentHtml
+        draft.value.contentHtmlVi = payload.contentHtmlVi
         lastSavedAt.value = new Date()
         originalDraft.value = JSON.stringify(draft.value)
         fetchPosts()
         fetchStats()
         return true
       }
-      
+
       return false
     } catch (error) {
       console.error('Error publishing:', error)
-      draft.value.status = 'DRAFT'
+      draft.value.status = previousStatus
       return false
     } finally {
       saving.value = false
@@ -452,26 +837,21 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   }
 
   async function togglePublishStatus(postId: string): Promise<boolean> {
-    const post = posts.value.find(p => p.id === postId)
+    const post = posts.value.find((p) => p.id === postId)
     if (!post) return false
-    
-    const newStatus = post.status === 'PUBLISHED' ? 'DRAFT' : 'PUBLISHED'
+
+    const newStatus: PostStatus = post.status === 'PUBLISHED' ? 'DRAFT' : 'PUBLISHED'
     const originalStatus = post.status
-    
-    // Optimistic update
     post.status = newStatus
-    
+
     try {
-      const response = await $fetch<{ success: boolean }>(`/api/admin/posts/${postId}/status`, {
-        method: 'PATCH',
-        body: { status: newStatus }
-      })
-      
+      const response = await updateStatusRequest(postId, newStatus)
+
       if (response.success) {
         fetchStats()
         return true
       }
-      
+
       post.status = originalStatus
       return false
     } catch (error) {
@@ -483,16 +863,14 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
 
   async function duplicatePost(postId: string): Promise<boolean> {
     try {
-      const response = await $fetch<{ success: boolean }>(`/api/admin/posts/${postId}/duplicate`, {
-        method: 'POST'
-      })
-      
+      const response = await duplicatePostRequest(postId)
+
       if (response.success) {
         fetchPosts()
         fetchStats()
         return true
       }
-      
+
       return false
     } catch (error) {
       console.error('Error duplicating post:', error)
@@ -502,21 +880,17 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
 
   async function deletePost(postId: string): Promise<boolean> {
     try {
-      const response = await $fetch<{ success: boolean }>(`/api/admin/posts/${postId}`, {
-        method: 'DELETE'
-      })
-      
+      const response = await deletePostRequest(postId)
+
       if (response.success) {
-        // Close editor if deleting current post
         if (selectedPostId.value === postId) {
           closeEditor(true)
         }
-        
         fetchPosts()
         fetchStats()
         return true
       }
-      
+
       return false
     } catch (error) {
       console.error('Error deleting post:', error)
@@ -524,78 +898,97 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     }
   }
 
-  // ============================================
-  // CONTENT BLOCK ACTIONS
-  // ============================================
   function addBlock(type: ContentBlock['type'], afterIndex?: number) {
-    const newBlock: ContentBlock = {
-      id: crypto.randomUUID(),
-      type,
-      data: getDefaultBlockData(type)
-    }
-    
+    const id = createId()
+    const enBlock = createBlock(type, 'en', id)
+    const viBlock = createBlock(type, 'vi', id)
+
     if (afterIndex !== undefined && afterIndex >= 0) {
-      draft.value.contentBlocks.splice(afterIndex + 1, 0, newBlock)
+      draft.value.contentBlocks.splice(afterIndex + 1, 0, enBlock)
+      draft.value.contentBlocksVi.splice(afterIndex + 1, 0, viBlock)
     } else {
-      draft.value.contentBlocks.push(newBlock)
+      draft.value.contentBlocks.push(enBlock)
+      draft.value.contentBlocksVi.push(viBlock)
     }
   }
 
   function removeBlock(blockId: string) {
-    const index = draft.value.contentBlocks.findIndex(b => b.id === blockId)
-    if (index > -1) {
-      draft.value.contentBlocks.splice(index, 1)
+    const indexEn = draft.value.contentBlocks.findIndex((b) => b.id === blockId)
+    if (indexEn > -1) {
+      draft.value.contentBlocks.splice(indexEn, 1)
     }
-    
-    // Ensure at least one block
+
+    const indexVi = draft.value.contentBlocksVi.findIndex((b) => b.id === blockId)
+    if (indexVi > -1) {
+      draft.value.contentBlocksVi.splice(indexVi, 1)
+    }
+
     if (draft.value.contentBlocks.length === 0) {
-      addBlock('paragraph')
+      const id = createId()
+      draft.value.contentBlocks = [{ id, type: 'paragraph', data: { text: '' } }]
+      draft.value.contentBlocksVi = [{ id, type: 'paragraph', data: { text: '' } }]
     }
   }
 
   function moveBlock(blockId: string, direction: 'up' | 'down') {
-    const index = draft.value.contentBlocks.findIndex(b => b.id === blockId)
+    const index = draft.value.contentBlocks.findIndex((b) => b.id === blockId)
     if (index === -1) return
-    
+
     const newIndex = direction === 'up' ? index - 1 : index + 1
     if (newIndex < 0 || newIndex >= draft.value.contentBlocks.length) return
-    
-    const blocks = [...draft.value.contentBlocks]
-    const removed = blocks.splice(index, 1)[0]
-    if (removed) {
-      blocks.splice(newIndex, 0, removed)
-      draft.value.contentBlocks = blocks
+
+    const enBlocks = [...draft.value.contentBlocks]
+    const viBlocks = [...draft.value.contentBlocksVi]
+
+    const removedEn = enBlocks.splice(index, 1)[0]
+    const removedVi = viBlocks.splice(index, 1)[0]
+
+    if (removedEn && removedVi) {
+      enBlocks.splice(newIndex, 0, removedEn)
+      viBlocks.splice(newIndex, 0, removedVi)
+      draft.value.contentBlocks = enBlocks
+      draft.value.contentBlocksVi = viBlocks
     }
   }
 
   function duplicateBlock(blockId: string) {
-    const index = draft.value.contentBlocks.findIndex(b => b.id === blockId)
+    const index = draft.value.contentBlocks.findIndex((b) => b.id === blockId)
     if (index === -1) return
-    
-    const original = draft.value.contentBlocks[index]
-    if (!original) return
-    
-    const duplicate: ContentBlock = {
-      id: crypto.randomUUID(),
-      type: original.type,
-      data: JSON.parse(JSON.stringify(original.data))
-    }
-    
-    draft.value.contentBlocks.splice(index + 1, 0, duplicate)
+
+    const originalEn = draft.value.contentBlocks[index]
+    const originalVi = draft.value.contentBlocksVi[index]
+    if (!originalEn || !originalVi) return
+
+    const newId = createId()
+
+    draft.value.contentBlocks.splice(index + 1, 0, {
+      id: newId,
+      type: originalEn.type,
+      data: cloneDeep(originalEn.data)
+    })
+
+    draft.value.contentBlocksVi.splice(index + 1, 0, {
+      id: newId,
+      type: originalVi.type,
+      data: cloneDeep(originalVi.data)
+    })
   }
 
-  function updateBlockData(blockId: string, data: any) {
-    const block = draft.value.contentBlocks.find(b => b.id === blockId)
+  function updateBlockData(blockId: string, data: Record<string, any>, locale: 'en' | 'vi' = 'en') {
+    const target = locale === 'vi' ? draft.value.contentBlocksVi : draft.value.contentBlocks
+    const block = target.find((b) => b.id === blockId)
     if (block) {
       block.data = { ...block.data, ...data }
     }
   }
 
-  // ============================================
-  // GALLERY ACTIONS
-  // ============================================
   function addGalleryImage(image: GalleryImage) {
-    draft.value.galleryUrls.push(image)
+    if (!image?.url) return
+    draft.value.galleryUrls.push({
+      url: image.url,
+      publicId: image.publicId,
+      caption: image.caption || ''
+    })
   }
 
   function removeGalleryImage(index: number) {
@@ -617,99 +1010,23 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     }
   }
 
-  // ============================================
-  // HELPER FUNCTIONS
-  // ============================================
-  function getDefaultBlockData(type: ContentBlock['type']): any {
-    switch (type) {
-      case 'heading':
-        return { level: 2, text: '' }
-      case 'paragraph':
-        return { text: '' }
-      case 'image':
-        return { url: '', caption: '', alt: '' }
-      case 'gallery':
-        return { images: [], layout: 'grid' }
-      case 'quote':
-        return { text: '', author: '' }
-      case 'bulletList':
-        return { items: [''] }
-      case 'divider':
-        return {}
-      case 'cta':
-        return { type: 'booking', text: 'Đặt bay ngay', link: '/booking' }
-      default:
-        return {}
-    }
-  }
-
-  function blocksToHtml(blocks: ContentBlock[]): string {
-    return blocks.map(block => {
-      switch (block.type) {
-        case 'heading':
-          const tag = `h${block.data.level || 2}`
-          return `<${tag}>${escapeHtml(block.data.text)}</${tag}>`
-        case 'paragraph':
-          return `<p>${escapeHtml(block.data.text)}</p>`
-        case 'image':
-          return `<figure><img src="${block.data.url}" alt="${escapeHtml(block.data.alt || '')}" />${block.data.caption ? `<figcaption>${escapeHtml(block.data.caption)}</figcaption>` : ''}</figure>`
-        case 'quote':
-          return `<blockquote><p>${escapeHtml(block.data.text)}</p>${block.data.author ? `<cite>${escapeHtml(block.data.author)}</cite>` : ''}</blockquote>`
-        case 'bulletList':
-          return `<ul>${(block.data.items || []).map((item: string) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
-        case 'divider':
-          return '<hr />'
-        case 'cta':
-          return `<div class="cta-block"><a href="${block.data.link}" class="btn-primary">${escapeHtml(block.data.text)}</a></div>`
-        case 'gallery':
-          const images = block.data.images || []
-          return `<div class="gallery-grid">${images.map((img: any) => `<img src="${img.url}" alt="${escapeHtml(img.caption || '')}" />`).join('')}</div>`
-        default:
-          return ''
-      }
-    }).join('\n')
-  }
-
-  function escapeHtml(text: string): string {
-    if (!text) return ''
-    return text
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;')
-  }
-
-  function normalizeSlug(text: string): string {
-    return text
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/đ/g, 'd')
-      .replace(/Đ/g, 'D')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)+/g, '')
-  }
-
   function generateSlug() {
-    if (draft.value.title) {
-      draft.value.slug = normalizeSlug(draft.value.title)
+    const base = draft.value.title || draft.value.titleVi
+    if (base) {
+      draft.value.slug = normalizeSlug(base)
     }
   }
 
-  // ============================================
-  // AUTOSAVE
-  // ============================================
   let autosaveTimer: ReturnType<typeof setInterval> | null = null
 
   function startAutosave() {
     if (autosaveTimer) clearInterval(autosaveTimer)
-    
+
     autosaveTimer = setInterval(async () => {
       if (dirty.value && !saving.value && editorMode.value !== 'closed') {
         await saveDraft()
       }
-    }, 30000) // 30 seconds
+    }, 30000)
   }
 
   function stopAutosave() {
@@ -719,7 +1036,6 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     }
   }
 
-  // Watch editor mode changes
   watch(editorMode, (mode) => {
     if (mode !== 'closed') {
       startAutosave()
@@ -729,7 +1045,6 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   })
 
   return {
-    // List state
     filters,
     pagination,
     posts,
@@ -737,8 +1052,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     listLoading,
     listError,
     hasMore,
-    
-    // Editor state
+
     selectedPostId,
     editorMode,
     draft,
@@ -750,14 +1064,12 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     uploadProgress,
     validationErrors,
     canPublish,
-    
-    // List actions
+
     fetchPosts,
     fetchStats,
     resetFilters,
     changePage,
-    
-    // Editor actions
+
     openCreateEditor,
     openEditEditor,
     closeEditor,
@@ -768,21 +1080,18 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     deletePost,
     validateDraft,
     generateSlug,
-    
-    // Block actions
+
     addBlock,
     removeBlock,
     moveBlock,
     duplicateBlock,
     updateBlockData,
-    
-    // Gallery actions
+
     addGalleryImage,
     removeGalleryImage,
     reorderGallery,
     updateGalleryCaption,
-    
-    // Helpers
+
     normalizeSlug,
     blocksToHtml
   }

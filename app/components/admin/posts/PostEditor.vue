@@ -1,129 +1,141 @@
 <template>
-  <div class="flex flex-col h-full bg-white rounded-xl border border-slate-200 overflow-hidden">
-    <!-- Editor Header (Sticky) -->
-    <div class="sticky top-0 z-10 bg-white border-b border-slate-200 p-4">
-      <div class="flex items-center gap-3">
-        <!-- Close Button -->
-        <button 
-          class="p-2 hover:bg-slate-100 rounded-lg transition-colors"
+  <div class="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white">
+    <div class="sticky top-0 z-10 border-b border-slate-200 bg-white p-4">
+      <div class="flex items-start gap-3">
+        <button
+          class="rounded-lg p-2 transition-colors hover:bg-slate-100"
           title="Đóng"
           @click="handleClose"
         >
-          <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        
-        <!-- Title Input -->
-        <input 
-          v-model="store.draft.title"
-          type="text"
-          class="flex-1 text-xl font-semibold border-0 focus:ring-0 placeholder-slate-300 outline-none"
-          placeholder="Tiêu đề bài viết..."
-          @blur="autoGenerateSlug"
-        />
+
+        <div class="grid flex-1 gap-3 md:grid-cols-2">
+          <div>
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+              Tiêu đề tiếng Việt <span class="text-red-500">*</span>
+            </label>
+            <input
+              v-model="draft.titleVi"
+              type="text"
+              class="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg font-semibold outline-none transition focus:border-red-400 focus:ring-2 focus:ring-red-100"
+              :class="{ 'border-red-500': validationErrors.titleVi }"
+              placeholder="Nhập tiêu đề tiếng Việt..."
+            />
+          </div>
+
+          <div>
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+              Title (English) <span class="text-red-500">*</span>
+            </label>
+            <input
+              v-model="draft.title"
+              type="text"
+              class="w-full rounded-lg border border-slate-300 px-4 py-3 text-lg font-semibold outline-none transition focus:border-red-400 focus:ring-2 focus:ring-red-100"
+              :class="{ 'border-red-500': validationErrors.title }"
+              placeholder="Enter English title..."
+              @blur="autoGenerateSlug"
+            />
+          </div>
+        </div>
       </div>
-      
-      <!-- Actions Row -->
-      <div class="flex items-center justify-between mt-3">
+
+      <div class="mt-3 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2 text-sm text-slate-500">
           <span v-if="store.saving" class="flex items-center gap-1">
-            <svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+            <svg class="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
             Đang lưu...
           </span>
-          <span v-else-if="store.lastSavedAt">
-            ✓ Đã lưu lúc {{ formatTime(store.lastSavedAt) }}
-          </span>
-          <span v-if="store.dirty && !store.saving" class="text-orange-500">
-            • Chưa lưu
-          </span>
+          <span v-else-if="store.lastSavedAt">✓ Đã lưu lúc {{ formatTime(store.lastSavedAt) }}</span>
+          <span v-if="store.dirty && !store.saving" class="text-orange-500">• Chưa lưu</span>
         </div>
-        
+
         <div class="flex items-center gap-2">
-          <button 
-            class="btn-secondary text-sm py-1.5"
-            :disabled="store.saving"
-            @click="handleSaveDraft"
-          >
+          <button class="btn-secondary py-1.5 text-sm" :disabled="store.saving" @click="handleSaveDraft">
             💾 Lưu nháp
           </button>
-          
-          <button 
-            class="btn-secondary text-sm py-1.5"
-            @click="showPreview = true"
-          >
+
+          <button class="btn-secondary py-1.5 text-sm" @click="showPreview = true">
             👁 Xem trước
           </button>
-          
-          <button 
-            class="btn-primary text-sm py-1.5"
-            :disabled="!store.canPublish || store.saving"
-            :title="!store.canPublish ? 'Cần điền đủ tiêu đề, mô tả, danh mục và ảnh bìa' : ''"
+
+          <button
+            class="btn-primary py-1.5 text-sm"
+            :disabled="!canPublish || store.saving"
+            :title="!canPublish ? 'Cần điền đủ tiêu đề, mô tả, danh mục và ảnh bìa cho cả 2 ngôn ngữ' : ''"
             @click="handlePublish"
           >
-            {{ store.draft.status === 'PUBLISHED' ? '🔄 Cập nhật' : '🚀 Xuất bản' }}
+            {{ draft.status === 'PUBLISHED' ? '🔄 Cập nhật' : '🚀 Xuất bản' }}
           </button>
         </div>
       </div>
     </div>
-    
-    <!-- Editor Content (Scrollable) -->
-    <div class="flex-1 overflow-y-auto p-6 space-y-6">
-      <!-- Validation Errors Alert -->
-      <div v-if="Object.keys(store.validationErrors).length > 0" class="bg-red-50 border border-red-200 rounded-lg p-4">
-        <h4 class="font-medium text-red-800 mb-2">Vui lòng sửa các lỗi sau:</h4>
-        <ul class="list-disc list-inside text-sm text-red-600 space-y-1">
-          <li v-for="(error, key) in store.validationErrors" :key="key">{{ error }}</li>
+
+    <div class="flex-1 space-y-6 overflow-y-auto p-6">
+      <div v-if="Object.keys(validationErrors).length > 0" class="rounded-lg border border-red-200 bg-red-50 p-4">
+        <h4 class="mb-2 font-medium text-red-800">Vui lòng sửa các lỗi sau:</h4>
+        <ul class="list-inside list-disc space-y-1 text-sm text-red-600">
+          <li v-for="(error, key) in validationErrors" :key="key">{{ error }}</li>
         </ul>
       </div>
-      
-      <!-- Slug -->
+
       <div>
         <label class="form-label">Đường dẫn (Slug)</label>
         <div class="flex items-center gap-2">
-          <span class="text-slate-400 text-sm">/posts/</span>
-          <input 
-            v-model="store.draft.slug"
+          <span class="text-sm text-slate-400">/posts/</span>
+          <input
+            v-model="draft.slug"
             type="text"
             class="input-field flex-1"
-            :class="{ 'border-red-500': store.validationErrors.slug }"
+            :class="{ 'border-red-500': validationErrors.slug }"
             placeholder="duong-dan-bai-viet"
           />
-          <button 
-            class="btn-secondary text-sm py-2 px-3"
-            title="Tạo lại từ tiêu đề"
-            @click="store.generateSlug"
-          >
+          <button class="btn-secondary px-3 py-2 text-sm" title="Tạo lại từ title tiếng Anh" @click="generateSlugFromDraft">
             🔄
           </button>
         </div>
       </div>
-      
-      <!-- Excerpt -->
-      <div>
-        <label class="form-label">Mô tả ngắn <span class="text-red-500">*</span></label>
-        <textarea 
-          v-model="store.draft.excerpt"
-          rows="2"
-          class="input-field resize-none"
-          :class="{ 'border-red-500': store.validationErrors.excerpt }"
-          placeholder="Mô tả ngắn gọn về bài viết (hiển thị ở danh sách)..."
-          maxlength="200"
-        />
-        <p class="text-xs text-slate-400 mt-1">{{ store.draft.excerpt.length }}/200 ký tự</p>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label class="form-label">Mô tả ngắn tiếng Việt <span class="text-red-500">*</span></label>
+          <textarea
+            v-model="draft.excerptVi"
+            rows="3"
+            class="input-field resize-none"
+            :class="{ 'border-red-500': validationErrors.excerptVi }"
+            placeholder="Mô tả ngắn tiếng Việt hiển thị ở danh sách..."
+            maxlength="220"
+          />
+          <p class="mt-1 text-xs text-slate-400">{{ draft.excerptVi.length }}/220 ký tự</p>
+        </div>
+
+        <div>
+          <label class="form-label">Short description (English) <span class="text-red-500">*</span></label>
+          <textarea
+            v-model="draft.excerpt"
+            rows="3"
+            class="input-field resize-none"
+            :class="{ 'border-red-500': validationErrors.excerpt }"
+            placeholder="Short English description shown in the list..."
+            maxlength="220"
+          />
+          <p class="mt-1 text-xs text-slate-400">{{ draft.excerpt.length }}/220 characters</p>
+        </div>
       </div>
-      
-      <!-- Category & Status -->
-      <div class="grid grid-cols-2 gap-4">
+
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <div>
           <label class="form-label">Danh mục <span class="text-red-500">*</span></label>
-          <select 
-            v-model="store.draft.categoryId"
+          <select
+            v-model="draft.categoryId"
             class="input-field"
-            :class="{ 'border-red-500': store.validationErrors.categoryId }"
+            :class="{ 'border-red-500': validationErrors.categoryId }"
           >
             <option value="">Chọn danh mục</option>
             <option v-for="cat in categories" :key="cat.id" :value="cat.id">
@@ -131,41 +143,37 @@
             </option>
           </select>
         </div>
+
         <div>
           <label class="form-label">Trạng thái</label>
-          <select v-model="store.draft.status" class="input-field">
+          <select v-model="draft.status" class="input-field">
             <option value="DRAFT">Bản nháp</option>
             <option value="PUBLISHED">Xuất bản</option>
+            <option value="SCHEDULED">Hẹn giờ</option>
           </select>
         </div>
+
+        <div v-if="draft.status === 'SCHEDULED'">
+          <label class="form-label">Thời gian xuất bản</label>
+          <input v-model="scheduledAtInput" type="datetime-local" class="input-field" />
+        </div>
       </div>
-      
-      <!-- Cover Image -->
+
       <div>
         <label class="form-label">Ảnh bìa <span class="text-red-500">*</span></label>
-        <div 
-          class="border-2 border-dashed rounded-xl p-6 text-center transition-colors"
+        <input ref="coverInputRef" type="file" accept="image/*" class="hidden" @change="handleCoverUpload" />
+
+        <div
+          class="rounded-xl border-2 border-dashed p-6 text-center transition-colors"
           :class="[
-            store.validationErrors.thumbnailUrl ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400',
+            validationErrors.thumbnailUrl ? 'border-red-400 bg-red-50' : 'border-slate-300 hover:border-slate-400',
             store.uploading.cover ? 'pointer-events-none opacity-75' : ''
           ]"
         >
-          <template v-if="!store.draft.thumbnailUrl">
-            <input 
-              ref="coverInputRef"
-              type="file"
-              accept="image/*"
-              class="hidden"
-              @change="handleCoverUpload"
-            />
-            <button 
-              class="btn-secondary"
-              @click="coverInputRef?.click()"
-            >
-              📷 Tải ảnh bìa lên
-            </button>
-            <p class="text-xs text-slate-400 mt-2">Hoặc dán URL Cloudinary</p>
-            <input 
+          <template v-if="!draft.thumbnailUrl">
+            <button class="btn-secondary" @click="coverInputRef?.click()">📷 Tải ảnh bìa lên</button>
+            <p class="mt-2 text-xs text-slate-400">Hoặc dán URL Cloudinary</p>
+            <input
               v-model="coverUrlInput"
               type="url"
               class="input-field mt-2 text-sm"
@@ -173,24 +181,20 @@
               @blur="handleCoverUrlInput"
             />
           </template>
-          
+
           <template v-else>
             <div class="relative inline-block">
-              <img 
-                :src="store.draft.thumbnailUrl" 
-                alt="Cover"
-                class="max-h-48 rounded-lg mx-auto"
-              />
-              <div class="absolute top-2 right-2 flex gap-1">
-                <button 
-                  class="p-1.5 bg-white/90 hover:bg-white rounded-lg shadow transition-colors"
+              <img :src="draft.thumbnailUrl" alt="Cover" class="mx-auto max-h-48 rounded-lg" />
+              <div class="absolute right-2 top-2 flex gap-1">
+                <button
+                  class="rounded-lg bg-white/90 p-1.5 shadow transition-colors hover:bg-white"
                   title="Thay ảnh"
                   @click="coverInputRef?.click()"
                 >
                   🔄
                 </button>
-                <button 
-                  class="p-1.5 bg-white/90 hover:bg-red-100 rounded-lg shadow transition-colors"
+                <button
+                  class="rounded-lg bg-white/90 p-1.5 shadow transition-colors hover:bg-red-100"
                   title="Xóa ảnh"
                   @click="removeCover"
                 >
@@ -199,74 +203,97 @@
               </div>
             </div>
           </template>
-          
-          <!-- Upload Progress -->
+
           <div v-if="store.uploading.cover" class="mt-4">
-            <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div 
-                class="h-full bg-red-600 transition-all duration-300"
-                :style="{ width: store.uploadProgress.cover + '%' }"
-              />
+            <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+              <div class="h-full bg-red-600 transition-all duration-300" :style="{ width: store.uploadProgress.cover + '%' }" />
             </div>
-            <p class="text-xs text-slate-500 mt-1">Đang tải... {{ store.uploadProgress.cover }}%</p>
+            <p class="mt-1 text-xs text-slate-500">Đang tải... {{ store.uploadProgress.cover }}%</p>
           </div>
         </div>
       </div>
-      
-      <!-- Content Blocks -->
+
       <div>
-        <label class="form-label">Nội dung bài viết</label>
+        <label class="form-label">Nội dung bài viết song ngữ</label>
         <PostContentBlocks />
       </div>
-      
-      <!-- Gallery -->
+
       <div>
         <label class="form-label">Thư viện ảnh (cuối bài)</label>
         <PostGalleryManager />
       </div>
-      
-      <!-- SEO Section -->
-      <details class="border border-slate-200 rounded-xl">
-        <summary class="p-4 font-medium cursor-pointer hover:bg-slate-50">
-          🔍 Cài đặt SEO (tùy chọn)
+
+      <details class="rounded-xl border border-slate-200">
+        <summary class="cursor-pointer p-4 font-medium hover:bg-slate-50">
+          🔍 Cài đặt SEO song ngữ (tùy chọn)
         </summary>
-        <div class="p-4 pt-0 space-y-4">
-          <div>
-            <label class="form-label">Meta Title</label>
-            <input 
-              v-model="store.draft.seo.title"
-              type="text"
-              class="input-field"
-              placeholder="Tiêu đề SEO (để trống = dùng tiêu đề bài)"
-              maxlength="60"
-            />
-            <p class="text-xs text-slate-400 mt-1">{{ store.draft.seo.title.length }}/60</p>
+
+        <div class="space-y-4 p-4 pt-0">
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="form-label">Meta Title tiếng Việt</label>
+              <input
+                v-model="draft.seo.titleVi"
+                type="text"
+                class="input-field"
+                placeholder="Để trống = dùng tiêu đề tiếng Việt"
+                maxlength="60"
+              />
+              <p class="mt-1 text-xs text-slate-400">{{ draft.seo.titleVi.length }}/60</p>
+            </div>
+
+            <div>
+              <label class="form-label">Meta Title English</label>
+              <input
+                v-model="draft.seo.title"
+                type="text"
+                class="input-field"
+                placeholder="Leave empty = use English title"
+                maxlength="60"
+              />
+              <p class="mt-1 text-xs text-slate-400">{{ draft.seo.title.length }}/60</p>
+            </div>
           </div>
-          <div>
-            <label class="form-label">Meta Description</label>
-            <textarea 
-              v-model="store.draft.seo.description"
-              rows="2"
-              class="input-field resize-none"
-              placeholder="Mô tả SEO (để trống = dùng mô tả ngắn)"
-              maxlength="160"
-            />
-            <p class="text-xs text-slate-400 mt-1">{{ store.draft.seo.description.length }}/160</p>
+
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="form-label">Meta Description tiếng Việt</label>
+              <textarea
+                v-model="draft.seo.descriptionVi"
+                rows="3"
+                class="input-field resize-none"
+                placeholder="Để trống = dùng mô tả tiếng Việt"
+                maxlength="160"
+              />
+              <p class="mt-1 text-xs text-slate-400">{{ draft.seo.descriptionVi.length }}/160</p>
+            </div>
+
+            <div>
+              <label class="form-label">Meta Description English</label>
+              <textarea
+                v-model="draft.seo.description"
+                rows="3"
+                class="input-field resize-none"
+                placeholder="Leave empty = use English description"
+                maxlength="160"
+              />
+              <p class="mt-1 text-xs text-slate-400">{{ draft.seo.description.length }}/160</p>
+            </div>
           </div>
+
           <div>
             <label class="form-label">OG Image URL</label>
-            <input 
-              v-model="store.draft.seo.ogImage"
+            <input
+              v-model="draft.seo.ogImage"
               type="url"
               class="input-field"
-              placeholder="URL ảnh share (để trống = dùng ảnh bìa)"
+              placeholder="Để trống = dùng ảnh bìa"
             />
           </div>
         </div>
       </details>
     </div>
-    
-    <!-- Preview Modal -->
+
     <Teleport to="body">
       <Transition
         enter-active-class="transition ease-out duration-200"
@@ -276,30 +303,24 @@
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
-        <div 
+        <div
           v-if="showPreview"
-          class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+          class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
           @click.self="showPreview = false"
         >
-          <div class="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
-            <div class="flex items-center justify-between p-4 border-b border-slate-200">
-              <h3 class="font-semibold text-lg">Xem trước bài viết</h3>
-              <button 
-                class="p-2 hover:bg-slate-100 rounded-lg"
-                @click="showPreview = false"
-              >
-                ✕
-              </button>
+          <div class="flex max-h-[90vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl bg-white">
+            <div class="flex items-center justify-between border-b border-slate-200 p-4">
+              <h3 class="text-lg font-semibold">Xem trước bài viết</h3>
+              <button class="rounded-lg p-2 hover:bg-slate-100" @click="showPreview = false">✕</button>
             </div>
             <div class="flex-1 overflow-y-auto p-6">
-              <PostPreview :post="store.draft" />
+              <PostPreview :post="draft" />
             </div>
           </div>
         </div>
       </Transition>
     </Teleport>
-    
-    <!-- Unsaved Changes Confirm Modal -->
+
     <ConfirmModal
       :open="showUnsavedConfirm"
       title="Thay đổi chưa lưu"
@@ -317,7 +338,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref, watch, watchEffect } from 'vue'
 import { usePostsAdminStore } from '~/stores/postsAdmin'
 import { useCloudinaryUpload } from '~/composables/useCloudinaryUpload'
 import PostContentBlocks from './PostContentBlocks.vue'
@@ -325,17 +346,56 @@ import PostGalleryManager from './PostGalleryManager.vue'
 import PostPreview from './PostPreview.vue'
 import ConfirmModal from '~/components/admin/ui/ConfirmModal.vue'
 
+type SeoDraft = {
+  title: string
+  titleVi: string
+  description: string
+  descriptionVi: string
+  ogImage: string
+}
+
+type GalleryItem = string | { url: string; publicId?: string; caption?: string }
+
+type ContentBlock = {
+  id: string | number
+  type: string
+  data?: Record<string, any>
+}
+
+type DraftModel = {
+  title: string
+  titleVi: string
+  slug: string
+  excerpt: string
+  excerptVi: string
+  contentHtml: string
+  contentHtmlVi: string
+  contentBlocks: ContentBlock[]
+  contentBlocksVi: ContentBlock[]
+  categoryId: string
+  status: 'DRAFT' | 'PUBLISHED' | 'SCHEDULED'
+  thumbnailUrl: string
+  thumbnailPublicId?: string
+  galleryUrls: GalleryItem[]
+  tags: string[]
+  seo: SeoDraft
+  scheduledAt?: string | Date | null
+}
+
 const emit = defineEmits<{
   close: []
 }>()
 
 const store = usePostsAdminStore()
 const { uploadImage } = useCloudinaryUpload()
+const draft = store.draft as unknown as DraftModel
 
 const coverInputRef = ref<HTMLInputElement | null>(null)
 const coverUrlInput = ref('')
 const showPreview = ref(false)
 const showUnsavedConfirm = ref(false)
+const showLocalValidation = ref(false)
+const scheduledAtInput = ref('')
 
 const categories = [
   { id: 'news', label: 'Tin tức' },
@@ -347,79 +407,238 @@ const categories = [
   { id: 'tips', label: 'Mẹo hay' }
 ]
 
-function formatTime(date: Date): string {
-  return date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
+function normalizeSlug(value: string): string {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '')
+}
+
+function deepClone<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value))
+}
+
+function createVietnameseBlockFallback(block: ContentBlock): ContentBlock {
+  const clone = deepClone(block)
+
+  if (!clone.data) clone.data = {}
+
+  switch (clone.type) {
+    case 'heading':
+    case 'paragraph':
+      clone.data.text = clone.data.text || ''
+      break
+    case 'quote':
+      clone.data.text = clone.data.text || ''
+      clone.data.author = clone.data.author || ''
+      break
+    case 'bulletList':
+      clone.data.items = Array.isArray(clone.data.items) ? clone.data.items : ['']
+      break
+    case 'image':
+      clone.data.url = clone.data.url || ''
+      clone.data.caption = clone.data.caption || ''
+      clone.data.alt = clone.data.alt || ''
+      break
+    case 'cta':
+      clone.data.type = clone.data.type || 'booking'
+      clone.data.link = clone.data.link || ''
+      clone.data.text = clone.data.text || ''
+      break
+    default:
+      break
+  }
+
+  return clone
+}
+
+function ensureDraftShape() {
+  draft.title = draft.title || ''
+  draft.titleVi = draft.titleVi || ''
+  draft.slug = draft.slug || ''
+  draft.excerpt = draft.excerpt || ''
+  draft.excerptVi = draft.excerptVi || ''
+  draft.contentHtml = draft.contentHtml || ''
+  draft.contentHtmlVi = draft.contentHtmlVi || ''
+  draft.contentBlocks = Array.isArray(draft.contentBlocks) ? draft.contentBlocks : []
+  draft.contentBlocksVi = Array.isArray(draft.contentBlocksVi)
+    ? draft.contentBlocksVi
+    : draft.contentBlocks.map(createVietnameseBlockFallback)
+  draft.galleryUrls = Array.isArray(draft.galleryUrls) ? draft.galleryUrls : []
+  draft.tags = Array.isArray(draft.tags) ? draft.tags : []
+
+  draft.seo = {
+    title: '',
+    titleVi: '',
+    description: '',
+    descriptionVi: '',
+    ogImage: '',
+    ...(draft.seo || {})
+  }
+
+  if (!draft.contentBlocksVi.length && draft.contentBlocks.length) {
+    draft.contentBlocksVi = draft.contentBlocks.map(createVietnameseBlockFallback)
+  }
+
+  if (!draft.seo.ogImage && draft.thumbnailUrl) {
+    draft.seo.ogImage = draft.thumbnailUrl
+  }
+}
+
+watchEffect(() => {
+  ensureDraftShape()
+})
+
+watch(
+  () => draft.scheduledAt,
+  (value) => {
+    if (!value) {
+      scheduledAtInput.value = ''
+      return
+    }
+
+    const date = new Date(value)
+    if (Number.isNaN(date.getTime())) {
+      scheduledAtInput.value = ''
+      return
+    }
+
+    const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+    scheduledAtInput.value = local.toISOString().slice(0, 16)
+  },
+  { immediate: true }
+)
+
+watch(scheduledAtInput, (value) => {
+  if (draft.status !== 'SCHEDULED') return
+  draft.scheduledAt = value ? new Date(value).toISOString() : null
+})
+
+watch(
+  () => draft.status,
+  (status) => {
+    if (status !== 'SCHEDULED') {
+      scheduledAtInput.value = ''
+      draft.scheduledAt = null
+    }
+  }
+)
+
+const localValidationErrors = computed<Record<string, string>>(() => {
+  const errors: Record<string, string> = {}
+
+  if (!draft.titleVi?.trim()) errors.titleVi = 'Vui lòng nhập tiêu đề tiếng Việt'
+  if (!draft.title?.trim()) errors.title = 'Vui lòng nhập tiêu đề tiếng Anh'
+  if (!draft.excerptVi?.trim()) errors.excerptVi = 'Vui lòng nhập mô tả ngắn tiếng Việt'
+  if (!draft.excerpt?.trim()) errors.excerpt = 'Vui lòng nhập mô tả ngắn tiếng Anh'
+  if (!draft.categoryId) errors.categoryId = 'Vui lòng chọn danh mục'
+  if (!draft.thumbnailUrl) errors.thumbnailUrl = 'Vui lòng chọn ảnh bìa'
+  if (draft.status === 'SCHEDULED' && !scheduledAtInput.value) {
+    errors.scheduledAt = 'Vui lòng chọn thời gian xuất bản'
+  }
+
+  return errors
+})
+
+const validationErrors = computed<Record<string, string>>(() => ({
+  ...(store.validationErrors || {}),
+  ...(showLocalValidation.value ? localValidationErrors.value : {})
+}))
+
+const canPublish = computed(() => Object.keys(localValidationErrors.value).length === 0)
+
+function formatTime(date: Date | string): string {
+  const parsed = typeof date === 'string' ? new Date(date) : date
+  return parsed.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })
+}
+
+function generateSlugFromDraft() {
+  const base = draft.title?.trim() || draft.titleVi?.trim() || ''
+  if (!base) return
+  draft.slug = normalizeSlug(base)
 }
 
 function autoGenerateSlug() {
-  if (!store.draft.slug && store.draft.title) {
-    store.generateSlug()
+  if (!draft.slug?.trim()) {
+    generateSlugFromDraft()
   }
 }
 
 async function handleCoverUpload(event: Event) {
   const file = (event.target as HTMLInputElement).files?.[0]
   if (!file) return
-  
-  // Validate
+
   if (file.size > 5 * 1024 * 1024) {
     alert('Ảnh quá lớn. Tối đa 5MB')
     return
   }
-  
+
   store.uploading.cover = true
   store.uploadProgress.cover = 0
-  
+
   try {
     const result = await uploadImage(file, {
       folder: 'posts/covers',
-      onProgress: (p) => { store.uploadProgress.cover = p }
+      onProgress: (progress) => {
+        store.uploadProgress.cover = progress
+      }
     })
-    
-    store.draft.thumbnailUrl = result.url
-    store.draft.thumbnailPublicId = result.publicId
+
+    draft.thumbnailUrl = result.url
+    draft.thumbnailPublicId = result.publicId
+    if (!draft.seo.ogImage) {
+      draft.seo.ogImage = result.url
+    }
   } catch (error: any) {
-    alert(error.message || 'Lỗi tải ảnh')
+    alert(error?.message || 'Lỗi tải ảnh')
   } finally {
     store.uploading.cover = false
-    // Reset input
     if (coverInputRef.value) coverInputRef.value.value = ''
   }
 }
 
 function handleCoverUrlInput() {
-  if (coverUrlInput.value && coverUrlInput.value.startsWith('http')) {
-    store.draft.thumbnailUrl = coverUrlInput.value
-    coverUrlInput.value = ''
+  if (!coverUrlInput.value || !coverUrlInput.value.startsWith('http')) return
+  draft.thumbnailUrl = coverUrlInput.value
+  if (!draft.seo.ogImage) {
+    draft.seo.ogImage = coverUrlInput.value
   }
+  coverUrlInput.value = ''
 }
 
 function removeCover() {
-  store.draft.thumbnailUrl = ''
-  store.draft.thumbnailPublicId = ''
+  draft.thumbnailUrl = ''
+  draft.thumbnailPublicId = ''
 }
 
 async function handleSaveDraft() {
-  const success = await store.saveDraft()
-  if (success) {
-    // Optional: show toast
-  }
+  ensureDraftShape()
+  showLocalValidation.value = false
+  await store.saveDraft()
 }
 
 async function handlePublish() {
-  const success = await store.publish()
-  if (success) {
-    // Optional: show toast
+  ensureDraftShape()
+  showLocalValidation.value = true
+
+  if (!canPublish.value) {
+    return
   }
+
+  draft.status = draft.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
+  await store.publish()
 }
 
 function handleClose() {
   if (store.dirty) {
     showUnsavedConfirm.value = true
-  } else {
-    store.closeEditor(true)
-    emit('close')
+    return
   }
+
+  store.closeEditor(true)
+  emit('close')
 }
 
 function discardAndClose() {
