@@ -1,35 +1,53 @@
 <template>
   <div class="language-switcher-horizontal">
     <div class="flex gap-1 items-center">
-      <button v-for="locale in availableLocales" :key="locale.code" @click="switchLanguage(locale.code)" :class="[
-        'px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200',
-        currentLocale === locale.code
-          ? 'bg-red-600 text-white shadow-md'
-          : 'text-gray-700 hover:bg-gray-100'
-      ]" :title="locale.name">
-        {{ locale.code.toUpperCase() }}
+      <button
+        v-for="localeItem in availableLocales"
+        :key="localeItem.code"
+        @click="switchLanguage(localeItem.code)"
+        :class="[
+          'px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200',
+          currentLocale === localeItem.code
+            ? 'bg-red-600 text-white shadow-md'
+            : 'text-gray-700 hover:bg-gray-100'
+        ]"
+        :title="localeItem.name"
+      >
+        {{ localeItem.code.toUpperCase() }}
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+type LocaleCode = 'vi' | 'en'
+
+type LocaleItem = {
+  code: LocaleCode
+  name: string
+}
+
 const { locale, locales, setLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
-const router = useRouter()
 
-const availableLocales = computed(() => locales.value)
-const currentLocale = computed(() => locale.value)
+const availableLocales = computed<LocaleItem[]>(() => {
+  return (locales.value as Array<{ code: string; name?: string }>).map((item) => ({
+    code: item.code as LocaleCode,
+    name: item.name ?? item.code.toUpperCase()
+  }))
+})
 
-const switchLanguage = async (code: string) => {
+const currentLocale = computed<LocaleCode>(() => locale.value as LocaleCode)
+
+const switchLanguage = async (code: LocaleCode) => {
   try {
-    // Get the path for the new locale
     const path = switchLocalePath(code)
 
-    // Navigate to the new locale path
-    await navigateTo(path)
+    if (path) {
+      await navigateTo(path)
+      return
+    }
 
-    // Set the locale
     await setLocale(code)
   } catch (error) {
     console.error('Error switching language:', error)

@@ -58,7 +58,7 @@
         <template v-if="block.type === 'heading'">
           <div class="mb-3 flex items-center gap-3">
             <select
-              :value="block.data?.level || 2"
+              :value="block.data.level || 2"
               class="input-field w-24 py-2 text-sm"
               @change="updateHeadingLevel(index, Number(($event.target as HTMLSelectElement).value))"
             >
@@ -73,7 +73,7 @@
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tiếng Việt</label>
               <input
-                :value="getViBlock(index).data?.text || ''"
+                :value="getViBlock(index).data.text || ''"
                 type="text"
                 class="input-field"
                 placeholder="Nhập tiêu đề tiếng Việt..."
@@ -83,7 +83,7 @@
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">English</label>
               <input
-                :value="block.data?.text || ''"
+                :value="block.data.text || ''"
                 type="text"
                 class="input-field"
                 placeholder="Enter English heading..."
@@ -98,7 +98,7 @@
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Đoạn tiếng Việt</label>
               <textarea
-                :value="getViBlock(index).data?.text || ''"
+                :value="getViBlock(index).data.text || ''"
                 rows="6"
                 class="input-field resize-y"
                 placeholder="Nhập nội dung tiếng Việt..."
@@ -108,7 +108,7 @@
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paragraph (English)</label>
               <textarea
-                :value="block.data?.text || ''"
+                :value="block.data.text || ''"
                 rows="6"
                 class="input-field resize-y"
                 placeholder="Enter English paragraph..."
@@ -127,7 +127,7 @@
             @change="handleImageUpload($event, index)"
           />
 
-          <div v-if="!block.data?.url" class="rounded-lg border-2 border-dashed border-slate-300 p-6 text-center">
+          <div v-if="!block.data.url" class="rounded-lg border-2 border-dashed border-slate-300 p-6 text-center">
             <button class="btn-secondary" @click="imageInputRefs[String(block.id)]?.click()">
               📷 Tải ảnh lên
             </button>
@@ -165,7 +165,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Caption tiếng Việt</label>
                 <input
-                  :value="getViBlock(index).data?.caption || ''"
+                  :value="getViBlock(index).data.caption || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="Chú thích tiếng Việt"
@@ -175,7 +175,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Caption English</label>
                 <input
-                  :value="block.data?.caption || ''"
+                  :value="block.data.caption || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="English caption"
@@ -188,7 +188,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Alt tiếng Việt</label>
                 <input
-                  :value="getViBlock(index).data?.alt || ''"
+                  :value="getViBlock(index).data.alt || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="Alt tiếng Việt"
@@ -198,7 +198,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Alt English</label>
                 <input
-                  :value="block.data?.alt || ''"
+                  :value="block.data.alt || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="English alt text"
@@ -215,7 +215,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quote tiếng Việt</label>
                 <textarea
-                  :value="getViBlock(index).data?.text || ''"
+                  :value="getViBlock(index).data.text || ''"
                   rows="4"
                   class="input-field resize-y italic"
                   placeholder="Nội dung trích dẫn tiếng Việt..."
@@ -225,7 +225,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Quote English</label>
                 <textarea
-                  :value="block.data?.text || ''"
+                  :value="block.data.text || ''"
                   rows="4"
                   class="input-field resize-y italic"
                   placeholder="English quote..."
@@ -237,7 +237,7 @@
             <div>
               <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tác giả / Author</label>
               <input
-                :value="block.data?.author || ''"
+                :value="block.data.author || ''"
                 type="text"
                 class="input-field text-sm"
                 placeholder="— Tác giả hoặc nguồn"
@@ -297,7 +297,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Loại CTA</label>
                 <select
-                  :value="block.data?.type || 'booking'"
+                  :value="block.data.type || 'booking'"
                   class="input-field text-sm"
                   @change="updateCtaShared(index, 'type', ($event.target as HTMLSelectElement).value)"
                 >
@@ -309,7 +309,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Link</label>
                 <input
-                  :value="block.data?.link || ''"
+                  :value="block.data.link || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="/booking"
@@ -322,7 +322,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text tiếng Việt</label>
                 <input
-                  :value="getViBlock(index).data?.text || ''"
+                  :value="getViBlock(index).data.text || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="Đặt bay ngay"
@@ -332,7 +332,7 @@
               <div>
                 <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text English</label>
                 <input
-                  :value="block.data?.text || ''"
+                  :value="block.data.text || ''"
                   type="text"
                   class="input-field text-sm"
                   placeholder="Book now"
@@ -407,10 +407,22 @@ import { useCloudinaryUpload } from '~/composables/useCloudinaryUpload'
 
 type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta'
 
+type BlockData = {
+  level?: number
+  text?: string
+  url?: string
+  caption?: string
+  alt?: string
+  author?: string
+  items?: string[]
+  type?: string
+  link?: string
+}
+
 type ContentBlock = {
   id: string
   type: BlockType
-  data: Record<string, any>
+  data: BlockData
 }
 
 type DraftModel = {
@@ -434,16 +446,18 @@ const blockTypes = [
   { type: 'bulletList', label: 'Danh sách', icon: '•' },
   { type: 'divider', label: 'Phân cách', icon: '─' },
   { type: 'cta', label: 'Nút CTA', icon: '🎫' }
-] as const
+] as const satisfies ReadonlyArray<{ type: BlockType; label: string; icon: string }>
 
-const englishBlocks = computed(() => draft.contentBlocks)
+const englishBlocks = computed<ContentBlock[]>(() => {
+  return Array.isArray(draft.contentBlocks) ? draft.contentBlocks : []
+})
 
 function createId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 }
 
 function clone<T>(value: T): T {
-  return JSON.parse(JSON.stringify(value))
+  return JSON.parse(JSON.stringify(value)) as T
 }
 
 function createEmptyBlock(type: BlockType): ContentBlock {
@@ -464,13 +478,12 @@ function createEmptyBlock(type: BlockType): ContentBlock {
       return { id, type, data: {} }
     case 'cta':
       return { id, type, data: { type: 'booking', link: '', text: '' } }
-    default:
-      return { id, type, data: {} }
   }
 }
 
 function createVietnameseVersion(block: ContentBlock): ContentBlock {
   const viBlock = clone(block)
+  viBlock.data = viBlock.data || {}
 
   switch (viBlock.type) {
     case 'heading':
@@ -478,6 +491,7 @@ function createVietnameseVersion(block: ContentBlock): ContentBlock {
       viBlock.data.text = viBlock.data.text || ''
       break
     case 'image':
+      viBlock.data.url = viBlock.data.url || ''
       viBlock.data.caption = viBlock.data.caption || ''
       viBlock.data.alt = viBlock.data.alt || ''
       break
@@ -493,7 +507,7 @@ function createVietnameseVersion(block: ContentBlock): ContentBlock {
       viBlock.data.type = viBlock.data.type || 'booking'
       viBlock.data.link = viBlock.data.link || ''
       break
-    default:
+    case 'divider':
       break
   }
 
@@ -508,25 +522,26 @@ function applySharedFields(enBlock: ContentBlock, viBlock: ContentBlock): Conten
 
   switch (enBlock.type) {
     case 'heading':
-      next.data.level = enBlock.data?.level || 2
+      next.data.level = enBlock.data.level || 2
       break
     case 'image':
-      next.data.url = enBlock.data?.url || ''
+      next.data.url = enBlock.data.url || ''
       break
     case 'quote':
-      next.data.author = enBlock.data?.author || ''
+      next.data.author = enBlock.data.author || ''
       break
     case 'bulletList': {
-      const enItems = Array.isArray(enBlock.data?.items) ? enBlock.data.items : []
+      const enItems = Array.isArray(enBlock.data.items) ? enBlock.data.items : []
       const viItems = Array.isArray(next.data.items) ? next.data.items : []
-      next.data.items = enItems.map((_: string, index: number) => viItems[index] || '')
+      next.data.items = enItems.map((_, index) => viItems[index] || '')
       break
     }
     case 'cta':
-      next.data.type = enBlock.data?.type || 'booking'
-      next.data.link = enBlock.data?.link || ''
+      next.data.type = enBlock.data.type || 'booking'
+      next.data.link = enBlock.data.link || ''
       break
-    default:
+    case 'paragraph':
+    case 'divider':
       break
   }
 
@@ -542,7 +557,8 @@ function ensureBilingualBlocks() {
     return
   }
 
-  const viMap = new Map(draft.contentBlocksVi.map((block) => [block.id, block]))
+  const viMap = new Map<string, ContentBlock>(draft.contentBlocksVi.map((block) => [block.id, block]))
+
   draft.contentBlocksVi = draft.contentBlocks.map((block) => {
     const existing = viMap.get(block.id)
     if (!existing || existing.type !== block.type) {
@@ -556,15 +572,26 @@ watchEffect(() => {
   ensureBilingualBlocks()
 })
 
-function getBlockLabel(type: string): string {
+function getBlockLabel(type: BlockType): string {
   return blockTypes.find((item) => item.type === type)?.label || type
 }
 
+function getEnglishBlock(index: number): ContentBlock | undefined {
+  return draft.contentBlocks[index]
+}
+
 function getViBlock(index: number): ContentBlock {
-  if (!draft.contentBlocksVi[index] && draft.contentBlocks[index]) {
-    draft.contentBlocksVi[index] = createVietnameseVersion(draft.contentBlocks[index])
+  const current = getEnglishBlock(index)
+
+  if (!current) {
+    return createEmptyBlock('paragraph')
   }
-  return draft.contentBlocksVi[index]
+
+  if (!draft.contentBlocksVi[index]) {
+    draft.contentBlocksVi[index] = createVietnameseVersion(current)
+  }
+
+  return draft.contentBlocksVi[index]!
 }
 
 function showAddMenu(afterIndex: number) {
@@ -583,18 +610,23 @@ function addBlock(type: BlockType) {
 }
 
 function duplicateBlock(index: number) {
-  const english = clone(draft.contentBlocks[index])
-  const vietnamese = clone(getViBlock(index))
+  const english = getEnglishBlock(index)
+  if (!english) return
+
+  const vietnamese = getViBlock(index)
+  const englishClone = clone(english)
+  const vietnameseClone = clone(vietnamese)
   const newId = createId()
 
-  english.id = newId
-  vietnamese.id = newId
+  englishClone.id = newId
+  vietnameseClone.id = newId
 
-  draft.contentBlocks.splice(index + 1, 0, english)
-  draft.contentBlocksVi.splice(index + 1, 0, vietnamese)
+  draft.contentBlocks.splice(index + 1, 0, englishClone)
+  draft.contentBlocksVi.splice(index + 1, 0, vietnameseClone)
 }
 
 function removeBlock(index: number) {
+  if (index < 0 || index >= draft.contentBlocks.length) return
   draft.contentBlocks.splice(index, 1)
   draft.contentBlocksVi.splice(index, 1)
 }
@@ -604,50 +636,70 @@ function moveBlock(index: number, direction: 'up' | 'down') {
   if (targetIndex < 0 || targetIndex >= draft.contentBlocks.length) return
 
   const [english] = draft.contentBlocks.splice(index, 1)
-  draft.contentBlocks.splice(targetIndex, 0, english)
-
   const [vietnamese] = draft.contentBlocksVi.splice(index, 1)
+
+  if (!english || !vietnamese) return
+
+  draft.contentBlocks.splice(targetIndex, 0, english)
   draft.contentBlocksVi.splice(targetIndex, 0, vietnamese)
 }
 
 function updateHeadingLevel(index: number, level: number) {
-  draft.contentBlocks[index].data.level = level
+  const block = getEnglishBlock(index)
+  if (!block) return
+
+  block.data.level = level
   getViBlock(index).data.level = level
 }
 
 function updateBlockText(index: number, language: 'vi' | 'en', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   if (language === 'vi') {
     getViBlock(index).data.text = value
   } else {
-    draft.contentBlocks[index].data.text = value
+    englishBlock.data.text = value
   }
 }
 
 function updateQuoteText(index: number, language: 'vi' | 'en', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   if (language === 'vi') {
     getViBlock(index).data.text = value
   } else {
-    draft.contentBlocks[index].data.text = value
+    englishBlock.data.text = value
   }
 }
 
 function updateQuoteAuthor(index: number, value: string) {
-  draft.contentBlocks[index].data.author = value
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  englishBlock.data.author = value
   getViBlock(index).data.author = value
 }
 
 function updateImageMeta(index: number, field: 'caption' | 'alt', language: 'vi' | 'en', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   if (language === 'vi') {
     getViBlock(index).data[field] = value
   } else {
-    draft.contentBlocks[index].data[field] = value
+    englishBlock.data[field] = value
   }
 }
 
 function clearImage(index: number) {
-  draft.contentBlocks[index].data.url = ''
-  draft.contentBlocks[index].data.caption = ''
-  draft.contentBlocks[index].data.alt = ''
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  englishBlock.data.url = ''
+  englishBlock.data.caption = ''
+  englishBlock.data.alt = ''
 
   const viBlock = getViBlock(index)
   viBlock.data.url = ''
@@ -656,12 +708,13 @@ function clearImage(index: number) {
 }
 
 function getEnItems(index: number): string[] {
-  const items = draft.contentBlocks[index].data?.items
+  const block = getEnglishBlock(index)
+  const items = block?.data.items
   return Array.isArray(items) ? items : []
 }
 
 function getViItems(index: number): string[] {
-  const items = getViBlock(index).data?.items
+  const items = getViBlock(index).data.items
   return Array.isArray(items) ? items : []
 }
 
@@ -678,52 +731,67 @@ function getViListItem(index: number, itemIndex: number): string {
 }
 
 function addListItem(index: number) {
-  const enItems = getEnItems(index)
-  const viItems = getViItems(index)
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  const enItems = [...getEnItems(index)]
+  const viItems = [...getViItems(index)]
 
   enItems.push('')
   viItems.push('')
 
-  draft.contentBlocks[index].data.items = enItems
+  englishBlock.data.items = enItems
   getViBlock(index).data.items = viItems
 }
 
 function removeListItem(index: number, itemIndex: number) {
-  const enItems = getEnItems(index)
-  const viItems = getViItems(index)
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  const enItems = [...getEnItems(index)]
+  const viItems = [...getViItems(index)]
 
   enItems.splice(itemIndex, 1)
   viItems.splice(itemIndex, 1)
 
-  draft.contentBlocks[index].data.items = enItems.length ? enItems : ['']
+  englishBlock.data.items = enItems.length ? enItems : ['']
   getViBlock(index).data.items = viItems.length ? viItems : ['']
 }
 
 function updateListItem(index: number, itemIndex: number, language: 'vi' | 'en', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   if (language === 'vi') {
-    const viItems = getViItems(index)
+    const viItems = [...getViItems(index)]
     while (viItems.length <= itemIndex) viItems.push('')
     viItems[itemIndex] = value
     getViBlock(index).data.items = viItems
   } else {
-    const enItems = getEnItems(index)
+    const enItems = [...getEnItems(index)]
     while (enItems.length <= itemIndex) enItems.push('')
     enItems[itemIndex] = value
-    draft.contentBlocks[index].data.items = enItems
+    englishBlock.data.items = enItems
     ensureBilingualBlocks()
   }
 }
 
 function updateCtaShared(index: number, field: 'type' | 'link', value: string) {
-  draft.contentBlocks[index].data[field] = value
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  englishBlock.data[field] = value
   getViBlock(index).data[field] = value
 }
 
 function updateCtaText(index: number, language: 'vi' | 'en', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   if (language === 'vi') {
     getViBlock(index).data.text = value
   } else {
-    draft.contentBlocks[index].data.text = value
+    englishBlock.data.text = value
   }
 }
 
@@ -731,12 +799,16 @@ async function handleImageUpload(event: Event, index: number) {
   const file = (event.target as HTMLInputElement).files?.[0]
   if (!file) return
 
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
   try {
     const result = await uploadImage(file, { folder: 'posts/content' })
-    draft.contentBlocks[index].data.url = result.url
+    englishBlock.data.url = result.url
     getViBlock(index).data.url = result.url
-  } catch (error: any) {
-    alert(error?.message || 'Lỗi tải ảnh')
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Lỗi tải ảnh'
+    alert(message)
   } finally {
     const target = event.target as HTMLInputElement
     target.value = ''
@@ -747,7 +819,10 @@ function handleImageUrlInput(event: Event, index: number) {
   const url = (event.target as HTMLInputElement).value
   if (!url || !url.startsWith('http')) return
 
-  draft.contentBlocks[index].data.url = url
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  englishBlock.data.url = url
   getViBlock(index).data.url = url
   ;(event.target as HTMLInputElement).value = ''
 }

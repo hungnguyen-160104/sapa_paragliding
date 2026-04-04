@@ -356,11 +356,25 @@ type SeoDraft = {
 
 type GalleryItem = string | { url: string; publicId?: string; caption?: string }
 
+type BlockData = {
+  level?: number
+  text?: string
+  url?: string
+  caption?: string
+  alt?: string
+  author?: string
+  items?: string[]
+  type?: string
+  link?: string
+}
+
 type ContentBlock = {
   id: string | number
   type: string
-  data?: Record<string, any>
+  data: BlockData
 }
+
+type DraftStatus = 'DRAFT' | 'PUBLISHED' | 'SCHEDULED'
 
 type DraftModel = {
   title: string
@@ -373,7 +387,7 @@ type DraftModel = {
   contentBlocks: ContentBlock[]
   contentBlocksVi: ContentBlock[]
   categoryId: string
-  status: 'DRAFT' | 'PUBLISHED' | 'SCHEDULED'
+  status: DraftStatus
   thumbnailUrl: string
   thumbnailPublicId?: string
   galleryUrls: GalleryItem[]
@@ -382,13 +396,30 @@ type DraftModel = {
   scheduledAt?: string | Date | null
 }
 
+type PostsAdminStore = ReturnType<typeof usePostsAdminStore> & {
+  draft: Partial<DraftModel>
+  saving: boolean
+  dirty: boolean
+  lastSavedAt?: Date | string | null
+  validationErrors?: Record<string, string>
+  uploading: {
+    cover: boolean
+  }
+  uploadProgress: {
+    cover: number
+  }
+  saveDraft: () => Promise<boolean>
+  publish: () => Promise<boolean>
+  closeEditor: (force?: boolean) => void
+}
+
 const emit = defineEmits<{
   close: []
 }>()
 
-const store = usePostsAdminStore()
+const store = usePostsAdminStore() as PostsAdminStore
 const { uploadImage } = useCloudinaryUpload()
-const draft = store.draft as unknown as DraftModel
+const draft = store.draft as DraftModel
 
 const coverInputRef = ref<HTMLInputElement | null>(null)
 const coverUrlInput = ref('')
@@ -405,7 +436,7 @@ const categories = [
   { id: 'adventure', label: 'Phiêu lưu' },
   { id: 'safety', label: 'An toàn' },
   { id: 'tips', label: 'Mẹo hay' }
-]
+] as const
 
 function normalizeSlug(value: string): string {
   return String(value || '')
@@ -417,13 +448,12 @@ function normalizeSlug(value: string): string {
 }
 
 function deepClone<T>(value: T): T {
-  return JSON.parse(JSON.stringify(value))
+  return JSON.parse(JSON.stringify(value)) as T
 }
 
 function createVietnameseBlockFallback(block: ContentBlock): ContentBlock {
   const clone = deepClone(block)
-
-  if (!clone.data) clone.data = {}
+  clone.data = clone.data || {}
 
   switch (clone.type) {
     case 'heading':
@@ -468,14 +498,18 @@ function ensureDraftShape() {
     : draft.contentBlocks.map(createVietnameseBlockFallback)
   draft.galleryUrls = Array.isArray(draft.galleryUrls) ? draft.galleryUrls : []
   draft.tags = Array.isArray(draft.tags) ? draft.tags : []
+  draft.categoryId = draft.categoryId || ''
+  draft.status = draft.status || 'DRAFT'
+  draft.thumbnailUrl = draft.thumbnailUrl || ''
+  draft.thumbnailPublicId = draft.thumbnailPublicId || ''
 
+  const currentSeo = draft.seo || {}
   draft.seo = {
-    title: '',
-    titleVi: '',
-    description: '',
-    descriptionVi: '',
-    ogImage: '',
-    ...(draft.seo || {})
+    title: currentSeo.title || '',
+    titleVi: currentSeo.titleVi || '',
+    description: currentSeo.description || '',
+    descriptionVi: currentSeo.descriptionVi || '',
+    ogImage: currentSeo.ogImage || ''
   }
 
   if (!draft.contentBlocksVi.length && draft.contentBlocks.length) {
@@ -529,10 +563,10 @@ watch(
 const localValidationErrors = computed<Record<string, string>>(() => {
   const errors: Record<string, string> = {}
 
-  if (!draft.titleVi?.trim()) errors.titleVi = 'Vui lòng nhập tiêu đề tiếng Việt'
-  if (!draft.title?.trim()) errors.title = 'Vui lòng nhập tiêu đề tiếng Anh'
-  if (!draft.excerptVi?.trim()) errors.excerptVi = 'Vui lòng nhập mô tả ngắn tiếng Việt'
-  if (!draft.excerpt?.trim()) errors.excerpt = 'Vui lòng nhập mô tả ngắn tiếng Anh'
+  if (!draft.titleVi.trim()) errors.titleVi = 'Vui lòng nhập tiêu đề tiếng Việt'
+  if (!draft.title.trim()) errors.title = 'Vui lòng nhập tiêu đề tiếng Anh'
+  if (!draft.excerptVi.trim()) errors.excerptVi = 'Vui lòng nhập mô tả ngắn tiếng Việt'
+  if (!draft.excerpt.trim()) errors.excerpt = 'Vui lòng nhập mô tả ngắn tiếng Anh'
   if (!draft.categoryId) errors.categoryId = 'Vui lòng chọn danh mục'
   if (!draft.thumbnailUrl) errors.thumbnailUrl = 'Vui lòng chọn ảnh bìa'
   if (draft.status === 'SCHEDULED' && !scheduledAtInput.value) {
@@ -555,13 +589,13 @@ function formatTime(date: Date | string): string {
 }
 
 function generateSlugFromDraft() {
-  const base = draft.title?.trim() || draft.titleVi?.trim() || ''
+  const base = draft.title.trim() || draft.titleVi.trim()
   if (!base) return
   draft.slug = normalizeSlug(base)
 }
 
 function autoGenerateSlug() {
-  if (!draft.slug?.trim()) {
+  if (!draft.slug.trim()) {
     generateSlugFromDraft()
   }
 }
@@ -581,18 +615,20 @@ async function handleCoverUpload(event: Event) {
   try {
     const result = await uploadImage(file, {
       folder: 'posts/covers',
-      onProgress: (progress) => {
+      onProgress: (progress: number) => {
         store.uploadProgress.cover = progress
       }
     })
 
     draft.thumbnailUrl = result.url
     draft.thumbnailPublicId = result.publicId
+
     if (!draft.seo.ogImage) {
       draft.seo.ogImage = result.url
     }
-  } catch (error: any) {
-    alert(error?.message || 'Lỗi tải ảnh')
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Lỗi tải ảnh'
+    alert(message)
   } finally {
     store.uploading.cover = false
     if (coverInputRef.value) coverInputRef.value.value = ''
@@ -601,10 +637,13 @@ async function handleCoverUpload(event: Event) {
 
 function handleCoverUrlInput() {
   if (!coverUrlInput.value || !coverUrlInput.value.startsWith('http')) return
+
   draft.thumbnailUrl = coverUrlInput.value
+
   if (!draft.seo.ogImage) {
     draft.seo.ogImage = coverUrlInput.value
   }
+
   coverUrlInput.value = ''
 }
 

@@ -5,6 +5,7 @@
         <p class="text-sm font-semibold text-slate-900">Chế độ xem trước</p>
         <p class="text-xs text-slate-500">Tiếng Việt dùng field <code>...Vi</code>, mọi ngôn ngữ khác dùng English</p>
       </div>
+
       <div class="inline-flex rounded-lg border border-slate-200 bg-white p-1">
         <button
           class="rounded-md px-3 py-1.5 text-sm font-medium transition"
@@ -52,11 +53,11 @@
               :is="`h${block.data?.level || 2}`"
               class="font-bold text-slate-900"
             >
-              {{ block.data?.text }}
+              {{ block.data?.text || '' }}
             </component>
 
             <p v-else-if="block.type === 'paragraph'" class="whitespace-pre-line leading-relaxed text-slate-700">
-              {{ block.data?.text }}
+              {{ block.data?.text || '' }}
             </p>
 
             <figure v-else-if="block.type === 'image' && block.data?.url" class="my-6">
@@ -67,7 +68,7 @@
             </figure>
 
             <blockquote v-else-if="block.type === 'quote'" class="my-6 border-l-4 border-red-500 pl-4 italic">
-              <p class="text-slate-700">{{ block.data?.text }}</p>
+              <p class="text-slate-700">{{ block.data?.text || '' }}</p>
               <cite v-if="block.data?.author" class="not-italic text-sm text-slate-500">— {{ block.data.author }}</cite>
             </blockquote>
 
@@ -99,8 +100,13 @@
         <h3 class="mb-4 text-xl font-bold text-slate-900">
           {{ previewLocale === 'vi' ? '📷 Thư viện ảnh' : '📷 Gallery' }}
         </h3>
+
         <div class="grid grid-cols-2 gap-3 md:grid-cols-3">
-          <div v-for="(image, index) in normalizedGallery" :key="`${image.url}-${index}`" class="aspect-square overflow-hidden rounded-lg">
+          <div
+            v-for="(image, index) in normalizedGallery"
+            :key="`${image.url}-${index}`"
+            class="aspect-square overflow-hidden rounded-lg"
+          >
             <img :src="image.url" :alt="image.caption || displayTitle" class="h-full w-full object-cover" />
           </div>
         </div>
@@ -112,13 +118,35 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
 
+type BlockData = {
+  level?: number
+  text?: string
+  url?: string
+  caption?: string
+  alt?: string
+  author?: string
+  items?: string[]
+  type?: string
+  link?: string
+}
+
 type ContentBlock = {
   id: string | number
   type: string
-  data?: Record<string, any>
+  data?: BlockData
 }
 
-type GalleryItem = string | { url: string; caption?: string }
+type GalleryObject = {
+  url: string
+  caption?: string
+}
+
+type GalleryItem = string | GalleryObject
+
+type NormalizedGalleryItem = {
+  url: string
+  caption: string
+}
 
 type PreviewPost = {
   title?: string
@@ -158,6 +186,7 @@ const displayTitle = computed(() => {
   if (previewLocale.value === 'vi') {
     return props.post.titleVi || props.post.title || ''
   }
+
   return props.post.title || props.post.titleVi || ''
 })
 
@@ -165,41 +194,65 @@ const displayExcerpt = computed(() => {
   if (previewLocale.value === 'vi') {
     return props.post.excerptVi || props.post.excerpt || ''
   }
+
   return props.post.excerpt || props.post.excerptVi || ''
 })
 
 const displayBlocks = computed<ContentBlock[]>(() => {
   if (previewLocale.value === 'vi') {
-    return Array.isArray(props.post.contentBlocksVi) && props.post.contentBlocksVi.length
-      ? props.post.contentBlocksVi
-      : Array.isArray(props.post.contentBlocks)
-        ? props.post.contentBlocks
-        : []
+    if (Array.isArray(props.post.contentBlocksVi) && props.post.contentBlocksVi.length > 0) {
+      return props.post.contentBlocksVi
+    }
+
+    if (Array.isArray(props.post.contentBlocks)) {
+      return props.post.contentBlocks
+    }
+
+    return []
   }
 
-  return Array.isArray(props.post.contentBlocks) && props.post.contentBlocks.length
-    ? props.post.contentBlocks
-    : Array.isArray(props.post.contentBlocksVi)
-      ? props.post.contentBlocksVi
-      : []
+  if (Array.isArray(props.post.contentBlocks) && props.post.contentBlocks.length > 0) {
+    return props.post.contentBlocks
+  }
+
+  if (Array.isArray(props.post.contentBlocksVi)) {
+    return props.post.contentBlocksVi
+  }
+
+  return []
 })
 
-const normalizedGallery = computed(() => {
+const normalizedGallery = computed<NormalizedGalleryItem[]>(() => {
   const rawGallery = Array.isArray(props.post.galleryUrls) ? props.post.galleryUrls : []
+
   return rawGallery
-    .map((item) => {
-      if (typeof item === 'string') return { url: item, caption: '' }
-      if (item && typeof item === 'object' && typeof item.url === 'string') {
-        return { url: item.url, caption: item.caption || '' }
+    .map((item): NormalizedGalleryItem | null => {
+      if (typeof item === 'string') {
+        return {
+          url: item,
+          caption: ''
+        }
       }
+
+      if (item && typeof item === 'object' && typeof item.url === 'string') {
+        return {
+          url: item.url,
+          caption: item.caption ?? ''
+        }
+      }
+
       return null
     })
-    .filter((item): item is { url: string; caption?: string } => Boolean(item))
+    .filter((item): item is NormalizedGalleryItem => item !== null)
 })
 
 function getCategoryLabel(id: string): string {
   const labels = categories[id]
-  if (!labels) return id
+
+  if (!labels) {
+    return id
+  }
+
   return previewLocale.value === 'vi' ? labels.vi : labels.en
 }
 </script>
