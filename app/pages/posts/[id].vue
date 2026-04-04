@@ -370,10 +370,11 @@ type PostWithExtras = {
 const { locale, t } = useI18n()
 const route = useRoute()
 const router = useRouter()
+const localePath = useLocalePath()
 const postsStore = usePostsStore()
 
 const currentLocale = computed(() => locale.value || 'vi')
-const isVietnamese = computed(() => currentLocale.value === 'vi')
+const isVietnamese = computed(() => String(currentLocale.value).toLowerCase().startsWith('vi'))
 const postId = computed(() => String(route.params.id ?? ''))
 
 const categoryLabels: Record<string, { vi: string; en: string }> = {
@@ -540,8 +541,7 @@ function formatDate(date?: string) {
 }
 
 function localizedNavigateTo(path: string) {
-  const fullPath = isVietnamese.value ? path : `/${currentLocale.value}${path}`
-  router.push(fullPath)
+  router.push(localePath(path))
 }
 
 function goBack() {

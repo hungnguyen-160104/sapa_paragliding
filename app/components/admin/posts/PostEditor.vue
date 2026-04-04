@@ -57,7 +57,7 @@
 
         <div class="flex items-center gap-2">
           <button class="btn-secondary py-1.5 text-sm" :disabled="store.saving" @click="handleSaveDraft">
-            💾 Lưu nháp
+            💾 Lưu
           </button>
 
           <button class="btn-secondary py-1.5 text-sm" @click="showPreview = true">
@@ -76,7 +76,11 @@
       </div>
     </div>
 
-    <div class="flex-1 space-y-6 overflow-y-auto p-6">
+    <div ref="editorBodyRef" class="flex-1 space-y-6 overflow-y-auto p-6">
+      <div v-if="store.editorError" class="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+        {{ store.editorError }}
+      </div>
+
       <div v-if="Object.keys(validationErrors).length > 0" class="rounded-lg border border-red-200 bg-red-50 p-4">
         <h4 class="mb-2 font-medium text-red-800">Vui lòng sửa các lỗi sau:</h4>
         <ul class="list-inside list-disc space-y-1 text-sm text-red-600">
@@ -331,7 +335,7 @@
       <template #actions>
         <button class="btn-secondary" @click="showUnsavedConfirm = false">Hủy</button>
         <button class="btn-secondary text-red-600" @click="discardAndClose">Bỏ thay đổi</button>
-        <button class="btn-primary" @click="saveAndClose">Lưu nháp</button>
+        <button class="btn-primary" @click="saveAndClose">Lưu</button>
       </template>
     </ConfirmModal>
   </div>
@@ -419,9 +423,10 @@ const emit = defineEmits<{
 
 const store = usePostsAdminStore() as PostsAdminStore
 const { uploadImage } = useCloudinaryUpload()
-const draft = store.draft as DraftModel
+const draft = computed(() => store.draft as DraftModel)
 
 const coverInputRef = ref<HTMLInputElement | null>(null)
+const editorBodyRef = ref<HTMLElement | null>(null)
 const coverUrlInput = ref('')
 const showPreview = ref(false)
 const showUnsavedConfirm = ref(false)
@@ -485,26 +490,26 @@ function createVietnameseBlockFallback(block: ContentBlock): ContentBlock {
 }
 
 function ensureDraftShape() {
-  draft.title = draft.title || ''
-  draft.titleVi = draft.titleVi || ''
-  draft.slug = draft.slug || ''
-  draft.excerpt = draft.excerpt || ''
-  draft.excerptVi = draft.excerptVi || ''
-  draft.contentHtml = draft.contentHtml || ''
-  draft.contentHtmlVi = draft.contentHtmlVi || ''
-  draft.contentBlocks = Array.isArray(draft.contentBlocks) ? draft.contentBlocks : []
-  draft.contentBlocksVi = Array.isArray(draft.contentBlocksVi)
-    ? draft.contentBlocksVi
-    : draft.contentBlocks.map(createVietnameseBlockFallback)
-  draft.galleryUrls = Array.isArray(draft.galleryUrls) ? draft.galleryUrls : []
-  draft.tags = Array.isArray(draft.tags) ? draft.tags : []
-  draft.categoryId = draft.categoryId || ''
-  draft.status = draft.status || 'DRAFT'
-  draft.thumbnailUrl = draft.thumbnailUrl || ''
-  draft.thumbnailPublicId = draft.thumbnailPublicId || ''
+  draft.value.title = draft.value.title || ''
+  draft.value.titleVi = draft.value.titleVi || ''
+  draft.value.slug = draft.value.slug || ''
+  draft.value.excerpt = draft.value.excerpt || ''
+  draft.value.excerptVi = draft.value.excerptVi || ''
+  draft.value.contentHtml = draft.value.contentHtml || ''
+  draft.value.contentHtmlVi = draft.value.contentHtmlVi || ''
+  draft.value.contentBlocks = Array.isArray(draft.value.contentBlocks) ? draft.value.contentBlocks : []
+  draft.value.contentBlocksVi = Array.isArray(draft.value.contentBlocksVi)
+    ? draft.value.contentBlocksVi
+    : draft.value.contentBlocks.map(createVietnameseBlockFallback)
+  draft.value.galleryUrls = Array.isArray(draft.value.galleryUrls) ? draft.value.galleryUrls : []
+  draft.value.tags = Array.isArray(draft.value.tags) ? draft.value.tags : []
+  draft.value.categoryId = draft.value.categoryId || ''
+  draft.value.status = draft.value.status || 'DRAFT'
+  draft.value.thumbnailUrl = draft.value.thumbnailUrl || ''
+  draft.value.thumbnailPublicId = draft.value.thumbnailPublicId || ''
 
-  const currentSeo = draft.seo || {}
-  draft.seo = {
+  const currentSeo = draft.value.seo || {}
+  draft.value.seo = {
     title: currentSeo.title || '',
     titleVi: currentSeo.titleVi || '',
     description: currentSeo.description || '',
@@ -512,12 +517,12 @@ function ensureDraftShape() {
     ogImage: currentSeo.ogImage || ''
   }
 
-  if (!draft.contentBlocksVi.length && draft.contentBlocks.length) {
-    draft.contentBlocksVi = draft.contentBlocks.map(createVietnameseBlockFallback)
+  if (!draft.value.contentBlocksVi.length && draft.value.contentBlocks.length) {
+    draft.value.contentBlocksVi = draft.value.contentBlocks.map(createVietnameseBlockFallback)
   }
 
-  if (!draft.seo.ogImage && draft.thumbnailUrl) {
-    draft.seo.ogImage = draft.thumbnailUrl
+  if (!draft.value.seo.ogImage && draft.value.thumbnailUrl) {
+    draft.value.seo.ogImage = draft.value.thumbnailUrl
   }
 }
 
@@ -526,7 +531,7 @@ watchEffect(() => {
 })
 
 watch(
-  () => draft.scheduledAt,
+  () => draft.value.scheduledAt,
   (value) => {
     if (!value) {
       scheduledAtInput.value = ''
@@ -546,16 +551,16 @@ watch(
 )
 
 watch(scheduledAtInput, (value) => {
-  if (draft.status !== 'SCHEDULED') return
-  draft.scheduledAt = value ? new Date(value).toISOString() : null
+  if (draft.value.status !== 'SCHEDULED') return
+  draft.value.scheduledAt = value ? new Date(value).toISOString() : null
 })
 
 watch(
-  () => draft.status,
+  () => draft.value.status,
   (status) => {
     if (status !== 'SCHEDULED') {
       scheduledAtInput.value = ''
-      draft.scheduledAt = null
+      draft.value.scheduledAt = null
     }
   }
 )
@@ -563,13 +568,13 @@ watch(
 const localValidationErrors = computed<Record<string, string>>(() => {
   const errors: Record<string, string> = {}
 
-  if (!draft.titleVi.trim()) errors.titleVi = 'Vui lòng nhập tiêu đề tiếng Việt'
-  if (!draft.title.trim()) errors.title = 'Vui lòng nhập tiêu đề tiếng Anh'
-  if (!draft.excerptVi.trim()) errors.excerptVi = 'Vui lòng nhập mô tả ngắn tiếng Việt'
-  if (!draft.excerpt.trim()) errors.excerpt = 'Vui lòng nhập mô tả ngắn tiếng Anh'
-  if (!draft.categoryId) errors.categoryId = 'Vui lòng chọn danh mục'
-  if (!draft.thumbnailUrl) errors.thumbnailUrl = 'Vui lòng chọn ảnh bìa'
-  if (draft.status === 'SCHEDULED' && !scheduledAtInput.value) {
+  if (!draft.value.titleVi.trim()) errors.titleVi = 'Vui lòng nhập tiêu đề tiếng Việt'
+  if (!draft.value.title.trim()) errors.title = 'Vui lòng nhập tiêu đề tiếng Anh'
+  if (!draft.value.excerptVi.trim()) errors.excerptVi = 'Vui lòng nhập mô tả ngắn tiếng Việt'
+  if (!draft.value.excerpt.trim()) errors.excerpt = 'Vui lòng nhập mô tả ngắn tiếng Anh'
+  if (!draft.value.categoryId) errors.categoryId = 'Vui lòng chọn danh mục'
+  if (!draft.value.thumbnailUrl) errors.thumbnailUrl = 'Vui lòng chọn ảnh bìa'
+  if (draft.value.status === 'SCHEDULED' && !scheduledAtInput.value) {
     errors.scheduledAt = 'Vui lòng chọn thời gian xuất bản'
   }
 
@@ -589,13 +594,13 @@ function formatTime(date: Date | string): string {
 }
 
 function generateSlugFromDraft() {
-  const base = draft.title.trim() || draft.titleVi.trim()
+  const base = draft.value.title.trim() || draft.value.titleVi.trim()
   if (!base) return
-  draft.slug = normalizeSlug(base)
+  draft.value.slug = normalizeSlug(base)
 }
 
 function autoGenerateSlug() {
-  if (!draft.slug.trim()) {
+  if (!draft.value.slug.trim()) {
     generateSlugFromDraft()
   }
 }
@@ -620,11 +625,11 @@ async function handleCoverUpload(event: Event) {
       }
     })
 
-    draft.thumbnailUrl = result.url
-    draft.thumbnailPublicId = result.publicId
+    draft.value.thumbnailUrl = result.url
+    draft.value.thumbnailPublicId = result.publicId
 
-    if (!draft.seo.ogImage) {
-      draft.seo.ogImage = result.url
+    if (!draft.value.seo.ogImage) {
+      draft.value.seo.ogImage = result.url
     }
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Lỗi tải ảnh'
@@ -638,24 +643,31 @@ async function handleCoverUpload(event: Event) {
 function handleCoverUrlInput() {
   if (!coverUrlInput.value || !coverUrlInput.value.startsWith('http')) return
 
-  draft.thumbnailUrl = coverUrlInput.value
+  draft.value.thumbnailUrl = coverUrlInput.value
 
-  if (!draft.seo.ogImage) {
-    draft.seo.ogImage = coverUrlInput.value
+  if (!draft.value.seo.ogImage) {
+    draft.value.seo.ogImage = coverUrlInput.value
   }
 
   coverUrlInput.value = ''
 }
 
 function removeCover() {
-  draft.thumbnailUrl = ''
-  draft.thumbnailPublicId = ''
+  draft.value.thumbnailUrl = ''
+  draft.value.thumbnailPublicId = ''
+}
+
+function scrollToTopOnError() {
+  editorBodyRef.value?.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 async function handleSaveDraft() {
   ensureDraftShape()
   showLocalValidation.value = false
-  await store.saveDraft()
+  const success = await store.saveDraft()
+  if (!success) {
+    scrollToTopOnError()
+  }
 }
 
 async function handlePublish() {
@@ -666,8 +678,11 @@ async function handlePublish() {
     return
   }
 
-  draft.status = draft.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
-  await store.publish()
+  draft.value.status = draft.value.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
+  const success = await store.publish()
+  if (!success) {
+    scrollToTopOnError()
+  }
 }
 
 function handleClose() {

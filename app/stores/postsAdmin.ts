@@ -433,6 +433,21 @@ function blocksToHtml(blocks: ContentBlock[]): string {
     .join('\n')
 }
 
+function extractRequestErrorMessage(error: unknown, fallback: string): string {
+  const err = error as {
+    data?: { error?: string; message?: string }
+    statusMessage?: string
+    message?: string
+  }
+
+  if (err?.data?.error) return err.data.error
+  if (err?.data?.message) return err.data.message
+  if (err?.statusMessage) return err.statusMessage
+  if (err?.message) return err.message
+
+  return fallback
+}
+
 export const usePostsAdminStore = defineStore('postsAdmin', () => {
   const filters = reactive({
     search: '',
@@ -472,6 +487,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   const saving = ref(false)
   const lastSavedAt = ref<Date | null>(null)
   const editorLoading = ref(false)
+  const editorError = ref<string | null>(null)
 
   const uploading = reactive({
     cover: false,
@@ -502,7 +518,8 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   })
 
   function syncDraftShape() {
-    draft.value = normalizeDraftFromApi(draft.value)
+    const normalized = normalizeDraftFromApi(draft.value)
+    Object.assign(draft.value, normalized)
   }
 
   function buildPayload(statusOverride?: PostStatus): SavePayload {
@@ -647,6 +664,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     draft.value = createEmptyDraft()
     originalDraft.value = JSON.stringify(draft.value)
     validationErrors.value = {}
+    editorError.value = null
     lastSavedAt.value = null
   }
 
@@ -665,6 +683,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
         draft.value = normalizeDraftFromApi(response.data)
         originalDraft.value = JSON.stringify(draft.value)
         validationErrors.value = {}
+        editorError.value = null
         lastSavedAt.value = response.data.updatedAt ? new Date(response.data.updatedAt) : null
         return true
       }
@@ -686,6 +705,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     draft.value = createEmptyDraft()
     originalDraft.value = ''
     validationErrors.value = {}
+    editorError.value = null
     lastSavedAt.value = null
 
     return true
@@ -744,18 +764,28 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     }
 
     validationErrors.value = errors
+    if (Object.keys(errors).length > 0) {
+      editorError.value =
+        mode === 'publish'
+          ? 'Không thể cập nhật/xuất bản. Vui lòng kiểm tra các trường bắt buộc.'
+          : 'Không thể lưu bài viết. Vui lòng kiểm tra các trường bắt buộc.'
+    } else {
+      editorError.value = null
+    }
+
     return Object.keys(errors).length === 0
   }
 
-  async function saveDraft(): Promise<boolean> {
-    draft.value.status = 'DRAFT'
+  async function persistPost(targetStatus: PostStatus, mode: 'draft' | 'publish'): Promise<boolean> {
+    draft.value.status = targetStatus
 
-    if (!validateDraft('draft')) return false
+    if (!validateDraft(mode)) return false
 
     saving.value = true
+    editorError.value = null
 
     try {
-      const payload = buildPayload('DRAFT')
+      const payload = buildPayload(targetStatus)
       let response: any
 
       if (editorMode.value === 'edit' && selectedPostId.value) {
@@ -775,65 +805,35 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
         draft.value.contentHtmlVi = payload.contentHtmlVi
         lastSavedAt.value = new Date()
         originalDraft.value = JSON.stringify(draft.value)
-        fetchPosts()
-        fetchStats()
+        await Promise.all([fetchPosts(), fetchStats()])
         return true
       }
 
+      editorError.value = response?.error || 'Không thể lưu bài viết. Vui lòng thử lại.'
       return false
     } catch (error) {
-      console.error('Error saving draft:', error)
+      console.error('Error saving post:', error)
+      editorError.value = extractRequestErrorMessage(error, 'Lỗi kết nối khi lưu bài viết')
       return false
     } finally {
       saving.value = false
     }
   }
 
+  async function saveDraft(): Promise<boolean> {
+    const currentStatus: PostStatus =
+      draft.value.status === 'PUBLISHED' || draft.value.status === 'SCHEDULED'
+        ? draft.value.status
+        : 'DRAFT'
+
+    const validationMode: 'draft' | 'publish' = currentStatus === 'DRAFT' ? 'draft' : 'publish'
+
+    return await persistPost(currentStatus, validationMode)
+  }
+
   async function publish(): Promise<boolean> {
-    const previousStatus = draft.value.status
-    draft.value.status = draft.value.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
-
-    if (!validateDraft('publish')) {
-      draft.value.status = previousStatus === 'SCHEDULED' ? 'SCHEDULED' : 'DRAFT'
-      return false
-    }
-
-    saving.value = true
-
-    try {
-      const payload = buildPayload(draft.value.status)
-      let response: any
-
-      if (editorMode.value === 'edit' && selectedPostId.value) {
-        response = await updatePostRequest(selectedPostId.value, payload)
-      } else {
-        response = await createPostRequest(payload)
-
-        if (response.success && response.post) {
-          selectedPostId.value = response.post.id
-          draft.value.id = response.post.id
-          editorMode.value = 'edit'
-        }
-      }
-
-      if (response.success) {
-        draft.value.contentHtml = payload.contentHtml
-        draft.value.contentHtmlVi = payload.contentHtmlVi
-        lastSavedAt.value = new Date()
-        originalDraft.value = JSON.stringify(draft.value)
-        fetchPosts()
-        fetchStats()
-        return true
-      }
-
-      return false
-    } catch (error) {
-      console.error('Error publishing:', error)
-      draft.value.status = previousStatus
-      return false
-    } finally {
-      saving.value = false
-    }
+    const targetStatus: PostStatus = draft.value.status === 'SCHEDULED' ? 'SCHEDULED' : 'PUBLISHED'
+    return await persistPost(targetStatus, 'publish')
   }
 
   async function togglePublishStatus(postId: string): Promise<boolean> {
@@ -1063,6 +1063,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
     uploading,
     uploadProgress,
     validationErrors,
+    editorError,
     canPublish,
 
     fetchPosts,

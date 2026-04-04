@@ -199,6 +199,19 @@ export default defineEventHandler(async (event) => {
       }
     }
 
+    // Check for duplicate slug
+    const existingWithSlug = await postsCollection.findOne({
+      slug,
+      _id: { $ne: existingPost._id }
+    })
+
+    if (existingWithSlug) {
+      return {
+        success: false,
+        error: `Đường dẫn (slug) "${slug}" đã tồn tại trên một bài viết khác. Vui lòng thay đổi tiêu đề hoặc tuỳ chỉnh lại slug.`
+      }
+    }
+
     const updateData: Record<string, any> = {
       title,
       titleVi,
@@ -249,11 +262,11 @@ export default defineEventHandler(async (event) => {
         ...updateData
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error updating post:', error)
     return {
       success: false,
-      error: 'Failed to update post'
+      error: error?.message ? `Lỗi hệ thống: ${error.message}` : 'Failed to update post'
     }
   }
 })

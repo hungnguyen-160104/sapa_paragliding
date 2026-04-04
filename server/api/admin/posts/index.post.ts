@@ -175,6 +175,14 @@ export default defineEventHandler(async (event) => {
     const { db } = await connectToDatabase()
     const postsCollection = db.collection('posts')
 
+    const existingWithSlug = await postsCollection.findOne({ slug })
+    if (existingWithSlug) {
+      return {
+        success: false,
+        error: `Đường dẫn (slug) "${slug}" đã tồn tại. Vui lòng thay đổi tiêu đề hoặc tuỳ chỉnh lại slug.`
+      }
+    }
+
     const now = new Date()
     const newId = Date.now().toString()
 
@@ -215,11 +223,11 @@ export default defineEventHandler(async (event) => {
       message: 'Post created successfully',
       post: newPost
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error creating post:', error)
     return {
       success: false,
-      error: 'Failed to create post'
+      error: error?.message ? `Lỗi hệ thống: ${error.message}` : 'Failed to create post'
     }
   }
 })

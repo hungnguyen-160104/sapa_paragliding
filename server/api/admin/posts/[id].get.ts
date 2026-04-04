@@ -76,6 +76,38 @@ function normalizeSeo(
   }
 }
 
+function normalizeCategory(value: unknown): string {
+  const raw = String(value || '').trim().toLowerCase()
+
+  if (!raw) return ''
+
+  const map: Record<string, string> = {
+    adventure: 'adventure',
+    safety: 'safety',
+    tips: 'tips',
+    tip: 'tips',
+    guide: 'guide',
+    news: 'news',
+    experience: 'experience',
+    promotion: 'promotion',
+    'khuyen-mai': 'promotion'
+  }
+
+  return map[raw] || raw
+}
+
+function normalizeStatus(post: Record<string, any>): 'DRAFT' | 'PUBLISHED' | 'SCHEDULED' {
+  if (post.status === 'PUBLISHED' || post.status === 'SCHEDULED' || post.status === 'DRAFT') {
+    return post.status
+  }
+
+  if (post.published === true) {
+    return 'PUBLISHED'
+  }
+
+  return 'DRAFT'
+}
+
 export default defineEventHandler(async (event) => {
   try {
     const id = getRouterParam(event, 'id')
@@ -104,8 +136,9 @@ export default defineEventHandler(async (event) => {
     const contentHtmlVi = post.contentHtmlVi || post.contentVi || post.contentHtml || post.content || ''
     const contentBlocks = normalizeBlocks(post.contentBlocks)
     const contentBlocksVi = normalizeBlocks(post.contentBlocksVi?.length ? post.contentBlocksVi : post.contentBlocks)
-    const thumbnailUrl = post.thumbnailUrl || post.coverImage || ''
+    const thumbnailUrl = post.thumbnailUrl || post.coverImage || post.image || ''
     const galleryUrls = normalizeGallery(post.galleryUrls?.length ? post.galleryUrls : post.gallery)
+    const normalizedStatus = normalizeStatus(post)
 
     return {
       success: true,
@@ -120,8 +153,8 @@ export default defineEventHandler(async (event) => {
         contentHtmlVi,
         contentBlocks,
         contentBlocksVi,
-        categoryId: post.categoryId || '',
-        status: post.status || 'DRAFT',
+        categoryId: normalizeCategory(post.categoryId || post.category),
+        status: normalizedStatus,
         thumbnailUrl,
         galleryUrls,
         tags: Array.isArray(post.tags) ? post.tags : [],
