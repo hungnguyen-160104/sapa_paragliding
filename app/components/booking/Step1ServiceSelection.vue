@@ -309,8 +309,8 @@ const LANDING_MAP_URL =
 const showIncluded = ref(false)
 const showPromos = ref(false)
 
-const basePrice = 2090000
-const basePriceUSD = 80
+const basePrice = 2190000
+const basePriceUSD = 85
 
 const numberOfPassengers = ref(bookingStore.bookingData?.numberOfPassengers ?? 1)
 
