@@ -208,6 +208,45 @@ export const buildPersonJsonLD = (person: PersonSchemaInput) => {
   }
 }
 
+type BlogPostingInput = {
+  title: string
+  description: string
+  url: string
+  image?: string
+  datePublished?: string
+  dateModified?: string
+  author?: string
+}
+
+export const buildBlogPostingJsonLD = (post: BlogPostingInput) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.description,
+    image: post.image,
+    datePublished: post.datePublished,
+    dateModified: post.dateModified || post.datePublished,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'Admin'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Sapa Paragliding',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${DOMAIN}/images/Sapa_logo.png`
+      }
+    },
+    url: post.url,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': post.url
+    }
+  }
+}
+
 export const getPageTitle = (route: RouteLike, _locale: string, t: (key: string) => string): string => {
   const rawPath = route.path ?? '/'
   const path = stripLocalePrefix(rawPath).replace(/\/$/, '') || '/'

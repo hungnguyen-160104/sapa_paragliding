@@ -116,6 +116,7 @@
 
 <script setup lang="ts">
 import { usePostsStore } from '~/stores/posts'
+import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage } from '~/utils/seo'
 
 type LocalizedPost = {
   id: string | number
@@ -134,6 +135,7 @@ type LocalizedPost = {
 }
 
 const { locale, t } = useI18n()
+const route = useRoute()
 const router = useRouter()
 const postsStore = usePostsStore()
 
