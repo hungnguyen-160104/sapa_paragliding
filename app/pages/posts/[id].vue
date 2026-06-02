@@ -159,7 +159,7 @@
               </template>
 
               <template v-else-if="block.type === 'cta'">
-                <div class="my-8 text-center">
+                <div class="not-prose my-8 text-center">
                   <a
                     :href="block.data?.link || block.data?.url || '#contact'"
                     class="inline-flex items-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-red-700"
