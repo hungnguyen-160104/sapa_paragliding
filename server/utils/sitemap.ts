@@ -1,3 +1,5 @@
+import { Post } from '../models/post.model'
+
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'vi'
 export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
@@ -46,8 +48,15 @@ export function getLastMod(): string {
   return new Date().toISOString()
 }
 
-export function buildLocaleSpecificSitemap(locale: Locale): string {
+export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string> {
   const lastmod = getLastMod()
+
+  let posts: Array<{ slug: string; publishedAt?: Date }> = []
+  try {
+    posts = await Post.find({ status: 'published' }, { slug: 1, publishedAt: 1 }).lean()
+  } catch {
+    // DB unavailable — build sitemap with static pages only
+  }
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -69,6 +78,27 @@ export function buildLocaleSpecificSitemap(locale: Locale): string {
     xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(defaultUrl)}" />\n`
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`
     xml += `    <priority>${page.priority}</priority>\n`
+    xml += '  </url>\n'
+  }
+
+  for (const post of posts) {
+    const postPath = `/posts/${post.slug}`
+    const currentUrl = `${DOMAIN}/${locale}${postPath}`
+    const postLastmod = post.publishedAt ? new Date(post.publishedAt).toISOString() : lastmod
+
+    xml += '  <url>\n'
+    xml += `    <loc>${escapeXml(currentUrl)}</loc>\n`
+    xml += `    <lastmod>${postLastmod}</lastmod>\n`
+
+    for (const altLocale of LOCALES) {
+      const altUrl = `${DOMAIN}/${altLocale}${postPath}`
+      xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(altUrl)}" />\n`
+    }
+
+    const defaultUrl = `${DOMAIN}/${DEFAULT_LOCALE}${postPath}`
+    xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(defaultUrl)}" />\n`
+    xml += `    <changefreq>monthly</changefreq>\n`
+    xml += `    <priority>0.6</priority>\n`
     xml += '  </url>\n'
   }
 

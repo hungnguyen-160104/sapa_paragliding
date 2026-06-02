@@ -255,7 +255,29 @@ function navigateToPost(id: string | number | undefined) {
   localizedNavigateTo(`/posts/${String(id)}`)
 }
 
-useHead({
-  title: computed(() => t('posts.latestPosts'))
+useHead(() => {
+  const title = `${t('posts.latestPosts')} | Sapa Paragliding`
+  const description = t('posts.latestPostsDescription')
+  const canonical = getCanonicalUrl(route, locale.value)
+  const ogImage = getDefaultOgImage()
+
+  return {
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: canonical },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: ogImage },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description }
+    ],
+    link: [
+      { rel: 'canonical', href: canonical },
+      ...buildHreflangLinks(route.path, locale.value)
+    ]
+  }
 })
 </script>
