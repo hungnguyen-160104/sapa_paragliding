@@ -164,7 +164,7 @@
                     :href="block.data?.link || block.data?.url || '#contact'"
                     class="inline-flex items-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-red-700"
                   >
-                    {{ block.data?.text || (isVietnamese ? 'Đặt ngay' : 'Book Now') }}
+                    {{ block.data?.text }}
                     <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
