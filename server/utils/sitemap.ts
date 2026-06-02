@@ -1,4 +1,4 @@
-import { Post } from '../models/post.model'
+import { connectToDatabase } from './db'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'vi'
@@ -53,7 +53,10 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
 
   let posts: Array<{ slug: string; publishedAt?: Date }> = []
   try {
-    posts = await Post.find({ status: 'published' }, { slug: 1, publishedAt: 1 }).lean()
+    const { db } = await connectToDatabase()
+    posts = await db.collection('posts')
+      .find({ status: 'PUBLISHED' }, { projection: { slug: 1, publishedAt: 1 } })
+      .toArray() as Array<{ slug: string; publishedAt?: Date }>
   } catch {
     // DB unavailable — build sitemap with static pages only
   }
