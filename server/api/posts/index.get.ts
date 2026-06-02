@@ -9,6 +9,7 @@ export default defineEventHandler(async () => {
     const posts = await postsCollection
       .find({ status: 'PUBLISHED' })
       .sort({ publishedAt: -1, updatedAt: -1 })
+      .limit(100)
       .toArray()
 
     const transformedPosts = posts.map((post) => {

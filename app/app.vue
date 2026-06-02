@@ -20,15 +20,17 @@ useHead(() => {
     ? [
         {
           src: `https://www.googletagmanager.com/gtag/js?id=${config.public.gaId}`,
-          async: true
+          async: true,
+          defer: true
         },
         {
           children: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${config.public.gaId}');
-          `
+            gtag('config', '${config.public.gaId}', { send_page_view: false });
+          `,
+          defer: true
         }
       ]
     : []

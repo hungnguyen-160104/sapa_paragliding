@@ -418,7 +418,7 @@ function blocksToHtml(blocks: ContentBlock[]): string {
           return '<hr />'
         case 'cta':
           return `<div class="cta-block"><a href="${block.data?.link || '#'}" class="btn-primary">${escapeHtml(
-            block.data?.text || ''
+            block.data?.text || 'Book Now'
           )}</a></div>`
         case 'gallery': {
           const images = Array.isArray(block.data?.images) ? block.data.images : []

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import galleryData from '~/data/gallery.json'
 import { usePostsStore } from '~/stores/posts'
@@ -111,11 +111,6 @@ const latestPosts = computed(() => {
   const posts = postsStore.posts || []
   return posts
     .filter((p: any) => p.published || p.status === 'PUBLISHED')
-    .sort(
-      (a: any, b: any) =>
-        new Date(b.date || b.updatedAt || 0).getTime() -
-        new Date(a.date || a.updatedAt || 0).getTime()
-    )
     .slice(0, 6)
 })
 
@@ -179,9 +174,12 @@ const scrollToAbout = () => {
   }
 }
 
-onMounted(async () => {
+const revealTimers = new Set<ReturnType<typeof setTimeout>>()
+let scrollObserver: IntersectionObserver | null = null
+
+onMounted(() => {
   if (!postsStore.posts?.length) {
-    await postsStore.fetchPosts()
+    postsStore.fetchPosts()
   }
 
   const observerOptions = {
@@ -189,20 +187,27 @@ onMounted(async () => {
     rootMargin: '0px 0px -50px 0px'
   }
 
-  const observer = new IntersectionObserver((entries) => {
+  scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const delay = entry.target.getAttribute('data-delay') || '0'
-        setTimeout(() => {
+        const delay = Number.parseInt(entry.target.getAttribute('data-delay') || '0', 10)
+        const timer = setTimeout(() => {
           entry.target.classList.add('revealed')
-        }, Number.parseInt(delay, 10))
-        observer.unobserve(entry.target)
+          revealTimers.delete(timer)
+        }, delay)
+        revealTimers.add(timer)
+        scrollObserver?.unobserve(entry.target)
       }
     })
   }, observerOptions)
 
-  const elements = document.querySelectorAll('.scroll-reveal')
-  elements.forEach((el) => observer.observe(el))
+  document.querySelectorAll('.scroll-reveal').forEach((el) => scrollObserver!.observe(el))
+})
+
+onBeforeUnmount(() => {
+  revealTimers.forEach((timer) => clearTimeout(timer))
+  revealTimers.clear()
+  scrollObserver?.disconnect()
 })
 </script>
 
@@ -216,7 +221,7 @@ onMounted(async () => {
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="none"
           class="w-full h-full object-cover"
         >
           <source src="/videos/header/header_720p_new.mp4" type="video/mp4">

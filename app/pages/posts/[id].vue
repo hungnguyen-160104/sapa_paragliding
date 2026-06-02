@@ -164,7 +164,7 @@
                     :href="block.data?.link || block.data?.url || '#contact'"
                     class="inline-flex items-center rounded-full bg-red-600 px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-red-700"
                   >
-                    {{ block.data?.text }}
+                    {{ block.data?.text || (isVietnamese ? 'Đặt ngay' : 'Book Now') }}
                     <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -314,6 +314,7 @@
 
 <script setup lang="ts">
 import { usePostsStore } from '~/stores/posts'
+import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl } from '~/utils/seo'
 
 type ContentBlock = {
   id: string | number
@@ -558,27 +559,58 @@ function navigateToPost(id: string | number | undefined) {
   localizedNavigateTo(`/posts/${String(id)}`)
 }
 
-useHead(() => ({
-  title: seoTitle.value || t('posts.loadingArticle'),
-  meta: [
-    {
-      name: 'description',
-      content: seoDescription.value || t('posts.unavailableDescription')
-    },
-    {
-      property: 'og:title',
-      content: seoTitle.value || t('posts.loadingArticle')
-    },
-    {
-      property: 'og:description',
-      content: seoDescription.value || t('posts.unavailableDescription')
-    },
-    {
-      property: 'og:image',
-      content: post.value?.seo?.ogImage || post.value?.image || post.value?.thumbnailUrl || ''
-    }
-  ]
-}))
+useHead(() => {
+  const slug = post.value?.slug || postId.value
+  const postUrl = buildLocalizedUrl(`/posts/${slug}`, locale.value)
+  const title = seoTitle.value || t('posts.loadingArticle')
+  const description = seoDescription.value || t('posts.unavailableDescription')
+  const image = post.value?.seo?.ogImage || post.value?.image || post.value?.thumbnailUrl || ''
+
+  const scripts = post.value
+    ? [
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify(buildBlogPostingJsonLD({
+            title,
+            description,
+            url: postUrl,
+            image,
+            datePublished: post.value.date,
+            dateModified: post.value.date,
+            author: post.value.author
+          }))
+        },
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify(buildBreadcrumbJsonLD([
+            { name: t('menu.home'), item: buildLocalizedUrl('/', locale.value) },
+            { name: t('menu.posts'), item: buildLocalizedUrl('/posts', locale.value) },
+            { name: title, item: postUrl }
+          ]))
+        }
+      ]
+    : []
+
+  return {
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:image', content: image },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: postUrl },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description }
+    ],
+    link: [
+      { rel: 'canonical', href: postUrl },
+      ...buildHreflangLinks(`/posts/${slug}`, locale.value)
+    ],
+    script: scripts
+  }
+})
 </script>
 
 <style scoped>

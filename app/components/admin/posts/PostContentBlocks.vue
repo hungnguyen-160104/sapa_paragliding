@@ -320,22 +320,28 @@
 
             <div class="grid gap-4 md:grid-cols-2">
               <div>
-                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text tiếng Việt</label>
+                <label class="mb-1 flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Text tiếng Việt
+                  <span v-if="!getViBlock(index).data.text" class="text-red-500">*</span>
+                </label>
                 <input
                   :value="getViBlock(index).data.text || ''"
                   type="text"
-                  class="input-field text-sm"
-                  placeholder="Đặt bay ngay"
+                  :class="['input-field text-sm', !getViBlock(index).data.text ? 'border-red-400' : '']"
+                  placeholder="Đặt bay ngay (bắt buộc)"
                   @input="updateCtaText(index, 'vi', ($event.target as HTMLInputElement).value)"
                 />
               </div>
               <div>
-                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Text English</label>
+                <label class="mb-1 flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  Text English
+                  <span v-if="!block.data.text" class="text-red-500">*</span>
+                </label>
                 <input
                   :value="block.data.text || ''"
                   type="text"
-                  class="input-field text-sm"
-                  placeholder="Book now"
+                  :class="['input-field text-sm', !block.data.text ? 'border-red-400' : '']"
+                  placeholder="Book now (required)"
                   @input="updateCtaText(index, 'en', ($event.target as HTMLInputElement).value)"
                 />
               </div>

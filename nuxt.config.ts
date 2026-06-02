@@ -78,7 +78,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   experimental: {
-    payloadExtraction: false
+    payloadExtraction: false,
+    renderJsonPayloads: true
+  },
+
+  nitro: {
+    compressPublicAssets: true,
+    minify: true
   },
 
   runtimeConfig: {
