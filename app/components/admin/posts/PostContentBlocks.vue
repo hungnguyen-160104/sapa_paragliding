@@ -348,6 +348,103 @@
             </div>
           </div>
         </template>
+
+        <template v-else-if="block.type === 'video'">
+          <div class="space-y-4 rounded-lg bg-slate-50 p-4">
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+                Link YouTube / Vimeo
+              </label>
+              <input
+                :value="block.data.url || ''"
+                type="text"
+                class="input-field text-sm"
+                placeholder="https://www.youtube.com/watch?v=..."
+                @input="updateVideoUrl(index, ($event.target as HTMLInputElement).value)"
+              />
+              <p v-if="block.data.url && !getVideoEmbedUrl(block.data.url)" class="mt-1 text-xs text-red-500">
+                Link không hợp lệ — chỉ hỗ trợ YouTube và Vimeo
+              </p>
+            </div>
+            <div v-if="block.data.url && getVideoEmbedUrl(block.data.url)" class="aspect-video overflow-hidden rounded-lg bg-black">
+              <iframe
+                :src="getVideoEmbedUrl(block.data.url)!"
+                class="h-full w-full"
+                frameborder="0"
+                allowfullscreen
+              />
+            </div>
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Chú thích (tuỳ chọn)</label>
+              <input
+                :value="block.data.caption || ''"
+                type="text"
+                class="input-field text-sm"
+                placeholder="Mô tả ngắn về video..."
+                @input="updateVideoCaption(index, ($event.target as HTMLInputElement).value)"
+              />
+            </div>
+          </div>
+        </template>
+
+        <template v-else-if="block.type === 'linkCard'">
+          <div class="space-y-4 rounded-lg bg-blue-50 p-4">
+            <div>
+              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">URL</label>
+              <input
+                :value="block.data.url || ''"
+                type="text"
+                class="input-field text-sm"
+                placeholder="https://..."
+                @input="updateLinkCardUrl(index, ($event.target as HTMLInputElement).value)"
+              />
+            </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Tiêu đề tiếng Việt</label>
+                <input
+                  :value="getViBlock(index).data.title || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Tiêu đề link (tuỳ chọn)"
+                  @input="updateLinkCardText(index, 'vi', 'title', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Title (English)</label>
+                <input
+                  :value="block.data.title || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Link title (optional)"
+                  @input="updateLinkCardText(index, 'en', 'title', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+            </div>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Mô tả tiếng Việt</label>
+                <input
+                  :value="getViBlock(index).data.description || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Mô tả ngắn (tuỳ chọn)"
+                  @input="updateLinkCardText(index, 'vi', 'description', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Description (English)</label>
+                <input
+                  :value="block.data.description || ''"
+                  type="text"
+                  class="input-field text-sm"
+                  placeholder="Short description (optional)"
+                  @input="updateLinkCardText(index, 'en', 'description', ($event.target as HTMLInputElement).value)"
+                />
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
 
       <div class="absolute -bottom-4 left-1/2 z-10 -translate-x-1/2 opacity-0 transition-opacity group-hover:opacity-100">
@@ -411,7 +508,7 @@ import { computed, reactive, ref, watchEffect } from 'vue'
 import { usePostsAdminStore } from '~/stores/postsAdmin'
 import { useCloudinaryUpload } from '~/composables/useCloudinaryUpload'
 
-type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta'
+type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard'
 
 type BlockData = {
   level?: number
@@ -423,6 +520,8 @@ type BlockData = {
   items?: string[]
   type?: string
   link?: string
+  title?: string
+  description?: string
 }
 
 type ContentBlock = {
@@ -451,7 +550,9 @@ const blockTypes = [
   { type: 'quote', label: 'Trích dẫn', icon: '❝' },
   { type: 'bulletList', label: 'Danh sách', icon: '•' },
   { type: 'divider', label: 'Phân cách', icon: '─' },
-  { type: 'cta', label: 'Nút CTA', icon: '🎫' }
+  { type: 'cta', label: 'Nút CTA', icon: '🎫' },
+  { type: 'video', label: 'Video YouTube', icon: '▶' },
+  { type: 'linkCard', label: 'Link Card', icon: '🔗' }
 ] as const satisfies ReadonlyArray<{ type: BlockType; label: string; icon: string }>
 
 const englishBlocks = computed<ContentBlock[]>(() => {
@@ -484,6 +585,10 @@ function createEmptyBlock(type: BlockType): ContentBlock {
       return { id, type, data: {} }
     case 'cta':
       return { id, type, data: { type: 'booking', link: '', text: '' } }
+    case 'video':
+      return { id, type, data: { url: '', caption: '' } }
+    case 'linkCard':
+      return { id, type, data: { url: '', title: '', description: '' } }
   }
 }
 
@@ -515,6 +620,15 @@ function createVietnameseVersion(block: ContentBlock): ContentBlock {
       break
     case 'divider':
       break
+    case 'video':
+      viBlock.data.url = viBlock.data.url || ''
+      viBlock.data.caption = viBlock.data.caption || ''
+      break
+    case 'linkCard':
+      viBlock.data.url = viBlock.data.url || ''
+      viBlock.data.title = viBlock.data.title || ''
+      viBlock.data.description = viBlock.data.description || ''
+      break
   }
 
   return viBlock
@@ -545,6 +659,13 @@ function applySharedFields(enBlock: ContentBlock, viBlock: ContentBlock): Conten
     case 'cta':
       next.data.type = enBlock.data.type || 'booking'
       next.data.link = enBlock.data.link || ''
+      break
+    case 'video':
+      next.data.url = enBlock.data.url || ''
+      next.data.caption = enBlock.data.caption || ''
+      break
+    case 'linkCard':
+      next.data.url = enBlock.data.url || ''
       break
     case 'paragraph':
     case 'divider':
@@ -798,6 +919,46 @@ function updateCtaText(index: number, language: 'vi' | 'en', value: string) {
     getViBlock(index).data.text = value
   } else {
     englishBlock.data.text = value
+  }
+}
+
+function getVideoEmbedUrl(url: string): string | null {
+  if (!url) return null
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&\n?#]+)/)
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}?rel=0`
+  const vimeo = url.match(/vimeo\.com\/(\d+)/)
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`
+  return null
+}
+
+function updateVideoUrl(index: number, value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+  englishBlock.data.url = value
+  getViBlock(index).data.url = value
+}
+
+function updateVideoCaption(index: number, value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+  englishBlock.data.caption = value
+  getViBlock(index).data.caption = value
+}
+
+function updateLinkCardUrl(index: number, value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+  englishBlock.data.url = value
+  getViBlock(index).data.url = value
+}
+
+function updateLinkCardText(index: number, language: 'vi' | 'en', field: 'title' | 'description', value: string) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+  if (language === 'vi') {
+    getViBlock(index).data[field] = value
+  } else {
+    englishBlock.data[field] = value
   }
 }
 

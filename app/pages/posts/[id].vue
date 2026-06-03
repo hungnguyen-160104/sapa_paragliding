@@ -158,6 +158,49 @@
                 <hr class="my-8 border-gray-200" />
               </template>
 
+              <template v-else-if="block.type === 'video'">
+                <div class="not-prose my-8">
+                  <div v-if="getVideoEmbedUrl(block.data?.url)" class="relative aspect-video overflow-hidden rounded-2xl shadow-lg">
+                    <iframe
+                      :src="getVideoEmbedUrl(block.data?.url)!"
+                      class="h-full w-full"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                      loading="lazy"
+                    />
+                  </div>
+                  <p v-if="block.data?.caption" class="mt-3 text-center text-sm text-gray-500 italic">
+                    {{ block.data.caption }}
+                  </p>
+                </div>
+              </template>
+
+              <template v-else-if="block.type === 'linkCard'">
+                <div class="not-prose my-6">
+                  <a
+                    :href="block.data?.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:border-red-300 hover:shadow-md"
+                  >
+                    <div class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-500">
+                      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                      </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p v-if="block.data?.title" class="truncate font-semibold text-gray-900">{{ block.data.title }}</p>
+                      <p v-if="block.data?.description" class="mt-1 line-clamp-2 text-sm text-gray-500">{{ block.data.description }}</p>
+                      <p class="mt-1 truncate text-xs text-red-500">{{ block.data?.url }}</p>
+                    </div>
+                    <svg class="h-5 w-5 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </template>
+
               <template v-else-if="block.type === 'cta'">
                 <div class="not-prose my-8 text-center">
                   <a
@@ -543,6 +586,15 @@ function formatDate(date?: string) {
 
 function localizedNavigateTo(path: string) {
   router.push(localePath(path))
+}
+
+function getVideoEmbedUrl(url?: string): string | null {
+  if (!url) return null
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&\n?#]+)/)
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}?rel=0`
+  const vimeo = url.match(/vimeo\.com\/(\d+)/)
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`
+  return null
 }
 
 function goBack() {

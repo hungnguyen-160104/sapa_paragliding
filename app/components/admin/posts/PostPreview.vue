@@ -80,6 +80,27 @@
 
             <hr v-else-if="block.type === 'divider'" class="my-8 border-slate-300" />
 
+            <div v-else-if="block.type === 'video'" class="my-6">
+              <div v-if="getVideoEmbedUrl(block.data?.url)" class="aspect-video overflow-hidden rounded-xl bg-black">
+                <iframe :src="getVideoEmbedUrl(block.data?.url)!" class="h-full w-full" frameborder="0" allowfullscreen />
+              </div>
+              <div v-else class="flex aspect-video items-center justify-center rounded-xl bg-slate-100 text-slate-400 text-sm">
+                ▶ Dán link YouTube / Vimeo để xem preview
+              </div>
+              <p v-if="block.data?.caption" class="mt-2 text-center text-xs text-slate-500 italic">{{ block.data.caption }}</p>
+            </div>
+
+            <div v-else-if="block.type === 'linkCard'" class="my-4">
+              <div class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+                <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50 text-red-500 text-lg">🔗</div>
+                <div class="min-w-0 flex-1">
+                  <p class="truncate text-sm font-semibold text-slate-800">{{ block.data?.title || block.data?.url || 'Link Card' }}</p>
+                  <p v-if="block.data?.description" class="truncate text-xs text-slate-500">{{ block.data.description }}</p>
+                  <p class="truncate text-xs text-red-400">{{ block.data?.url }}</p>
+                </div>
+              </div>
+            </div>
+
             <div v-else-if="block.type === 'cta'" class="my-6 rounded-xl bg-red-50 p-6 text-center">
               <a
                 :href="block.data?.link || '#'"
@@ -165,6 +186,15 @@ const props = defineProps<{
 }>()
 
 const previewLocale = ref<'vi' | 'en'>('vi')
+
+function getVideoEmbedUrl(url?: string): string | null {
+  if (!url) return null
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([^&\n?#]+)/)
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}?rel=0`
+  const vimeo = url.match(/vimeo\.com\/(\d+)/)
+  if (vimeo) return `https://player.vimeo.com/video/${vimeo[1]}`
+  return null
+}
 
 const categories: Record<string, { vi: string; en: string }> = {
   news: { vi: 'Tin tức', en: 'News' },

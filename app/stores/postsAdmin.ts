@@ -38,7 +38,7 @@ export interface PostSummary {
 
 export interface ContentBlock {
   id: string
-  type: 'heading' | 'paragraph' | 'image' | 'gallery' | 'quote' | 'bulletList' | 'divider' | 'cta'
+  type: 'heading' | 'paragraph' | 'image' | 'gallery' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard'
   data: Record<string, any>
 }
 
@@ -156,6 +156,10 @@ function getDefaultBlockData(type: ContentBlock['type'], locale: 'en' | 'vi' = '
       return { items: [''] }
     case 'divider':
       return {}
+    case 'video':
+      return { url: '', caption: '' }
+    case 'linkCard':
+      return { url: '', title: '', description: '' }
     case 'cta':
       return {
         type: 'booking',
@@ -252,6 +256,15 @@ function buildVietnameseBlockFromEnglish(block: ContentBlock): ContentBlock {
     case 'gallery':
       vi.data.images = Array.isArray(vi.data?.images) ? vi.data.images : []
       vi.data.layout = vi.data?.layout || 'grid'
+      break
+    case 'video':
+      vi.data.url = vi.data?.url || ''
+      vi.data.caption = vi.data?.caption || ''
+      break
+    case 'linkCard':
+      vi.data.url = vi.data?.url || ''
+      vi.data.title = vi.data?.title || ''
+      vi.data.description = vi.data?.description || ''
       break
     default:
       break
@@ -426,6 +439,14 @@ function blocksToHtml(blocks: ContentBlock[]): string {
             .map((img: any) => `<img src="${img?.url || ''}" alt="${escapeHtml(img?.caption || '')}" />`)
             .join('')}</div>`
         }
+        case 'video':
+          return block.data?.url
+            ? `<div class="video-embed"><iframe src="${block.data.url}" frameborder="0" allowfullscreen></iframe></div>`
+            : ''
+        case 'linkCard':
+          return block.data?.url
+            ? `<div class="link-card"><a href="${block.data.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(block.data.title || block.data.url)}</a></div>`
+            : ''
         default:
           return ''
       }
