@@ -119,6 +119,7 @@ import { h, ref } from 'vue'
 import {
   DOMAIN,
   buildBreadcrumbJsonLD,
+  buildFAQPageJsonLD,
   buildHreflangLinks,
   buildLocalizedUrl,
   getCanonicalUrl,
@@ -374,6 +375,27 @@ const breadcrumbJsonLd = computed(() =>
   ])
 )
 
+const faqJsonLd = computed(() =>
+  buildFAQPageJsonLD([
+    {
+      question: t('preNotice.tabs.faq.items.meet.title'),
+      answer: t('preNotice.tabs.faq.items.meet.desc')
+    },
+    {
+      question: t('preNotice.tabs.faq.items.baggage.title'),
+      answer: t('preNotice.tabs.faq.items.baggage.desc')
+    },
+    {
+      question: t('preNotice.tabs.faq.items.takeoff.title'),
+      answer: t('preNotice.tabs.faq.items.takeoff.desc')
+    },
+    {
+      question: t('preNotice.tabs.faq.items.safety.title'),
+      answer: t('preNotice.tabs.faq.items.safety.desc')
+    }
+  ])
+)
+
 
 // SEO
 useHead(() => ({
@@ -400,6 +422,10 @@ useHead(() => ({
     {
       type: 'application/ld+json',
       children: JSON.stringify(breadcrumbJsonLd.value)
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(faqJsonLd.value)
     }
   ]
 }))

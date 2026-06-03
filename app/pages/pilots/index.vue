@@ -102,7 +102,7 @@
 </template>
 
 <script setup lang="ts">
-import { getCanonicalUrl, buildHreflangLinks } from '~/utils/seo'
+import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage, getOgLocale } from '~/utils/seo'
 
 const { locale } = useI18n()
 const router = useRouter()
@@ -146,20 +146,29 @@ const seoData = computed(() => getPilotsSeoMeta())
 const canonicalUrl = computed(() => getCanonicalUrl(route, currentLocale.value))
 const hreflangLinks = computed(() => buildHreflangLinks('/pilots', currentLocale.value))
 
-// Setup Head
-useHead({
+const ogImage = getDefaultOgImage()
+
+useHead(() => ({
   title: seoData.value.title,
   meta: [
     { name: 'description', content: seoData.value.description },
     { property: 'og:title', content: seoData.value.title },
     { property: 'og:description', content: seoData.value.description },
-    { property: 'og:url', content: canonicalUrl.value }
+    { property: 'og:url', content: canonicalUrl.value },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: getOgLocale(currentLocale.value) },
+    { property: 'og:image', content: ogImage },
+    { property: 'og:image:alt', content: seoData.value.title },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: seoData.value.title },
+    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:image', content: ogImage }
   ],
   link: [
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value
   ]
-})
+}))
 
 const navigateToBooking = () => {
   const path = currentLocale.value === 'vi' ? '/booking' : `/${currentLocale.value}/booking`

@@ -11,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+import { buildLocalBusinessJsonLD } from '~/utils/seo'
+
 const route = useRoute()
 const { locale } = useI18n()
 const config = useRuntimeConfig()
@@ -35,11 +37,15 @@ useHead(() => {
       ]
     : []
 
+  const localBusinessScript = !route.path.includes('/admin')
+    ? [{ type: 'application/ld+json', children: JSON.stringify(buildLocalBusinessJsonLD(locale.value)) }]
+    : []
+
   return {
     htmlAttrs: {
       lang: locale.value || 'vi'
     },
-    script: scripts
+    script: [...scripts, ...localBusinessScript]
   }
 })
 

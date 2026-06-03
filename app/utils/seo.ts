@@ -247,6 +247,81 @@ export const buildBlogPostingJsonLD = (post: BlogPostingInput) => {
   }
 }
 
+export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
+  const descriptions: Record<SupportedLocale, string> = {
+    vi: 'Trải nghiệm bay dù lượn đôi tại điểm cất cánh cao nhất Việt Nam. Phi công quốc tế chuyên nghiệp, hơn 50.000 khách hàng, an toàn tuyệt đối.',
+    en: 'Experience tandem paragliding at the highest takeoff site in Vietnam. Professional international pilots, 50,000+ customers, 100% safety record.',
+    fr: "Vol en parapente tandem au site de décollage le plus haut du Vietnam. Pilotes professionnels internationaux, plus de 50 000 clients, sécurité 100%.",
+    ru: 'Тандемный полёт на параплане с самой высокой точки взлёта во Вьетнаме. Профессиональные пилоты, более 50 000 довольных клиентов.',
+    zh: '在越南最高起飞点体验双人滑翔伞。专业国际飞行员，超过5万名客户，100%安全记录。',
+    hi: 'वियतनाम के सबसे ऊंचे टेकऑफ साइट पर टैंडम पैराग्लाइडिंग का अनुभव करें। पेशेवर अंतरराष्ट्रीय पायलट, 50,000+ ग्राहक।'
+  }
+
+  const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)
+    ? (locale as SupportedLocale)
+    : DEFAULT_LOCALE
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SportsActivityLocation',
+    name: 'Sapa Paragliding',
+    alternateName: 'Dù Lượn Sapa',
+    url: DOMAIN,
+    logo: `${DOMAIN}/images/Sapa_logo.png`,
+    image: `${DOMAIN}/images/hero.jpeg`,
+    description: descriptions[normalizedLocale],
+    telephone: '+84-386-887-489',
+    email: 'sapa.paragliding@gmail.com',
+    priceRange: '$$',
+    currenciesAccepted: 'VND, USD',
+    paymentAccepted: 'Cash, Credit Card',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Hàm Rồng, Sa Pa',
+      addressLocality: 'Sa Pa',
+      addressRegion: 'Lào Cai',
+      postalCode: '31100',
+      addressCountry: 'VN'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 22.3364,
+      longitude: 103.8438
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        opens: '06:00',
+        closes: '18:00'
+      }
+    ],
+    sameAs: [
+      'https://facebook.com/sapaparagliding',
+      'https://instagram.com/sapaparagliding',
+      'https://tiktok.com/@sapaparagliding'
+    ],
+    hasMap: 'https://maps.google.com/?q=Sapa+Paragliding+Vietnam',
+    sport: 'Paragliding',
+    touristType: ['Adventure', 'Sports', 'Outdoor']
+  }
+}
+
+export const buildFAQPageJsonLD = (faqs: Array<{ question: string; answer: string }>) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  }
+}
+
 export const getPageTitle = (route: RouteLike, _locale: string, t: (key: string) => string): string => {
   const rawPath = route.path ?? '/'
   const path = stripLocalePrefix(rawPath).replace(/\/$/, '') || '/'
