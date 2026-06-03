@@ -157,9 +157,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
     email: 'sapa.paragliding@gmail.com',
     description: label.description,
     sameAs: [
-      'https://facebook.com/sapaparagliding',
-      'https://instagram.com/sapaparagliding',
-      'https://tiktok.com/@sapaparagliding'
+      'https://www.facebook.com/bayduluonsapa',
+      'https://www.instagram.com/SAPA_PARAGLIDING',
+      'https://www.tiktok.com/@sapa_paragliding',
+      'https://www.youtube.com/@sapa.paragliding'
     ],
     contactPoint: [
       {
@@ -263,30 +264,30 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
 
   return {
     '@context': 'https://schema.org',
-    '@type': 'SportsActivityLocation',
-    name: 'Sapa Paragliding',
+    '@type': ['LocalBusiness', 'SportsActivityLocation', 'TouristAttraction'],
+    '@id': `${DOMAIN}/#business`,
+    name: 'SAPA PARAGLIDING',
     alternateName: 'Dù Lượn Sapa',
     url: DOMAIN,
     logo: `${DOMAIN}/images/Sapa_logo.png`,
     image: `${DOMAIN}/images/hero.jpeg`,
     description: descriptions[normalizedLocale],
-    telephone: '+84-386-887-489',
+    telephone: '+84386887489',
     email: 'sapa.paragliding@gmail.com',
-    priceRange: '$$',
-    currenciesAccepted: 'VND, USD',
-    paymentAccepted: 'Cash, Credit Card',
+    priceRange: '2.190.000 VND/pax',
+    currenciesAccepted: 'VND',
+    paymentAccepted: 'Cash, Credit Card, Bank Transfer',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Hàm Rồng, Sa Pa',
-      addressLocality: 'Sa Pa',
+      streetAddress: 'Tổ 3',
+      addressLocality: 'Phường Sapa',
       addressRegion: 'Lào Cai',
-      postalCode: '31100',
       addressCountry: 'VN'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 22.3364,
-      longitude: 103.8438
+      latitude: 22.3219262,
+      longitude: 103.8766636
     },
     openingHoursSpecification: [
       {
@@ -297,13 +298,13 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
       }
     ],
     sameAs: [
-      'https://facebook.com/sapaparagliding',
-      'https://instagram.com/sapaparagliding',
-      'https://tiktok.com/@sapaparagliding'
+      'https://www.facebook.com/bayduluonsapa',
+      'https://www.instagram.com/SAPA_PARAGLIDING',
+      'https://www.tiktok.com/@sapa_paragliding',
+      'https://www.youtube.com/@sapa.paragliding'
     ],
-    hasMap: 'https://maps.google.com/?q=Sapa+Paragliding+Vietnam',
-    sport: 'Paragliding',
-    touristType: ['Adventure', 'Sports', 'Outdoor']
+    hasMap: 'https://www.google.com/maps/place/Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa/@22.3219262,103.8766636,17z',
+    sport: 'Paragliding'
   }
 }
 
