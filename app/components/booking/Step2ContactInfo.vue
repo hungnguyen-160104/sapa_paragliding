@@ -36,21 +36,11 @@
         <div>
           <label class="block text-xs font-medium text-gray-600 mb-1">{{ $t('booking.fields.phone') }} *</label>
           <div class="flex gap-2">
-            <select v-model="formData.countryCode" required class="input-field text-sm py-2 w-32 flex-shrink-0">
+            <select v-model="formData.countryCode" required class="input-field text-sm py-2 w-44 flex-shrink-0">
               <option value="" disabled>🌐</option>
-              <option value="+84">🇻🇳 +84</option>
-              <option value="+1">🇺🇸 +1</option>
-              <option value="+44">🇬🇧 +44</option>
-              <option value="+33">🇫🇷 +33</option>
-              <option value="+49">🇩🇪 +49</option>
-              <option value="+7">🇷🇺 +7</option>
-              <option value="+81">🇯🇵 +81</option>
-              <option value="+82">🇰🇷 +82</option>
-              <option value="+86">🇨🇳 +86</option>
-              <option value="+61">🇦🇺 +61</option>
-              <option value="+65">🇸🇬 +65</option>
-              <option value="+66">🇹🇭 +66</option>
-              <option value="+91">🇮🇳 +91</option>
+              <option v-for="c in countries" :key="c.iso" :value="c.dial">
+                {{ c.flag }} {{ c.name }} {{ c.dial }}
+              </option>
             </select>
             <input v-model="formData.phoneNumber" type="tel" required class="input-field text-sm py-2 flex-1"
               placeholder="123 456 789" />
@@ -149,6 +139,7 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
+import { countries } from '~/utils/countries'
 
 const bookingStore = useBookingStore()
 
