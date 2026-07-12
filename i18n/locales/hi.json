@@ -451,6 +451,8 @@
   "preNotice": {
     "title": "उड़ान से पहले तैयारी",
     "subtitle": "आपकी उड़ान से पहले महत्वपूर्ण जानकारी",
+    "viewTakeoffLocation": "उड़ान स्थान देखें",
+    "viewLandingLocation": "लैंडिंग स्थान देखें",
     "items": {
       "photoSupport": {
         "title": "हवा में फोटो सहायता",

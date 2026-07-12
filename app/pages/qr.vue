@@ -92,8 +92,15 @@ const supportedLocales: LocaleKey[] = ["vi", "en", "fr", "ru", "zh", "hi"];
 
 const currentLocale = computed<LocaleKey>(() => {
   const value = locale.value as LocaleKey;
-  return supportedLocales.includes(value) ? value : "vi"; // Mặc định về 'vi'
+  return supportedLocales.includes(value) ? value : "vi";
 });
+
+// Prevent QR landing page from being indexed
+useHead({
+  meta: [
+    { name: 'robots', content: 'noindex, nofollow' }
+  ]
+})
 
 const pageContent: Record<
   LocaleKey,

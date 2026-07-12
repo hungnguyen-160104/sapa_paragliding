@@ -4,8 +4,9 @@
         <!-- Image Container -->
         <div class="relative overflow-hidden aspect-[4/5]">
             <!-- Main Image -->
-            <img :src="`/images/pilots/${currentImage}`" :alt="pilotData.name"
+            <NuxtImg :src="`/images/pilots/${currentImage}`" :alt="pilotData.name" format="webp"
                 class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                width="400" height="500"
                 @error="handleImageError" />
 
             <!-- Gallery Navigation -->

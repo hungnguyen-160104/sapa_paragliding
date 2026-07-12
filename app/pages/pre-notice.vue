@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <main class="min-h-screen bg-gray-50">
     <!-- Video Header Section -->
     <div class="relative h-[400px] md:h-[500px] overflow-hidden">
       <!-- Background Video -->
@@ -74,7 +74,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                           </svg>
-                          Xem vị trí cất cánh
+                          {{ $t('preNotice.viewTakeoffLocation') }}
                         </a>
                         
                         <a 
@@ -87,7 +87,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                           </svg>
-                          Xem vị trí hạ cánh
+                          {{ $t('preNotice.viewLandingLocation') }}
                         </a>
                       </div>
                     </div>
@@ -99,19 +99,19 @@
 
           <!-- CTA Button -->
           <div class="text-center mt-6">
-            <button @click="localizedNavigateTo('/booking')"
+            <NuxtLink :to="localePath('/booking')"
               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
               </svg>
               {{ $t('buttons.book') }}
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -126,14 +126,11 @@ import {
   getOgLocale
 } from '~/utils/seo'
 
-const router = useRouter()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-const localizedNavigateTo = (path: string) => {
-  router.push(localePath(path))
-}
+
 
 // Active tab state
 const activeTab = ref('requirements')

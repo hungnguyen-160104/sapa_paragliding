@@ -13,6 +13,7 @@ export const PAGE_ROUTES: Array<{
 }> = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/booking', priority: '0.9', changefreq: 'weekly' },
+  { path: '/posts', priority: '0.8', changefreq: 'weekly' },
   { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/pilots', priority: '0.8', changefreq: 'monthly' },
   { path: '/pre-notice', priority: '0.7', changefreq: 'monthly' }
@@ -44,8 +45,15 @@ export function escapeXml(value: string): string {
     .replace(/>/g, '&gt;')
 }
 
+/**
+ * Returns a stable lastmod date. Using a fixed build-time value prevents
+ * Google from distrusting lastmod (which happens when it changes on every request).
+ * Update this date manually when content actually changes.
+ */
+const SITE_LAST_MODIFIED = '2026-07-12T00:00:00.000Z'
+
 export function getLastMod(): string {
-  return new Date().toISOString()
+  return SITE_LAST_MODIFIED
 }
 
 export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string> {
@@ -56,7 +64,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     const { db } = await connectToDatabase()
     posts = await db.collection('posts')
       .find({ status: 'PUBLISHED' }, { projection: { slug: 1, publishedAt: 1 } })
-      .toArray() as Array<{ slug: string; publishedAt?: Date }>
+      .toArray() as unknown as Array<{ slug: string; publishedAt?: Date }>
   } catch {
     // DB unavailable — build sitemap with static pages only
   }

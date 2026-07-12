@@ -5,6 +5,7 @@ import galleryData from '~/data/gallery.json'
 import { usePostsStore } from '~/stores/posts'
 import {
   buildHreflangLinks,
+  buildLocalBusinessJsonLD,
   buildOrganizationJsonLD,
   buildWebsiteJsonLD,
   getCanonicalUrl,
@@ -17,6 +18,12 @@ const localePath = useLocalePath()
 const router = useRouter()
 const route = useRoute()
 const postsStore = usePostsStore()
+
+// SSR: fetch posts so Google bot sees latest posts in HTML
+await useAsyncData('homepage-posts', () => postsStore.fetchPosts(), {
+  server: true,
+  lazy: true
+})
 
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
@@ -99,6 +106,10 @@ useHead(() => ({
     {
       type: 'application/ld+json',
       children: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify(buildLocalBusinessJsonLD(currentLocale.value))
     }
   ]
 }))
@@ -152,7 +163,7 @@ const getGalleryDescription = (item: any) => {
 
 const handleImageError = (event: Event) => {
   const target = event.target as HTMLImageElement
-  target.src = 'https://via.placeholder.com/800x600?text=Sapa+Paragliding'
+  target.src = '/images/Sapa_logo.png'
 }
 
 const formatPostDate = (date: string) => {
@@ -178,9 +189,6 @@ const revealTimers = new Set<ReturnType<typeof setTimeout>>()
 let scrollObserver: IntersectionObserver | null = null
 
 onMounted(() => {
-  if (!postsStore.posts?.length) {
-    postsStore.fetchPosts()
-  }
 
   const observerOptions = {
     threshold: 0.1,
@@ -212,7 +220,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <main class="min-h-screen">
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-14">
       <div class="absolute inset-0">
         <video
@@ -221,7 +229,7 @@ onBeforeUnmount(() => {
           muted
           loop
           playsinline
-          preload="none"
+          preload="metadata"
           class="w-full h-full object-cover"
         >
           <source src="/videos/header/header_720p_new.mp4" type="video/mp4">
@@ -291,7 +299,7 @@ onBeforeUnmount(() => {
       <div class="container mx-auto px-6 lg:px-10">
         <div class="flex items-center gap-4 mb-6 scroll-reveal">
           <div class="w-12 h-12 flex items-center justify-center">
-            <img src="/images/Sapa_logo.png" class="w-full h-full object-contain" alt="Sapa Logo">
+            <NuxtImg src="/images/Sapa_logo.png" class="w-full h-full object-contain" format="webp" alt="Sapa Paragliding Logo" />
           </div>
           <div>
             <h2 class="text-2xl lg:text-3xl font-black text-slate-900">
@@ -308,13 +316,16 @@ onBeforeUnmount(() => {
             class="relative group overflow-hidden cursor-pointer aspect-square scroll-reveal"
             :data-delay="(index % 4) * 50"
           >
-            <img
+            <NuxtImg
               :src="`${item.image}`"
               :alt="getGalleryTitle(item)"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              width="600"
+              height="600"
+              format="webp"
               loading="lazy"
               @error="handleImageError"
-            >
+            />
             <div
               class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             >
@@ -472,16 +483,19 @@ onBeforeUnmount(() => {
               :style="{ transform: `translateX(-${currentPostIndex * 100}%)` }"
             >
               <div v-for="(post, index) in latestPosts" :key="post.id" class="w-full md:w-1/3 flex-shrink-0">
-                <div
-                  class="bg-white border border-slate-200 shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 group h-full"
-                  @click="navigateToPost(post.id)"
+                <NuxtLink
+                  :to="localePath(`/posts/${post.id}`)"
+                  class="block bg-white border border-slate-200 shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 group h-full"
                 >
                   <div class="relative aspect-[16/10] overflow-hidden">
-                    <img
+                    <NuxtImg
                       :src="post.image"
                       :alt="currentLocale === 'vi' ? post.titleVi : post.title"
                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    >
+                      width="800"
+                      height="500"
+                      format="webp"
+                    />
                     <div class="absolute top-4 right-4">
                       <span class="px-3 py-1.5 text-xs font-bold text-white bg-red-600">
                         {{ post.category }}
@@ -522,7 +536,7 @@ onBeforeUnmount(() => {
                       </svg>
                     </div>
                   </div>
-                </div>
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -766,7 +780,7 @@ onBeforeUnmount(() => {
         </NuxtLink>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <style scoped>

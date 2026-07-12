@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { buildLocalBusinessJsonLD } from '~/utils/seo'
-
 const route = useRoute()
 const { locale } = useI18n()
 const config = useRuntimeConfig()
@@ -22,8 +20,7 @@ useHead(() => {
     ? [
         {
           src: `https://www.googletagmanager.com/gtag/js?id=${config.public.gaId}`,
-          async: true,
-          defer: true
+          async: true
         },
         {
           children: `
@@ -31,21 +28,16 @@ useHead(() => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${config.public.gaId}', { send_page_view: false });
-          `,
-          defer: true
+          `
         }
       ]
-    : []
-
-  const localBusinessScript = !route.path.includes('/admin')
-    ? [{ type: 'application/ld+json', children: JSON.stringify(buildLocalBusinessJsonLD(locale.value)) }]
     : []
 
   return {
     htmlAttrs: {
       lang: locale.value || 'vi'
     },
-    script: [...scripts, ...localBusinessScript]
+    script: [...scripts]
   }
 })
 

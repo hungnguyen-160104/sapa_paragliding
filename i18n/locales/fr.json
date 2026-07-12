@@ -451,6 +451,8 @@
   "preNotice": {
     "title": "Préparer avant le vol",
     "subtitle": "Informations importantes avant votre vol",
+    "viewTakeoffLocation": "Voir le lieu de décollage",
+    "viewLandingLocation": "Voir le lieu d'atterrissage",
     "items": {
       "photoSupport": {
         "title": "Aide pour les photos en vol",

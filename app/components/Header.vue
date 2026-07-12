@@ -4,9 +4,9 @@
     <header class="relative bg-white/95 backdrop-blur-md shadow-lg" style="position: relative; z-index: 60;">
       <div class="container-custom flex items-center justify-between py-4">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <img src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 w-12 object-contain"
-            @error="handleLogoError" />
+        <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 w-12 object-contain"
+            format="webp" @error="handleLogoError" />
           <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title')
             }}</span>
         </NuxtLink>
@@ -44,10 +44,10 @@
     <div v-if="!isAtTop" class="fixed top-0 left-0 right-0 z-50">
       <!-- Logo in top-left corner -->
       <div class="fixed top-2 sm:top-4 left-2 sm:left-4 z-50">
-        <NuxtLink to="/"
+        <NuxtLink :to="localePath('/')"
           class="flex items-center justify-center bg-white/10 backdrop-blur-sm p-2 sm:p-4 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-110">
-          <img src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 sm:h-20 w-12 sm:w-20 object-contain"
-            @error="handleLogoError" />
+          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 sm:h-20 w-12 sm:w-20 object-contain"
+            format="webp" @error="handleLogoError" />
         </NuxtLink>
       </div>
 
@@ -109,7 +109,7 @@
           <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t">
             <p class="text-xs sm:text-sm text-gray-600 mb-3">{{ $t('footer.followUs') }}</p>
             <div class="flex space-x-4">
-              <a href="https://facebook.com/sapaparagliding" target="_blank" rel="noopener noreferrer"
+              <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
                 class="text-gray-600 hover:text-red-600 transition-colors" aria-label="Facebook">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path

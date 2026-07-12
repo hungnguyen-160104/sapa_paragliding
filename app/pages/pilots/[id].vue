@@ -65,7 +65,7 @@
                                         :class="hoveredImage === index ? 'ring-4 ring-red-400/60' : 'ring-2 ring-white/30'">
                                     </div>
 
-                                    <img :src="image" :alt="`${pilot.name} - ${index + 1}`"
+                                    <NuxtImg :src="image" :alt="`${pilot.name} - ${index + 1}`" format="webp"
                                         class="w-full h-full object-cover object-center transition-transform duration-700"
                                         :class="hoveredImage === index ? 'scale-105' : ''" @error="handleImageError" />
 
@@ -95,7 +95,7 @@
                         <div class="lg:hidden flex justify-center items-center mt-8">
                             <div
                                 class="w-full max-w-sm aspect-[3/4] overflow-hidden shadow-xl border-4 border-white/20">
-                                <img v-if="contentImages[0]" :src="contentImages[0]" :alt="pilot.name"
+                                <NuxtImg v-if="contentImages[0]" :src="contentImages[0]" :alt="pilot.name" format="webp"
                                     class="w-full h-full object-cover object-center" @error="handleImageError" />
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                             <div class="order-1 lg:order-2">
-                                <img v-if="contentImages[1]" :src="contentImages[1]" :alt="`Pilot ${pilot.name}`"
+                                <NuxtImg v-if="contentImages[1]" :src="contentImages[1]" :alt="`Pilot ${pilot.name}`" format="webp"
                                     class="w-full rounded-2xl shadow-lg object-cover h-96 hover:shadow-xl transition-shadow duration-300"
                                     @error="handleImageError" />
                             </div>
@@ -212,7 +212,7 @@
                                         :class="hoveredGalleryImage === index ? 'ring-4 ring-red-400/70' : 'ring-2 ring-white/40'">
                                     </div>
 
-                                    <img :src="image" :alt="`${pilot.name} - Gallery ${index + 1}`"
+                                    <NuxtImg :src="image" :alt="`${pilot.name} - Gallery ${index + 1}`" format="webp"
                                         class="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
                                         :class="hoveredGalleryImage === index ? 'scale-105' : ''"
                                         @error="handleImageError" />

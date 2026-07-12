@@ -451,6 +451,8 @@
   "preNotice": {
     "title": "Pre-Flight Preparation",
     "subtitle": "Important information before your flight",
+    "viewTakeoffLocation": "View takeoff location",
+    "viewLandingLocation": "View landing location",
     "items": {
       "photoSupport": {
         "title": "Aerial Photography Support",

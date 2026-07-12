@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gradient-to-b from-slate-50 to-white relative">
     <!-- Page Background Image (fixed, covers entire page) -->
     <div class="fixed inset-0 z-0 pointer-events-none">
-      <img src="/images/pilot_background.jpeg" alt="Background" class="w-full h-full object-cover" />
+      <NuxtImg src="/images/pilot_background.jpeg" alt="" width="1920" height="1080" format="webp" class="w-full h-full object-cover" />
     </div>
     <!-- Hero Section -->
     <section class="relative py-24 lg:py-32 overflow-hidden">
@@ -92,10 +92,10 @@
         <p class="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
           {{ $t('pilotPage.ctaDescription') }}
         </p>
-        <button @click="navigateToBooking"
-          class="px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg">
+        <NuxtLink :to="localePath('/booking')"
+          class="px-10 py-4 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300 shadow-lg inline-block">
           {{ $t('pilotPage.bookNow') }}
-        </button>
+        </NuxtLink>
       </div>
     </section>
   </div>
@@ -105,7 +105,7 @@
 import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage, getOgLocale } from '~/utils/seo'
 
 const { locale } = useI18n()
-const router = useRouter()
+const localePath = useLocalePath()
 const route = useRoute()
 
 const currentLocale = computed(() => locale.value || 'vi')
@@ -170,8 +170,4 @@ useHead(() => ({
   ]
 }))
 
-const navigateToBooking = () => {
-  const path = currentLocale.value === 'vi' ? '/booking' : `/${currentLocale.value}/booking`
-  router.push(path)
-}
 </script>

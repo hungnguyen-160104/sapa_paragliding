@@ -1,12 +1,12 @@
 <template>
-    <div class="min-h-screen bg-gray-50">
+    <main class="min-h-screen bg-gray-50">
         <!-- Main title for accessibility, removed sr-only H1 to keep 1 H1 only -->
         
         <!-- Hero Section - Large Image + 3 Small Images Grid -->
         <section class="relative min-h-[85vh] lg:min-h-[90vh]">
             <!-- Main Hero Image - Top -->
             <div class="relative h-[55vh] lg:h-[65vh] w-full overflow-hidden">
-                <img src="/images/header-pic.jpeg" alt="Sapa Paragliding" class="w-full h-full object-cover" />
+                <NuxtImg src="/images/header-pic.jpeg" alt="Sapa Paragliding" width="1200" height="800" format="webp" class="w-full h-full object-cover" />
                 <!-- Overlay for readability -->
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
                 <div class="absolute inset-0 bg-gradient-to-l from-slate-900/70 via-transparent to-transparent" />
@@ -45,8 +45,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 h-[30vh] lg:h-[25vh]">
                 <!-- Image 1 -->
                 <div class="relative overflow-hidden group">
-                    <img src="/images/gallery/1. Soar above Sapa valley.JPG" alt="Paragliding Experience 1"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <NuxtImg src="/images/gallery/1. Soar above Sapa valley.JPG" alt="Paragliding Experience 1"
+                        width="800" height="600" format="webp"
+                        class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
                     <div class="absolute top-0 left-0 p-4 md:p-6">
@@ -65,8 +66,9 @@
 
                 <!-- Image 2 -->
                 <div class="relative overflow-hidden group hidden md:block">
-                    <img src="/images/gallery/2. Sunset flight.jpg" alt="Paragliding Experience 2"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <NuxtImg src="/images/gallery/2. Sunset flight.jpg" alt="Paragliding Experience 2"
+                        width="800" height="600" format="webp"
+                        class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
                     <div class="absolute top-0 left-0 p-4 md:p-6">
@@ -85,8 +87,9 @@
 
                 <!-- Image 3 -->
                 <div class="relative overflow-hidden group hidden md:block">
-                    <img src="/images/gallery/3. Mountain peak.jpg" alt="Paragliding Experience 3"
-                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <NuxtImg src="/images/gallery/3. Mountain peak.jpg" alt="Paragliding Experience 3"
+                        width="800" height="600" format="webp"
+                        class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
                     <div class="absolute top-0 left-0 p-4 md:p-6">
@@ -107,14 +110,14 @@
             <!-- CTA Buttons - Floating on Main Image -->
             <div class="absolute bottom-[32vh] lg:bottom-[27vh] left-0 p-6 md:p-10 lg:p-16 z-20">
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <button @click="localizedNavigateTo('/pilots')"
+                    <NuxtLink :to="localePath('/pilots')"
                         class="px-6 py-3 bg-white/10 backdrop-blur-md text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                         {{ $t('menu.pilots') }}
-                    </button>
+                    </NuxtLink>
                 </div>
             </div>
 
@@ -268,17 +271,17 @@
                 <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
                     {{ $t('about.whyChoose.cta.description') }}
                 </p>
-                <button @click="localizedNavigateTo('/booking')"
+                <NuxtLink :to="localePath('/booking')"
                     class="px-10 py-4 bg-white text-red-600 font-bold text-lg rounded-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     {{ $t('buttons.book') }}
-                </button>
+                </NuxtLink>
             </div>
         </section>
-    </div>
+    </main>
 </template>
 
 <script setup lang="ts">
@@ -293,7 +296,6 @@ import {
 } from '~/utils/seo'
 
 const processSteps = [1, 2, 3, 4, 5]
-const router = useRouter()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
@@ -405,9 +407,7 @@ const features = [
     { icon: LanguageIcon, title: 'about.features.multiLanguage.title', description: 'about.features.multiLanguage.description', bgColor: 'bg-gradient-to-br from-indigo-500 to-indigo-600', iconColor: 'text-white' },
 ]
 
-const localizedNavigateTo = (path: string) => {
-    router.push(localePath(path))
-}
+
 </script>
 
 <style scoped>

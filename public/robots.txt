@@ -3,5 +3,6 @@ Allow: /
 
 Disallow: /admin/
 Disallow: /api/
+Disallow: /qr
 
 Sitemap: https://www.paraglidingsapa.com/sitemap.xml

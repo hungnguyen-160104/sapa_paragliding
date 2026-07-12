@@ -64,12 +64,13 @@
           <div class="flex items-center justify-center space-x-2">
             <div class="flex items-center rounded-full border border-gray-200 bg-white p-1 pr-4 shadow-sm">
               <div class="mr-3 flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-100">
-                <img
+                <NuxtImg
                   src="https://ui-avatars.com/api/?name=Admin&background=000000&color=fff"
                   alt="Author"
                   class="h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
+                  format="webp"
                 />
               </div>
               <div class="flex flex-col text-left">
@@ -89,7 +90,7 @@
 
         <div class="relative mb-16 overflow-hidden rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200">
           <div class="aspect-video w-full bg-gray-100">
-            <img
+            <NuxtImg
               v-if="post.image || post.thumbnailUrl"
               :src="post.image || post.thumbnailUrl"
               :alt="displayTitle"
@@ -97,6 +98,7 @@
               loading="eager"
               fetchpriority="high"
               decoding="async"
+              format="webp"
             />
             <div v-else class="flex h-full w-full items-center justify-center text-sm text-gray-400">
               No cover image
@@ -125,13 +127,14 @@
 
               <template v-else-if="block.type === 'image'">
                 <figure class="my-8">
-                  <img
+                  <NuxtImg
                     v-if="block.data?.url"
                     :src="block.data.url"
                     :alt="block.data?.alt || displayTitle"
                     class="w-full rounded-2xl shadow-lg"
                     loading="lazy"
                     decoding="async"
+                    format="webp"
                   />
                   <figcaption v-if="block.data?.caption" class="mt-3 text-center text-sm text-gray-500">
                     {{ block.data.caption }}
@@ -235,12 +238,13 @@
               :key="`${image.url}-${idx}`"
               class="group relative aspect-square overflow-hidden rounded-xl bg-gray-100"
             >
-              <img
+              <NuxtImg
                 :src="image.url"
                 :alt="image.caption || displayTitle"
                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
+                format="webp"
               />
               <div
                 v-if="image.caption"
@@ -272,12 +276,13 @@
               @click="navigateToPost(relatedPost.slug || relatedPost.id)"
             >
               <div class="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-gray-200 bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
-                <img
+                <NuxtImg
                   :src="relatedPost.image || relatedPost.thumbnailUrl || '/images/placeholder.jpg'"
                   :alt="getLocalizedPostTitle(relatedPost)"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  format="webp"
                 />
               </div>
               <h3 class="mb-2 line-clamp-2 font-bold text-gray-900 transition-colors group-hover:text-red-600">
@@ -308,12 +313,13 @@
               @click="navigateToPost(latestPost.slug || latestPost.id)"
             >
               <div class="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-gray-200 bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
-                <img
+                <NuxtImg
                   :src="latestPost.image || latestPost.thumbnailUrl || '/images/placeholder.jpg'"
                   :alt="getLocalizedPostTitle(latestPost)"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  format="webp"
                 />
               </div>
               <h3 class="mb-2 line-clamp-2 font-bold text-gray-900 transition-colors group-hover:text-red-600">

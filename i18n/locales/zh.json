@@ -453,6 +453,8 @@
   "preNotice": {
     "title": "飞行前准备",
     "subtitle": "飞行前的重要信息",
+    "viewTakeoffLocation": "查看起飞地点",
+    "viewLandingLocation": "查看降落地点",
     "items": {
       "photoSupport": {
         "title": "空中拍摄支持",

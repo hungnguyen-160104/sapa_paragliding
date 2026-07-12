@@ -451,6 +451,8 @@
   "preNotice": {
     "title": "Подготовка перед полётом",
     "subtitle": "Важная информация перед вашим полётом",
+    "viewTakeoffLocation": "Посмотреть место старта",
+    "viewLandingLocation": "Посмотреть место посадки",
     "items": {
       "photoSupport": {
         "title": "Помощь с фото в воздухе",

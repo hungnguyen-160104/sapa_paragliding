@@ -451,6 +451,8 @@
   "preNotice": {
     "title": "Chuẩn bị trước khi bay",
     "subtitle": "Thông tin quan trọng trước chuyến bay của bạn",
+    "viewTakeoffLocation": "Xem vị trí cất cánh",
+    "viewLandingLocation": "Xem vị trí hạ cánh",
     "items": {
       "photoSupport": {
         "title": "Hỗ trợ chụp ảnh trên không",

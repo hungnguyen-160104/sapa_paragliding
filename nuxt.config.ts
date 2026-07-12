@@ -49,8 +49,9 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
     '@nuxtjs/i18n',
-    '@pinia/nuxt'
+    '@nuxt/image'
   ],
 
   i18n: {

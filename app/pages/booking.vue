@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-screen bg-gray-50 py-12">
+  <main class="min-h-screen bg-gray-50 py-12">
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
         <!-- H1 for SEO -->
-        <h1 class="sr-only">{{ $t('menu.booking') }}</h1>
+        <h1 class="text-3xl font-bold text-center text-slate-800 mb-8">{{ $t('menu.booking') }}</h1>
 
         <!-- Progress Steps -->
         <div class="mb-8">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

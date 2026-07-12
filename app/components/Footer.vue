@@ -66,10 +66,10 @@
           <h3 class="text-xl font-bold mb-4">{{ $t('footer.quickLinks') }}</h3>
           <ul class="space-y-2">
             <li v-for="item in menuItems" :key="item.path">
-              <button @click="localizedNavigateTo(item.path)"
-                class="hover:text-red-400 transition-colors inline-block cursor-pointer bg-none border-none p-0 text-left">
+              <NuxtLink :to="localePath(item.path)"
+                class="hover:text-red-400 transition-colors inline-block">
                 {{ $t(item.label) }}
-              </button>
+              </NuxtLink>
             </li>
           </ul>
         </div>
@@ -144,7 +144,7 @@
           </p>
 
           <!-- Logo - Absolute positioned, hidden on mobile -->
-          <img src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
+          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" format="webp"
             class="hidden md:block absolute w-32 h-32 object-contain opacity-60 pointer-events-none"
             style="right: 0; top: 0;" />
         </div>
@@ -153,10 +153,10 @@
       <!-- Copyright -->
       <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
         <p class="whitespace-pre-line">{{ $t('footer.copyright') }}</p>
-        <button @click="localizedNavigateTo('/admin/login')"
+        <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
           Admin
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </footer>
@@ -164,7 +164,7 @@
 
 <script setup lang="ts">
 const { t, locale } = useI18n()
-const router = useRouter()
+const localePath = useLocalePath()
 
 const isDesktop = ref(false)
 
@@ -209,17 +209,7 @@ const contactData = computed(() => {
   }
 })
 
-const localizedNavigateTo = (path: string) => {
-  const currentLocale = locale.value || 'vi' // mặc định là vi
-  // Nếu ngôn ngữ là vi thì không thêm prefix
-  const fullPath = currentLocale === 'vi' ? path : `/${currentLocale}${path}`
 
-  // Use nextTick to ensure navigation happens after event handler completes
-  // This prevents DOM errors when component is being unmounted
-  nextTick(() => {
-    router.push(fullPath)
-  })
-}
 
 // Detect screen size
 const checkScreenSize = () => {
