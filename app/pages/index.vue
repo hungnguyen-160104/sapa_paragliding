@@ -37,17 +37,17 @@ const localeMetaMap: Record<string, SeoMetaData> = {
   vi: {
     title: 'Dù lượn Sapa | Đặt vé bay Paragliding | Sapa Paragliding',
     description:
-      'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại cao độ cao nhất Việt Nam. Ngắm nhìn toàn cảnh Sapa hùng vĩ cùng phi công quốc tế chuyên nghiệp. Hơn 50,000 khách hàng tin tưởng, 100% an toàn.'
+      'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại điểm cất cánh cao nhất Việt Nam, ngắm toàn cảnh Sa Pa cùng phi công quốc tế. 50.000+ khách tin tưởng, an toàn 100%.'
   },
   en: {
     title: 'Sapa Paragliding | Best Paragliding Flight | Fly Sapa',
     description:
-      'BOOK ONLINE. Experience the highest paragliding takeoff in Vietnam. Enjoy breathtaking panoramic views of Sapa with certified professional pilots. 100% safety record with 50K+ satisfied customers.'
+      "BOOK ONLINE. Fly from Vietnam's highest paragliding takeoff with certified international pilots. Panoramic views of Sapa. 50,000+ customers, 100% safe."
   },
   fr: {
     title: 'Parapente Sapa | Vol en Parapente au Vietnam | Sapa Paragliding',
     description:
-      'RÉSERVEZ EN LIGNE. Le point de décollage de parapente le plus haut du Vietnam. Volez avec des pilotes professionnels internationaux. Sécurité 100% avec plus de 50 000 clients satisfaits.'
+      'RÉSERVEZ EN LIGNE. Décollage de parapente le plus haut du Vietnam. Volez avec des pilotes professionnels au-dessus de Sapa. 50 000+ clients, sécurité 100%.'
   },
   ru: {
     title: 'Парапланеризм Сапа | Полеты на параплане | Sapa Paragliding',
@@ -62,7 +62,7 @@ const localeMetaMap: Record<string, SeoMetaData> = {
   hi: {
     title: 'सापा पैराग्लाइडिंग | सर्वश्रेष्ठ उड़ान अनुभव | Sapa Paragliding',
     description:
-      'ऑनलाइन बुक करें। वियतनाम में सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर अंतरराष्ट्रीय पायलटों के साथ सुरक्षित उड़ान भरें और सापा का विहंगम दृश्य देखें। 100% सुरक्षा।'
+      'ऑनलाइन बुक करें। वियतनाम का सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर पायलटों के साथ सुरक्षित उड़ान और सापा का विहंगम दृश्य। 100% सुरक्षा।'
   }
 }
 

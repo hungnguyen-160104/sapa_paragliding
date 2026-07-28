@@ -15,7 +15,9 @@
     "pilots": "Pilotes",
     "posts": "Articles",
     "preNotice": "Avant le vol",
-    "about": "À propos de nous"
+    "about": "À propos de nous",
+    "flyingSite": "Site de Vol",
+    "prices": "Tarifs"
   },
   "buttons": {
     "book": "Réserver",
@@ -211,9 +213,9 @@
       "title": "BILLET DE VOL",
       "subtitle": "Sapa Paragliding - Expérience de parapente",
       "bookingId": "Numéro de réservation",
-        "pickupPoint": "Lieu de prise en charge",
-  "pickupTime": "Heure de prise en charge",
-  "notProvided": "Non renseigné",
+      "pickupPoint": "Lieu de prise en charge",
+      "pickupTime": "Heure de prise en charge",
+      "notProvided": "Non renseigné",
       "flightDetails": "Détails du vol",
       "passengerInfo": "Coordonnées",
       "passengersList": "Liste des passagers",
@@ -879,7 +881,7 @@
   },
   "posts": {
     "latestPosts": "Derniers articles",
-    "latestPostsDescription": "Découvrez les dernières histoires, conseils et guides sur le parapente à Sapa",
+    "latestPostsDescription": "Découvrez histoires, conseils et guides sur le parapente à Sapa : sites de vol, météo, tarifs, préparation et expériences au-dessus de la vallée de Muong Hoa",
     "readMore": "Lire la suite",
     "relatedPosts": "Articles connexes",
     "notFound": "Article introuvable"
@@ -997,5 +999,62 @@
     "latestPosts": "Derniers articles",
     "viewAll": "Voir tout",
     "gallery": "Galerie"
+  },
+  "flyingSite": {
+    "title": "Site de Vol en Parapente à Sapa",
+    "subtitle": "La vallée de Muong Hoa – l'un des plus beaux sites de vol du Vietnam",
+    "intro": "Le site de vol de Sapa Paragliding domine la vallée de Muong Hoa, célèbre pour ses rizières en terrasses et les villages de Lao Chai et Ta Van. Le décollage est conçu selon les normes de sécurité les plus élevées du Vietnam, avec un vent stable et une vue panoramique sur Sapa.",
+    "takeoff": {
+      "title": "Site de décollage",
+      "desc": "Le décollage est conçu selon les normes de sécurité les plus élevées du Vietnam, avec une position idéale face au vent pour un envol en douceur. De là, vous dominez toute la vallée de Muong Hoa et la chaîne de Hoang Lien Son.",
+      "mapLabel": "Voir le décollage sur Google Maps"
+    },
+    "landing": {
+      "title": "Site d'atterrissage – village de Lao Chai",
+      "desc": "Vous atterrissez en douceur au village culturel de Lao Chai, au cœur de la vallée de Muong Hoa, près d'un marché traditionnel d'artisanat local.",
+      "mapLabel": "Voir l'atterrissage sur Google Maps"
+    },
+    "valley": {
+      "title": "La vallée de Muong Hoa vue du ciel",
+      "desc": "La vallée de Muong Hoa est célèbre pour ses rizières en terrasses, la rivière Muong Hoa et son champ de roches anciennes. En vol, admirez la saison des eaux (mai–juin) et la saison du riz doré (septembre–octobre), les deux plus belles périodes de l'année."
+    },
+    "bestTime": {
+      "title": "Meilleure période pour voler",
+      "desc": "On peut voler à Sapa toute l'année selon la météo. Les plus belles périodes sont la saison du riz doré (sept.–oct.) et la saison des eaux (mai–juin). Les horaires exacts sont confirmés chaque jour selon le vent et la visibilité."
+    },
+    "gettingThere": {
+      "title": "Accès au site de vol",
+      "desc": "Rendez-vous au centre de Sapa (Sun Plaza) ou à votre hôtel/homestay dans les zones de Sapa, Lao Chai ou Ta Van. La navette de Sapa Paragliding vous conduit au décollage et vous récupère à l’atterrissage."
+    },
+    "cta": "Réserver votre vol au-dessus de Muong Hoa"
+  },
+  "pricingPage": {
+    "title": "Tarifs du Parapente à Sapa",
+    "subtitle": "Prix tout compris, sans frais cachés – réservez maintenant, payez après le vol",
+    "intro": "Tarifs des vols en parapente tandem à Sapa : 3 forfaits tout compris incluant l'assurance, la vidéo GOPRO et les boissons sur le site de vol. Aucun acompte requis – confirmation rapide par téléphone ou via le site.",
+    "packagesTitle": "Forfaits de vol et tarifs détaillés",
+    "notesTitle": "À savoir sur les tarifs",
+    "notes": {
+      "deposit": "Aucun acompte – réservez d'abord, payez après le vol.",
+      "payment": "Paiement en espèces, par virement ou par carte.",
+      "weather": "Si le vol est annulé pour cause de météo, vous pouvez le reporter ou être remboursé à 100%.",
+      "group": "Pour les groupes, contactez-nous directement pour une offre spéciale."
+    },
+    "faqTitle": "Questions fréquentes sur les tarifs",
+    "faq": {
+      "included": {
+        "q": "Que comprend le prix du parapente à Sapa ?",
+        "a": "Chaque forfait comprend un vol tandem de 8 à 15 minutes avec un pilote certifié international, photos et vidéo GOPRO, l'assurance parapente, les boissons sur le site et un certificat d'expérience."
+      },
+      "deposit": {
+        "q": "Faut-il verser un acompte ?",
+        "a": "Non. Réservez simplement votre créneau sur le site ou par téléphone et payez après votre vol."
+      },
+      "cancel": {
+        "q": "Et si la météo ne permet pas de voler ?",
+        "a": "Votre vol est reporté à un autre créneau ou un autre jour ; si cela ne vous convient pas, nous vous remboursons à 100%."
+      }
+    },
+    "cta": "Réservez votre vol au meilleur prix"
   }
 }

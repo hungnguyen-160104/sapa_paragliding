@@ -12,9 +12,9 @@
         </NuxtLink>
 
         <!-- Menu Items (Desktop) -->
-        <nav class="hidden md:flex items-center gap-8">
+        <nav class="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-7">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
-            class="uppercase text-gray-700 hover:text-red-600 font-medium transition-colors"
+            class="uppercase whitespace-nowrap text-sm lg:text-base text-gray-700 hover:text-red-600 font-medium transition-colors"
             active-class="text-red-600">
             {{ $t(item.label) }}
           </NuxtLink>
@@ -148,6 +148,8 @@ const isAtTop = ref(true)
 const menuItems = [
   { path: '/', label: 'menu.home' },
   { path: '/booking', label: 'menu.booking' },
+  { path: '/prices', label: 'menu.prices' },
+  { path: '/flying-site', label: 'menu.flyingSite' },
   { path: '/pilots', label: 'menu.pilots' },
   { path: '/posts', label: 'menu.posts' },
   { path: '/pre-notice', label: 'menu.preNotice' },

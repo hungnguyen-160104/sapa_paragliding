@@ -115,27 +115,27 @@ const totalPilots = 14
 const getPilotsSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
-      title: 'Đội Ngũ Phi Công - Sapa Paragliding',
+      title: 'Phi Công Dù Lượn Sa Pa: 15+ Phi Công Chứng Chỉ Quốc Tế',
       description: 'Gặp gỡ đội ngũ phi công lái được chứng chỉ của chúng tôi. 15+ phi công chuyên nghiệp với kinh nghiệm bay an toàn.'
     },
     en: {
-      title: 'Our Expert Pilots - Sapa Paragliding',
+      title: 'Sapa Paragliding Pilots: 15+ Certified Tandem Pilots',
       description: 'Meet our professional team of certified paragliding pilots in Sapa. 15+ experienced pilots ready to guide your adventure.'
     },
     fr: {
-      title: 'Notre Équipe de Pilotes - Sapa Paragliding',
+      title: 'Pilotes de Parapente à Sapa : 15+ Pilotes Tandem Certifiés',
       description: 'Rencontrez notre équipe professionnelle de pilotes de parachutisme certifiés à Sapa.'
     },
     ru: {
-      title: 'Наша Команда Пилотов - Sapa Paragliding',
+      title: 'Пилоты парапланов в Сапе: 15+ сертифицированных пилотов',
       description: 'Встречайте нашу профессиональную команду сертифицированных пилотов параплана в Сапе.'
     },
     zh: {
-      title: '我们的飞行员 - Sapa Paragliding',
+      title: '沙坝滑翔伞飞行员：15+名国际认证双人飞行员 | Sapa Paragliding',
       description: '见面我们在沙坝认证滑翔伞飞行员的专业团队。'
     },
     hi: {
-      title: 'हमारे पायलट - Sapa Paragliding',
+      title: 'सापा पैराग्लाइडिंग पायलट: 15+ प्रमाणित टैंडम पायलट',
       description: 'सापा में हमारी पेशेवर प्रमाणित पैराग्लाइडिंग पायलटों की टीम से मिलें।'
     }
   }

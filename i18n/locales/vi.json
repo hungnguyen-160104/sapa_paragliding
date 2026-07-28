@@ -15,7 +15,9 @@
     "pilots": "Phi Công",
     "posts": "Bài Viết",
     "preNotice": "Lưu Ý Trước Bay",
-    "about": "Về Chúng Tôi"
+    "about": "Về Chúng Tôi",
+    "flyingSite": "Điểm Bay",
+    "prices": "Bảng Giá"
   },
   "buttons": {
     "book": "Đặt Ngay",
@@ -879,7 +881,7 @@
   },
   "posts": {
     "latestPosts": "Bài Viết Mới Nhất",
-    "latestPostsDescription": "Khám phá những câu chuyện, mẹo và hướng dẫn mới nhất về bay dù lượn tại Sapa",
+    "latestPostsDescription": "Khám phá câu chuyện, mẹo hay và cẩm nang bay dù lượn tại Sa Pa: điểm bay đẹp, thời tiết, giá vé, kinh nghiệm chuẩn bị và trải nghiệm trên thung lũng Mường Hoa",
     "readMore": "Đọc Thêm",
     "relatedPosts": "Bài Viết Liên Quan",
     "notFound": "Không Tìm Thấy Bài Viết"
@@ -997,5 +999,62 @@
     "latestPosts": "Bài viết mới nhất",
     "viewAll": "Xem tất cả",
     "gallery": "Thư viện ảnh"
+  },
+  "flyingSite": {
+    "title": "Điểm Bay Dù Lượn Sa Pa",
+    "subtitle": "Thung lũng Mường Hoa – một trong những điểm bay đẹp nhất Việt Nam",
+    "intro": "Điểm bay dù lượn Sa Pa của Sapa Paragliding nằm trên sườn núi hướng ra thung lũng Mường Hoa, nơi có ruộng bậc thang kỳ vĩ và các bản làng Lao Chải, Tả Van. Điểm cất cánh được thiết kế theo tiêu chuẩn an toàn cao nhất tại Việt Nam, đón gió ổn định và cho tầm nhìn toàn cảnh Sa Pa.",
+    "takeoff": {
+      "title": "Điểm cất cánh",
+      "desc": "Điểm cất cánh được thiết kế theo tiêu chuẩn an toàn cao nhất tại Việt Nam, vị trí đón gió lý tưởng giúp cất cánh êm và an toàn. Từ đây bạn bao quát toàn bộ thung lũng Mường Hoa và dãy Hoàng Liên Sơn.",
+      "mapLabel": "Xem điểm cất cánh trên Google Maps"
+    },
+    "landing": {
+      "title": "Điểm hạ cánh – bản Lao Chải",
+      "desc": "Bạn hạ cánh nhẹ nhàng tại bản văn hoá Lao Chải giữa thung lũng Mường Hoa, gần chợ truyền thống nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay.",
+      "mapLabel": "Xem điểm hạ cánh trên Google Maps"
+    },
+    "valley": {
+      "title": "Thung lũng Mường Hoa nhìn từ trên cao",
+      "desc": "Thung lũng Mường Hoa nổi tiếng với ruộng bậc thang trải dài, suối Mường Hoa uốn lượn và bãi đá cổ. Khi bay, bạn sẽ được ngắm mùa nước đổ tháng 5–6 và mùa lúa chín vàng tháng 9–10 – hai thời điểm đẹp nhất trong năm."
+    },
+    "bestTime": {
+      "title": "Thời điểm bay đẹp nhất",
+      "desc": "Sa Pa có thể bay quanh năm tuỳ điều kiện thời tiết. Đẹp nhất là mùa lúa chín (tháng 9–10) và mùa nước đổ (tháng 5–6). Giờ bay cụ thể được xác nhận theo dự báo gió và tầm nhìn từng ngày."
+    },
+    "gettingThere": {
+      "title": "Di chuyển đến điểm bay",
+      "desc": "Điểm hẹn tại trung tâm thị xã Sa Pa (Sun Plaza) hoặc khách sạn/homestay của bạn trong khu vực Sa Pa, Lao Chải, Tả Van. Xe của Sapa Paragliding sẽ đưa bạn lên điểm cất cánh và đón tại điểm hạ cánh."
+    },
+    "cta": "Đặt chuyến bay tại điểm bay Mường Hoa"
+  },
+  "pricingPage": {
+    "title": "Giá Bay Dù Lượn Sa Pa",
+    "subtitle": "Giá trọn gói, không phụ thu ẩn – đặt chỗ trước, thanh toán sau",
+    "intro": "Bảng giá bay dù lượn đôi tại Sa Pa của Sapa Paragliding: 3 gói trải nghiệm trọn gói đã gồm bảo hiểm, quay phim GOPRO và đồ uống tại điểm bay. Không yêu cầu đặt cọc, xác nhận nhanh qua điện thoại hoặc website.",
+    "packagesTitle": "Các gói bay và giá chi tiết",
+    "notesTitle": "Lưu ý về giá",
+    "notes": {
+      "deposit": "Không cần đặt cọc – đặt chỗ trước, thanh toán sau khi bay.",
+      "payment": "Thanh toán bằng tiền mặt, chuyển khoản hoặc thẻ.",
+      "weather": "Nếu chuyến bay bị huỷ do thời tiết, bạn được đổi lịch hoặc hoàn tiền 100%.",
+      "group": "Đoàn đông người vui lòng liên hệ trực tiếp để nhận ưu đãi nhóm."
+    },
+    "faqTitle": "Câu hỏi thường gặp về giá",
+    "faq": {
+      "included": {
+        "q": "Giá bay dù lượn Sa Pa đã bao gồm những gì?",
+        "a": "Tất cả các gói đều gồm chuyến bay đôi 8–15 phút cùng phi công chứng chỉ quốc tế, quay phim & chụp hình GOPRO, bảo hiểm dù lượn, đồ uống tại điểm bay và giấy chứng nhận trải nghiệm."
+      },
+      "deposit": {
+        "q": "Có cần đặt cọc trước không?",
+        "a": "Không. Bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán sau khi hoàn thành chuyến bay."
+      },
+      "cancel": {
+        "q": "Nếu thời tiết xấu không bay được thì sao?",
+        "a": "Chuyến bay sẽ được dời sang khung giờ hoặc ngày khác phù hợp; nếu bạn không sắp xếp được, chúng tôi hoàn tiền 100%."
+      }
+    },
+    "cta": "Đặt chuyến bay với giá tốt nhất"
   }
 }

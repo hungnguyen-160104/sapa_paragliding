@@ -330,6 +330,8 @@ export const getPageTitle = (route: RouteLike, _locale: string, t: (key: string)
   const titles: Record<string, string> = {
     '/': 'menu.home',
     '/booking': 'menu.booking',
+    '/prices': 'menu.prices',
+    '/flying-site': 'menu.flyingSite',
     '/about': 'menu.about',
     '/pilots': 'menu.pilots',
     '/posts': 'menu.posts',

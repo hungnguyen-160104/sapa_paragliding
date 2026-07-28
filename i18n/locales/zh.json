@@ -15,7 +15,9 @@
     "pilots": "飞行员",
     "posts": "博客",
     "preNotice": "飞行前须知",
-    "about": "关于我们"
+    "about": "关于我们",
+    "flyingSite": "飞行点",
+    "prices": "价格"
   },
   "buttons": {
     "book": "立即预订",
@@ -213,9 +215,9 @@
       "title": "飞行票",
       "subtitle": "Sapa Paragliding - 滑翔伞体验",
       "bookingId": "预订编号",
-        "pickupPoint": "接送地点",
-  "pickupTime": "接送时间",
-  "notProvided": "未填写",
+      "pickupPoint": "接送地点",
+      "pickupTime": "接送时间",
+      "notProvided": "未填写",
       "flightDetails": "飞行详情",
       "passengerInfo": "联系信息",
       "passengersList": "乘客列表",
@@ -893,7 +895,7 @@
   },
   "posts": {
     "latestPosts": "最新文章",
-    "latestPostsDescription": "探索关于沙巴滑翔伞的最新故事、技巧与指南",
+    "latestPostsDescription": "探索沙坝滑翔伞的最新故事、技巧与指南：最佳飞行点、天气、价格、行前准备以及芒花谷上空的飞行体验",
     "readMore": "阅读更多",
     "relatedPosts": "相关文章",
     "notFound": "未找到文章"
@@ -1011,5 +1013,62 @@
     "latestPosts": "最新文章",
     "viewAll": "查看全部",
     "gallery": "照片库"
+  },
+  "flyingSite": {
+    "title": "沙坝滑翔伞飞行点",
+    "subtitle": "芒花谷（Muong Hoa）– 越南最美的飞行点之一",
+    "intro": "Sapa Paragliding 的飞行点位于俯瞰芒花谷的山坡上，谷中有壮观的梯田以及 Lao Chai、Ta Van 村落。起飞点按越南最高安全标准建造，风况稳定，可将沙坝全景尽收眼底。",
+    "takeoff": {
+      "title": "起飞点",
+      "desc": "起飞点按照越南最高安全标准设计，迎风位置理想，起飞平稳安全。从这里可以俯瞰整个芒花谷和黄连山山脉。",
+      "mapLabel": "在 Google 地图查看起飞点"
+    },
+    "landing": {
+      "title": "降落点 – Lao Chai 村",
+      "desc": "您将轻盈降落在芒花谷中心的 Lao Chai 文化村，村旁的传统集市展示着当地人手工制作的工艺品。",
+      "mapLabel": "在 Google 地图查看降落点"
+    },
+    "valley": {
+      "title": "从高空俯瞰芒花谷",
+      "desc": "芒花谷以连绵的梯田、蜿蜒的芒花溪和古石田而闻名。飞行时可欣赏灌水季（5–6月）和金色稻收季（9–10月）——一年中最美的两个时节。"
+    },
+    "bestTime": {
+      "title": "最佳飞行时间",
+      "desc": "沙坝全年均可飞行，视天气而定。最美的时节是金色稻收季（9–10月）和灌水季（5–6月）。具体飞行时间将根据每日风况和能见度确认。"
+    },
+    "gettingThere": {
+      "title": "如何前往飞行点",
+      "desc": "在沙坝市中心（Sun Plaza）或您位于沙坝、Lao Chai、Ta Van 地区的酒店/民宿集合。Sapa Paragliding 的接驳车将送您到起飞点，并在降落点接您返回。"
+    },
+    "cta": "预订芒花谷上空的飞行"
+  },
+  "pricingPage": {
+    "title": "沙坝滑翔伞价格",
+    "subtitle": "一价全包，无隐藏费用——先预订，飞行后付款",
+    "intro": "沙坝双人滑翔伞价格表：3 种全包套餐，包含保险、GOPRO 摄影和飞行点饮品。无需订金，通过电话或网站即可快速确认。",
+    "packagesTitle": "飞行套餐与详细价格",
+    "notesTitle": "价格说明",
+    "notes": {
+      "deposit": "无需订金——先预订，飞行后付款。",
+      "payment": "支持现金、转账或刷卡支付。",
+      "weather": "如因天气原因取消飞行，可改期或获得 100% 退款。",
+      "group": "团队出行请直接联系我们获取团体优惠。"
+    },
+    "faqTitle": "价格常见问题",
+    "faq": {
+      "included": {
+        "q": "沙坝滑翔伞价格包含哪些内容？",
+        "a": "每个套餐均包含与国际认证飞行员的 8–15 分钟双人飞行、GOPRO 拍照和录像、滑翔伞保险、飞行点饮品和体验证书。"
+      },
+      "deposit": {
+        "q": "需要支付订金吗？",
+        "a": "不需要。只需通过网站或电话预订，飞行结束后再付款。"
+      },
+      "cancel": {
+        "q": "天气不好无法飞行怎么办？",
+        "a": "飞行将改到其他合适的时间或日期；如果您无法安排，我们将全额退款。"
+      }
+    },
+    "cta": "以最优价格预订飞行"
   }
 }

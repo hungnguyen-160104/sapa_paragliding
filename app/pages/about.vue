@@ -304,27 +304,27 @@ const route = useRoute()
 const getAboutSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
-      title: 'Về Chúng Tôi - Sapa Paragliding',
+      title: 'Về Sapa Paragliding: Đội Ngũ Dù Lượn & Điểm Bay Mường Hoa',
       description: 'Tìm hiểu về Sapa Paragliding - đối tác đáng tin cậy cho những trải nghiệm bay lượn tuyệt vời tại Sapa, Việt Nam. 15+ phi công chuyên nghiệp.'
     },
     en: {
-      title: 'About Us - Sapa Paragliding',
+      title: 'About Sapa Paragliding: Our Team & Muong Hoa Flying Site',
       description: 'Learn about Sapa Paragliding - your trusted partner for unforgettable flying experiences in Sapa, Vietnam. 15+ professional pilots.'
     },
     fr: {
-      title: 'À Propos - Sapa Paragliding',
+      title: 'Sapa Paragliding : Notre Équipe et le Site de Vol Muong Hoa',
       description: 'En savoir plus sur Sapa Paragliding - votre partenaire de confiance pour des expériences de vol inoubliables à Sapa, Vietnam.'
     },
     ru: {
-      title: 'О нас - Sapa Paragliding',
+      title: 'О Sapa Paragliding: команда пилотов и место полётов Мыонг Хоа',
       description: 'Узнайте больше о Sapa Paragliding - вашем надежном партнере для незабываемых полетов в Сапе, Вьетнам.'
     },
     zh: {
-      title: '关于我们 - Sapa Paragliding',
+      title: '关于沙坝滑翔伞：专业团队与芒花谷飞行点 | Sapa Paragliding',
       description: '了解沙坝滑翔伞 - 在越南沙坝提供难忘飞行体验的可信赖合作伙伴。'
     },
     hi: {
-      title: 'हमारे बारे में - Sapa Paragliding',
+      title: 'सापा पैराग्लाइडिंग के बारे में: हमारी टीम और मुओंग होआ घाटी',
       description: 'सापा पैराग्लाइडिंग के बारे में जानें - वियतनाम के सापा में अविस्मरणीय उड़ान अनुभव के लिए आपका विश्वसनीय भागीदार।'
     }
   }

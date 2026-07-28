@@ -15,7 +15,9 @@
     "pilots": "Pilots",
     "posts": "Blog",
     "preNotice": "Pre-flight Notice",
-    "about": "About Us"
+    "about": "About Us",
+    "flyingSite": "Flying Site",
+    "prices": "Prices"
   },
   "buttons": {
     "book": "Book Now",
@@ -155,7 +157,8 @@
       "dateOfBirth": "Date of Birth",
       "gender": "Gender",
       "weight": "Weight",
-      "nationality": "Nationality",      "idNumber": "ID/Passport Number",
+      "nationality": "Nationality",
+      "idNumber": "ID/Passport Number",
       "pickupLocation": "Pickup Location:",
       "launchSite": "Launch Site",
       "pickupTime": "Pickup Time:",
@@ -182,7 +185,8 @@
       "cashPayment": "Cash",
       "bankTransfer": "Bank Transfer",
       "paypalPayment": "PayPal",
-      "creditCard": "Credit Card",      "priceSummary": "Price Summary",
+      "creditCard": "Credit Card",
+      "priceSummary": "Price Summary",
       "basePrice": "Base Price",
       "discount": "Discount",
       "paymentInfo": "Payment Information",
@@ -211,9 +215,9 @@
       "title": "FLIGHT TICKET",
       "subtitle": "Sapa Paragliding - Paragliding Experience",
       "bookingId": "Booking ID",
-        "pickupPoint": "Pickup location",
-  "pickupTime": "Pickup time",
-  "notProvided": "Not provided",
+      "pickupPoint": "Pickup location",
+      "pickupTime": "Pickup time",
+      "notProvided": "Not provided",
       "flightDetails": "Flight Details",
       "passengerInfo": "Contact information",
       "passengersList": "Passengers List",
@@ -891,7 +895,7 @@
   },
   "posts": {
     "latestPosts": "Latest Posts",
-    "latestPostsDescription": "Discover the latest stories, tips, and guides about paragliding in Sapa",
+    "latestPostsDescription": "Discover stories, tips and guides about paragliding in Sapa: the best flying sites, weather, prices, preparation advice and flights over Muong Hoa valley",
     "readMore": "Read More",
     "relatedPosts": "Related Posts",
     "notFound": "Post Not Found"
@@ -1009,5 +1013,62 @@
     "latestPosts": "Latest Posts",
     "viewAll": "View all",
     "gallery": "Photo Gallery"
+  },
+  "flyingSite": {
+    "title": "Sapa Paragliding Flying Site",
+    "subtitle": "Muong Hoa Valley – one of the most beautiful flying sites in Vietnam",
+    "intro": "Sapa Paragliding's flying site sits on a mountainside overlooking Muong Hoa Valley, home to spectacular rice terraces and the villages of Lao Chai and Ta Van. The takeoff is built to the highest safety standard in Vietnam, catches stable wind and offers panoramic views over Sapa.",
+    "takeoff": {
+      "title": "Takeoff site",
+      "desc": "The takeoff is designed to the highest safety standard in Vietnam, with an ideal wind-facing position for smooth, safe launches. From here you overlook the whole Muong Hoa Valley and the Hoang Lien Son range.",
+      "mapLabel": "View takeoff site on Google Maps"
+    },
+    "landing": {
+      "title": "Landing site – Lao Chai village",
+      "desc": "You land gently at the Lao Chai cultural village in the heart of Muong Hoa Valley, near a traditional market displaying handicrafts made by local people.",
+      "mapLabel": "View landing site on Google Maps"
+    },
+    "valley": {
+      "title": "Muong Hoa Valley from above",
+      "desc": "Muong Hoa Valley is famous for its endless rice terraces, the winding Muong Hoa stream and the ancient rock field. In flight you'll admire the watering season (May–June) and the golden rice season (September–October) – the two most beautiful times of the year."
+    },
+    "bestTime": {
+      "title": "Best time to fly",
+      "desc": "You can fly in Sapa all year round, depending on the weather. The most beautiful periods are the golden rice season (Sep–Oct) and the watering season (May–Jun). Exact flight times are confirmed daily based on wind and visibility."
+    },
+    "gettingThere": {
+      "title": "Getting to the flying site",
+      "desc": "Meet us in Sapa town center (Sun Plaza) or at your hotel/homestay in the Sapa, Lao Chai or Ta Van area. Sapa Paragliding's shuttle takes you up to the takeoff and picks you up at the landing site."
+    },
+    "cta": "Book your flight over Muong Hoa"
+  },
+  "pricingPage": {
+    "title": "Sapa Paragliding Prices",
+    "subtitle": "All-inclusive prices, no hidden fees – reserve now, pay after your flight",
+    "intro": "Tandem paragliding prices in Sapa: 3 all-inclusive packages covering insurance, GOPRO filming and drinks at the flying site. No deposit required – fast confirmation by phone or through the website.",
+    "packagesTitle": "Flight packages and detailed prices",
+    "notesTitle": "Price notes",
+    "notes": {
+      "deposit": "No deposit needed – reserve first, pay after you fly.",
+      "payment": "Pay by cash, bank transfer or card.",
+      "weather": "If your flight is cancelled due to weather, you can reschedule or get a 100% refund.",
+      "group": "For large groups, contact us directly for group offers."
+    },
+    "faqTitle": "Pricing FAQ",
+    "faq": {
+      "included": {
+        "q": "What is included in the Sapa paragliding price?",
+        "a": "Every package includes an 8–15 minute tandem flight with an internationally certified pilot, GOPRO photos & video, paragliding insurance, drinks at the flying site and an experience certificate."
+      },
+      "deposit": {
+        "q": "Do I need to pay a deposit?",
+        "a": "No. Simply reserve your slot on the website or by phone and pay after completing your flight."
+      },
+      "cancel": {
+        "q": "What if the weather is too bad to fly?",
+        "a": "Your flight will be moved to another suitable time or day; if that doesn't work for you, we refund 100%."
+      }
+    },
+    "cta": "Book your flight at the best price"
   }
 }

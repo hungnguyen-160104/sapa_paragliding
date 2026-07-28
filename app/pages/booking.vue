@@ -73,27 +73,27 @@ const route = useRoute()
 const getBookingSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
-      title: 'Đặt Chuyến Bay Lượn Sapa Paragliding',
+      title: 'Đặt Vé Bay Dù Lượn Sa Pa: Giá Trọn Gói, Xác Nhận Nhanh',
       description: 'Đặt chuyến bay lượn tại Sapa một cách dễ dàng. Thanh toán trực tuyến, xác nhận tức thì. Giá tốt nhất, an toàn 100%.'
     },
     en: {
-      title: 'Book Your Paragliding Flight in Sapa',
+      title: 'Book Paragliding in Sapa: Best Price, Instant Confirmation',
       description: 'Easy online paragliding booking in Sapa with instant confirmation. Secure payment, best prices, 100% safe.'
     },
     fr: {
-      title: 'Réservez Votre Vol à Voile à Sapa',
+      title: 'Réserver un Vol en Parapente à Sapa : Confirmation Immédiate',
       description: 'Réservation facile de parachutisme en ligne à Sapa avec confirmation instantanée. Paiement sécurisé, meilleurs tarifs.'
     },
     ru: {
-      title: 'Забронируйте Свой Полет на Параплане в Сапе',
+      title: 'Бронирование полёта на параплане в Сапе: лучшая цена онлайн',
       description: 'Легкое онлайн-бронирование полетов на параплане в Сапе с мгновенным подтверждением. Безопасный платеж, лучшие цены.'
     },
     zh: {
-      title: '在沙坝预订滑翔伞飞行',
+      title: '预订沙坝滑翔伞飞行：最优价格，即时确认 | Sapa Paragliding',
       description: '在沙坝在线预订滑翔伞飞行，即时确认。安全支付，最优惠的价格，100% 安全。'
     },
     hi: {
-      title: 'सापा में पैराग्लाइडिंग बुकिंग करें',
+      title: 'सापा में पैराग्लाइडिंग बुक करें: तुरंत पुष्टि, सर्वोत्तम कीमत',
       description: 'सापा में आसान ऑनलाइन पैराग्लाइडिंग बुकिंग तत्काल पुष्टि के साथ। सुरक्षित भुगतान, सर्वोत्तम कीमतें, 100% सुरक्षा।'
     }
   }

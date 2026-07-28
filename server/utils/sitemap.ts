@@ -13,6 +13,8 @@ export const PAGE_ROUTES: Array<{
 }> = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
   { path: '/booking', priority: '0.9', changefreq: 'weekly' },
+  { path: '/prices', priority: '0.9', changefreq: 'monthly' },
+  { path: '/flying-site', priority: '0.8', changefreq: 'monthly' },
   { path: '/posts', priority: '0.8', changefreq: 'weekly' },
   { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/pilots', priority: '0.8', changefreq: 'monthly' },
@@ -50,7 +52,7 @@ export function escapeXml(value: string): string {
  * Google from distrusting lastmod (which happens when it changes on every request).
  * Update this date manually when content actually changes.
  */
-const SITE_LAST_MODIFIED = '2026-07-12T00:00:00.000Z'
+const SITE_LAST_MODIFIED = '2026-07-29T00:00:00.000Z'
 
 export function getLastMod(): string {
   return SITE_LAST_MODIFIED

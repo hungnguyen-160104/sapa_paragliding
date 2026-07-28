@@ -171,6 +171,8 @@ const isDesktop = ref(false)
 const menuItems = [
   { path: '/', label: 'menu.home' },
   { path: '/booking', label: 'menu.booking' },
+  { path: '/prices', label: 'menu.prices' },
+  { path: '/flying-site', label: 'menu.flyingSite' },
   { path: '/pilots', label: 'menu.pilots' },
   { path: '/posts', label: 'menu.posts' },
   { path: '/pre-notice', label: 'menu.preNotice' },

@@ -50,6 +50,12 @@
           <div class="glass-card rounded-2xl p-6 md:p-10 max-w-5xl mx-auto">
             <transition name="fade" mode="out-in">
               <div :key="activeTab" class="tab-content">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-2 text-center">
+                  {{ $t(`preNotice.tabs.${activeTab}.title`) }}
+                </h2>
+                <p class="text-white/70 text-sm md:text-base text-center mb-6">
+                  {{ $t(`preNotice.tabs.${activeTab}.subtitle`) }}
+                </p>
                 <!-- Content Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
                   <div v-for="(item, itemIndex) in getActiveTabContent()" :key="itemIndex"
