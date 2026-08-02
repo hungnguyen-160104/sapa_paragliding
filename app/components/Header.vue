@@ -12,14 +12,14 @@
                khung -> hình to lên 49% mà khung menu vẫn giữ đúng 80px.
                Sapa_logo.png (bản đầy đủ) vẫn dùng cho JSON-LD và ảnh chia sẻ. -->
           <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
-            class="h-20 w-auto shrink-0 object-contain" format="webp" @error="handleLogoError" />
-          <!-- Tên thương hiệu, xếp 2 dòng cho hẹp (86px thay vì 166px nếu để
-               1 dòng) vì thanh menu gần như hết chỗ. Chỉ hiện từ xl trở lên:
-               ở 1024-1279px không còn đủ 98px cho khối chữ này.
+            class="h-[4.5rem] w-auto shrink-0 object-contain" format="webp" @error="handleLogoError" />
+          <!-- Tên thương hiệu, dịch theo ngôn ngữ (hero.title) và tự tách 2 dòng
+               cân đối. Xếp 2 dòng cho hẹp vì thanh menu gần như hết chỗ.
+               Chỉ hiện từ xl: ở 1024-1279px không còn đủ chỗ.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center gap-0.5 leading-none text-[#194d9b] font-black">
-            <span class="text-base 2xl:text-lg">SAPA</span>
-            <span class="text-base 2xl:text-lg">PARAGLIDING</span>
+          <div class="hidden xl:flex flex-col justify-center leading-none text-[#194d9b] font-black">
+            <span class="text-lg 2xl:text-xl">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="text-lg 2xl:text-xl">{{ brandLines[1] }}</span>
           </div>
         </NuxtLink>
 
@@ -62,10 +62,13 @@
     <div v-if="!isAtTop" class="fixed top-0 left-0 right-0 z-50">
       <!-- Logo in top-left corner -->
       <div class="fixed top-2 sm:top-4 left-2 sm:left-4 z-50">
+        <!-- Viền đệm mỏng lại (p-2/p-4 -> p-0.5/p-1) và dùng bản ảnh đã cắt:
+             ảnh gốc có sẵn ~33% khoảng trắng nên trông như viền rất dày,
+             giảm padding thôi chưa đủ. -->
         <NuxtLink :to="localePath('/')"
-          class="flex items-center justify-center bg-white/10 backdrop-blur-sm p-2 sm:p-4 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-110">
-          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 sm:h-20 w-12 sm:w-20 object-contain"
-            format="webp" @error="handleLogoError" />
+          class="flex items-center justify-center bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-110">
+          <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
+            class="h-12 sm:h-20 w-auto object-contain" format="webp" @error="handleLogoError" />
         </NuxtLink>
       </div>
 
@@ -159,7 +162,38 @@
 <script setup lang="ts">
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
+
+/**
+ * Tên thương hiệu tách thành 2 dòng cân đối nhất (dòng dài nhất ngắn nhất
+ * có thể), để khối chữ hẹp — thanh menu gần như hết chỗ ngang.
+ *   vi 'DÙ LƯỢN SAPA'         -> 'DÙ LƯỢN' / 'SAPA'
+ *   fr 'PARAPENTE À SAPA'     -> 'PARAPENTE' / 'À SAPA'
+ *   ru 'ПАРАПЛАНЕРИЗМ В САПЕ' -> 'ПАРАПЛАНЕРИЗМ' / 'В САПЕ'
+ */
+const brandLines = computed<[string, string]>(() => {
+  const words = t('hero.title').trim().split(/\s+/).filter(Boolean)
+
+  if (words.length < 2) {
+    return [words[0] ?? '', '']
+  }
+
+  let bestIndex = 1
+  let bestWidth = Infinity
+
+  for (let i = 1; i < words.length; i++) {
+    const width = Math.max(
+      words.slice(0, i).join(' ').length,
+      words.slice(i).join(' ').length
+    )
+    if (width < bestWidth) {
+      bestWidth = width
+      bestIndex = i
+    }
+  }
+
+  return [words.slice(0, bestIndex).join(' '), words.slice(bestIndex).join(' ')]
+})
 
 /**
  * Chữ Hán và Devanagari nhìn nhỏ hơn hẳn chữ Latin ở cùng cỡ font, nên phải
