@@ -121,7 +121,9 @@
   }
 
   .text-stroke-sapa {
-    @apply text-3xl md:text-4xl font-black uppercase tracking-wide;
+    /* 70% cỡ cũ: text-3xl 1.875rem -> 1.3125rem, text-4xl 2.25rem -> 1.575rem.
+       Line-height giữ đúng tỉ lệ cũ để không xô lệch chiều cao header. */
+    @apply text-[1.3125rem]/[1.575rem] md:text-[1.575rem]/[1.75rem] font-black uppercase tracking-wide;
     color: #194d9b;
     /* emerald-500 */
 

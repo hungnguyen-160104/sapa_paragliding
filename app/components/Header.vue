@@ -5,8 +5,10 @@
       <div class="container-custom flex items-center justify-between py-4">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 w-12 object-contain"
-            format="webp" @error="handleLogoError" />
+          <!-- mobile/tablet: 5.1rem = 1.7 lần cỡ gốc 3rem; desktop giữ nguyên 3rem -->
+          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
+            class="h-[5.1rem] w-[5.1rem] md:h-12 md:w-12 object-contain" format="webp"
+            @error="handleLogoError" />
           <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title')
             }}</span>
         </NuxtLink>
