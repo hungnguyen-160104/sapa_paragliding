@@ -15,6 +15,18 @@
 @layer components {
 
   /* ==============================
+     CONTAINER
+     ==============================
+     Class này được dùng ở 10 file (Header, Footer và các trang) nhưng
+     trước đây chưa hề được định nghĩa, nên không sinh ra padding và nội
+     dung dính sát mép màn hình. Đệm 2ch mỗi bên ~ bề ngang 2 ký tự. */
+  .container-custom {
+    @apply w-full;
+    padding-left: 2ch;
+    padding-right: 2ch;
+  }
+
+  /* ==============================
      MODERN SHARP BUTTON STYLES
      ============================== */
   .btn-primary {

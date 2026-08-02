@@ -5,16 +5,19 @@
       <div class="container-custom flex items-center justify-between py-4">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <!-- mobile/tablet: 5.1rem = 1.7 lần cỡ gốc 3rem; desktop giữ nguyên 3rem -->
+          <!-- 6rem = gấp đôi cỡ gốc 3rem, áp dụng cho mọi kích thước màn hình -->
           <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
-            class="h-[5.1rem] w-[5.1rem] md:h-12 md:w-12 object-contain" format="webp"
-            @error="handleLogoError" />
-          <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title')
-            }}</span>
+            class="h-24 w-24 shrink-0 object-contain" format="webp" @error="handleLogoError" />
+          <!-- TẠM ẨN chữ "DÙ LƯỢN SAPA": logo đã gấp đôi nên chữ chen vào sẽ
+               chồng lên menu chính. Bỏ comment dòng dưới để hiện lại. -->
+          <!-- <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title') }}</span> -->
         </NuxtLink>
 
-        <!-- Menu Items (Desktop) -->
-        <nav class="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-7">
+        <!-- Menu Items (Desktop)
+             Mốc xl chứ không phải md: 8 mục menu tiếng Việt/Pháp cần ~790-800px,
+             cộng logo 96px và thanh ngôn ngữ thì tổng vượt quá bề ngang khả dụng
+             ở mọi màn hình dưới 1280px. Dưới mốc này dùng nút hamburger. -->
+        <nav class="hidden xl:flex items-center gap-4 2xl:gap-7">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
             class="uppercase whitespace-nowrap text-sm lg:text-base text-gray-700 hover:text-red-600 font-medium transition-colors"
             active-class="text-red-600">
@@ -26,7 +29,7 @@
         <div class="flex items-center gap-3">
           <!-- Menu Button (Mobile) -->
           <button @click.stop="toggleMenu"
-            class="md:hidden bg-red-600 hover:bg-red-700 text-white p-2.5 rounded-lg transition-all duration-300"
+            class="xl:hidden bg-red-600 hover:bg-red-700 text-white p-2.5 rounded-lg transition-all duration-300"
             aria-label="Toggle menu">
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />

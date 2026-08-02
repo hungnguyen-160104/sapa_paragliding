@@ -1,9 +1,15 @@
 <template>
   <footer class="bg-gray-900 text-white py-12 relative z-10">
     <div class="container-custom">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cột 3 (Follow Us) rộng 1.8 phần thay vì 1: cột bắt đầu sớm hơn nên
+           nội dung dịch hẳn sang trái, đồng thời đủ chỗ cho hàng 6 icon (324px).
+           Lưu ý: nội dung căn trái nên chỉ có bề rộng cột mới dịch được nó,
+           thêm padding-right không có tác dụng đẩy sang trái. -->
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.8fr] gap-8">
         <!-- Contact Information -->
-        <div>
+        <!-- pl- đẩy nội dung sang phải (nội dung căn trái nên padding-left có tác dụng).
+             Đã trừ 24px (~3 ký tự) so với mức trước; ở md chạm 0 nên không lùi thêm được. -->
+        <div class="md:pl-0 lg:pl-2 xl:pl-6 2xl:pl-12">
           <h3 class="text-xl font-bold mb-4">{{ $t('footer.contact') }}</h3>
           <div class="space-y-3">
             <div class="flex items-start space-x-3">
@@ -12,8 +18,11 @@
                   d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <div>
-                <p class="text-sm text-gray-400">{{ $t('footer.email') }}</p>
-                <a href="mailto:sapa.paragliding@gmail.com" class="hover:text-red-400 transition-colors">
+                <p class="text-sm text-white">{{ $t('footer.email') }}</p>
+                <!-- break-words: cột hẹp lại sau khi tăng lề trái, email dài
+                     phải ngắt dòng gọn thay vì tràn ra khỏi cột -->
+                <a href="mailto:sapa.paragliding@gmail.com"
+                  class="hover:text-red-400 transition-colors break-words">
                   sapa.paragliding@gmail.com
                 </a>
               </div>
@@ -25,19 +34,19 @@
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <div class="space-y-3">
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-white">
                   {{ contactData.title }}
                 </p>
 
-                <ul class="space-y-2 text-sm text-gray-700">
+                <ul class="space-y-2 text-sm text-white">
                   <li v-for="(item, index) in contactData.list" :key="index">
                     <span class="font-semibold">{{ item.name }}</span>
                     – {{ item.role }}:
+                    <!-- whitespace-nowrap: số có dấu cách (+84 386 887 489) nên
+                         mặc định sẽ bị ngắt giữa các nhóm số khi cột hẹp -->
                     <a :href="`tel:${item.phone.replace(/\s+/g, '')}`"
-                      class="text-red-600 hover:text-red-500 transition-colors">
-                      {{ item.phone }}
-                    </a>
-                    <span v-if="item.note" class="text-gray-500">
+                      class="text-red-600 hover:text-red-500 transition-colors whitespace-nowrap">{{ item.phone }}</a>
+                    <span v-if="item.note" class="text-white">
                       {{ item.note }}
                     </span>
                   </li>
@@ -54,15 +63,16 @@
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <div>
-                <p class="text-sm text-gray-400">{{ $t('footer.address') }}</p>
+                <p class="text-sm text-white">{{ $t('footer.address') }}</p>
                 <p>Sapa, Lao Cai, Vietnam</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Quick Links -->
-        <div>
+        <!-- Quick Links: lề trái = cột Liên hệ + 6ch (48px), tức dịch phải
+             thêm khoảng 6 ký tự so với cột bên cạnh -->
+        <div class="md:pl-16 lg:pl-20 xl:pl-24 2xl:pl-[7.5rem]">
           <h3 class="text-xl font-bold mb-4">{{ $t('footer.quickLinks') }}</h3>
           <ul class="space-y-2">
             <li v-for="item in menuItems" :key="item.path">
@@ -75,12 +85,17 @@
         </div>
 
         <!-- Social Media & Newsletter -->
-        <div class="relative">
+        <!-- Lề phải phải lớn hơn vùng nút chat nổi: nút rộng 56px (p-4 + icon
+             24px) đặt cách mép 24px, tức chiếm 80px tính từ mép phải màn hình.
+             Chừa 80-96px để chữ không bị bong bóng Zalo/WhatsApp đè lên. -->
+        <div class="md:pr-8 lg:pr-20 xl:pr-24">
           <h3 class="text-xl font-bold mb-4">{{ $t('footer.followUs') }}</h3>
-          <div class="flex flex-wrap gap-3 mb-6 max-w-[200px]">
+          <!-- 6 icon trên cùng 1 hàng: bỏ flex-wrap và max-w vốn ép xuống 2 hàng.
+               Màn hẹp thu nhỏ icon/gap để 1 hàng vẫn vừa (6x40 + 5x8 = 280px). -->
+          <div class="flex flex-nowrap items-center gap-2 sm:gap-3 mb-6">
             <!-- YouTube -->
             <a href="https://www.youtube.com/@sapa.paragliding" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-red-600 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-red-600 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="YouTube">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -90,7 +105,7 @@
 
             <!-- WhatsApp -->
             <a href="https://wa.me/84386887489" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-red-500 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-red-500 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="WhatsApp">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -100,7 +115,7 @@
 
             <!-- Zalo -->
             <a href="https://zalo.me/84386887489" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-blue-500 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-blue-500 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="Zalo">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 50 50">
                 <path fill="white"
@@ -110,7 +125,7 @@
 
             <!-- TikTok -->
             <a href="https://www.tiktok.com/@sapa_paragliding" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-pink-600 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-pink-600 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="TikTok">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -120,7 +135,7 @@
 
             <!-- Facebook -->
             <a href="https://www.facebook.com/bayduluonsapa/" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-blue-600 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-blue-600 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="Facebook">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -130,7 +145,7 @@
 
             <!-- Instagram -->
             <a href="https://www.instagram.com/SAPA_PARAGLIDING" target="_blank" rel="noopener noreferrer"
-              class="bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-600 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
+              class="bg-gray-800 hover:bg-gradient-to-br hover:from-purple-600 hover:via-pink-600 hover:to-orange-600 w-10 h-10 sm:w-11 sm:h-11 shrink-0 rounded-full transition-colors flex items-center justify-center"
               aria-label="Instagram">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
@@ -139,19 +154,14 @@
             </a>
           </div>
 
-          <p class="text-sm text-gray-400 leading-relaxed mb-6">
+          <p class="text-sm text-white leading-relaxed mb-6">
             {{ $t('hero.subtitle') }}
           </p>
-
-          <!-- Logo - Absolute positioned, hidden on mobile -->
-          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" format="webp"
-            class="hidden md:block absolute w-32 h-32 object-contain opacity-60 pointer-events-none"
-            style="right: 0; top: 0;" />
         </div>
       </div>
 
       <!-- Copyright -->
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-white">
         <p class="whitespace-pre-line">{{ $t('footer.copyright') }}</p>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">

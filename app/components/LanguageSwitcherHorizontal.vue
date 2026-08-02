@@ -1,12 +1,15 @@
 <template>
   <div class="language-switcher-horizontal">
-    <div class="flex gap-1 items-center">
+    <!-- 6 nút ngôn ngữ chiếm 266px ở cỡ cũ, quá rộng cho header điện thoại.
+         Nén lại ở màn hẹp, chỉ nới ra từ xl. flex-wrap là lưới an toàn:
+         màn cực hẹp thì xuống hàng thay vì tràn ra ngoài. -->
+    <div class="flex flex-wrap justify-end gap-0.5 sm:gap-1 items-center">
       <button
         v-for="localeItem in availableLocales"
         :key="localeItem.code"
         @click="switchLanguage(localeItem.code)"
         :class="[
-          'px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200',
+          'px-1.5 sm:px-2 xl:px-3 py-1 xl:py-1.5 rounded-md text-xs xl:text-sm font-medium transition-all duration-200',
           currentLocale === localeItem.code
             ? 'bg-red-600 text-white shadow-md'
             : 'text-gray-700 hover:bg-gray-100'
