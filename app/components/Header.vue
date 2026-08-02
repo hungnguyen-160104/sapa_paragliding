@@ -14,19 +14,22 @@
                khung -> hình to lên 49% mà khung menu vẫn giữ đúng 80px.
                Sapa_logo.png (bản đầy đủ) vẫn dùng cho JSON-LD và ảnh chia sẻ. -->
           <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
-            class="h-14 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
+            class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
-          <!-- Điện thoại/tablet: tên thương hiệu 1 hàng ngang, cỡ nhỏ vì phải
-               chia chỗ với 6 nút ngôn ngữ. Ẩn từ lg vì khi đó menu ngang chiếm
-               hết chỗ; từ xl dùng bản 2 dòng bên dưới. -->
-          <span class="flex lg:hidden items-center whitespace-nowrap text-[11px] font-black text-[#194d9b]">
+          <!-- Điện thoại/tablet: tên thương hiệu 1 hàng ngang. 14px là mức lớn
+               nhất còn giữ được 6 nút ngôn ngữ ở 2 nút/hàng trên màn 375px.
+               Ẩn từ lg vì khi đó menu ngang chiếm hết chỗ; từ xl dùng bản 2 dòng. -->
+          <span class="flex lg:hidden items-center whitespace-nowrap text-sm font-black text-[#194d9b]">
             {{ $t('hero.title') }}
           </span>
 
           <!-- Desktop rộng: tách 2 dòng cân đối cho hẹp, chữ to hơn.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center leading-[0.8] text-[#194d9b] font-black">
+          <!-- leading 1.85 là trần: 2 dòng x 1.85 x 21.6px = 80px, vừa khít khung
+               menu. Muốn x3 (leading 2.4) thì khối chữ cao 104px, khung phải nới
+               lên khoảng 110px. -->
+          <div class="hidden xl:flex flex-col justify-center leading-[1.85] text-[#194d9b] font-black">
             <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
