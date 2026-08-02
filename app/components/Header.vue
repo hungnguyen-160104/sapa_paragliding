@@ -2,7 +2,9 @@
   <div>
     <!-- Horizontal Header Bar (static, part of page) -->
     <header class="relative bg-white/95 backdrop-blur-md shadow-lg" style="position: relative; z-index: 60;">
-      <div class="container-custom flex items-center justify-between py-4">
+      <!-- py-0: chiều cao thanh menu bằng đúng chiều cao logo (105.6px).
+           py-4 trước đây cộng thêm 32px khiến khung cao 137.6px. -->
+      <div class="container-custom flex items-center justify-between py-0">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <!-- 6.6rem = 105.6px, to hơn 10% so với mức 6rem (gấp đôi cỡ gốc 3rem) -->
