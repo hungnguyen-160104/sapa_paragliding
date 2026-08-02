@@ -5,9 +5,9 @@
       <div class="container-custom flex items-center justify-between py-4">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <!-- 6rem = gấp đôi cỡ gốc 3rem, áp dụng cho mọi kích thước màn hình -->
+          <!-- 6.6rem = 105.6px, to hơn 10% so với mức 6rem (gấp đôi cỡ gốc 3rem) -->
           <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
-            class="h-24 w-24 shrink-0 object-contain" format="webp" @error="handleLogoError" />
+            class="h-[6.6rem] w-[6.6rem] shrink-0 object-contain" format="webp" @error="handleLogoError" />
           <!-- TẠM ẨN chữ "DÙ LƯỢN SAPA": logo đã gấp đôi nên chữ chen vào sẽ
                chồng lên menu chính. Bỏ comment dòng dưới để hiện lại. -->
           <!-- <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title') }}</span> -->
@@ -15,11 +15,11 @@
 
         <!-- Menu Items (Desktop) — hiện từ 1024px.
              Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 8 mục menu
-             tiếng Việt/Pháp sẽ tràn. Ngân sách ở 1024px (992px khả dụng):
-             logo 96 + nav 639-653 + thanh ngôn ngữ 166 = 913-927px. -->
-        <nav class="hidden lg:flex items-center gap-3 xl:gap-4 2xl:gap-7">
+             tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
+             bù cho cỡ chữ đã tăng và logo 105.6px. -->
+        <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-7">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
-            class="uppercase whitespace-nowrap text-xs xl:text-sm 2xl:text-base text-gray-700 hover:text-red-600 font-medium transition-colors"
+            class="uppercase whitespace-nowrap text-[13px] xl:text-base 2xl:text-lg text-gray-700 hover:text-red-600 font-medium transition-colors"
             active-class="text-red-600">
             {{ $t(item.label) }}
           </NuxtLink>
