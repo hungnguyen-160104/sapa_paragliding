@@ -17,21 +17,18 @@
             class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
-          <!-- Điện thoại/tablet: tên thương hiệu 1 hàng ngang. 14px là mức lớn
-               nhất còn giữ được 6 nút ngôn ngữ ở 2 nút/hàng trên màn 375px.
-               Ẩn từ lg vì khi đó menu ngang chiếm hết chỗ; từ xl dùng bản 2 dòng. -->
-          <span class="flex lg:hidden items-center whitespace-nowrap text-sm font-black text-[#194d9b]">
-            {{ $t('hero.title') }}
-          </span>
-
-          <!-- Desktop rộng: tách 2 dòng cân đối cho hẹp, chữ to hơn.
+          <!-- Tên thương hiệu, tách 2 dòng cân đối ở mọi kích thước.
+               Hiện dưới lg và từ xl; ẩn ở dải 1024-1279px vì khi đó menu ngang
+               8 mục chiếm hết chỗ.
+               Mobile 2 dòng cho phép chữ 18px thay vì 14px như bản 1 hàng, do
+               dòng dài nhất ngắn hơn hẳn (ru 'ПАРАПЛАНЕРИЗМ' 13 ký tự thay vì
+               cả chuỗi 20 ký tự).
+               Desktop leading 1.85 là trần: 2 x 1.85 x 21.6px = 80px vừa khung.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <!-- leading 1.85 là trần: 2 dòng x 1.85 x 21.6px = 80px, vừa khít khung
-               menu. Muốn x3 (leading 2.4) thì khối chữ cao 104px, khung phải nới
-               lên khoảng 110px. -->
-          <div class="hidden xl:flex flex-col justify-center leading-[1.85] text-[#194d9b] font-black">
-            <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
-            <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
+          <div
+            class="flex lg:hidden xl:flex flex-col justify-center leading-tight xl:leading-[1.85] text-[#194d9b] font-black">
+            <span class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
         </NuxtLink>
 
