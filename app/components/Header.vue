@@ -6,17 +6,20 @@
       <div class="container-custom flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <!-- 80px = trần cho phép bởi khung menu h-20. Trước đây 105.6px nhưng
-               khung cố định 80px nên logo phải thu về vừa khung. -->
-          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
-            class="h-20 w-20 shrink-0 object-contain" format="webp" @error="handleLogoError" />
+          <!-- Bản đã cắt bỏ chữ "SAPA PARAGLIDING" trong ảnh (trùng với chữ bên
+               cạnh). Ảnh gốc 1000x1000 có hình chỉ chiếm 670px chiều cao, nên
+               trong khung 80px hình chỉ cao 53.6px. Bản cắt 820x670 lấp trọn
+               khung -> hình to lên 49% mà khung menu vẫn giữ đúng 80px.
+               Sapa_logo.png (bản đầy đủ) vẫn dùng cho JSON-LD và ảnh chia sẻ. -->
+          <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
+            class="h-20 w-auto shrink-0 object-contain" format="webp" @error="handleLogoError" />
           <!-- Tên thương hiệu, xếp 2 dòng cho hẹp (86px thay vì 166px nếu để
                1 dòng) vì thanh menu gần như hết chỗ. Chỉ hiện từ xl trở lên:
                ở 1024-1279px không còn đủ 98px cho khối chữ này.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center leading-none text-[#194d9b] font-extrabold">
-            <span class="text-xl">SAPA</span>
-            <span class="text-xs tracking-wide">PARAGLIDING</span>
+          <div class="hidden xl:flex flex-col justify-center gap-0.5 leading-none text-[#194d9b] font-black">
+            <span class="text-base 2xl:text-lg">SAPA</span>
+            <span class="text-base 2xl:text-lg">PARAGLIDING</span>
           </div>
         </NuxtLink>
 
@@ -24,9 +27,12 @@
              Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 8 mục menu
              tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
              bù cho cỡ chữ đã tăng và logo 105.6px. -->
-        <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5">
+        <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
-            class="uppercase whitespace-nowrap text-[13px] xl:text-base 2xl:text-lg text-gray-700 hover:text-red-600 font-medium transition-colors"
+            :class="[
+              'uppercase whitespace-nowrap text-gray-700 hover:text-red-600 font-medium transition-colors',
+              navTextSize
+            ]"
             active-class="text-red-600">
             {{ $t(item.label) }}
           </NuxtLink>
@@ -153,6 +159,18 @@
 <script setup lang="ts">
 const localePath = useLocalePath()
 const switchLocalePath = useSwitchLocalePath()
+const { locale } = useI18n()
+
+/**
+ * Chữ Hán và Devanagari nhìn nhỏ hơn hẳn chữ Latin ở cùng cỡ font, nên phải
+ * tăng cỡ riêng. Làm được vì menu hai thứ tiếng này ngắn hơn nhiều:
+ * tiếng Trung 23 ký tự, tiếng Ấn 60, so với tiếng Pháp 78 -> còn thừa chỗ.
+ */
+const navTextSize = computed(() =>
+  ['zh', 'hi'].includes(locale.value)
+    ? 'text-base xl:text-lg 2xl:text-xl'
+    : 'text-[13px] xl:text-[15px] 2xl:text-lg'
+)
 
 const isMenuOpen = ref(false)
 const isAtTop = ref(true)
