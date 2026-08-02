@@ -26,7 +26,7 @@
                Desktop leading 1.85 là trần: 2 x 1.85 x 21.6px = 80px vừa khung.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
           <div
-            class="flex lg:hidden xl:flex flex-col justify-center leading-tight xl:leading-[1.85] text-[#194d9b] font-black">
+            class="flex lg:hidden xl:flex flex-col justify-center leading-tight xl:leading-[0.925] text-[#194d9b] font-black">
             <span class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
