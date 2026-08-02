@@ -10,16 +10,21 @@
                khung cố định 80px nên logo phải thu về vừa khung. -->
           <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
             class="h-20 w-20 shrink-0 object-contain" format="webp" @error="handleLogoError" />
-          <!-- TẠM ẨN chữ "DÙ LƯỢN SAPA": logo đã gấp đôi nên chữ chen vào sẽ
-               chồng lên menu chính. Bỏ comment dòng dưới để hiện lại. -->
-          <!-- <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title') }}</span> -->
+          <!-- Tên thương hiệu, xếp 2 dòng cho hẹp (86px thay vì 166px nếu để
+               1 dòng) vì thanh menu gần như hết chỗ. Chỉ hiện từ xl trở lên:
+               ở 1024-1279px không còn đủ 98px cho khối chữ này.
+               Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
+          <div class="hidden xl:flex flex-col justify-center leading-none text-[#194d9b] font-extrabold">
+            <span class="text-xl">SAPA</span>
+            <span class="text-xs tracking-wide">PARAGLIDING</span>
+          </div>
         </NuxtLink>
 
         <!-- Menu Items (Desktop) — hiện từ 1024px.
              Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 8 mục menu
              tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
              bù cho cỡ chữ đã tăng và logo 105.6px. -->
-        <nav class="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-7">
+        <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
             class="uppercase whitespace-nowrap text-[13px] xl:text-base 2xl:text-lg text-gray-700 hover:text-red-600 font-medium transition-colors"
             active-class="text-red-600">
