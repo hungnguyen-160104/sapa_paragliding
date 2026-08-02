@@ -2,14 +2,14 @@
   <div>
     <!-- Horizontal Header Bar (static, part of page) -->
     <header class="relative bg-white/95 backdrop-blur-md shadow-lg" style="position: relative; z-index: 60;">
-      <!-- py-0: chiều cao thanh menu bằng đúng chiều cao logo (105.6px).
-           py-4 trước đây cộng thêm 32px khiến khung cao 137.6px. -->
-      <div class="container-custom flex items-center justify-between py-0">
+      <!-- h-20: khung menu cố định 80px. Logo cũng 80px nên lấp trọn chiều cao. -->
+      <div class="container-custom flex items-center justify-between h-20">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <!-- 6.6rem = 105.6px, to hơn 10% so với mức 6rem (gấp đôi cỡ gốc 3rem) -->
+          <!-- 80px = trần cho phép bởi khung menu h-20. Trước đây 105.6px nhưng
+               khung cố định 80px nên logo phải thu về vừa khung. -->
           <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
-            class="h-[6.6rem] w-[6.6rem] shrink-0 object-contain" format="webp" @error="handleLogoError" />
+            class="h-20 w-20 shrink-0 object-contain" format="webp" @error="handleLogoError" />
           <!-- TẠM ẨN chữ "DÙ LƯỢN SAPA": logo đã gấp đôi nên chữ chen vào sẽ
                chồng lên menu chính. Bỏ comment dòng dưới để hiện lại. -->
           <!-- <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title') }}</span> -->

@@ -9,7 +9,7 @@
         :key="localeItem.code"
         @click="switchLanguage(localeItem.code)"
         :class="[
-          'px-1 sm:px-1.5 xl:px-2 py-0.5 xl:py-1 rounded-md text-xs font-medium transition-all duration-200',
+          'px-1.5 sm:px-2 xl:px-2.5 py-1 xl:py-1.5 rounded-md text-[13px] font-medium transition-all duration-200',
           currentLocale === localeItem.code
             ? 'bg-red-600 text-white shadow-md'
             : 'text-gray-700 hover:bg-gray-100'
