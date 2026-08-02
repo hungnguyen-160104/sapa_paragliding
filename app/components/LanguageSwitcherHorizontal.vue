@@ -9,7 +9,9 @@
         :key="localeItem.code"
         @click="switchLanguage(localeItem.code)"
         :class="[
-          'px-1.5 sm:px-2 2xl:px-2.5 py-1 2xl:py-1.5 rounded-md text-[13px] font-medium transition-all duration-200',
+          // Điện thoại: nút to, dễ bấm. Từ lg phải thu lại vì còn phải nhường
+          // chỗ cho menu ngang 8 mục.
+          'px-2.5 py-1.5 text-[15px] lg:px-1.5 lg:py-1 lg:text-[13px] 2xl:px-2.5 2xl:py-1.5 rounded-md font-medium transition-all duration-200',
           currentLocale === localeItem.code
             ? 'bg-red-600 text-white shadow-md'
             : 'text-gray-700 hover:bg-gray-100'

@@ -2,8 +2,10 @@
   <div>
     <!-- Horizontal Header Bar (static, part of page) -->
     <header class="relative bg-white/95 backdrop-blur-md shadow-lg" style="position: relative; z-index: 60;">
-      <!-- h-20: khung menu cố định 80px. Logo cũng 80px nên lấp trọn chiều cao. -->
-      <div class="container-custom flex items-center justify-between h-20">
+      <!-- min-h-20: vẫn 80px như đã chốt, nhưng cho phép nở ra thay vì cắt mất
+           nội dung. Cần thiết vì trên điện thoại 6 nút ngôn ngữ (đã to lên)
+           cộng chữ thương hiệu buộc hàng nút phải xuống dòng. -->
+      <div class="container-custom flex items-center justify-between min-h-20 py-1">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <!-- Bản đã cắt bỏ chữ "SAPA PARAGLIDING" trong ảnh (trùng với chữ bên
@@ -12,14 +14,21 @@
                khung -> hình to lên 49% mà khung menu vẫn giữ đúng 80px.
                Sapa_logo.png (bản đầy đủ) vẫn dùng cho JSON-LD và ảnh chia sẻ. -->
           <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
-            class="h-[4.5rem] w-auto shrink-0 object-contain" format="webp" @error="handleLogoError" />
-          <!-- Tên thương hiệu, dịch theo ngôn ngữ (hero.title) và tự tách 2 dòng
-               cân đối. Xếp 2 dòng cho hẹp vì thanh menu gần như hết chỗ.
-               Chỉ hiện từ xl: ở 1024-1279px không còn đủ chỗ.
+            class="h-14 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
+            @error="handleLogoError" />
+
+          <!-- Điện thoại/tablet: tên thương hiệu 1 hàng ngang, cỡ nhỏ vì phải
+               chia chỗ với 6 nút ngôn ngữ. Ẩn từ lg vì khi đó menu ngang chiếm
+               hết chỗ; từ xl dùng bản 2 dòng bên dưới. -->
+          <span class="flex lg:hidden items-center whitespace-nowrap text-[11px] font-black text-[#194d9b]">
+            {{ $t('hero.title') }}
+          </span>
+
+          <!-- Desktop rộng: tách 2 dòng cân đối cho hẹp, chữ to hơn.
                Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center leading-none text-[#194d9b] font-black">
-            <span class="text-lg 2xl:text-xl">{{ brandLines[0] }}</span>
-            <span v-if="brandLines[1]" class="text-lg 2xl:text-xl">{{ brandLines[1] }}</span>
+          <div class="hidden xl:flex flex-col justify-center leading-[0.8] text-[#194d9b] font-black">
+            <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
         </NuxtLink>
 
