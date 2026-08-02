@@ -121,8 +121,7 @@
   }
 
   .text-stroke-sapa {
-    /* desktop (md+) dùng text-lg = 1.125rem, bằng một nửa text-4xl = 2.25rem */
-    @apply text-3xl md:text-lg font-black uppercase tracking-wide;
+    @apply text-3xl md:text-4xl font-black uppercase tracking-wide;
     color: #194d9b;
     /* emerald-500 */
 

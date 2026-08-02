@@ -5,8 +5,8 @@
       <div class="container-custom flex items-center justify-between py-4">
         <!-- Logo -->
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo"
-            class="h-12 w-12 md:h-24 md:w-24 object-contain" format="webp" @error="handleLogoError" />
+          <NuxtImg src="/images/Sapa_logo.png" alt="Sapa Paragliding Logo" class="h-12 w-12 object-contain"
+            format="webp" @error="handleLogoError" />
           <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title')
             }}</span>
         </NuxtLink>
