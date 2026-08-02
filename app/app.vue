@@ -15,6 +15,10 @@ const route = useRoute()
 const { locale } = useI18n()
 const config = useRuntimeConfig()
 
+const isAdminRoute = computed(() => {
+  return route.path.includes('/admin')
+})
+
 useHead(() => {
   const scripts = config.public.gaId
     ? [
@@ -33,16 +37,22 @@ useHead(() => {
       ]
     : []
 
+  // Admin lives under a locale prefix (/vi/admin, /en/admin...), so robots.txt
+  // alone cannot keep it out of the index — override the global index,follow here.
+  const robotsMeta = isAdminRoute.value
+    ? [
+        { name: 'robots', content: 'noindex, nofollow' },
+        { name: 'googlebot', content: 'noindex, nofollow' }
+      ]
+    : []
+
   return {
     htmlAttrs: {
       lang: locale.value || 'vi'
     },
+    meta: [...robotsMeta],
     script: [...scripts]
   }
-})
-
-const isAdminRoute = computed(() => {
-  return route.path.includes('/admin')
 })
 </script>
 

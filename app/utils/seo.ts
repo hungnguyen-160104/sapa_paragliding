@@ -106,7 +106,8 @@ export const getOgLocale = (locale: string): string => {
   return localeToHreflang[normalizedLocale].replace('-', '_')
 }
 
-export const getDefaultOgImage = (): string => `${DOMAIN}/images/hero-bg.jpg`
+/** 1200x630 — tỉ lệ chuẩn cho Open Graph / Twitter card. */
+export const getDefaultOgImage = (): string => `${DOMAIN}/images/og-default.jpg`
 
 export const buildOrganizationJsonLD = (locale: string = 'en') => {
   const labels: Record<SupportedLocale, { name: string; description: string }> = {

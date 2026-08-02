@@ -1,8 +1,12 @@
 User-agent: *
 Allow: /
 
-Disallow: /admin/
+# i18n dùng strategy 'prefix' nên URL thật luôn có tiền tố locale
+# (/vi/admin, /en/admin...). Cần cả dạng có và không có tiền tố.
 Disallow: /api/
+Disallow: /admin
+Disallow: /*/admin
 Disallow: /qr
+Disallow: /*/qr
 
 Sitemap: https://www.paraglidingsapa.com/sitemap.xml

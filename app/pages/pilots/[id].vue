@@ -66,6 +66,8 @@
                                     </div>
 
                                     <NuxtImg :src="image" :alt="`${pilot.name} - ${index + 1}`" format="webp"
+                                        width="600" height="686" sizes="(max-width: 768px) 50vw, 25vw"
+                                        :preload="index === 0" :loading="index === 0 ? 'eager' : 'lazy'"
                                         class="w-full h-full object-cover object-center transition-transform duration-700"
                                         :class="hoveredImage === index ? 'scale-105' : ''" @error="handleImageError" />
 
@@ -96,6 +98,7 @@
                             <div
                                 class="w-full max-w-sm aspect-[3/4] overflow-hidden shadow-xl border-4 border-white/20">
                                 <NuxtImg v-if="contentImages[0]" :src="contentImages[0]" :alt="pilot.name" format="webp"
+                                    width="600" height="800" sizes="(max-width: 768px) 90vw, 400px" loading="lazy"
                                     class="w-full h-full object-cover object-center" @error="handleImageError" />
                             </div>
                         </div>
@@ -170,6 +173,7 @@
                             </div>
                             <div class="order-1 lg:order-2">
                                 <NuxtImg v-if="contentImages[1]" :src="contentImages[1]" :alt="`Pilot ${pilot.name}`" format="webp"
+                                    width="800" height="384" sizes="(max-width: 1024px) 90vw, 600px" loading="lazy"
                                     class="w-full rounded-2xl shadow-lg object-cover h-96 hover:shadow-xl transition-shadow duration-300"
                                     @error="handleImageError" />
                             </div>
@@ -213,6 +217,7 @@
                                     </div>
 
                                     <NuxtImg :src="image" :alt="`${pilot.name} - Gallery ${index + 1}`" format="webp"
+                                        width="700" height="800" sizes="(max-width: 768px) 90vw, 33vw" loading="lazy"
                                         class="w-full h-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)]"
                                         :class="hoveredGalleryImage === index ? 'scale-105' : ''"
                                         @error="handleImageError" />
@@ -354,6 +359,7 @@ import {
     buildLocalizedUrl,
     buildPersonJsonLD,
     getCanonicalUrl,
+    getDefaultOgImage,
     getOgLocale
 } from '~/utils/seo'
 const route = useRoute()
@@ -423,14 +429,14 @@ const galleryImages = computed(() => {
     const pilotNumber = pilotId.replace('pilot', '')
     const basePath = `/images/pilots/pilot${pilotNumber}`
 
-    // Add header images (header1.png to header5.png)
+    // Add header images (header1.jpg to header5.jpg)
     for (let i = 1; i <= 5; i++) {
-        images.push(`${basePath}/header${i}.png`)
+        images.push(`${basePath}/header${i}.jpg`)
     }
 
-    // Add body images (body1.png to body2.png)
+    // Add body images (body1.jpg to body2.jpg)
     for (let i = 1; i <= 2; i++) {
-        images.push(`${basePath}/body${i}.png`)
+        images.push(`${basePath}/body${i}.jpg`)
     }
 
     return images
@@ -559,7 +565,8 @@ const seoDescription = computed(() => {
     return pilot.value.des
 })
 const ogImage = computed(() => {
-    const image = contentImages.value[0] || heroImage.value || '/images/hero-bg.jpg'
+    const image = contentImages.value[0] || heroImage.value
+    if (!image) return getDefaultOgImage()
     return image.startsWith('http') ? image : `${DOMAIN}${image}`
 })
 const breadcrumbJsonLd = computed(() =>
