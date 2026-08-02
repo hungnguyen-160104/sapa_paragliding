@@ -13,13 +13,13 @@
           <!-- <span class="hidden sm:inline text-stroke-sapa">{{ $t('hero.title') }}</span> -->
         </NuxtLink>
 
-        <!-- Menu Items (Desktop)
-             Mốc xl chứ không phải md: 8 mục menu tiếng Việt/Pháp cần ~790-800px,
-             cộng logo 96px và thanh ngôn ngữ thì tổng vượt quá bề ngang khả dụng
-             ở mọi màn hình dưới 1280px. Dưới mốc này dùng nút hamburger. -->
-        <nav class="hidden xl:flex items-center gap-4 2xl:gap-7">
+        <!-- Menu Items (Desktop) — hiện từ 1024px.
+             Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 8 mục menu
+             tiếng Việt/Pháp sẽ tràn. Ngân sách ở 1024px (992px khả dụng):
+             logo 96 + nav 639-653 + thanh ngôn ngữ 166 = 913-927px. -->
+        <nav class="hidden lg:flex items-center gap-3 xl:gap-4 2xl:gap-7">
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
-            class="uppercase whitespace-nowrap text-sm lg:text-base text-gray-700 hover:text-red-600 font-medium transition-colors"
+            class="uppercase whitespace-nowrap text-xs xl:text-sm 2xl:text-base text-gray-700 hover:text-red-600 font-medium transition-colors"
             active-class="text-red-600">
             {{ $t(item.label) }}
           </NuxtLink>
@@ -29,7 +29,7 @@
         <div class="flex items-center gap-3">
           <!-- Menu Button (Mobile) -->
           <button @click.stop="toggleMenu"
-            class="xl:hidden bg-red-600 hover:bg-red-700 text-white p-2.5 rounded-lg transition-all duration-300"
+            class="lg:hidden bg-red-600 hover:bg-red-700 text-white p-2.5 rounded-lg transition-all duration-300"
             aria-label="Toggle menu">
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
