@@ -13,28 +13,46 @@ const getMongoUri = () => {
   }
 }
 
+/**
+ * Kết nối đang dở dang, dùng chung cho mọi lời gọi đồng thời.
+ *
+ * Trước đây hàm dưới chỉ xử lý readyState 0 (chưa kết nối) và 1 (đã kết nối).
+ * Khi readyState là 2 (ĐANG kết nối) thì cả hai nhánh đều bị bỏ qua, hàm đọc
+ * mongoose.connection.db lúc còn undefined rồi ném lỗi. Tình huống này xảy ra
+ * thường xuyên trên Vercel: lần khởi động lạnh, request đầu tiên bắt đầu
+ * connect, request thứ hai ập tới ngay sau đó và rơi đúng vào khe readyState 2.
+ * Hậu quả nặng nhất nằm ở sitemap — xem server/utils/sitemap.ts.
+ *
+ * Giữ lại promise để mọi request cùng chờ một kết nối duy nhất.
+ */
+let connectionPromise: Promise<unknown> | null = null
+
 export async function connectToDatabase() {
-  // Check if Mongoose is already connected
-  if (mongoose.connection.readyState === 1) {
-    const db = mongoose.connection.db
-    if (!db) {
-      throw new Error('MongoDB connection is missing db instance')
-    }
-    return { client: mongoose.connection.getClient(), db }
+  const readyState = mongoose.connection.readyState
+
+  // 1 = đã kết nối
+  if (readyState === 1 && mongoose.connection.db) {
+    return { client: mongoose.connection.getClient(), db: mongoose.connection.db }
   }
 
-  // If not connected, try to connect using config
-  const mongoUri = getMongoUri()
+  // 0 = đã ngắt hẳn: bỏ promise cũ để lần này kết nối lại từ đầu.
+  // Mongoose đặt readyState = 2 ngay trong lời gọi connect() nên readyState 0
+  // bảo đảm không có request nào khác đang kết nối dở.
+  if (readyState === 0) {
+    connectionPromise = null
+  }
 
-  if (mongoose.connection.readyState === 0) {
-    try {
-      await mongoose.connect(mongoUri)
-      console.log('Connected to MongoDB via Mongoose (Lazy)')
-    } catch (error) {
+  if (!connectionPromise) {
+    connectionPromise = mongoose.connect(getMongoUri()).catch((error) => {
+      // Xoá promise hỏng, nếu không mọi request sau đều nhận lại đúng lỗi này
+      // và tiến trình không bao giờ tự phục hồi được.
+      connectionPromise = null
       console.error('Failed to connect to MongoDB in utils/db:', error)
       throw error
-    }
+    })
   }
+
+  await connectionPromise
 
   const db = mongoose.connection.db
   if (!db) {

@@ -61,14 +61,22 @@ export function getLastMod(): string {
 export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string> {
   const lastmod = getLastMod()
 
-  let posts: Array<{ slug: string; publishedAt?: Date }> = []
-  try {
-    const { db } = await connectToDatabase()
-    posts = await db.collection('posts')
-      .find({ status: 'PUBLISHED' }, { projection: { slug: 1, publishedAt: 1 } })
-      .toArray() as unknown as Array<{ slug: string; publishedAt?: Date }>
-  } catch {
-    // DB unavailable — build sitemap with static pages only
+  // KHÔNG nuốt lỗi database ở đây.
+  //
+  // Bản cũ bắt lỗi rồi lặng lẽ trả sitemap chỉ có 8 trang tĩnh. Vì route đặt
+  // Cache-Control: public, max-age=3600 nên CDN của Vercel ghim đúng bản thiếu
+  // đó suốt một tiếng — và với Google, một sitemap 200 mà mất 44 URL không phải
+  // là "tạm lỗi", nó là tín hiệu các trang kia đã biến mất.
+  //
+  // Để lỗi bay lên thành 500 thì Google giữ nguyên sitemap đã biết rồi thử lại,
+  // còn CDN không cache phản hồi 5xx. Hỏng ồn ào an toàn hơn hỏng im lặng.
+  const { db } = await connectToDatabase()
+  const posts = await db.collection('posts')
+    .find({ status: 'PUBLISHED' }, { projection: { slug: 1, publishedAt: 1 } })
+    .toArray() as unknown as Array<{ slug: string; publishedAt?: Date }>
+
+  if (posts.length === 0) {
+    throw new Error('Sitemap: truy vấn posts trả về rỗng, không phát hành sitemap thiếu bài')
   }
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'

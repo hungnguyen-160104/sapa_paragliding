@@ -72,68 +72,68 @@
             </div>
 
             <!-- 3 Small Images Grid - Bottom -->
-            <!-- 3 cột ở mọi khổ màn: mobile trước đây ẩn ảnh 02/03 (hidden md:block)
-                 nên thiếu ảnh so với desktop. Mỗi cột chỉ ~1/3 bề ngang máy nên
-                 chữ overlay thu nhỏ và ẩn đoạn mô tả ở mobile. -->
-            <div class="grid grid-cols-3 h-[30vh] lg:h-[25vh]">
+            <!-- Mobile xếp dọc 1 cột, mỗi ảnh chiếm trọn bề ngang theo tỉ lệ
+                 gốc 4:3 nên nhìn được full ảnh. Từ md trở lên quay lại 3 cột
+                 nằm ngang cao cố định như bản desktop cũ. -->
+            <div class="grid grid-cols-1 md:grid-cols-3 md:h-[30vh] lg:h-[25vh]">
                 <!-- Image 1 -->
-                <div class="relative overflow-hidden group">
+                <div class="relative aspect-[4/3] md:aspect-auto overflow-hidden group">
                     <NuxtImg src="/images/gallery/1. Soar above Sapa valley.JPG" alt="Paragliding Experience 1"
                         width="800" height="600" format="webp"
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-2 md:p-6">
+                    <div class="absolute top-0 left-0 p-4 md:p-6">
                         <span
-                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-red-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
+                            class="inline-block px-3 py-1 bg-red-600/90 text-white text-xs font-bold rounded-full mb-2">
                             01
                         </span>
-                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
                             {{ $t('about.values.safety.title') }}
                         </h3>
-                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.safety') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Image 2 -->
-                <div class="relative overflow-hidden group">
+                <div class="relative aspect-[4/3] md:aspect-auto overflow-hidden group">
                     <NuxtImg src="/images/gallery/2. Sunset flight.jpg" alt="Paragliding Experience 2"
                         width="800" height="600" format="webp"
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-2 md:p-6">
+                    <div class="absolute top-0 left-0 p-4 md:p-6">
                         <span
-                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-blue-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
+                            class="inline-block px-3 py-1 bg-blue-600/90 text-white text-xs font-bold rounded-full mb-2">
                             02
                         </span>
-                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
                             {{ $t('about.values.excellence.title') }}
                         </h3>
-                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.experience') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Image 3 -->
-                <div class="relative overflow-hidden group">
+                <div class="relative aspect-[4/3] md:aspect-auto overflow-hidden group">
                     <NuxtImg src="/images/gallery/3. Mountain peak.jpg" alt="Paragliding Experience 3"
                         width="800" height="600" format="webp"
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-2 md:p-6">
+                    <div class="absolute top-0 left-0 p-4 md:p-6">
                         <span
-                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-orange-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
+                            class="inline-block px-3 py-1 bg-orange-600/90 text-white text-xs font-bold rounded-full mb-2">
                             03
                         </span>
-                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
                             {{ $t('about.values.passion.title') }}
                         </h3>
-                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.nature') }}
                         </p>
                     </div>
