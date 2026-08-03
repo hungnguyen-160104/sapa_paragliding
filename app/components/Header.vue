@@ -7,7 +7,10 @@
            cộng chữ thương hiệu buộc hàng nút phải xuống dòng. -->
       <div class="container-custom flex items-center justify-between min-h-20 py-1">
         <!-- Logo -->
-        <NuxtLink :to="localePath('/')" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <!-- min-w-0 cho phép khối logo+chữ co lại thay vì đẩy nút ngôn ngữ
+             ra ngoài: tiếng Nga 20 ký tự tràn ~25px trên máy 390px -->
+        <NuxtLink :to="localePath('/')"
+          class="flex min-w-0 items-center gap-1.5 lg:gap-3 hover:opacity-80 transition-opacity">
           <!-- Bản đã cắt bỏ chữ "SAPA PARAGLIDING" trong ảnh (trùng với chữ bên
                cạnh). Ảnh gốc 1000x1000 có hình chỉ chiếm 670px chiều cao, nên
                trong khung 80px hình chỉ cao 53.6px. Bản cắt 820x670 lấp trọn
@@ -17,18 +20,21 @@
             class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
-          <!-- Tên thương hiệu, tách 2 dòng cân đối ở mọi kích thước.
-               Hiện dưới lg và từ xl; ẩn ở dải 1024-1279px vì khi đó menu ngang
-               8 mục chiếm hết chỗ.
-               Mobile 2 dòng cho phép chữ 18px thay vì 14px như bản 1 hàng, do
-               dòng dài nhất ngắn hơn hẳn (ru 'ПАРАПЛАНЕРИЗМ' 13 ký tự thay vì
-               cả chuỗi 20 ký tự).
-               Desktop leading 1.85 là trần: 2 x 1.85 x 21.6px = 80px vừa khung.
-               Màu #194d9b là màu xanh thương hiệu, lấy từ .text-stroke-sapa. -->
-          <div
-            class="flex lg:hidden xl:flex flex-col justify-center leading-tight xl:leading-[0.925] text-[#194d9b] font-black">
-            <span class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
-            <span v-if="brandLines[1]" class="text-base sm:text-lg xl:text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
+          <!-- MOBILE/TABLET (<lg): tên thương hiệu 1 hàng ngang, không xuống
+               dòng, chữ đậm. whitespace-nowrap giữ nguyên "DÙ LƯỢN SAPA" trên
+               một dòng; cỡ nhỏ vì còn chia chỗ với 6 nút ngôn ngữ. -->
+          <span
+            class="flex lg:hidden items-center min-w-0 truncate whitespace-nowrap text-[13px] font-black text-[#194d9b]">
+            {{ $t('hero.title') }}
+          </span>
+
+          <!-- DESKTOP (xl+): tách 2 dòng cân đối, cách dòng sát.
+               leading 0.65 = 70% của 0.925 trước đó, để "DÙ LƯỢN" và "SAPA"
+               gần nhau hơn. Ẩn ở dải 1024-1279px vì menu ngang 8 mục chiếm hết
+               chỗ. Màu #194d9b lấy từ .text-stroke-sapa. -->
+          <div class="hidden xl:flex flex-col justify-center leading-[0.65] text-[#194d9b] font-black">
+            <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
         </NuxtLink>
 
@@ -48,10 +54,10 @@
         </nav>
 
         <!-- Right Controls -->
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1.5 lg:gap-3">
           <!-- Menu Button (Mobile) -->
           <button @click.stop="toggleMenu"
-            class="lg:hidden bg-red-600 hover:bg-red-700 text-white p-2.5 rounded-lg transition-all duration-300"
+            class="lg:hidden shrink-0 bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-all duration-300"
             aria-label="Toggle menu">
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />

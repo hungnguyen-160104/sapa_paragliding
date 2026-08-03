@@ -1,17 +1,16 @@
 <template>
   <div class="language-switcher-horizontal">
-    <!-- 6 nút ngôn ngữ chiếm 266px ở cỡ cũ, quá rộng cho header điện thoại.
-         Nén lại ở màn hẹp, chỉ nới ra từ xl. flex-wrap là lưới an toàn:
-         màn cực hẹp thì xuống hàng thay vì tràn ra ngoài. -->
-    <div class="flex flex-wrap justify-end gap-0.5 2xl:gap-1 items-center">
+    <!-- flex-nowrap: ép cả 6 nút trên MỘT hàng, không xuống dòng. Trên điện
+         thoại nút phải rất gọn (px-1 text-[11px]) vì còn chia chỗ với logo,
+         chữ thương hiệu 1 hàng và nút menu. Từ lg nới ra vì có nhiều chỗ hơn. -->
+    <div class="flex flex-nowrap justify-end gap-0.5 2xl:gap-1 items-center">
       <button
         v-for="localeItem in availableLocales"
         :key="localeItem.code"
         @click="switchLanguage(localeItem.code)"
         :class="[
-          // Điện thoại: nút to, dễ bấm. Từ lg phải thu lại vì còn phải nhường
-          // chỗ cho menu ngang 8 mục.
-          'px-2.5 py-1.5 text-[15px] lg:px-1.5 lg:py-1 lg:text-[13px] 2xl:px-2.5 2xl:py-1.5 rounded-md font-medium transition-all duration-200',
+          // Điện thoại: nút rất gọn để 6 nút vừa 1 hàng. Từ lg nới lại.
+          'shrink-0 px-1 py-1 text-[11px] lg:px-1.5 lg:text-[13px] 2xl:px-2.5 2xl:py-1.5 rounded-md font-medium transition-all duration-200',
           currentLocale === localeItem.code
             ? 'bg-red-600 text-white shadow-md'
             : 'text-gray-700 hover:bg-gray-100'
