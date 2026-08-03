@@ -132,19 +132,19 @@
          Nhóm luôn có mặt trong DOM, chỉ danh sách con thay đổi — đó là cách
          TransitionGroup nhận biết để chạy hiệu ứng vào/ra. -->
     <TransitionGroup name="pill" tag="div" :style="menuPosition"
-      class="lg:hidden pointer-events-none fixed right-0 z-[9999] flex w-[17rem] max-w-full flex-col gap-2 overflow-y-auto overscroll-contain px-4 py-2">
+      class="lg:hidden pointer-events-none fixed right-0 z-[9999] flex w-[13.5rem] max-w-full flex-col gap-2 overflow-y-auto overscroll-contain px-4 py-2">
       <template v-if="isMenuOpen">
         <NuxtLink v-for="(item, index) in menuItems" :key="item.path"
           :to="getLocalizedPath(item.path)" @click="closeMenu"
           :style="{ transitionDelay: `${index * 35}ms` }"
-          class="rounded-xl bg-white/95 px-4 py-3 text-center text-sm font-bold uppercase text-gray-800 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.55)] ring-1 ring-black/5 backdrop-blur-md transition-colors duration-200 hover:bg-red-600 hover:text-white pointer-events-auto"
+          class="rounded-xl bg-white/55 px-3 py-2.5 text-center text-sm font-bold uppercase text-gray-900 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.45)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150 transition-colors duration-200 hover:bg-red-600/90 hover:text-white pointer-events-auto"
           active-class="!bg-red-600 !text-white">
           {{ $t(item.label) }}
         </NuxtLink>
 
         <!-- Hàng mạng xã hội cũng là một viên nổi riêng, rơi sau cùng -->
         <div key="social" :style="{ transitionDelay: `${menuItems.length * 35}ms` }"
-          class="pointer-events-auto flex items-center justify-center gap-6 rounded-xl bg-white/95 px-4 py-3 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.55)] ring-1 ring-black/5 backdrop-blur-md">
+          class="pointer-events-auto flex items-center justify-center gap-6 rounded-xl bg-white/55 px-3 py-2.5 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.45)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150">
           <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
             class="text-gray-700 transition-colors hover:text-red-600" aria-label="Facebook">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -261,10 +261,16 @@ const menuPosition = computed(() => ({
 const toggleMenu = (event?: Event) => {
   if (!isMenuOpen.value) {
     // Có HAI nút mở menu: nút trong thanh header, và nút nổi góc phải hiện khi
-    // đã cuộn trang (lúc đó header đã trôi khỏi màn hình). Đo chính nút vừa
-    // bấm nên panel luôn thả xuống đúng ngay dưới nút đó, khỏi phải phân biệt.
+    // đã cuộn trang (lúc đó header đã trôi khỏi màn hình).
+    //
+    // Đo CẢ CỤM chứa nút (parentElement) chứ không đo riêng nút, vì ở chế độ
+    // nổi thì bong bóng chọn ngôn ngữ nằm NGAY DƯỚI nút menu trong cùng cụm —
+    // đo riêng nút thì menu xổ ra sẽ che mất nó. Đo cụm thì cả hai trường hợp
+    // đều đúng mà không phải phân biệt: trong header cụm là hàng nút bên phải,
+    // ở chế độ nổi cụm là cột [nút menu + nút ngôn ngữ].
     const trigger = event?.currentTarget as HTMLElement | undefined
-    const bottom = trigger?.getBoundingClientRect().bottom ?? 80
+    const cluster = trigger?.parentElement ?? trigger
+    const bottom = cluster?.getBoundingClientRect().bottom ?? 80
     menuTopPx.value = Math.max(8, bottom + 8)
   }
   isMenuOpen.value = !isMenuOpen.value
