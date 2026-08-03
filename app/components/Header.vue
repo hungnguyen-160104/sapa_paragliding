@@ -20,13 +20,15 @@
             class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
-          <!-- MOBILE/TABLET (<lg): tên thương hiệu 1 hàng ngang, không xuống
-               dòng, chữ đậm. whitespace-nowrap giữ nguyên "DÙ LƯỢN SAPA" trên
-               một dòng; cỡ nhỏ vì còn chia chỗ với 6 nút ngôn ngữ. -->
-          <span
-            class="flex lg:hidden items-center min-w-0 truncate whitespace-nowrap text-[13px] font-black text-[#194d9b]">
-            {{ $t('hero.title') }}
-          </span>
+          <!-- MOBILE/TABLET (<lg): tách 2 dòng ("DÙ LƯỢN" / "SAPA") với cách
+               dòng sát. Để 1 hàng thì dòng dài 12 ký tự chen với 6 nút ngôn
+               ngữ nên bị đè; tách 2 dòng thì dòng dài nhất chỉ còn 7 ký tự,
+               vừa hết chật vừa cho phép chữ to hơn (13px -> 15px). -->
+          <div
+            class="flex lg:hidden min-w-0 flex-col justify-center leading-[0.95] text-[#194d9b] font-black">
+            <span class="truncate text-[15px]">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="truncate text-[15px]">{{ brandLines[1] }}</span>
+          </div>
 
           <!-- DESKTOP (xl+): tách 2 dòng cân đối, cách dòng sát.
                leading 0.65 = 70% của 0.925 trước đó, để "DÙ LƯỢN" và "SAPA"
@@ -127,7 +129,7 @@
 
           <!-- Logo/Title -->
           <div class="mb-6 sm:mb-8">
-            <h2 class="text-xl sm:text-2xl font-bold text-red-600">{{ $t('hero.title') }}</h2>
+            <h2 class="text-xl sm:text-2xl font-black text-red-600">{{ $t('hero.title') }}</h2>
           </div>
 
           <!-- Menu Items -->
