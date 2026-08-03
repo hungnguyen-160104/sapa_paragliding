@@ -295,7 +295,10 @@ import {
   getOgLocale
 } from '~/utils/seo'
 
-const processSteps = [1, 2, 3, 4, 5]
+// Số bước trong "Quy Trình Bay Chuyên Nghiệp". Mỗi số tương ứng một khoá
+// about.process.stepN.{title,description} trong i18n/locales/*.json —
+// thêm bước mới phải thêm khoá cho cả 6 ngôn ngữ.
+const processSteps = [1, 2, 3, 4, 5, 6]
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
