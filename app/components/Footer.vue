@@ -33,13 +33,17 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              <div class="space-y-3">
-                <p class="text-sm text-white">
+              <!-- min-w-0: cho khối co lại thay vì đẩy giãn cột khi các dòng
+                   bên dưới bị cấm xuống dòng -->
+              <div class="min-w-0 space-y-3">
+                <p class="text-sm text-white" :class="contactNowrapClass">
                   {{ contactData.title }}
                 </p>
 
                 <ul class="space-y-2 text-sm text-white">
-                  <li v-for="(item, index) in contactData.list" :key="index">
+                  <!-- Trên desktop mỗi liên hệ nằm gọn MỘT dòng.
+                       Mobile vẫn cho xuống dòng vì màn hẹp không đủ chỗ. -->
+                  <li v-for="(item, index) in contactData.list" :key="index" :class="contactNowrapClass">
                     <span class="font-semibold">{{ item.name }}</span>
                     – {{ item.role }}:
                     <!-- whitespace-nowrap: số có dấu cách (+84 386 887 489) nên
@@ -175,6 +179,21 @@
 <script setup lang="ts">
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+
+/**
+ * Từ cỡ màn nào thì cấm dòng liên hệ xuống hàng.
+ *
+ * Cột liên hệ chiếm 1.8/3.8 bề ngang lưới footer, nên rộng khoảng 440px ở
+ * 1024px và 561px ở 1280px. Dòng dài nhất của từng ngôn ngữ:
+ *   vi ~329px, en ~349px, fr ~355px, hi ~389px  -> vừa từ 1024px
+ *   ru ~478px, zh ~473px                        -> chỉ vừa từ 1280px
+ *
+ * Cấm xuống dòng sớm hơn mức vừa thì chữ tràn ngang ra ngoài trang, còn tệ
+ * hơn là bị xuống dòng. Nên hai ngôn ngữ dài phải đợi tới xl.
+ */
+const contactNowrapClass = computed(() =>
+  ['ru', 'zh'].includes(locale.value) ? 'xl:whitespace-nowrap' : 'lg:whitespace-nowrap'
+)
 
 const isDesktop = ref(false)
 
