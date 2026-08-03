@@ -38,7 +38,7 @@ export interface PostSummary {
 
 export interface ContentBlock {
   id: string
-  type: 'heading' | 'paragraph' | 'image' | 'gallery' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard'
+  type: 'heading' | 'paragraph' | 'image' | 'gallery' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard' | 'table'
   data: Record<string, any>
 }
 
@@ -160,6 +160,10 @@ function getDefaultBlockData(type: ContentBlock['type'], locale: 'en' | 'vi' = '
       return { url: '', caption: '' }
     case 'linkCard':
       return { url: '', title: '', description: '' }
+    case 'table':
+      // headers: hàng tiêu đề; rows: mảng các hàng, mỗi hàng là mảng ô.
+      // Số cột luôn bằng headers.length — bảo đảm bởi normalizeTableData().
+      return { headers: ['', ''], rows: [['', ''], ['', '']], hasHeader: true }
     case 'cta':
       return {
         type: 'booking',
@@ -168,6 +172,39 @@ function getDefaultBlockData(type: ContentBlock['type'], locale: 'en' | 'vi' = '
       }
     default:
       return {}
+  }
+}
+
+export interface TableData {
+  headers: string[]
+  rows: string[][]
+  hasHeader: boolean
+}
+
+/**
+ * Ép dữ liệu bảng về đúng hình dạng: mọi hàng có số ô bằng số cột.
+ * Dữ liệu cũ hoặc bị sửa tay ngoài trình soạn thảo có thể lệch cột, nếu
+ * không chuẩn hoá thì lúc render sẽ vỡ bảng.
+ */
+export function normalizeTableData(data: unknown): TableData {
+  const raw = (data ?? {}) as Record<string, unknown>
+
+  const rawHeaders = Array.isArray(raw.headers) ? raw.headers : []
+  const headers = rawHeaders.length > 0
+    ? rawHeaders.map((cell) => String(cell ?? ''))
+    : ['', '']
+
+  const columnCount = headers.length
+  const rawRows = Array.isArray(raw.rows) ? raw.rows : []
+  const rows = rawRows.map((row) => {
+    const cells = Array.isArray(row) ? row : []
+    return Array.from({ length: columnCount }, (_, index) => String(cells[index] ?? ''))
+  })
+
+  return {
+    headers,
+    rows: rows.length > 0 ? rows : [Array.from({ length: columnCount }, () => '')],
+    hasHeader: raw.hasHeader !== false
   }
 }
 
@@ -266,6 +303,9 @@ function buildVietnameseBlockFromEnglish(block: ContentBlock): ContentBlock {
       vi.data.title = vi.data?.title || ''
       vi.data.description = vi.data?.description || ''
       break
+    case 'table':
+      vi.data = normalizeTableData(vi.data)
+      break
     default:
       break
   }
@@ -329,6 +369,21 @@ function ensureBilingualBlocks(
         mergedVi.data.images = Array.isArray(enBlock.data?.images) ? enBlock.data.images : []
         mergedVi.data.layout = enBlock.data?.layout || 'grid'
         break
+      case 'table': {
+        // Khung bảng (số hàng, số cột, có hàng tiêu đề hay không) lấy theo bản
+        // tiếng Anh; chữ trong ô giữ nguyên của bản tiếng Việt nếu đã nhập.
+        const enTable = normalizeTableData(enBlock.data)
+        const viTable = normalizeTableData(mergedVi.data)
+
+        mergedVi.data = {
+          hasHeader: enTable.hasHeader,
+          headers: enTable.headers.map((_, index) => viTable.headers[index] ?? ''),
+          rows: enTable.rows.map((row, rowIndex) =>
+            row.map((_, colIndex) => viTable.rows[rowIndex]?.[colIndex] ?? '')
+          )
+        }
+        break
+      }
       default:
         break
     }

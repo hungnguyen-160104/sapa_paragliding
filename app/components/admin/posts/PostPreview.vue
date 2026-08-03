@@ -56,9 +56,40 @@
               {{ block.data?.text || '' }}
             </component>
 
-            <p v-else-if="block.type === 'paragraph'" class="whitespace-pre-line leading-relaxed text-slate-700">
-              {{ block.data?.text || '' }}
-            </p>
+            <p
+              v-else-if="block.type === 'paragraph'"
+              class="whitespace-pre-line leading-relaxed text-slate-700"
+              v-html="renderInlineMarkup(block.data?.text)"
+            />
+
+            <div v-else-if="block.type === 'table'" class="my-6 overflow-x-auto rounded-lg border border-slate-200">
+              <table class="w-full border-collapse text-left text-sm">
+                <thead v-if="normalizeTableData(block.data).hasHeader">
+                  <tr class="bg-slate-50">
+                    <th
+                      v-for="(cell, col) in normalizeTableData(block.data).headers"
+                      :key="`th-${col}`"
+                      class="border-b border-slate-200 px-3 py-2 font-bold text-slate-900"
+                      v-html="renderInlineMarkup(cell)"
+                    />
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(row, rowIndex) in normalizeTableData(block.data).rows"
+                    :key="`tr-${rowIndex}`"
+                    class="even:bg-slate-50/60"
+                  >
+                    <td
+                      v-for="(cell, col) in row"
+                      :key="`td-${rowIndex}-${col}`"
+                      class="border-b border-slate-100 px-3 py-2 text-slate-700"
+                      v-html="renderInlineMarkup(cell)"
+                    />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
             <figure v-else-if="block.type === 'image' && block.data?.url" class="my-6">
               <img :src="block.data.url" :alt="block.data?.alt || displayTitle" class="w-full rounded-lg" />
@@ -138,6 +169,8 @@
 
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
+import { normalizeTableData } from '~/stores/postsAdmin'
+import { renderInlineMarkup } from '~/utils/inlineMarkup'
 
 type BlockData = {
   level?: number

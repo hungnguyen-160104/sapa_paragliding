@@ -86,6 +86,11 @@
               {{ formatDate(post.date) }}
             </div>
           </div>
+
+          <!-- chia sẻ bài viết — ngay dưới hàng tác giả/ngày, giống mebayluon.com -->
+          <div class="mt-5 flex justify-center">
+            <ShareButtons variant="article" :title="displayTitle" />
+          </div>
         </header>
 
         <div class="relative mb-16 overflow-hidden rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200">
@@ -122,7 +127,43 @@
               </template>
 
               <template v-else-if="block.type === 'paragraph'">
-                <p class="whitespace-pre-line leading-relaxed text-gray-700">{{ block.data?.text }}</p>
+                <!-- v-html an toàn: renderInlineMarkup escape toàn bộ trước rồi
+                     chỉ chèn lại <strong> và <em> -->
+                <p
+                  class="whitespace-pre-line leading-relaxed text-gray-700"
+                  v-html="renderInlineMarkup(block.data?.text)"
+                />
+              </template>
+
+              <template v-else-if="block.type === 'table'">
+                <div class="my-6 overflow-x-auto rounded-xl border border-gray-200">
+                  <table class="w-full border-collapse text-left text-sm">
+                    <thead v-if="normalizeTableData(block.data).hasHeader">
+                      <tr class="bg-gray-50">
+                        <th
+                          v-for="(cell, col) in normalizeTableData(block.data).headers"
+                          :key="`th-${col}`"
+                          class="border-b border-gray-200 px-4 py-3 font-bold text-gray-900"
+                          v-html="renderInlineMarkup(cell)"
+                        />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        v-for="(row, rowIndex) in normalizeTableData(block.data).rows"
+                        :key="`tr-${rowIndex}`"
+                        class="even:bg-gray-50/60"
+                      >
+                        <td
+                          v-for="(cell, col) in row"
+                          :key="`td-${rowIndex}-${col}`"
+                          class="border-b border-gray-100 px-4 py-3 text-gray-700"
+                          v-html="renderInlineMarkup(cell)"
+                        />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </template>
 
               <template v-else-if="block.type === 'image'">
@@ -363,6 +404,8 @@
 
 <script setup lang="ts">
 import { usePostsStore } from '~/stores/posts'
+import { normalizeTableData } from '~/stores/postsAdmin'
+import { renderInlineMarkup } from '~/utils/inlineMarkup'
 import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl } from '~/utils/seo'
 
 type ContentBlock = {

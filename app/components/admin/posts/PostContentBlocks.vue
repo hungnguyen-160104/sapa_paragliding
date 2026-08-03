@@ -96,8 +96,29 @@
         <template v-else-if="block.type === 'paragraph'">
           <div class="grid gap-4 md:grid-cols-2">
             <div>
-              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Đoạn tiếng Việt</label>
+              <div class="mb-1 flex items-center justify-between">
+                <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Đoạn tiếng Việt</label>
+                <div class="flex items-center gap-1">
+                  <button
+                    type="button"
+                    class="h-7 w-7 rounded border border-slate-300 text-sm font-bold text-slate-700 transition hover:bg-slate-100"
+                    title="Chữ đậm — bọc phần bôi đen bằng **"
+                    @click="toggleInlineFormat(index, 'vi', '**')"
+                  >
+                    B
+                  </button>
+                  <button
+                    type="button"
+                    class="h-7 w-7 rounded border border-slate-300 text-sm italic text-slate-700 transition hover:bg-slate-100"
+                    title="Chữ nghiêng — bọc phần bôi đen bằng *"
+                    @click="toggleInlineFormat(index, 'vi', '*')"
+                  >
+                    I
+                  </button>
+                </div>
+              </div>
               <textarea
+                :ref="(el) => (paragraphRefs[`${block.id}-vi`] = el as HTMLTextAreaElement | null)"
                 :value="getViBlock(index).data.text || ''"
                 rows="6"
                 class="input-field resize-y"
@@ -106,8 +127,29 @@
               />
             </div>
             <div>
-              <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">Paragraph (English)</label>
+              <div class="mb-1 flex items-center justify-between">
+                <label class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Paragraph (English)</label>
+                <div class="flex items-center gap-1">
+                  <button
+                    type="button"
+                    class="h-7 w-7 rounded border border-slate-300 text-sm font-bold text-slate-700 transition hover:bg-slate-100"
+                    title="Bold — wraps selection in **"
+                    @click="toggleInlineFormat(index, 'en', '**')"
+                  >
+                    B
+                  </button>
+                  <button
+                    type="button"
+                    class="h-7 w-7 rounded border border-slate-300 text-sm italic text-slate-700 transition hover:bg-slate-100"
+                    title="Italic — wraps selection in *"
+                    @click="toggleInlineFormat(index, 'en', '*')"
+                  >
+                    I
+                  </button>
+                </div>
+              </div>
               <textarea
+                :ref="(el) => (paragraphRefs[`${block.id}-en`] = el as HTMLTextAreaElement | null)"
                 :value="block.data.text || ''"
                 rows="6"
                 class="input-field resize-y"
@@ -116,6 +158,94 @@
               />
             </div>
           </div>
+          <p class="mt-1 text-[11px] text-slate-400">
+            Bôi đen chữ rồi bấm <strong>B</strong> hoặc <em>I</em>. Đánh dấu lưu dạng
+            <code>**đậm**</code> và <code>*nghiêng*</code>.
+          </p>
+        </template>
+
+        <template v-else-if="block.type === 'table'">
+          <div class="mb-3 flex flex-wrap items-center gap-2">
+            <button type="button" class="rounded border border-slate-300 px-3 py-1 text-xs font-medium transition hover:bg-slate-100" @click="addTableRow(index)">
+              + Thêm hàng
+            </button>
+            <button type="button" class="rounded border border-slate-300 px-3 py-1 text-xs font-medium transition hover:bg-slate-100" @click="addTableColumn(index)">
+              + Thêm cột
+            </button>
+            <label class="ml-1 flex items-center gap-1.5 text-xs text-slate-600">
+              <input
+                type="checkbox"
+                :checked="normalizeTableData(block.data).hasHeader"
+                @change="toggleTableHeader(index)"
+              />
+              Có hàng tiêu đề
+            </label>
+          </div>
+
+          <div v-for="language in (['vi', 'en'] as const)" :key="language" class="mb-4">
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
+              {{ language === 'vi' ? 'Bảng tiếng Việt' : 'Table (English)' }}
+            </label>
+            <div class="overflow-x-auto rounded-lg border border-slate-200">
+              <table class="w-full border-collapse text-sm">
+                <thead v-if="normalizeTableData(language === 'vi' ? getViBlock(index).data : block.data).hasHeader">
+                  <tr class="bg-slate-50">
+                    <th
+                      v-for="(cell, col) in normalizeTableData(language === 'vi' ? getViBlock(index).data : block.data).headers"
+                      :key="`h-${col}`"
+                      class="border border-slate-200 p-1"
+                    >
+                      <div class="flex items-center gap-1">
+                        <input
+                          :value="cell"
+                          class="w-full min-w-24 rounded border-0 bg-transparent px-1 py-1 text-xs font-semibold focus:bg-white focus:ring-1 focus:ring-red-400"
+                          :placeholder="`Cột ${col + 1}`"
+                          @input="updateTableCell(index, language, -1, col, ($event.target as HTMLInputElement).value)"
+                        />
+                        <button
+                          v-if="language === 'en'"
+                          type="button"
+                          class="shrink-0 text-xs text-slate-400 transition hover:text-red-600"
+                          title="Xoá cột này"
+                          @click="removeTableColumn(index, col)"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(row, rowIndex) in normalizeTableData(language === 'vi' ? getViBlock(index).data : block.data).rows"
+                    :key="`r-${rowIndex}`"
+                  >
+                    <td v-for="(cell, col) in row" :key="`c-${rowIndex}-${col}`" class="border border-slate-200 p-1">
+                      <div class="flex items-center gap-1">
+                        <input
+                          :value="cell"
+                          class="w-full min-w-24 rounded border-0 bg-transparent px-1 py-1 text-xs focus:bg-white focus:ring-1 focus:ring-red-400"
+                          @input="updateTableCell(index, language, rowIndex, col, ($event.target as HTMLInputElement).value)"
+                        />
+                        <button
+                          v-if="language === 'en' && col === row.length - 1"
+                          type="button"
+                          class="shrink-0 text-xs text-slate-400 transition hover:text-red-600"
+                          title="Xoá hàng này"
+                          @click="removeTableRow(index, rowIndex)"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="text-[11px] text-slate-400">
+            Thêm/xoá hàng và cột áp dụng cho cả hai ngôn ngữ để bảng không lệch khung.
+          </p>
         </template>
 
         <template v-else-if="block.type === 'image'">
@@ -504,15 +634,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watchEffect } from 'vue'
-import { usePostsAdminStore } from '~/stores/postsAdmin'
+import { computed, nextTick, reactive, ref, watchEffect } from 'vue'
+import { normalizeTableData, usePostsAdminStore } from '~/stores/postsAdmin'
 import { useCloudinaryUpload } from '~/composables/useCloudinaryUpload'
 
-type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard'
+type BlockType = 'heading' | 'paragraph' | 'image' | 'quote' | 'bulletList' | 'divider' | 'cta' | 'video' | 'linkCard' | 'table'
 
 type BlockData = {
   level?: number
   text?: string
+  headers?: string[]
+  rows?: string[][]
+  hasHeader?: boolean
   url?: string
   caption?: string
   alt?: string
@@ -552,7 +685,8 @@ const blockTypes = [
   { type: 'divider', label: 'Phân cách', icon: '─' },
   { type: 'cta', label: 'Nút CTA', icon: '🎫' },
   { type: 'video', label: 'Video YouTube', icon: '▶' },
-  { type: 'linkCard', label: 'Link Card', icon: '🔗' }
+  { type: 'linkCard', label: 'Link Card', icon: '🔗' },
+  { type: 'table', label: 'Bảng', icon: '▦' }
 ] as const satisfies ReadonlyArray<{ type: BlockType; label: string; icon: string }>
 
 const englishBlocks = computed<ContentBlock[]>(() => {
@@ -589,6 +723,8 @@ function createEmptyBlock(type: BlockType): ContentBlock {
       return { id, type, data: { url: '', caption: '' } }
     case 'linkCard':
       return { id, type, data: { url: '', title: '', description: '' } }
+    case 'table':
+      return { id, type, data: { headers: ['', ''], rows: [['', ''], ['', '']], hasHeader: true } }
   }
 }
 
@@ -629,6 +765,9 @@ function createVietnameseVersion(block: ContentBlock): ContentBlock {
       viBlock.data.title = viBlock.data.title || ''
       viBlock.data.description = viBlock.data.description || ''
       break
+    case 'table':
+      viBlock.data = normalizeTableData(viBlock.data)
+      break
   }
 
   return viBlock
@@ -667,6 +806,18 @@ function applySharedFields(enBlock: ContentBlock, viBlock: ContentBlock): Conten
     case 'linkCard':
       next.data.url = enBlock.data.url || ''
       break
+    case 'table': {
+      // Khung bảng theo bản tiếng Anh, chữ trong ô giữ của bản tiếng Việt.
+      const enTable = normalizeTableData(enBlock.data)
+      const viTable = normalizeTableData(next.data)
+
+      next.data = {
+        hasHeader: enTable.hasHeader,
+        headers: enTable.headers.map((_, i) => viTable.headers[i] ?? ''),
+        rows: enTable.rows.map((row, r) => row.map((_, c) => viTable.rows[r]?.[c] ?? ''))
+      }
+      break
+    }
     case 'paragraph':
     case 'divider':
       break
@@ -777,6 +928,131 @@ function updateHeadingLevel(index: number, level: number) {
 
   block.data.level = level
   getViBlock(index).data.level = level
+}
+
+// ---------------------------------------------------------------------------
+// Chữ đậm / in nghiêng cho đoạn văn
+// ---------------------------------------------------------------------------
+
+const paragraphRefs = reactive<Record<string, HTMLTextAreaElement | null>>({})
+
+/**
+ * Bọc phần chữ đang bôi đen bằng dấu ** (đậm) hoặc * (nghiêng).
+ * Nếu bấm khi đang bọc sẵn thì gỡ dấu ra, để nút hoạt động như công tắc.
+ */
+function toggleInlineFormat(index: number, language: 'vi' | 'en', marker: '**' | '*') {
+  const block = language === 'vi' ? getViBlock(index) : getEnglishBlock(index)
+  if (!block) return
+
+  const key = `${block.id}-${language}`
+  const el = paragraphRefs[key]
+  const text = String(block.data.text ?? '')
+
+  // Không bôi đen thì chèn cặp dấu rỗng rồi đặt con trỏ vào giữa
+  const start = el?.selectionStart ?? text.length
+  const end = el?.selectionEnd ?? text.length
+
+  const before = text.slice(0, start)
+  const selected = text.slice(start, end)
+  const after = text.slice(end)
+
+  const alreadyWrapped =
+    selected.length > 0 &&
+    selected.startsWith(marker) &&
+    selected.endsWith(marker) &&
+    selected.length >= marker.length * 2
+
+  const nextSelected = alreadyWrapped
+    ? selected.slice(marker.length, -marker.length)
+    : `${marker}${selected}${marker}`
+
+  updateBlockText(index, language, `${before}${nextSelected}${after}`)
+
+  // Trả lại vùng bôi đen quanh đúng phần chữ vừa xử lý
+  nextTick(() => {
+    const node = paragraphRefs[key]
+    if (!node) return
+
+    const offset = alreadyWrapped ? -marker.length : marker.length
+    node.focus()
+    node.setSelectionRange(start + Math.max(offset, 0), start + offset + selected.length)
+  })
+}
+
+// ---------------------------------------------------------------------------
+// Bảng
+// ---------------------------------------------------------------------------
+
+/** Đọc dữ liệu bảng đã chuẩn hoá của một khối, theo ngôn ngữ. */
+function tableOf(index: number, language: 'vi' | 'en') {
+  const block = language === 'vi' ? getViBlock(index) : getEnglishBlock(index)
+  return normalizeTableData(block?.data)
+}
+
+/** Ghi dữ liệu bảng cho cả hai ngôn ngữ, giữ số hàng/cột khớp nhau. */
+function writeTable(index: number, language: 'vi' | 'en', next: ReturnType<typeof normalizeTableData>) {
+  const target = language === 'vi' ? getViBlock(index) : getEnglishBlock(index)
+  if (!target) return
+  target.data = next
+}
+
+function updateTableCell(index: number, language: 'vi' | 'en', row: number, col: number, value: string) {
+  const table = tableOf(index, language)
+
+  if (row < 0) {
+    table.headers[col] = value
+  } else if (table.rows[row]) {
+    table.rows[row]![col] = value
+  }
+
+  writeTable(index, language, table)
+}
+
+/** Thêm/bớt hàng, cột phải áp cho CẢ hai ngôn ngữ để bảng không lệch khung. */
+function addTableRow(index: number) {
+  for (const language of ['en', 'vi'] as const) {
+    const table = tableOf(index, language)
+    table.rows.push(Array.from({ length: table.headers.length }, () => ''))
+    writeTable(index, language, table)
+  }
+}
+
+function removeTableRow(index: number, row: number) {
+  for (const language of ['en', 'vi'] as const) {
+    const table = tableOf(index, language)
+    if (table.rows.length <= 1) continue
+    table.rows.splice(row, 1)
+    writeTable(index, language, table)
+  }
+}
+
+function addTableColumn(index: number) {
+  for (const language of ['en', 'vi'] as const) {
+    const table = tableOf(index, language)
+    table.headers.push('')
+    table.rows.forEach((row) => row.push(''))
+    writeTable(index, language, table)
+  }
+}
+
+function removeTableColumn(index: number, col: number) {
+  for (const language of ['en', 'vi'] as const) {
+    const table = tableOf(index, language)
+    if (table.headers.length <= 1) continue
+    table.headers.splice(col, 1)
+    table.rows.forEach((row) => row.splice(col, 1))
+    writeTable(index, language, table)
+  }
+}
+
+function toggleTableHeader(index: number) {
+  const next = !tableOf(index, 'en').hasHeader
+
+  for (const language of ['en', 'vi'] as const) {
+    const table = tableOf(index, language)
+    table.hasHeader = next
+    writeTable(index, language, table)
+  }
 }
 
 function updateBlockText(index: number, language: 'vi' | 'en', value: string) {
