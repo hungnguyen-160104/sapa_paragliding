@@ -11,17 +11,46 @@
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
                 <div class="absolute inset-0 bg-gradient-to-l from-slate-900/70 via-transparent to-transparent" />
 
-                <!-- Main Content - Bottom Right -->
-                <div class="absolute bottom-0 right-0 p-6 md:p-10 lg:p-16 max-w-2xl text-right">
-                    <!-- Badge -->
+                <!-- MOBILE: badge + nút Phi Công đặt ở đầu ảnh.
+                     Không dời cả khối chữ lên trên được vì lớp phủ gradient
+                     tối nằm ở ĐÁY ảnh (from-slate-900/90 ... to-transparent),
+                     chữ lên trên sẽ mất tương phản. Badge và nút có nền riêng
+                     nên đọc được ở vùng sáng.
+                     Xếp dọc trong cùng một khối để nút luôn nằm ngay dưới
+                     badge dù badge xuống mấy dòng, không đè lên chữ như trước. -->
+                <div class="absolute top-0 right-0 left-0 z-20 flex flex-col items-end gap-3 p-4 md:p-6 lg:hidden">
                     <div
-                        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-4 border border-white/20">
-                        <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20">
+                        <svg class="w-6 h-6 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <span class="text-sm font-medium text-white">{{ $t('about.intro.highlight') }}</span>
+                        <span class="text-base font-bold text-white">{{ $t('about.intro.highlight') }}</span>
+                    </div>
+
+                    <NuxtLink :to="localePath('/pilots')"
+                        class="px-5 py-2.5 bg-white/10 backdrop-blur-md text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {{ $t('menu.pilots') }}
+                    </NuxtLink>
+                </div>
+
+                <!-- Main Content - Bottom Right -->
+                <div class="absolute bottom-0 right-0 p-6 md:p-10 lg:p-16 max-w-2xl text-right">
+                    <!-- Badge (DESKTOP). Trên mobile badge được đưa lên đầu ảnh
+                         bằng khối riêng phía dưới, nên bản này ẩn ở màn hẹp. -->
+                    <div
+                        class="hidden lg:inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full mb-4 border border-white/20">
+                        <svg class="w-6 h-6 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-base xl:text-lg font-bold text-white">{{ $t('about.intro.highlight') }}</span>
                     </div>
 
                     <!-- Title -->
@@ -107,8 +136,10 @@
                 </div>
             </div>
 
-            <!-- CTA Buttons - Floating on Main Image -->
-            <div class="absolute bottom-[32vh] lg:bottom-[27vh] left-0 p-6 md:p-10 lg:p-16 z-20">
+            <!-- CTA Buttons - Floating on Main Image (CHỈ DESKTOP)
+                 Trên mobile nút này nằm ở bottom-[32vh] tuyệt đối nên đè lên
+                 dòng trích dẫn; đã chuyển lên khối đầu ảnh phía trên. -->
+            <div class="absolute bottom-[27vh] left-0 p-6 md:p-10 lg:p-16 z-20 hidden lg:block">
                 <div class="flex flex-col sm:flex-row gap-3">
                     <NuxtLink :to="localePath('/pilots')"
                         class="px-6 py-3 bg-white/10 backdrop-blur-md text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base">
