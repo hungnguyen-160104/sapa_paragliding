@@ -1,11 +1,19 @@
 <template>
   <footer class="bg-gray-900 text-white py-12 relative z-10">
+    <!-- Nới lề CHỈ trên mobile cho hai khối bên trong (lưới cột và dòng bản
+         quyền), thay vì đè padding của .container-custom.
+
+         Dùng max-md: (chỉ áp dụng DƯỚI 768px) chứ không dùng cặp px-3 md:px-0.
+         Lý do: trong CSS đã build, .md\:px-0 nằm ở vị trí 18420 còn .px-3 ở
+         85795 — px-3 đứng sau nên thắng, mà media query không làm tăng độ ưu
+         tiên, nên md:px-0 sẽ KHÔNG reset được và desktop bị thừa 12px.
+         max-md: chỉ sinh đúng một quy tắc, không có gì để tranh chấp. -->
     <div class="container-custom">
       <!-- Cột 3 (Follow Us) rộng 1.8 phần thay vì 1: cột bắt đầu sớm hơn nên
            nội dung dịch hẳn sang trái, đồng thời đủ chỗ cho hàng 6 icon (324px).
            Lưu ý: nội dung căn trái nên chỉ có bề rộng cột mới dịch được nó,
            thêm padding-right không có tác dụng đẩy sang trái. -->
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.8fr] gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.8fr] gap-8 max-md:px-3">
         <!-- Contact Information -->
         <!-- pl- đẩy nội dung sang phải (nội dung căn trái nên padding-left có tác dụng).
              Đã trừ 24px (~3 ký tự) so với mức trước; ở md chạm 0 nên không lùi thêm được. -->
@@ -165,7 +173,7 @@
       </div>
 
       <!-- Copyright -->
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-white">
+      <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 text-center text-sm text-white">
         <p class="whitespace-pre-line">{{ $t('footer.copyright') }}</p>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
