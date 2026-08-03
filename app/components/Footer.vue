@@ -204,7 +204,7 @@ const contactData = computed(() => {
       {
         name: 'Mr. August',
         role: t('footerContact.customerService'),
-        phone: '+84 985 95 0123',
+        phone: '+84 522 794 999',
         note: t('footerContact.bookingNote')
       },
       {
