@@ -14,7 +14,7 @@
                  dung chảy xuống dưới, min-h cho phép nở thay vì cắt.
                  Desktop giữ nguyên căn giữa. -->
             <section
-                class="min-h-screen flex items-start lg:items-center pt-6 lg:pt-0 px-4 md:px-8 lg:px-16">
+                class="min-h-0 lg:min-h-screen flex items-start lg:items-center pt-6 lg:pt-0 pb-2 lg:pb-0 px-4 md:px-8 lg:px-16">
                 <div class="w-full max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
                         <!-- Left: Pilot Info (3 columns) -->
@@ -34,7 +34,10 @@
                                 <!-- Cỡ cũ 6xl->9xl (60-128px) làm tên dài như
                                      "Bishal Skyboy" xuống hàng. Hạ một bậc và
                                      thêm whitespace-nowrap để giữ trên 1 dòng. -->
-                                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-none mb-3 lg:mb-6 whitespace-nowrap"
+                                <!-- Mobile 36px = to hơn 20% so với text-3xl (30px).
+                                     Tên dài nhất "Bishal Skyboy" ở cỡ này chiếm
+                                     290/358px nên vẫn giữ được whitespace-nowrap. -->
+                                <h1 class="text-[36px] md:text-4xl lg:text-5xl xl:text-6xl font-black leading-none mb-3 lg:mb-6 whitespace-nowrap"
                                     style="text-shadow: 4px 4px 16px rgba(0,0,0,0.8)">
                                     {{ pilot.name }}
                                 </h1>
@@ -124,7 +127,9 @@
             </section>
 
             <!-- Content Section in Centered Card -->
-            <section class="px-4 md:px-6 py-12 md:py-20">
+            <!-- Mobile pt-14 thay cho py-12: gộp với hero bỏ min-h-screen,
+                 khoảng trống từ ảnh xuống block này còn 64px thay vì 210px -->
+            <section class="px-4 md:px-6 pt-14 pb-12 md:py-20">
                 <div class="w-full max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
                     <div class="p-8 md:p-12 lg:p-16 space-y-16">
                         <!-- Bio Section -->
