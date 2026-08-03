@@ -7,11 +7,20 @@
         <!-- Main Content -->
         <div class="relative z-20">
             <!-- Hero Section Full Width -->
-            <section class="h-screen flex items-center px-4 md:px-8 lg:px-16">
+            <!-- Mobile: min-h-screen + items-start + pt-6.
+                 Trước dùng h-screen (100vh cố định) + items-center: nội dung
+                 mobile cao 817px trong khi chỉ có 764px, tràn ra CẢ HAI phía
+                 nên khối đỏ trượt lên nấp dưới header. items-start cho nội
+                 dung chảy xuống dưới, min-h cho phép nở thay vì cắt.
+                 Desktop giữ nguyên căn giữa. -->
+            <section
+                class="min-h-screen flex items-start lg:items-center pt-6 lg:pt-0 px-4 md:px-8 lg:px-16">
                 <div class="w-full max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center">
                         <!-- Left: Pilot Info (3 columns) -->
-                        <div class="lg:col-span-3 text-white space-y-10">
+                        <!-- space-y-4 trên mobile (thay vì 10) kéo biệt danh và
+                             nút CTA lên cao, tiết kiệm 72px -->
+                        <div class="lg:col-span-3 text-white space-y-4 lg:space-y-10">
                             <!-- Badge -->
                             <div
                                 class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-400/30">
@@ -25,7 +34,7 @@
                                 <!-- Cỡ cũ 6xl->9xl (60-128px) làm tên dài như
                                      "Bishal Skyboy" xuống hàng. Hạ một bậc và
                                      thêm whitespace-nowrap để giữ trên 1 dòng. -->
-                                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-none mb-6 whitespace-nowrap"
+                                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-none mb-3 lg:mb-6 whitespace-nowrap"
                                     style="text-shadow: 4px 4px 16px rgba(0,0,0,0.8)">
                                     {{ pilot.name }}
                                 </h1>
@@ -41,9 +50,10 @@
                             </div>
 
                             <!-- CTA Button -->
-                            <div class="pt-4">
+                            <!-- Nút gọn lại trên mobile để dành chỗ cho ảnh -->
+                            <div class="pt-1 lg:pt-4">
                                 <button @click="localizedNavigateTo('/booking')"
-                                    class="px-10 py-4 bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 shadow-lg shadow-red-500/30">
+                                    class="px-6 py-2.5 text-sm lg:px-10 lg:py-4 lg:text-base bg-red-500 text-white font-bold uppercase tracking-wider hover:bg-red-600 transition-all duration-300 shadow-lg shadow-red-500/30">
                                     {{ $t('pilotPage.flyWithMe') }}
                                 </button>
                             </div>
@@ -96,10 +106,14 @@
                             </div>
                         </div>
 
-                        <!-- Mobile: Single Image Fallback -->
-                        <div class="lg:hidden flex justify-center items-center mt-8">
+                        <!-- Mobile: Single Image Fallback
+                             max-h-[42vh] là chốt chặn: ảnh aspect-3/4 rộng 358px
+                             sẽ cao 477px, quá khổ màn hình. Giới hạn theo chiều
+                             cao màn hình để ảnh luôn lọt khung, không phải kéo
+                             xuống mới thấy. -->
+                        <div class="lg:hidden flex justify-center items-center mt-3 lg:mt-8">
                             <div
-                                class="w-full max-w-sm aspect-[3/4] overflow-hidden shadow-xl border-4 border-white/20">
+                                class="w-full max-w-sm max-h-[42vh] lg:max-h-none aspect-[3/4] overflow-hidden shadow-xl border-4 border-white/20">
                                 <NuxtImg v-if="contentImages[0]" :src="contentImages[0]" :alt="pilot.name" format="webp"
                                     width="600" height="800" sizes="(max-width: 768px) 90vw, 400px" loading="lazy"
                                     class="w-full h-full object-cover object-center" @error="handleImageError" />
