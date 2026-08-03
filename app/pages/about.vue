@@ -19,14 +19,15 @@
                      Xếp dọc trong cùng một khối để nút luôn nằm ngay dưới
                      badge dù badge xuống mấy dòng, không đè lên chữ như trước. -->
                 <div class="absolute top-0 right-0 left-0 z-20 flex flex-col items-end gap-3 p-4 md:p-6 lg:hidden">
-                    <div
-                        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20">
-                        <svg class="w-6 h-6 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-base font-bold text-white">{{ $t('about.intro.highlight') }}</span>
+                    <!-- Tách 3 dòng, căn lề phải. Bỏ nền/viền/dấu tích: chữ
+                         đứng trực tiếp trên ảnh nên dùng đổ bóng viền đen
+                         (text-shadow 4 hướng) để đọc rõ ở mọi vùng sáng tối. -->
+                    <div class="flex flex-col items-end gap-0.5 text-right">
+                        <span v-for="(line, i) in highlightLines" :key="i"
+                            class="text-base font-black leading-snug text-white"
+                            style="text-shadow: 0 2px 6px rgba(0,0,0,.9), -1px -1px 0 rgba(0,0,0,.8), 1px -1px 0 rgba(0,0,0,.8), -1px 1px 0 rgba(0,0,0,.8), 1px 1px 0 rgba(0,0,0,.8)">
+                            {{ line }}
+                        </span>
                     </div>
 
                     <NuxtLink :to="localePath('/pilots')"
@@ -330,7 +331,22 @@ import {
 // about.process.stepN.{title,description} trong i18n/locales/*.json —
 // thêm bước mới phải thêm khoá cho cả 6 ngôn ngữ.
 const processSteps = [1, 2, 3, 4, 5, 6]
+
 const { locale, t } = useI18n()
+
+/**
+ * Tách chuỗi điểm nổi bật thành từng dòng để hiển thị trên mobile.
+ * about.intro.highlight ở cả 6 ngôn ngữ đều có dạng
+ * "phần 1 • phần 2 • phần 3" nên tách theo dấu chấm giữa.
+ * Lọc phần rỗng phòng khi chuỗi thừa dấu phân cách.
+ */
+const highlightLines = computed(() =>
+  t('about.intro.highlight')
+    .split('•')
+    .map((part) => part.trim())
+    .filter(Boolean)
+)
+
 const localePath = useLocalePath()
 const route = useRoute()
 
