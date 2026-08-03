@@ -7,9 +7,11 @@
       <div class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
         style="background-image: url('/images/pilot_background.webp');"></div>
       <!-- Video asset missing in public/videos/header, keep only the background image to avoid build-time resolution errors. -->
-<video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-contain">
-        <source src="/videos/header/about_new.mp4" type="video/mp4">
-      </video>
+      <!-- Nguồn video gắn bằng JS sau khi trang tải xong (useDeferredVideo):
+           7,9 MB không được tranh băng thông với nội dung lúc mới mở trang.
+           Ảnh nền ngay phía trên che kín khung trong lúc chờ. -->
+      <video ref="bgVideo" autoplay loop muted playsinline preload="none"
+        class="absolute inset-0 w-full h-full object-contain"></video>
       <!-- Overlay -->
     </div>
 
@@ -139,6 +141,8 @@ const route = useRoute()
 
 
 // Active tab state
+const bgVideo = useDeferredVideo('/videos/header/about_new.mp4')
+
 const activeTab = ref('requirements')
 
 // Icon components as render functions

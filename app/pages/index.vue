@@ -188,41 +188,9 @@ const scrollToAbout = () => {
 const revealTimers = new Set<ReturnType<typeof setTimeout>>()
 let scrollObserver: IntersectionObserver | null = null
 
-const heroVideo = ref<HTMLVideoElement | null>(null)
-
-/**
- * Gắn nguồn video nền sau khi trang đã tải xong, để 3,8 MB video không tranh
- * băng thông với chữ và ảnh lúc mới mở trang. Poster che kín khung trong lúc
- * chờ nên người dùng không thấy khoảng trống.
- */
-const loadHeroVideo = () => {
-  const el = heroVideo.value
-  if (!el || el.querySelector('source')) return
-
-  const source = document.createElement('source')
-  source.src = '/videos/header/header_720p_new.mp4'
-  source.type = 'video/mp4'
-  el.appendChild(source)
-  el.load()
-  // autoplay không tự kích hoạt lại sau load() nên gọi tay; bỏ qua nếu trình
-  // duyệt chặn (video đã muted nên hầu như luôn được phép).
-  void el.play().catch(() => {})
-}
-
-const whenIdle = (fn: () => void) => {
-  const ric = (window as unknown as {
-    requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => void
-  }).requestIdleCallback
-  if (ric) ric(fn, { timeout: 3000 })
-  else setTimeout(fn, 400)
-}
+const heroVideo = useDeferredVideo('/videos/header/header_720p_new.mp4')
 
 onMounted(() => {
-  if (document.readyState === 'complete') {
-    whenIdle(loadHeroVideo)
-  } else {
-    window.addEventListener('load', () => whenIdle(loadHeroVideo), { once: true })
-  }
 
   const observerOptions = {
     threshold: 0.1,
@@ -260,7 +228,7 @@ onBeforeUnmount(() => {
         <!-- Video nền 3,8 MB. KHÔNG đặt <source> sẵn trong HTML: trình duyệt
              sẽ tải nó song song với chữ, CSS và ảnh, làm chậm lúc hiện nội
              dung đầu tiên. Thẻ source được gắn bằng JS sau khi trang tải xong
-             (xem loadHeroVideo). Trong lúc chờ, poster hiển thị nguyên khung —
+             (xem useDeferredVideo). Trong lúc chờ, poster hiển thị nguyên khung —
              chất lượng video khi chạy không đổi chút nào.
              poster đổi sang .webp: cùng độ phân giải 2560x1440 nhưng 164 KB
              thay vì 455 KB. -->
