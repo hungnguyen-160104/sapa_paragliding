@@ -56,6 +56,15 @@
         </div>
 
         <div class="flex items-center gap-2">
+          <button
+            class="btn-secondary py-1.5 text-sm"
+            :disabled="isTranslating || store.saving"
+            title="Dịch nội dung tiếng Việt sang tiếng Anh bằng Claude. Chỉ ghi đè các ô tiếng Anh."
+            @click="handleTranslate"
+          >
+            {{ isTranslating ? '⏳ Đang dịch...' : '🌐 Dịch tự động' }}
+          </button>
+
           <button class="btn-secondary py-1.5 text-sm" :disabled="store.saving" @click="handleSaveDraft">
             💾 Lưu
           </button>
@@ -432,6 +441,70 @@ const showPreview = ref(false)
 const showUnsavedConfirm = ref(false)
 const showLocalValidation = ref(false)
 const scheduledAtInput = ref('')
+const isTranslating = ref(false)
+
+/**
+ * Dịch bản tiếng Việt sang tiếng Anh.
+ *
+ * Gửi block tiếng Việt cùng các ô rời trong một lượt gọi, rồi chỉ ghi đè
+ * phía tiếng Anh. Bản tiếng Việt không bao giờ bị đụng tới, nên bấm nhầm
+ * cũng không mất nội dung gốc.
+ */
+async function handleTranslate() {
+  const viBlocks = Array.isArray(draft.value.contentBlocksVi) ? draft.value.contentBlocksVi : []
+
+  const fields: Record<string, string> = {}
+  if (draft.value.titleVi) fields.title = draft.value.titleVi
+  if (draft.value.excerptVi) fields.excerpt = draft.value.excerptVi
+  if (draft.value.seo?.titleVi) fields.seoTitle = draft.value.seo.titleVi
+  if (draft.value.seo?.descriptionVi) fields.seoDescription = draft.value.seo.descriptionVi
+
+  if (viBlocks.length === 0 && Object.keys(fields).length === 0) {
+    alert('Chưa có nội dung tiếng Việt để dịch.')
+    return
+  }
+
+  const hasEnglishContent =
+    draft.value.title || draft.value.excerpt || (draft.value.contentBlocks ?? []).some((b: any) => b?.data?.text)
+
+  if (hasEnglishContent && !confirm('Nội dung tiếng Anh hiện tại sẽ bị ghi đè. Tiếp tục?')) {
+    return
+  }
+
+  isTranslating.value = true
+
+  try {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null
+
+    const response: any = await $fetch('/api/admin/translate', {
+      method: 'POST',
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+      body: { blocks: viBlocks, fields }
+    })
+
+    if (Array.isArray(response?.blocks)) {
+      draft.value.contentBlocks = response.blocks
+    }
+
+    const translated = response?.fields ?? {}
+    if (translated.title) draft.value.title = translated.title
+    if (translated.excerpt) draft.value.excerpt = translated.excerpt
+    if (translated.seoTitle && draft.value.seo) draft.value.seo.title = translated.seoTitle
+    if (translated.seoDescription && draft.value.seo) draft.value.seo.description = translated.seoDescription
+
+    const { translatedCount = 0, requestedCount = 0 } = response ?? {}
+    alert(
+      translatedCount < requestedCount
+        ? `Đã dịch ${translatedCount}/${requestedCount} đoạn. Phần còn lại giữ nguyên tiếng Việt, bạn kiểm tra lại giúp.`
+        : `Đã dịch xong ${translatedCount} đoạn. Nhớ đọc lại trước khi xuất bản.`
+    )
+  } catch (error: any) {
+    const message = error?.data?.statusMessage || error?.statusMessage || error?.message
+    alert(`Dịch thất bại: ${message || 'lỗi không xác định'}`)
+  } finally {
+    isTranslating.value = false
+  }
+}
 
 const categories = [
   { id: 'news', label: 'Tin tức' },

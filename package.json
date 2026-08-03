@@ -13,6 +13,7 @@
     "start": "nuxt start"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.115.0",
     "@nuxtjs/i18n": "^10.1.0",
     "@pinia/nuxt": "^0.8.0",
     "html2canvas": "^1.4.1",

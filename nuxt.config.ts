@@ -102,6 +102,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    // Chỉ ở phía server (không nằm trong public) nên không lộ ra trình duyệt
+    anthropicApiKey: process.env.ANTHROPIC_API_KEY || '',
+
     telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
     telegramAdminChatId: process.env.TELEGRAM_ADMIN_CHAT_ID || '',
     turnstileSecretKey: process.env.TURNSTILE_SECRET_KEY || '',
