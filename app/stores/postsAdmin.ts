@@ -9,6 +9,7 @@
  * - contentBlocksVi = Vietnamese
  */
 import { defineStore } from 'pinia'
+import { adminAuthHeaders } from '~/utils/adminApi'
 import { ref, reactive, computed, watch } from 'vue'
 
 // Types
@@ -639,6 +640,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
 
   async function createPostRequest(payload: SavePayload) {
     return await $fetch<any>('/api/admin/posts', {
+      headers: adminAuthHeaders(),
       method: 'POST',
       body: payload
     } as any)
@@ -647,6 +649,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   async function updatePostRequest(postId: string, payload: SavePayload) {
     const url = `/api/admin/posts/${postId}`
     return await $fetch<any>(url as any, {
+      headers: adminAuthHeaders(),
       method: 'PUT',
       body: payload
     } as any)
@@ -655,6 +658,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   async function updateStatusRequest(postId: string, status: PostStatus) {
     const url = `/api/admin/posts/${postId}/status`
     return await $fetch<{ success: boolean }>(url as any, {
+      headers: adminAuthHeaders(),
       method: 'PATCH',
       body: { status }
     } as any)
@@ -663,6 +667,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   async function duplicatePostRequest(postId: string) {
     const url = `/api/admin/posts/${postId}/duplicate`
     return await $fetch<{ success: boolean }>(url as any, {
+      headers: adminAuthHeaders(),
       method: 'POST'
     } as any)
   }
@@ -670,6 +675,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
   async function deletePostRequest(postId: string) {
     const url = `/api/admin/posts/${postId}`
     return await $fetch<{ success: boolean }>(url as any, {
+      headers: adminAuthHeaders(),
       method: 'DELETE'
     } as any)
   }
@@ -690,7 +696,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
         success: boolean
         data: PostSummary[]
         total: number
-      }>(`/api/admin/posts?${params.toString()}`)
+      }>(`/api/admin/posts?${params.toString()}`, { headers: adminAuthHeaders() } as any)
 
       if (response.success) {
         posts.value = response.data
@@ -711,7 +717,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
       const response = await $fetch<{
         success: boolean
         data: PostStats
-      }>('/api/admin/posts/stats')
+      }>('/api/admin/posts/stats', { headers: adminAuthHeaders() } as any)
 
       if (response.success && response.data) {
         stats.value = response.data
@@ -751,7 +757,7 @@ export const usePostsAdminStore = defineStore('postsAdmin', () => {
       const response = await $fetch<{
         success: boolean
         data: any
-      }>(`/api/admin/posts/${postId}`)
+      }>(`/api/admin/posts/${postId}`, { headers: adminAuthHeaders() } as any)
 
       if (response.success && response.data) {
         selectedPostId.value = postId

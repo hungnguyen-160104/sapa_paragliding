@@ -242,6 +242,7 @@
 </template>
 
 <script setup lang="ts">
+import { adminAuthHeaders } from '~/utils/adminApi'
 import { useI18n } from 'vue-i18n'
 import { usePostsStore } from '~/stores/posts'
 import type { Post } from '~/stores/posts'
@@ -310,7 +311,7 @@ const filteredPosts = computed(() => {
 const fetchPosts = async () => {
   loading.value = true
   try {
-    const response = await $fetch<any>('/api/admin/posts')
+    const response = await $fetch<any>('/api/admin/posts', { headers: adminAuthHeaders() } as any)
     if (response?.success) {
       posts.value = response.posts
     }
@@ -382,6 +383,7 @@ const savePost = async () => {
     if (editingPost.value) {
       // Update existing post
       const response = await $fetch<any>(`/api/admin/posts/${editingPost.value.id}`, {
+        headers: adminAuthHeaders(),
         method: 'PUT',
         body: postData
       })
@@ -391,6 +393,7 @@ const savePost = async () => {
     } else {
       // Create new post
       const response = await $fetch<any>('/api/admin/posts', {
+        headers: adminAuthHeaders(),
         method: 'POST',
         body: postData
       })
@@ -409,6 +412,7 @@ const togglePublish = async (id: string) => {
   if (post) {
     try {
       const response = await $fetch<any>(`/api/admin/posts/${id}`, {
+        headers: adminAuthHeaders(),
         method: 'PUT',
         body: {
           ...post,
@@ -429,6 +433,7 @@ const deletePost = async (id: string) => {
   if (post && confirm(`Are you sure you want to delete "${post.titleVi}"? This action cannot be undone.`)) {
     try {
       const response = await $fetch<any>(`/api/admin/posts/${id}`, {
+        headers: adminAuthHeaders(),
         method: 'DELETE'
       })
       if (response?.success) {

@@ -1,4 +1,4 @@
-import { defineEventHandler, readBody, getHeader, createError } from 'h3'
+import { defineEventHandler, readBody, createError } from 'h3'
 import {
   applyBlockStrings,
   extractBlockStrings,
@@ -9,34 +9,13 @@ import {
 /**
  * Dịch nội dung bài viết tiếng Việt sang tiếng Anh.
  *
- * Endpoint này gọi API tính tiền theo lượt nên KHÔNG để mở như các endpoint
- * admin khác — nếu mở, bất kỳ ai cũng có thể gọi và đốt hết credit.
- * Hai lớp chặn: kiểm tra token admin, và giới hạn số lượt theo phút.
+ * Xác thực do middleware server/middleware/admin-api-auth.ts đảm nhiệm
+ * (token HMAC có chữ ký, phủ toàn bộ /api/admin/*). Ở đây chỉ còn giới hạn
+ * số lượt theo phút, vì endpoint này gọi API tính tiền theo lượt.
  */
 
 const MAX_CALLS_PER_MINUTE = 10
 const recentCalls: number[] = []
-
-function assertAdmin(event: Parameters<typeof getHeader>[0]) {
-  const header = getHeader(event, 'authorization') || ''
-  const token = header.replace(/^Bearer\s+/i, '').trim()
-
-  if (!token) {
-    throw createError({ statusCode: 401, statusMessage: 'Thiếu token admin' })
-  }
-
-  let username = ''
-  try {
-    username = Buffer.from(token, 'base64').toString('utf8').split(':')[0] ?? ''
-  } catch {
-    throw createError({ statusCode: 401, statusMessage: 'Token không hợp lệ' })
-  }
-
-  const expected = process.env.DEFAULT_ADMIN_USERNAME || 'admin'
-  if (username !== expected) {
-    throw createError({ statusCode: 401, statusMessage: 'Token không hợp lệ' })
-  }
-}
 
 function assertWithinRateLimit() {
   const now = Date.now()
@@ -56,7 +35,6 @@ function assertWithinRateLimit() {
 }
 
 export default defineEventHandler(async (event) => {
-  assertAdmin(event)
   assertWithinRateLimit()
 
   const body = await readBody(event)

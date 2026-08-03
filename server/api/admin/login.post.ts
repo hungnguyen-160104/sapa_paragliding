@@ -1,4 +1,5 @@
 import { connectToDatabase } from '../../utils/db'
+import { issueAdminToken } from '../../utils/adminAuth'
 
 // Get admin credentials from env
 const defaultAdminUsername = process.env.DEFAULT_ADMIN_USERNAME || 'admin'
@@ -9,9 +10,8 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const username = body?.username?.trim() || ''
     const password = body?.password || ''
-    
-    console.log('Login attempt:', { username, passwordLength: password.length })
-    console.log('Expected:', { expectedUser: defaultAdminUsername, expectedPassLength: defaultAdminPassword?.length })
+
+    // Không log chi tiết đăng nhập — log cũ in cả độ dài mật khẩu ra console
 
     // Validate input
     if (!username || !password) {
@@ -23,8 +23,9 @@ export default defineEventHandler(async (event) => {
 
     // Check against env credentials (simple auth)
     if (username === defaultAdminUsername && password === defaultAdminPassword) {
-      const token = Buffer.from(`${username}:${Date.now()}`).toString('base64')
-      console.log('Login successful via env credentials')
+      // Token có chữ ký HMAC + hạn dùng 7 ngày, thay cho base64 thuần
+      // (base64 thuần: ai đoán được tên đăng nhập là giả mạo được)
+      const token = issueAdminToken(username)
       return {
         success: true,
         message: 'Login successful',
@@ -43,10 +44,9 @@ export default defineEventHandler(async (event) => {
 
       // Find admin user in database
       const admin = await adminsCollection.findOne({ username })
-      
+
       if (admin && admin.password === password) {
-        const token = Buffer.from(`${username}:${Date.now()}`).toString('base64')
-        console.log('Login successful via database')
+        const token = issueAdminToken(username)
         return {
           success: true,
           message: 'Login successful',
@@ -63,7 +63,6 @@ export default defineEventHandler(async (event) => {
     }
 
     // Invalid credentials
-    console.log('Login failed: invalid credentials')
     return {
       success: false,
       error: 'Invalid username or password'
