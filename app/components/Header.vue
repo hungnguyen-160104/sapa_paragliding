@@ -118,61 +118,54 @@
       </div>
     </div>
 
-    <!-- Nền mờ: chỉ làm tối trang phía sau chứ không che, để vẫn thấy trang nền.
-         Trước đây menu là một tấm trắng phủ kín toàn màn hình. -->
+    <!-- Vùng bắt chạm để đóng menu. Trong suốt hoàn toàn: các nút bên dưới
+         tự nổi bằng nền trắng + đổ bóng riêng, nên không cần lớp phủ làm tối
+         trang. Người dùng vẫn nhìn xuyên xuống nội dung trang phía sau. -->
     <Transition name="fade">
-      <div v-if="isMenuOpen" @click="closeMenu"
-        class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[9998]" />
+      <div v-if="isMenuOpen" @click="closeMenu" class="lg:hidden fixed inset-0 z-[9998]" />
     </Transition>
 
-    <!-- Menu nổi thả xuống ngay dưới thanh header.
-         top đo tại chỗ chứ không chốt cứng: header cao khác nhau tuỳ ngôn ngữ
-         vì hàng 6 nút ngôn ngữ có thể xuống dòng trên máy hẹp. -->
-    <Transition name="dropdown">
-      <nav v-if="isMenuOpen" :style="menuPosition"
-        class="lg:hidden fixed right-3 left-3 sm:left-auto sm:w-80 z-[9999] origin-top overflow-y-auto overscroll-contain rounded-2xl border border-black/5 bg-white/95 backdrop-blur-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
-        <div>
-          <!-- Menu Items -->
-          <ul class="p-2">
-            <li v-for="item in menuItems" :key="item.path">
-              <NuxtLink :to="getLocalizedPath(item.path)" @click="closeMenu"
-                class="uppercase block py-3 px-4 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors duration-200 font-semibold text-sm"
-                active-class="bg-red-100 text-red-600">
-                {{ $t(item.label) }}
-              </NuxtLink>
-            </li>
-          </ul>
+    <!-- Các nút menu ĐỘC LẬP, mỗi nút là một viên nổi riêng trên nền trang —
+         không nằm trong khung/panel nào cả. Dùng TransitionGroup để từng nút
+         rơi xuống lệch nhau một nhịp (transitionDelay theo chỉ số) thay vì cả
+         cụm hiện cùng lúc.
+         Nhóm luôn có mặt trong DOM, chỉ danh sách con thay đổi — đó là cách
+         TransitionGroup nhận biết để chạy hiệu ứng vào/ra. -->
+    <TransitionGroup name="pill" tag="div" :style="menuPosition"
+      class="lg:hidden pointer-events-none fixed right-0 z-[9999] flex w-[17rem] max-w-full flex-col gap-2 overflow-y-auto overscroll-contain px-4 py-2">
+      <template v-if="isMenuOpen">
+        <NuxtLink v-for="(item, index) in menuItems" :key="item.path"
+          :to="getLocalizedPath(item.path)" @click="closeMenu"
+          :style="{ transitionDelay: `${index * 35}ms` }"
+          class="rounded-xl bg-white/95 px-4 py-3 text-center text-sm font-bold uppercase text-gray-800 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.55)] ring-1 ring-black/5 backdrop-blur-md transition-colors duration-200 hover:bg-red-600 hover:text-white pointer-events-auto"
+          active-class="!bg-red-600 !text-white">
+          {{ $t(item.label) }}
+        </NuxtLink>
 
-          <!-- Social Links -->
-          <div class="px-4 py-3 border-t border-gray-100">
-            <p class="text-xs text-gray-500 mb-2">{{ $t('footer.followUs') }}</p>
-            <div class="flex space-x-4">
-              <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
-                class="text-gray-600 hover:text-red-600 transition-colors" aria-label="Facebook">
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
-              <a href="https://instagram.com/sapaparagliding" target="_blank" rel="noopener noreferrer"
-                class="text-gray-600 hover:text-red-600 transition-colors" aria-label="Instagram">
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </a>
-              <a href="https://tiktok.com/@sapaparagliding" target="_blank" rel="noopener noreferrer"
-                class="text-gray-600 hover:text-red-600 transition-colors" aria-label="TikTok">
-                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-                </svg>
-              </a>
-            </div>
-          </div>
+        <!-- Hàng mạng xã hội cũng là một viên nổi riêng, rơi sau cùng -->
+        <div key="social" :style="{ transitionDelay: `${menuItems.length * 35}ms` }"
+          class="pointer-events-auto flex items-center justify-center gap-6 rounded-xl bg-white/95 px-4 py-3 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.55)] ring-1 ring-black/5 backdrop-blur-md">
+          <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
+            class="text-gray-700 transition-colors hover:text-red-600" aria-label="Facebook">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="https://instagram.com/sapaparagliding" target="_blank" rel="noopener noreferrer"
+            class="text-gray-700 transition-colors hover:text-red-600" aria-label="Instagram">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://tiktok.com/@sapaparagliding" target="_blank" rel="noopener noreferrer"
+            class="text-gray-700 transition-colors hover:text-red-600" aria-label="TikTok">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+            </svg>
+          </a>
         </div>
-      </nav>
-    </Transition>
+      </template>
+    </TransitionGroup>
   </div>
 </template>
 
@@ -308,19 +301,21 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Thả xuống từ mép header: mờ dần + trượt nhẹ + phóng nhẹ từ cạnh trên. */
-.dropdown-enter-active {
-  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+/* Từng viên nút rơi xuống lệch nhịp nhau khi mở. */
+.pill-enter-active {
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dropdown-leave-active {
+/* Khi đóng thì bỏ độ trễ so le, tất cả biến mất cùng lúc cho dứt khoát. */
+.pill-leave-active {
   transition: opacity 0.15s ease, transform 0.15s ease;
+  transition-delay: 0ms !important;
 }
 
-.dropdown-enter-from,
-.dropdown-leave-to {
+.pill-enter-from,
+.pill-leave-to {
   opacity: 0;
-  transform: translateY(-8px) scale(0.97);
+  transform: translateY(-12px) scale(0.95);
 }
 
 .fade-enter-active,
