@@ -18,11 +18,12 @@
                      nên đọc được ở vùng sáng.
                      Xếp dọc trong cùng một khối để nút luôn nằm ngay dưới
                      badge dù badge xuống mấy dòng, không đè lên chữ như trước. -->
-                <div class="absolute top-0 right-0 left-0 z-20 flex flex-col items-end gap-3 p-4 md:p-6 lg:hidden">
-                    <!-- Tách 3 dòng, căn lề phải. Bỏ nền/viền/dấu tích: chữ
-                         đứng trực tiếp trên ảnh nên dùng đổ bóng viền đen
+                <div
+                    class="absolute top-0 right-0 left-0 z-20 flex flex-col items-end gap-3 p-4 md:p-6 lg:p-10 xl:p-12">
+                    <!-- MOBILE: tách 3 dòng, căn lề phải. Bỏ nền/viền/dấu tích:
+                         chữ đứng trực tiếp trên ảnh nên dùng đổ bóng viền đen
                          (text-shadow 4 hướng) để đọc rõ ở mọi vùng sáng tối. -->
-                    <div class="flex flex-col items-end gap-0.5 text-right">
+                    <div class="flex flex-col items-end gap-0.5 text-right lg:hidden">
                         <span v-for="(line, i) in highlightLines" :key="i"
                             class="text-base font-black leading-snug text-white"
                             style="text-shadow: 0 2px 6px rgba(0,0,0,.9), -1px -1px 0 rgba(0,0,0,.8), 1px -1px 0 rgba(0,0,0,.8), -1px 1px 0 rgba(0,0,0,.8), 1px 1px 0 rgba(0,0,0,.8)">
@@ -30,8 +31,16 @@
                         </span>
                     </div>
 
+                    <!-- DESKTOP: giữ nguyên 1 hàng, không nền/viền/dấu tích.
+                         Đổ bóng dày hơn bản mobile vì nằm trên vùng ảnh sáng. -->
+                    <span
+                        class="hidden lg:block whitespace-nowrap text-xl xl:text-2xl font-black text-white"
+                        style="text-shadow: 0 3px 12px rgba(0,0,0,.95), 0 0 24px rgba(0,0,0,.7), -1.5px -1.5px 0 rgba(0,0,0,.9), 1.5px -1.5px 0 rgba(0,0,0,.9), -1.5px 1.5px 0 rgba(0,0,0,.9), 1.5px 1.5px 0 rgba(0,0,0,.9)">
+                        {{ $t('about.intro.highlight') }}
+                    </span>
+
                     <NuxtLink :to="localePath('/pilots')"
-                        class="px-5 py-2.5 bg-white/10 backdrop-blur-md text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm">
+                        class="lg:hidden px-5 py-2.5 bg-white/10 backdrop-blur-md text-white font-bold rounded-lg border border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -42,17 +51,8 @@
 
                 <!-- Main Content - Bottom Right -->
                 <div class="absolute bottom-0 right-0 p-6 md:p-10 lg:p-16 max-w-2xl text-right">
-                    <!-- Badge (DESKTOP). Trên mobile badge được đưa lên đầu ảnh
-                         bằng khối riêng phía dưới, nên bản này ẩn ở màn hẹp. -->
-                    <div
-                        class="hidden lg:inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2.5 rounded-full mb-4 border border-white/20">
-                        <svg class="w-6 h-6 shrink-0 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <span class="text-base xl:text-lg font-bold text-white">{{ $t('about.intro.highlight') }}</span>
-                    </div>
+                    <!-- Badge "hơn 50.000 chuyến bay..." đã chuyển lên khối
+                         đầu ảnh (top-0) cho cả mobile lẫn desktop. -->
 
                     <!-- Title -->
                     <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 drop-shadow-lg">
@@ -72,7 +72,10 @@
             </div>
 
             <!-- 3 Small Images Grid - Bottom -->
-            <div class="grid grid-cols-1 md:grid-cols-3 h-[30vh] lg:h-[25vh]">
+            <!-- 3 cột ở mọi khổ màn: mobile trước đây ẩn ảnh 02/03 (hidden md:block)
+                 nên thiếu ảnh so với desktop. Mỗi cột chỉ ~1/3 bề ngang máy nên
+                 chữ overlay thu nhỏ và ẩn đoạn mô tả ở mobile. -->
+            <div class="grid grid-cols-3 h-[30vh] lg:h-[25vh]">
                 <!-- Image 1 -->
                 <div class="relative overflow-hidden group">
                     <NuxtImg src="/images/gallery/1. Soar above Sapa valley.JPG" alt="Paragliding Experience 1"
@@ -80,57 +83,57 @@
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-4 md:p-6">
+                    <div class="absolute top-0 left-0 p-2 md:p-6">
                         <span
-                            class="inline-block px-3 py-1 bg-red-600/90 text-white text-xs font-bold rounded-full mb-2">
+                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-red-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
                             01
                         </span>
-                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
                             {{ $t('about.values.safety.title') }}
                         </h3>
-                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.safety') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Image 2 -->
-                <div class="relative overflow-hidden group hidden md:block">
+                <div class="relative overflow-hidden group">
                     <NuxtImg src="/images/gallery/2. Sunset flight.jpg" alt="Paragliding Experience 2"
                         width="800" height="600" format="webp"
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-4 md:p-6">
+                    <div class="absolute top-0 left-0 p-2 md:p-6">
                         <span
-                            class="inline-block px-3 py-1 bg-blue-600/90 text-white text-xs font-bold rounded-full mb-2">
+                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-blue-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
                             02
                         </span>
-                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
                             {{ $t('about.values.excellence.title') }}
                         </h3>
-                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.experience') }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Image 3 -->
-                <div class="relative overflow-hidden group hidden md:block">
+                <div class="relative overflow-hidden group">
                     <NuxtImg src="/images/gallery/3. Mountain peak.jpg" alt="Paragliding Experience 3"
                         width="800" height="600" format="webp"
                         class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" />
                     <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-transparent" />
                     <!-- Content - Top Left -->
-                    <div class="absolute top-0 left-0 p-4 md:p-6">
+                    <div class="absolute top-0 left-0 p-2 md:p-6">
                         <span
-                            class="inline-block px-3 py-1 bg-orange-600/90 text-white text-xs font-bold rounded-full mb-2">
+                            class="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-orange-600/90 text-white text-[10px] md:text-xs font-bold rounded-full mb-1 md:mb-2">
                             03
                         </span>
-                        <h3 class="text-white font-bold text-lg md:text-xl drop-shadow-lg">
+                        <h3 class="text-white font-bold text-[11px] leading-tight md:text-xl drop-shadow-lg">
                             {{ $t('about.values.passion.title') }}
                         </h3>
-                        <p class="text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
+                        <p class="hidden md:block text-slate-300 text-xs md:text-sm mt-1 max-w-[200px]">
                             {{ $t('about.mission.points.nature') }}
                         </p>
                     </div>
