@@ -812,11 +812,11 @@
       "basic": {
         "name": "Basic Package",
         "price": "2.090k",
-        "priceUsd": "80 USD/flight",
+        "priceUsd": "82 USD/flight",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
-          "photoVideo": "GOPRO video & photo recording",
+          "photoVideo": "GoPro video & photo recording",
           "drinks": "Beverages at the flight site",
           "insurance": "Paragliding insurance",
           "certificate": "Certificate"
@@ -826,11 +826,11 @@
         "name": "Standard Package",
         "badge": "POPULAR",
         "price": "2.190k",
-        "priceUsd": "85 USD/flight",
+        "priceUsd": "88 USD/flight",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
-          "photoVideo": "GOPRO video & photo recording",
+          "photoVideo": "GoPro video & photo recording",
           "drinks": "Beverages at the flight site",
           "insurance": "Paragliding insurance",
           "certificate": "Certificate",
@@ -840,11 +840,11 @@
       "premium": {
         "name": "Premium Package",
         "price": "2.990k",
-        "priceUsd": "113 USD/flight",
+        "priceUsd": "116 USD/flight",
         "included": "Included:",
         "items": {
           "flight": "Paragliding flight 8-15 minutes",
-          "photoVideo": "GOPRO video & photo recording",
+          "photoVideo": "GoPro video & photo recording",
           "drinks": "Beverages at the flight site",
           "insurance": "Paragliding insurance",
           "certificate": "Certificate",
@@ -1049,7 +1049,7 @@
   "pricingPage": {
     "title": "Sapa Paragliding Prices",
     "subtitle": "All-inclusive prices, no hidden fees – reserve now, pay after your flight",
-    "intro": "Tandem paragliding prices in Sapa: 3 all-inclusive packages covering insurance, GOPRO filming and drinks at the flying site. No deposit required – fast confirmation by phone or through the website.",
+    "intro": "Tandem paragliding prices in Sapa: 3 all-inclusive packages covering insurance, GoPro filming and drinks at the flying site. No deposit required – fast confirmation by phone or through the website.",
     "packagesTitle": "Flight packages and detailed prices",
     "notesTitle": "Price notes",
     "notes": {
@@ -1062,7 +1062,7 @@
     "faq": {
       "included": {
         "q": "What is included in the Sapa paragliding price?",
-        "a": "Every package includes an 8–15 minute tandem flight with an internationally certified pilot, GOPRO photos & video, paragliding insurance, drinks at the flying site and an experience certificate."
+        "a": "Every package includes an 8–15 minute tandem flight with an internationally certified pilot, GoPro photos & video, paragliding insurance, drinks at the flying site and an experience certificate."
       },
       "deposit": {
         "q": "Do I need to pay a deposit?",

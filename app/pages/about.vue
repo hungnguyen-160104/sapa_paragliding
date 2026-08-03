@@ -358,11 +358,11 @@ const getAboutSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
       title: 'Về Sapa Paragliding: Đội Ngũ Dù Lượn & Điểm Bay Mường Hoa',
-      description: 'Tìm hiểu về Sapa Paragliding - đối tác đáng tin cậy cho những trải nghiệm bay lượn tuyệt vời tại Sapa, Việt Nam. 15+ phi công chuyên nghiệp.'
+      description: 'Tìm hiểu về Sapa Paragliding - đối tác đáng tin cậy cho những trải nghiệm bay lượn tuyệt vời tại Sapa, Việt Nam. 13+ phi công chuyên nghiệp.'
     },
     en: {
       title: 'About Sapa Paragliding: Our Team & Muong Hoa Flying Site',
-      description: 'Learn about Sapa Paragliding - your trusted partner for unforgettable flying experiences in Sapa, Vietnam. 15+ professional pilots.'
+      description: 'Learn about Sapa Paragliding - your trusted partner for unforgettable flying experiences in Sapa, Vietnam. 13+ professional pilots.'
     },
     fr: {
       title: 'Sapa Paragliding : Notre Équipe et le Site de Vol Muong Hoa',

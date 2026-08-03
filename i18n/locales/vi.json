@@ -59,9 +59,9 @@
       "from": "Chỉ từ",
       "perFlight": "/lượt",
       "tourDuration": "Thời gian tour",
-      "durationText": "Từ 90 phút tuỳ vào điều kiện thời tiết",
+      "durationText": "Từ 90 phút tùy vào điều kiện thời tiết",
       "included": "Đã bao gồm:",
-      "optionalServices": "Dịch vụ tuỳ chọn:",
+      "optionalServices": "Dịch vụ tùy chọn:",
       "locations": "Địa điểm:",
       "takeoffPoint": "Toạ độ điểm cất cánh: Núi Hầu Thào",
       "landingPoint": "Toạ độ điểm hạ cánh: Bản Lao Chải",
@@ -70,7 +70,7 @@
       "youSave": "🎉 Bạn được giảm:",
       "priceSummary": "Tổng kết giá",
       "flightPriceFor": "Giá bay",
-      "optionalServicesTotal": "Dịch vụ tuỳ chọn",
+      "optionalServicesTotal": "Dịch vụ tùy chọn",
       "groupDiscount": "Giảm giá nhóm",
       "discount": "Giảm giá",
       "total": "Tổng cộng:",
@@ -99,7 +99,7 @@
           "name": "Quay hành trình bay độc đáo bằng Camera 360 (bao gồm edit video)",
           "description": "Video sẽ được chỉnh sửa trước khi gửi lại cho bạn."
         },
-        "gopro": "Quay chuyến bay bằng Gopro tiêu chuẩn: FREE"
+        "gopro": "Quay chuyến bay bằng GoPro tiêu chuẩn: FREE"
       },
       "promotions": {
         "group2": "Nhóm từ 2 người trở lên",
@@ -632,7 +632,7 @@
           },
           "landing": {
             "title": "Điểm hạ cánh",
-            "desc": "Hạ cánh tại bản văn hoá Lao Chải, gần chợ truyền thống – nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay."
+            "desc": "Hạ cánh tại bản văn hóa Lao Chải, gần chợ truyền thống – nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay."
           }
         }
       },
@@ -654,7 +654,7 @@
           },
           "safety": {
             "title": "Hạ cánh",
-            "desc": "Trang bị an toàn, thoải mái. Hạ cánh nhẹ nhàng, có thể đứng hoặc ngồi tuỳ điều kiện."
+            "desc": "Trang bị an toàn, thoải mái. Hạ cánh nhẹ nhàng, có thể đứng hoặc ngồi tùy điều kiện."
           }
         }
       }
@@ -744,7 +744,7 @@
       },
       "expertTeam": {
         "title": "Đội Ngũ Chuyên Gia",
-        "description": "15+ phi công quốc tế với hơn 50.000 chuyến bay"
+        "description": "13+ phi công quốc tế với hơn 50.000 chuyến bay"
       },
       "bestExperience": {
         "title": "Trải Nghiệm Đỉnh Cao",
@@ -798,11 +798,11 @@
       "basic": {
         "name": "Gói Cơ Bản",
         "price": "2.090k",
-        "priceUsd": "80 USD/lượt",
+        "priceUsd": "82 USD/lượt",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",
-          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "photoVideo": "Quay phim & chụp hình GoPro",
           "drinks": "Đồ uống tại điểm bay",
           "insurance": "Bảo hiểm dù lượn",
           "certificate": "Giấy chứng nhận tham gia trải nghiệm"
@@ -812,11 +812,11 @@
         "name": "Gói Tiêu Chuẩn",
         "badge": "PHỔ BIẾN",
         "price": "2.190k",
-        "priceUsd": "85 USD/lượt",
+        "priceUsd": "88 USD/lượt",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",
-          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "photoVideo": "Quay phim & chụp hình GoPro",
           "drinks": "Đồ uống tại điểm bay",
           "insurance": "Bảo hiểm dù lượn",
           "certificate": "Giấy chứng nhận tham gia trải nghiệm",
@@ -826,11 +826,11 @@
       "premium": {
         "name": "Gói Premium",
         "price": "2.990k",
-        "priceUsd": "113 USD/lượt",
+        "priceUsd": "116 USD/lượt",
         "included": "Đã bao gồm:",
         "items": {
           "flight": "Chuyến bay dù lượn 8-15 phút",
-          "photoVideo": "Quay phim & chụp hình GOPRO",
+          "photoVideo": "Quay phim & chụp hình GoPro",
           "drinks": "Đồ uống tại điểm bay",
           "insurance": "Bảo hiểm dù lượn",
           "certificate": "Giấy chứng nhận tham gia trải nghiệm",
@@ -874,7 +874,7 @@
     "address": "Địa Chỉ",
     "followUs": "Theo Dõi",
     "quickLinks": "Liên Kết Nhanh",
-    "copyright": "Đơn vị được cấp phép bay bởi Cục Tác chiến – Bộ Tổng Tham mưu, Bộ Quốc phòng Việt Nam. Giấy phép kinh doanh dù lượn số 02/GCN-SVHTT do Sở Văn hoá, Thể thao và Du lịch tỉnh Lào Cai cấp"
+    "copyright": "Đơn vị được cấp phép bay bởi Cục Tác chiến – Bộ Tổng Tham mưu, Bộ Quốc phòng Việt Nam. Giấy phép kinh doanh dù lượn số 02/GCN-SVHTT do Sở Văn hóa, Thể thao và Du lịch tỉnh Lào Cai cấp"
   },
   "validation": {
     "required": "Trường này là bắt buộc",
@@ -1015,7 +1015,7 @@
     },
     "landing": {
       "title": "Điểm hạ cánh – bản Lao Chải",
-      "desc": "Bạn hạ cánh nhẹ nhàng tại bản văn hoá Lao Chải giữa thung lũng Mường Hoa, gần chợ truyền thống nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay.",
+      "desc": "Bạn hạ cánh nhẹ nhàng tại bản văn hóa Lao Chải giữa thung lũng Mường Hoa, gần chợ truyền thống nơi trưng bày sản phẩm thủ công do người dân địa phương làm bằng tay.",
       "mapLabel": "Xem điểm hạ cánh trên Google Maps"
     },
     "valley": {
@@ -1024,7 +1024,7 @@
     },
     "bestTime": {
       "title": "Thời điểm bay đẹp nhất",
-      "desc": "Sa Pa có thể bay quanh năm tuỳ điều kiện thời tiết. Đẹp nhất là mùa lúa chín (tháng 9–10) và mùa nước đổ (tháng 5–6). Giờ bay cụ thể được xác nhận theo dự báo gió và tầm nhìn từng ngày."
+      "desc": "Sa Pa có thể bay quanh năm tùy điều kiện thời tiết. Đẹp nhất là mùa lúa chín (tháng 9–10) và mùa nước đổ (tháng 5–6). Giờ bay cụ thể được xác nhận theo dự báo gió và tầm nhìn từng ngày."
     },
     "gettingThere": {
       "title": "Di chuyển đến điểm bay",
@@ -1035,7 +1035,7 @@
   "pricingPage": {
     "title": "Giá Bay Dù Lượn Sa Pa",
     "subtitle": "Giá trọn gói, không phụ thu ẩn – đặt chỗ trước, thanh toán sau",
-    "intro": "Bảng giá bay dù lượn đôi tại Sa Pa của Sapa Paragliding: 3 gói trải nghiệm trọn gói đã gồm bảo hiểm, quay phim GOPRO và đồ uống tại điểm bay. Không yêu cầu đặt cọc, xác nhận nhanh qua điện thoại hoặc website.",
+    "intro": "Bảng giá bay dù lượn đôi tại Sa Pa của Sapa Paragliding: 3 gói trải nghiệm trọn gói đã gồm bảo hiểm, quay phim GoPro và đồ uống tại điểm bay. Không yêu cầu đặt cọc, xác nhận nhanh qua điện thoại hoặc website.",
     "packagesTitle": "Các gói bay và giá chi tiết",
     "notesTitle": "Lưu ý về giá",
     "notes": {
@@ -1048,7 +1048,7 @@
     "faq": {
       "included": {
         "q": "Giá bay dù lượn Sa Pa đã bao gồm những gì?",
-        "a": "Tất cả các gói đều gồm chuyến bay đôi 8–15 phút cùng phi công chứng chỉ quốc tế, quay phim & chụp hình GOPRO, bảo hiểm dù lượn, đồ uống tại điểm bay và giấy chứng nhận trải nghiệm."
+        "a": "Tất cả các gói đều gồm chuyến bay đôi 8–15 phút cùng phi công chứng chỉ quốc tế, quay phim & chụp hình GoPro, bảo hiểm dù lượn, đồ uống tại điểm bay và giấy chứng nhận trải nghiệm."
       },
       "deposit": {
         "q": "Có cần đặt cọc trước không?",

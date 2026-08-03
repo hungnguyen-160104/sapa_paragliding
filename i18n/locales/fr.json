@@ -744,7 +744,7 @@
       },
       "expertTeam": {
         "title": "Équipe d’experts",
-        "description": "15+ pilotes internationaux et plus de 50 000 vols"
+        "description": "13+ pilotes internationaux et plus de 50 000 vols"
       },
       "bestExperience": {
         "title": "Expérience haut de gamme",
@@ -798,7 +798,7 @@
       "basic": {
         "name": "Forfait Basique",
         "price": "2 090k",
-        "priceUsd": "80 USD/vol",
+        "priceUsd": "82 USD/vol",
         "included": "Inclus :",
         "items": {
           "flight": "Vol en parapente 8–15 minutes",
@@ -812,7 +812,7 @@
         "name": "Forfait Standard",
         "badge": "POPULAIRE",
         "price": "2 190k",
-        "priceUsd": "85 USD/vol",
+        "priceUsd": "88 USD/vol",
         "included": "Inclus :",
         "items": {
           "flight": "Vol en parapente 8–15 minutes",
@@ -826,7 +826,7 @@
       "premium": {
         "name": "Forfait Premium",
         "price": "2 990k",
-        "priceUsd": "113 USD/vol",
+        "priceUsd": "116 USD/vol",
         "included": "Inclus :",
         "items": {
           "flight": "Vol en parapente 8–15 minutes",
@@ -1035,7 +1035,7 @@
   "pricingPage": {
     "title": "Tarifs du Parapente à Sapa",
     "subtitle": "Prix tout compris, sans frais cachés – réservez maintenant, payez après le vol",
-    "intro": "Tarifs des vols en parapente tandem à Sapa : 3 forfaits tout compris incluant l'assurance, la vidéo GOPRO et les boissons sur le site de vol. Aucun acompte requis – confirmation rapide par téléphone ou via le site.",
+    "intro": "Tarifs des vols en parapente tandem à Sapa : 3 forfaits tout compris incluant l'assurance, la vidéo GoPro et les boissons sur le site de vol. Aucun acompte requis – confirmation rapide par téléphone ou via le site.",
     "packagesTitle": "Forfaits de vol et tarifs détaillés",
     "notesTitle": "À savoir sur les tarifs",
     "notes": {
@@ -1048,7 +1048,7 @@
     "faq": {
       "included": {
         "q": "Que comprend le prix du parapente à Sapa ?",
-        "a": "Chaque forfait comprend un vol tandem de 8 à 15 minutes avec un pilote certifié international, photos et vidéo GOPRO, l'assurance parapente, les boissons sur le site et un certificat d'expérience."
+        "a": "Chaque forfait comprend un vol tandem de 8 à 15 minutes avec un pilote certifié international, photos et vidéo GoPro, l'assurance parapente, les boissons sur le site et un certificat d'expérience."
       },
       "deposit": {
         "q": "Faut-il verser un acompte ?",

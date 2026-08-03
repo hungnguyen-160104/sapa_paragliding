@@ -47,8 +47,11 @@
               </li>
             </ul>
 
+            <!-- Kèm ?package= để trang đặt vé tự tick sẵn các dịch vụ của gói
+                 này, khách không phải chọn lại. Xem PACKAGE_OPTIONS trong
+                 components/booking/Step1ServiceSelection.vue -->
             <NuxtLink
-              :to="localePath('/booking')"
+              :to="{ path: localePath('/booking'), query: { package: pkg.key } }"
               :class="[
                 'mt-auto inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300',
                 pkg.button
@@ -154,27 +157,27 @@ const getPricesSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
       title: 'Giá Bay Dù Lượn Sa Pa: Trọn Gói Từ 2.090.000đ, Không Đặt Cọc',
-      description: 'Bảng giá bay dù lượn Sa Pa mới nhất: 3 gói trọn gói từ 2.090.000đ (80 USD) gồm bảo hiểm, quay GOPRO, đồ uống tại điểm bay. Không đặt cọc, hủy do thời tiết hoàn tiền 100%.'
+      description: 'Bảng giá bay dù lượn Sa Pa mới nhất: 3 gói trọn gói từ 2.090.000đ (82 USD) gồm bảo hiểm, quay GoPro, đồ uống tại điểm bay. Không đặt cọc, hủy do thời tiết hoàn tiền 100%.'
     },
     en: {
       title: 'Sapa Paragliding Prices: All-Inclusive From 2,090,000 VND',
-      description: 'Latest Sapa paragliding prices: 3 all-inclusive packages from 2,090,000 VND (80 USD) with insurance, GOPRO video and drinks. No deposit, 100% refund on weather cancellation.'
+      description: 'Latest Sapa paragliding prices: 3 all-inclusive packages from 2,090,000 VND (82 USD) with insurance, GoPro video and drinks. No deposit, 100% refund on weather cancellation.'
     },
     fr: {
       title: 'Tarifs Parapente à Sapa : Tout Compris Dès 2 090 000 VND',
-      description: "Tarifs du parapente à Sapa : 3 forfaits tout compris dès 2 090 000 VND (80 USD) avec assurance, vidéo GOPRO et boissons. Sans acompte, remboursement à 100% si annulation météo."
+      description: "Tarifs du parapente à Sapa : 3 forfaits tout compris dès 2 090 000 VND (82 USD) avec assurance, vidéo GoPro et boissons. Sans acompte, remboursement à 100% si annulation météo."
     },
     ru: {
       title: 'Цены на параплан в Сапе: всё включено от 2 090 000 VND',
-      description: 'Цены на полёты в Сапе: 3 пакета всё включено от 2 090 000 VND (80 USD) — страховка, GOPRO, напитки. Без депозита, 100% возврат при отмене из-за погоды.'
+      description: 'Цены на полёты в Сапе: 3 пакета всё включено от 2 090 000 VND (82 USD) — страховка, GoPro, напитки. Без депозита, 100% возврат при отмене из-за погоды.'
     },
     zh: {
       title: '沙坝滑翔伞价格：全包套餐 2,090,000 越南盾起',
-      description: '沙坝滑翔伞最新价格：3 种全包套餐 2,090,000 越南盾（80 美元）起，含保险、GOPRO 拍摄和饮品。无需订金，因天气取消全额退款。'
+      description: '沙坝滑翔伞最新价格：3 种全包套餐 2,090,000 越南盾（80 美元）起，含保险、GoPro 拍摄和饮品。无需订金，因天气取消全额退款。'
     },
     hi: {
       title: 'सापा पैराग्लाइडिंग कीमतें: 2,090,000 VND से ऑल-इन्क्लूसिव',
-      description: 'सापा पैराग्लाइडिंग कीमतें: 2,090,000 VND (80 USD) से 3 ऑल-इन्क्लूसिव पैकेज — बीमा, GOPRO वीडियो और पेय शामिल। कोई जमा नहीं, मौसम रद्दीकरण पर 100% रिफंड।'
+      description: 'सापा पैराग्लाइडिंग कीमतें: 2,090,000 VND (82 USD) से 3 ऑल-इन्क्लूसिव पैकेज — बीमा, GoPro वीडियो और पेय शामिल। कोई जमा नहीं, मौसम रद्दीकरण पर 100% रिफंड।'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

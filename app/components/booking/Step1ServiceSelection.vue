@@ -310,7 +310,9 @@ const showIncluded = ref(false)
 const showPromos = ref(false)
 
 const basePrice = 2090000
-const basePriceUSD = 85
+// Khớp với Gói Cơ Bản 2.090.000đ ở bảng giá (i18n pricing.packages.basic).
+// Đổi ở đây thì phải đổi cả priceUsd trong 6 file i18n/locales.
+const basePriceUSD = 82
 
 const numberOfPassengers = ref(bookingStore.bookingData?.numberOfPassengers ?? 1)
 
@@ -357,6 +359,40 @@ const selectedOptions = ref<string[]>(bookingStore.bookingData?.selectedOptions 
 const serviceQuantities = ref<Record<string, number>>(
   bookingStore.bookingData?.serviceQuantities ?? { drone: 1, camera360: 1 }
 )
+
+/**
+ * Gói chọn sẵn từ trang bảng giá: /booking?package=basic|standard|premium
+ *
+ * Ba gói ở /prices chính là gói nền cộng thêm các dịch vụ tuỳ chọn dưới đây,
+ * số tiền khớp đúng từng đồng:
+ *   basic    2.090.000 = nền
+ *   standard 2.190.000 = nền + xe đón trả (100.000)
+ *   premium  2.990.000 = nền + xe đón trả + drone (300.000) + camera 360 (500.000)
+ *
+ * Khách bấm "Đặt Ngay" ở một gói thì sang đây các dịch vụ tương ứng đã được
+ * tick sẵn, không phải chọn lại.
+ */
+const PACKAGE_OPTIONS: Record<string, string[]> = {
+  basic: [],
+  standard: ['hotel-transfer'],
+  premium: ['hotel-transfer', 'drone', 'camera360']
+}
+
+const route = useRoute()
+
+onMounted(() => {
+  const requested = route.query.package
+
+  if (typeof requested !== 'string') return
+
+  const preset = PACKAGE_OPTIONS[requested]
+
+  // Gói lạ thì bỏ qua, giữ nguyên lựa chọn cũ của khách.
+  if (!preset) return
+
+  selectedOptions.value = [...preset]
+  bookingStore.setSelectedOptions(selectedOptions.value)
+})
 
 /**
  * ✅ Quan trọng: tạo "view" computed để template không bị lỗi `.includes` / `[]`
