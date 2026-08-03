@@ -5,7 +5,7 @@
       <!-- Background Video -->
       <!-- Background Image -->
       <div class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
-        style="background-image: url('/images/pilot_background.jpeg');"></div>
+        style="background-image: url('/images/pilot_background.webp');"></div>
       <!-- Video asset missing in public/videos/header, keep only the background image to avoid build-time resolution errors. -->
 <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-contain">
         <source src="/videos/header/about_new.mp4" type="video/mp4">
@@ -17,7 +17,7 @@
     <div class="relative py-8 md:py-12 min-h-[calc(100vh-400px)]">
       <!-- Background Image -->
       <div class="absolute inset-0 bg-cover bg-center bg-fixed"
-        style="background-image: url('/images/pilot_background.jpeg');">
+        style="background-image: url('/images/pilot_background.webp');">
         <div class="absolute inset-0 bg-black/50"></div>
       </div>
 

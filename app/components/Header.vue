@@ -16,7 +16,12 @@
                trong khung 80px hình chỉ cao 53.6px. Bản cắt 820x670 lấp trọn
                khung -> hình to lên 49% mà khung menu vẫn giữ đúng 80px.
                Sapa_logo.png (bản đầy đủ) vẫn dùng cho JSON-LD và ảnh chia sẻ. -->
+          <!-- width/height BẮT BUỘC: thiếu thì @nuxt/image lấy mốc màn lớn
+               nhất và yêu cầu bản w=1536 (~39 KB) cho một logo chỉ cao 65px,
+               trên MỌI trang. Ảnh gốc 820x670, hiển thị cao tối đa 65px tức
+               ~80px ngang; đặt 200px là đã dư cho màn hình 2x. -->
           <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
+            width="200" height="163"
             class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
@@ -95,6 +100,7 @@
         <NuxtLink :to="localePath('/')"
           class="flex items-center justify-center bg-white/10 backdrop-blur-sm p-0.5 sm:p-1 rounded-full hover:shadow-xl transition-all duration-300 hover:scale-110">
           <NuxtImg src="/images/Sapa_logo_mark.png" alt="Sapa Paragliding Logo"
+            width="200" height="163"
             class="h-12 sm:h-20 w-auto object-contain" format="webp" @error="handleLogoError" />
         </NuxtLink>
       </div>
