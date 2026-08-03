@@ -60,7 +60,7 @@
         </a>
         
         <a 
-          href="https://wa.me/84776499562" 
+          href="https://wa.me/84522794999"
           target="_blank" 
           class="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-white/25"
         >

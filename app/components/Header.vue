@@ -20,12 +20,18 @@
             class="h-12 lg:h-[4.05rem] w-auto shrink-0 object-contain" format="webp"
             @error="handleLogoError" />
 
-          <!-- MOBILE/TABLET (<lg): tách 2 dòng ("DÙ LƯỢN" / "SAPA") với cách
-               dòng sát. Để 1 hàng thì dòng dài 12 ký tự chen với 6 nút ngôn
-               ngữ nên bị đè; tách 2 dòng thì dòng dài nhất chỉ còn 7 ký tự,
-               vừa hết chật vừa cho phép chữ to hơn (13px -> 15px). -->
+          <!-- MOBILE/TABLET (<lg): tách 2 dòng ("DÙ LƯỢN" / "SAPA"). Để 1 hàng
+               thì dòng dài 12 ký tự chen với 6 nút ngôn ngữ nên bị đè; tách 2
+               dòng thì dòng dài nhất chỉ còn 7 ký tự, vừa hết chật vừa cho
+               phép chữ to hơn (13px -> 15px).
+
+               leading PHẢI >= 1: truncate đặt overflow:hidden, nên line-height
+               nhỏ hơn 1 (trước là 0.95) làm hộp dòng thấp hơn chữ và CẮT MẤT
+               dấu tiếng Việt — dấu huyền trên chữ Ù và dấu nặng dưới chữ Ợ
+               trong "DÙ LƯỢN". Chỉ tiếng Việt bị vì các ngôn ngữ khác không
+               có dấu chồng trên/dưới. 1.15 đủ chỗ cho cả dấu trên lẫn dưới. -->
           <div
-            class="flex lg:hidden min-w-0 flex-col justify-center leading-[0.95] text-[#194d9b] font-black">
+            class="flex lg:hidden min-w-0 flex-col justify-center leading-[1.15] text-[#194d9b] font-black">
             <span class="truncate" :class="brandTextSize">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="truncate" :class="brandTextSize">{{ brandLines[1] }}</span>
           </div>

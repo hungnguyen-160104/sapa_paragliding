@@ -406,7 +406,7 @@
 import { usePostsStore } from '~/stores/posts'
 import { normalizeTableData } from '~/stores/postsAdmin'
 import { renderInlineMarkup } from '~/utils/inlineMarkup'
-import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl } from '~/utils/seo'
+import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getOgLocale } from '~/utils/seo'
 
 type ContentBlock = {
   id: string | number
@@ -699,11 +699,21 @@ useHead(() => {
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
       { property: 'og:image', content: image },
+      // Không khai báo kích thước thì Facebook/Zalo phải tự tải ảnh về đo
+      // trước khi render — lần chia sẻ đầu thường bỏ qua ảnh và chỉ hiện
+      // link trần. Khai báo sẵn để hiện preview ngay lần đầu.
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+      { property: 'og:image:alt', content: title },
       { property: 'og:type', content: 'article' },
       { property: 'og:url', content: postUrl },
+      // Cho mạng xã hội biết bài đang ở ngôn ngữ nào (fr_FR, vi_VN...)
+      { property: 'og:locale', content: getOgLocale(locale.value) },
+      { property: 'og:site_name', content: 'Sapa Paragliding' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description }
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: image }
     ],
     link: [
       { rel: 'canonical', href: postUrl },
