@@ -77,6 +77,19 @@ const hreflangLinks = computed(() => buildHreflangLinks('/', currentLocale.value
 
 const bookingPath = computed(() => localePath('/booking'))
 
+/**
+ * Đường dẫn đặt vé kèm gói chọn sẵn, giống nút "Đặt Ngay" ở trang /prices.
+ * Trang đặt vé đọc query này để tick sẵn dịch vụ tương ứng — xem
+ * PACKAGE_OPTIONS trong components/booking/Step1ServiceSelection.vue.
+ *
+ * Chỉ dùng cho ba nút trong bảng gói. Nút CTA chung ở hero và cuối trang vẫn
+ * dùng bookingPath vì khách chưa chọn gói nào.
+ */
+const bookingPathForPackage = (pkg: 'basic' | 'standard' | 'premium') => ({
+  path: bookingPath.value,
+  query: { package: pkg }
+})
+
 
 useHead(() => ({
   title: seoData.value.title,
@@ -391,7 +404,7 @@ onBeforeUnmount(() => {
             </div>
 
             <NuxtLink
-              :to="bookingPath"
+              :to="bookingPathForPackage('basic')"
               class="inline-flex w-full items-center justify-center py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
             >
               {{ $t('buttons.book') }}
@@ -426,7 +439,7 @@ onBeforeUnmount(() => {
             </div>
 
             <NuxtLink
-              :to="bookingPath"
+              :to="bookingPathForPackage('standard')"
               class="inline-flex w-full items-center justify-center py-3 bg-white text-red-600 font-bold uppercase tracking-wider hover:bg-slate-100 transition-all duration-300"
             >
               {{ $t('buttons.book') }}
@@ -455,7 +468,7 @@ onBeforeUnmount(() => {
             </div>
 
             <NuxtLink
-              :to="bookingPath"
+              :to="bookingPathForPackage('premium')"
               class="inline-flex w-full items-center justify-center py-3 border-2 border-red-500 text-red-600 font-bold uppercase tracking-wider hover:bg-red-500 hover:text-white transition-all duration-300"
             >
               {{ $t('buttons.book') }}
