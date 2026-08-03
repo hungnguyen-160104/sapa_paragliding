@@ -156,3 +156,21 @@
       0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }
+/**
+ * Đổ bóng chữ tiêu đề hero — chép cùng công thức với chữ
+ * "MEBAYLUON PARAGLIDING" ở trang chủ mebayluon.com.
+ *
+ * Ba lớp bóng đổ THẲNG XUỐNG (không lệch 4 hướng): một lớp sát chữ cho nét,
+ * một lớp toả vừa tách chữ khỏi nền, một lớp quầng xanh rộng tạo chiều sâu.
+ * Viền chữ là -webkit-text-stroke TRẮNG mảnh để hắt sáng viền — khác hẳn kiểu
+ * viền đen 4 hướng (đó là kỹ thuật kẻ viền, không phải đổ bóng).
+ *
+ * Xanh rgba(1,148,243) cũng hợp tông với #194d9b của chữ thương hiệu Sapa.
+ */
+.text-hero-shadow {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.9),
+    0 6px 18px rgba(0, 0, 0, 0.75),
+    0 12px 40px rgba(1, 148, 243, 0.55);
+}

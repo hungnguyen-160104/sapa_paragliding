@@ -63,9 +63,14 @@
           class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           <div class="relative aspect-[16/10] overflow-hidden border-b border-gray-100 bg-gray-100">
+            <!-- Ảnh bìa qua cloudinaryImage(): trang này hiện 44 ảnh, để URL
+                 gốc thì tải ~28 MB mỗi lần mở. loading="lazy" để ảnh ngoài
+                 màn hình không tải cho tới khi cuộn tới. -->
             <img
-              :src="post.image || post.thumbnailUrl || '/images/placeholder.jpg'"
+              :src="cloudinaryImage(post.image || post.thumbnailUrl, 600) || '/images/placeholder.jpg'"
               :alt="getPostTitle(post)"
+              loading="lazy"
+              decoding="async"
               class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 

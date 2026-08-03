@@ -97,7 +97,7 @@
           <div class="aspect-video w-full bg-gray-100">
             <NuxtImg
               v-if="post.image || post.thumbnailUrl"
-              :src="post.image || post.thumbnailUrl"
+              :src="cloudinaryImage(post.image || post.thumbnailUrl, 1200)"
               :alt="displayTitle"
               class="h-full w-full object-cover"
               loading="eager"
@@ -318,7 +318,7 @@
             >
               <div class="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-gray-200 bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                 <NuxtImg
-                  :src="relatedPost.image || relatedPost.thumbnailUrl || '/images/placeholder.jpg'"
+                  :src="cloudinaryImage(relatedPost.image || relatedPost.thumbnailUrl, 400) || '/images/placeholder.jpg'"
                   :alt="getLocalizedPostTitle(relatedPost)"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
@@ -355,7 +355,7 @@
             >
               <div class="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-gray-200 bg-gray-100 transition-all duration-300 group-hover:shadow-lg">
                 <NuxtImg
-                  :src="latestPost.image || latestPost.thumbnailUrl || '/images/placeholder.jpg'"
+                  :src="cloudinaryImage(latestPost.image || latestPost.thumbnailUrl, 400) || '/images/placeholder.jpg'"
                   :alt="getLocalizedPostTitle(latestPost)"
                   class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
