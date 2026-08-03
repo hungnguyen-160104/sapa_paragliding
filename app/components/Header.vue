@@ -66,9 +66,9 @@
              shrink-0: nhóm nút không bao giờ bị bóp, nên chữ thương hiệu bên
              trái phải tự truncate thay vì đè lên. Đây là chốt chặn cứng, không
              phụ thuộc ước lượng bề rộng ký tự của từng ngôn ngữ. -->
-        <div class="flex shrink-0 items-center gap-1.5 lg:gap-3">
+        <div ref="headerControlsRef" class="flex shrink-0 items-center gap-1.5 lg:gap-3">
           <!-- Menu Button (Mobile) -->
-          <button @click.stop="toggleMenu($event)"
+          <button @click.stop="toggleMenu"
             class="lg:hidden shrink-0 bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-all duration-300"
             aria-label="Toggle menu">
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,9 +100,10 @@
       </div>
 
       <!-- Floating Menu Button and Language Switcher (top-right) -->
-      <div class="fixed top-2 sm:top-4 right-2 sm:right-4 z-50 flex flex-col items-center gap-2 sm:gap-3">
+      <div ref="floatingControlsRef"
+        class="fixed top-2 sm:top-4 right-2 sm:right-4 z-50 flex flex-col items-center gap-2 sm:gap-3">
         <!-- Menu Button -->
-        <button @click.stop="toggleMenu($event)"
+        <button @click.stop="toggleMenu"
           class="bg-white hover:bg-gray-100 text-red-600 p-2.5 sm:p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
           aria-label="Toggle menu">
           <svg v-if="!isMenuOpen" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,14 +138,14 @@
         <NuxtLink v-for="(item, index) in menuItems" :key="item.path"
           :to="getLocalizedPath(item.path)" @click="closeMenu"
           :style="{ transitionDelay: `${index * 35}ms` }"
-          class="rounded-xl bg-white/55 px-3 py-2.5 text-center text-sm font-bold uppercase text-gray-900 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.45)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150 transition-colors duration-200 hover:bg-red-600/90 hover:text-white pointer-events-auto"
+          class="rounded-xl bg-white/55 px-3 py-2.5 text-center text-sm font-bold uppercase text-gray-900 shadow-[0_14px_30px_-6px_rgba(0,0,0,0.65),0_4px_10px_-2px_rgba(0,0,0,0.35)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150 transition-colors duration-200 hover:bg-red-600/90 hover:text-white pointer-events-auto"
           active-class="!bg-red-600 !text-white">
           {{ $t(item.label) }}
         </NuxtLink>
 
         <!-- Hàng mạng xã hội cũng là một viên nổi riêng, rơi sau cùng -->
         <div key="social" :style="{ transitionDelay: `${menuItems.length * 35}ms` }"
-          class="pointer-events-auto flex items-center justify-center gap-6 rounded-xl bg-white/55 px-3 py-2.5 shadow-[0_10px_24px_-6px_rgba(0,0,0,0.45)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150">
+          class="pointer-events-auto flex items-center justify-center gap-6 rounded-xl bg-white/55 px-3 py-2.5 shadow-[0_14px_30px_-6px_rgba(0,0,0,0.65),0_4px_10px_-2px_rgba(0,0,0,0.35)] ring-1 ring-white/50 backdrop-blur-xl backdrop-brightness-150">
           <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
             class="text-gray-700 transition-colors hover:text-red-600" aria-label="Facebook">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -258,20 +259,40 @@ const menuPosition = computed(() => ({
   maxHeight: `calc(100vh - ${menuTopPx.value + 16}px)`
 }))
 
-const toggleMenu = (event?: Event) => {
+const headerControlsRef = ref<HTMLElement | null>(null)
+const floatingControlsRef = ref<HTMLElement | null>(null)
+
+/**
+ * Bám menu xuống dưới CỤM nút đang hiện, không phải dưới riêng nút menu.
+ *
+ * Có hai cụm và mỗi lúc chỉ một cụm hiện:
+ *   - Đầu trang: hàng nút bên phải trong header [nút menu | nút ngôn ngữ].
+ *   - Đã cuộn:   cột nút nổi góc phải [nút menu / nút ngôn ngữ] — bong bóng
+ *                ngôn ngữ nằm NGAY DƯỚI nút menu, đáy cụm ~112px.
+ *
+ * Đo đáy cả cụm nên menu không bao giờ đè lên bong bóng ngôn ngữ.
+ */
+const updateMenuTop = () => {
+  const cluster = isAtTop.value ? headerControlsRef.value : floatingControlsRef.value
+  const bottom = cluster?.getBoundingClientRect().bottom ?? 80
+  menuTopPx.value = Math.max(8, bottom + 14)
+}
+
+/**
+ * Tính lại vị trí khi menu ĐANG MỞ mà người dùng cuộn trang. Thiếu bước này
+ * thì menu giữ nguyên chỗ tính lúc mở: mở ở đầu trang (menu ~88px) rồi cuộn
+ * xuống, cụm nổi hiện ra cao tới ~112px và bị menu đè lên đúng chỗ bong bóng
+ * ngôn ngữ. Chờ nextTick vì cụm nổi chỉ được gắn vào DOM sau khi isAtTop đổi.
+ */
+const syncMenuTop = async () => {
+  if (!isMenuOpen.value) return
+  await nextTick()
+  updateMenuTop()
+}
+
+const toggleMenu = () => {
   if (!isMenuOpen.value) {
-    // Có HAI nút mở menu: nút trong thanh header, và nút nổi góc phải hiện khi
-    // đã cuộn trang (lúc đó header đã trôi khỏi màn hình).
-    //
-    // Đo CẢ CỤM chứa nút (parentElement) chứ không đo riêng nút, vì ở chế độ
-    // nổi thì bong bóng chọn ngôn ngữ nằm NGAY DƯỚI nút menu trong cùng cụm —
-    // đo riêng nút thì menu xổ ra sẽ che mất nó. Đo cụm thì cả hai trường hợp
-    // đều đúng mà không phải phân biệt: trong header cụm là hàng nút bên phải,
-    // ở chế độ nổi cụm là cột [nút menu + nút ngôn ngữ].
-    const trigger = event?.currentTarget as HTMLElement | undefined
-    const cluster = trigger?.parentElement ?? trigger
-    const bottom = cluster?.getBoundingClientRect().bottom ?? 80
-    menuTopPx.value = Math.max(8, bottom + 8)
+    updateMenuTop()
   }
   isMenuOpen.value = !isMenuOpen.value
 }
@@ -295,6 +316,7 @@ watch(() => route.path, () => {
 // Detect scroll position
 const handleScroll = () => {
   isAtTop.value = window.scrollY < 50
+  syncMenuTop()
 }
 
 onMounted(() => {

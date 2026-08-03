@@ -496,6 +496,30 @@ const {
   }
 )
 
+/**
+ * Bài không tồn tại phải trả 404 THẬT.
+ *
+ * API /api/posts/<id> đã trả đúng 404, nhưng trang nuốt mất: post = null thì
+ * vẫn render khung "đang tải" và trả 200, kèm robots: index, follow và
+ * canonical trỏ về chính nó. Với Google đó là một trang hợp lệ — nên mọi URL
+ * /posts/<gì-cũng-được> đều thành trang có thể index (soft 404), sinh vô hạn
+ * trang rác mang tiêu đề là khoá dịch thô "posts.loadingArticle".
+ */
+if (error.value) {
+  // Lỗi hạ tầng KHÔNG được biến thành 404: database chập chờn mà trả 404 thì
+  // Google hiểu là bài đã bị xoá thật. Chỉ 404 khi API xác nhận không có bài.
+  const status = (error.value as { statusCode?: number }).statusCode
+  throw createError({
+    statusCode: status === 404 ? 404 : 500,
+    statusMessage: status === 404 ? 'Post not found' : 'Failed to load post',
+    fatal: true
+  })
+}
+
+if (!post.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })
+}
+
 onMounted(async () => {
   if (postsStore.posts.length === 0) {
     try {

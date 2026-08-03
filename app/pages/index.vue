@@ -245,8 +245,13 @@ onBeforeUnmount(() => {
           </span>
         </div>
 
+        <!-- Đổ bóng để chữ nổi hẳn khỏi ảnh nền: bóng mờ toả rộng tách chữ
+             khỏi vùng sáng, cộng viền đen mỏng 4 hướng giữ nét ở chỗ ảnh
+             nhiều chi tiết. Dùng text-shadow chứ không phải drop-shadow vì
+             viền 4 hướng cần nhiều lớp bóng lệch nhau. -->
         <h1
           class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none mb-5 animate-fade-in uppercase tracking-wider"
+          style="text-shadow: 0 4px 16px rgba(0,0,0,.85), 0 0 36px rgba(0,0,0,.6), -2px -2px 0 rgba(0,0,0,.55), 2px -2px 0 rgba(0,0,0,.55), -2px 2px 0 rgba(0,0,0,.55), 2px 2px 0 rgba(0,0,0,.55)"
         >
           {{ $t('hero.title') }}
         </h1>
