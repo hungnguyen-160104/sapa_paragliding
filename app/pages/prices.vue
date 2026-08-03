@@ -18,8 +18,8 @@
             v-for="pkg in packages"
             :key="pkg.key"
             :class="[
-              'relative flex flex-col rounded-2xl border bg-white p-6 md:p-8',
-              pkg.highlight ? 'border-red-500 shadow-lg' : 'border-gray-200'
+              'relative flex flex-col rounded-2xl border p-6 md:p-8 transition-shadow duration-300 hover:shadow-2xl',
+              pkg.card
             ]"
           >
             <span
@@ -51,9 +51,7 @@
               :to="localePath('/booking')"
               :class="[
                 'mt-auto inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold transition-all duration-300',
-                pkg.highlight
-                  ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow hover:from-red-600 hover:to-red-700'
-                  : 'border border-gray-300 text-gray-900 hover:border-gray-900'
+                pkg.button
               ]"
             >
               {{ $t('buttons.book') }}
@@ -117,10 +115,35 @@ const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
+/**
+ * Ba gói phân biệt bằng màu nền và độ đổ bóng tăng dần theo mức cao cấp:
+ * xám bạc -> đỏ thương hiệu -> vàng kim, bóng md -> xl -> 2xl.
+ *
+ * Nền chỉ dùng tông 50-100 nên chữ xám sẵn có vẫn đủ tương phản, không phải
+ * đổi màu chữ theo từng thẻ.
+ */
 const packages = [
-  { key: 'basic', highlight: false, items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate'] },
-  { key: 'standard', highlight: true, items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate', 'hotelTransfer'] },
-  { key: 'premium', highlight: false, items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate', 'hotelTransfer', 'drone', 'camera360'] }
+  {
+    key: 'basic',
+    highlight: false,
+    card: 'border-slate-200 bg-gradient-to-b from-slate-50 to-slate-200/70 shadow-md',
+    button: 'border border-slate-400 text-slate-900 hover:bg-slate-900 hover:text-white',
+    items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate']
+  },
+  {
+    key: 'standard',
+    highlight: true,
+    card: 'border-red-400 bg-gradient-to-b from-red-50 to-rose-200/70 shadow-xl',
+    button: 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg hover:from-red-600 hover:to-red-700',
+    items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate', 'hotelTransfer']
+  },
+  {
+    key: 'premium',
+    highlight: false,
+    card: 'border-amber-400 bg-gradient-to-b from-amber-50 to-amber-200/80 shadow-2xl',
+    button: 'bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-lg hover:from-amber-600 hover:to-amber-700',
+    items: ['flight', 'photoVideo', 'drinks', 'insurance', 'certificate', 'hotelTransfer', 'drone', 'camera360']
+  }
 ]
 
 const noteKeys = ['deposit', 'payment', 'weather', 'group']

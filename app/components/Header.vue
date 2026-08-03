@@ -68,7 +68,7 @@
              phụ thuộc ước lượng bề rộng ký tự của từng ngôn ngữ. -->
         <div class="flex shrink-0 items-center gap-1.5 lg:gap-3">
           <!-- Menu Button (Mobile) -->
-          <button @click.stop="toggleMenu"
+          <button @click.stop="toggleMenu($event)"
             class="lg:hidden shrink-0 bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-all duration-300"
             aria-label="Toggle menu">
             <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@
       <!-- Floating Menu Button and Language Switcher (top-right) -->
       <div class="fixed top-2 sm:top-4 right-2 sm:right-4 z-50 flex flex-col items-center gap-2 sm:gap-3">
         <!-- Menu Button -->
-        <button @click.stop="toggleMenu"
+        <button @click.stop="toggleMenu($event)"
           class="bg-white hover:bg-gray-100 text-red-600 p-2.5 sm:p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
           aria-label="Toggle menu">
           <svg v-if="!isMenuOpen" class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,35 +118,25 @@
       </div>
     </div>
 
-    <!-- Overlay (always available, independent of scroll position) -->
+    <!-- Nền mờ: chỉ làm tối trang phía sau chứ không che, để vẫn thấy trang nền.
+         Trước đây menu là một tấm trắng phủ kín toàn màn hình. -->
     <Transition name="fade">
-      <div v-if="isMenuOpen" @click="closeMenu" class="fixed inset-0 bg-black/50 z-[9998]" />
+      <div v-if="isMenuOpen" @click="closeMenu"
+        class="lg:hidden fixed inset-0 bg-black/30 backdrop-blur-[2px] z-[9998]" />
     </Transition>
 
-    <!-- Slide-out Menu (always available, independent of scroll position) -->
-    <Transition name="slide">
-      <nav v-if="isMenuOpen"
-        class="fixed top-0 left-0 h-full w-full sm:w-80 bg-white shadow-2xl overflow-y-auto z-[9999]">
-        <div class="p-4 sm:p-8">
-          <!-- Close Button -->
-          <div class="flex justify-end mb-4">
-            <button @click="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Close menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Logo/Title -->
-          <div class="mb-6 sm:mb-8">
-            <h2 class="text-xl sm:text-2xl font-black text-red-600">{{ $t('hero.title') }}</h2>
-          </div>
-
+    <!-- Menu nổi thả xuống ngay dưới thanh header.
+         top đo tại chỗ chứ không chốt cứng: header cao khác nhau tuỳ ngôn ngữ
+         vì hàng 6 nút ngôn ngữ có thể xuống dòng trên máy hẹp. -->
+    <Transition name="dropdown">
+      <nav v-if="isMenuOpen" :style="menuPosition"
+        class="lg:hidden fixed right-3 left-3 sm:left-auto sm:w-80 z-[9999] origin-top overflow-y-auto overscroll-contain rounded-2xl border border-black/5 bg-white/95 backdrop-blur-xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45)]">
+        <div>
           <!-- Menu Items -->
-          <ul class="space-y-2 sm:space-y-4 mb-6 sm:mb-8">
+          <ul class="p-2">
             <li v-for="item in menuItems" :key="item.path">
               <NuxtLink :to="getLocalizedPath(item.path)" @click="closeMenu"
-                class="uppercase block py-2.5 sm:py-3 px-3 sm:px-4 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-all duration-200 font-medium text-sm sm:text-base"
+                class="uppercase block py-3 px-4 text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors duration-200 font-semibold text-sm"
                 active-class="bg-red-100 text-red-600">
                 {{ $t(item.label) }}
               </NuxtLink>
@@ -154,8 +144,8 @@
           </ul>
 
           <!-- Social Links -->
-          <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t">
-            <p class="text-xs sm:text-sm text-gray-600 mb-3">{{ $t('footer.followUs') }}</p>
+          <div class="px-4 py-3 border-t border-gray-100">
+            <p class="text-xs text-gray-500 mb-2">{{ $t('footer.followUs') }}</p>
             <div class="flex space-x-4">
               <a href="https://www.facebook.com/bayduluonsapa" target="_blank" rel="noopener noreferrer"
                 class="text-gray-600 hover:text-red-600 transition-colors" aria-label="Facebook">
@@ -262,7 +252,28 @@ const getLocalizedPath = (path: string) => {
   return localePath(path)
 }
 
-const toggleMenu = () => {
+/**
+ * Vị trí panel menu nổi, đo ngay lúc mở thay vì chốt cứng 80px: chiều cao
+ * header đổi theo ngôn ngữ (hàng 6 nút ngôn ngữ có thể xuống dòng).
+ * getBoundingClientRect().bottom tính theo khung nhìn nên khớp luôn với
+ * position: fixed.
+ */
+const menuTopPx = ref(88)
+
+const menuPosition = computed(() => ({
+  top: `${menuTopPx.value}px`,
+  maxHeight: `calc(100vh - ${menuTopPx.value + 16}px)`
+}))
+
+const toggleMenu = (event?: Event) => {
+  if (!isMenuOpen.value) {
+    // Có HAI nút mở menu: nút trong thanh header, và nút nổi góc phải hiện khi
+    // đã cuộn trang (lúc đó header đã trôi khỏi màn hình). Đo chính nút vừa
+    // bấm nên panel luôn thả xuống đúng ngay dưới nút đó, khỏi phải phân biệt.
+    const trigger = event?.currentTarget as HTMLElement | undefined
+    const bottom = trigger?.getBoundingClientRect().bottom ?? 80
+    menuTopPx.value = Math.max(8, bottom + 8)
+  }
   isMenuOpen.value = !isMenuOpen.value
 }
 
@@ -297,14 +308,19 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.slide-enter-active,
-.slide-leave-active {
-  transition: transform 0.3s ease;
+/* Thả xuống từ mép header: mờ dần + trượt nhẹ + phóng nhẹ từ cạnh trên. */
+.dropdown-enter-active {
+  transition: opacity 0.2s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.slide-enter-from,
-.slide-leave-to {
-  transform: translateX(-100%);
+.dropdown-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
 }
 
 .fade-enter-active,
