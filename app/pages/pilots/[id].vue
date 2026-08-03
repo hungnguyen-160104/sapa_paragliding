@@ -22,7 +22,10 @@
 
                             <!-- Main Title -->
                             <div>
-                                <h1 class="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none mb-6"
+                                <!-- Cỡ cũ 6xl->9xl (60-128px) làm tên dài như
+                                     "Bishal Skyboy" xuống hàng. Hạ một bậc và
+                                     thêm whitespace-nowrap để giữ trên 1 dòng. -->
+                                <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black leading-none mb-6 whitespace-nowrap"
                                     style="text-shadow: 4px 4px 16px rgba(0,0,0,0.8)">
                                     {{ pilot.name }}
                                 </h1>

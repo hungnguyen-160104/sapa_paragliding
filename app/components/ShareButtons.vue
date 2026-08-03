@@ -107,7 +107,8 @@
       </button>
     </div>
 
-    <span v-if="copied" class="text-[11px] font-medium text-emerald-500">{{ t.copied }}</span>
+    <span v-if="zaloHint" class="text-[11px] font-medium text-emerald-500">{{ t.zaloCopied }}</span>
+    <span v-else-if="copied" class="text-[11px] font-medium text-emerald-500">{{ t.copied }}</span>
   </div>
 </template>
 
@@ -135,12 +136,12 @@ const props = withDefaults(
 )
 
 const I18N: Record<Lang, Record<string, string>> = {
-  vi: { share: 'Chia sẻ', shareArticle: 'Chia sẻ bài viết', shareSpot: 'Chia sẻ điểm bay', copyLink: 'Sao chép liên kết', copied: 'Đã sao chép!', nativeShare: 'Chia sẻ' },
-  en: { share: 'Share', shareArticle: 'Share this post', shareSpot: 'Share this flying site', copyLink: 'Copy link', copied: 'Copied!', nativeShare: 'Share' },
-  fr: { share: 'Partager', shareArticle: 'Partager cet article', shareSpot: 'Partager ce site de vol', copyLink: 'Copier le lien', copied: 'Copié !', nativeShare: 'Partager' },
-  ru: { share: 'Поделиться', shareArticle: 'Поделиться статьёй', shareSpot: 'Поделиться местом полётов', copyLink: 'Скопировать ссылку', copied: 'Скопировано!', nativeShare: 'Поделиться' },
-  zh: { share: '分享', shareArticle: '分享这篇文章', shareSpot: '分享此飞行点', copyLink: '复制链接', copied: '已复制！', nativeShare: '分享' },
-  hi: { share: 'साझा करें', shareArticle: 'यह लेख साझा करें', shareSpot: 'यह उड़ान स्थल साझा करें', copyLink: 'लिंक कॉपी करें', copied: 'कॉपी हो गया!', nativeShare: 'साझा करें' }
+  vi: { share: 'Chia sẻ', shareArticle: 'Chia sẻ bài viết', shareSpot: 'Chia sẻ điểm bay', copyLink: 'Sao chép liên kết', copied: 'Đã sao chép!', nativeShare: 'Chia sẻ', zaloCopied: 'Đã sao chép — dán vào Zalo' },
+  en: { share: 'Share', shareArticle: 'Share this post', shareSpot: 'Share this flying site', copyLink: 'Copy link', copied: 'Copied!', nativeShare: 'Share', zaloCopied: 'Copied — paste into Zalo' },
+  fr: { share: 'Partager', shareArticle: 'Partager cet article', shareSpot: 'Partager ce site de vol', copyLink: 'Copier le lien', copied: 'Copié !', nativeShare: 'Partager', zaloCopied: 'Copié — collez dans Zalo' },
+  ru: { share: 'Поделиться', shareArticle: 'Поделиться статьёй', shareSpot: 'Поделиться местом полётов', copyLink: 'Скопировать ссылку', copied: 'Скопировано!', nativeShare: 'Поделиться', zaloCopied: 'Скопировано — вставьте в Zalo' },
+  zh: { share: '分享', shareArticle: '分享这篇文章', shareSpot: '分享此飞行点', copyLink: '复制链接', copied: '已复制！', nativeShare: '分享', zaloCopied: '已复制 — 粘贴到 Zalo' },
+  hi: { share: 'साझा करें', shareArticle: 'यह लेख साझा करें', shareSpot: 'यह उड़ान स्थल साझा करें', copyLink: 'लिंक कॉपी करें', copied: 'कॉपी हो गया!', nativeShare: 'साझा करें', zaloCopied: 'कॉपी हो गया — Zalo में पेस्ट करें' }
 }
 
 const { locale } = useI18n()
@@ -160,6 +161,7 @@ const label = computed(() => {
 })
 
 const copied = ref(false)
+const zaloHint = ref(false)
 
 // Chỉ biết máy có Web Share API sau khi lên trình duyệt. Để false lúc SSR
 // rồi bật ở onMounted, tránh lệch HTML khi hydrate.
@@ -182,8 +184,31 @@ function shareFacebook() {
   openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl())}`)
 }
 
-function shareZalo() {
-  openPopup(`https://sp.zalo.me/plugins/share?u=${encodeURIComponent(currentUrl())}`)
+/**
+ * Chia sẻ Zalo.
+ *
+ * KHÔNG dùng https://sp.zalo.me/plugins/share?u=... — endpoint đó trả về
+ * trang RỖNG (HTTP 200, 0 byte), nên bấm vào chỉ mở một cửa sổ trắng.
+ * Zalo hiện yêu cầu SDK kèm Official Account ID, không có link chia sẻ
+ * trực tiếp nào dùng được.
+ *
+ * Thay bằng: điện thoại -> mở bảng chia sẻ hệ điều hành (có sẵn Zalo);
+ * máy tính -> sao chép link để người dùng dán vào Zalo PC.
+ */
+async function shareZalo() {
+  if (typeof navigator !== 'undefined' && navigator.share) {
+    try {
+      await navigator.share({ title: props.title || document.title, url: currentUrl() })
+      return
+    } catch {
+      // người dùng huỷ bảng chia sẻ — không cần báo lỗi
+      return
+    }
+  }
+
+  await copyLink()
+  zaloHint.value = true
+  window.setTimeout(() => (zaloHint.value = false), 3000)
 }
 
 function shareX() {

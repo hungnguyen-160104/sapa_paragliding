@@ -78,7 +78,7 @@
 
         <!-- Pilots Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <PilotCard v-for="pilot in totalPilots" :key="pilot" :pilotId="pilot" />
+          <PilotCard v-for="pilot in visiblePilotIds" :key="pilot" :pilotId="pilot" />
         </div>
       </div>
     </section>
@@ -109,7 +109,20 @@ const localePath = useLocalePath()
 const route = useRoute()
 
 const currentLocale = computed(() => locale.value || 'vi')
-const totalPilots = 14
+
+/**
+ * Phi công đã nghỉ, không hiển thị nữa.
+ * pilot8 = Tuấn Nguyễn (Nhị ca) — đã chuyển sang công ty khác.
+ * Giữ dữ liệu trong i18n và ảnh trong public/ để không phá link cũ nếu ai
+ * đã lưu; chỉ bỏ khỏi danh sách.
+ */
+const HIDDEN_PILOT_IDS = [8]
+
+const visiblePilotIds = Array.from({ length: 14 }, (_, index) => index + 1).filter(
+  (id) => !HIDDEN_PILOT_IDS.includes(id)
+)
+
+const totalPilots = visiblePilotIds.length
 
 // SEO Meta Tags by Locale
 const getPilotsSeoMeta = () => {

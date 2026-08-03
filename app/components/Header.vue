@@ -26,8 +26,8 @@
                vừa hết chật vừa cho phép chữ to hơn (13px -> 15px). -->
           <div
             class="flex lg:hidden min-w-0 flex-col justify-center leading-[0.95] text-[#194d9b] font-black">
-            <span class="truncate text-[15px]">{{ brandLines[0] }}</span>
-            <span v-if="brandLines[1]" class="truncate text-[15px]">{{ brandLines[1] }}</span>
+            <span class="truncate" :class="brandTextSize">{{ brandLines[0] }}</span>
+            <span v-if="brandLines[1]" class="truncate" :class="brandTextSize">{{ brandLines[1] }}</span>
           </div>
 
           <!-- DESKTOP (xl+): tách 2 dòng cân đối, cách dòng sát.
@@ -55,8 +55,11 @@
           </NuxtLink>
         </nav>
 
-        <!-- Right Controls -->
-        <div class="flex items-center gap-1.5 lg:gap-3">
+        <!-- Right Controls
+             shrink-0: nhóm nút không bao giờ bị bóp, nên chữ thương hiệu bên
+             trái phải tự truncate thay vì đè lên. Đây là chốt chặn cứng, không
+             phụ thuộc ước lượng bề rộng ký tự của từng ngôn ngữ. -->
+        <div class="flex shrink-0 items-center gap-1.5 lg:gap-3">
           <!-- Menu Button (Mobile) -->
           <button @click.stop="toggleMenu"
             class="lg:hidden shrink-0 bg-red-600 hover:bg-red-700 text-white p-2 rounded-lg transition-all duration-300"
@@ -221,6 +224,16 @@ const navTextSize = computed(() =>
   ['zh', 'hi'].includes(locale.value)
     ? 'text-base xl:text-lg 2xl:text-xl'
     : 'text-[13px] xl:text-[15px] 2xl:text-lg'
+)
+
+/**
+ * Cỡ chữ thương hiệu trên MOBILE, theo độ dài từ dài nhất của từng ngôn ngữ.
+ * Tiếng Nga 'ПАРАПЛАНЕРИЗМ' và tiếng Ấn 'पैराग्लाइडिंग' đều 13 ký tự, ở 15px
+ * chen với logo + hamburger + 6 nút ngôn ngữ thì bị đè. Hạ xuống 12px cho
+ * riêng hai ngôn ngữ này; các ngôn ngữ còn lại (dài nhất 11 ký tự) giữ 15px.
+ */
+const brandTextSize = computed(() =>
+  ['ru', 'hi'].includes(locale.value) ? 'text-[12px]' : 'text-[15px]'
 )
 
 const isMenuOpen = ref(false)
