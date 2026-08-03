@@ -390,6 +390,21 @@ const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const pilotId = route.params.id as string
 
+/**
+ * Phi công đã ẩn thì trang cá nhân cũng phải đóng, không chỉ gỡ khỏi danh sách.
+ *
+ * Trước đây chỉ lọc ở trang /pilots (HIDDEN_PILOT_IDS trong pilots/index.vue),
+ * nên /pilots/8 vẫn trả 200: Google vẫn lập chỉ mục được, và mọi liên kết cũ
+ * hay lịch sử trình duyệt vẫn mở ra hồ sơ một người đã nghỉ.
+ *
+ * Giữ danh sách đồng bộ với HIDDEN_PILOT_IDS bên trang danh sách.
+ */
+const HIDDEN_PILOT_IDS = ['8']
+
+if (HIDDEN_PILOT_IDS.includes(pilotId)) {
+  throw createError({ statusCode: 404, statusMessage: 'Pilot not found', fatal: true })
+}
+
 const currentLocale = computed(() => locale.value || 'vi')
 
 const toggleLanguage = () => {

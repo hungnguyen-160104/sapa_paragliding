@@ -71,7 +71,9 @@
               <h2 class="text-2xl lg:text-3xl font-black text-slate-900">
                 {{ $t('pilotPage.meetTheTeam') }}
               </h2>
-              <p class="text-slate-500">{{ totalPilots }} {{ $t('pilotPage.professionalPilots') }}</p>
+              <!-- Dấu "+" cho khớp với con số 13+ dùng ở mọi nơi khác trên
+                   site: đội bay còn phi công cộng tác không có hồ sơ riêng. -->
+              <p class="text-slate-500">{{ totalPilots }}+ {{ $t('pilotPage.professionalPilots') }}</p>
             </div>
           </div>
         </div>
