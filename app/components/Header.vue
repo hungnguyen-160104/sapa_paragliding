@@ -30,11 +30,12 @@
             <span v-if="brandLines[1]" class="truncate" :class="brandTextSize">{{ brandLines[1] }}</span>
           </div>
 
-          <!-- DESKTOP (xl+): tách 2 dòng cân đối, cách dòng sát.
-               leading 0.65 = 70% của 0.925 trước đó, để "DÙ LƯỢN" và "SAPA"
-               gần nhau hơn. Ẩn ở dải 1024-1279px vì menu ngang 8 mục chiếm hết
-               chỗ. Màu #194d9b lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center leading-[0.65] text-[#194d9b] font-black">
+          <!-- DESKTOP (xl+): tách 2 dòng cân đối.
+               leading 0.8325 = 90% của 0.925 gốc. Mức 70% (0.65) từng thử
+               nhưng làm "DÙ LƯỢN" và "SAPA" dính vào nhau.
+               Ẩn ở dải 1024-1279px vì menu ngang 8 mục chiếm hết chỗ.
+               Màu #194d9b lấy từ .text-stroke-sapa. -->
+          <div class="hidden xl:flex flex-col justify-center leading-[0.8325] text-[#194d9b] font-black">
             <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
