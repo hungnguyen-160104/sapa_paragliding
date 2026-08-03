@@ -483,8 +483,10 @@ onBeforeUnmount(() => {
               :style="{ transform: `translateX(-${currentPostIndex * 100}%)` }"
             >
               <div v-for="(post, index) in latestPosts" :key="post.id" class="w-full md:w-1/3 flex-shrink-0">
+                <!-- slug chứ không phải id: canonical của bài là slug, link bằng
+                     id tạo đường dẫn thứ hai không canonical -->
                 <NuxtLink
-                  :to="localePath(`/posts/${post.id}`)"
+                  :to="localePath(`/posts/${post.slug || post.id}`)"
                   class="block bg-white border border-slate-200 shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 group h-full"
                 >
                   <div class="relative aspect-[16/10] overflow-hidden">

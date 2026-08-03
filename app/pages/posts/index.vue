@@ -53,11 +53,14 @@
       </div>
 
       <div v-else-if="filteredPosts.length > 0" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <article
+        <!-- NuxtLink chứ không phải div + @click: bot cần thẻ <a href> thật mới
+             lần được tới bài. Dùng slug vì canonical của bài là slug, link bằng
+             id sẽ tạo đường dẫn thứ hai không canonical. -->
+        <NuxtLink
           v-for="post in filteredPosts"
           :key="String(post.id)"
-          class="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-          @click="navigateToPost(post.slug || post.id)"
+          :to="localePath(`/posts/${post.slug || post.id}`)"
+          class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
         >
           <div class="relative aspect-[16/10] overflow-hidden border-b border-gray-100 bg-gray-100">
             <img
@@ -95,7 +98,7 @@
               </svg>
             </div>
           </div>
-        </article>
+        </NuxtLink>
       </div>
 
       <div v-else class="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-white py-20 text-center">
@@ -116,6 +119,8 @@
 
 <script setup lang="ts">
 import { usePostsStore } from '~/stores/posts'
+
+const localePath = useLocalePath()
 import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage } from '~/utils/seo'
 
 type LocalizedPost = {
@@ -155,17 +160,18 @@ const categoryLabels: Record<string, { vi: string; en: string }> = {
   tips: { vi: 'Mẹo hay', en: 'Tips' }
 }
 
-onMounted(async () => {
-  isLoading.value = true
-  try {
-    if (postsStore.posts.length === 0) {
-      await postsStore.fetchPosts()
-    }
-  } catch (error) {
-    console.error('Error fetching posts:', error)
-  } finally {
-    isLoading.value = false
+// Phải nạp bằng useAsyncData chứ không phải onMounted: onMounted chỉ chạy
+// trên trình duyệt, nên HTML server trả về là trang rỗng "No posts found" —
+// bot không chạy JS sẽ không thấy bài nào và không có link nội bộ nào tới bài.
+const { pending } = await useAsyncData('posts-list', async () => {
+  if (postsStore.posts.length === 0) {
+    await postsStore.fetchPosts()
   }
+  return postsStore.posts.length
+})
+
+watchEffect(() => {
+  isLoading.value = pending.value
 })
 
 function tabClass(active: boolean) {
