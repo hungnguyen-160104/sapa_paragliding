@@ -391,17 +391,23 @@ const localePath = useLocalePath()
 const pilotId = route.params.id as string
 
 /**
- * Phi công đã ẩn thì trang cá nhân cũng phải đóng, không chỉ gỡ khỏi danh sách.
+ * Chỉ ID hợp lệ mới được mở trang; mọi ID khác trả 404 thật.
  *
- * Trước đây chỉ lọc ở trang /pilots (HIDDEN_PILOT_IDS trong pilots/index.vue),
- * nên /pilots/8 vẫn trả 200: Google vẫn lập chỉ mục được, và mọi liên kết cũ
- * hay lịch sử trình duyệt vẫn mở ra hồ sơ một người đã nghỉ.
+ * Hai lỗ hổng đã vá ở đây:
+ *   - Phi công đã ẩn (id 8 — đã nghỉ việc): trước chỉ gỡ khỏi danh sách,
+ *     trang cá nhân vẫn 200 nên Google vẫn lập chỉ mục được hồ sơ.
+ *   - ID không tồn tại (/pilots/99, /pilots/500...): trang vẫn render với
+ *     khoá dịch thô, title "pilots.99.fullname | pilots.99.role", kèm
+ *     robots index,follow và canonical trỏ về chính nó — tức MỌI số bất kỳ
+ *     đều thành một trang "hợp lệ" trong mắt Google (soft 404 vô hạn).
  *
- * Giữ danh sách đồng bộ với HIDDEN_PILOT_IDS bên trang danh sách.
+ * Dữ liệu phi công nằm trong i18n với khoá pilot1..pilot14, nên 1..14 là
+ * toàn bộ dải hợp lệ. HIDDEN đồng bộ với HIDDEN_PILOT_IDS ở trang danh sách.
  */
 const HIDDEN_PILOT_IDS = ['8']
+const isValidPilotId = /^([1-9]|1[0-4])$/.test(pilotId)
 
-if (HIDDEN_PILOT_IDS.includes(pilotId)) {
+if (!isValidPilotId || HIDDEN_PILOT_IDS.includes(pilotId)) {
   throw createError({ statusCode: 404, statusMessage: 'Pilot not found', fatal: true })
 }
 
@@ -649,13 +655,13 @@ useHead(() => ({
     script: [
         {
             type: 'application/ld+json',
-            children: JSON.stringify(breadcrumbJsonLd.value)
+            innerHTML: JSON.stringify(breadcrumbJsonLd.value)
         },
         ...(personJsonLd.value
             ? [
                 {
                     type: 'application/ld+json',
-                    children: JSON.stringify(personJsonLd.value)
+                    innerHTML: JSON.stringify(personJsonLd.value)
                 }
             ]
             : [])

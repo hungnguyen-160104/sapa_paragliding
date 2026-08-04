@@ -125,15 +125,15 @@ useHead(() => ({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(buildWebsiteJsonLD())
+      innerHTML: JSON.stringify(buildWebsiteJsonLD())
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
+      innerHTML: JSON.stringify(buildOrganizationJsonLD(currentLocale.value))
     },
     {
       type: 'application/ld+json',
-      children: JSON.stringify(buildLocalBusinessJsonLD(currentLocale.value))
+      innerHTML: JSON.stringify(buildLocalBusinessJsonLD(currentLocale.value))
     }
   ]
 }))

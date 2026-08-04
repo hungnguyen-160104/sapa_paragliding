@@ -420,7 +420,7 @@ useHead(() => ({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify(breadcrumbJsonLd.value)
+      innerHTML: JSON.stringify(breadcrumbJsonLd.value)
     }
   ]
 }))
