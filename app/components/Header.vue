@@ -57,12 +57,21 @@
              tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
              bù cho cỡ chữ đã tăng và logo 105.6px. -->
         <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4">
+          <!-- Gạch chân đỏ dưới từng mục: 8 mục cùng cỡ chữ, cùng màu, nằm sát
+               nhau nên nhìn thành một dải chữ liền. Gạch chân cắt chúng thành
+               từng khối rõ ràng.
+               border-b-2 chứ không phải underline: underline bám sát chân chữ
+               và bị dấu tiếng Việt (gạch dưới chữ ạ, ợ) đè lên. Viền dưới nằm
+               ở đáy hộp nên luôn thẳng hàng giữa các mục.
+               Mục đang mở đậm hơn (border-red-600 + chữ đỏ) để vẫn phân biệt
+               được với các mục còn lại. -->
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
             :class="[
               'uppercase whitespace-nowrap text-gray-700 hover:text-red-600 font-medium transition-colors',
+              'border-b-2 border-red-500/50 pb-1 hover:border-red-600',
               navTextSize
             ]"
-            active-class="text-red-600">
+            active-class="!text-red-600 !border-red-600">
             {{ $t(item.label) }}
           </NuxtLink>
         </nav>
