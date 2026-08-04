@@ -4,7 +4,7 @@
       <!-- Header -->
       <div class="mb-12 max-w-3xl">
         <h1 class="mb-4 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-          {{ $t('flyingSite.title') }}<span class="text-red-600">.</span>
+          {{ $t('flyingSite.title') }}
         </h1>
         <p class="mb-4 text-xl font-medium text-gray-700">{{ $t('flyingSite.subtitle') }}</p>
         <p class="text-lg leading-relaxed text-gray-500">{{ $t('flyingSite.intro') }}</p>

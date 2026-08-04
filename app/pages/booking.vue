@@ -3,7 +3,8 @@
     <div class="container-custom">
       <div class="max-w-4xl mx-auto">
         <!-- H1 for SEO -->
-        <h1 class="text-3xl font-bold text-center text-slate-800 mb-8">{{ $t('menu.booking') }}</h1>
+        <!-- Cùng một dạng tiêu đề với prices / flying-site / posts -->
+        <h1 class="mb-4 text-4xl font-bold tracking-tight md:text-5xl text-center text-gray-900">{{ $t('booking.title') }}</h1>
 
         <!-- Progress Steps -->
         <div class="mb-8">

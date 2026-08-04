@@ -4,7 +4,7 @@
       <div class="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
         <div class="max-w-2xl">
           <h1 class="mb-4 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl">
-            {{ $t('posts.latestPosts') }}<span class="text-red-600">.</span>
+            {{ $t('posts.latestPosts') }}
           </h1>
           <p class="text-lg leading-relaxed text-gray-500">
             {{ $t('posts.latestPostsDescription') }}

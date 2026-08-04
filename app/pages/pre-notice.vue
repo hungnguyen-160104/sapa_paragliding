@@ -27,7 +27,9 @@
         <div class="max-w-6xl mx-auto">
           <!-- Header -->
           <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 drop-shadow-lg">{{ $t('preNotice.title') }}</h1>
+            <!-- Cùng dạng tiêu đề với các trang khác; giữ chữ trắng + đổ bóng vì
+                 tiêu đề này nằm trên ảnh nền tối, để text-gray-900 sẽ mất hút -->
+            <h1 class="mb-4 text-4xl font-bold tracking-tight md:text-5xl text-white drop-shadow-lg">{{ $t('preNotice.title') }}</h1>
             <p class="text-lg text-white/90 drop-shadow-md">{{ $t('preNotice.subtitle') }}</p>
           </div>
 
