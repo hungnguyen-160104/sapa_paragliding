@@ -57,21 +57,28 @@
              tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
              bù cho cỡ chữ đã tăng và logo 105.6px. -->
         <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4">
-          <!-- Gạch chân đỏ dưới từng mục: 8 mục cùng cỡ chữ, cùng màu, nằm sát
+          <!-- Gạch chân dưới từng mục: 8 mục cùng cỡ chữ, cùng màu, nằm sát
                nhau nên nhìn thành một dải chữ liền. Gạch chân cắt chúng thành
                từng khối rõ ràng.
-               border-b-2 chứ không phải underline: underline bám sát chân chữ
-               và bị dấu tiếng Việt (gạch dưới chữ ạ, ợ) đè lên. Viền dưới nằm
-               ở đáy hộp nên luôn thẳng hàng giữa các mục.
-               Mục đang mở đậm hơn (border-red-600 + chữ đỏ) để vẫn phân biệt
-               được với các mục còn lại. -->
+
+               Màu lấy đúng từ bộ nhận diện:
+                 #194d9b — xanh của chữ thương hiệu "DÙ LƯỢN SAPA" (cũng là
+                           màu trong .text-stroke-sapa)
+                 #f02424 — đỏ của logo, lấy mẫu trực tiếp từ Sapa_logo_mark.png
+                           (màu chủ đạo, 57k điểm ảnh)
+               Mục đang mở đổi sang đỏ để nổi hẳn khỏi dải xanh còn lại.
+
+               border-b chứ không phải underline: underline bám sát chân chữ
+               nên bị dấu tiếng Việt (dấu nặng ở "Bảng Giá", "Phi Công") đè lên
+               và mỗi mục một độ cao khác nhau. Viền dưới nằm ở đáy hộp nên
+               luôn thẳng hàng. -->
           <NuxtLink v-for="item in menuItems" :key="item.path" :to="getLocalizedPath(item.path)"
             :class="[
-              'uppercase whitespace-nowrap text-gray-700 hover:text-red-600 font-medium transition-colors',
-              'border-b-2 border-red-500/50 pb-1 hover:border-red-600',
+              'uppercase whitespace-nowrap text-gray-700 hover:text-[#f02424] font-bold transition-colors',
+              'border-b-[3px] border-[#194d9b] pb-1',
               navTextSize
             ]"
-            active-class="!text-red-600 !border-red-600">
+            active-class="!text-[#f02424] !border-[#f02424]">
             {{ $t(item.label) }}
           </NuxtLink>
         </nav>
