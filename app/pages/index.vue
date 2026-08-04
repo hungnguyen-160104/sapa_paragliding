@@ -19,11 +19,22 @@ const router = useRouter()
 const route = useRoute()
 const postsStore = usePostsStore()
 
-// SSR: fetch posts so Google bot sees latest posts in HTML
-await useAsyncData('homepage-posts', () => postsStore.fetchPosts(), {
+// Nạp 6 bài mới nhất cho khối "Bài viết" ở cuối trang.
+//
+// Chỉ await KHI KẾT XUẤT PHÍA SERVER — cùng lý do như trang /posts:
+//   - Server phải chờ để HTML có sẵn 6 link bài cho bot.
+//   - Trình duyệt KHÔNG được chờ: await ở cấp cao nhất biến <script setup>
+//     thành component bất đồng bộ nên Vue bọc trong Suspense; bấm "Trang Chủ"
+//     từ trang khác sẽ chỉ thấy header và footer cho tới khi /api/posts trả về
+//     (đo được 1–5,2 giây). Giờ trang hiện ngay, khối bài viết điền vào sau.
+const homepagePosts = useAsyncData('homepage-posts', () => postsStore.fetchPosts(), {
   server: true,
   lazy: true
 })
+
+if (import.meta.server) {
+  await homepagePosts
+}
 
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
@@ -237,7 +248,15 @@ onBeforeUnmount(() => {
 <template>
   <main class="min-h-screen">
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-14">
-      <div class="absolute inset-0">
+      <!-- Nền chờ: hiện NGAY vì chỉ là màu CSS, không phải tải gì.
+           Ba lớp xếp chồng, lớp nào sẵn sàng trước thì thấy trước:
+             1. màu #55565 6 (tức thì)  2. poster .webp (164 KB)  3. video (3,8 MB)
+           Màu này lấy từ chính video: màu trung bình khung hình là #9a9c9c,
+           nhân với lớp phủ tối phía trên ra #555656 — nên lúc video hiện lên
+           không bị nhảy màu.
+           CỐ Ý KHÔNG dùng nền trắng: toàn bộ chữ trong hero là text-white
+           (tiêu đề, phụ đề, nhãn), đặt trên nền trắng sẽ mất hút hoàn toàn. -->
+      <div class="absolute inset-0 bg-[#555656]">
         <!-- Video nền 3,8 MB. KHÔNG đặt <source> sẵn trong HTML: trình duyệt
              sẽ tải nó song song với chữ, CSS và ảnh, làm chậm lúc hiện nội
              dung đầu tiên. Thẻ source được gắn bằng JS sau khi trang tải xong

@@ -168,12 +168,26 @@ const categoryLabels: Record<string, { vi: string; en: string }> = {
 // Phải nạp bằng useAsyncData chứ không phải onMounted: onMounted chỉ chạy
 // trên trình duyệt, nên HTML server trả về là trang rỗng "No posts found" —
 // bot không chạy JS sẽ không thấy bài nào và không có link nội bộ nào tới bài.
-const { pending } = await useAsyncData('posts-list', async () => {
+//
+// Chỉ await KHI ĐANG KẾT XUẤT PHÍA SERVER:
+//   - Trên server PHẢI chờ, nếu không HTML mất sạch 44 link (đã đo: 172KB
+//     xuống 72KB, 0 link). Thêm `lazy: true` cũng không cứu được.
+//   - Trên trình duyệt KHÔNG được chờ: await ở cấp cao nhất biến <script setup>
+//     thành component bất đồng bộ, Vue bọc trong Suspense, nên khi bấm chuyển
+//     trang nội dung KHÔNG hiện cho tới khi /api/posts trả về — mà API này mất
+//     1–5 giây, người dùng chỉ thấy header và footer trong suốt thời gian đó.
+const postsRequest = useAsyncData('posts-list', async () => {
   if (postsStore.posts.length === 0) {
     await postsStore.fetchPosts()
   }
   return postsStore.posts.length
 })
+
+const { pending } = postsRequest
+
+if (import.meta.server) {
+  await postsRequest
+}
 
 watchEffect(() => {
   isLoading.value = pending.value
