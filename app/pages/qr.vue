@@ -49,6 +49,19 @@
       <p class="mb-5 text-[14px] text-white drop-shadow-md sm:text-[15px]">
         {{ content.supportText }}
       </p>
+      <!-- Xin review ngay sau chuyến bay: khách quét QR lúc cảm xúc đang cao
+           là thời điểm tỉ lệ để lại review cao nhất. Review đều đặn quyết định
+           thứ hạng trong danh sách TripAdvisor Sa Pa. -->
+      <a
+        href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mx-auto mb-5 flex w-fit items-center gap-2 rounded-full bg-[#34e0a1] px-6 py-3 text-sm font-bold text-black shadow-lg transition-transform hover:scale-105"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.006 4.295c2.67 0 5.122.82 7.155 2.218h4.08l-1.836 1.996a7.05 7.05 0 011.788 4.7c0 3.907-3.17 7.076-7.076 7.076a7.05 7.05 0 01-4.111-1.315l-2 2.18-2.001-2.181a7.05 7.05 0 01-4.11 1.316c-3.907 0-7.077-3.17-7.077-7.076 0-1.797.67-3.436 1.774-4.684L-3.244 6.513h4.062a12.66 12.66 0 017.188-2.218zm-.006 2.7a9.94 9.94 0 00-4.756 1.204 7.077 7.077 0 013.564 5.394L12 14.94l1.192-1.348a7.077 7.077 0 013.56-5.392A9.94 9.94 0 0012 6.995zm-7.076 2.11a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm14.152 0a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm-14.152 2.45a2.45 2.45 0 110 4.9 2.45 2.45 0 010-4.9zm14.152 0a2.45 2.45 0 110 4.9 2.45 2.45 0 010-4.9z"/></svg>
+        {{ content.reviewCta }}
+      </a>
+
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a 
           href="https://zalo.me/84386887489" 
@@ -114,6 +127,7 @@ const pageContent: Record<
     infoText: string;
     secondaryCta: string;
     supportText: string;
+    reviewCta: string;
   }
 > = {
   vi: {
@@ -125,7 +139,8 @@ const pageContent: Record<
     primaryCta: "Tiếp tục đặt chỗ",
     infoText: "Xem thông tin về điểm bay, các gói bay và dịch vụ...",
     secondaryCta: "Tại đây",
-    supportText: "Hoặc chat với đội ngũ nhân viên của chúng tôi để được hỗ trợ trực tiếp (24/7)"
+    supportText: "Hoặc chat với đội ngũ nhân viên của chúng tôi để được hỗ trợ trực tiếp (24/7)",
+    reviewCta: "Đánh giá chúng tôi trên TripAdvisor"
   },
   en: {
     title1: "Thank you for choosing to fly",
@@ -136,7 +151,8 @@ const pageContent: Record<
     primaryCta: "Continue booking",
     infoText: "View information about flying sites, packages and services...",
     secondaryCta: "Here",
-    supportText: "Or chat with our team for direct support (24/7)"
+    supportText: "Or chat with our team for direct support (24/7)",
+    reviewCta: "Review us on TripAdvisor"
   },
   fr: {
     title1: "Merci d'avoir choisi de voler",
@@ -147,7 +163,8 @@ const pageContent: Record<
     primaryCta: "Continuer la réservation",
     infoText: "Voir les informations sur les sites de vol, les forfaits et services...",
     secondaryCta: "Ici",
-    supportText: "Ou discutez avec notre équipe pour un support direct (24/7)"
+    supportText: "Ou discutez avec notre équipe pour un support direct (24/7)",
+    reviewCta: "Donnez votre avis sur TripAdvisor"
   },
   ru: {
     title1: "Спасибо, что выбрали полет",
@@ -158,7 +175,8 @@ const pageContent: Record<
     primaryCta: "Продолжить бронирование",
     infoText: "Посмотреть информацию о летных местах, пакетах и услугах...",
     secondaryCta: "Здесь",
-    supportText: "Или напишите нашей команде для прямой поддержки (24/7)"
+    supportText: "Или напишите нашей команде для прямой поддержки (24/7)",
+    reviewCta: "Оставьте отзыв на TripAdvisor"
   },
   zh: {
     title1: "感谢您选择飞行",
@@ -169,7 +187,8 @@ const pageContent: Record<
     primaryCta: "继续预订",
     infoText: "查看飞行地点、套餐和服务信息...",
     secondaryCta: "点击这里",
-    supportText: "或与我们的团队聊天以获得直接支持 (24/7)"
+    supportText: "或与我们的团队聊天以获得直接支持 (24/7)",
+    reviewCta: "在 TripAdvisor 上评价我们"
   },
   hi: {
     title1: "उड़ान चुनने के लिए धन्यवाद",
@@ -180,7 +199,8 @@ const pageContent: Record<
     primaryCta: "बुकिंग जारी रखें",
     infoText: "उड़ान स्थलों, पैकेजों और सेवाओं के बारे में जानकारी देखें...",
     secondaryCta: "यहाँ",
-    supportText: "या प्रत्यक्ष सहायता के लिए हमारी टीम से चैट करें (24/7)"
+    supportText: "या प्रत्यक्ष सहायता के लिए हमारी टीम से चैट करें (24/7)",
+    reviewCta: "TripAdvisor पर हमें रेट करें"
   },
 };
 

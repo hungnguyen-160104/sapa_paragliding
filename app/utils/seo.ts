@@ -161,6 +161,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
       'https://www.facebook.com/bayduluonsapa',
       'https://www.instagram.com/SAPA_PARAGLIDING',
       'https://www.tiktok.com/@sapa_paragliding',
+      // Listing OTA chinh chu — khai bao de Google gom tin hieu review/entity
+      // ve cung mot doanh nghiep (chu KHONG phai listing cua Fly Sapa doi thu).
+      'https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html',
+      'https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/',
       'https://www.youtube.com/@sapa.paragliding'
     ],
     contactPoint: [
@@ -302,6 +306,10 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
       'https://www.facebook.com/bayduluonsapa',
       'https://www.instagram.com/SAPA_PARAGLIDING',
       'https://www.tiktok.com/@sapa_paragliding',
+      // Listing OTA chinh chu — khai bao de Google gom tin hieu review/entity
+      // ve cung mot doanh nghiep (chu KHONG phai listing cua Fly Sapa doi thu).
+      'https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html',
+      'https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/',
       'https://www.youtube.com/@sapa.paragliding'
     ],
     hasMap: 'https://www.google.com/maps/place/Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa/@22.3219262,103.8766636,17z',
