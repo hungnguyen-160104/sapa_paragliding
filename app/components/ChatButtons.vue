@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+  <!-- max-md:scale-[0.8] + origin-bottom-right: thu nho 20% tren mobile,
+       neo goc phai duoi nen vi tri cum khong bi truot. -->
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3 origin-bottom-right max-md:scale-[0.8]">
     <!-- Messenger Button — m.me mở thẳng hộp thoại chat với trang
          facebook.com/bayduluonsapa -->
     <a href="https://m.me/bayduluonsapa" target="_blank" rel="noopener noreferrer"

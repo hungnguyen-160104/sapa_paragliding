@@ -1,7 +1,7 @@
 <template>
   <!-- Cặp bong bóng điểm đánh giá — góc TRÁI dưới, xếp dọc, đối xứng với cụm
        nút chat Zalo/WhatsApp đang chiếm góc phải dưới. -->
-  <div class="fixed bottom-6 left-4 z-40 flex flex-col gap-2.5">
+  <div class="fixed bottom-6 left-4 z-40 flex flex-col gap-2.5 origin-bottom-left max-md:scale-[0.8]">
     <!-- ============ GOOGLE ============ -->
     <a
       :href="GOOGLE_URL"
