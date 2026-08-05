@@ -1,45 +1,19 @@
 <template>
-  <section>
-    <div class="flex items-center justify-between">
-      <div>
-        <p class="text-xs uppercase tracking-[0.3em] text-slate-400">Posts</p>
-        <h2 class="text-3xl font-semibold">Create Post</h2>
-      </div>
-      <NuxtLink :to="localePath('/admin/posts')" class="btn-secondary">Back to list</NuxtLink>
-    </div>
-
-    <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-      <PostForm :categories="categories" @submit="handleSubmit" @cancel="cancel" />
-    </div>
-  </section>
+  <div />
 </template>
 
 <script setup lang="ts">
-import PostForm from '~~/components/admin/posts/PostForm.vue'
-import { createPost } from '~~/services/posts'
-import type { PostPayload } from '~~/services/posts'
-import { useRouter } from '#app'
+/**
+ * Trang tạo bài cũ dùng PostForm — bản biên tập lỗi thời, KHÔNG có nút dịch
+ * và thiếu các tính năng mới (bảng, chữ đậm/nghiêng, dịch từng ô). Không còn
+ * liên kết nội bộ nào trỏ tới đây; chỉ còn bookmark cũ.
+ *
+ * Chuyển hướng về trình biên tập hiện đại ở /admin/posts, kèm ?create=1 để
+ * editor mở sẵn ở chế độ tạo bài.
+ */
+definePageMeta({ layout: 'admin' })
 
 const localePath = useLocalePath()
 
-definePageMeta({
-  layout: 'admin'
-})
-
-const router = useRouter()
-
-const categories = [
-  { id: 'adventure', label: 'Adventure' },
-  { id: 'safety', label: 'Safety' },
-  { id: 'tips', label: 'Tips' },
-  { id: 'guide', label: 'Guide' },
-  { id: 'news', label: 'News' }
-]
-
-const handleSubmit = async (payload: PostPayload) => {
-  await createPost(payload)
-  router.push(localePath('/admin/posts'))
-}
-
-const cancel = () => router.push(localePath('/admin/posts'))
+await navigateTo(`${localePath('/admin/posts')}?create=1`, { redirectCode: 302, replace: true })
 </script>

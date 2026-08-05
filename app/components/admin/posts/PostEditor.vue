@@ -27,8 +27,17 @@
           </div>
 
           <div>
-            <label class="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500">
-              Title (English) <span class="text-red-500">*</span>
+            <label class="mb-1 flex items-center justify-between text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <span>Title (English) <span class="text-red-500">*</span></span>
+              <button
+                type="button"
+                class="rounded border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-semibold normal-case text-blue-600 transition hover:bg-blue-100 disabled:opacity-50"
+                :disabled="!!translatingField || isTranslating"
+                title="Dịch tiêu đề tiếng Việt sang ô này"
+                @click="translateField('title')"
+              >
+                {{ translatingField === 'title' ? '⏳' : '🌐 Dịch ô này' }}
+              </button>
             </label>
             <input
               v-model="draft.title"
@@ -129,7 +138,18 @@
         </div>
 
         <div>
-          <label class="form-label">Short description (English) <span class="text-red-500">*</span></label>
+          <label class="form-label flex items-center justify-between">
+            <span>Short description (English) <span class="text-red-500">*</span></span>
+            <button
+              type="button"
+              class="rounded border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-600 transition hover:bg-blue-100 disabled:opacity-50"
+              :disabled="!!translatingField || isTranslating"
+              title="Dịch mô tả ngắn tiếng Việt sang ô này"
+              @click="translateField('excerpt')"
+            >
+              {{ translatingField === 'excerpt' ? '⏳' : '🌐 Dịch ô này' }}
+            </button>
+          </label>
           <textarea
             v-model="draft.excerpt"
             rows="3"
@@ -256,7 +276,18 @@
             </div>
 
             <div>
-              <label class="form-label">Meta Title English</label>
+              <label class="form-label flex items-center justify-between">
+                <span>Meta Title English</span>
+                <button
+                  type="button"
+                  class="rounded border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-600 transition hover:bg-blue-100 disabled:opacity-50"
+                  :disabled="!!translatingField || isTranslating"
+                  title="Dịch Meta Title tiếng Việt sang ô này"
+                  @click="translateField('seoTitle')"
+                >
+                  {{ translatingField === 'seoTitle' ? '⏳' : '🌐 Dịch ô này' }}
+                </button>
+              </label>
               <input
                 v-model="draft.seo.title"
                 type="text"
@@ -282,7 +313,18 @@
             </div>
 
             <div>
-              <label class="form-label">Meta Description English</label>
+              <label class="form-label flex items-center justify-between">
+                <span>Meta Description English</span>
+                <button
+                  type="button"
+                  class="rounded border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-600 transition hover:bg-blue-100 disabled:opacity-50"
+                  :disabled="!!translatingField || isTranslating"
+                  title="Dịch Meta Description tiếng Việt sang ô này"
+                  @click="translateField('seoDescription')"
+                >
+                  {{ translatingField === 'seoDescription' ? '⏳' : '🌐 Dịch ô này' }}
+                </button>
+              </label>
               <textarea
                 v-model="draft.seo.description"
                 rows="3"
@@ -442,6 +484,75 @@ const showUnsavedConfirm = ref(false)
 const showLocalValidation = ref(false)
 const scheduledAtInput = ref('')
 const isTranslating = ref(false)
+
+/** Ô đang dịch riêng lẻ (title/excerpt/seoTitle/seoDescription), rỗng = không có. */
+const translatingField = ref('')
+
+/**
+ * Ánh xạ từng ô: đọc bản tiếng Việt ở đâu, ghi bản dịch vào đâu.
+ * Cùng endpoint /api/admin/translate với nút dịch cả bài — chỉ gửi đúng một
+ * trường nên nhanh và rẻ hơn hẳn; bản tiếng Việt không bao giờ bị đụng tới.
+ */
+const FIELD_MAP = {
+  title: {
+    label: 'Tiêu đề',
+    getVi: () => draft.value.titleVi,
+    setEn: (v: string) => { draft.value.title = v }
+  },
+  excerpt: {
+    label: 'Mô tả ngắn',
+    getVi: () => draft.value.excerptVi,
+    setEn: (v: string) => { draft.value.excerpt = v }
+  },
+  seoTitle: {
+    label: 'Meta Title',
+    getVi: () => draft.value.seo?.titleVi,
+    setEn: (v: string) => { if (draft.value.seo) draft.value.seo.title = v }
+  },
+  seoDescription: {
+    label: 'Meta Description',
+    getVi: () => draft.value.seo?.descriptionVi,
+    setEn: (v: string) => { if (draft.value.seo) draft.value.seo.description = v }
+  }
+} as const
+
+type TranslatableFieldKey = keyof typeof FIELD_MAP
+
+/** Dịch đúng MỘT ô VI → EN, không đụng các ô khác. */
+async function translateField(key: TranslatableFieldKey) {
+  const field = FIELD_MAP[key]
+  const viText = (field.getVi() || '').trim()
+
+  if (!viText) {
+    alert(`Ô "${field.label}" tiếng Việt đang trống, chưa có gì để dịch.`)
+    return
+  }
+
+  translatingField.value = key
+
+  try {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null
+
+    const response: any = await $fetch('/api/admin/translate', {
+      method: 'POST',
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+      body: { blocks: [], fields: { [key]: viText } }
+    })
+
+    const translated = response?.fields?.[key]
+
+    if (typeof translated === 'string' && translated.trim()) {
+      field.setEn(translated.trim())
+    } else {
+      alert(`Không nhận được bản dịch cho ô "${field.label}", thử lại giúp.`)
+    }
+  } catch (error: any) {
+    const message = error?.data?.statusMessage || error?.statusMessage || error?.message
+    alert(`Dịch thất bại: ${message || 'lỗi không xác định'}`)
+  } finally {
+    translatingField.value = ''
+  }
+}
 
 /**
  * Dịch bản tiếng Việt sang tiếng Anh.

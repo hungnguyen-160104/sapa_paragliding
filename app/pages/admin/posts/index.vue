@@ -107,7 +107,16 @@ const pendingSwitchId = ref<string | null>(null)
 onMounted(() => {
   store.fetchPosts()
   store.fetchStats()
-  
+
+  // Hai trang /admin/posts/create va /admin/posts/<id>/edit cu chuyen huong
+  // ve day kem query — mo san editor tuong ung de bookmark cu van dung duoc.
+  const q = useRoute().query
+  if (q.create === '1') {
+    store.openCreateEditor()
+  } else if (typeof q.edit === 'string' && q.edit) {
+    store.openEditEditor(q.edit)
+  }
+
   // Warn before leaving page with unsaved changes
   window.addEventListener('beforeunload', handleBeforeUnload)
 })
