@@ -1,7 +1,7 @@
 import { connectToDatabase } from './db'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
-export const DEFAULT_LOCALE = 'vi'
+export const DEFAULT_LOCALE = 'en'
 export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
 
 export type Locale = (typeof LOCALES)[number]

@@ -7,7 +7,9 @@ export const DOMAIN = 'https://www.paraglidingsapa.com'
 
 export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
-export const DEFAULT_LOCALE: SupportedLocale = 'vi'
+// 'en': x-default hreflang tro ve ban tieng Anh — khach khong khop ngon
+// ngu nao (da so la khach quoc te) duoc Google dua ve /en thay vi /vi.
+export const DEFAULT_LOCALE: SupportedLocale = 'en'
 
 export const localeToHreflang: Record<SupportedLocale, string> = {
   vi: 'vi-VN',
@@ -165,6 +167,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
       // ve cung mot doanh nghiep (chu KHONG phai listing cua Fly Sapa doi thu).
       'https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html',
       'https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/',
+      'https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4',
+      'https://www.getyourguide.com/en-gb/sapa-paraglidingjsc-s680385/',
+      'https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/',
+      'https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6',
       'https://www.youtube.com/@sapa.paragliding'
     ],
     contactPoint: [
@@ -310,6 +316,10 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
       // ve cung mot doanh nghiep (chu KHONG phai listing cua Fly Sapa doi thu).
       'https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html',
       'https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/',
+      'https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4',
+      'https://www.getyourguide.com/en-gb/sapa-paraglidingjsc-s680385/',
+      'https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/',
+      'https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6',
       'https://www.youtube.com/@sapa.paragliding'
     ],
     hasMap: 'https://www.google.com/maps/place/Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa/@22.3219262,103.8766636,17z',

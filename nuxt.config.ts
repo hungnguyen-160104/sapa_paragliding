@@ -64,7 +64,10 @@ export default defineNuxtConfig({
       { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' },
       { code: 'hi', name: 'हिन्दी', iso: 'hi-IN', file: 'hi.json' }
     ],
-    defaultLocale: 'vi',
+    // 'en': da so khach la nguoi nuoc ngoai. May trinh duyet tieng Viet van
+    // duoc detectBrowserLanguage dua ve /vi; may ngon ngu KHONG ho tro
+    // (Duc, Nhat...) truoc day roi ve /vi kho hieu — gio ve /en.
+    defaultLocale: 'en',
     langDir: 'locales/',
     baseUrl: 'https://www.paraglidingsapa.com',
     detectBrowserLanguage: {
@@ -72,7 +75,7 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root',
       alwaysRedirect: false,
-      fallbackLocale: 'vi'
+      fallbackLocale: 'en'
     }
   },
 

@@ -52,7 +52,7 @@ const route = useRoute()
 
 const currentLocale = computed<LocaleCode>(() => {
   const first = route.path.split('/').filter(Boolean)[0]
-  return LOCALES.includes(first as LocaleCode) ? (first as LocaleCode) : 'vi'
+  return LOCALES.includes(first as LocaleCode) ? (first as LocaleCode) : 'en'
 })
 
 const TEXT: Record<LocaleCode, {

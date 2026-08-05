@@ -79,7 +79,7 @@ export const MONGODB_DATE_FORMATS = {
 // ============================================
 
 export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru'] as const
-export const DEFAULT_LOCALE = 'vi'
+export const DEFAULT_LOCALE = 'en'
 
 // ============================================
 // RATE LIMITS
