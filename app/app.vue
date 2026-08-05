@@ -6,6 +6,7 @@
       <NuxtPage :key="route.fullPath" />
     </NuxtLayout>
     <ChatButtons v-if="!isAdminRoute" :key="'chat-' + isAdminRoute" />
+    <ReviewBubbles v-if="!isAdminRoute" />
     <Footer v-if="!isAdminRoute" :key="'footer-' + isAdminRoute" />
   </div>
 </template>
