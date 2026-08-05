@@ -51,7 +51,7 @@ const localeMetaMap: Record<string, SeoMetaData> = {
       'ĐẶT VÉ TRỰC TUYẾN. Bay dù lượn tại điểm cất cánh cao nhất Việt Nam, ngắm toàn cảnh Sa Pa cùng phi công quốc tế. 50.000+ khách tin tưởng, an toàn 100%.'
   },
   en: {
-    title: 'Sapa Paragliding | Best Paragliding Flight | Fly Sapa',
+    title: 'Sapa Paragliding | Tandem Flights Over Muong Hoa Valley',
     description:
       "BOOK ONLINE. Fly from Vietnam's highest paragliding takeoff with certified international pilots. Panoramic views of Sapa. 50,000+ customers, 100% safe."
   },
