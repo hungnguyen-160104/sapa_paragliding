@@ -627,7 +627,11 @@ onBeforeUnmount(() => {
         <!-- Link OTA to rõ: nhãn "tham khảo/đối chiếu" (KHÔNG mời đặt vé qua
              OTA — đặt trên đó đắt hơn cho khách và mất hoa hồng cao) -->
         <div class="mb-10 text-center scroll-reveal" data-delay="0">
-          <p class="mb-4 text-base font-semibold text-slate-700">{{ $t('footer.bookOn') }}</p>
+          <!-- Cùng cỡ với tiêu đề "Bài Viết Mới Nhất" (text-3xl lg:text-4xl
+               font-black) + đổ bóng để nổi hơn một chút -->
+          <h2 class="mb-6 text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
+            {{ $t('homePage.otaHeading') }}
+          </h2>
           <div class="flex flex-wrap items-center justify-center gap-3">
             <a href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html" target="_blank" rel="noopener noreferrer"
               class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
