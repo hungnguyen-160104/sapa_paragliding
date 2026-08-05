@@ -547,6 +547,10 @@ async function translateField(key: TranslatableFieldKey) {
       alert(`Không nhận được bản dịch cho ô "${field.label}", thử lại giúp.`)
     }
   } catch (error: any) {
+    if (isAuthError(error)) {
+      handleAuthExpired()
+      return
+    }
     const message = error?.data?.statusMessage || error?.statusMessage || error?.message
     alert(`Dịch thất bại: ${message || 'lỗi không xác định'}`)
   } finally {
@@ -561,6 +565,23 @@ async function translateField(key: TranslatableFieldKey) {
  * phía tiếng Anh. Bản tiếng Việt không bao giờ bị đụng tới, nên bấm nhầm
  * cũng không mất nội dung gốc.
  */
+/**
+ * 401 giữa chừng = token trong localStorage đã cũ/hết hạn: xoá và đưa về
+ * trang đăng nhập luôn, thay vì chỉ hiện thông báo rồi để người dùng bấm
+ * tiếp và gặp đúng lỗi đó ở mọi nút khác.
+ */
+function handleAuthExpired(): void {
+  localStorage.removeItem('adminToken')
+  localStorage.removeItem('adminUsername')
+  alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.')
+  const locale = window.location.pathname.split('/')[1] || 'vi'
+  window.location.href = `/${locale}/admin/login`
+}
+
+function isAuthError(error: any): boolean {
+  return error?.statusCode === 401 || error?.response?.status === 401 || error?.data?.statusCode === 401
+}
+
 async function handleTranslate() {
   const viBlocks = Array.isArray(draft.value.contentBlocksVi) ? draft.value.contentBlocksVi : []
 
@@ -610,6 +631,10 @@ async function handleTranslate() {
         : `Đã dịch xong ${translatedCount} đoạn. Nhớ đọc lại trước khi xuất bản.`
     )
   } catch (error: any) {
+    if (isAuthError(error)) {
+      handleAuthExpired()
+      return
+    }
     const message = error?.data?.statusMessage || error?.statusMessage || error?.message
     alert(`Dịch thất bại: ${message || 'lỗi không xác định'}`)
   } finally {
