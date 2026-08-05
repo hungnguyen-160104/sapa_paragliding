@@ -1,5 +1,20 @@
 <template>
   <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+    <!-- Messenger Button — m.me mở thẳng hộp thoại chat với trang
+         facebook.com/bayduluonsapa -->
+    <a href="https://m.me/bayduluonsapa" target="_blank" rel="noopener noreferrer"
+      class="group bg-[#0084FF] hover:bg-[#0070d9] text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110"
+      aria-label="Chat on Messenger">
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M12 0C5.373 0 0 4.925 0 11c0 3.5 1.745 6.62 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.925 12-11S18.627 0 12 0zm1.193 14.815l-3.056-3.259-5.963 3.259L10.733 8.1l3.13 3.259L19.752 8.1l-6.559 6.715z" />
+      </svg>
+      <span
+        class="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        {{ $t('hero.chatMessenger') }}
+      </span>
+    </a>
+
     <!-- WhatsApp Button -->
     <a :href="whatsappUrl" target="_blank" rel="noopener noreferrer"
       class="group bg-red-500 hover:bg-red-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-110"
