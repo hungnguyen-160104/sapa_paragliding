@@ -341,3 +341,26 @@ export const getPageTitle = (route: RouteLike, _locale: string, t: (key: string)
 
   return t(titles[path] || 'hero.title') || 'Sapa Paragliding'
 }
+/**
+ * Cắt meta description về tối đa ~160 ký tự tại ranh giới từ.
+ *
+ * Bài viết dùng excerpt làm meta description, mà excerpt viết cho người đọc
+ * trên thẻ bài nên hay dài 190–220 ký tự — Google cắt cụt ở ~160 kèm dấu "…"
+ * giữa chừng câu. Cắt chủ động tại ranh giới từ thì đoạn hiển thị trên kết
+ * quả tìm kiếm luôn gọn và trọn vẹn.
+ *
+ * Cắt ở tầng render thay vì sửa dữ liệu từng bài: excerpt trên trang vẫn giữ
+ * nguyên bản đầy đủ, và mọi bài đăng sau này tự được xử lý.
+ */
+export const truncateMetaDescription = (text: string, maxLength = 160): string => {
+  const trimmed = text.trim().replace(/\s+/g, ' ')
+  if (trimmed.length <= maxLength) return trimmed
+
+  const slice = trimmed.slice(0, maxLength)
+  // Lùi về khoảng trắng gần nhất để không cắt giữa từ; nếu khoảng trắng nằm
+  // quá xa (chuỗi không dấu cách, ví dụ tiếng Trung) thì giữ nguyên lát cắt.
+  const lastSpace = slice.lastIndexOf(' ')
+  const cut = lastSpace > maxLength - 30 ? slice.slice(0, lastSpace) : slice
+
+  return `${cut.replace(/[,;:–—-]$/, '')}…`
+}

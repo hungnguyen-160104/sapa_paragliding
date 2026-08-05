@@ -104,9 +104,9 @@
 </template>
 
 <script setup lang="ts">
-import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage, getOgLocale } from '~/utils/seo'
+import { buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getCanonicalUrl, getDefaultOgImage, getOgLocale } from '~/utils/seo'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
@@ -163,6 +163,14 @@ const hreflangLinks = computed(() => buildHreflangLinks('/pilots', currentLocale
 
 const ogImage = getDefaultOgImage()
 
+// Trang duy nhat con thieu JSON-LD — cac trang khac deu co BreadcrumbList.
+const breadcrumbJsonLd = computed(() =>
+  buildBreadcrumbJsonLD([
+    { name: t('menu.home'), item: buildLocalizedUrl('/', locale.value) },
+    { name: t('menu.pilots'), item: canonicalUrl.value }
+  ])
+)
+
 useHead(() => ({
   title: seoData.value.title,
   meta: [
@@ -182,6 +190,12 @@ useHead(() => ({
   link: [
     { rel: 'canonical', href: canonicalUrl.value },
     ...hreflangLinks.value
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(breadcrumbJsonLd.value)
+    }
   ]
 }))
 

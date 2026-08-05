@@ -98,19 +98,19 @@ const getFlyingSiteSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
       title: 'Điểm Bay Dù Lượn Sa Pa: Thung Lũng Mường Hoa & Bản Lao Chải',
-      description: 'Khám phá điểm bay dù lượn Sa Pa: điểm cất cánh chuẩn an toàn cao nhất Việt Nam, hạ cánh tại bản Lao Chải giữa thung lũng Mường Hoa. Đẹp nhất mùa lúa chín 9-10 và mùa nước đổ 5-6.'
+      description: 'Điểm bay dù lượn Sa Pa: điểm cất cánh chuẩn an toàn cao nhất Việt Nam, hạ cánh tại bản Lao Chải, thung lũng Mường Hoa. Đẹp nhất mùa lúa chín 9-10, nước đổ 5-6.'
     },
     en: {
       title: 'Sapa Paragliding Flying Site: Muong Hoa Valley & Lao Chai',
-      description: "Discover Sapa's paragliding site: a takeoff built to Vietnam's highest safety standard, landing at Lao Chai village in Muong Hoa Valley. Best seasons: Sep-Oct golden rice and May-Jun."
+      description: "Sapa's paragliding site: takeoff built to Vietnam's highest safety standard, landing at Lao Chai village in Muong Hoa Valley. Best seasons: Sep-Oct and May-Jun."
     },
     fr: {
       title: 'Site de Vol en Parapente à Sapa : Vallée de Muong Hoa',
-      description: "Découvrez le site de vol de Sapa : décollage aux normes de sécurité les plus élevées du Vietnam, atterrissage au village de Lao Chai dans la vallée de Muong Hoa. Meilleures saisons : sept.-oct. et mai-juin."
+      description: "Site de vol de Sapa : décollage aux normes de sécurité les plus élevées du Vietnam, atterrissage à Lao Chai, vallée de Muong Hoa. Idéal sept.-oct. et mai-juin."
     },
     ru: {
       title: 'Место полётов на параплане в Сапе: долина Мыонг Хоа',
-      description: 'Место полётов в Сапе: точка взлёта по высшим стандартам безопасности Вьетнама, посадка в деревне Лао Чай в долине Мыонг Хоа. Лучшие сезоны: сентябрь-октябрь и май-июнь.'
+      description: 'Место полётов в Сапе: взлёт по высшим стандартам безопасности Вьетнама, посадка в Лао Чай, долина Мыонг Хоа. Лучшие сезоны: сентябрь-октябрь и май-июнь.'
     },
     zh: {
       title: '沙坝滑翔伞飞行点：芒花谷与 Lao Chai 村 | Sapa Paragliding',

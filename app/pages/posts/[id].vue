@@ -406,7 +406,7 @@
 import { usePostsStore } from '~/stores/posts'
 import { normalizeTableData } from '~/stores/postsAdmin'
 import { renderInlineMarkup } from '~/utils/inlineMarkup'
-import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getOgLocale } from '~/utils/seo'
+import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getOgLocale, truncateMetaDescription } from '~/utils/seo'
 
 type ContentBlock = {
   id: string | number
@@ -595,10 +595,13 @@ const seoTitle = computed(() => {
 
 const seoDescription = computed(() => {
   if (!post.value) return ''
+  // truncateMetaDescription: excerpt viết cho thẻ bài nên hay dài 190–220 ký
+  // tự, Google cắt cụt ở ~160 — cắt chủ động tại ranh giới từ cho gọn.
+  // Excerpt hiển thị trên trang không bị ảnh hưởng.
   if (isVietnamese.value) {
-    return post.value.seo?.descriptionVi || displayExcerpt.value
+    return truncateMetaDescription(post.value.seo?.descriptionVi || displayExcerpt.value)
   }
-  return post.value.seo?.description || displayExcerpt.value
+  return truncateMetaDescription(post.value.seo?.description || displayExcerpt.value)
 })
 
 const errorMessage = computed(() => {

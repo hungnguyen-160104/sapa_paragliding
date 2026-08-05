@@ -157,15 +157,15 @@ const getPricesSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
       title: 'Giá Bay Dù Lượn Sa Pa: Trọn Gói Từ 2.090.000đ, Không Đặt Cọc',
-      description: 'Bảng giá bay dù lượn Sa Pa mới nhất: 3 gói trọn gói từ 2.090.000đ (82 USD) gồm bảo hiểm, quay GoPro, đồ uống tại điểm bay. Không đặt cọc, hủy do thời tiết hoàn tiền 100%.'
+      description: 'Bảng giá bay dù lượn Sa Pa mới nhất: 3 gói trọn gói từ 2.090.000đ (82 USD) gồm bảo hiểm, quay GoPro, đồ uống. Không đặt cọc, hủy do thời tiết hoàn 100%.'
     },
     en: {
       title: 'Sapa Paragliding Prices: All-Inclusive From 2,090,000 VND',
-      description: 'Latest Sapa paragliding prices: 3 all-inclusive packages from 2,090,000 VND (82 USD) with insurance, GoPro video and drinks. No deposit, 100% refund on weather cancellation.'
+      description: 'Latest Sapa paragliding prices: 3 all-inclusive packages from 2,090,000 VND (82 USD) with insurance and GoPro video. No deposit, 100% weather refund.'
     },
     fr: {
       title: 'Tarifs Parapente à Sapa : Tout Compris Dès 2 090 000 VND',
-      description: "Tarifs du parapente à Sapa : 3 forfaits tout compris dès 2 090 000 VND (82 USD) avec assurance, vidéo GoPro et boissons. Sans acompte, remboursement à 100% si annulation météo."
+      description: "Tarifs parapente à Sapa : 3 forfaits tout compris dès 2 090 000 VND (82 USD) avec assurance et vidéo GoPro. Sans acompte, remboursement 100% si météo."
     },
     ru: {
       title: 'Цены на параплан в Сапе: всё включено от 2 090 000 VND',
