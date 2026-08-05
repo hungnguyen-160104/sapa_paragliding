@@ -888,7 +888,8 @@
     "address": "地址",
     "followUs": "关注我们",
     "quickLinks": "快速链接",
-    "copyright": "由越南国防部总参谋部作战部门许可飞行。滑翔伞经营许可证号：02/GCN-SVHTT，由老街省文化、体育与旅游厅颁发"
+    "copyright": "由越南国防部总参谋部作战部门许可飞行。滑翔伞经营许可证号：02/GCN-SVHTT，由老街省文化、体育与旅游厅颁发",
+    "bookOn": "预订与评价平台"
   },
   "validation": {
     "required": "此字段为必填项",

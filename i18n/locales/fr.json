@@ -874,7 +874,8 @@
     "address": "Adresse",
     "followUs": "Suivez-nous",
     "quickLinks": "Liens rapides",
-    "copyright": "Opérateur autorisé à effectuer des vols par le Département des opérations – État-major général, Ministère de la Défense du Vietnam. Licence d’activité parapente n° 02/GCN-SVHTT délivrée par le Département de la Culture, des Sports et du Tourisme de la province de Lào Cai"
+    "copyright": "Opérateur autorisé à effectuer des vols par le Département des opérations – État-major général, Ministère de la Défense du Vietnam. Licence d’activité parapente n° 02/GCN-SVHTT délivrée par le Département de la Culture, des Sports et du Tourisme de la province de Lào Cai",
+    "bookOn": "Réservez et évaluez-nous sur"
   },
   "validation": {
     "required": "Ce champ est obligatoire",

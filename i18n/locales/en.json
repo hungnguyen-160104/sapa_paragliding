@@ -888,7 +888,8 @@
     "address": "Address",
     "followUs": "Follow Us",
     "quickLinks": "Quick Links",
-    "copyright": "Licensed to fly by the Operations Department – General Staff, Ministry of National Defense of Vietnam. Paragliding business license No. 02/GCN-SVHTT issued by the Department of Culture, Sports and Tourism of Lao Cai Province"
+    "copyright": "Licensed to fly by the Operations Department – General Staff, Ministry of National Defense of Vietnam. Paragliding business license No. 02/GCN-SVHTT issued by the Department of Culture, Sports and Tourism of Lao Cai Province",
+    "bookOn": "Book & review us on"
   },
   "validation": {
     "required": "This field is required",
