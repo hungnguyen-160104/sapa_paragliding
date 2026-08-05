@@ -84,9 +84,10 @@
  */
 const GOOGLE_SCORE = 5.0
 const GOOGLE_REVIEW_COUNT: number | null = null
-/** Link tìm đúng tên hồ sơ Google Business — không cần place id. */
-const GOOGLE_URL =
-  'https://www.google.com/maps/search/?api=1&query=Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa'
+/** Link chia sẻ chính chủ của hồ sơ Google Business (chủ doanh nghiệp cung
+ * cấp) — mở thẳng trang địa điểm với điểm số và toàn bộ đánh giá, không qua
+ * bước tìm kiếm. */
+const GOOGLE_URL = 'https://maps.app.goo.gl/gUWjs458L8X6u9fe9'
 
 const TA_SCORE = 5.0
 const TA_REVIEW_COUNT: number | null = null
