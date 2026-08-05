@@ -344,7 +344,7 @@ onBeforeUnmount(() => {
             <NuxtImg src="/images/Sapa_logo.png" class="w-full h-full object-contain" format="webp" alt="Sapa Paragliding Logo" />
           </div>
           <div>
-            <h2 class="text-2xl lg:text-3xl font-black text-slate-900">
+            <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
               {{ $t('gallery.title') }}
             </h2>
             <p class="text-slate-500">{{ $t('gallery.subtitle') }}</p>
@@ -391,10 +391,7 @@ onBeforeUnmount(() => {
 
       <div class="container mx-auto px-6 lg:px-10 relative z-10">
         <div class="text-center mb-10 scroll-reveal">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-400/30 mb-6">
-            <span class="text-red-300 text-sm font-medium uppercase tracking-wider">{{ $t('pricing.title') }}</span>
-          </div>
-          <h2 class="text-3xl lg:text-4xl font-black text-white mb-3">
+          <h2 class="text-3xl lg:text-4xl font-black text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.45)] mb-3">
             {{ $t('homePage.pricingHeading') }}
           </h2>
           <p class="text-lg text-slate-400 max-w-2xl mx-auto">{{ $t('pricing.subtitle') }}</p>
@@ -512,7 +509,7 @@ onBeforeUnmount(() => {
               </svg>
             </div>
             <div>
-              <h2 class="text-3xl lg:text-4xl font-black text-slate-900">{{ $t('posts.latestPosts') }}</h2>
+              <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">{{ $t('posts.latestPosts') }}</h2>
               <p class="text-slate-500">{{ $t('posts.latestPostsDescription') }}</p>
             </div>
           </div>
@@ -629,7 +626,7 @@ onBeforeUnmount(() => {
         <div class="mb-10 text-center scroll-reveal" data-delay="0">
           <!-- Cùng cỡ với tiêu đề "Bài Viết Mới Nhất" (text-3xl lg:text-4xl
                font-black) + đổ bóng để nổi hơn một chút -->
-          <h2 class="mb-6 text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
+          <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)] mb-6">
             {{ $t('homePage.otaHeading') }}
           </h2>
           <div class="flex flex-wrap items-center justify-center gap-3">
@@ -657,12 +654,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="text-center mb-6 scroll-reveal">
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-400/20 rounded-full mb-4">
-            <span class="text-red-500 text-sm font-medium uppercase tracking-wider">
-              {{ $t('homePage.contactBadge') }}
-            </span>
-          </div>
-          <h2 class="text-2xl lg:text-3xl font-black text-slate-900 mb-2">
+          <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)] mb-2">
             {{ $t('homePage.contactTitle') }}
           </h2>
           <p class="text-slate-500 max-w-xl mx-auto">
@@ -841,7 +833,7 @@ onBeforeUnmount(() => {
       style="background-image: url('/images/svg/hero-shape-short.svg'); background-size: cover; background-position: center; background-repeat: no-repeat;"
     >
       <div class="container mx-auto px-6 lg:px-12 text-center scroll-reveal">
-        <h2 class="text-3xl lg:text-4xl font-black text-white mb-5">
+        <h2 class="text-3xl lg:text-4xl font-black text-white drop-shadow-[0_3px_6px_rgba(0,0,0,0.45)] mb-5">
           {{ $t('homePage.ctaTitle') }}
         </h2>
         <p class="text-lg text-red-100 mb-8 max-w-2xl mx-auto">
