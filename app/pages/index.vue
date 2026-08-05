@@ -624,6 +624,34 @@ onBeforeUnmount(() => {
 
     <section class="py-10 lg:py-16 bg-gradient-to-br from-slate-100 via-white to-slate-50">
       <div class="container mx-auto px-6 lg:px-12">
+        <!-- Link OTA to rõ: nhãn "tham khảo/đối chiếu" (KHÔNG mời đặt vé qua
+             OTA — đặt trên đó đắt hơn cho khách và mất hoa hồng cao) -->
+        <div class="mb-10 text-center scroll-reveal" data-delay="0">
+          <p class="mb-4 text-base font-semibold text-slate-700">{{ $t('footer.bookOn') }}</p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html" target="_blank" rel="noopener noreferrer"
+              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
+              TripAdvisor
+            </a>
+            <a href="https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/" target="_blank" rel="noopener noreferrer"
+              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
+              Klook
+            </a>
+            <a href="https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4" target="_blank" rel="noopener noreferrer"
+              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
+              Viator
+            </a>
+            <a href="https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/" target="_blank" rel="noopener noreferrer"
+              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
+              GetYourGuide
+            </a>
+            <a href="https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6" target="_blank" rel="noopener noreferrer"
+              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
+              Seek Sophie
+            </a>
+          </div>
+        </div>
+
         <div class="text-center mb-6 scroll-reveal">
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-400/20 rounded-full mb-4">
             <span class="text-red-500 text-sm font-medium uppercase tracking-wider">
@@ -801,33 +829,6 @@ onBeforeUnmount(() => {
           </div>
         </div>
 
-        <!-- Link OTA to rõ: nhãn "tham khảo/đối chiếu" (KHÔNG mời đặt vé qua
-             OTA — đặt trên đó đắt hơn cho khách và mất hoa hồng cao) -->
-        <div class="mt-8 text-center scroll-reveal" data-delay="450">
-          <p class="mb-4 text-base font-semibold text-slate-700">{{ $t('footer.bookOn') }}</p>
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
-              TripAdvisor
-            </a>
-            <a href="https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
-              Klook
-            </a>
-            <a href="https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
-              Viator
-            </a>
-            <a href="https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
-              GetYourGuide
-            </a>
-            <a href="https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#2b6fd4] hover:shadow-xl">
-              Seek Sophie
-            </a>
-          </div>
-        </div>
       </div>
     </section>
 
