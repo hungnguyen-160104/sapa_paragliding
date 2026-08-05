@@ -33,6 +33,17 @@
           {{ getBlockLabel(block.type) }}
         </span>
         <div class="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+          <!-- Dịch block này: lấy bản tiếng Việt cùng vị trí, dịch, ghi vào
+               bản tiếng Anh. Ẩn với divider (không có chữ để dịch). -->
+          <button
+            v-if="block.type !== 'divider'"
+            class="rounded border border-blue-200 bg-blue-50 px-2 py-0.5 text-[11px] font-semibold text-blue-600 transition hover:bg-blue-100 disabled:opacity-50"
+            :disabled="translatingBlockIndex !== null"
+            title="Dịch block tiếng Việt này sang tiếng Anh"
+            @click="translateBlock(index)"
+          >
+            {{ translatingBlockIndex === index ? '⏳' : '🌐 Dịch' }}
+          </button>
           <button
             class="rounded p-1 text-slate-400 hover:bg-slate-200 hover:text-slate-600"
             title="Nhân bản"
@@ -852,6 +863,89 @@ watchEffect(() => {
 
 function getBlockLabel(type: BlockType): string {
   return blockTypes.find((item) => item.type === type)?.label || type
+}
+
+
+/** Chỉ số block đang dịch riêng lẻ; null = không có. Khoá mọi nút dịch khác. */
+const translatingBlockIndex = ref<number | null>(null)
+
+/**
+ * Trường CHỮ của từng loại block — dịch xong chỉ chép đúng các trường này
+ * từ kết quả sang block tiếng Anh. Không chép url/level/type... để ảnh,
+ * cấp tiêu đề, liên kết của bản tiếng Anh không bị bản tiếng Việt đè lên.
+ */
+const TEXT_FIELDS_BY_TYPE: Record<string, string[]> = {
+  heading: ['text'],
+  paragraph: ['text'],
+  quote: ['text', 'author'],
+  bulletList: ['items'],
+  image: ['caption', 'alt'],
+  video: ['caption'],
+  linkCard: ['title', 'description'],
+  cta: ['text'],
+  table: ['headers', 'rows', 'hasHeader']
+}
+
+/**
+ * Dịch MỘT block: lấy bản tiếng Việt cùng vị trí, gửi qua cùng endpoint với
+ * nút "Dịch tự động" cả bài, rồi ghi phần chữ vào bản tiếng Anh. Bản tiếng
+ * Việt không bao giờ bị đụng tới.
+ */
+async function translateBlock(index: number) {
+  const englishBlock = getEnglishBlock(index)
+  if (!englishBlock) return
+
+  const viBlock = getViBlock(index)
+  const fields = TEXT_FIELDS_BY_TYPE[viBlock.type] ?? []
+
+  const hasText = fields.some((key) => {
+    const value = (viBlock.data as Record<string, unknown>)[key]
+    if (typeof value === 'string') return value.trim().length > 0
+    if (Array.isArray(value)) return value.flat().some((v) => typeof v === 'string' && v.trim())
+    return false
+  })
+
+  if (!hasText) {
+    alert('Block tiếng Việt này chưa có chữ để dịch.')
+    return
+  }
+
+  translatingBlockIndex.value = index
+
+  try {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('adminToken') : null
+
+    const response: any = await $fetch('/api/admin/translate', {
+      method: 'POST',
+      headers: token ? { authorization: `Bearer ${token}` } : {},
+      body: { blocks: [JSON.parse(JSON.stringify(viBlock))], fields: {} }
+    })
+
+    const translated = response?.blocks?.[0]?.data
+    if (!translated) {
+      alert('Không nhận được bản dịch, thử lại giúp.')
+      return
+    }
+
+    for (const key of fields) {
+      if (translated[key] !== undefined) {
+        ;(englishBlock.data as Record<string, unknown>)[key] = translated[key]
+      }
+    }
+  } catch (error: any) {
+    if (error?.statusCode === 401 || error?.response?.status === 401 || error?.data?.statusCode === 401) {
+      localStorage.removeItem('adminToken')
+      localStorage.removeItem('adminUsername')
+      alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.')
+      const locale = window.location.pathname.split('/')[1] || 'vi'
+      window.location.href = `/${locale}/admin/login`
+      return
+    }
+    const message = error?.data?.statusMessage || error?.statusMessage || error?.message
+    alert(`Dịch thất bại: ${message || 'lỗi không xác định'}`)
+  } finally {
+    translatingBlockIndex.value = null
+  }
 }
 
 function getEnglishBlock(index: number): ContentBlock | undefined {
