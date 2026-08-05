@@ -166,29 +166,31 @@
             </a>
           </div>
 
-          <!-- Huy hiệu OTA chính chủ: dùng chip chữ thay vì vẽ logo từng nền
-               tảng — logo sai còn tệ hơn không có, và chip chữ luôn đọc được.
+          <!-- Huy hiệu OTA chính chủ: chip chữ nền xanh thương hiệu #194d9b.
+               Nhãn cố ý nói "tham khảo/đối chiếu" chứ KHÔNG mời đặt vé qua
+               OTA — đặt trên OTA đắt hơn cho khách và mất hoa hồng cao;
+               vai trò của hàng này là bằng chứng uy tín, kéo review.
                Nhấn sang đúng listing đã khai trong sameAs (utils/seo.ts). -->
           <p class="mb-2 text-sm text-white">{{ $t('footer.bookOn') }}</p>
           <div class="mb-6 flex flex-wrap items-center gap-2">
             <a href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html" target="_blank" rel="noopener noreferrer"
-              class="rounded-full border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-[#34e0a1] hover:text-[#34e0a1]">
+              class="rounded-full bg-[#194d9b] px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#2b6fd4]">
               TripAdvisor
             </a>
             <a href="https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/" target="_blank" rel="noopener noreferrer"
-              class="rounded-full border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-[#34e0a1] hover:text-[#34e0a1]">
+              class="rounded-full bg-[#194d9b] px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#2b6fd4]">
               Klook
             </a>
             <a href="https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4" target="_blank" rel="noopener noreferrer"
-              class="rounded-full border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-[#34e0a1] hover:text-[#34e0a1]">
+              class="rounded-full bg-[#194d9b] px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#2b6fd4]">
               Viator
             </a>
             <a href="https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/" target="_blank" rel="noopener noreferrer"
-              class="rounded-full border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-[#34e0a1] hover:text-[#34e0a1]">
+              class="rounded-full bg-[#194d9b] px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#2b6fd4]">
               GetYourGuide
             </a>
             <a href="https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6" target="_blank" rel="noopener noreferrer"
-              class="rounded-full border border-gray-700 bg-gray-800 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:border-[#34e0a1] hover:text-[#34e0a1]">
+              class="rounded-full bg-[#194d9b] px-3 py-1.5 text-xs font-semibold text-white shadow-md transition-colors hover:bg-[#2b6fd4]">
               Seek Sophie
             </a>
           </div>
