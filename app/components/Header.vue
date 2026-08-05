@@ -36,7 +36,7 @@
                trong "DÙ LƯỢN". Chỉ tiếng Việt bị vì các ngôn ngữ khác không
                có dấu chồng trên/dưới. 1.15 đủ chỗ cho cả dấu trên lẫn dưới. -->
           <div
-            class="flex lg:hidden min-w-0 flex-col justify-center leading-[1.15] text-[#194d9b] font-black [-webkit-text-stroke:1px_#194d9b]">
+            class="flex lg:hidden min-w-0 flex-col justify-center leading-[1.15] text-[#194d9b] font-black [-webkit-text-stroke:0.8px_#194d9b]">
             <span class="truncate" :class="brandTextSize">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="truncate" :class="brandTextSize">{{ brandLines[1] }}</span>
           </div>
