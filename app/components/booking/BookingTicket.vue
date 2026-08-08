@@ -1,250 +1,301 @@
 <template>
-  <div class="space-y-3">
-    <!-- Ticket Preview -->
+  <div class="space-y-4">
+    <!-- ============================================================
+         VÉ BAY — kiểu thẻ lên máy bay, tông trời xanh chuyển nắng ấm.
+         Ba điều chỉnh chính so với bản cũ:
+           • Không dùng nền đen: khối giá đổi sang nền kem ấm, vừa hợp
+             tông vừa đỡ tốn mực khi khách in ra.
+           • Chữ to hơn hẳn: nhãn 11px, giá trị 14–15px (cũ là 10–12px).
+           • Lề rộng: p-6/p-7 thay cho p-3/p-4 nên chữ không dính mép.
+         ============================================================ -->
     <div
       ref="ticketRef"
-      class="bg-gradient-to-br from-red-50 to-orange-50 rounded-lg shadow-lg overflow-hidden border border-red-200"
+      class="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-xl"
     >
-      <!-- Header -->
-      <div class="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-3">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
+      <!-- ---------- CUỐNG VÉ ---------- -->
+      <div class="relative bg-gradient-to-br from-[#194d9b] via-[#2b6fd4] to-[#5aa9e6] px-7 py-6 text-white">
+        <!-- Mây trang trí: vòng tròn mờ, thuần CSS nên html2canvas dựng lại được -->
+        <div class="pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-white/10"></div>
+        <div class="pointer-events-none absolute -bottom-12 left-16 h-28 w-28 rounded-full bg-white/10"></div>
+
+        <div class="relative flex items-start justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <!-- Logo nền trong suốt, KHÔNG bọc hộp trắng như bản cũ -->
             <img
               src="/images/Sapa_logo.png"
-              alt="Sapa Paragliding Logo"
-              class="w-10 h-10 object-contain bg-white rounded p-1"
+              alt="Sapa Paragliding"
+              class="h-20 w-20 flex-shrink-0 object-contain drop-shadow-lg"
             />
             <div>
-              <h1 class="text-lg font-bold leading-tight">{{ $t('booking.ticket.title') }}</h1>
-              <p class="text-red-100 text-xs">{{ $t('booking.ticket.subtitle') }}</p>
+              <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-100">
+                {{ $t('booking.ticket.boardingPass') }}
+              </p>
+              <h1 class="mt-1 text-3xl font-black leading-none tracking-tight">
+                {{ $t('booking.ticket.title') }}
+              </h1>
+              <p class="mt-2 text-sm font-medium text-sky-100">
+                🪂 {{ $t('booking.ticket.slogan') }}
+              </p>
             </div>
           </div>
-          <div class="text-right">
-            <p class="text-xs text-red-100">{{ $t('booking.ticket.bookingId') }}</p>
-            <p class="text-sm font-mono font-bold">{{ bookingData.bookingId || 'PENDING' }}</p>
-          </div>
-        </div>
 
-        <!-- Company Info -->
-        <div class="border-t border-red-400/50 pt-2 mt-2 flex items-center justify-between text-xs">
-          <div>
-            <span class="font-semibold">{{ companyName }}</span>
-            <span class="text-red-200 mx-1">•</span>
-            <span class="text-red-100">{{ companyInfo }}</span>
-          </div>
-          <div class="text-red-100">
-            <a href="tel:+84386887489" class="hover:underline">+84 386 887 489</a>
+          <div class="flex-shrink-0 rounded-xl bg-white/15 px-4 py-3 text-right backdrop-blur-sm">
+            <p class="text-[10px] font-semibold uppercase tracking-wider text-sky-100">
+              {{ $t('booking.ticket.bookingId') }}
+            </p>
+            <p class="mt-1 font-mono text-xl font-black tracking-wider">
+              {{ bookingData.bookingId || 'PENDING' }}
+            </p>
           </div>
         </div>
       </div>
 
-      <!-- Body -->
-      <div class="p-4 space-y-3">
-        <!-- Two Column Layout -->
-        <div class="grid grid-cols-2 gap-3">
-<!-- Flight Details -->
-<div class="bg-white rounded p-3 border border-gray-100">
-  <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
-    {{ $t('booking.ticket.flightDetails') }}
-  </h3>
+      <!-- ---------- ĐƯỜNG RĂNG CƯA ---------- -->
+      <div class="relative h-6 bg-white">
+        <div class="absolute -left-3 top-0 h-6 w-6 rounded-full border border-sky-200 bg-sky-50"></div>
+        <div class="absolute -right-3 top-0 h-6 w-6 rounded-full border border-sky-200 bg-sky-50"></div>
+        <div class="absolute left-6 right-6 top-3 border-t-2 border-dashed border-sky-200"></div>
+      </div>
 
-  <div class="space-y-1.5 text-sm">
-    <div class="flex justify-between">
-      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.service') }}</span>
-      <span class="font-semibold text-gray-900 text-xs">
-        {{ $t('booking.step1Details.serviceName') }}
-      </span>
-    </div>
+      <!-- ---------- THÂN VÉ ---------- -->
+      <div class="space-y-5 px-7 pb-7">
+        <!-- Bốn ô nổi bật: đọc lướt là nắm được chuyến bay -->
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <div class="rounded-xl bg-sky-50 p-4 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-sky-700">
+              {{ $t('booking.step5Details.date') }}
+            </p>
+            <p class="mt-1 text-base font-black text-slate-900">{{ formatDate(bookingData.preferredDate) }}</p>
+          </div>
+          <div class="rounded-xl bg-sky-50 p-4 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-sky-700">
+              {{ $t('booking.step5Details.time') }}
+            </p>
+            <p class="mt-1 text-base font-black text-slate-900">
+              {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
+            </p>
+          </div>
+          <div class="rounded-xl bg-amber-50 p-4 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">
+              {{ $t('booking.step5Details.passengers') }}
+            </p>
+            <p class="mt-1 text-base font-black text-slate-900">{{ bookingData.numberOfPassengers }}</p>
+          </div>
+          <div class="rounded-xl bg-amber-50 p-4 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">
+              {{ $t('booking.ticket.takeoffPoint') }}
+            </p>
+            <p class="mt-1 text-base font-black text-slate-900">{{ TAKEOFF_NAME }}</p>
+          </div>
+        </div>
 
-    <div class="flex justify-between">
-      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.date') }}</span>
-      <span class="font-semibold text-gray-900 text-xs">
-        {{ formatDate(bookingData.preferredDate) }}
-      </span>
-    </div>
+        <!-- Chuyến bay + liên hệ -->
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 p-5">
+            <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+              {{ $t('booking.ticket.flightDetails') }}
+            </h3>
+            <div class="space-y-2.5">
+              <div class="flex justify-between gap-3">
+                <span class="text-sm text-slate-500">{{ $t('booking.step5Details.service') }}</span>
+                <span class="text-right text-sm font-bold text-slate-900">{{ $t('booking.step1Details.serviceName') }}</span>
+              </div>
+              <div v-if="bookingData.selectedOptions?.includes('hotel-transfer')" class="flex justify-between gap-3">
+                <span class="text-sm text-slate-500">{{ $t('booking.step4Details.pickupLocation') }}</span>
+                <span class="text-right text-sm font-bold text-slate-900">
+                  {{ bookingData.pickupLocation || $t('booking.ticket.notProvided') }}
+                </span>
+              </div>
+              <div v-if="bookingData.selectedOptions?.includes('hotel-transfer')" class="flex justify-between gap-3">
+                <span class="text-sm text-slate-500">{{ $t('booking.step4Details.pickupTime') }}</span>
+                <span class="text-right text-sm font-bold text-slate-900">
+                  {{ $t('booking.step4Details.pickupTimeDefault') }}
+                </span>
+              </div>
+            </div>
+          </div>
 
-    <div class="flex justify-between">
-      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.time') }}</span>
-      <span class="font-semibold text-gray-900 text-xs">
-        {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
-      </span>
-    </div>
-
-    <div class="flex justify-between">
-      <span class="text-gray-500 text-xs">{{ $t('booking.step5Details.passengers') }}</span>
-      <span class="font-semibold text-gray-900 text-xs">
-        {{ bookingData.numberOfPassengers }}
-      </span>
-    </div>
-
-    <!-- ✅ Điểm đón (hiện đúng theo khách nhập) -->
-    <div
-      class="flex justify-between"
-      v-if="bookingData.selectedOptions?.includes('hotel-transfer')"
-    >
-      <span class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupLocation') }}</span>
-      <span class="font-semibold text-gray-900 text-xs text-right">
-        {{ bookingData.pickupLocation || $t('booking.ticket.notProvided') }}
-      </span>
-    </div>
-
-    <!-- ✅ Giờ đón (mặc định 30 phút trước giờ bay) -->
-    <div
-      class="flex justify-between"
-      v-if="bookingData.selectedOptions?.includes('hotel-transfer')"
-    >
-      <span class="text-gray-500 text-xs">{{ $t('booking.step4Details.pickupTime') }}</span>
-      <span class="font-semibold text-gray-900 text-xs text-right">
-        {{ $t('booking.step4Details.pickupTimeDefault') }}
-      </span>
-    </div>
-  </div>
-</div>
-
-
-          <!-- Contact Info -->
-          <div class="bg-white rounded p-3 border border-gray-100">
-            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
+          <div class="rounded-xl border border-slate-200 p-5">
+            <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.passengerInfo') }}
             </h3>
-            <div class="space-y-1.5">
+            <div class="space-y-2.5">
               <div>
-                <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.contactName') }}</p>
-                <p class="font-semibold text-gray-900 text-xs break-words">{{ bookingData.contactName }}</p>
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  {{ $t('booking.step2Details.contactName') }}
+                </p>
+                <p class="text-sm font-bold text-slate-900 break-words">{{ bookingData.contactName }}</p>
               </div>
               <div>
-                <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.email') }}</p>
-                <p class="font-mono text-xs text-gray-900 break-all">{{ bookingData.email }}</p>
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  {{ $t('booking.step2Details.email') }}
+                </p>
+                <p class="break-all text-sm text-slate-900">{{ bookingData.email }}</p>
               </div>
               <div>
-                <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step2Details.phone') }}</p>
-                <p class="font-mono text-xs text-gray-900">{{ bookingData.phone }}</p>
+                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+                  {{ $t('booking.step2Details.phone') }}
+                </p>
+                <p class="text-sm font-bold text-slate-900">{{ bookingData.phone }}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Passengers -->
-        <div v-if="bookingData.passengers.length > 0" class="bg-white rounded p-3 border border-gray-100">
-          <div class="flex items-center justify-between mb-2">
-            <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide">
+        <!-- Danh sách khách bay -->
+        <div v-if="bookingData.passengers.length > 0" class="rounded-xl border border-slate-200 p-5">
+          <div class="mb-3 flex items-center justify-between">
+            <h3 class="text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.passengersList') }}
             </h3>
-            <span class="bg-red-100 text-red-600 text-[10px] px-1.5 py-0.5 font-bold">
+            <span class="rounded-full bg-[#f02424] px-3 py-1 text-xs font-black text-white">
               {{ bookingData.passengers.length }}
             </span>
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-3">
             <div
               v-for="(passenger, idx) in bookingData.passengers"
               :key="idx"
-              class="bg-gray-50 rounded p-2 border border-gray-200"
+              class="rounded-xl bg-slate-50 p-4"
             >
-              <div class="flex items-center gap-2 mb-1.5">
-                <span
-                  class="w-5 h-5 bg-red-600 text-white flex items-center justify-center text-[10px] font-bold rounded-full flex-shrink-0"
-                >
+              <div class="mb-2 flex items-center gap-2.5">
+                <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#194d9b] text-xs font-black text-white">
                   {{ idx + 1 }}
                 </span>
-                <span class="font-semibold text-gray-900 text-xs">{{ passenger.fullName }}</span>
+                <span class="text-base font-black text-slate-900">{{ passenger.fullName }}</span>
               </div>
-
-              <div class="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-gray-600 pl-7">
+              <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 pl-10 text-xs sm:grid-cols-3">
                 <div>
-                  <span class="font-medium">{{ $t('booking.step4Details.dateOfBirth') }}</span>
-                  <span class="ml-1 text-gray-900">{{ passenger.dateOfBirth }}</span>
+                  <span class="text-slate-400">{{ $t('booking.step4Details.dateOfBirth') }}</span>
+                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.dateOfBirth }}</span>
                 </div>
                 <div>
-                  <span class="font-medium">{{ $t('booking.step4Details.gender') }}</span>
-                  <span class="ml-1 text-gray-900 capitalize">{{ passenger.gender }}</span>
+                  <span class="text-slate-400">{{ $t('booking.step4Details.gender') }}</span>
+                  <span class="ml-1 font-semibold capitalize text-slate-900">{{ passenger.gender }}</span>
                 </div>
                 <div>
-                  <span class="font-medium">{{ $t('booking.step4Details.idNumber') }}</span>
-                  <span class="ml-1 text-gray-900">{{ passenger.passportOrId }}</span>
+                  <span class="text-slate-400">{{ $t('booking.step4Details.weight') }}</span>
+                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.weight }}kg</span>
                 </div>
                 <div>
-                  <span class="font-medium">{{ $t('booking.step4Details.nationality') }}</span>
-                  <span class="ml-1 text-gray-900">{{ passenger.nationality }}</span>
+                  <span class="text-slate-400">{{ $t('booking.step4Details.nationality') }}</span>
+                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.nationality }}</span>
                 </div>
-                <div>
-                  <span class="font-medium">{{ $t('booking.step4Details.weight') }}</span>
-                  <span class="ml-1 text-gray-900">{{ passenger.weight }}kg</span>
+                <div class="col-span-2 sm:col-span-1">
+                  <span class="text-slate-400">{{ $t('booking.step4Details.idNumber') }}</span>
+                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.passportOrId }}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- ✅ Pricing (GIỐNG Step 4: đơn giá × SL = thành tiền) -->
-        <div class="bg-gray-900 text-white rounded p-3">
-          <div class="flex items-center justify-between mb-2">
-            <p class="text-[10px] text-gray-400 uppercase">{{ $t('booking.step5Details.total') }}</p>
-            <p class="text-lg font-bold text-white">{{ formatPriceVND(totalPriceComputed) }}</p>
+        <!-- Giá — nền kem ấm thay cho nền đen -->
+        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-5">
+          <div class="mb-3 flex items-center justify-between border-b border-amber-200 pb-3">
+            <p class="text-xs font-black uppercase tracking-wider text-amber-800">
+              {{ $t('booking.step5Details.total') }}
+            </p>
+            <p class="text-2xl font-black text-[#f02424]">{{ formatPriceVND(totalPriceComputed) }}</p>
           </div>
 
-          <div class="space-y-1.5 text-xs">
+          <div class="space-y-2">
             <div
               v-for="(line, idx) in priceBreakdownLines"
               :key="idx"
-              class="flex items-start justify-between gap-3"
-              :class="line.type === 'discount' ? 'text-red-300' : 'text-gray-200'"
+              class="flex items-start justify-between gap-4"
             >
               <div class="min-w-0">
-                <p class="break-words">{{ line.label }}</p>
-                <p v-if="line.detail" class="text-[10px] text-gray-400 break-words">{{ line.detail }}</p>
+                <p class="text-sm font-medium" :class="line.type === 'discount' ? 'text-emerald-700' : 'text-slate-700'">
+                  {{ line.label }}
+                </p>
+                <p v-if="line.detail" class="break-words text-xs text-slate-500">{{ line.detail }}</p>
               </div>
-              <span class="font-semibold whitespace-nowrap" :class="line.type === 'discount' ? 'text-red-300' : 'text-white'">
+              <span
+                class="whitespace-nowrap text-sm font-black"
+                :class="line.type === 'discount' ? 'text-emerald-700' : 'text-slate-900'"
+              >
                 {{ line.amountText }}
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Pre-flight Information -->
-        <div class="bg-white rounded p-3 border border-gray-100">
-          <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">
-            {{ $t('booking.ticket.preFlightInfo.title') }}
-          </h3>
-          <div class="space-y-1.5 text-xs text-gray-700">
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
-            <!--  <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.launchLanding') }}</p></div>-->
-            <div class="flex items-start gap-1.5"><span class="text-red-500 mt-0.5 flex-shrink-0">•</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+        <!-- Điểm bay + mã QR: khách quét là mở thẳng ghim Google Maps của
+             ĐIỂM CẤT CÁNH (không phải địa chỉ văn phòng), khỏi phải gõ tay
+             hay hỏi đường sáng hôm bay. -->
+        <div class="flex items-center gap-5 rounded-xl border-2 border-sky-200 bg-sky-50 p-5">
+          <img
+            v-if="takeoffQr"
+            :src="takeoffQr"
+            alt="QR điểm cất cánh"
+            class="h-28 w-28 flex-shrink-0 rounded-lg bg-white p-1.5"
+          />
+          <div class="min-w-0">
+            <h3 class="text-xs font-black uppercase tracking-wider text-[#194d9b]">
+              {{ $t('booking.ticket.takeoffPoint') }}
+            </h3>
+            <p class="mt-1 text-base font-black text-slate-900">{{ TAKEOFF_NAME }}</p>
+            <p class="mt-2 text-xs font-semibold text-[#194d9b]">
+              📍 {{ $t('booking.ticket.scanForDirections') }}
+            </p>
           </div>
         </div>
 
-        <!-- Footer -->
-        <div class="text-center text-[10px] text-gray-500 pt-2 border-t border-gray-200">
-          <span>{{ $t('booking.ticket.validationDate') }}: {{ formatDate(new Date().toISOString()) }}</span>
-          <span class="mx-2">•</span>
-          <span>{{ $t('booking.ticket.footer') }}</span>
+        <!-- Chuẩn bị trước khi bay -->
+        <div class="rounded-xl border border-slate-200 p-5">
+          <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+            {{ $t('booking.ticket.preFlightInfo.title') }}
+          </h3>
+          <div class="space-y-2 text-sm leading-relaxed text-slate-700">
+            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
+            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
+            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
+            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
+            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+          </div>
+        </div>
+
+        <!-- Chân vé -->
+        <div class="rounded-xl bg-gradient-to-r from-sky-50 to-amber-50 p-5 text-center">
+          <p class="text-base font-black text-[#194d9b]">🪂 {{ $t('booking.ticket.enjoy') }}</p>
+          <p class="mt-2 text-xs leading-relaxed text-slate-500">
+            {{ $t('booking.ticket.footer') }}
+          </p>
+          <p class="mt-2 text-[11px] text-slate-400">
+            {{ $t('booking.ticket.validationDate') }}: {{ formatDate(new Date().toISOString()) }}
+            <span class="mx-1.5">•</span>
+            www.paraglidingsapa.com
+            <span class="mx-1.5">•</span>
+            +84 386 887 489
+          </p>
         </div>
       </div>
     </div>
 
-    <!-- Download Buttons -->
+    <!-- Nút tải -->
     <div class="flex gap-2">
       <button
         @click="downloadTicketPDF"
-        class="flex-1 btn-primary py-2 text-sm flex items-center justify-center gap-1.5"
+        :disabled="isExporting"
+        class="btn-primary flex flex-1 items-center justify-center gap-1.5 py-2 text-sm disabled:opacity-60"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-        {{ $t('booking.ticket.downloadPDF') }}
+        {{ isExporting ? '…' : $t('booking.ticket.downloadPDF') }}
       </button>
 
       <button
         @click="downloadTicketImage"
-        class="flex-1 btn-secondary py-2 text-sm flex items-center justify-center gap-1.5"
+        :disabled="isExporting"
+        class="btn-secondary flex flex-1 items-center justify-center gap-1.5 py-2 text-sm disabled:opacity-60"
       >
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
-        {{ $t('booking.ticket.downloadImage') }}
+        {{ isExporting ? '…' : $t('booking.ticket.downloadImage') }}
       </button>
     </div>
   </div>
@@ -252,6 +303,10 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
+import { TAKEOFF_MAP_URL, TAKEOFF_NAME } from '~~/shared/flying-site'
+import { localeToHreflang, type SupportedLocale } from '~/utils/seo'
+
+const { locale } = useI18n()
 
 type PriceLine = {
   label: string
@@ -270,7 +325,10 @@ const companyInfo = 'Experience the dream of flying'
 const formatDate = (dateString: string) => {
   if (!dateString) return ''
   const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  // Định dạng ngày theo ĐÚNG ngôn ngữ đang xem — trước đây ghim 'en-US' nên
+  // bản tiếng Việt vẫn hiện "Aug 29, 2026".
+  const tag = localeToHreflang[locale.value as SupportedLocale] || 'en-US'
+  return date.toLocaleDateString(tag, { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 const formatPriceVND = (price: number) =>
@@ -379,48 +437,122 @@ const totalPriceComputed = computed(() => {
   return flight + transfer + cam + drone - discount
 })
 
-const downloadTicketImage = async () => {
-  if (!ticketRef.value) return
+const isExporting = ref(false)
+
+/**
+ * Mã QR trỏ tới ghim Google Maps của điểm cất cánh.
+ *
+ * Sinh tại trình duyệt thành ảnh data URL — KHÔNG dùng dịch vụ QR bên ngoài:
+ * html2canvas không chụp được ảnh từ tên miền khác (CORS) nên vé tải về sẽ
+ * mất chỗ mã QR.
+ */
+const takeoffQr = ref('')
+
+onMounted(async () => {
   try {
-    const html2canvasLib = (await import('html2canvas')).default
-    const canvas = await html2canvasLib(ticketRef.value, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#ffffff'
+    const QRCode = (await import('qrcode')).default
+    takeoffQr.value = await QRCode.toDataURL(TAKEOFF_MAP_URL, {
+      width: 320,
+      margin: 1,
+      errorCorrectionLevel: 'M',
+      color: { dark: '#194d9b', light: '#ffffff' }
     })
+  } catch (error) {
+    // Không có QR thì vé vẫn dùng được bình thường (v-if ẩn khối ảnh).
+    console.error('Không tạo được mã QR điểm bay:', error)
+  }
+})
+
+
+/**
+ * Dựng ảnh vé bằng html2canvas.
+ *
+ * scale 2 (bản cũ) cho ảnh 2× rồi PNG hoá — PNG không nén mất dữ liệu nên
+ * một tấm vé dài ra vài MB. scale 1.8 vẫn nét trên màn hình retina và khi in
+ * A4, mà dữ liệu ít hơn hẳn.
+ */
+async function renderTicketCanvas(): Promise<HTMLCanvasElement | null> {
+  if (!ticketRef.value) return null
+  const html2canvas = (await import('html2canvas')).default
+  return html2canvas(ticketRef.value, {
+    scale: 1.8,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    logging: false
+  })
+}
+
+const downloadTicketImage = async () => {
+  if (isExporting.value) return
+  isExporting.value = true
+  try {
+    const canvas = await renderTicketCanvas()
+    if (!canvas) return
     const link = document.createElement('a')
+    // Ảnh giữ PNG: khách hay lưu vào điện thoại rồi phóng to xem, nét quan
+    // trọng hơn dung lượng. Chỉ bản PDF mới cần gọn để gửi kèm email.
     link.href = canvas.toDataURL('image/png')
     link.download = `SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.png`
     link.click()
   } catch (error) {
-    console.error('Error generating image:', error)
+    console.error('Error generating ticket image:', error)
     alert('Failed to download ticket image')
+  } finally {
+    isExporting.value = false
   }
 }
 
+/**
+ * Xuất PDF.
+ *
+ * Bản cũ nhúng ảnh PNG ở tỉ lệ 2× vào PDF khổ A4 và đặt tràn hết bề rộng
+ * (0,0,210,...) nên vé dính sát mép giấy, lại nặng vài MB.
+ *
+ * Bản này:
+ *   • JPEG chất lượng 0.82 thay PNG — ảnh vé là nền phẳng + chữ, JPEG nén
+ *     tốt hơn nhiều lần mà nhìn không khác.
+ *   • Chừa lề 10mm mỗi bên nên vé không dính mép giấy.
+ *   • Vé dài quá một trang thì tự cắt sang trang tiếp, không bị mất phần đuôi.
+ */
 const downloadTicketPDF = async () => {
-  if (!ticketRef.value) return
+  if (isExporting.value) return
+  isExporting.value = true
   try {
-    const html2canvas = (await import('html2canvas')).default
     const { jsPDF } = await import('jspdf')
+    const canvas = await renderTicketCanvas()
+    if (!canvas) return
 
-    const canvas = await html2canvas(ticketRef.value, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: '#ffffff'
-    })
+    const imgData = canvas.toDataURL('image/jpeg', 0.82)
+    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true })
 
-    const imgData = canvas.toDataURL('image/png')
-    const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
-
-    const imgWidth = 210
+    const PAGE_W = 210
+    const PAGE_H = 297
+    const MARGIN = 10
+    const imgWidth = PAGE_W - MARGIN * 2
     const imgHeight = (canvas.height * imgWidth) / canvas.width
+    const usableH = PAGE_H - MARGIN * 2
 
-    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight)
+    if (imgHeight <= usableH) {
+      pdf.addImage(imgData, 'JPEG', MARGIN, MARGIN, imgWidth, imgHeight, undefined, 'FAST')
+    } else {
+      // Vé dài hơn một trang: dịch ảnh lên theo từng trang rồi cắt bằng
+      // vùng in của trang đó.
+      let remaining = imgHeight
+      let offset = 0
+      while (remaining > 0) {
+        pdf.addImage(imgData, 'JPEG', MARGIN, MARGIN - offset, imgWidth, imgHeight, undefined, 'FAST')
+        remaining -= usableH
+        offset += usableH
+        if (remaining > 0) pdf.addPage()
+      }
+    }
+
     pdf.save(`SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.pdf`)
   } catch (error) {
     console.error('Error generating PDF:', error)
     alert('Failed to download ticket PDF')
+  } finally {
+    isExporting.value = false
   }
 }
 </script>

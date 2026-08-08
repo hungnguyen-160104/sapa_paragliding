@@ -124,7 +124,8 @@
       "selectTime": "Choisir l’heure",
       "contactName": "Nom du contact",
       "email": "E-mail",
-      "phone": "Téléphone / WhatsApp / Zalo"
+      "phone": "Téléphone / WhatsApp / Zalo",
+      "pickupRequired": "Veuillez indiquer votre lieu de prise en charge pour organiser le transfert."
     },
     "step3Details": {
       "passenger": "Passager",
@@ -232,7 +233,13 @@
         "belongings": "Vous pouvez emporter un petit sac personnel (1–2 kg) avec l’essentiel : téléphone, clés, papiers d’identité",
         "launchLanding": "Les emplacements exacts de décollage et d’atterrissage seront confirmés au moment de la validation, selon la météo et la direction du vent du jour.",
         "transport": "Les modalités de transport vers le décollage/atterrissage seront expliquées en détail. Les frais éventuels seront annoncés à l’avance afin que vous puissiez vous préparer."
-      }
+      },
+      "boardingPass": "CARTE D’EMBARQUEMENT VERS LE CIEL",
+      "slogan": "Rendez-vous au-dessus des nuages de Sa Pa",
+      "enjoy": "Excellent vol à vous !",
+      "seat": "Place",
+      "takeoffPoint": "Point de décollage",
+      "scanForDirections": "Scannez pour l’itinéraire Google Maps"
     },
     "fields": {
       "fullName": "Nom et prénom",
@@ -1063,5 +1070,11 @@
       }
     },
     "cta": "Réservez votre vol au meilleur prix"
+  },
+  "offices": {
+    "offices": "Nos bureaux",
+    "takeoffOffice": "Bureau du site de décollage",
+    "landingOffice": "Bureau du site d’atterrissage",
+    "viewMap": "Voir sur la carte"
   }
 }

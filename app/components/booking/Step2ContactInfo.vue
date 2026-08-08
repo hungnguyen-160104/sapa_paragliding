@@ -58,24 +58,27 @@
             </svg>
             {{ $t('booking.step2Details.pickupLocation') }}
           </label>
-          <input v-model="formData.pickupLocation" type="text" required class="input-field text-sm py-2"
-            :placeholder="$t('booking.step2Details.pickupPlaceholder')" />
+          <input v-model="formData.pickupLocation" type="text" required
+            class="input-field text-sm py-2"
+            :class="{ 'border-red-500 ring-1 ring-red-300': pickupError }"
+            :placeholder="$t('booking.step2Details.pickupPlaceholder')"
+            @input="pickupError = false" />
+          <p v-if="pickupError" class="mt-1 text-xs font-semibold text-red-600">
+            ⚠️ {{ $t('booking.step2Details.pickupRequired') }}
+          </p>
         </div>
       </Transition>
 
       <!-- Collapsible Sections -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Special Requests Accordion -->
+        <!-- Yêu cầu đặc biệt: LUÔN mở, không phải bấm mới hiện ô nhập.
+             Khách hay bỏ qua mục này khi nó gập lại, mà đây lại là chỗ báo
+             giờ đón, dị ứng, sợ độ cao... -->
         <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
-          <button type="button" @click="showRequests = !showRequests"
-            class="w-full px-3 py-2 flex items-center justify-between text-left hover:bg-gray-50 transition-colors">
+          <div class="w-full px-3 py-2 text-left">
             <span class="text-sm font-medium text-gray-700">{{ $t('booking.fields.specialRequests') }}</span>
-            <svg :class="['w-4 h-4 text-gray-500 transition-transform', showRequests ? 'rotate-180' : '']" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div v-if="showRequests" class="px-3 pb-3">
+          </div>
+          <div class="px-3 pb-3">
             <textarea v-model="formData.specialRequests" rows="2" class="input-field text-sm resize-none"
               :placeholder="$t('booking.fields.specialRequests')" />
           </div>
@@ -144,7 +147,6 @@ import { countries } from '~/utils/countries'
 const bookingStore = useBookingStore()
 
 // UI State
-const showRequests = ref(false)
 const showNotice = ref(true)
 
 // Time slots
@@ -199,7 +201,24 @@ const minDate = computed(() => {
   return tomorrow.toISOString().split('T')[0]
 })
 
+/**
+ * Chọn dịch vụ đón thì BẮT BUỘC nhập địa điểm.
+ *
+ * Ô này có sẵn thuộc tính `required`, nhưng nó nằm trong <Transition> nên khi
+ * phần tử đang trong lúc ẩn/hiện, kiểm tra tự động của trình duyệt có thể
+ * chặn ngầm mà không hiện thông báo nào — khách chỉ thấy bấm nút không ăn.
+ * Kiểm tường minh ở đây vừa chắc chắn vừa báo lỗi rõ ràng.
+ *
+ * Thiếu địa điểm là đơn không điều xe được, nhân viên phải gọi lại hỏi.
+ */
+const pickupError = ref(false)
+
 const handleNext = () => {
+  if (hasHotelTransfer.value && !formData.pickupLocation.trim()) {
+    pickupError.value = true
+    return
+  }
+
   const contactInfo = {
     contactName: formData.contactName,
     email: formData.email,

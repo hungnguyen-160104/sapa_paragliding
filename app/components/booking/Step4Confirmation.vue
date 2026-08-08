@@ -376,6 +376,9 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
+import { localeToHreflang, type SupportedLocale } from '~/utils/seo'
+
+const { locale } = useI18n()
 
 type PriceLine = {
   label: string
@@ -411,7 +414,10 @@ const onCaptchaError = () => {
 const formatDate = (dateString: string) => {
   if (!dateString) return ''
   const date = new Date(dateString)
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  // Định dạng ngày theo ĐÚNG ngôn ngữ đang xem — trước đây ghim 'en-US' nên
+  // bản tiếng Việt vẫn hiện "Aug 29, 2026".
+  const tag = localeToHreflang[locale.value as SupportedLocale] || 'en-US'
+  return date.toLocaleDateString(tag, { year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 const formatPriceVND = (price: number) =>

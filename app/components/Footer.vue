@@ -75,8 +75,23 @@
                   d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <div>
-                <p class="text-sm text-white">{{ $t('footer.address') }}</p>
-                <p>Sapa, Lao Cai, Vietnam</p>
+                <p class="text-sm text-white">{{ $t('offices.offices') }}</p>
+                <!-- Hai văn phòng: mỗi nơi đồng thời là một đầu chuyến bay.
+                     Bấm vào mở thẳng ghim Google Maps chính chủ. -->
+                <ul class="mt-1 space-y-2">
+                  <li v-for="office in OFFICES" :key="office.name">
+                    <a :href="office.mapUrl" target="_blank" rel="noopener noreferrer"
+                      class="block transition-colors hover:text-red-400">
+                      <span class="block text-sm font-semibold text-white">{{ $t(`offices.${office.roleKey}`) }}</span>
+                      <span class="block text-sm text-white/90">{{ office.shortAddress }}</span>
+                      <!-- Chỉ để LIÊN KẾT bản đồ, không in toạ độ thập phân:
+                           dãy số đó khách không dùng được vào việc gì. -->
+                      <span class="mt-0.5 inline-flex items-center gap-1 text-xs font-semibold text-red-400">
+                        📍 {{ $t('offices.viewMap') }}
+                      </span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -214,6 +229,8 @@
 </template>
 
 <script setup lang="ts">
+import { OFFICES } from '~~/shared/flying-site'
+
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 

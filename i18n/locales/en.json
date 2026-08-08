@@ -124,7 +124,8 @@
       "selectTime": "Select time",
       "contactName": "Contact Name",
       "email": "Email",
-      "phone": "Phone Number"
+      "phone": "Phone Number",
+      "pickupRequired": "Please enter your pickup location so we can arrange the transfer."
     },
     "step3Details": {
       "passenger": "Passenger",
@@ -234,7 +235,13 @@
         "belongings": "You may bring a small personal bag (1–2kg) containing essentials such as phone, keys, and ID",
         "launchLanding": "The takeoff and landing sites will be confirmed upon booking confirmation, depending on weather conditions and wind direction on the day.",
         "transport": "Detailed directions to the takeoff or landing site will be provided. Transport costs (if any) will be communicated in advance so you can prepare."
-      }
+      },
+      "boardingPass": "BOARDING PASS TO THE SKY",
+      "slogan": "See you above the clouds of Sa Pa",
+      "enjoy": "Have an amazing flight!",
+      "seat": "Seat",
+      "takeoffPoint": "Take-off point",
+      "scanForDirections": "Scan for Google Maps directions"
     },
     "fields": {
       "fullName": "Full Name",
@@ -1077,5 +1084,11 @@
       }
     },
     "cta": "Book your flight at the best price"
+  },
+  "offices": {
+    "offices": "Our offices",
+    "takeoffOffice": "Take-off site office",
+    "landingOffice": "Landing site office",
+    "viewMap": "View on map"
   }
 }

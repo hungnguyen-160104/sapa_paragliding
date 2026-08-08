@@ -9,10 +9,10 @@ export default defineEventHandler(async (event) => {
       throw createError({ statusCode: 400, statusMessage: 'Missing bookingId/email/contactName' })
     }
 
-    // ✅ Gửi email cho khách
+    // ✅ Gửi email cho khách (không đính kèm ảnh vé — xem sendBookingEmailToCustomer)
     await sendBookingEmailToCustomer(body)
 
-    // ✅ (Tuỳ chọn) gửi cho admin
+    // ✅ Gửi cho quản lý nội bộ (không kèm vé)
     await sendBookingEmailToAdmins(body)
 
     return { success: true, message: 'Email sent', bookingId: body.bookingId }

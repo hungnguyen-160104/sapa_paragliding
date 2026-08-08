@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import galleryData from '~/data/gallery.json'
+import { OFFICES } from '~~/shared/flying-site'
 import { usePostsStore } from '~/stores/posts'
 import {
   buildHreflangLinks,
@@ -10,7 +11,9 @@ import {
   buildWebsiteJsonLD,
   getCanonicalUrl,
   getOgLocale,
-  getDefaultOgImage
+  getDefaultOgImage,
+  localeToHreflang,
+  type SupportedLocale
 } from '~/utils/seo'
 
 const { locale } = useI18n()
@@ -191,7 +194,9 @@ const handleImageError = (event: Event) => {
 }
 
 const formatPostDate = (date: string) => {
-  return new Date(date).toLocaleDateString(currentLocale.value === 'vi' ? 'vi-VN' : 'en-US', {
+  // Trước đây chỉ phân biệt vi/en — fr, ru, zh, hi đều rơi về 'en-US'.
+  const tag = localeToHreflang[currentLocale.value as SupportedLocale] || 'en-US'
+  return new Date(date).toLocaleDateString(tag, {
     year: 'numeric',
     month: 'short',
     day: 'numeric'
@@ -804,9 +809,23 @@ onBeforeUnmount(() => {
               </svg>
             </div>
             <h3 class="text-base font-bold text-slate-900 text-center mb-3">
-              {{ $t('homePage.address') }}
+              {{ $t('offices.offices') }}
             </h3>
-            <p class="text-slate-600 text-sm text-center">Sapa, Lao Cai, Vietnam</p>
+            <!-- Hai văn phòng, mỗi nơi là một đầu chuyến bay -->
+            <ul class="space-y-3">
+              <li v-for="office in OFFICES" :key="office.name">
+                <a :href="office.mapUrl" target="_blank" rel="noopener noreferrer"
+                  class="block text-center transition-colors hover:text-red-600">
+                  <span class="block text-xs font-bold uppercase tracking-wide text-red-600">
+                    {{ $t(`offices.${office.roleKey}`) }}
+                  </span>
+                  <span class="block text-sm font-bold text-slate-900">{{ office.shortAddress }}</span>
+                  <span class="mt-0.5 inline-flex items-center gap-1 text-xs font-semibold text-red-600">
+                    📍 {{ $t('offices.viewMap') }}
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
 
           <div class="contact-card bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 scroll-reveal" data-delay="400">

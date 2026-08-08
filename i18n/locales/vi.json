@@ -124,7 +124,8 @@
       "selectTime": "Chọn giờ",
       "contactName": "Tên Liên Hệ",
       "email": "Email",
-      "phone": "Số Điện Thoại/Whatsapp/Zalo"
+      "phone": "Số Điện Thoại/Whatsapp/Zalo",
+      "pickupRequired": "Vui lòng nhập địa điểm đón để chúng tôi bố trí xe."
     },
     "step3Details": {
       "passenger": "Hành khách",
@@ -165,7 +166,7 @@
       "additionalServices": "Dịch Vụ Kèm Theo",
       "hotelTransfer": "Đưa đón:",
       "camera360": "Camera 360:",
-      "droneCamera": "Drone Camera:",
+      "droneCamera": "Flycam (drone):",
       "gopro": "GoPro:",
       "drinks": "Nước uống:",
       "certificate": "Giấy chứng nhận:",
@@ -177,7 +178,7 @@
       "flightCost": "Chi phí bay dù",
       "transferCost": "Đưa đón",
       "camera360Cost": "Camera 360",
-      "droneCost": "Drone Camera",
+      "droneCost": "Flycam (drone)",
       "groupDiscount": "Giảm giá theo nhóm",
       "totalCost": "Tổng chi phí",
       "paymentMethod": "Hình Thức Thanh Toán",
@@ -232,7 +233,13 @@
         "belongings": "Bạn có thể mang theo túi cá nhân nhỏ (1–2kg) đựng các vật dụng cần thiết như điện thoại, chìa khóa, giấy tờ tùy thân",
         "launchLanding": "Vị trí bãi cất cánh và bãi hạ cánh sẽ được thông báo cụ thể khi xác nhận đặt chỗ, tùy thuộc vào điều kiện thời tiết và hướng gió trong ngày.",
         "transport": "Cách di chuyển đến bãi cất cánh hoặc bãi hạ cánh sẽ được hướng dẫn chi tiết. Chi phí xe di chuyển (nếu có) sẽ được thông báo trước để bạn chuẩn bị."
-      }
+      },
+      "boardingPass": "THẺ LÊN MÂY",
+      "slogan": "Hẹn gặp bạn trên những tầng mây Sa Pa",
+      "enjoy": "Chúc bạn một chuyến bay thật đã!",
+      "seat": "Chỗ ngồi",
+      "takeoffPoint": "Điểm cất cánh",
+      "scanForDirections": "Quét mã để mở chỉ đường Google Maps"
     },
     "fields": {
       "fullName": "Họ và Tên",
@@ -1063,5 +1070,11 @@
       }
     },
     "cta": "Đặt chuyến bay với giá tốt nhất"
+  },
+  "offices": {
+    "offices": "Văn phòng",
+    "takeoffOffice": "Văn phòng bãi cất cánh",
+    "landingOffice": "Văn phòng bãi hạ cánh",
+    "viewMap": "Xem trên bản đồ"
   }
 }

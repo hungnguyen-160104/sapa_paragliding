@@ -314,15 +314,17 @@ async submitBooking() {
         console.warn('⚠️ Failed to send Telegram notification:', telegramError)
       }
 
-      // ✅ Email (tách riêng)
+      // ✅ Email (khách + quản lý nội bộ)
+      //
+      // Gửi ngay tại đây, cùng lúc với Telegram — chắc chắn nhất, không phụ
+      // thuộc việc khách có ở lại trang tới bước 5 hay không.
+      // (Từng chuyển sang bước 5 để đính kèm ảnh vé; nay bỏ đính kèm vì ảnh
+      // do trình duyệt khách vẽ nên dễ hỏng, nên đưa về lại đây.)
       try {
         const emailPayload = JSON.parse(JSON.stringify(this.bookingData))
         emailPayload.bookingId = bookingId
 
-        await $fetch('/api/send-booking-email', {
-          method: 'POST',
-          body: emailPayload
-        })
+        await $fetch('/api/send-booking-email', { method: 'POST', body: emailPayload })
         console.log('✅ Booking email requested')
       } catch (emailError) {
         console.warn('⚠️ Failed to send Email:', emailError)

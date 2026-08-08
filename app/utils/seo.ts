@@ -1,3 +1,5 @@
+import { TAKEOFF_OFFICE, LANDING_OFFICE } from '~~/shared/flying-site'
+
 /**
  * SEO Utilities for Nuxt / i18n
  * Centralized helpers for canonical URLs, hreflang, OG locale and JSON-LD.
@@ -288,18 +290,42 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
     priceRange: '2.190.000 VND/pax',
     currenciesAccepted: 'VND',
     paymentAccepted: 'Cash, Credit Card, Bank Transfer',
+    // Trụ sở chính = văn phòng Bản Hang Đá, cũng là bãi cất cánh.
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Tổ 3',
-      addressLocality: 'Phường Sapa',
+      streetAddress: 'Tổ 3, Bản Hang Đá',
+      addressLocality: 'Phường Sa Pa',
       addressRegion: 'Lào Cai',
       addressCountry: 'VN'
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 22.3219262,
-      longitude: 103.8766636
+      latitude: TAKEOFF_OFFICE.latitude,
+      longitude: TAKEOFF_OFFICE.longitude
     },
+    // Văn phòng thứ hai tại Cầu Lao Chải (bãi hạ cánh). Khai bằng
+    // `department` — cách schema.org mô tả một cơ sở khác của cùng doanh
+    // nghiệp, để Google hiểu công ty có hai địa điểm hoạt động thật.
+    department: [
+      {
+        '@type': 'LocalBusiness',
+        name: `SAPA PARAGLIDING — ${LANDING_OFFICE.name}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Cầu Lao Chải',
+          addressLocality: 'Xã Tả Van',
+          addressRegion: 'Lào Cai',
+          addressCountry: 'VN'
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: LANDING_OFFICE.latitude,
+          longitude: LANDING_OFFICE.longitude
+        },
+        hasMap: LANDING_OFFICE.mapUrl,
+        telephone: '+84386887489'
+      }
+    ],
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -322,7 +348,7 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
       'https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6',
       'https://www.youtube.com/@sapa.paragliding'
     ],
-    hasMap: 'https://www.google.com/maps/place/Sapa+Paragliding+-+%C4%90i%E1%BB%83m+C%E1%BA%A5t+c%C3%A1nh+D%C3%B9+L%C6%B0%E1%BB%A3n+Sapa/@22.3219262,103.8766636,17z',
+    hasMap: TAKEOFF_OFFICE.mapUrl,
     sport: 'Paragliding'
   }
 }

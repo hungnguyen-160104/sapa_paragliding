@@ -111,6 +111,7 @@ const { locale } = useI18n()
 
 const bookingData = computed(() => bookingStore.bookingData)
 
+
 const localizedNavigateTo = (path: string) => {
     const currentLocale = locale.value || 'vi'
     const fullPath = currentLocale === 'vi' ? path : `/${currentLocale}${path}`

@@ -124,7 +124,8 @@
       "selectTime": "选择时间",
       "contactName": "联系人姓名",
       "email": "邮箱",
-      "phone": "电话号码"
+      "phone": "电话号码",
+      "pickupRequired": "请填写接送地点，以便我们安排车辆。"
     },
     "step3Details": {
       "passenger": "乘客",
@@ -234,7 +235,13 @@
         "belongings": "您可以携带一个小型个人包（1-2公斤），装有手机、钥匙、身份证等必需品",
         "launchLanding": "起飞场和降落场的位置将在确认预订时通知，具体取决于当天的天气条件和风向。",
         "transport": "前往起飞场或降落场的详细交通路线将会提供。交通费用（如有）将提前告知，以便您做好准备。"
-      }
+      },
+      "boardingPass": "云端登机牌",
+      "slogan": "我们在沙坝的云端相见",
+      "enjoy": "祝你飞行愉快！",
+      "seat": "座位",
+      "takeoffPoint": "起飞点",
+      "scanForDirections": "扫码打开 Google 地图导航"
     },
     "fields": {
       "fullName": "姓名",
@@ -1077,5 +1084,11 @@
       }
     },
     "cta": "以最优价格预订飞行"
+  },
+  "offices": {
+    "offices": "办公室",
+    "takeoffOffice": "起飞点办公室",
+    "landingOffice": "降落点办公室",
+    "viewMap": "在地图上查看"
   }
 }
