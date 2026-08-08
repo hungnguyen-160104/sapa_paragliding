@@ -260,10 +260,12 @@
       "other": "Autre"
     },
     "terms": {
-      "agree": "J’accepte les",
-      "termsAndConditions": "Conditions générales",
+      "agree": "J’ai lu et j’accepte les",
+      "termsAndConditions": "Conditions & engagements pour le vol",
       "and": "et la",
-      "privacyPolicy": "Politique de confidentialité"
+      "privacyPolicy": "Politique de confidentialité",
+      "scrollHint": "Faites défiler",
+      "authoritative": "La version vietnamienne fait foi ; cette traduction est fournie à titre indicatif."
     },
     "captcha": {
       "verify": "Veuillez confirmer que vous n’êtes pas un robot",
@@ -508,7 +510,7 @@
           },
           "age": {
             "title": "Âge",
-            "desc": "À partir de 2 ans, possible de voler avec un pilote."
+            "desc": "À partir de 3 ans, possible de voler en biplace avec un pilote. Les passagers de moins de 18 ans doivent être accompagnés d’un parent ou tuteur légal qui signe le consentement."
           }
         }
       },

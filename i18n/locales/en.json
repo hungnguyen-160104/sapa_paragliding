@@ -262,10 +262,12 @@
       "other": "Other"
     },
     "terms": {
-      "agree": "I agree to the",
-      "termsAndConditions": "Terms and Conditions",
+      "agree": "I have read and agree to the",
+      "termsAndConditions": "Terms & Commitments for the flight",
       "and": "and",
-      "privacyPolicy": "Privacy Policy"
+      "privacyPolicy": "Privacy Policy",
+      "scrollHint": "Scroll to read",
+      "authoritative": "The Vietnamese version is the authoritative text; this translation is provided for your convenience."
     },
     "captcha": {
       "verify": "Please verify you are not a robot",
@@ -510,7 +512,7 @@
           },
           "age": {
             "title": "Age",
-            "desc": "From 2 years old and above can participate in tandem flights with a pilot."
+            "desc": "From 3 years old and above can join a tandem flight with a pilot. Passengers under 18 must be accompanied by a parent or legal guardian who signs the consent."
           }
         }
       },

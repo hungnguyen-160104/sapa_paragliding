@@ -287,25 +287,27 @@
 
     <!-- Footer: Fixed -->
     <div class="flex-shrink-0 pt-4 border-t border-gray-200 space-y-3">
-      <!-- Terms Checkbox -->
-      <div class="flex items-start gap-3 bg-red-50 p-3 border border-red-200">
-        <input
-          id="terms"
-          v-model="agreedToTerms"
-          type="checkbox"
-          class="w-4 h-4 mt-0.5 text-red-600 border-gray-300 focus:ring-red-500 flex-shrink-0"
-        />
-        <label for="terms" class="text-xs text-gray-700 leading-relaxed">
-          {{ $t('booking.terms.agree') }}
-          <a
-            href="/dieukhoan1.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-red-600 hover:underline font-semibold"
-          >
-            {{ $t('booking.terms.termsAndConditions') }}
-          </a>
-        </label>
+      <!-- Toàn văn điều khoản + ô đồng ý bắt buộc -->
+      <div class="space-y-2">
+        <BookingTermsDocument />
+
+        <p v-if="locale !== 'vi'" class="text-[10px] leading-snug text-gray-400">
+          {{ $t('booking.terms.authoritative') }}
+        </p>
+
+        <div class="flex items-start gap-3 bg-red-50 p-3 border border-red-200">
+          <input
+            id="terms"
+            v-model="agreedToTerms"
+            type="checkbox"
+            class="w-4 h-4 mt-0.5 text-red-600 border-gray-300 focus:ring-red-500 flex-shrink-0"
+          />
+          <label for="terms" class="text-xs font-semibold text-gray-800 leading-relaxed">
+            {{ $t('booking.terms.agree') }}
+            <span class="text-red-600">{{ $t('booking.terms.termsAndConditions') }}</span>
+            <span class="text-red-600"> *</span>
+          </label>
+        </div>
       </div>
 
       <!-- Turnstile CAPTCHA -->

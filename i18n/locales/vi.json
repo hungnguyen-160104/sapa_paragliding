@@ -260,10 +260,12 @@
       "other": "Khác"
     },
     "terms": {
-      "agree": "Tôi đồng ý với",
-      "termsAndConditions": "Điều Khoản và Điều Kiện",
+      "agree": "Tôi đã đọc và đồng ý với",
+      "termsAndConditions": "Điều khoản & Cam kết khi tham gia bay",
       "and": "và",
-      "privacyPolicy": "Chính Sách Bảo Mật"
+      "privacyPolicy": "Chính Sách Bảo Mật",
+      "scrollHint": "Cuộn để đọc",
+      "authoritative": ""
     },
     "captcha": {
       "verify": "Vui lòng xác minh bạn không phải robot",
@@ -508,7 +510,7 @@
           },
           "age": {
             "title": "Độ tuổi",
-            "desc": "Từ 2 tuổi trở lên có thể tham gia bay cùng phi công."
+            "desc": "Từ 3 tuổi trở lên có thể tham gia bay cùng phi công. Khách dưới 18 tuổi cần có cha mẹ hoặc người giám hộ hợp pháp đi cùng và ký xác nhận."
           }
         }
       },
