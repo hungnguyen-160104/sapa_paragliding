@@ -118,7 +118,7 @@
                     </div>
                     <div>
                       <span class="font-medium">{{ $t('booking.step4Details.gender') }}:</span>
-                      <span class="ml-1 capitalize">{{ passenger.gender }}</span>
+                      <span class="ml-1">{{ genderText(passenger.gender) }}</span>
                     </div>
                     <div>
                       <span class="font-medium">{{ $t('booking.step4Details.idNumber') }}:</span>
@@ -380,7 +380,19 @@
 import { useBookingStore } from '~/stores/booking'
 import { localeToHreflang, type SupportedLocale } from '~/utils/seo'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
+
+/**
+ * Giới tính lưu là mã 'male'/'female' cho khỏi phụ thuộc ngôn ngữ; ra màn hình
+ * mới dịch. Trước đây in thẳng mã ra nên khách nào cũng thấy chữ "male".
+ */
+const genderText = (raw: string): string => {
+  const value = String(raw ?? '').trim().toLowerCase()
+  if (value === 'male') return t('booking.fields.male')
+  if (value === 'female') return t('booking.fields.female')
+  return raw || ''
+}
+
 
 type PriceLine = {
   label: string

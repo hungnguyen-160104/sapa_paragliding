@@ -180,7 +180,7 @@
                 </div>
                 <div>
                   <span class="text-slate-400">{{ $t('booking.step4Details.gender') }}</span>
-                  <span class="ml-1 font-semibold capitalize text-slate-900">{{ passenger.gender }}</span>
+                  <span class="ml-1 font-semibold text-slate-900">{{ genderText(passenger.gender) }}</span>
                 </div>
                 <div>
                   <span class="text-slate-400">{{ $t('booking.step4Details.weight') }}</span>
@@ -318,7 +318,19 @@ import { useBookingStore } from '~/stores/booking'
 import { TAKEOFF_MAP_URL, TAKEOFF_NAME } from '~~/shared/flying-site'
 import { localeToHreflang, type SupportedLocale } from '~/utils/seo'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
+
+/**
+ * Giới tính lưu là mã 'male'/'female' cho khỏi phụ thuộc ngôn ngữ; ra màn hình
+ * mới dịch. Trước đây in thẳng mã ra nên khách nào cũng thấy chữ "male".
+ */
+const genderText = (raw: string): string => {
+  const value = String(raw ?? '').trim().toLowerCase()
+  if (value === 'male') return t('booking.fields.male')
+  if (value === 'female') return t('booking.fields.female')
+  return raw || ''
+}
+
 
 type PriceLine = {
   label: string

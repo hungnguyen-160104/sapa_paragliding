@@ -227,6 +227,18 @@ function maskIdNumber(raw: unknown): string {
  * được gì: không soát được ngày giờ, không biết phải mang theo gì. Toàn bộ chữ
  * lấy từ EMAIL_STRINGS, mặc định về tiếng Anh nếu ngôn ngữ lạ.
  */
+/**
+ * Giới tính lưu trong đơn là mã 'male'/'female' cho khỏi phụ thuộc ngôn ngữ.
+ * Đưa ra email thì phải dịch, không thì khách Nga mở email tiếng Nga vẫn thấy
+ * cột giới tính ghi "male". Mã lạ thì trả nguyên về (dữ liệu đơn cũ).
+ */
+function genderLabel(raw: unknown, locale: EmailLocale): string {
+  const value = String(raw ?? '').trim().toLowerCase()
+  if (value === 'male') return EMAIL_STRINGS[locale].genderMale
+  if (value === 'female') return EMAIL_STRINGS[locale].genderFemale
+  return String(raw ?? '')
+}
+
 export function formatCustomerEmailHtml(booking: BookingData, locale: EmailLocale = 'en'): string {
   const s = EMAIL_STRINGS[locale]
   const selected = safeSelectedOptions(booking)
@@ -256,7 +268,7 @@ export function formatCustomerEmailHtml(booking: BookingData, locale: EmailLocal
         <td style="padding:7px 8px;font-size:13px;color:${EC.blue};font-weight:700;border-bottom:1px solid ${EC.line};">${i + 1}</td>
         ${td(escapeHtml(p.fullName), true)}
         ${td(escapeHtml(p.dateOfBirth))}
-        ${td(escapeHtml(p.gender))}
+        ${td(escapeHtml(genderLabel(p.gender, locale)))}
         ${td(p.weight ? `${escapeHtml(p.weight)} kg` : '')}
         ${td(escapeHtml(p.nationality))}
         ${td(escapeHtml(maskIdNumber(p.passportOrId)))}
@@ -363,7 +375,13 @@ export function formatCustomerEmailHtml(booking: BookingData, locale: EmailLocal
             s.landingPoint,
             `<a href="${LANDING_MAP_URL}" style="color:${EC.blue};text-decoration:none;font-weight:700;">${escapeHtml(s.landingName)} 📍</a>`
           )}
-          ${emailInfoRow(s.package, escapeHtml(booking.serviceName))}
+          <!--
+            Dùng tên gói theo NGÔN NGỮ CỦA EMAIL, không dùng booking.serviceName.
+            serviceName bị chốt lại ở bước 1 theo ngôn ngữ khách đang xem lúc
+            đó, nên khách bắt đầu đặt bằng tiếng Việt rồi đổi sang tiếng Nga sẽ
+            nhận email tiếng Nga mà riêng dòng gói bay lại là tiếng Việt.
+          -->
+          ${emailInfoRow(s.package, escapeHtml(s.packageName))}
           ${emailInfoRow(s.flightDate, escapeHtml(booking.preferredDate))}
           ${emailInfoRow(s.flightTime, escapeHtml(booking.preferredTime || s.timeFlexible))}
           ${emailInfoRow(s.guestCount, `${escapeHtml(passengerCount)} ${escapeHtml(s.guestUnit)}`)}
@@ -577,7 +595,7 @@ export function formatAdminEmailHtml(booking: BookingData): string {
                <td style="padding:6px 0;font-size:14px;color:${C.ink};border-bottom:1px solid ${C.line};">
                  <b>${escapeHtml(p.fullName)}</b>
                  <span style="color:${C.soft};"> · ${escapeHtml(p.dateOfBirth)} · ${escapeHtml(
-                   p.gender
+                   genderLabel(p.gender, 'vi')
                  )} · ${escapeHtml(p.nationality)} · ${escapeHtml(p.passportOrId)} · </span>
                  <b style="color:${C.red};">${escapeHtml(p.weight)}kg</b>
                </td>
@@ -636,7 +654,7 @@ export function formatAdminEmailHtml(booking: BookingData): string {
     <div style="margin-top:4px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:22px;font-weight:800;letter-spacing:1px;">${escapeHtml(
       booking.bookingId
     )}</div>
-    <div style="margin-top:4px;font-size:13px;opacity:.9;">${escapeHtml(booking.serviceName)}</div>
+    <div style="margin-top:4px;font-size:13px;opacity:.9;">${escapeHtml(EMAIL_STRINGS.vi.packageName)}</div>
   </td></tr>
 
   <tr><td style="padding:16px 14px 20px;">

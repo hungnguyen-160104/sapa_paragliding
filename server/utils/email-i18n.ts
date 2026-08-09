@@ -13,6 +13,9 @@ export type EmailLocale = (typeof EMAIL_LOCALES)[number]
 
 export interface EmailStrings {
   subject: string
+  packageName: string
+  genderMale: string
+  genderFemale: string
   headerTitle: string
   bookingIdLabel: string
   greeting: string
@@ -74,6 +77,9 @@ export interface EmailStrings {
 export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   vi: {
     subject: 'Xác nhận đặt lịch bay Sapa Paragliding',
+    packageName: 'Dù lượn Sapa',
+    genderMale: 'Nam',
+    genderFemale: 'Nữ',
     headerTitle: 'XÁC NHẬN ĐẶT LỊCH BAY',
     bookingIdLabel: 'Mã đặt chỗ:',
     greeting: 'Chào {name},',
@@ -133,6 +139,9 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   },
   en: {
     subject: 'Sapa Paragliding Booking Confirmation',
+    packageName: 'Sapa Paragliding',
+    genderMale: 'Male',
+    genderFemale: 'Female',
     headerTitle: 'FLIGHT BOOKING CONFIRMATION',
     bookingIdLabel: 'Booking code:',
     greeting: 'Hello {name},',
@@ -192,6 +201,9 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   },
   fr: {
     subject: 'Confirmation de réservation de vol Sapa Paragliding',
+    packageName: 'Parapente à Sapa',
+    genderMale: 'Homme',
+    genderFemale: 'Femme',
     headerTitle: 'CONFIRMATION DE RÉSERVATION DE VOL',
     bookingIdLabel: 'Code de réservation :',
     greeting: 'Bonjour {name},',
@@ -251,6 +263,9 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   },
   ru: {
     subject: 'Подтверждение бронирования полёта — Sapa Paragliding',
+    packageName: 'Парапланеризм в Сапе',
+    genderMale: 'Мужской',
+    genderFemale: 'Женский',
     headerTitle: 'ПОДТВЕРЖДЕНИЕ БРОНИРОВАНИЯ ПОЛЁТА',
     bookingIdLabel: 'Код бронирования:',
     greeting: 'Здравствуйте, {name}!',
@@ -310,6 +325,9 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   },
   zh: {
     subject: 'Sapa Paragliding 飞行预订确认',
+    packageName: 'Sapa 滑翔伞',
+    genderMale: '男',
+    genderFemale: '女',
     headerTitle: '飞行预订确认',
     bookingIdLabel: '预订编号：',
     greeting: '{name}，您好：',
@@ -369,6 +387,9 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
   },
   hi: {
     subject: 'Sapa Paragliding उड़ान बुकिंग की पुष्टि',
+    packageName: 'सापा पैराग्लाइडिंग',
+    genderMale: 'पुरुष',
+    genderFemale: 'महिला',
     headerTitle: 'उड़ान बुकिंग की पुष्टि',
     bookingIdLabel: 'बुकिंग कोड:',
     greeting: 'नमस्ते {name},',
