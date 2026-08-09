@@ -1,20 +1,49 @@
 <template>
-  <input
-    ref="inputRef"
-    type="text"
-    inputmode="numeric"
-    autocomplete="off"
-    :value="text"
-    :required="required"
-    :aria-invalid="invalid || undefined"
-    class="input-field"
-    :class="invalid ? 'border-red-500 focus:border-red-500' : ''"
-    placeholder="dd/mm/yyyy"
-    maxlength="10"
-    @input="onInput"
-    @keydown="onKeydown"
-    @blur="onBlur"
-  />
+  <div class="relative">
+    <input
+      ref="inputRef"
+      type="text"
+      inputmode="numeric"
+      autocomplete="off"
+      :value="text"
+      :required="required"
+      :aria-invalid="invalid || undefined"
+      class="input-field pr-11"
+      :class="invalid ? 'border-red-500 focus:border-red-500' : ''"
+      placeholder="dd/mm/yyyy"
+      maxlength="10"
+      @input="onInput"
+      @keydown="onKeydown"
+      @blur="onBlur"
+    />
+
+    <!-- Biểu tượng lịch: chỉ để nhìn, cú bấm do ô ngày trong suốt phía trên hứng -->
+    <span class="pointer-events-none absolute inset-y-0 right-0 flex w-11 items-center justify-center text-gray-400">
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <rect x="3" y="5" width="18" height="16" rx="2" />
+        <path stroke-linecap="round" d="M8 3v4M16 3v4M3 10h18" />
+      </svg>
+    </span>
+
+    <!--
+      Ô ngày thật của trình duyệt, trong suốt, chỉ nằm vừa vùng biểu tượng lịch.
+      Bấm vào đây mở lịch chọn; phần còn lại của ô vẫn là chữ nên gõ số bình
+      thường. Đây là cách duy nhất có lịch mà không cướp mất khả năng gõ tay —
+      ô type="date" nguyên bản không cho gõ tự do.
+    -->
+    <input
+      ref="pickerRef"
+      type="date"
+      tabindex="-1"
+      :value="iso"
+      :min="min"
+      :max="max"
+      :aria-label="$t('booking.fields.openCalendar')"
+      class="absolute inset-y-0 right-0 w-11 cursor-pointer opacity-0"
+      @click="openPicker"
+      @change="onPickerChange"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -116,6 +145,30 @@ const onKeydown = (event: KeyboardEvent) => {
 const onBlur = () => {
   const digits = text.value.replace(/\D/g, '')
   invalid.value = digits.length > 0 && !toIso(digits)
+}
+
+/** Giá trị đang hợp lệ, dạng ISO — để ô lịch mở đúng tháng khách đã gõ. */
+const iso = computed(() => toIso(text.value.replace(/\D/g, '')))
+
+const pickerRef = ref<HTMLInputElement | null>(null)
+
+/**
+ * Chrome trên máy tính không tự mở lịch khi bấm vào thân ô ngày, phải gọi
+ * showPicker(). Safari chưa có hàm này, nhưng trên iPhone chạm vào ô ngày là
+ * lịch tự bật nên không cần làm gì thêm.
+ */
+const openPicker = () => {
+  pickerRef.value?.showPicker?.()
+}
+
+const onPickerChange = (event: Event) => {
+  const picked = (event.target as HTMLInputElement).value
+  if (!picked) return
+  text.value = isoToText(picked)
+  invalid.value = false
+  emit('update:modelValue', picked)
+  // Trả con trỏ về ô chữ để khách gõ sửa tiếp được ngay.
+  inputRef.value?.focus()
 }
 
 // Giá trị đổi từ bên ngoài (nạp lại từ store, đổi ngôn ngữ, reset form) thì vẽ

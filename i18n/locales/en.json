@@ -259,7 +259,8 @@
       "weight": "Weight",
       "male": "Male",
       "female": "Female",
-      "other": "Other"
+      "other": "Other",
+      "openCalendar": "Open calendar"
     },
     "terms": {
       "agree": "I have read and agree to the",

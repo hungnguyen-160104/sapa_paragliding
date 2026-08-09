@@ -257,7 +257,8 @@
       "weight": "Cân Nặng",
       "male": "Nam",
       "female": "Nữ",
-      "other": "Khác"
+      "other": "Khác",
+      "openCalendar": "Mở lịch chọn ngày"
     },
     "terms": {
       "agree": "Tôi đã đọc và đồng ý với",

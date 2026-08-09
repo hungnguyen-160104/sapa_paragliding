@@ -257,7 +257,8 @@
       "weight": "Poids (kg)",
       "male": "Homme",
       "female": "Femme",
-      "other": "Autre"
+      "other": "Autre",
+      "openCalendar": "Ouvrir le calendrier"
     },
     "terms": {
       "agree": "J’ai lu et j’accepte les",

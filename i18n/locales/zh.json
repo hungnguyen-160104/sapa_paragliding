@@ -259,7 +259,8 @@
       "weight": "体重",
       "male": "男",
       "female": "女",
-      "other": "其他"
+      "other": "其他",
+      "openCalendar": "打开日历"
     },
     "terms": {
       "agree": "我已阅读并同意",
