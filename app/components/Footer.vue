@@ -218,7 +218,15 @@
 
       <!-- Copyright -->
       <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 text-center text-sm text-white">
-        <p class="whitespace-pre-line">{{ $t('footer.copyright') }}</p>
+        <!--
+          Dòng giấy phép dài, trước đây kéo sát hai mép màn hình nên đọc rất
+          mỏi mắt. Bó lại còn 46rem và tự căn giữa: mỗi dòng chỉ khoảng 70–80
+          ký tự, đúng khoảng mắt đọc thoải mái. Trên điện thoại thì max-w
+          không có tác dụng gì, nên nới thêm lề trong bằng px-2.
+        -->
+        <p class="mx-auto max-w-[46rem] whitespace-pre-line px-2 leading-relaxed max-md:text-xs">
+          {{ $t('footer.copyright') }}
+        </p>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
           Admin

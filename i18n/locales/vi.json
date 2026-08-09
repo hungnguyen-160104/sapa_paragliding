@@ -212,7 +212,7 @@
       "openWhatsApp": "Mở WhatsApp"
     },
     "ticket": {
-      "title": "VÉ BAY",
+      "title": "VÉ DÙ LƯỢN SAPA",
       "subtitle": "Sapa Paragliding - Trải Nghiệm Bay Dù Lượn",
       "bookingId": "Mã Đặt Chỗ",
       "pickupPoint": "Điểm đón",
@@ -239,7 +239,8 @@
       "enjoy": "Chúc bạn một chuyến bay thật đã!",
       "seat": "Chỗ ngồi",
       "takeoffPoint": "Điểm cất cánh",
-      "scanForDirections": "Quét mã để mở chỉ đường Google Maps"
+      "scanForDirections": "Quét mã để mở chỉ đường Google Maps",
+      "exportFailed": "Không tải được vé"
     },
     "fields": {
       "fullName": "Họ và Tên",

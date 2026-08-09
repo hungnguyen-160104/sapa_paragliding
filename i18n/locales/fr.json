@@ -212,7 +212,7 @@
       "openWhatsApp": "Ouvrir WhatsApp"
     },
     "ticket": {
-      "title": "BILLET DE VOL",
+      "title": "BILLET PARAPENTE SAPA",
       "subtitle": "Sapa Paragliding - Expérience de parapente",
       "bookingId": "Numéro de réservation",
       "pickupPoint": "Lieu de prise en charge",
@@ -239,7 +239,8 @@
       "enjoy": "Excellent vol à vous !",
       "seat": "Place",
       "takeoffPoint": "Point de décollage",
-      "scanForDirections": "Scannez pour l’itinéraire Google Maps"
+      "scanForDirections": "Scannez pour l’itinéraire Google Maps",
+      "exportFailed": "Téléchargement du billet impossible"
     },
     "fields": {
       "fullName": "Nom et prénom",

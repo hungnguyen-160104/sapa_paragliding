@@ -214,7 +214,7 @@
       "openWhatsApp": "Open WhatsApp"
     },
     "ticket": {
-      "title": "FLIGHT TICKET",
+      "title": "SAPA PARAGLIDING TICKET",
       "subtitle": "Sapa Paragliding - Paragliding Experience",
       "bookingId": "Booking ID",
       "pickupPoint": "Pickup location",
@@ -241,7 +241,8 @@
       "enjoy": "Have an amazing flight!",
       "seat": "Seat",
       "takeoffPoint": "Take-off point",
-      "scanForDirections": "Scan for Google Maps directions"
+      "scanForDirections": "Scan for Google Maps directions",
+      "exportFailed": "Could not download the ticket"
     },
     "fields": {
       "fullName": "Full Name",

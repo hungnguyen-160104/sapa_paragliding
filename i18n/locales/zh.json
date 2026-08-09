@@ -214,7 +214,7 @@
       "openWhatsApp": "打开 WhatsApp"
     },
     "ticket": {
-      "title": "飞行票",
+      "title": "SAPA 滑翔伞飞行票",
       "subtitle": "Sapa Paragliding - 滑翔伞体验",
       "bookingId": "预订编号",
       "pickupPoint": "接送地点",
@@ -241,7 +241,8 @@
       "enjoy": "祝你飞行愉快！",
       "seat": "座位",
       "takeoffPoint": "起飞点",
-      "scanForDirections": "扫码打开 Google 地图导航"
+      "scanForDirections": "扫码打开 Google 地图导航",
+      "exportFailed": "无法下载票券"
     },
     "fields": {
       "fullName": "姓名",

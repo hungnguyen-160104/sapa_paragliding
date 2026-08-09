@@ -212,7 +212,7 @@
       "openWhatsApp": "Открыть WhatsApp"
     },
     "ticket": {
-      "title": "БИЛЕТ НА ПОЛЁТ",
+      "title": "БИЛЕТ НА ПАРАПЛАН SAPA",
       "subtitle": "Sapa Paragliding — Парапланерный полёт",
       "bookingId": "Номер бронирования",
       "pickupPoint": "Место встречи",
@@ -239,7 +239,8 @@
       "enjoy": "Отличного полёта!",
       "seat": "Место",
       "takeoffPoint": "Точка взлёта",
-      "scanForDirections": "Отсканируйте для маршрута в Google Maps"
+      "scanForDirections": "Отсканируйте для маршрута в Google Maps",
+      "exportFailed": "Не удалось скачать билет"
     },
     "fields": {
       "fullName": "Имя и фамилия",

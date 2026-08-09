@@ -18,19 +18,27 @@
         <div class="pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-white/10"></div>
         <div class="pointer-events-none absolute -bottom-12 left-16 h-28 w-28 rounded-full bg-white/10"></div>
 
-        <div class="relative flex items-start justify-between gap-4">
-          <div class="flex items-center gap-4">
+        <!--
+          Tên vé và mã đặt chỗ xếp thành hai tầng, KHÔNG đứng cùng hàng.
+          Mã đặt chỗ giờ dài 16 ký tự (2512.84386887489) và khối chứa nó không
+          co được, nên đứng cùng hàng là nó ăn gần hết bề ngang: đo trên màn
+          390px thì tên vé bị bóp còn 54px, rớt xuống bốn dòng mỗi dòng một
+          chữ. Tên vé đầy đủ cũng dài gấp rưỡi "FLIGHT TICKET" cũ, riêng bản
+          tiếng Anh rộng 410px — cùng hàng thì cả máy tính cũng vỡ.
+        -->
+        <div class="relative flex flex-col gap-4">
+          <div class="flex min-w-0 items-center gap-4">
             <!-- Logo nền trong suốt, KHÔNG bọc hộp trắng như bản cũ -->
             <img
               src="/images/Sapa_logo.png"
               alt="Sapa Paragliding"
               class="h-20 w-20 flex-shrink-0 object-contain drop-shadow-lg"
             />
-            <div>
+            <div class="min-w-0">
               <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-100">
                 {{ $t('booking.ticket.boardingPass') }}
               </p>
-              <h1 class="mt-1 text-3xl font-black leading-none tracking-tight">
+              <h1 class="mt-1 break-words text-lg font-black leading-tight tracking-tight sm:text-3xl sm:leading-none">
                 {{ $t('booking.ticket.title') }}
               </h1>
               <p class="mt-2 text-sm font-medium text-sky-100">
@@ -39,11 +47,11 @@
             </div>
           </div>
 
-          <div class="flex-shrink-0 rounded-xl bg-white/15 px-4 py-3 text-right backdrop-blur-sm">
+          <div class="self-start rounded-xl bg-white/15 px-4 py-3 text-left backdrop-blur-sm">
             <p class="text-[10px] font-semibold uppercase tracking-wider text-sky-100">
               {{ $t('booking.ticket.bookingId') }}
             </p>
-            <p class="mt-1 font-mono text-xl font-black tracking-wider">
+            <p class="mt-1 break-all font-mono text-lg font-black tracking-wider sm:text-xl">
               {{ bookingData.bookingId || 'PENDING' }}
             </p>
           </div>
@@ -297,6 +305,10 @@
         </svg>
         {{ isExporting ? '…' : $t('booking.ticket.downloadImage') }}
       </button>
+
+      <p v-if="exportError" class="basis-full text-center text-xs font-semibold text-red-600">
+        {{ $t('booking.ticket.exportFailed') }} — {{ exportError }}
+      </p>
     </div>
   </div>
 </template>
@@ -461,6 +473,10 @@ onMounted(async () => {
     // Không có QR thì vé vẫn dùng được bình thường (v-if ẩn khối ảnh).
     console.error('Không tạo được mã QR điểm bay:', error)
   }
+
+  // Vẽ sẵn ảnh vé sau khi QR đã vào DOM, để cú bấm tải chỉ còn việc lưu file.
+  await nextTick()
+  warmUp()
 })
 
 
@@ -482,21 +498,91 @@ async function renderTicketCanvas(): Promise<HTMLCanvasElement | null> {
   })
 }
 
+/**
+ * Vẽ sẵn ảnh vé ngay khi mở trang, KHÔNG đợi khách bấm nút.
+ *
+ * Đây là chỗ làm hỏng chức năng tải vé trên điện thoại: bấm nút xong mới đi
+ * tải thư viện rồi vẽ ảnh mất vài giây, mà Safari trên iPhone chỉ cho phép
+ * lưu file trong vài trăm mili-giây ngay sau cú chạm. Quá hạn đó thì trình
+ * duyệt chặn thẳng, không báo lỗi gì — khách bấm nút thấy im lìm.
+ *
+ * Vẽ trước rồi giữ lại thì lúc bấm chỉ còn việc đóng gói và lưu, kịp trong
+ * cùng cú chạm.
+ */
+const cachedCanvas = shallowRef<HTMLCanvasElement | null>(null)
+let warmUpPromise: Promise<HTMLCanvasElement | null> | null = null
+
+const warmUp = () => {
+  if (warmUpPromise) return warmUpPromise
+  warmUpPromise = (async () => {
+    try {
+      // Nạp sẵn cả hai thư viện để đường bấm nút không còn chờ mạng.
+      await Promise.all([import('html2canvas'), import('jspdf')])
+      const canvas = await renderTicketCanvas()
+      cachedCanvas.value = canvas
+      return canvas
+    } catch (error) {
+      console.error('Không dựng sẵn được ảnh vé:', error)
+      return null
+    }
+  })()
+  return warmUpPromise
+}
+
+const getCanvas = async (): Promise<HTMLCanvasElement | null> =>
+  cachedCanvas.value ?? (await warmUp())
+
+/**
+ * Đưa file tới khách.
+ *
+ * Trên iPhone, thẻ <a download> với blob nhiều khi mở tab trắng rồi thôi;
+ * bảng chia sẻ của hệ điều hành là đường lưu file đáng tin nhất — khách chọn
+ * "Lưu vào Tệp" hoặc gửi thẳng cho bạn bè. Máy tính không có API này thì rơi
+ * về cách tải thông thường.
+ */
+async function deliverFile(blob: Blob, filename: string, mime: string) {
+  try {
+    const file = new File([blob], filename, { type: mime })
+    if (navigator.canShare?.({ files: [file] })) {
+      await navigator.share({ files: [file], title: filename })
+      return
+    }
+  } catch (error) {
+    // Khách bấm huỷ bảng chia sẻ thì thôi, không cần tải ép.
+    if ((error as Error)?.name === 'AbortError') return
+    // Lỗi khác: rơi xuống cách tải thông thường bên dưới.
+  }
+
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  link.rel = 'noopener'
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+  setTimeout(() => URL.revokeObjectURL(url), 10000)
+}
+
+const exportError = ref('')
+
 const downloadTicketImage = async () => {
   if (isExporting.value) return
   isExporting.value = true
+  exportError.value = ''
   try {
-    const canvas = await renderTicketCanvas()
-    if (!canvas) return
-    const link = document.createElement('a')
+    const canvas = await getCanvas()
+    if (!canvas) throw new Error('Không dựng được ảnh vé')
+
     // Ảnh giữ PNG: khách hay lưu vào điện thoại rồi phóng to xem, nét quan
     // trọng hơn dung lượng. Chỉ bản PDF mới cần gọn để gửi kèm email.
-    link.href = canvas.toDataURL('image/png')
-    link.download = `SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.png`
-    link.click()
+    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'))
+    if (!blob) throw new Error('Không tạo được tệp ảnh')
+
+    await deliverFile(blob, `SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.png`, 'image/png')
   } catch (error) {
     console.error('Error generating ticket image:', error)
-    alert('Failed to download ticket image')
+    exportError.value = (error as Error)?.message || String(error)
   } finally {
     isExporting.value = false
   }
@@ -517,10 +603,11 @@ const downloadTicketImage = async () => {
 const downloadTicketPDF = async () => {
   if (isExporting.value) return
   isExporting.value = true
+  exportError.value = ''
   try {
     const { jsPDF } = await import('jspdf')
-    const canvas = await renderTicketCanvas()
-    if (!canvas) return
+    const canvas = await getCanvas()
+    if (!canvas) throw new Error('Không dựng được ảnh vé')
 
     const imgData = canvas.toDataURL('image/jpeg', 0.82)
     const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true })
@@ -547,10 +634,14 @@ const downloadTicketPDF = async () => {
       }
     }
 
-    pdf.save(`SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.pdf`)
+    await deliverFile(
+      pdf.output('blob'),
+      `SapaParagliding.booking.${bookingData.value.bookingId || 'draft'}.pdf`,
+      'application/pdf'
+    )
   } catch (error) {
     console.error('Error generating PDF:', error)
-    alert('Failed to download ticket PDF')
+    exportError.value = (error as Error)?.message || String(error)
   } finally {
     isExporting.value = false
   }

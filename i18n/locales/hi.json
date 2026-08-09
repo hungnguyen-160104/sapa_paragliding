@@ -212,7 +212,7 @@
       "openWhatsApp": "WhatsApp खोलें"
     },
     "ticket": {
-      "title": "फ्लाइट टिकट",
+      "title": "सापा पैराग्लाइडिंग टिकट",
       "subtitle": "Sapa Paragliding - पैराग्लाइडिंग अनुभव",
       "bookingId": "बुकिंग आईडी",
       "pickupPoint": "पिकअप स्थान",
@@ -239,7 +239,8 @@
       "enjoy": "आपकी उड़ान शानदार हो!",
       "seat": "सीट",
       "takeoffPoint": "टेकऑफ़ पॉइंट",
-      "scanForDirections": "Google Maps दिशा के लिए स्कैन करें"
+      "scanForDirections": "Google Maps दिशा के लिए स्कैन करें",
+      "exportFailed": "टिकट डाउनलोड नहीं हो सका"
     },
     "fields": {
       "fullName": "पूरा नाम",
