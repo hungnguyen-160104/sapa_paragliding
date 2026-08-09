@@ -15,6 +15,8 @@
       @input="onInput"
       @keydown="onKeydown"
       @blur="onBlur"
+      @focus="openPanel"
+      @click="openPanel"
     />
 
     <button
@@ -348,13 +350,25 @@ const shiftMonth = (delta: number) => {
   viewMonth.value = next.getUTCMonth()
 }
 
+/**
+ * Chạm vào ô là lịch xổ ra, nên sau khi chọn xong ngày phải chặn một nhịp:
+ * pick() trả con trỏ về ô chữ, cú focus đó lại mở lịch lên ngay lập tức và
+ * khách thấy lịch không bao giờ đóng được.
+ */
+let suppressOpen = false
+
 const pick = (value: string) => {
   text.value = isoToText(value)
   invalid.value = false
   emit('update:modelValue', value)
   open.value = false
+
+  suppressOpen = true
   // Trả con trỏ về ô chữ để khách sửa tiếp được ngay.
   inputRef.value?.focus()
+  requestAnimationFrame(() => {
+    suppressOpen = false
+  })
 }
 
 const pickToday = () => {
@@ -372,18 +386,32 @@ const place = () => {
   const PANEL_H = 330
   const GAP = 6
 
-  const below = window.innerHeight - box.bottom
+  // visualViewport: chạm vào ô là bàn phím ảo bật lên che mất nửa dưới màn
+  // hình. innerHeight không đổi theo bàn phím trên iOS, nên chỉ nhìn nó thì
+  // lịch xổ xuống đúng vào chỗ bị bàn phím che.
+  const viewH = window.visualViewport?.height ?? window.innerHeight
+  const viewW = window.visualViewport?.width ?? window.innerWidth
+
+  const below = viewH - box.bottom
   panelTop.value = below < PANEL_H && box.top > PANEL_H ? box.top - PANEL_H - GAP : box.bottom + GAP
 
   // Ép nằm trong màn hình: trên điện thoại ô sát mép phải hay bị tràn.
-  panelLeft.value = Math.max(8, Math.min(box.left, window.innerWidth - PANEL_W - 8))
+  panelLeft.value = Math.max(8, Math.min(box.left, viewW - PANEL_W - 8))
+}
+
+const openPanel = () => {
+  if (suppressOpen || open.value) return
+  open.value = true
+  if (iso.value) syncViewTo(iso.value)
+  nextTick(place)
 }
 
 const toggle = () => {
-  open.value = !open.value
-  if (!open.value) return
-  if (iso.value) syncViewTo(iso.value)
-  nextTick(place)
+  if (open.value) {
+    open.value = false
+    return
+  }
+  openPanel()
 }
 
 const onDocPointerDown = (event: PointerEvent) => {
@@ -398,11 +426,16 @@ onMounted(() => {
   window.addEventListener('resize', place)
   // capture: bắt cả cuộn bên trong khung cuộn của bước đặt bay, không chỉ cuộn trang.
   window.addEventListener('scroll', place, true)
+  // Bàn phím ảo bật/tắt chỉ báo qua visualViewport, resize thường không nổ.
+  window.visualViewport?.addEventListener('resize', place)
+  window.visualViewport?.addEventListener('scroll', place)
 })
 
 onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onDocPointerDown, true)
   window.removeEventListener('resize', place)
   window.removeEventListener('scroll', place, true)
+  window.visualViewport?.removeEventListener('resize', place)
+  window.visualViewport?.removeEventListener('scroll', place)
 })
 </script>
