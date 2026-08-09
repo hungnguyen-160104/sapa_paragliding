@@ -181,6 +181,20 @@ const isFormValid = computed(() => {
   )
 })
 
+/**
+ * Lưu vào store ngay khi khách gõ, không đợi bấm "Tiếp tục".
+ *
+ * Đổi ngôn ngữ là chuyển sang route khác (/vi/booking -> /en/booking) nên Vue
+ * dựng lại bước này; ref passengers mất sạch trong khi store Pinia thì còn.
+ * Ở bước này mỗi khách phải khai họ tên, ngày sinh, quốc tịch, cân nặng và số
+ * giấy tờ — nhập lại cho cả nhóm là quá đủ để khách bỏ đơn giữa chừng.
+ */
+watch(
+  passengers,
+  (list) => bookingStore.setAllPassengers(list.map((p) => ({ ...p }))),
+  { deep: true }
+)
+
 const handleNext = () => {
   if (isFormValid.value) {
     bookingStore.setAllPassengers(passengers.value)

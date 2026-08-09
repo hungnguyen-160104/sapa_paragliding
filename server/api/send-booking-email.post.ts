@@ -1,4 +1,5 @@
 import { sendBookingEmailToCustomer, sendBookingEmailToAdmins } from '../utils/emailer'
+import { resolveEmailLocale } from '../utils/email-i18n'
 
 export default defineEventHandler(async (event) => {
   try {
@@ -9,8 +10,11 @@ export default defineEventHandler(async (event) => {
       throw createError({ statusCode: 400, statusMessage: 'Missing bookingId/email/contactName' })
     }
 
+    // Ngôn ngữ khách đang xem web lúc đặt. Thiếu hoặc lạ thì về tiếng Anh.
+    const locale = resolveEmailLocale(rawBody.locale ?? body.locale)
+
     // ✅ Gửi email cho khách (không đính kèm ảnh vé — xem sendBookingEmailToCustomer)
-    await sendBookingEmailToCustomer(body)
+    await sendBookingEmailToCustomer(body, locale)
 
     // ✅ Gửi cho quản lý nội bộ (không kèm vé)
     await sendBookingEmailToAdmins(body)

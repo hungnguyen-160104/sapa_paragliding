@@ -558,7 +558,7 @@ const handleSubmit = async () => {
       return
     }
 
-    const result = await bookingStore.submitBooking()
+    const result = await bookingStore.submitBooking(locale.value as string)
 
     if (!result.success) {
       alert('Booking submission failed. Please try again.')

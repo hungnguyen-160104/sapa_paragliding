@@ -213,22 +213,35 @@ const minDate = computed(() => {
  */
 const pickupError = ref(false)
 
-const handleNext = () => {
-  if (hasHotelTransfer.value && !formData.pickupLocation.trim()) {
-    pickupError.value = true
-    return
-  }
-
-  const contactInfo = {
+/**
+ * Lưu vào store ngay khi khách gõ, không đợi bấm "Tiếp tục".
+ *
+ * Đổi ngôn ngữ là chuyển sang route khác (/vi/booking -> /en/booking) nên Vue
+ * dựng lại bước này và formData quay về rỗng. Store Pinia không bị ảnh hưởng,
+ * nên để store giữ bản chính thì đổi ngôn ngữ giữa chừng vẫn còn nguyên những
+ * gì khách đã nhập.
+ */
+const syncToStore = () => {
+  bookingStore.setContactInfo({
     contactName: formData.contactName,
     email: formData.email,
     phone: `${formData.countryCode} ${formData.phoneNumber}`.trim(),
     preferredDate: formData.preferredDate,
     preferredTime: formData.preferredTime,
     specialRequests: formData.specialRequests
+  })
+  bookingStore.setPickupLocation(formData.pickupLocation)
+}
+
+watch(formData, syncToStore, { deep: true })
+
+const handleNext = () => {
+  if (hasHotelTransfer.value && !formData.pickupLocation.trim()) {
+    pickupError.value = true
+    return
   }
-  bookingStore.setContactInfo(contactInfo)
-  bookingStore.bookingData.pickupLocation = formData.pickupLocation
+
+  syncToStore()
   bookingStore.nextStep()
 }
 

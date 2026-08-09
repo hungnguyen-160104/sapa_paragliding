@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer'
 import { TAKEOFF_MAP_URL, LANDING_MAP_URL, TAKEOFF_NAME } from '../../shared/flying-site'
+import { EMAIL_STRINGS, type EmailLocale } from './email-i18n'
 import { useRuntimeConfig, createError } from '#imports'
 
 export interface PassengerInfo {
@@ -219,12 +220,28 @@ function maskIdNumber(raw: unknown): string {
  * Viết bằng bảng HTML và style nội tuyến — bắt buộc với email: Gmail và
  * Outlook loại bỏ thẻ <style>, và không hỗ trợ flexbox/grid.
  */
-export function formatCustomerEmailHtml(booking: BookingData): string {
+/**
+ * Email xác nhận gửi KHÁCH — viết bằng đúng ngôn ngữ khách đã đặt lịch.
+ *
+ * Khách đặt trên bản tiếng Nga mà nhận email tiếng Việt thì coi như không nhận
+ * được gì: không soát được ngày giờ, không biết phải mang theo gì. Toàn bộ chữ
+ * lấy từ EMAIL_STRINGS, mặc định về tiếng Anh nếu ngôn ngữ lạ.
+ */
+export function formatCustomerEmailHtml(booking: BookingData, locale: EmailLocale = 'en'): string {
+  const s = EMAIL_STRINGS[locale]
   const selected = safeSelectedOptions(booking)
   const passengerCount = Number(booking.numberOfPassengers) || 0
 
   const discountPerPerson = Number(booking.discount) || 0
   const discountTotal = discountPerPerson * passengerCount
+
+  /** Nhãn dịch vụ thêm theo ngôn ngữ của khách. */
+  const optionLabel = (opt: string): string => {
+    if (opt === 'hotel-transfer') return s.optHotelTransfer
+    if (opt === 'drone') return s.optDrone
+    if (opt === 'camera360') return s.optCamera360
+    return escapeHtml(opt)
+  }
 
   // ----- Danh sách khách bay -----
   const passengers = Array.isArray(booking.passengers) ? booking.passengers : []
@@ -250,10 +267,10 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
   const passengerBlock = passengers.length
     ? `<tr><td style="padding-top:6px;">
         <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
-          <tr><th style="padding:6px 8px;border-bottom:1px solid ${EC.line};"></th>${th('Họ và tên')}${th('Ngày sinh')}${th('Giới tính')}${th('Cân nặng')}${th('Quốc tịch')}${th('CCCD/Passport')}</tr>
+          <tr><th style="padding:6px 8px;border-bottom:1px solid ${EC.line};"></th>${th(s.thName)}${th(s.thDob)}${th(s.thGender)}${th(s.thWeight)}${th(s.thNationality)}${th(s.thId)}</tr>
           ${passengerRows}
         </table>
-        <div style="margin-top:6px;font-size:12px;color:${EC.soft};">🔒 Số giấy tờ được ẩn bớt để bảo vệ thông tin cá nhân của bạn.</div>
+        <div style="margin-top:6px;font-size:12px;color:${EC.soft};">${escapeHtml(s.idMasked)}</div>
       </td></tr>`
     : ''
 
@@ -273,45 +290,38 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
   const servicesBlock = selected.length
     ? selected
         .map((opt) => {
-          const label = getOptionLabel(opt, 'vi')
           // Số lượng tô đỏ để khách soát lại đúng thứ mình đã chọn.
           const qty = ` <b style="color:${EC.red};">x${optionQty(opt)}</b>`
           const place =
             opt === 'hotel-transfer' && booking.pickupLocation
               ? ` <span style="color:${EC.blueDark};font-weight:600;">${escapeHtml(booking.pickupLocation)}</span>`
               : ''
-          return `<tr><td style="padding:5px 0;font-size:14px;color:${EC.ink};">${label}${qty}${place}</td></tr>`
+          return `<tr><td style="padding:5px 0;font-size:14px;color:${EC.ink};">${optionLabel(opt)}${qty}${place}</td></tr>`
         })
         .join('')
-    : `<tr><td style="padding:5px 0;font-size:14px;color:${EC.soft};">Bạn chưa chọn thêm dịch vụ nào.</td></tr>`
+    : `<tr><td style="padding:5px 0;font-size:14px;color:${EC.soft};">${escapeHtml(s.noExtras)}</td></tr>`
 
   // ----- Điểm đón / điểm hẹn -----
   const hasTransfer = selected.includes('hotel-transfer')
   const pickupRow = hasTransfer
-    ? emailInfoRow('Điểm đón', escapeHtml(booking.pickupLocation || 'Khách sạn của bạn tại Sa Pa'))
-    : emailInfoRow('Điểm hẹn', 'Điểm bay Mường Hoa — khách tự tới')
+    ? emailInfoRow(s.pickupPoint, escapeHtml(booking.pickupLocation || s.pickupDefault))
+    : emailInfoRow(s.meetingPoint, `${escapeHtml(TAKEOFF_NAME)} — ${escapeHtml(s.meetingSelfArrive)}`)
   const pickupNote = hasTransfer
     ? `<tr><td colspan="2" style="padding:8px 0 0;">
-        <div style="background:${EC.redBg};border-radius:8px;padding:9px 12px;font-size:13px;color:${EC.blueDark};line-height:1.5;">⏱️ Xe đón trước giờ bay khoảng 30 phút, tài xế sẽ gọi trước khi tới.</div>
+        <div style="background:${EC.redBg};border-radius:8px;padding:9px 12px;font-size:13px;color:${EC.blueDark};line-height:1.5;">${escapeHtml(s.pickupNote)}</div>
       </td></tr>`
     : ''
 
-  const nextSteps = [
-    'Chúng tôi sẽ gọi xác nhận lịch bay và tình hình thời tiết trong thời gian sớm nhất.',
-    'Có mặt trước giờ bay 15 phút để làm thủ tục và nghe hướng dẫn an toàn.',
-    'Bấm vào tên điểm cất cánh phía trên để mở chỉ đường Google Maps.',
-    'Mang theo giấy tờ tuỳ thân và email này.',
-    'Đổi lịch hoặc huỷ bay miễn phí, chỉ cần báo trước vài giờ.'
-  ]
+  const nextSteps = [s.next1, s.next2, s.next3, s.next4, s.next5]
 
   const guides: Array<[string, string]> = [
-    ['👕 Trang phục', 'Quần dài, áo tay dài, giày thể thao. Không váy, không cao gót, không dép lê.'],
-    ['🎒 Mang theo', 'Giấy tờ tuỳ thân, kính râm, áo khoác mỏng, mũ, khăn choàng, gậy chụp ảnh — đều mang thoải mái. Điện thoại còn trống ~4GB để chép ảnh và video.'],
-    ['🚫 Không mang', 'Đồ giá trị cao, vật sắc nhọn, đồ cồng kềnh, đồ nặng.']
+    [s.guideClothingLabel, s.guideClothingText],
+    [s.guideBringLabel, s.guideBringText],
+    [s.guideAvoidLabel, s.guideAvoidText]
   ]
 
   const html = `<!doctype html>
-<html lang="vi">
+<html lang="${locale}">
 <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
 <body style="margin:0;padding:0;background:${EC.bg};font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" style="background:${EC.bg};padding:24px 12px;">
@@ -326,8 +336,8 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
       </td>
       <td valign="middle">
         <div style="font-size:11px;letter-spacing:2px;font-weight:700;opacity:.9;">SAPA PARAGLIDING</div>
-        <div style="font-size:22px;font-weight:800;margin-top:3px;">XÁC NHẬN ĐẶT LỊCH BAY</div>
-        <div style="margin-top:8px;font-size:13px;opacity:.92;">Mã đặt chỗ:
+        <div style="font-size:22px;font-weight:800;margin-top:3px;">${escapeHtml(s.headerTitle)}</div>
+        <div style="margin-top:8px;font-size:13px;opacity:.92;">${escapeHtml(s.bookingIdLabel)}
           <span style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;font-weight:800;letter-spacing:1px;">${escapeHtml(booking.bookingId)}</span>
         </div>
       </td>
@@ -338,47 +348,47 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
     <table width="100%" cellpadding="0" cellspacing="0">
 
       <tr><td style="font-size:16px;color:${EC.ink};line-height:1.6;">
-        <strong>Chào ${escapeHtml(booking.contactName)},</strong><br/>
-        Cảm ơn bạn đã đặt lịch bay dù lượn cùng Sapa Paragliding. Lịch bay của bạn đã được ghi nhận, chi tiết như sau:
+        <strong>${escapeHtml(s.greeting.replace('{name}', String(booking.contactName ?? '')))}</strong><br/>
+        ${escapeHtml(s.intro)}
       </td></tr>
 
-      ${emailSectionTitle('Thông tin chuyến bay')}
+      ${emailSectionTitle(s.secFlight)}
       <tr><td>
         <table width="100%" cellpadding="0" cellspacing="0">
           ${emailInfoRow(
-            'Điểm cất cánh',
+            s.takeoffPoint,
             `<a href="${TAKEOFF_MAP_URL}" style="color:${EC.blue};text-decoration:none;font-weight:700;">${TAKEOFF_NAME} 📍</a>`
           )}
           ${emailInfoRow(
-            'Điểm hạ cánh',
-            `<a href="${LANDING_MAP_URL}" style="color:${EC.blue};text-decoration:none;font-weight:700;">Bản Lao Chải, thung lũng Mường Hoa 📍</a>`
+            s.landingPoint,
+            `<a href="${LANDING_MAP_URL}" style="color:${EC.blue};text-decoration:none;font-weight:700;">${escapeHtml(s.landingName)} 📍</a>`
           )}
-          ${emailInfoRow('Gói bay', escapeHtml(booking.serviceName))}
-          ${emailInfoRow('Ngày bay', escapeHtml(booking.preferredDate))}
-          ${emailInfoRow('Giờ bay', escapeHtml(booking.preferredTime || 'Linh hoạt'))}
-          ${emailInfoRow('Số khách', `${escapeHtml(passengerCount)} người`)}
+          ${emailInfoRow(s.package, escapeHtml(booking.serviceName))}
+          ${emailInfoRow(s.flightDate, escapeHtml(booking.preferredDate))}
+          ${emailInfoRow(s.flightTime, escapeHtml(booking.preferredTime || s.timeFlexible))}
+          ${emailInfoRow(s.guestCount, `${escapeHtml(passengerCount)} ${escapeHtml(s.guestUnit)}`)}
           ${pickupRow}
           ${pickupNote}
         </table>
       </td></tr>
 
-      ${passengers.length ? emailSectionTitle('Danh sách khách bay') : ''}
+      ${passengers.length ? emailSectionTitle(s.secPassengers) : ''}
       ${passengerBlock}
 
-      ${emailSectionTitle('Chi tiết giá')}
+      ${emailSectionTitle(s.secPrice)}
       <tr><td>
         <table width="100%" cellpadding="0" cellspacing="0">
-          ${emailMoneyRow('Giá gói bay', `${toVND(Number(booking.servicePrice) * passengerCount)} đ`, {
-            detail: `${toVND(booking.servicePrice)} đ × ${passengerCount} khách`
+          ${emailMoneyRow(s.priceFlight, `${toVND(Number(booking.servicePrice) * passengerCount)} đ`, {
+            detail: `${toVND(booking.servicePrice)} đ × ${passengerCount} ${s.unitGuest}`
           })}
           ${selected
             .map((opt) => {
               const info = OPTION_PRICES[opt]
               if (!info) return ''
               const qty = optionQty(opt)
-              const unit = info.perPerson ? 'khách' : 'lượt'
+              const unit = info.perPerson ? s.unitGuest : s.unitTime
               return emailMoneyRow(
-                `${info.labelVi} x${qty}`,
+                `${optionLabel(opt)} x${qty}`,
                 `${toVND(info.price * qty)} đ`,
                 { detail: `${toVND(info.price)} đ × ${qty} ${unit}` }
               )
@@ -386,32 +396,32 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
             .join('')}
           ${
             discountPerPerson > 0
-              ? emailMoneyRow('Giảm giá nhóm', `-${toVND(discountTotal)} đ`, {
-                  detail: `${toVND(discountPerPerson)} đ × ${passengerCount} khách`,
+              ? emailMoneyRow(s.groupDiscount, `-${toVND(discountTotal)} đ`, {
+                  detail: `${toVND(discountPerPerson)} đ × ${passengerCount} ${s.unitGuest}`,
                   discount: true
                 })
               : ''
           }
           <tr>
-            <td style="padding:12px 0 0;font-size:16px;font-weight:800;color:${EC.ink};">TỔNG CỘNG</td>
+            <td style="padding:12px 0 0;font-size:16px;font-weight:800;color:${EC.ink};">${escapeHtml(s.total)}</td>
             <td style="padding:12px 0 0;font-size:20px;font-weight:800;text-align:right;white-space:nowrap;color:${EC.red};">${toVND(booking.totalPrice)} đ</td>
           </tr>
           <tr><td colspan="2" style="padding:10px 0 0;">
-            <div style="background:${EC.redBg};border-radius:8px;padding:9px 12px;font-size:13px;color:${EC.blueDark};line-height:1.5;">💳 Thanh toán trực tiếp tại điểm bay trước giờ cất cánh. Không cần đặt cọc.</div>
+            <div style="background:${EC.redBg};border-radius:8px;padding:9px 12px;font-size:13px;color:${EC.blueDark};line-height:1.5;">${escapeHtml(s.payNote)}</div>
           </td></tr>
         </table>
       </td></tr>
 
-      ${emailSectionTitle('Dịch vụ bạn đã chọn thêm')}
+      ${emailSectionTitle(s.secExtras)}
       <tr><td><table width="100%" cellpadding="0" cellspacing="0">${servicesBlock}</table></td></tr>
 
-      ${emailSectionTitle('Chuẩn bị trước khi bay')}
+      ${emailSectionTitle(s.secPrepare)}
       <tr><td>
         <table width="100%" cellpadding="0" cellspacing="0">
           ${guides
             .map(
               ([label, text]) => `<tr>
-                <td width="34%" valign="top" style="padding:6px 0;font-size:13px;font-weight:600;color:${EC.ink};">${label}</td>
+                <td width="34%" valign="top" style="padding:6px 0;font-size:13px;font-weight:600;color:${EC.ink};">${escapeHtml(label)}</td>
                 <td valign="top" style="padding:6px 0;font-size:13px;color:${EC.soft};line-height:1.6;">${escapeHtml(text)}</td>
               </tr>`
             )
@@ -421,14 +431,14 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
 
       ${
         booking.specialRequests
-          ? `${emailSectionTitle('Yêu cầu đặc biệt của bạn')}
+          ? `${emailSectionTitle(s.secRequests)}
              <tr><td style="padding:4px 0;">
                <div style="background:${EC.bg};border-left:3px solid ${EC.blue};border-radius:0 8px 8px 0;padding:10px 14px;font-size:14px;color:${EC.ink};line-height:1.6;">${escapeHtml(booking.specialRequests)}</div>
              </td></tr>`
           : ''
       }
 
-      ${emailSectionTitle('Việc tiếp theo')}
+      ${emailSectionTitle(s.secNext)}
       <tr><td>
         <table width="100%" cellpadding="0" cellspacing="0">
           ${nextSteps
@@ -442,9 +452,9 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
         </table>
       </td></tr>
 
-      ${emailSectionTitle('Liên hệ')}
+      ${emailSectionTitle(s.secContact)}
       <tr><td style="font-size:14px;color:${EC.ink};line-height:1.9;">
-        Cần hỗ trợ, bạn gọi hoặc nhắn cho chúng tôi bất cứ lúc nào:<br/>
+        ${escapeHtml(s.contactIntro)}<br/>
         📞 Ms. Judy — <a href="tel:+84386887489" style="color:${EC.blue};text-decoration:none;font-weight:600;">+84 386 887 489</a><br/>
         📞 Mr. August — <a href="tel:+84522794999" style="color:${EC.blue};text-decoration:none;font-weight:600;">+84 522 794 999</a><br/>
         ✉️ <a href="mailto:sapa.paragliding@gmail.com" style="color:${EC.blue};text-decoration:none;">sapa.paragliding@gmail.com</a>
@@ -455,7 +465,7 @@ export function formatCustomerEmailHtml(booking: BookingData): string {
 
   <tr><td style="background:${EC.bg};padding:16px 28px;text-align:center;font-size:12px;color:${EC.soft};line-height:1.7;">
     <a href="https://www.paraglidingsapa.com" style="color:${EC.blue};text-decoration:none;font-weight:600;">www.paraglidingsapa.com</a><br/>
-    © ${new Date().getFullYear()} Sapa Paragliding. Bảo lưu mọi quyền.
+    © ${new Date().getFullYear()} Sapa Paragliding. ${escapeHtml(s.rightsReserved)}
   </td></tr>
 
 </table>
@@ -765,17 +775,17 @@ export async function sendMail(opts: {
 }
 
 /**
- * Gửi email xác nhận cho KHÁCH - English
+ * Gửi email xác nhận cho KHÁCH — theo ngôn ngữ khách đã dùng khi đặt.
  */
-export async function sendBookingEmailToCustomer(booking: BookingData) {
-  const html = formatCustomerEmailHtml(booking)
+export async function sendBookingEmailToCustomer(booking: BookingData, locale: EmailLocale = 'en') {
+  const html = formatCustomerEmailHtml(booking, locale)
 
   // KHÔNG đính kèm ảnh vé: ảnh do trình duyệt khách vẽ nên chất lượng phụ
   // thuộc máy khách, dễ hỏng hoặc thiếu. Toàn bộ thông tin vé đã nằm trong
   // nội dung email này, và khách vẫn tải được vé ở trang xác nhận.
   await sendMail({
     to: booking.email,
-    subject: `Xác nhận đặt lịch bay Sapa Paragliding - ${booking.bookingId}`,
+    subject: `${EMAIL_STRINGS[locale].subject} - ${booking.bookingId}`,
     html
   })
 }

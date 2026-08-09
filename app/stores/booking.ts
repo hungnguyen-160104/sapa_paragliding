@@ -89,9 +89,15 @@ function createInitialBookingData(): BookingData {
 }
 
 export const useBookingStore = defineStore('booking', {
-  state: (): { currentStep: number; bookingData: BookingData } => ({
+  state: (): {
+    currentStep: number
+    bookingData: BookingData
+    /** Gói đã áp từ ?package= — để không áp lại đè lên lựa chọn của khách. */
+    appliedPackage: string | null
+  } => ({
     currentStep: 1,
-    bookingData: createInitialBookingData()
+    bookingData: createInitialBookingData(),
+    appliedPackage: null
   }),
 
   getters: {
@@ -199,12 +205,22 @@ export const useBookingStore = defineStore('booking', {
       this.updatePricing()
     },
 
+    /**
+     * Đổi số khách thì CO GIÃN danh sách hành khách chứ không dựng lại từ đầu.
+     *
+     * Bản cũ luôn thay bằng mảng rỗng mới, nên chỉ cần khách quay về bước 1 rồi
+     * bấm "Tiếp tục" là toàn bộ họ tên, ngày sinh, số giấy tờ đã nhập ở bước 3
+     * biến mất — mà số khách thậm chí không đổi.
+     */
     setNumberOfPassengers(count: number) {
       const safeCount = Math.max(1, Math.floor(count || 1))
       this.bookingData.numberOfPassengers = safeCount
 
-      // init passengers
-      this.bookingData.passengers = Array.from({ length: safeCount }, () => createEmptyPassenger())
+      const current = this.bookingData.passengers
+      this.bookingData.passengers = Array.from(
+        { length: safeCount },
+        (_, i) => current[i] ?? createEmptyPassenger()
+      )
 
       this.updatePricing()
     },
@@ -278,7 +294,11 @@ export const useBookingStore = defineStore('booking', {
     },
 
 // Submit booking
-async submitBooking() {
+/**
+ * @param locale Ngôn ngữ khách đang xem web. Quyết định ngôn ngữ email xác
+ *   nhận gửi cho khách — email nội bộ thì luôn tiếng Việt.
+ */
+async submitBooking(locale = 'en') {
   try {
     this.bookingData.status = 'submitted'
 
@@ -323,6 +343,7 @@ async submitBooking() {
       try {
         const emailPayload = JSON.parse(JSON.stringify(this.bookingData))
         emailPayload.bookingId = bookingId
+        emailPayload.locale = locale
 
         await $fetch('/api/send-booking-email', { method: 'POST', body: emailPayload })
         console.log('✅ Booking email requested')

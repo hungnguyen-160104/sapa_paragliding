@@ -390,9 +390,26 @@ onMounted(() => {
   // Gói lạ thì bỏ qua, giữ nguyên lựa chọn cũ của khách.
   if (!preset) return
 
+  // Chỉ áp gói MỘT lần. Đổi ngôn ngữ giữa chừng thì ?package= vẫn còn trên URL
+  // và bước này mount lại — không có chốt chặn thì mấy dịch vụ khách vừa tự
+  // tick hay bỏ tick bị gói mặc định ghi đè.
+  if (bookingStore.appliedPackage === requested) return
+
   selectedOptions.value = [...preset]
   bookingStore.setSelectedOptions(selectedOptions.value)
+  bookingStore.appliedPackage = requested
 })
+
+/**
+ * Ghi thẳng vào store mỗi khi khách đổi lựa chọn, không đợi bấm "Tiếp tục".
+ *
+ * Đổi ngôn ngữ là đổi sang route khác (/vi/booking -> /en/booking), Vue dựng
+ * lại toàn bộ các bước, nên mọi thứ chỉ nằm trong ref của component đều mất.
+ * Store Pinia thì sống sót, vậy cứ để store giữ bản chính.
+ */
+watch(numberOfPassengers, (count) => bookingStore.setNumberOfPassengers(count))
+watch(selectedOptions, (options) => bookingStore.setSelectedOptions([...options]), { deep: true })
+watch(serviceQuantities, (q) => bookingStore.setServiceQuantities({ ...q }), { deep: true })
 
 /**
  * ✅ Quan trọng: tạo "view" computed để template không bị lỗi `.includes` / `[]`
