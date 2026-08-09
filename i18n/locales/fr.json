@@ -258,7 +258,8 @@
       "male": "Homme",
       "female": "Femme",
       "other": "Autre",
-      "openCalendar": "Ouvrir le calendrier"
+      "openCalendar": "Ouvrir le calendrier",
+      "today": "Aujourd'hui"
     },
     "terms": {
       "agree": "J’ai lu et j’accepte les",

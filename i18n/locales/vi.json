@@ -258,7 +258,8 @@
       "male": "Nam",
       "female": "Nữ",
       "other": "Khác",
-      "openCalendar": "Mở lịch chọn ngày"
+      "openCalendar": "Mở lịch chọn ngày",
+      "today": "Hôm nay"
     },
     "terms": {
       "agree": "Tôi đã đọc và đồng ý với",

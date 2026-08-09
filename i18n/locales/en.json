@@ -260,7 +260,8 @@
       "male": "Male",
       "female": "Female",
       "other": "Other",
-      "openCalendar": "Open calendar"
+      "openCalendar": "Open calendar",
+      "today": "Today"
     },
     "terms": {
       "agree": "I have read and agree to the",
