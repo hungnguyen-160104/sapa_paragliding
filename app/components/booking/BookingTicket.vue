@@ -1,59 +1,86 @@
 <template>
-  <div class="space-y-4">
+  <!-- max-w-2xl: vé trước đây giãn theo cả bề ngang trang nên trên màn rộng
+       nó phình quá khổ, tràn bố cục bước 5. Bó về khổ vé thật rồi căn giữa. -->
+  <div class="mx-auto w-full max-w-2xl space-y-4">
     <!-- ============================================================
          VÉ BAY — kiểu thẻ lên máy bay, tông trời xanh chuyển nắng ấm.
-         Ba điều chỉnh chính so với bản cũ:
-           • Không dùng nền đen: khối giá đổi sang nền kem ấm, vừa hợp
-             tông vừa đỡ tốn mực khi khách in ra.
-           • Chữ to hơn hẳn: nhãn 11px, giá trị 14–15px (cũ là 10–12px).
-           • Lề rộng: p-6/p-7 thay cho p-3/p-4 nên chữ không dính mép.
+           • Không dùng nền đen: khối giá nền kem ấm, đỡ tốn mực khi in.
+           • Cuống vé xanh chứa đủ: tên vé, mã đặt chỗ (góc phải) và
+             hàng ngày/giờ/số khách/điểm cất cánh — nhìn cuống là đủ bay.
          ============================================================ -->
     <div
       ref="ticketRef"
       class="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-xl"
     >
       <!-- ---------- CUỐNG VÉ ---------- -->
-      <div class="relative bg-gradient-to-br from-[#194d9b] via-[#2b6fd4] to-[#5aa9e6] px-7 py-6 text-white">
+      <div class="relative bg-gradient-to-br from-[#194d9b] via-[#2b6fd4] to-[#5aa9e6] px-5 py-5 text-white sm:px-6">
         <!-- Mây trang trí: vòng tròn mờ, thuần CSS nên html2canvas dựng lại được -->
         <div class="pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-white/10"></div>
         <div class="pointer-events-none absolute -bottom-12 left-16 h-28 w-28 rounded-full bg-white/10"></div>
 
-        <!--
-          Tên vé và mã đặt chỗ xếp thành hai tầng, KHÔNG đứng cùng hàng.
-          Mã đặt chỗ giờ dài 16 ký tự (2512.84386887489) và khối chứa nó không
-          co được, nên đứng cùng hàng là nó ăn gần hết bề ngang: đo trên màn
-          390px thì tên vé bị bóp còn 54px, rớt xuống bốn dòng mỗi dòng một
-          chữ. Tên vé đầy đủ cũng dài gấp rưỡi "FLIGHT TICKET" cũ, riêng bản
-          tiếng Anh rộng 410px — cùng hàng thì cả máy tính cũng vỡ.
-        -->
-        <div class="relative flex flex-col gap-4">
-          <div class="flex min-w-0 items-center gap-4">
+        <!-- Hàng trên: logo + tên vé bên trái, mã đặt chỗ góc PHẢI.
+             Chữ hai bên đều nhỏ lại so với bản cũ nên cùng hàng không vỡ nữa:
+             ô mã ~150px, còn ~170px cho tên vé trên màn 390px — đủ hai dòng. -->
+        <div class="relative flex items-start justify-between gap-3">
+          <div class="flex min-w-0 items-center gap-3">
             <!-- Logo nền trong suốt, KHÔNG bọc hộp trắng như bản cũ -->
             <img
               src="/images/Sapa_logo.png"
               alt="Sapa Paragliding"
-              class="h-20 w-20 flex-shrink-0 object-contain drop-shadow-lg"
+              class="h-14 w-14 flex-shrink-0 object-contain drop-shadow-lg sm:h-16 sm:w-16"
             />
             <div class="min-w-0">
-              <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-sky-100">
+              <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-100">
                 {{ $t('booking.ticket.boardingPass') }}
               </p>
-              <h1 class="mt-1 break-words text-lg font-black leading-tight tracking-tight sm:text-3xl sm:leading-none">
+              <h1 class="mt-0.5 break-words text-base font-black leading-tight tracking-tight sm:text-xl">
                 {{ $t('booking.ticket.title') }}
               </h1>
-              <p class="mt-2 text-sm font-medium text-sky-100">
+              <p class="mt-1 hidden text-xs font-medium text-sky-100 sm:block">
                 🪂 {{ $t('booking.ticket.slogan') }}
               </p>
             </div>
           </div>
 
-          <div class="self-start rounded-xl bg-white/15 px-4 py-3 text-left backdrop-blur-sm">
-            <p class="text-[10px] font-semibold uppercase tracking-wider text-sky-100">
+          <div class="flex-shrink-0 rounded-lg bg-white/15 px-3 py-2 text-right backdrop-blur-sm">
+            <p class="text-[9px] font-semibold uppercase tracking-wider text-sky-100">
               {{ $t('booking.ticket.bookingId') }}
             </p>
-            <p class="mt-1 break-all font-mono text-lg font-black tracking-wider sm:text-xl">
+            <p class="mt-0.5 max-w-[150px] break-all font-mono text-[13px] font-black leading-snug tracking-wide sm:max-w-none sm:text-base">
               {{ bookingData.bookingId || 'PENDING' }}
             </p>
+          </div>
+        </div>
+
+        <!-- Hàng dưới: thông tin bay ngay trong cuống vé -->
+        <div class="relative mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
+          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
+            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+              {{ $t('booking.step5Details.date') }}
+            </p>
+            <p class="mt-0.5 whitespace-nowrap text-[13px] font-black">{{ formatDate(bookingData.preferredDate) }}</p>
+          </div>
+          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
+            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+              {{ $t('booking.step5Details.time') }}
+            </p>
+            <p class="mt-0.5 whitespace-nowrap text-[13px] font-black">
+              {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
+            </p>
+          </div>
+          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
+            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+              {{ $t('booking.step5Details.passengers') }}
+            </p>
+            <p class="mt-0.5 text-[13px] font-black">{{ bookingData.numberOfPassengers }}</p>
+          </div>
+          <!-- "Bản Hang Đá, Sa Pa" phải nằm MỘT dòng: nowrap + chữ 12px là
+               vừa khít ô nửa màn hình 390px, không để rớt chữ như bản cũ. -->
+          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
+            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+              {{ $t('booking.ticket.takeoffPoint') }}
+            </p>
+            <p class="mt-0.5 whitespace-nowrap text-xs font-black leading-snug">{{ TAKEOFF_NAME }}</p>
           </div>
         </div>
       </div>
@@ -66,41 +93,11 @@
       </div>
 
       <!-- ---------- THÂN VÉ ---------- -->
-      <div class="space-y-5 px-7 pb-7">
-        <!-- Bốn ô nổi bật: đọc lướt là nắm được chuyến bay -->
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <div class="rounded-xl bg-sky-50 p-4 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-sky-700">
-              {{ $t('booking.step5Details.date') }}
-            </p>
-            <p class="mt-1 text-base font-black text-slate-900">{{ formatDate(bookingData.preferredDate) }}</p>
-          </div>
-          <div class="rounded-xl bg-sky-50 p-4 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-sky-700">
-              {{ $t('booking.step5Details.time') }}
-            </p>
-            <p class="mt-1 text-base font-black text-slate-900">
-              {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
-            </p>
-          </div>
-          <div class="rounded-xl bg-amber-50 p-4 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">
-              {{ $t('booking.step5Details.passengers') }}
-            </p>
-            <p class="mt-1 text-base font-black text-slate-900">{{ bookingData.numberOfPassengers }}</p>
-          </div>
-          <div class="rounded-xl bg-amber-50 p-4 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-wider text-amber-700">
-              {{ $t('booking.ticket.takeoffPoint') }}
-            </p>
-            <p class="mt-1 text-base font-black text-slate-900">{{ TAKEOFF_NAME }}</p>
-          </div>
-        </div>
-
+      <div class="space-y-4 px-5 pb-6 sm:px-6">
         <!-- Chuyến bay + liên hệ -->
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div class="rounded-xl border border-slate-200 p-5">
-            <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <h3 class="mb-2.5 text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.flightDetails') }}
             </h3>
             <div class="space-y-2.5">
@@ -123,84 +120,67 @@
             </div>
           </div>
 
-          <div class="rounded-xl border border-slate-200 p-5">
-            <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+          <!-- Nhãn và giá trị CÙNG DÒNG — bản cũ xếp nhãn một dòng, giá trị
+               một dòng nên riêng khối liên hệ đã cao gấp đôi cần thiết. -->
+          <div class="rounded-xl border border-slate-200 p-4">
+            <h3 class="mb-2.5 text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.passengerInfo') }}
             </h3>
-            <div class="space-y-2.5">
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                  {{ $t('booking.step2Details.contactName') }}
-                </p>
-                <p class="text-sm font-bold text-slate-900 break-words">{{ bookingData.contactName }}</p>
+            <div class="space-y-1.5">
+              <div class="flex items-baseline justify-between gap-3">
+                <span class="flex-shrink-0 text-[13px] text-slate-500">{{ $t('booking.step2Details.contactName') }}</span>
+                <span class="truncate text-right text-sm font-bold text-slate-900">{{ bookingData.contactName }}</span>
               </div>
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                  {{ $t('booking.step2Details.email') }}
-                </p>
-                <p class="break-all text-sm text-slate-900">{{ bookingData.email }}</p>
+              <div class="flex items-baseline justify-between gap-3">
+                <span class="flex-shrink-0 text-[13px] text-slate-500">{{ $t('booking.step2Details.email') }}</span>
+                <span class="truncate text-right text-sm font-semibold text-slate-900">{{ bookingData.email }}</span>
               </div>
-              <div>
-                <p class="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                  {{ $t('booking.step2Details.phone') }}
-                </p>
-                <p class="text-sm font-bold text-slate-900">{{ bookingData.phone }}</p>
+              <div class="flex items-baseline justify-between gap-3">
+                <span class="flex-shrink-0 text-[13px] text-slate-500">{{ $t('booking.step2Details.phone') }}</span>
+                <span class="whitespace-nowrap text-right text-sm font-bold text-slate-900">{{ bookingData.phone }}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Danh sách khách bay -->
-        <div v-if="bookingData.passengers.length > 0" class="rounded-xl border border-slate-200 p-5">
-          <div class="mb-3 flex items-center justify-between">
+        <!-- Danh sách khách bay — mỗi khách gói trong HAI dòng: tên đậm,
+             dưới là chuỗi thông tin ngăn bằng chấm giữa. Bản cũ mỗi khách là
+             một thẻ lớn có lưới 5 ô, nhóm 4 khách chiếm gần nửa tấm vé. -->
+        <div v-if="bookingData.passengers.length > 0" class="rounded-xl border border-slate-200 p-4">
+          <div class="mb-2 flex items-center justify-between">
             <h3 class="text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.passengersList') }}
             </h3>
-            <span class="rounded-full bg-[#f02424] px-3 py-1 text-xs font-black text-white">
+            <span class="rounded-full bg-[#f02424] px-2.5 py-0.5 text-xs font-black text-white">
               {{ bookingData.passengers.length }}
             </span>
           </div>
 
-          <div class="space-y-3">
+          <div class="divide-y divide-slate-100">
             <div
               v-for="(passenger, idx) in bookingData.passengers"
               :key="idx"
-              class="rounded-xl bg-slate-50 p-4"
+              class="flex items-start gap-2.5 py-2 first:pt-0 last:pb-0"
             >
-              <div class="mb-2 flex items-center gap-2.5">
-                <span class="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#194d9b] text-xs font-black text-white">
-                  {{ idx + 1 }}
-                </span>
-                <span class="text-base font-black text-slate-900">{{ passenger.fullName }}</span>
-              </div>
-              <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 pl-10 text-xs sm:grid-cols-3">
-                <div>
-                  <span class="text-slate-400">{{ $t('booking.step4Details.dateOfBirth') }}</span>
-                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.dateOfBirth }}</span>
-                </div>
-                <div>
-                  <span class="text-slate-400">{{ $t('booking.step4Details.gender') }}</span>
-                  <span class="ml-1 font-semibold text-slate-900">{{ genderText(passenger.gender) }}</span>
-                </div>
-                <div>
-                  <span class="text-slate-400">{{ $t('booking.step4Details.weight') }}</span>
-                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.weight }}kg</span>
-                </div>
-                <div>
-                  <span class="text-slate-400">{{ $t('booking.step4Details.nationality') }}</span>
-                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.nationality }}</span>
-                </div>
-                <div class="col-span-2 sm:col-span-1">
-                  <span class="text-slate-400">{{ $t('booking.step4Details.idNumber') }}</span>
-                  <span class="ml-1 font-semibold text-slate-900">{{ passenger.passportOrId }}</span>
-                </div>
+              <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#194d9b] text-[10px] font-black text-white">
+                {{ idx + 1 }}
+              </span>
+              <div class="min-w-0">
+                <p class="text-sm font-black leading-tight text-slate-900">{{ passenger.fullName }}</p>
+                <p class="mt-0.5 text-xs leading-snug text-slate-500">
+                  {{ passenger.dateOfBirth }}
+                  <span class="mx-1 text-slate-300">•</span>{{ genderText(passenger.gender) }}
+                  <span class="mx-1 text-slate-300">•</span>{{ passenger.weight }}kg
+                  <span class="mx-1 text-slate-300">•</span>{{ passenger.nationality }}
+                  <span class="mx-1 text-slate-300">•</span>{{ passenger.passportOrId }}
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Giá — nền kem ấm thay cho nền đen -->
-        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-5">
+        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4">
           <div class="mb-3 flex items-center justify-between border-b border-amber-200 pb-3">
             <p class="text-xs font-black uppercase tracking-wider text-amber-800">
               {{ $t('booking.step5Details.total') }}
@@ -233,7 +213,7 @@
         <!-- Điểm bay + mã QR: khách quét là mở thẳng ghim Google Maps của
              ĐIỂM CẤT CÁNH (không phải địa chỉ văn phòng), khỏi phải gõ tay
              hay hỏi đường sáng hôm bay. -->
-        <div class="flex items-center gap-5 rounded-xl border-2 border-sky-200 bg-sky-50 p-5">
+        <div class="flex items-center gap-4 rounded-xl border-2 border-sky-200 bg-sky-50 p-4">
           <img
             v-if="takeoffQr"
             :src="takeoffQr"
@@ -251,17 +231,18 @@
           </div>
         </div>
 
-        <!-- Chuẩn bị trước khi bay -->
-        <div class="rounded-xl border border-slate-200 p-5">
-          <h3 class="mb-3 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+        <!-- Chuẩn bị trước khi bay — chữ 13px, dòng sít: khối này là phần
+             dài nhất thân vé, nới lỏng là vé dài thêm hẳn một trang in. -->
+        <div class="rounded-xl border border-slate-200 p-4">
+          <h3 class="mb-2 text-xs font-black uppercase tracking-wider text-[#194d9b]">
             {{ $t('booking.ticket.preFlightInfo.title') }}
           </h3>
-          <div class="space-y-2 text-sm leading-relaxed text-slate-700">
-            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
-            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
-            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
-            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
-            <div class="flex items-start gap-2"><span class="mt-0.5 flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+          <div class="space-y-1 text-[13px] leading-snug text-slate-700">
+            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
+            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
+            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
+            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
+            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
           </div>
         </div>
 
