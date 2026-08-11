@@ -52,3 +52,12 @@ coverage/
 
 # Package lock (optional - uncomment if you want to ignore)
 # package-lock.json
+
+# Lockfile của pnpm — dự án này cài bằng npm và Vercel chọn trình quản lý gói
+# THEO LOCKFILE có trong repo. Lỡ commit pnpm-lock.yaml là Vercel bỏ npm để
+# chạy pnpm, mà lockfile đó thiếu 10/25 gói nên cài hỏng và mọi lần deploy
+# đều thất bại lặng lẽ. pnpm-workspace.yaml còn khiến Vercel tưởng đây là kho
+# đa dự án. Giữ duy nhất package-lock.json.
+pnpm-lock.yaml
+pnpm-workspace.yaml
+yarn.lock
