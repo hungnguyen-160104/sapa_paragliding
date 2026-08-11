@@ -126,7 +126,7 @@
 import { usePostsStore } from '~/stores/posts'
 
 const localePath = useLocalePath()
-import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage } from '~/utils/seo'
+import { getCanonicalUrl, buildHreflangLinks, getDefaultOgImage, buildLocalizedUrl, POST_LOCALES, POST_SOURCE_LOCALE, type SupportedLocale } from '~/utils/seo'
 
 type LocalizedPost = {
   id: string | number
@@ -283,7 +283,12 @@ function navigateToPost(id: string | number | undefined) {
 useHead(() => {
   const title = `${t('posts.latestPosts')} | Sapa Paragliding`
   const description = t('posts.latestPostsDescription')
-  const canonical = getCanonicalUrl(route, locale.value)
+  // Danh sách bài cũng chỉ có hai bản nội dung thật (tiêu đề bài lấy từ cơ sở
+  // dữ liệu, chỉ có tiếng Anh và tiếng Việt). Bốn địa chỉ còn lại là bản sao
+  // của bản tiếng Anh nên phải khai canonical về đó, giống trang bài.
+  const canonical = POST_LOCALES.includes(locale.value as SupportedLocale)
+    ? getCanonicalUrl(route, locale.value)
+    : buildLocalizedUrl('/posts', POST_SOURCE_LOCALE)
   const ogImage = getDefaultOgImage()
 
   return {
@@ -301,7 +306,7 @@ useHead(() => {
     ],
     link: [
       { rel: 'canonical', href: canonical },
-      ...buildHreflangLinks(route.path, locale.value)
+      ...buildHreflangLinks(route.path, locale.value, POST_LOCALES)
     ]
   }
 })

@@ -6,6 +6,16 @@ export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
+/**
+ * Bài viết chỉ có bản tiếng Anh và tiếng Việt trong cơ sở dữ liệu; bốn địa chỉ
+ * còn lại phục vụ y hệt nội dung tiếng Anh. Khai chúng trong sitemap là tự
+ * mời Google đi lập chỉ mục 196 bản sao — và Google trả lời đúng như vậy:
+ * "đã thu thập dữ liệu — hiện chưa được lập chỉ mục".
+ *
+ * Trang tĩnh thì dịch đủ sáu thứ tiếng nên vẫn khai đủ.
+ */
+export const POST_LOCALES: readonly Locale[] = ['vi', 'en']
+
 export const PAGE_ROUTES: Array<{
   path: string
   priority: string
@@ -79,10 +89,18 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     throw new Error('Sitemap: truy vấn posts trả về rỗng, không phát hành sitemap thiếu bài')
   }
 
+  // Ngôn ngữ không có bản dịch riêng cho bài thì sitemap chỉ gồm trang tĩnh.
+  const includePosts = POST_LOCALES.includes(locale)
+
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
 
   for (const page of PAGE_ROUTES) {
+    // Trang danh sách bài cũng chỉ có nội dung thật ở vi/en — bốn ngôn ngữ
+    // còn lại hiện đúng danh sách tiêu đề tiếng Anh, nên bỏ khỏi sitemap
+    // cùng lý do với từng bài.
+    if (page.path === '/posts' && !includePosts) continue
+
     const pagePath = page.path === '/' ? '' : page.path
     const currentUrl = `${DOMAIN}/${locale}${pagePath}`
 
@@ -102,7 +120,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += '  </url>\n'
   }
 
-  for (const post of posts) {
+  for (const post of includePosts ? posts : []) {
     const postPath = `/posts/${post.slug}`
     const currentUrl = `${DOMAIN}/${locale}${postPath}`
     const postLastmod = post.publishedAt ? new Date(post.publishedAt).toISOString() : lastmod
@@ -111,7 +129,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += `    <loc>${escapeXml(currentUrl)}</loc>\n`
     xml += `    <lastmod>${postLastmod}</lastmod>\n`
 
-    for (const altLocale of LOCALES) {
+    for (const altLocale of POST_LOCALES) {
       const altUrl = `${DOMAIN}/${altLocale}${postPath}`
       xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(altUrl)}" />\n`
     }

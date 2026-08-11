@@ -84,10 +84,32 @@ export const getCanonicalUrl = (route: RouteLike, locale: string): string => {
   return buildLocalizedUrl(route.path ?? '/', locale)
 }
 
-export const buildHreflangLinks = (basePath: string, _currentLocale: string) => {
+/**
+ * Ngôn ngữ mà BÀI VIẾT thực sự có bản dịch riêng.
+ *
+ * Bài trong cơ sở dữ liệu chỉ có hai bản: tiếng Anh (title/contentBlocks) và
+ * tiếng Việt (titleVi/contentBlocksVi). Bốn địa chỉ còn lại — /fr /ru /zh /hi
+ * — vẫn mở được nhưng nội dung y hệt bản tiếng Anh, tức mỗi bài đang có thêm
+ * bốn bản sao. Đó chính là thứ Search Console báo về: "Trang trùng lặp,
+ * Google đã chọn một trang chính tắc khác" và hàng loạt "đã thu thập dữ liệu
+ * — hiện chưa được lập chỉ mục".
+ *
+ * Các trang tĩnh (trang chủ, bảng giá, đặt bay...) thì dịch đủ sáu thứ tiếng
+ * trong i18n, nên hằng số này CHỈ áp cho bài viết.
+ */
+export const POST_LOCALES: SupportedLocale[] = ['vi', 'en']
+
+/** Bài chưa dịch thì bản tiếng Anh là bản gốc để Google lập chỉ mục. */
+export const POST_SOURCE_LOCALE: SupportedLocale = 'en'
+
+export const buildHreflangLinks = (
+  basePath: string,
+  _currentLocale: string,
+  locales: readonly SupportedLocale[] = SUPPORTED_LOCALES
+) => {
   const cleanPath = stripLocalePrefix(basePath)
 
-  const links = SUPPORTED_LOCALES.map((locale) => ({
+  const links = locales.map((locale) => ({
     rel: 'alternate',
     hreflang: localeToHreflang[locale],
     href: joinUrl(DOMAIN, buildLocalizedPath(cleanPath, locale))
@@ -96,7 +118,10 @@ export const buildHreflangLinks = (basePath: string, _currentLocale: string) => 
   links.push({
     rel: 'alternate',
     hreflang: 'x-default',
-    href: joinUrl(DOMAIN, buildLocalizedPath(cleanPath, DEFAULT_LOCALE))
+    href: joinUrl(
+      DOMAIN,
+      buildLocalizedPath(cleanPath, locales.includes(DEFAULT_LOCALE) ? DEFAULT_LOCALE : locales[0]!)
+    )
   })
 
   return links

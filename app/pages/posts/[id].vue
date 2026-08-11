@@ -406,7 +406,7 @@
 import { usePostsStore } from '~/stores/posts'
 import { normalizeTableData } from '~/stores/postsAdmin'
 import { renderInlineMarkup } from '~/utils/inlineMarkup'
-import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getOgLocale, truncateMetaDescription } from '~/utils/seo'
+import { buildBlogPostingJsonLD, buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getOgLocale, truncateMetaDescription, POST_LOCALES, POST_SOURCE_LOCALE, type SupportedLocale } from '~/utils/seo'
 
 type ContentBlock = {
   id: string | number
@@ -690,6 +690,20 @@ function navigateToPost(id: string | number | undefined) {
 useHead(() => {
   const slug = post.value?.slug || postId.value
   const postUrl = buildLocalizedUrl(`/posts/${slug}`, locale.value)
+
+  /**
+   * Bài chỉ có bản tiếng Anh và tiếng Việt. Bốn địa chỉ /fr /ru /zh /hi vẫn
+   * mở được cho khách bấm từ nút đổi ngôn ngữ, nhưng nội dung y hệt bản tiếng
+   * Anh — nên với Google phải khai chúng là bản sao, canonical trỏ về bản gốc.
+   *
+   * Trước đây mỗi bản sao tự nhận canonical chính nó, tức mỗi bài xuất hiện
+   * sáu lần với cùng một nội dung. Google xử lý đúng như dự đoán: chọn giùm
+   * một bản chính tắc và bỏ lập chỉ mục phần còn lại.
+   */
+  const hasOwnTranslation = POST_LOCALES.includes(locale.value as SupportedLocale)
+  const canonicalUrl = hasOwnTranslation
+    ? postUrl
+    : buildLocalizedUrl(`/posts/${slug}`, POST_SOURCE_LOCALE)
   const title = seoTitle.value || t('posts.loadingArticle')
   const description = seoDescription.value || t('posts.unavailableDescription')
   const image = post.value?.seo?.ogImage || post.value?.image || post.value?.thumbnailUrl || ''
@@ -743,8 +757,8 @@ useHead(() => {
       { name: 'twitter:image', content: image }
     ],
     link: [
-      { rel: 'canonical', href: postUrl },
-      ...buildHreflangLinks(`/posts/${slug}`, locale.value)
+      { rel: 'canonical', href: canonicalUrl },
+      ...buildHreflangLinks(`/posts/${slug}`, locale.value, POST_LOCALES)
     ],
     script: scripts
   }

@@ -626,38 +626,6 @@ onBeforeUnmount(() => {
 
     <section class="py-10 lg:py-16 bg-gradient-to-br from-slate-100 via-white to-slate-50">
       <div class="container mx-auto px-6 lg:px-12">
-        <!-- Link OTA to rõ: nhãn "tham khảo/đối chiếu" (KHÔNG mời đặt vé qua
-             OTA — đặt trên đó đắt hơn cho khách và mất hoa hồng cao) -->
-        <div class="mb-10 text-center scroll-reveal" data-delay="0">
-          <!-- Cùng cỡ với tiêu đề "Bài Viết Mới Nhất" (text-3xl lg:text-4xl
-               font-black) + đổ bóng để nổi hơn một chút -->
-          <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)] mb-6">
-            {{ $t('homePage.otaHeading') }}
-          </h2>
-          <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href="https://www.tripadvisor.com/Attraction_Review-g311304-d33242005-Reviews-Paragliding_Experience_in_Sapa_Hotel_Pickup_and_Drop_off-Sapa_Lao_Cai_Province.html" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-[0_10px_24px_-4px_rgba(25,77,155,0.55),0_4px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#2b6fd4] hover:shadow-[0_16px_32px_-4px_rgba(25,77,155,0.65),0_6px_12px_rgba(0,0,0,0.25)]">
-              TripAdvisor
-            </a>
-            <a href="https://www.klook.com/en-US/activity/158451-paragliding-experience-in-sapa/" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-[0_10px_24px_-4px_rgba(25,77,155,0.55),0_4px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#2b6fd4] hover:shadow-[0_16px_32px_-4px_rgba(25,77,155,0.65),0_6px_12px_rgba(0,0,0,0.25)]">
-              Klook
-            </a>
-            <a href="https://www.viator.com/tours/Sapa/Paragliding-Experience-in-Sapa-Hotel-Pickup-and-Drop-off/d50492-5583754P4" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-[0_10px_24px_-4px_rgba(25,77,155,0.55),0_4px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#2b6fd4] hover:shadow-[0_16px_32px_-4px_rgba(25,77,155,0.65),0_6px_12px_rgba(0,0,0,0.25)]">
-              Viator
-            </a>
-            <a href="https://www.getyourguide.com/en-gb/sa-pa-l1049/paragliding-adventure-in-sapa-with-top-vietnamese-pilots-t1128335/" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-[0_10px_24px_-4px_rgba(25,77,155,0.55),0_4px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#2b6fd4] hover:shadow-[0_16px_32px_-4px_rgba(25,77,155,0.65),0_6px_12px_rgba(0,0,0,0.25)]">
-              GetYourGuide
-            </a>
-            <a href="https://www.seeksophie.com/experiences/sapa-sapa-paragliding-over-terraced-valleys-o32jl0rgj6" target="_blank" rel="noopener noreferrer"
-              class="rounded-xl bg-[#194d9b] px-5 py-3 text-base font-bold text-white shadow-[0_10px_24px_-4px_rgba(25,77,155,0.55),0_4px_8px_rgba(0,0,0,0.2)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#2b6fd4] hover:shadow-[0_16px_32px_-4px_rgba(25,77,155,0.65),0_6px_12px_rgba(0,0,0,0.25)]">
-              Seek Sophie
-            </a>
-          </div>
-        </div>
-
         <div class="text-center mb-6 scroll-reveal">
           <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)] mb-2">
             {{ $t('homePage.contactTitle') }}
