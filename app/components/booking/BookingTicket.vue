@@ -547,15 +547,22 @@ const getCanvas = async (): Promise<HTMLCanvasElement | null> =>
 /**
  * Đưa file tới khách.
  *
- * Trên iPhone, thẻ <a download> với blob nhiều khi mở tab trắng rồi thôi;
- * bảng chia sẻ của hệ điều hành là đường lưu file đáng tin nhất — khách chọn
- * "Lưu vào Tệp" hoặc gửi thẳng cho bạn bè. Máy tính không có API này thì rơi
- * về cách tải thông thường.
+ * Trên iPhone/iPad, thẻ <a download> với blob nhiều khi mở tab trắng rồi
+ * thôi; bảng chia sẻ của hệ điều hành là đường lưu file đáng tin nhất —
+ * khách chọn "Lưu vào Tệp" hoặc gửi thẳng cho bạn bè.
+ *
+ * NHƯNG chỉ trên máy CẢM ỨNG. Safari trên máy Mac cũng có navigator.share,
+ * nên nếu chỉ kiểm canShare thì khách bấm "Tải PDF" trên máy tính lại bật
+ * bảng AirDrop/Mail/Notes — trông như nút tải bị hỏng. Máy tính tải thẳng
+ * bằng <a download> như mọi trang web bình thường; maxTouchPoints phân đúng
+ * hai đường: Mac = 0, iPhone/iPad/Android > 0.
  */
 async function deliverFile(blob: Blob, filename: string, mime: string) {
+  const isTouchDevice = (navigator.maxTouchPoints ?? 0) > 0
+
   try {
     const file = new File([blob], filename, { type: mime })
-    if (navigator.canShare?.({ files: [file] })) {
+    if (isTouchDevice && navigator.canShare?.({ files: [file] })) {
       await navigator.share({ files: [file], title: filename })
       return
     }
