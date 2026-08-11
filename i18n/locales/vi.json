@@ -240,7 +240,8 @@
       "seat": "Chỗ ngồi",
       "takeoffPoint": "Điểm cất cánh",
       "scanForDirections": "Quét mã để mở chỉ đường Google Maps",
-      "exportFailed": "Không tải được vé"
+      "exportFailed": "Không tải được vé",
+      "phoneShort": "SĐT"
     },
     "fields": {
       "fullName": "Họ và Tên",

@@ -242,7 +242,8 @@
       "seat": "Seat",
       "takeoffPoint": "Take-off point",
       "scanForDirections": "Scan for Google Maps directions",
-      "exportFailed": "Could not download the ticket"
+      "exportFailed": "Could not download the ticket",
+      "phoneShort": "Phone"
     },
     "fields": {
       "fullName": "Full Name",

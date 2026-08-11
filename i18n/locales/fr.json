@@ -240,7 +240,8 @@
       "seat": "Place",
       "takeoffPoint": "Point de décollage",
       "scanForDirections": "Scannez pour l’itinéraire Google Maps",
-      "exportFailed": "Téléchargement du billet impossible"
+      "exportFailed": "Téléchargement du billet impossible",
+      "phoneShort": "Tél."
     },
     "fields": {
       "fullName": "Nom et prénom",

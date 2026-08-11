@@ -242,7 +242,8 @@
       "seat": "座位",
       "takeoffPoint": "起飞点",
       "scanForDirections": "扫码打开 Google 地图导航",
-      "exportFailed": "无法下载票券"
+      "exportFailed": "无法下载票券",
+      "phoneShort": "电话"
     },
     "fields": {
       "fullName": "姓名",

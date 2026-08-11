@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
     // rất dễ nhìn nhầm và khó đọc qua điện thoại.
     // Ví dụ: bay 29/08, số +84 386 887 489  ->  2908.84386887489
     // Lưu ý: đơn cũ trong database vẫn giữ mã không dấu chấm, không đổi.
-    const bookingId = `${dd}${mm}.${phone}`
+    const baseBookingId = `${dd}${mm}.${phone}`
 
     const passengers = Array.isArray(body.passengers) ? body.passengers : []
     const numberOfPassengers = Number(body.numberOfPassengers || passengers.length || 1)
@@ -67,21 +67,7 @@ export default defineEventHandler(async (event) => {
 
     const bookings = await getBookingsCollection()
 
-    /**
-     * UPSERT theo bookingId, không insert.
-     *
-     * bookingId = ngàybay.sđt và cột này có ràng buộc UNIQUE — cùng một khách
-     * đặt lại cùng ngày bay (bấm gửi hai lần, sửa thông tin rồi gửi lại, hay
-     * thử lại sau khi mạng chập chờn) là insert bị từ chối, khách thấy
-     * "Booking submission failed" và THỬ LẠI BAO NHIÊU LẦN CŨNG THẾ vì mã đã
-     * bị đơn đầu chiếm. Giờ lần gửi sau cùng là bản đúng: đè dữ liệu mới lên
-     * đơn cũ, trả về thành công với đúng mã đó. Trạng thái quay về PENDING để
-     * nhân viên biết đơn vừa đổi mà xác nhận lại; ngày tạo giữ của lần đầu.
-     */
-    await bookings.updateOne(
-      { bookingId },
-      {
-        $set: {
+    const bookingDoc = {
       customerName: body.contactName,
       email: body.email,
       phone: body.phone,
@@ -106,12 +92,38 @@ export default defineEventHandler(async (event) => {
       flightTime: body.preferredTime || '',
       flightDateUtc,
       source: 'website',
-          updatedAt: now
-        },
-        $setOnInsert: { id: bookingId, createdAt: now }
-      },
-      { upsert: true }
-    )
+      createdAt: now,
+      updatedAt: now
+    }
+
+    /**
+     * Trùng mã thì thêm đuôi .1 .2 .3 — KHÔNG đè lên đơn cũ.
+     *
+     * Mã đặt chỗ là ngàybay.sđt và cột này có ràng buộc UNIQUE, nên cùng một
+     * số điện thoại đặt lại cùng ngày bay là bị từ chối vĩnh viễn: khách thấy
+     * "gửi đặt chỗ thất bại" và thử lại bao nhiêu lần cũng thế.
+     *
+     * Đè lên đơn cũ thì mất đơn đầu — mà khách đặt hai lần cùng ngày nhiều
+     * khi là hai nhóm thật (đặt cho mình rồi đặt thêm cho bạn). Nên giữ cả
+     * hai: 2908.84386887489, rồi 2908.84386887489.1, .2...
+     *
+     * Bắt riêng mã lỗi 11000 của MongoDB: lỗi khác (mất mạng, hết quyền ghi)
+     * phải nổ ra ngay chứ không được lặng lẽ thử 20 lần.
+     */
+    const MAX_ATTEMPTS = 20
+    let bookingId = baseBookingId
+
+    for (let attempt = 0; ; attempt++) {
+      bookingId = attempt === 0 ? baseBookingId : `${baseBookingId}.${attempt}`
+
+      try {
+        await bookings.insertOne({ ...bookingDoc, id: bookingId, bookingId })
+        break
+      } catch (error: any) {
+        const isDuplicate = error?.code === 11000
+        if (!isDuplicate || attempt >= MAX_ATTEMPTS) throw error
+      }
+    }
 
     console.log(`✅ Booking received: ${bookingId}`)
     console.log(`📱 Telegram Chat ID: ${body.telegramChatId || 'Not provided'}`)

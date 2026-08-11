@@ -10,10 +10,13 @@
          ============================================================ -->
     <div
       ref="ticketRef"
+      data-ticket-root
       class="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-xl"
     >
-      <!-- ---------- CUỐNG VÉ ---------- -->
-      <div class="relative bg-gradient-to-br from-[#194d9b] via-[#2b6fd4] to-[#5aa9e6] px-5 py-5 text-white sm:px-6">
+      <!-- ---------- CUỐNG VÉ ----------
+           pb-0: hàng thông tin bay nằm SÁT đáy cuống, chạm luôn đường răng
+           cưa — nhìn như dải tóm tắt gắn liền mép vé chứ không lửng lơ. -->
+      <div class="relative bg-gradient-to-br from-[#194d9b] via-[#2b6fd4] to-[#5aa9e6] px-5 pb-0 pt-5 text-white sm:px-6">
         <!-- Mây trang trí: vòng tròn mờ, thuần CSS nên html2canvas dựng lại được -->
         <div class="pointer-events-none absolute -right-8 -top-10 h-36 w-36 rounded-full bg-white/10"></div>
         <div class="pointer-events-none absolute -bottom-12 left-16 h-28 w-28 rounded-full bg-white/10"></div>
@@ -27,13 +30,13 @@
             <img
               src="/images/Sapa_logo.png"
               alt="Sapa Paragliding"
-              class="h-14 w-14 flex-shrink-0 object-contain drop-shadow-lg sm:h-16 sm:w-16"
+              class="h-12 w-12 flex-shrink-0 object-contain drop-shadow-lg sm:h-16 sm:w-16"
             />
             <div class="min-w-0">
               <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-sky-100">
                 {{ $t('booking.ticket.boardingPass') }}
               </p>
-              <h1 class="mt-0.5 break-words text-base font-black leading-tight tracking-tight sm:text-xl">
+              <h1 class="mt-0.5 break-words text-[15px] font-black leading-tight tracking-tight sm:text-xl">
                 {{ $t('booking.ticket.title') }}
               </h1>
               <p class="mt-1 hidden text-xs font-medium text-sky-100 sm:block">
@@ -42,45 +45,48 @@
             </div>
           </div>
 
-          <div class="flex-shrink-0 rounded-lg bg-white/15 px-3 py-2 text-right backdrop-blur-sm">
+          <div class="flex-shrink-0 rounded-lg bg-white/15 px-2.5 py-1.5 text-right backdrop-blur-sm sm:px-3 sm:py-2">
             <p class="text-[9px] font-semibold uppercase tracking-wider text-sky-100">
               {{ $t('booking.ticket.bookingId') }}
             </p>
-            <p class="mt-0.5 max-w-[150px] break-all font-mono text-[13px] font-black leading-snug tracking-wide sm:max-w-none sm:text-base">
+            <p class="mt-0.5 whitespace-nowrap font-mono text-[11px] font-black leading-snug tracking-tight sm:text-base sm:tracking-wide">
               {{ bookingData.bookingId || 'PENDING' }}
             </p>
           </div>
         </div>
 
-        <!-- Hàng dưới: thông tin bay ngay trong cuống vé -->
-        <div class="relative mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
-          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
-            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+        <!-- Dải tóm tắt chuyến bay, sát đáy cuống vé.
+             Nền trắng đục 30% (đậm gấp đôi mức 15% cũ) để nổi hẳn khỏi nền
+             xanh chuyển sắc — ở góc phải cuống vé nền sáng màu, mức 15% gần
+             như tàng hình. Chữ nhỏ lại: nhãn 8px, giá trị 11px. -->
+        <div class="relative -mx-5 mt-4 grid grid-cols-2 gap-px overflow-hidden bg-white/10 sm:-mx-6 sm:grid-cols-4">
+          <div class="bg-white/30 px-2 py-1.5 text-center">
+            <p class="text-[8px] font-bold uppercase tracking-wider text-white/80">
               {{ $t('booking.step5Details.date') }}
             </p>
-            <p class="mt-0.5 whitespace-nowrap text-[13px] font-black">{{ formatDate(bookingData.preferredDate) }}</p>
+            <p class="whitespace-nowrap text-[11px] font-black leading-tight">{{ formatDate(bookingData.preferredDate) }}</p>
           </div>
-          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
-            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+          <div class="bg-white/30 px-2 py-1.5 text-center">
+            <p class="text-[8px] font-bold uppercase tracking-wider text-white/80">
               {{ $t('booking.step5Details.time') }}
             </p>
-            <p class="mt-0.5 whitespace-nowrap text-[13px] font-black">
+            <p class="whitespace-nowrap text-[11px] font-black leading-tight">
               {{ bookingData.preferredTime || $t('booking.step4Details.flexible') }}
             </p>
           </div>
-          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
-            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+          <div class="bg-white/30 px-2 py-1.5 text-center">
+            <p class="text-[8px] font-bold uppercase tracking-wider text-white/80">
               {{ $t('booking.step5Details.passengers') }}
             </p>
-            <p class="mt-0.5 text-[13px] font-black">{{ bookingData.numberOfPassengers }}</p>
+            <p class="text-[11px] font-black leading-tight">{{ bookingData.numberOfPassengers }}</p>
           </div>
-          <!-- "Bản Hang Đá, Sa Pa" phải nằm MỘT dòng: nowrap + chữ 12px là
+          <!-- "Bản Hang Đá, Sa Pa" phải nằm MỘT dòng: nowrap + cỡ 10.5px là
                vừa khít ô nửa màn hình 390px, không để rớt chữ như bản cũ. -->
-          <div class="rounded-lg bg-white/15 px-2 py-2 text-center backdrop-blur-sm">
-            <p class="text-[9px] font-bold uppercase tracking-wider text-sky-100">
+          <div class="bg-white/30 px-2 py-1.5 text-center">
+            <p class="text-[8px] font-bold uppercase tracking-wider text-white/80">
               {{ $t('booking.ticket.takeoffPoint') }}
             </p>
-            <p class="mt-0.5 whitespace-nowrap text-xs font-black leading-snug">{{ TAKEOFF_NAME }}</p>
+            <p class="whitespace-nowrap text-[10.5px] font-black leading-tight">{{ TAKEOFF_NAME }}</p>
           </div>
         </div>
       </div>
@@ -93,14 +99,14 @@
       </div>
 
       <!-- ---------- THÂN VÉ ---------- -->
-      <div class="space-y-4 px-5 pb-6 sm:px-6">
+      <div class="space-y-2.5 px-5 pb-4 sm:px-6">
         <!-- Chuyến bay + liên hệ -->
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2">
           <div class="rounded-xl border border-slate-200 p-4">
             <h3 class="mb-2.5 text-xs font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.flightDetails') }}
             </h3>
-            <div class="space-y-2.5">
+            <div class="space-y-1.5">
               <div class="flex justify-between gap-3">
                 <span class="text-sm text-slate-500">{{ $t('booking.step5Details.service') }}</span>
                 <span class="text-right text-sm font-bold text-slate-900">{{ $t('booking.step1Details.serviceName') }}</span>
@@ -136,7 +142,7 @@
                 <span class="truncate text-right text-sm font-semibold text-slate-900">{{ bookingData.email }}</span>
               </div>
               <div class="flex items-baseline justify-between gap-3">
-                <span class="flex-shrink-0 text-[13px] text-slate-500">{{ $t('booking.step2Details.phone') }}</span>
+                <span class="flex-shrink-0 text-[13px] text-slate-500">{{ phoneLabel }}</span>
                 <span class="whitespace-nowrap text-right text-sm font-bold text-slate-900">{{ bookingData.phone }}</span>
               </div>
             </div>
@@ -160,7 +166,7 @@
             <div
               v-for="(passenger, idx) in bookingData.passengers"
               :key="idx"
-              class="flex items-start gap-2.5 py-2 first:pt-0 last:pb-0"
+              class="flex items-start gap-2.5 py-1.5 first:pt-0 last:pb-0"
             >
               <span class="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#194d9b] text-[10px] font-black text-white">
                 {{ idx + 1 }}
@@ -179,26 +185,29 @@
           </div>
         </div>
 
-        <!-- Giá — nền kem ấm thay cho nền đen -->
-        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4">
-          <div class="mb-3 flex items-center justify-between border-b border-amber-200 pb-3">
+        <!-- Giá + mã QR đứng CÙNG một hàng: trước đây là hai khối chồng
+             nhau, riêng khối QR đã ăn 148px chiều cao mà nửa bên phải bỏ
+             trống. Ghép lại tiết kiệm đúng chiều cao một khối. -->
+        <div class="grid grid-cols-1 gap-2.5 md:grid-cols-2">
+        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-3">
+          <div class="mb-2 flex items-center justify-between border-b border-amber-200 pb-2">
             <p class="text-xs font-black uppercase tracking-wider text-amber-800">
               {{ $t('booking.step5Details.total') }}
             </p>
-            <p class="text-2xl font-black text-[#f02424]">{{ formatPriceVND(totalPriceComputed) }}</p>
+            <p class="text-xl font-black text-[#f02424]">{{ formatPriceVND(totalPriceComputed) }}</p>
           </div>
 
-          <div class="space-y-2">
+          <div class="space-y-1">
             <div
               v-for="(line, idx) in priceBreakdownLines"
               :key="idx"
               class="flex items-start justify-between gap-4"
             >
               <div class="min-w-0">
-                <p class="text-sm font-medium" :class="line.type === 'discount' ? 'text-emerald-700' : 'text-slate-700'">
+                <p class="text-[13px] font-medium leading-snug" :class="line.type === 'discount' ? 'text-emerald-700' : 'text-slate-700'">
                   {{ line.label }}
                 </p>
-                <p v-if="line.detail" class="break-words text-xs text-slate-500">{{ line.detail }}</p>
+                <p v-if="line.detail" class="break-words text-[11px] leading-snug text-slate-500">{{ line.detail }}</p>
               </div>
               <span
                 class="whitespace-nowrap text-sm font-black"
@@ -213,46 +222,49 @@
         <!-- Điểm bay + mã QR: khách quét là mở thẳng ghim Google Maps của
              ĐIỂM CẤT CÁNH (không phải địa chỉ văn phòng), khỏi phải gõ tay
              hay hỏi đường sáng hôm bay. -->
-        <div class="flex items-center gap-4 rounded-xl border-2 border-sky-200 bg-sky-50 p-4">
+        <div class="flex items-center gap-3 rounded-xl border-2 border-sky-200 bg-sky-50 p-3">
           <img
             v-if="takeoffQr"
             :src="takeoffQr"
             alt="QR điểm cất cánh"
-            class="h-28 w-28 flex-shrink-0 rounded-lg bg-white p-1.5"
+            class="h-20 w-20 flex-shrink-0 rounded-lg bg-white p-1"
           />
           <div class="min-w-0">
-            <h3 class="text-xs font-black uppercase tracking-wider text-[#194d9b]">
+            <h3 class="text-[11px] font-black uppercase tracking-wider text-[#194d9b]">
               {{ $t('booking.ticket.takeoffPoint') }}
             </h3>
-            <p class="mt-1 text-base font-black text-slate-900">{{ TAKEOFF_NAME }}</p>
-            <p class="mt-2 text-xs font-semibold text-[#194d9b]">
+            <p class="mt-0.5 text-sm font-black leading-snug text-slate-900">{{ TAKEOFF_NAME }}</p>
+            <p class="mt-1 text-[11px] font-semibold leading-snug text-[#194d9b]">
               📍 {{ $t('booking.ticket.scanForDirections') }}
             </p>
           </div>
         </div>
+        </div>
 
-        <!-- Chuẩn bị trước khi bay — chữ 13px, dòng sít: khối này là phần
-             dài nhất thân vé, nới lỏng là vé dài thêm hẳn một trang in. -->
-        <div class="rounded-xl border border-slate-200 p-4">
-          <h3 class="mb-2 text-xs font-black uppercase tracking-wider text-[#194d9b]">
+        <!-- Chuẩn bị trước khi bay — khối dài nhất thân vé (271px, chiếm
+             hơn 1/5 tấm vé). Chia HAI CỘT trên màn rộng và hạ xuống 12px:
+             cùng ngần ấy chữ nhưng chỉ còn quá nửa chiều cao, đủ để vé một
+             hai khách gói gọn trong một tờ A4. -->
+        <div class="rounded-xl border border-slate-200 p-3">
+          <h3 class="mb-1.5 text-xs font-black uppercase tracking-wider text-[#194d9b]">
             {{ $t('booking.ticket.preFlightInfo.title') }}
           </h3>
-          <div class="space-y-1 text-[13px] leading-snug text-slate-700">
-            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
-            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
-            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
-            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
-            <div class="flex items-start gap-2"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+          <div class="space-y-1 text-xs leading-snug text-slate-700 sm:columns-2 sm:gap-4 sm:space-y-0">
+            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
+            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
+            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
+            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
+            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
           </div>
         </div>
 
         <!-- Chân vé -->
-        <div class="rounded-xl bg-gradient-to-r from-sky-50 to-amber-50 p-5 text-center">
-          <p class="text-base font-black text-[#194d9b]">🪂 {{ $t('booking.ticket.enjoy') }}</p>
-          <p class="mt-2 text-xs leading-relaxed text-slate-500">
+        <div class="rounded-xl bg-gradient-to-r from-sky-50 to-amber-50 p-3 text-center">
+          <p class="text-sm font-black text-[#194d9b]">🪂 {{ $t('booking.ticket.enjoy') }}</p>
+          <p class="mt-1 text-[11px] leading-snug text-slate-500">
             {{ $t('booking.ticket.footer') }}
           </p>
-          <p class="mt-2 text-[11px] text-slate-400">
+          <p class="mt-1 text-[10px] text-slate-400">
             {{ $t('booking.ticket.validationDate') }}: {{ formatDate(new Date().toISOString()) }}
             <span class="mx-1.5">•</span>
             www.paraglidingsapa.com
@@ -305,6 +317,21 @@ const { locale, t } = useI18n()
  * Giới tính lưu là mã 'male'/'female' cho khỏi phụ thuộc ngôn ngữ; ra màn hình
  * mới dịch. Trước đây in thẳng mã ra nên khách nào cũng thấy chữ "male".
  */
+/**
+ * Nhãn ô điện thoại.
+ *
+ * Nhãn cũ "Số Điện Thoại/Whatsapp/Zalo" dài 27 ký tự, cộng với số điện thoại
+ * bên phải là tràn khỏi ô. Rút còn "SĐT" rồi ghép thêm kênh nhắn tin.
+ *
+ * Zalo chỉ ghép khi số là số Việt Nam: khách nước ngoài gần như không dùng
+ * Zalo, in lên vé chỉ tổ khiến họ tưởng phải cài thêm ứng dụng mới liên lạc
+ * được.
+ */
+const phoneLabel = computed(() => {
+  const isVietnamese = /^\+?84\b/.test(String(bookingData.value.phone ?? '').trim())
+  return `${t('booking.ticket.phoneShort')}/WhatsApp${isVietnamese ? '/Zalo' : ''}`
+})
+
 const genderText = (raw: string): string => {
   const value = String(raw ?? '').trim().toLowerCase()
   if (value === 'male') return t('booking.fields.male')
@@ -480,6 +507,19 @@ onMounted(async () => {
  * một tấm vé dài ra vài MB. scale 1.8 vẫn nét trên màn hình retina và khi in
  * A4, mà dữ liệu ít hơn hẳn.
  */
+/**
+ * Bề ngang cố định khi dựng ảnh vé, tính bằng px.
+ *
+ * KHÔNG chụp theo bề ngang màn hình khách. Trên điện thoại vé chỉ rộng 358px
+ * mà cao gần 1800px — tỉ lệ 5:1, nhồi kiểu gì cũng phải cắt làm ba trang A4.
+ * Ép về khổ máy tính thì khách dùng điện thoại vẫn nhận đúng tấm vé một
+ * trang như người tải trên máy tính.
+ *
+ * Vùng in A4 sau khi chừa lề 10mm là 190 × 277mm, tức vé vừa một trang khi
+ * cao/rộng ≤ 1,46 — với 672px thì trần chiều cao là 980px.
+ */
+const TICKET_RENDER_WIDTH = 672
+
 async function renderTicketCanvas(): Promise<HTMLCanvasElement | null> {
   if (!ticketRef.value) return null
   const html2canvas = (await import('html2canvas')).default
@@ -487,7 +527,18 @@ async function renderTicketCanvas(): Promise<HTMLCanvasElement | null> {
     scale: 1.8,
     useCORS: true,
     backgroundColor: '#ffffff',
-    logging: false
+    logging: false,
+    // windowWidth: để bản sao dùng đúng các quy tắc màn rộng (sm:, md:) —
+    // thiếu nó thì bản chụp trên điện thoại vẫn là bố cục một cột.
+    windowWidth: 1024,
+    width: TICKET_RENDER_WIDTH,
+    onclone: (doc: Document) => {
+      const clone = doc.querySelector('[data-ticket-root]') as HTMLElement | null
+      if (clone) {
+        clone.style.width = `${TICKET_RENDER_WIDTH}px`
+        clone.style.maxWidth = 'none'
+      }
+    }
   })
 }
 
@@ -591,14 +642,11 @@ const downloadTicketImage = async () => {
 /**
  * Xuất PDF.
  *
- * Bản cũ nhúng ảnh PNG ở tỉ lệ 2× vào PDF khổ A4 và đặt tràn hết bề rộng
- * (0,0,210,...) nên vé dính sát mép giấy, lại nặng vài MB.
- *
- * Bản này:
  *   • JPEG chất lượng 0.82 thay PNG — ảnh vé là nền phẳng + chữ, JPEG nén
  *     tốt hơn nhiều lần mà nhìn không khác.
  *   • Chừa lề 10mm mỗi bên nên vé không dính mép giấy.
- *   • Vé dài quá một trang thì tự cắt sang trang tiếp, không bị mất phần đuôi.
+ *   • Vé hơi dài hơn trang giấy thì THU NHỎ cho vừa một trang; dài hẳn mới
+ *     cắt sang trang tiếp.
  */
 const downloadTicketPDF = async () => {
   if (isExporting.value) return
@@ -619,8 +667,27 @@ const downloadTicketPDF = async () => {
     const imgHeight = (canvas.height * imgWidth) / canvas.width
     const usableH = PAGE_H - MARGIN * 2
 
+    /**
+     * Mức thu nhỏ tối thiểu còn chấp nhận được. Dưới ngưỡng này thì chữ trên
+     * giấy bắt đầu khó đọc, thà cắt hai trang còn hơn.
+     */
+    const MIN_SHRINK = 0.72
+
     if (imgHeight <= usableH) {
       pdf.addImage(imgData, 'JPEG', MARGIN, MARGIN, imgWidth, imgHeight, undefined, 'FAST')
+    } else if (usableH / imgHeight >= MIN_SHRINK) {
+      /**
+       * Thu vừa một trang.
+       *
+       * Vé một hai khách chỉ dài hơn vùng in đúng vài milimét — đủ để bị đẩy
+       * sang trang thứ hai chỉ chứa một mẩu chân vé, trông như in hỏng. Thu
+       * nhỏ vài phần trăm rồi căn giữa thì mắt thường không nhận ra, mà vé
+       * gọn đúng một tờ. Đông khách hơn, vé dài hẳn ra thì rơi xuống nhánh
+       * cắt trang bên dưới.
+       */
+      const shrink = usableH / imgHeight
+      const drawW = imgWidth * shrink
+      pdf.addImage(imgData, 'JPEG', (PAGE_W - drawW) / 2, MARGIN, drawW, usableH, undefined, 'FAST')
     } else {
       // Vé dài hơn một trang: dịch ảnh lên theo từng trang rồi cắt bằng
       // vùng in của trang đó.

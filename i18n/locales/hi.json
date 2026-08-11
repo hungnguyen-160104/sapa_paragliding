@@ -240,7 +240,8 @@
       "seat": "सीट",
       "takeoffPoint": "टेकऑफ़ पॉइंट",
       "scanForDirections": "Google Maps दिशा के लिए स्कैन करें",
-      "exportFailed": "टिकट डाउनलोड नहीं हो सका"
+      "exportFailed": "टिकट डाउनलोड नहीं हो सका",
+      "phoneShort": "फ़ोन"
     },
     "fields": {
       "fullName": "पूरा नाम",

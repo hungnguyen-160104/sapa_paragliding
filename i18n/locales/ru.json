@@ -240,7 +240,8 @@
       "seat": "Место",
       "takeoffPoint": "Точка взлёта",
       "scanForDirections": "Отсканируйте для маршрута в Google Maps",
-      "exportFailed": "Не удалось скачать билет"
+      "exportFailed": "Не удалось скачать билет",
+      "phoneShort": "Тел."
     },
     "fields": {
       "fullName": "Имя и фамилия",
