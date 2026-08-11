@@ -202,10 +202,21 @@ function emailMoneyRow(label: string, amount: string, opts?: { detail?: string; 
  * Che bớt số giấy tờ: giữ 3 ký tự cuối, phần còn lại thay bằng dấu chấm.
  * Email đi qua nhiều máy chủ trung gian nên không nên mang số đầy đủ.
  */
+/**
+ * Che số giấy tờ: chỉ để lộ 4 ký tự cuối, phần đầu thay bằng chữ X.
+ *
+ * Dùng chữ X chứ không dùng dấu chấm tròn: dấu chấm dễ bị trình đọc email
+ * nuốt mất hoặc hiện thành ô vuông, khách nhìn tưởng vé hỏng. Bốn số cuối là
+ * đủ để khách tự đối chiếu mình khai đúng giấy tờ nào.
+ *
+ * CHỈ dùng cho thứ gửi tới khách. Email nội bộ giữ nguyên số đầy đủ vì nhân
+ * viên cần đối chiếu giấy tờ thật lúc khách tới bay.
+ */
 function maskIdNumber(raw: unknown): string {
   const value = String(raw ?? '').trim()
-  if (value.length <= 3) return value || '—'
-  return '•'.repeat(Math.min(value.length - 3, 9)) + value.slice(-3)
+  if (!value) return '—'
+  if (value.length <= 4) return value
+  return 'X'.repeat(Math.min(value.length - 4, 8)) + value.slice(-4)
 }
 
 /**

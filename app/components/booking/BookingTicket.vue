@@ -178,7 +178,7 @@
                   <span class="mx-1 text-slate-300">•</span>{{ genderText(passenger.gender) }}
                   <span class="mx-1 text-slate-300">•</span>{{ passenger.weight }}kg
                   <span class="mx-1 text-slate-300">•</span>{{ passenger.nationality }}
-                  <span class="mx-1 text-slate-300">•</span>{{ passenger.passportOrId }}
+                  <span class="mx-1 text-slate-300">•</span>{{ maskedId(passenger.passportOrId) }}
                 </p>
               </div>
             </div>
@@ -241,20 +241,29 @@
         </div>
         </div>
 
-        <!-- Chuẩn bị trước khi bay — khối dài nhất thân vé (271px, chiếm
-             hơn 1/5 tấm vé). Chia HAI CỘT trên màn rộng và hạ xuống 12px:
-             cùng ngần ấy chữ nhưng chỉ còn quá nửa chiều cao, đủ để vé một
-             hai khách gói gọn trong một tờ A4. -->
+        <!-- Chuẩn bị trước khi bay — khối dài nhất thân vé. Chia hai cột và
+             hạ xuống 12px: cùng ngần ấy chữ nhưng chỉ còn quá nửa chiều cao,
+             đủ để vé một hai khách gói gọn một tờ A4.
+
+             Chia cột THỦ CÔNG chứ không dùng columns-2: để trình duyệt tự rót
+             thì nó cắt theo số dòng, hai đoạn dài nhất ("Sau khi đặt chỗ…" và
+             "Cách di chuyển…") rơi lệch nhau nên một cột thừa hẳn hai dòng.
+             Gom hai đoạn dài vào một cột, ba đoạn ngắn vào cột kia thì hai
+             bên cao gần bằng nhau. -->
         <div class="rounded-xl border border-slate-200 p-3">
           <h3 class="mb-1.5 text-xs font-black uppercase tracking-wider text-[#194d9b]">
             {{ $t('booking.ticket.preFlightInfo.title') }}
           </h3>
-          <div class="space-y-1 text-xs leading-snug text-slate-700 sm:columns-2 sm:gap-4 sm:space-y-0">
-            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
-            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
-            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
-            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
-            <div class="mb-1 flex break-inside-avoid items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+          <div class="grid grid-cols-1 gap-x-4 gap-y-1 text-xs leading-snug text-slate-700 sm:grid-cols-2">
+            <div class="space-y-1">
+              <div class="flex items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.pickup') }}</p></div>
+              <div class="flex items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.transport') }}</p></div>
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.clothing') }}</p></div>
+              <div class="flex items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.storage') }}</p></div>
+              <div class="flex items-start gap-1.5"><span class="flex-shrink-0 text-[#f02424]">✓</span><p>{{ $t('booking.ticket.preFlightInfo.belongings') }}</p></div>
+            </div>
           </div>
         </div>
 
@@ -331,6 +340,21 @@ const phoneLabel = computed(() => {
   const isVietnamese = /^\+?84\b/.test(String(bookingData.value.phone ?? '').trim())
   return `${t('booking.ticket.phoneShort')}/WhatsApp${isVietnamese ? '/Zalo' : ''}`
 })
+
+/**
+ * Che số giấy tờ trên vé: chỉ để lộ 4 số cuối.
+ *
+ * Vé là thứ khách hay chụp màn hình gửi bạn bè hoặc đưa lễ tân khách sạn —
+ * in nguyên số căn cước lên đó là phát tán giấy tờ của chính khách. Bốn số
+ * cuối đủ để khách tự soát mình khai đúng giấy tờ nào. Nhân viên cần số đầy
+ * đủ thì đã có trong email nội bộ.
+ */
+const maskedId = (raw: string): string => {
+  const value = String(raw ?? '').trim()
+  if (!value) return '—'
+  if (value.length <= 4) return value
+  return 'X'.repeat(Math.min(value.length - 4, 8)) + value.slice(-4)
+}
 
 const genderText = (raw: string): string => {
   const value = String(raw ?? '').trim().toLowerCase()
