@@ -301,7 +301,8 @@
       "group2": "2 people: 5% discount",
       "group3": "3+ people: 10% discount",
       "group5": "5+ people: 15% discount"
-    }
+    },
+    "submitFailed": "Booking could not be submitted. Please try again — if it still fails, message us on WhatsApp +84 386 887 489 and we will hold your slot."
   },
   "pilots": {
     "title": "Our Expert Pilots",

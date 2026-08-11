@@ -299,7 +299,8 @@
       "group2": "2 personnes : -5 %",
       "group3": "3+ personnes : -10 %",
       "group5": "5+ personnes : -15 %"
-    }
+    },
+    "submitFailed": "La réservation n’a pas pu être envoyée. Réessayez — si le problème persiste, écrivez-nous sur WhatsApp au +84 386 887 489 et nous garderons votre place."
   },
   "pilots": {
     "title": "Équipe de pilotes",

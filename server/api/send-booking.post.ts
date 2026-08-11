@@ -67,9 +67,21 @@ export default defineEventHandler(async (event) => {
 
     const bookings = await getBookingsCollection()
 
-    await bookings.insertOne({
-      id: bookingId,
-      bookingId,
+    /**
+     * UPSERT theo bookingId, không insert.
+     *
+     * bookingId = ngàybay.sđt và cột này có ràng buộc UNIQUE — cùng một khách
+     * đặt lại cùng ngày bay (bấm gửi hai lần, sửa thông tin rồi gửi lại, hay
+     * thử lại sau khi mạng chập chờn) là insert bị từ chối, khách thấy
+     * "Booking submission failed" và THỬ LẠI BAO NHIÊU LẦN CŨNG THẾ vì mã đã
+     * bị đơn đầu chiếm. Giờ lần gửi sau cùng là bản đúng: đè dữ liệu mới lên
+     * đơn cũ, trả về thành công với đúng mã đó. Trạng thái quay về PENDING để
+     * nhân viên biết đơn vừa đổi mà xác nhận lại; ngày tạo giữ của lần đầu.
+     */
+    await bookings.updateOne(
+      { bookingId },
+      {
+        $set: {
       customerName: body.contactName,
       email: body.email,
       phone: body.phone,
@@ -94,9 +106,12 @@ export default defineEventHandler(async (event) => {
       flightTime: body.preferredTime || '',
       flightDateUtc,
       source: 'website',
-      createdAt: now,
-      updatedAt: now
-    })
+          updatedAt: now
+        },
+        $setOnInsert: { id: bookingId, createdAt: now }
+      },
+      { upsert: true }
+    )
 
     console.log(`✅ Booking received: ${bookingId}`)
     console.log(`📱 Telegram Chat ID: ${body.telegramChatId || 'Not provided'}`)

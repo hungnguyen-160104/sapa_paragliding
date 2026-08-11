@@ -299,7 +299,8 @@
       "group2": "2 người: Giảm 5%",
       "group3": "3+ người: Giảm 10%",
       "group5": "5+ người: Giảm 15%"
-    }
+    },
+    "submitFailed": "Gửi đặt chỗ chưa thành công. Vui lòng thử lại — nếu vẫn lỗi, nhắn WhatsApp/Zalo +84 386 887 489 để chúng tôi giữ chỗ cho bạn."
   },
   "pilots": {
     "title": "Đội Ngũ Phi Công",

@@ -573,13 +573,15 @@ const handleSubmit = async () => {
     const result = await bookingStore.submitBooking(locale.value as string)
 
     if (!result.success) {
-      alert('Booking submission failed. Please try again.')
+      // Thông báo theo ngôn ngữ khách — alert tiếng Anh cụt lủn không giúp
+      // khách Pháp/Nga biết phải làm gì tiếp.
+      alert(t('booking.submitFailed'))
       turnstileRef.value?.reset()
       captchaToken.value = null
     }
   } catch (error) {
     console.error('Booking error:', error)
-    alert('An error occurred. Please try again.')
+    alert(t('booking.submitFailed'))
     turnstileRef.value?.reset()
     captchaToken.value = null
   } finally {
