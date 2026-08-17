@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import { Booking, Customer } from '../models'
 import type { CreateBookingDTO, BookingStatus, PaginationParams } from '../types'
 import { notificationService } from './notification.service'
+import { pushBookingToMebayluon } from './mebayluon.service'
 
 // ============================================
 // TYPES
@@ -119,6 +120,14 @@ export class BookingService {
       if (createdBooking) {
         this.sendNotifications(createdBooking, customer, data).catch((err) => {
           console.error('Failed to send notifications:', err)
+        })
+        /**
+         * Đẩy sang SỔ ĐIỀU HÀNH mebayluon.com để đội trực Sa Pa thấy đơn ngay,
+         * khỏi gõ tay lại. Non-blocking và tự nuốt lỗi: đơn của khách đã lưu
+         * xong, đồng bộ hỏng thì đội trực nhập tay như trước.
+         */
+        pushBookingToMebayluon(createdBooking, customer).catch((err) => {
+          console.error('Failed to push booking to mebayluon:', err)
         })
       }
       
@@ -262,7 +271,7 @@ export class BookingService {
     // Remove fields that shouldn't be updated directly
     const { _id, bookingId: _, customerId, createdAt, ...safeUpdates } = updates
     
-    return Booking.findOneAndUpdate(
+    const updated = await Booking.findOneAndUpdate(
       { bookingId },
       {
         $set: {
@@ -272,6 +281,17 @@ export class BookingService {
       },
       { new: true }
     ).populate('customerId').lean()
+
+    /**
+     * Đơn đổi giờ đón, đổi số khách, đổi điểm đón… thì đẩy lại sang sổ điều hành.
+     * Bên đó khoá theo MÃ ĐƠN nên đây là SỬA đúng booking cũ, không sinh bản trùng.
+     */
+    if (updated) {
+      pushBookingToMebayluon(updated, (updated as any).customerId).catch((err) => {
+        console.error('Failed to push booking update to mebayluon:', err)
+      })
+    }
+    return updated
   }
   
   /**
