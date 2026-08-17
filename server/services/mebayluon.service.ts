@@ -68,7 +68,9 @@ function noteOf(booking: any): string {
     .filter(Boolean)
   if (weights.length) parts.push(weights.join(', '))
 
-  if (booking?.specialRequests) parts.push(String(booking.specialRequests))
+  /** Đơn thật lưu yêu cầu riêng ở `notes`; bản cũ hơn dùng `specialRequests`. */
+  const request = booking?.specialRequests || booking?.notes
+  if (request) parts.push(String(request).replace(/\s*\n+\s*/g, ' · '))
   return parts.join(' · ').slice(0, 900)
 }
 
@@ -77,10 +79,14 @@ export function toMebayluonPayload(booking: any, customer?: any): MebayluonBooki
   return {
     ref: String(booking?.bookingId ?? ''),
     flightDate: dateKeyVN(booking?.flightDate),
-    pickupTime: String(booking?.flightTime ?? ''),
-    pickupPoint: String(booking?.pickupLocation ?? ''),
-    name: String(customer?.fullName ?? booking?.customerName ?? booking?.contactName ?? ''),
-    phone: String(customer?.phone ?? booking?.phone ?? ''),
+    pickupTime: String(booking?.flightTime || booking?.preferredTime || ''),
+    /**
+     * Điểm đón: ô `pickupLocation` hay bị để trống, khi đó `location` mới là chỗ
+     * khách ghi (tên homestay, "Sapa"…). Lấy cái nào có chữ.
+     */
+    pickupPoint: String(booking?.pickupLocation || booking?.location || ''),
+    name: String(customer?.fullName || booking?.customerName || booking?.contactName || ''),
+    phone: String(customer?.phone || booking?.phone || ''),
     guests: Number(booking?.numberOfPassengers ?? 0),
     source: booking?.source === 'website' ? 'Website Sa Pa' : String(booking?.source ?? 'Website Sa Pa'),
     note: noteOf(booking),
