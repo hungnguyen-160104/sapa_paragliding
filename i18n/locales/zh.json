@@ -67,7 +67,7 @@
       "takeoffPoint": "起飞点：Hau Thao 山",
       "landingPoint": "降落点：Lao Chai 村",
       "viewMap": "查看地图 →",
-      "promotionInfo": "团体预订可享直减优惠",
+      "promotionInfo": "4 人及以上团体，每人直减 50,000 越南盾",
       "youSave": "🎉 您节省：",
       "priceSummary": "费用明细",
       "flightPriceFor": "飞行费用",
@@ -103,10 +103,7 @@
         "gopro": "标准GoPro飞行拍摄：免费"
       },
       "promotions": {
-        "group2": "2 人及以上团体",
-        "group3": "3 人及以上团体",
-        "group4": "4 人及以上团体",
-        "group6": "6 人及以上团体"
+        "group4": "4 人及以上团体"
       }
     },
     "step2Details": {
@@ -299,9 +296,7 @@
       }
     },
     "discount": {
-      "group2": "2 人：95 折",
-      "group3": "3 人及以上：9 折",
-      "group5": "5 人及以上：85 折"
+      "group4": "4 人及以上：每人优惠 50,000 越南盾"
     },
     "submitFailed": "预订提交失败。请重试——如果仍然失败，请通过 WhatsApp +84 386 887 489 联系我们，我们会为您保留名额。"
   },

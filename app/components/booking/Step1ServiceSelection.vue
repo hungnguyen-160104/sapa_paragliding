@@ -288,6 +288,13 @@
 
 <script setup lang="ts">
 import { useBookingStore } from '~/stores/booking'
+import {
+  GROUP_DISCOUNT_MIN_PEOPLE,
+  GROUP_DISCOUNT_VND,
+  GROUP_DISCOUNT_USD,
+  groupDiscountPerPerson,
+  groupDiscountPerPersonUSD
+} from '~~/shared/pricing'
 
 interface OptionalService {
   id: string
@@ -419,27 +426,17 @@ const selectedOptionsView = computed(() => selectedOptions.value)
 const serviceQuantitiesView = computed(() => serviceQuantities.value)
 
 const promotions = computed(() => [
-  { minPeople: 2, text: t('booking.step1Details.promotions.group2'), discountVND: 50000, discountUSD: 2 },
-  { minPeople: 3, text: t('booking.step1Details.promotions.group3'), discountVND: 70000, discountUSD: 3 },
-  { minPeople: 4, text: t('booking.step1Details.promotions.group4'), discountVND: 100000, discountUSD: 4 },
-  { minPeople: 6, text: t('booking.step1Details.promotions.group6'), discountVND: 150000, discountUSD: 6 }
+  {
+    minPeople: GROUP_DISCOUNT_MIN_PEOPLE,
+    text: t('booking.step1Details.promotions.group4'),
+    discountVND: GROUP_DISCOUNT_VND,
+    discountUSD: GROUP_DISCOUNT_USD
+  }
 ])
 
-const activeDiscount = computed(() => {
-  for (let i = promotions.value.length - 1; i >= 0; i--) {
-    const promo = promotions.value[i]
-    if (promo && numberOfPassengers.value >= promo.minPeople) return promo.discountVND
-  }
-  return 0
-})
+const activeDiscount = computed(() => groupDiscountPerPerson(numberOfPassengers.value))
 
-const activeDiscountUSD = computed(() => {
-  for (let i = promotions.value.length - 1; i >= 0; i--) {
-    const promo = promotions.value[i]
-    if (promo && numberOfPassengers.value >= promo.minPeople) return promo.discountUSD
-  }
-  return 0
-})
+const activeDiscountUSD = computed(() => groupDiscountPerPersonUSD(numberOfPassengers.value))
 
 const optionalServicesTotal = computed(() => {
   let total = 0

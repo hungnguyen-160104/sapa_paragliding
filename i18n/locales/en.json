@@ -67,7 +67,7 @@
       "takeoffPoint": "Take-off Point: Hau Thao Mountain",
       "landingPoint": "Landing Point: Lao Chai Village",
       "viewMap": "View Map →",
-      "promotionInfo": "Direct discount for group bookings",
+      "promotionInfo": "Direct 50,000 VND/person discount for groups of 4 or more",
       "youSave": "🎉 You save:",
       "priceSummary": "Price Summary",
       "flightPriceFor": "Flight Price",
@@ -103,10 +103,7 @@
         "gopro": "Standard GoPro flight recording: FREE"
       },
       "promotions": {
-        "group2": "Group of 2 or more",
-        "group3": "Group of 3 or more",
-        "group4": "Group of 4 or more",
-        "group6": "Group of 6 or more"
+        "group4": "Group of 4 or more"
       }
     },
     "step2Details": {
@@ -299,9 +296,7 @@
       }
     },
     "discount": {
-      "group2": "2 people: 5% discount",
-      "group3": "3+ people: 10% discount",
-      "group5": "5+ people: 15% discount"
+      "group4": "4+ people: 50,000 VND/person off"
     },
     "submitFailed": "Booking could not be submitted. Please try again — if it still fails, message us on WhatsApp +84 386 887 489 and we will hold your slot."
   },

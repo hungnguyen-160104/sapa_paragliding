@@ -1,4 +1,5 @@
 import { getBookingsCollection } from '../utils/db'
+import { groupDiscountPerPerson } from '../../shared/pricing'
 
 const normalizeDate = (value?: string | null) => {
   if (!value) return null
@@ -61,7 +62,9 @@ export default defineEventHandler(async (event) => {
     const numberOfPassengers = Number(body.numberOfPassengers || passengers.length || 1)
 
     const servicePrice = Number(body.servicePrice) || 0
-    const totalPrice = Number(body.totalPrice) || servicePrice * numberOfPassengers
+    const discountPerPerson = groupDiscountPerPerson(numberOfPassengers)
+    const optionalServicesTotal = Number(body.optionalServicesTotal) || 0
+    const totalPrice = servicePrice * numberOfPassengers - discountPerPerson * numberOfPassengers + optionalServicesTotal
 
     const flightDateUtc = normalizeDate(body.preferredDate) || now
 
@@ -81,11 +84,11 @@ export default defineEventHandler(async (event) => {
       passengers,
       selectedOptions: body.selectedOptions || [],
       serviceQuantities: body.serviceQuantities || {},
-      optionalServicesTotal: body.optionalServicesTotal || 0,
+      optionalServicesTotal,
       notes: body.specialRequests || '',
       telegramChatId: body.telegramChatId,
       price: totalPrice,
-      discountPerPerson: Number(body.discount) || 0,
+      discountPerPerson,
       pickupLocation: body.pickupLocation,
       preferredTime: body.preferredTime,
       flightDate: body.preferredDate || flightDateUtc.toISOString().split('T')[0],

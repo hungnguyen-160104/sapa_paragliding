@@ -67,7 +67,7 @@
       "takeoffPoint": "Toạ độ điểm cất cánh: Núi Hầu Thào",
       "landingPoint": "Toạ độ điểm hạ cánh: Bản Lao Chải",
       "viewMap": "Xem bản đồ →",
-      "promotionInfo": "Giảm giá trực tiếp khi đăng ký theo nhóm",
+      "promotionInfo": "Giảm trực tiếp 50.000đ/người cho nhóm từ 4 khách",
       "youSave": "🎉 Bạn được giảm:",
       "priceSummary": "Tổng kết giá",
       "flightPriceFor": "Giá bay",
@@ -103,10 +103,7 @@
         "gopro": "Quay chuyến bay bằng GoPro tiêu chuẩn: FREE"
       },
       "promotions": {
-        "group2": "Nhóm từ 2 người trở lên",
-        "group3": "Nhóm từ 3 người trở lên",
-        "group4": "Nhóm từ 4 người trở lên",
-        "group6": "Nhóm từ 6 người trở lên"
+        "group4": "Nhóm từ 4 khách trở lên"
       }
     },
     "step2Details": {
@@ -297,9 +294,7 @@
       }
     },
     "discount": {
-      "group2": "2 người: Giảm 5%",
-      "group3": "3+ người: Giảm 10%",
-      "group5": "5+ người: Giảm 15%"
+      "group4": "4+ khách: Giảm 50.000đ/người"
     },
     "submitFailed": "Gửi đặt chỗ chưa thành công. Vui lòng thử lại — nếu vẫn lỗi, nhắn WhatsApp/Zalo +84 386 887 489 để chúng tôi giữ chỗ cho bạn."
   },

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { groupDiscountPerPerson } from '~~/shared/pricing'
 
 export interface PassengerInfo {
   fullName: string
@@ -102,14 +103,8 @@ export const useBookingStore = defineStore('booking', {
 
   getters: {
     // Discount per person (VND)
-    calculatedDiscountPerPerson: (state): number => {
-      const passengers = state.bookingData.numberOfPassengers
-      if (passengers >= 6) return 150000
-      if (passengers >= 4) return 100000
-      if (passengers >= 3) return 70000
-      if (passengers >= 2) return 50000
-      return 0
-    },
+    calculatedDiscountPerPerson: (state): number =>
+      groupDiscountPerPerson(state.bookingData.numberOfPassengers),
 
     optionalServicesTotal: (state): number => {
       let total = 0

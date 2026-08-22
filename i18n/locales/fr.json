@@ -67,7 +67,7 @@
       "takeoffPoint": "Coordonnées du décollage : Mont Hau Thao",
       "landingPoint": "Coordonnées de l’atterrissage : Village de Lao Chải",
       "viewMap": "Voir la carte →",
-      "promotionInfo": "Réduction directe pour les réservations en groupe",
+      "promotionInfo": "Réduction directe de 50 000 VND/personne pour les groupes de 4 personnes ou plus",
       "youSave": "🎉 Vous économisez :",
       "priceSummary": "Récapitulatif des prix",
       "flightPriceFor": "Prix du vol",
@@ -103,10 +103,7 @@
         "gopro": "Vidéo du vol avec GoPro standard : GRATUIT"
       },
       "promotions": {
-        "group2": "Groupe à partir de 2 personnes",
-        "group3": "Groupe à partir de 3 personnes",
-        "group4": "Groupe à partir de 4 personnes",
-        "group6": "Groupe à partir de 6 personnes"
+        "group4": "Groupe à partir de 4 personnes"
       }
     },
     "step2Details": {
@@ -297,9 +294,7 @@
       }
     },
     "discount": {
-      "group2": "2 personnes : -5 %",
-      "group3": "3+ personnes : -10 %",
-      "group5": "5+ personnes : -15 %"
+      "group4": "4+ personnes : -50 000 VND/personne"
     },
     "submitFailed": "La réservation n’a pas pu être envoyée. Réessayez — si le problème persiste, écrivez-nous sur WhatsApp au +84 386 887 489 et nous garderons votre place."
   },

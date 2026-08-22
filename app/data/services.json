@@ -109,23 +109,11 @@
     "image": "premium-flight.jpg"
   },
   "discounts": {
-    "group2": {
-      "minPeople": 2,
-      "discount": 0.05,
-      "description": "5% discount for 2 people",
-      "descriptionZh": "2 人享 5% 折扣"
-    },
-    "group3": {
-      "minPeople": 3,
-      "discount": 0.1,
-      "description": "10% discount for 3-4 people",
-      "descriptionZh": "3–4 人享 10% 折扣"
-    },
-    "group5": {
-      "minPeople": 5,
-      "discount": 0.15,
-      "description": "15% discount for 5+ people",
-      "descriptionZh": "5 人及以上享 15% 折扣"
+    "group4": {
+      "minPeople": 4,
+      "discountVND": 50000,
+      "description": "50,000 VND discount per person for groups of 4 or more",
+      "descriptionZh": "4 人及以上每人优惠 50,000 越南盾"
     }
   }
 }

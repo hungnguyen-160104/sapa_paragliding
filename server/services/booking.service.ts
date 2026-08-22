@@ -7,6 +7,7 @@ import { Booking, Customer } from '../models'
 import type { CreateBookingDTO, BookingStatus, PaginationParams } from '../types'
 import { notificationService } from './notification.service'
 import { pushBookingToMebayluon } from './mebayluon.service'
+import { groupDiscountPerPerson } from '../../shared/pricing'
 
 // ============================================
 // TYPES
@@ -69,7 +70,8 @@ export class BookingService {
       const bookingId = this.generateBookingId(data.phone, data.preferredDate)
       
       // Step 3: Calculate pricing
-      const totalPrice = this.calculateTotalPrice(data)
+      const discountPerPerson = groupDiscountPerPerson(data.numberOfPassengers)
+      const totalPrice = this.calculateTotalPrice(data, discountPerPerson)
       
       // Step 4: Create booking
       const booking = await Booking.create([{
@@ -87,7 +89,7 @@ export class BookingService {
         
         // Pricing
         totalPrice,
-        discountAmount: data.discount || 0,
+        discountAmount: discountPerPerson,
         optionalServicesTotal: data.optionalServicesTotal || 0,
         
         // Schedule
@@ -352,10 +354,10 @@ export class BookingService {
     return `${day}${month}${phoneDigits}`
   }
   
-  private calculateTotalPrice(data: CreateBookingDTO): number {
+  private calculateTotalPrice(data: CreateBookingDTO, discountPerPerson: number): number {
     const basePrice = data.servicePrice * data.numberOfPassengers
     const optionalServices = data.optionalServicesTotal || 0
-    const discount = (data.discount || 0) * data.numberOfPassengers
+    const discount = discountPerPerson * data.numberOfPassengers
     
     return Math.max(0, basePrice + optionalServices - discount)
   }
