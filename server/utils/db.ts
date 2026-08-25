@@ -14,6 +14,24 @@ const getMongoUri = () => {
 }
 
 /**
+ * Tuỳ chọn kết nối, KHAI Ở ĐÚNG MỘT CHỖ.
+ *
+ * Trước đây plugin khởi động truyền maxPoolSize/serverSelectionTimeoutMS còn
+ * hàm dưới gọi mongoose.connect() trần không tuỳ chọn nào. Hai lời gọi chồng
+ * lên nhau thì tuỳ chọn nào thắng là chuyện hên xui.
+ */
+const MONGO_OPTIONS = {
+  maxPoolSize: 10,
+  minPoolSize: 2,
+  // 4 giây, không phải mặc định 30 giây của mongoose: khi database thật sự
+  // không với tới được, một request hỏng phải trả 503 trong khoảng thời gian
+  // Vercel còn cho phép chạy (thử lại một lần ở stores/posts.ts nữa là 8,4
+  // giây, đã đo), chứ không để hàm bị cắt giữa chừng thành 504.
+  serverSelectionTimeoutMS: 4000,
+  socketTimeoutMS: 45000
+} as const
+
+/**
  * Kết nối đang dở dang, dùng chung cho mọi lời gọi đồng thời.
  *
  * Trước đây hàm dưới chỉ xử lý readyState 0 (chưa kết nối) và 1 (đã kết nối).
@@ -27,23 +45,30 @@ const getMongoUri = () => {
  */
 let connectionPromise: Promise<unknown> | null = null
 
-export async function connectToDatabase() {
-  const readyState = mongoose.connection.readyState
-
-  // 1 = đã kết nối
-  if (readyState === 1 && mongoose.connection.db) {
-    return { client: mongoose.connection.getClient(), db: mongoose.connection.db }
-  }
-
+/**
+ * Điểm vào DUY NHẤT được phép gọi mongoose.connect().
+ *
+ * server/plugins/mongoose.ts cũng phải đi qua đây. Trước đây plugin tự gọi
+ * mongoose.connect() lúc khởi động mà không ghi promise vào biến trên, nên
+ * request đầu tiên của một instance mới thấy readyState 2 nhưng
+ * connectionPromise vẫn null — và gọi connect() lần thứ hai chồng lên lần
+ * đang chạy. Đó chính là khe làm /api/posts trả 500 lúc cold start, kéo theo
+ * trang /posts và trang chủ render ra HTML không có bài nào.
+ *
+ * Đặt promise một cách ĐỒNG BỘ (mongoose.connect() trả promise ngay) để mọi
+ * request ập tới sau đều nhìn thấy và cùng chờ, kể cả khi Nitro không await
+ * plugin khởi động.
+ */
+export function ensureConnection(): Promise<unknown> {
   // 0 = đã ngắt hẳn: bỏ promise cũ để lần này kết nối lại từ đầu.
   // Mongoose đặt readyState = 2 ngay trong lời gọi connect() nên readyState 0
   // bảo đảm không có request nào khác đang kết nối dở.
-  if (readyState === 0) {
+  if (mongoose.connection.readyState === 0) {
     connectionPromise = null
   }
 
   if (!connectionPromise) {
-    connectionPromise = mongoose.connect(getMongoUri()).catch((error) => {
+    connectionPromise = mongoose.connect(getMongoUri(), MONGO_OPTIONS).catch((error) => {
       // Xoá promise hỏng, nếu không mọi request sau đều nhận lại đúng lỗi này
       // và tiến trình không bao giờ tự phục hồi được.
       connectionPromise = null
@@ -52,7 +77,16 @@ export async function connectToDatabase() {
     })
   }
 
-  await connectionPromise
+  return connectionPromise
+}
+
+export async function connectToDatabase() {
+  // 1 = đã kết nối
+  if (mongoose.connection.readyState === 1 && mongoose.connection.db) {
+    return { client: mongoose.connection.getClient(), db: mongoose.connection.db }
+  }
+
+  await ensureConnection()
 
   const db = mongoose.connection.db
   if (!db) {

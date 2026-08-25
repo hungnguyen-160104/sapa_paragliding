@@ -189,6 +189,22 @@ if (import.meta.server) {
   await postsRequest
 }
 
+// Fetch hỏng thì PHẢI trả 503, tuyệt đối không được render trang "Không có bài
+// viết" kèm mã 200.
+//
+// Store nuốt lỗi và gán posts = [] để trình duyệt còn hiện được khung trang,
+// nhưng với Google một trang 200 không có bài nào không phải "lỗi tạm" — đó là
+// tín hiệu 50 bài đã biến mất, và trang danh sách mất luôn vai trò dẫn link nội
+// bộ vào bài. 503 thì Google giữ nguyên bản đã biết rồi quay lại sau. Cùng lập
+// luận với server/utils/sitemap.ts và pages/posts/[id].vue.
+if (import.meta.server && postsStore.error) {
+  throw createError({
+    statusCode: 503,
+    statusMessage: 'Failed to load posts',
+    fatal: true
+  })
+}
+
 watchEffect(() => {
   isLoading.value = pending.value
 })

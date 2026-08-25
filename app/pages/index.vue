@@ -39,6 +39,27 @@ if (import.meta.server) {
   await homepagePosts
 }
 
+// Fetch hỏng thì trả 503 chứ không render trang chủ thiếu khối bài viết kèm mã
+// 200.
+//
+// Store nuốt lỗi và gán posts = [] nên trang vẫn dựng được, nhưng khi đó trang
+// chủ — trang mạnh nhất site — im lặng mất 6 link nội bộ dẫn vào bài, và với
+// Google một bản 200 thiếu link không phải "lỗi tạm". 503 thì Google giữ
+// nguyên bản đã biết rồi quay lại sau. Cùng lập luận với server/utils/sitemap.ts
+// và pages/posts/[id].vue.
+//
+// Đánh đổi: một nhịp database chập chờn sẽ dựng trang lỗi trước mặt khách thay
+// vì chỉ thiếu khối bài viết. Chấp nhận được vì store đã thử lại một lần trên
+// server và khe cold-start ở utils/db.ts đã được bịt, nên nhánh này gần như
+// không chạm tới.
+if (import.meta.server && postsStore.error) {
+  throw createError({
+    statusCode: 503,
+    statusMessage: 'Failed to load posts',
+    fatal: true
+  })
+}
+
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
 
