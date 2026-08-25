@@ -63,23 +63,38 @@
                 {{ pilotData.des }}
             </p>
 
-            <!-- Action Button -->
-            <button
-                class="w-full py-3 border-2 border-red-600 text-red-600 font-bold uppercase tracking-wider text-sm hover:bg-red-600 hover:text-white transition-all duration-300"
-                @click.stop="navigateToPilot">
+            <!-- NuxtLink chứ không phải button: cả thẻ chỉ có @click nên trong HTML
+                 không tồn tại một thẻ <a href> nào dẫn tới trang phi công — bot không
+                 lần tới được, người dùng cũng không mở được tab mới. Bấm cả thẻ vẫn
+                 chạy như cũ, .stop để không điều hướng hai lần. -->
+            <NuxtLink :to="pilotHref" @click.stop
+                class="block w-full py-3 text-center border-2 border-red-600 text-red-600 font-bold uppercase tracking-wider text-sm hover:bg-red-600 hover:text-white transition-all duration-300">
                 {{ $t('buttons.viewMore') }}
-            </button>
+            </NuxtLink>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import { pilotPath, type PilotKey } from '~~/shared/pilots'
+
 const props = defineProps<{
     pilotId: number
 }>()
 
-const router = useRouter()
-const { locale, t } = useI18n()
+const { t } = useI18n()
+const localePath = useLocalePath()
+
+/**
+ * Địa chỉ trang phi công: /pilots/<slug-tên>, dựng qua localePath().
+ *
+ * Bản cũ tự ghép tiền tố ngôn ngữ ("vi thì không thêm gì, khác vi thì thêm
+ * /<locale>") — sai, vì site prefix cả tiếng Việt, nên mọi cú bấm ở bản tiếng
+ * Việt đẩy tới /pilots/... không có route và ra thẳng 404. localePath() biết
+ * đúng luật của cấu hình i18n.
+ */
+const pilotKey = computed(() => `pilot${props.pilotId}` as PilotKey)
+const pilotHref = computed(() => localePath(pilotPath(pilotKey.value)))
 
 // Get pilot data from i18n
 const pilotData = computed(() => {
@@ -127,17 +142,8 @@ const previousImage = () => {
         : currentImageIndex.value - 1
 }
 
-const localizedNavigateTo = (path: string) => {
-    const currentLocale = locale.value || 'vi'
-    const fullPath = currentLocale === 'vi' ? path : `/${currentLocale}${path}`
-
-    nextTick(() => {
-        router.push(fullPath)
-    })
-}
-
 const navigateToPilot = () => {
-    localizedNavigateTo(`/pilots/pilot${props.pilotId}`)
+    navigateTo(pilotHref.value)
 }
 
 const handleImageError = (event: Event) => {

@@ -281,65 +281,70 @@
 
                             <!-- Pagination Buttons -->
                             <div class="flex flex-wrap justify-center gap-3">
-                                <button v-for="pilotNum in totalPilots" :key="pilotNum"
-                                    @click="navigateToPilot(pilotNum)" class="relative group">
+                                <!-- NuxtLink chứ không phải button: đây là toàn bộ nguồn link nội
+                                     bộ dẫn tới trang phi công, bot cần thẻ <a href> thật mới lần
+                                     được tới. Kèm title để tooltip có nghĩa cả khi không rê chuột. -->
+                                <NuxtLink v-for="(key, index) in visiblePilotKeys" :key="key"
+                                    :to="localePath(pilotPath(key))" :title="getPilotName(key)" class="relative group">
                                     <div :class="[
                                         'w-12 h-12 md:w-14 md:h-14 flex items-center justify-center font-bold text-lg md:text-xl',
                                         'border-2 rounded-none transition-all duration-300',
-                                        currentPilotNumber === pilotNum
+                                        currentPilotIndex === index
                                             ? 'bg-red-600 text-white border-red-600 shadow-lg shadow-red-200'
                                             : 'bg-white text-gray-700 border-gray-200 hover:border-red-500 hover:bg-red-50 hover:text-red-600'
                                     ]">
-                                        {{ pilotNum }}
+                                        {{ index + 1 }}
                                     </div>
                                     <!-- Active Indicator -->
-                                    <div v-if="currentPilotNumber === pilotNum"
+                                    <div v-if="currentPilotIndex === index"
                                         class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-red-600 rounded-full">
                                     </div>
                                     <!-- Tooltip -->
                                     <div
                                         class="absolute -top-12 left-1/2 transform -translate-x-1/2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10">
-                                        {{ getPilotName(pilotNum) }}
+                                        {{ getPilotName(key) }}
                                         <div
                                             class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45">
                                         </div>
                                     </div>
-                                </button>
+                                </NuxtLink>
                             </div>
 
                             <!-- Navigation Arrows -->
                             <div class="flex justify-center items-center gap-4 mt-6">
-                                <button @click="navigateToPilot(currentPilotNumber - 1)"
-                                    :disabled="currentPilotNumber <= 1" :class="[
+                                <component :is="prevPilotKey ? 'NuxtLink' : 'span'"
+                                    :to="prevPilotKey ? localePath(pilotPath(prevPilotKey)) : undefined"
+                                    :aria-disabled="prevPilotKey ? undefined : 'true'" :class="[
                                         'flex items-center gap-2 px-4 py-2 font-semibold transition-all duration-300 rounded-none border-2',
-                                        currentPilotNumber <= 1
-                                            ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                                            : 'bg-white text-red-600 border-red-500 hover:bg-red-600 hover:text-white'
+                                        prevPilotKey
+                                            ? 'bg-white text-red-600 border-red-500 hover:bg-red-600 hover:text-white'
+                                            : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                     ]">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 19l-7-7 7-7" />
                                     </svg>
                                     <span class="hidden sm:inline">{{ $t('pilotPage.prev') }}</span>
-                                </button>
+                                </component>
 
                                 <span class="text-gray-600 font-medium">
-                                    {{ currentPilotNumber }} / {{ totalPilots }}
+                                    {{ currentPilotIndex + 1 }} / {{ visiblePilotKeys.length }}
                                 </span>
 
-                                <button @click="navigateToPilot(currentPilotNumber + 1)"
-                                    :disabled="currentPilotNumber >= totalPilots" :class="[
+                                <component :is="nextPilotKey ? 'NuxtLink' : 'span'"
+                                    :to="nextPilotKey ? localePath(pilotPath(nextPilotKey)) : undefined"
+                                    :aria-disabled="nextPilotKey ? undefined : 'true'" :class="[
                                         'flex items-center gap-2 px-4 py-2 font-semibold transition-all duration-300 rounded-none border-2',
-                                        currentPilotNumber >= totalPilots
-                                            ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
-                                            : 'bg-white text-red-600 border-red-500 hover:bg-red-600 hover:text-white'
+                                        nextPilotKey
+                                            ? 'bg-white text-red-600 border-red-500 hover:bg-red-600 hover:text-white'
+                                            : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed'
                                     ]">
                                     <span class="hidden sm:inline">{{ $t('pilotPage.next') }}</span>
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 5l7 7-7 7" />
                                     </svg>
-                                </button>
+                                </component>
                             </div>
                         </div>
                     </div>
@@ -384,32 +389,55 @@ import {
     getDefaultOgImage,
     getOgLocale
 } from '~/utils/seo'
+import {
+    VISIBLE_PILOT_KEYS,
+    isHiddenPilot,
+    pilotKeyFromLegacyParam,
+    pilotKeyFromSlug,
+    pilotPath,
+    type PilotKey
+} from '~~/shared/pilots'
+
 const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
-const pilotId = route.params.id as string
+const pilotParam = route.params.id as string
 
 /**
  * Chỉ ID hợp lệ mới được mở trang; mọi ID khác trả 404 thật.
  *
- * Hai lỗ hổng đã vá ở đây:
- *   - Phi công đã ẩn (id 8 — đã nghỉ việc): trước chỉ gỡ khỏi danh sách,
+ * Ba lỗ hổng đã vá ở đây:
+ *   - Phi công đã ẩn (pilot8 — đã nghỉ việc): trước chỉ gỡ khỏi danh sách,
  *     trang cá nhân vẫn 200 nên Google vẫn lập chỉ mục được hồ sơ.
- *   - ID không tồn tại (/pilots/99, /pilots/500...): trang vẫn render với
+ *   - ID không tồn tại (/pilots/99, /pilots/xyz...): trang vẫn render với
  *     khoá dịch thô, title "pilots.99.fullname | pilots.99.role", kèm
- *     robots index,follow và canonical trỏ về chính nó — tức MỌI số bất kỳ
+ *     robots index,follow và canonical trỏ về chính nó — tức MỌI chuỗi bất kỳ
  *     đều thành một trang "hợp lệ" trong mắt Google (soft 404 vô hạn).
+ *   - Bản vá soft-404 đầu tiên nhận nhầm ID là số trần (/^([1-9]|1[0-4])$/)
+ *     trong khi mọi link đều trỏ tới /pilots/pilot<N>. Hậu quả: bấm vào phi
+ *     công nào cũng ra 404, còn /pilots/1 thì lọt lưới và render ra đúng cái
+ *     trang khoá dịch thô kể trên.
  *
- * Dữ liệu phi công nằm trong i18n với khoá pilot1..pilot14, nên 1..14 là
- * toàn bộ dải hợp lệ. HIDDEN đồng bộ với HIDDEN_PILOT_IDS ở trang danh sách.
+ * Địa chỉ chính thức giờ là slug tên (/pilots/dang-van-my) — xem shared/pilots.ts.
  */
-const HIDDEN_PILOT_IDS = ['8']
-const isValidPilotId = /^([1-9]|1[0-4])$/.test(pilotId)
+const legacyKey = pilotKeyFromLegacyParam(pilotParam)
+const pilotKey = legacyKey ?? pilotKeyFromSlug(pilotParam)
 
-if (!isValidPilotId || HIDDEN_PILOT_IDS.includes(pilotId)) {
+if (!pilotKey || isHiddenPilot(pilotKey)) {
   throw createError({ statusCode: 404, statusMessage: 'Pilot not found', fatal: true })
 }
+
+// Địa chỉ cũ /pilots/pilot<N> đổi 301 sang slug tên. 301 chứ không phải 302:
+// phải nói với Google rằng địa chỉ đã dời HẲN thì thứ hạng của trang cũ mới
+// chuyển sang trang mới. Xử lý ngay trong trang nên bấm link cũ ở phía trình
+// duyệt cũng nhảy đúng chỗ, không riêng gì request từ máy chủ.
+if (legacyKey) {
+  await navigateTo(localePath(pilotPath(legacyKey)), { redirectCode: 301, replace: true })
+}
+
+// Từ đây trở xuống pilotId là KHOÁ i18n ('pilot1'), không phải tham số URL.
+const pilotId: string = pilotKey
 
 const currentLocale = computed(() => locale.value || 'vi')
 
@@ -421,27 +449,22 @@ const localizedNavigateTo = (path: string) => {
     router.push(localePath(path))
 }
 
-// Total number of pilots
-const totalPilots = 14
+/**
+ * Khối "phi công khác" chạy trên danh sách ĐANG HIỆN, không phải dải số 1..14.
+ *
+ * Bản cũ đếm từ 1 tới 14 nên vẫn vẽ ra ô số 8 của phi công đã nghỉ, bấm vào là
+ * 404; nút trước/sau đi từ 7 sang 8 cũng rơi vào đúng chỗ đó.
+ */
+const visiblePilotKeys = VISIBLE_PILOT_KEYS
+const currentPilotIndex = computed(() => visiblePilotKeys.indexOf(pilotKey))
+const prevPilotKey = computed(() => visiblePilotKeys[currentPilotIndex.value - 1] ?? null)
+const nextPilotKey = computed(() => visiblePilotKeys[currentPilotIndex.value + 1] ?? null)
 
-// Current pilot number (extract from pilotId)
-const currentPilotNumber = computed(() => {
-    const num = parseInt(pilotId.replace('pilot', ''))
-    return isNaN(num) ? 1 : num
-})
-
-// Navigate to specific pilot
-const navigateToPilot = (pilotNum: number) => {
-    if (pilotNum < 1 || pilotNum > totalPilots) return
-    router.push(localePath(`/pilots/pilot${pilotNum}`))
-}
-
-// Get pilot name for tooltip
-const getPilotName = (pilotNum: number): string => {
+const getPilotName = (key: PilotKey): string => {
     try {
-        return t(`pilots.pilot${pilotNum}.name`)
+        return t(`pilots.${key}.name`)
     } catch {
-        return `Pilot ${pilotNum}`
+        return key
     }
 }
 

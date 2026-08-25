@@ -105,6 +105,7 @@
 
 <script setup lang="ts">
 import { buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getCanonicalUrl, getDefaultOgImage, getOgLocale } from '~/utils/seo'
+import { VISIBLE_PILOT_KEYS } from '~~/shared/pilots'
 
 const { locale, t } = useI18n()
 const localePath = useLocalePath()
@@ -113,16 +114,14 @@ const route = useRoute()
 const currentLocale = computed(() => locale.value || 'vi')
 
 /**
- * Phi công đã nghỉ, không hiển thị nữa.
- * pilot8 = Tuấn Nguyễn (Nhị ca) — đã chuyển sang công ty khác.
- * Giữ dữ liệu trong i18n và ảnh trong public/ để không phá link cũ nếu ai
- * đã lưu; chỉ bỏ khỏi danh sách.
+ * Danh sách phi công lấy từ shared/pilots.ts — nơi duy nhất biết ai còn hiện,
+ * ai đã nghỉ (pilot8 = Tuấn Nguyễn, đã chuyển công ty khác). Trước đây trang
+ * này và trang chi tiết mỗi bên giữ một danh sách ẩn riêng, sửa một bên quên
+ * bên kia là phi công đã nghỉ lại hiện ra, hoặc bấm vào ra 404.
+ *
+ * PilotCard nhận số nên đổi khoá 'pilot7' về 7 ở đây.
  */
-const HIDDEN_PILOT_IDS = [8]
-
-const visiblePilotIds = Array.from({ length: 14 }, (_, index) => index + 1).filter(
-  (id) => !HIDDEN_PILOT_IDS.includes(id)
-)
+const visiblePilotIds = VISIBLE_PILOT_KEYS.map((key) => Number(key.replace('pilot', '')))
 
 const totalPilots = visiblePilotIds.length
 
