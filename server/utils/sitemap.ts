@@ -1,4 +1,5 @@
 import { connectToDatabase } from './db'
+import { PILOT_SLUG_BY_KEY, VISIBLE_PILOT_KEYS } from '../../shared/pilots'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'en'
@@ -15,6 +16,17 @@ export type Locale = (typeof LOCALES)[number]
  * Trang tĩnh thì dịch đủ sáu thứ tiếng nên vẫn khai đủ.
  */
 export const POST_LOCALES: readonly Locale[] = ['vi', 'en']
+
+/**
+ * Trang phi công thì NGƯỢC LẠI với bài viết: nội dung nằm trong i18n và đã
+ * dịch thật đủ sáu thứ tiếng (đã đối chiếu 13 phi công x 6 ngôn ngữ, không bản
+ * nào là bản tiếng Anh chép lại), nên khai đủ sáu như trang tĩnh.
+ *
+ * Slug lấy từ shared/pilots.ts — cùng một nguồn với route và với link trên
+ * trang, để sitemap không bao giờ khai ra địa chỉ mà site trả 404.
+ */
+const PILOT_PRIORITY = '0.6'
+const PILOT_CHANGEFREQ = 'monthly'
 
 export const PAGE_ROUTES: Array<{
   path: string
@@ -117,6 +129,26 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(defaultUrl)}" />\n`
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`
     xml += `    <priority>${page.priority}</priority>\n`
+    xml += '  </url>\n'
+  }
+
+  for (const key of VISIBLE_PILOT_KEYS) {
+    const pilotPagePath = `/pilots/${PILOT_SLUG_BY_KEY[key]}`
+    const currentUrl = `${DOMAIN}/${locale}${pilotPagePath}`
+
+    xml += '  <url>\n'
+    xml += `    <loc>${escapeXml(currentUrl)}</loc>\n`
+    xml += `    <lastmod>${lastmod}</lastmod>\n`
+
+    for (const altLocale of LOCALES) {
+      const altUrl = `${DOMAIN}/${altLocale}${pilotPagePath}`
+      xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(altUrl)}" />\n`
+    }
+
+    const defaultUrl = `${DOMAIN}/${DEFAULT_LOCALE}${pilotPagePath}`
+    xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(defaultUrl)}" />\n`
+    xml += `    <changefreq>${PILOT_CHANGEFREQ}</changefreq>\n`
+    xml += `    <priority>${PILOT_PRIORITY}</priority>\n`
     xml += '  </url>\n'
   }
 
