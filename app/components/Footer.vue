@@ -265,7 +265,7 @@ const isDesktop = ref(false)
 /** Dòng giấy phép tách thành từng câu — xem ghi chú ở template. */
 const licenseLines = computed(() => {
   const text = t('footer.copyright')
-  const m = text.match(/^(.*?[.。।])\s+(.+)$/s)
+  const m = text.match(/^(.*?[.。।])\s*(.+)$/s)
   return m ? [m[1], m[2]] : [text]
 })
 
