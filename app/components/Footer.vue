@@ -224,8 +224,11 @@
           ký tự, đúng khoảng mắt đọc thoải mái. Trên điện thoại thì max-w
           không có tác dụng gì, nên nới thêm lề trong bằng px-2.
         -->
-        <p class="mx-auto max-w-[46rem] whitespace-pre-line px-2 leading-relaxed max-md:text-xs">
-          {{ $t('footer.copyright') }}
+        <!-- Hai câu (cấp phép bay · giấy phép kinh doanh) mỗi câu một dòng trên
+             desktop (chủ 16/09), thay vì bó 46rem làm câu đầu bị bẻ giữa chừng.
+             Tách tại dấu chấm kết câu của từng thứ tiếng (". " · "。" · "। "). -->
+        <p class="mx-auto max-w-5xl px-2 leading-relaxed max-md:text-xs">
+          <span v-for="(cau, i) in licenseLines" :key="i" class="md:block">{{ cau }}</span>
         </p>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
@@ -258,6 +261,13 @@ const contactNowrapClass = computed(() =>
 )
 
 const isDesktop = ref(false)
+
+/** Dòng giấy phép tách thành từng câu — xem ghi chú ở template. */
+const licenseLines = computed(() => {
+  const text = t('footer.copyright')
+  const m = text.match(/^(.*?[.。।])\s+(.+)$/s)
+  return m ? [m[1], m[2]] : [text]
+})
 
 const menuItems = [
   { path: '/', label: 'menu.home' },
