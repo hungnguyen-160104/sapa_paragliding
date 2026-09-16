@@ -81,7 +81,7 @@
         <!-- MÙ — riêng Sa Pa: mù dày / mây trùm bãi / tầm nhìn hạn chế -->
         <tr>
           <th class="sticky left-0 z-10 bg-white px-2 py-1 text-left font-bold text-slate-500">{{ t('weather.fog.row') }}</th>
-          <td v-for="g in gio" :key="g.gio" :class="['px-1 py-1 text-center text-base leading-none', MAU_MU[mucMu(g)], bd(g)]" :title="tipMu(g)">{{ BIEU_TUONG_MU[mucMu(g)] }}</td>
+          <td v-for="g in gio" :key="g.gio" :class="['px-1 py-1 text-center text-[10px] font-bold leading-none', bd(g)]" :style="styleMu(doDacMu(g))" :title="tipMu(g)">{{ Math.round(doDacMu(g) * 100) }}</td>
         </tr>
         <tr>
           <th class="sticky left-0 z-10 bg-white px-2 py-1 text-left font-bold text-slate-500">{{ t('weather.thermal') }}</th>
@@ -99,8 +99,8 @@
 <script setup lang="ts">
 import {
   BIEU_TUONG_MUC, bieuTuongTroi, chiSoBay, dungCot, GIO_TREN_CAO_CAM, GIO_TREN_CAO_SPEEDBAR, gioTrenBai, HUONG_TREN_CAO_XAU, huongTam, huongTheNao,
-  MUA_BAY, MUA_DANG_KE, mucMu, styleGiat, styleGio, tranMay,
-  type GioTT, type LuatHuong, type MucDo, type MucMu, type NgayTT, type NguongMau
+  MUA_BAY, MUA_DANG_KE, doDacMu, mucMu, styleGiat, styleGio, styleMu, tranMay,
+  type GioTT, type LuatHuong, type MucDo, type NgayTT, type NguongMau
 } from '~/utils/weather'
 import { useCuonTheoNgay, useManHinhHep } from '~/composables/useCuonTheoNgay'
 import { useWeatherI18n } from '~/composables/useWeatherI18n'
@@ -125,8 +125,6 @@ const ngayChonRef = computed(() => props.ngayChon)
 const { khung, onScroll } = useCuonTheoNgay(ngayChonRef, (d) => emit('ngayHien', d))
 
 const DAC: Record<MucDo, string> = { xanh: 'bg-emerald-500 text-white', vang: 'bg-amber-400 text-amber-950', do: 'bg-rose-500 text-white' }
-const MAU_MU: Record<MucMu, string> = { quang: 'text-slate-300', hanChe: 'bg-slate-100', trumBai: 'bg-slate-300', muDay: 'bg-slate-400' }
-const BIEU_TUONG_MU: Record<MucMu, string> = { quang: '–', hanChe: '🌁', trumBai: '☁️', muDay: '🌫' }
 
 const mauMuiTen = (g: GioTT) => {
   const the = huongTheNao(g.huong, g.gio10m, props.luat)
@@ -137,7 +135,7 @@ const mauMuiTen = (g: GioTT) => {
 const tranCua = (g: GioTT) => tranMay(g.nhietDo, g.diemSuong, g.mayThap, g.chenhDoCao ?? 0)
 const tipMu = (g: GioTT) => {
   const chenh = g.diemSuong === undefined ? null : (g.nhietDo - g.diemSuong).toFixed(1)
-  return `${t('weather.fog.levels.' + mucMu(g))}${chenh !== null ? ` · Δ ${chenh}°C` : ''}${g.am !== undefined ? ` · ${Math.round(g.am)}%` : ''}${g.mayThap !== undefined ? ` · ${t('weather.cloud')} ${Math.round(g.mayThap)}%` : ''}`
+  return `${t('weather.fog.levels.' + mucMu(g))} · ${Math.round(doDacMu(g) * 100)}%${chenh !== null ? ` · Δ ${chenh}°C` : ''}${g.am !== undefined ? ` · ${Math.round(g.am)}%` : ''}${g.mayThap !== undefined ? ` · ${t('weather.cloud')} ${Math.round(g.mayThap)}%` : ''}`
 }
 const gioCao = (g: GioTT) => {
   const v = props.alt ? gioTrenBai(g, 500, props.alt) : null

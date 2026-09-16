@@ -106,7 +106,7 @@
 
         <!-- ===== Dải 10 ngày ===== -->
         <p class="mb-1 text-[11px] text-slate-500">{{ $t('weather.selectDay') }}</p>
-        <div class="grid grid-cols-4 gap-1.5 sm:grid-cols-5 lg:grid-cols-10 lg:gap-1">
+        <div class="grid grid-cols-3 gap-1.5 sm:grid-cols-5 xl:grid-cols-[repeat(15,minmax(0,1fr))] xl:gap-1">
           <button v-for="n in du.ngay" :key="n.ngay" type="button" @click="chon = n.ngay"
             :class="['rounded-xl border px-1 py-1.5 text-center transition hover:brightness-95', chon === n.ngay ? 'border-orange-500 bg-orange-200 text-orange-950 shadow-md ring-2 ring-orange-500' : VIEN[n.muc]]">
             <div class="text-[11px] font-bold uppercase tracking-wide opacity-80">{{ nhanNgayHienThi(n.ngay) }}</div>
@@ -131,7 +131,7 @@
         <!-- ===== Vị trí bãi + mặt trời ===== -->
         <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-slate-200 bg-slate-50 px-2 py-1.5 text-xs text-slate-600">
           <span class="font-bold text-slate-800">📍 {{ du.toaDo.ten }}</span>
-          <span class="tabular-nums">{{ du.toaDo.lat.toFixed(4) }}, {{ du.toaDo.lon.toFixed(4) }}{{ du.toaDo.alt ? ` · ${du.toaDo.alt}m` : '' }}</span>
+          <span class="tabular-nums">{{ du.toaDo.lat.toFixed(4) }}, {{ du.toaDo.lon.toFixed(4) }}</span>
           <span v-if="du.toaDo.alt !== undefined && du.toaDo.altHa !== undefined" class="font-semibold text-slate-700">▲ {{ $t('weather.takeoff') }} {{ du.toaDo.alt }}m → ▼ {{ $t('weather.landing') }} {{ du.toaDo.altHa }}m · {{ $t('weather.heightDiff') }} {{ du.toaDo.alt - du.toaDo.altHa }}m</span>
           <span v-if="ngayChon?.matTroi" class="font-semibold text-amber-700">☀ {{ $t('weather.sunrise') }} {{ ngayChon.matTroi.moc }} · {{ $t('weather.sunset') }} {{ ngayChon.matTroi.lan }}{{ daiNgay ? ` (${daiNgay})` : '' }}</span>
         </div>
@@ -178,12 +178,14 @@
             <!-- Dải giờ 7–17h -->
             <div class="mt-1.5 flex gap-0.5">
               <div v-for="g in mu.gio" :key="g.gio" class="flex-1 text-center" :title="`${g.gio.slice(11, 16)} · ${$t('weather.fog.levels.' + g.muc)}`">
-                <div :class="['h-2 rounded-sm', MAU_MU_GIO[g.muc]]" />
+                <div class="h-3 rounded-sm" :style="{ background: styleMu(g.doDac).background }" />
                 <div class="mt-0.5 text-[9px] leading-none text-slate-500">{{ g.gio.slice(11, 13) }}</div>
               </div>
             </div>
-            <div class="mt-1.5 flex flex-wrap gap-x-2 text-[10px] text-slate-600">
-              <span v-for="m in (['quang', 'hanChe', 'trumBai', 'muDay'] as const)" :key="m" class="inline-flex items-center gap-1"><span :class="['inline-block h-2 w-3 rounded-sm', MAU_MU_GIO[m]]" />{{ $t('weather.fog.levels.' + m) }}</span>
+            <div class="mt-1.5 flex items-center gap-2 text-[10px] text-slate-600">
+              <span>{{ $t('weather.fog.levels.quang') }}</span>
+              <span class="h-2 w-28 rounded-sm" style="background: linear-gradient(to right, #f8fafc, #0f172a)" aria-hidden="true" />
+              <span>{{ $t('weather.fog.levels.muDay') }}</span>
             </div>
             <p class="mt-1.5 font-semibold leading-snug">
               <template v-if="mu.gioXau === 0 && mu.gioHanChe === 0">{{ $t('weather.fog.noFog') }}</template>
@@ -266,16 +268,19 @@
         </NuxtLink>
       </div>
 
-      <div class="mt-10 max-w-3xl space-y-3 text-base leading-relaxed text-gray-600">
-        <p v-for="(p, i) in intro" :key="i">{{ p }}</p>
-      </div>
+      <section class="mt-8 rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
+        <h2 class="mb-4 text-2xl font-bold text-gray-900">{{ $t('weather.introTitle') }}</h2>
+        <div class="space-y-3 text-base leading-relaxed text-gray-600 lg:columns-2 lg:gap-8 lg:space-y-0">
+          <p v-for="(p, i) in intro" :key="i" class="break-inside-avoid lg:mb-3">{{ p }}</p>
+        </div>
+      </section>
 
       <section class="mt-8 rounded-2xl border border-gray-200 bg-white p-6 md:p-8">
         <h2 class="mb-4 text-2xl font-bold text-gray-900">{{ $t('weather.khiTuongTieuDe') }}</h2>
-        <div class="space-y-5 lg:columns-2 lg:gap-8 lg:space-y-0">
-          <article v-for="m in khiTuong" :key="m.tieuDe" class="break-inside-avoid lg:mb-5">
-            <h3 class="text-sm font-bold uppercase tracking-wide text-[#194d9b]">{{ m.tieuDe }}</h3>
-            <p v-for="(doan, i) in m.y" :key="i" class="mt-1.5 text-sm leading-relaxed text-gray-600">{{ doan }}</p>
+        <div class="lg:columns-2 lg:gap-10">
+          <article v-for="m in khiTuong" :key="m.tieuDe" class="mb-7 break-inside-avoid last:mb-0">
+            <h3 class="mb-2 border-b border-gray-100 pb-1.5 text-sm font-bold uppercase tracking-wide text-[#194d9b]">{{ m.tieuDe }}</h3>
+            <p v-for="(doan, i) in m.y" :key="i" class="mt-2 text-sm leading-relaxed text-gray-600">{{ doan }}</p>
           </article>
         </div>
       </section>
@@ -287,8 +292,8 @@
 import { buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getCanonicalUrl, getDefaultOgImage, getOgLocale } from '~/utils/seo'
 import {
   BIEU_TUONG_MUC, MO_HINH, MO_HINH_MAC_DINH, MUA_BAY, WINDY_LAYERS, WINDY_MODELS,
-  gioNangCuaNgay, gioTrenBai, hoangHonDep, huongTroiNgay, phanTichGioCao, phanTichMu, styleGio, trongCung, windyEmbedUrl, windyPageUrl,
-  type DuBaoSapa, type MucDo, type MucMu, type NgayTT
+  gioNangCuaNgay, gioTrenBai, hoangHonDep, huongTroiNgay, phanTichGioCao, phanTichMu, styleGio, styleMu, trongCung, windyEmbedUrl, windyPageUrl,
+  type DuBaoSapa, type MucDo, type NgayTT
 } from '~/utils/weather'
 import { useWeatherI18n } from '~/composables/useWeatherI18n'
 import type { NhanMeteogram } from '~/components/weather/WeatherMeteogram.vue'
@@ -347,7 +352,6 @@ const MAU_TONG: Record<string, string> = { tot: 'text-emerald-800', chuY: 'text-
 const MAU_MU_NGUY_CO: Record<'thap' | 'vua' | 'cao', string> = {
   thap: 'border-emerald-300 bg-emerald-50 text-emerald-900', vua: 'border-amber-300 bg-amber-50 text-amber-900', cao: 'border-rose-300 bg-rose-50 text-rose-900'
 }
-const MAU_MU_GIO: Record<MucMu, string> = { quang: 'bg-emerald-300', hanChe: 'bg-slate-300', trumBai: 'bg-slate-500', muDay: 'bg-slate-700' }
 
 const nhanMuc = (muc: MucDo) => (muc === 'do' ? BIEU_TUONG_MUC.do : `${BIEU_TUONG_MUC[muc]} ${muc === 'xanh' ? t('weather.good') : t('weather.fair')}`)
 const THU_VI = ['CHỦ NHẬT', 'THỨ HAI', 'THỨ BA', 'THỨ TƯ', 'THỨ NĂM', 'THỨ SÁU', 'THỨ BẢY']

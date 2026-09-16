@@ -1046,10 +1046,11 @@
   },
   "weather": {
     "pageTitle": "Dự báo thời tiết bay dù lượn Sa Pa",
-    "pageSubtitle": "Dự báo 10 ngày tới cho đúng toạ độ bãi cất cánh Sa Pa — nắng, gió, thermal, mưa, trần mây, gió tầng trên",
+    "pageSubtitle": "Dự báo 15 ngày tới cho đúng toạ độ bãi cất cánh Sa Pa (1.500m, thung lũng Mường Hoa) — gió, mù và mây thấp, mưa, thermal, gió tầng cao",
     "intro": [
-      "Bay dù lượn phụ thuộc gần như hoàn toàn vào gió. Bảng dưới đây lấy dự báo của mô hình ECMWF (mô hình mà Windy hiển thị) cho đúng toạ độ bãi cất cánh tại Sa Pa (thung lũng Mường Hoa), rồi chấm màu theo ngưỡng an toàn khi bay.",
-      "Xanh là gió đẹp, vàng là bay được nhưng phải cân nhắc, đỏ là nên nghỉ. Dự báo chỉ để bạn chuẩn bị lịch trình — quyết định cuối cùng vẫn là của phi công tại bãi vào đúng buổi bay, vì thời tiết núi đổi rất nhanh."
+      "Bãi cất cánh Sa Pa nằm ở 1.500m trên sườn núi hướng ra thung lũng Mường Hoa, bãi hạ ở bản Lao Chải 1.000m — chênh cao 500m. Bảng trên lấy dự báo ECMWF (và GFS, ICON, UKMO, GEM khi anh chọn) cho đúng toạ độ bãi cất, 15 ngày, rồi chấm màu theo ngưỡng của chính đội bay Sa Pa — cùng bộ số với hệ điều hành mebayluon.com mà phi công đang dùng.",
+      "Ở Sa Pa thứ chặn bay nhiều nhất không phải gió mạnh mà là MÙ và mây thấp: bãi nằm đúng tầng mây của khối khí ẩm bốc lên từ thung lũng, sáng sớm hay bị trùm, nắng lên mới mở. Sau mù là hướng gió: gió Bắc, Đông Bắc, Đông hoặc Tây trên 6 m/s là nghỉ, nhẹ hơn vẫn bay; gió trên cao từ ba hướng ấy rất mạnh cũng làm bãi cất hỏng dù mặt đất êm. Xanh là bay tốt, vàng là bay được nhưng cân nhắc, đỏ là nên nghỉ.",
+      "Từ ngày thứ 7 trở đi mô hình chỉ còn nói được xu thế lớn (đợt gió mùa về, mưa kéo dài hay trời mở) — dùng để chọn ngày và đặt vé, không dùng để chốt giờ. Quyết định cuối cùng là của phi công tại bãi trong đúng buổi bay; hoãn vì thời tiết thì anh được đổi lịch hoặc hoàn tiền."
     ],
     "hourly": "Chi tiết từng giờ",
     "selectDay": "Bấm vào một ngày để xem chi tiết từng giờ",
@@ -1117,53 +1118,53 @@
     "verdictFair": "Bay được nhưng hạn chế — hỏi lại phi công trước khi lên bãi.",
     "verdictBad": "Hôm nay khó bay; phi công quyết tại bãi, trời ngớt vẫn có thể bay.",
     "bookNow": "Đặt bay",
-    "widgetTitle": "Thời tiết bay 10 ngày tới",
-    "widgetNote": "Dự báo cho đúng toạ độ bãi cất cánh",
+    "widgetTitle": "Thời tiết bay 15 ngày tới",
+    "widgetNote": "Dự báo thời tiết tại điểm cất cánh",
     "mapToggleOpen": "Xem bản đồ gió Windy",
     "mapToggleClose": "Ẩn bản đồ gió",
     "disclaimer": "Dự báo mang tính tham khảo. Phi công quyết định bay hay hoãn tại bãi, ưu tiên an toàn tuyệt đối; nếu hoãn do thời tiết, bạn được đổi lịch hoặc hoàn tiền.",
     "khiTuongTieuDe": "Hiểu bản tin để đọc được bảng",
     "khiTuong": [
       {
-        "tieuDe": "Áp suất — thứ báo trước sớm nhất",
+        "tieuDe": "Mù, mây thấp và biển mây — đặc trưng số một của Sa Pa",
         "y": [
-          "Áp suất mực biển không nói ngày mai nắng hay mưa, nó nói KHỐI KHÍ ĐANG ĐỔI. Áp tụt đều vài hPa trong một ngày là rãnh thấp hoặc front đang tới: gió sẽ đổi hướng, mây dày lên từ tầng cao xuống, và đối lưu buổi chiều mạnh hơn thường lệ. Áp lên là khối khí lạnh khô lấn vào, trời quang nhưng gió nền thường mạnh hơn.",
-          "Ở vùng nhiệt đới, áp suất TỰ tụt 2–3 hPa từ khoảng 10h tới 16h rồi lên lại mỗi ngày — đó là nhịp thuỷ triều khí quyển, không phải dấu hiệu xấu. Vì vậy bảng này chỉ báo động khi áp tụt NHANH HƠN nhịp thường ngày, so với chính giờ ấy của hôm trước."
+          "Bãi cất ở 1.500m nằm đúng tầng mà hơi ẩm từ thung lũng Mường Hoa ngưng thành mây. Sáng sớm, nhất là sau đêm mưa hoặc trong đợt gió mùa, mù trùm bãi; nắng lên hun nóng sườn núi thì mù tan dần, thường 9–11h. Buổi chiều mây \"leo sườn\" từ dưới thung lũng lên có thể bịt bãi trở lại. Hàng \"Mù\" trong bảng tô xám→đen theo độ đặc; khối \"Mù và mây thấp\" nói giờ tan và giờ trùm lại.",
+          "Còn một kiểu riêng của Sa Pa là BIỂN MÂY: thung lũng đầy mây trong khi bãi cất phía trên trời quang. Đẹp để chụp ảnh nhưng không bay được, vì phải nhìn thấy bãi hạ Lao Chải ở 1.000m và có đường xuống rõ. Dấu hiệu: đêm lặng gió, ẩm cao sau mưa, sáng trần mây thấp hơn bãi cất. Trần mây trong bảng tính TRÊN bãi cất — số nhỏ hơn 150m là mây đã chạm bãi."
         ]
       },
       {
-        "tieuDe": "Gió mặt đất — hướng quan trọng ngang tốc độ",
+        "tieuDe": "Gió mặt đất — luật riêng của bãi",
         "y": [
-          "Một bãi cất cánh chỉ bay được khi gió thổi VÀO sườn. Cùng 5 m/s: thổi thẳng vào sườn thì dù dựng lên đều, cất cánh nhẹ; thổi sau lưng thì dù sập, còn thổi ngang thì cất cánh lệch và dễ chạm cây. Nên bảng này tô màu mũi tên theo luật hướng riêng của từng bãi, chứ không chỉ nhìn con số.",
-          "Ở địa hình đèo còn một cái bẫy nữa: gió luồn qua khe rồi tăng tốc đột ngột ngay mép bãi (hiệu ứng ống). Cùng một hướng, gió nhẹ thì êm mà gió mạnh lại thành gió xiết — vì thế luật hướng của mỗi điểm có riêng mục 'gió xiết' chỉ bật khi tốc độ đã lớn."
+          "Bãi Sa Pa ăn gió nhẹ tới vừa. Luật do đội bay chốt: gió Bắc, Đông Bắc, Đông hoặc Tây mạnh hơn 6 m/s là nghỉ; nhẹ hơn thì bay tốt. Mũi tên hướng trong bảng đỏ lên đúng lúc vượt luật ấy. Gió giật không quyết định bay hay nghỉ — gió 4 m/s giật 12 là chuyện thường ở núi; chỉ trên 16 mới đáng để mắt.",
+          "Ở núi, hướng quan trọng ngang tốc độ: cùng 5 m/s, gió thổi vào sườn là ngày đẹp, thổi ngược sườn là gió rối và cuộn (rotor) ngay mép cất cánh. Hướng trội của ngày ghi ngay trên ô ngày (\"ĐB · 1.2 m/s\") để so nhanh với luật bãi."
         ]
       },
       {
-        "tieuDe": "Gió tầng trên và gió đứt",
+        "tieuDe": "Gió trên cao — bãi cất ở 1.500m nên gần với tầng 850 hPa",
         "y": [
-          "Gió ở mực 925, 850, 700 hPa (xấp xỉ 750m, 1.500m, 3.000m) quyết định chuyến bay nhiều hơn người ta tưởng. Mặt đất lặng mà mực 500m trên bãi đã 8–10 m/s thì thermal vừa lên khỏi sườn là bị xé, dù xóc và bị thổi lùi — bay bám sườn thấp thì được, leo cao là hỏng.",
-          "Chênh lệch đột ngột giữa hai tầng gọi là GIÓ ĐỨT (wind shear). Nguy ở chỗ đứng dưới bãi đo gió thấy hiền, nhưng qua lớp đứt là nhiễu động ngay. Tab Airgram xếp bốn mực chồng nhau đúng để nhìn ra điều đó: gió tăng dần theo độ cao là bình thường, tăng vọt hoặc đổi hướng đột ngột mới là thứ phải tránh."
+          "Sa Pa cao nên mực 850 hPa (~1.500m) không còn là \"trên cao\" mà là gió ngang bãi cất trong khí quyển tự do; 700 hPa (~3.000m) là gió 1.500m trên đầu. Khi hai mực này từ Tây, Đông hoặc Bắc và rất mạnh, luồng khí ép xuống sườn làm bãi cất bị xóc và dễ thổi lùi dù máy đo dưới bãi vẫn êm. Từ 8 m/s ở +500m đã phải cân nhắc, trên 12 khuyến cáo nghỉ.",
+          "Tab Airgram bày gió từng độ cao theo giờ — nhìn dọc một cột là thấy gió tăng theo độ cao hay đổi hướng ở tầng nào (gió đứt). Khối \"Gió trên cao\" tóm lại con số mạnh nhất trong khung bay và hướng của nó."
         ]
       },
       {
-        "tieuDe": "Nghịch nhiệt — cái nắp vô hình",
+        "tieuDe": "Áp suất — thứ báo trước gió mùa và mưa dông",
         "y": [
-          "Bình thường càng lên cao càng lạnh. Nghịch nhiệt là lớp khí phía trên ẤM HƠN phía dưới, thường hình thành trong đêm quang mây. Nó hoạt động như một cái nắp: thermal bốc lên tới đó là dừng, nên trần thermal thấp, chuyến bay ngắn.",
-          "Nghịch nhiệt còn giữ mù và mây thấp nằm lì trong thung lũng tới gần trưa — lý do nhiều buổi sáng đèo trắng xoá trong khi dự báo mưa bằng không. Nắng đốt đủ mạnh thì lớp nghịch nhiệt vỡ, mù tan nhanh trong vòng một tiếng; bảng này nói giờ dự kiến tan để canh lúc lên bãi cho đúng."
+          "Áp suất mực biển không nói mai nắng hay mưa, nó nói KHỐI KHÍ ĐANG ĐỔI. Với Sa Pa quan trọng nhất là đợt gió mùa Đông Bắc: áp tăng nhanh sau khi front lạnh tràn qua, kèm gió Bắc/Đông Bắc mạnh, mây thấp và mưa phùn kéo dài nhiều ngày — đúng tổ hợp nghỉ bay. Áp tụt đều vài hPa trong ngày mùa hè là dấu hiệu rãnh thấp, chiều dễ có mưa dông.",
+          "Ở vùng nhiệt đới áp tự tụt 2–3 hPa từ ~10h tới ~16h mỗi ngày rồi lên lại — nhịp thường, không phải dông. Bảng chỉ so xu thế ngày-với-ngày (dòng \"Áp suất\" trong nhận định) để tránh cảnh báo giả."
         ]
       },
       {
-        "tieuDe": "Thermal — nhiên liệu của chuyến bay",
+        "tieuDe": "Thermal ở Sa Pa — vừa phải, đến muộn, đi sớm",
         "y": [
-          "Mặt đất hấp thụ bức xạ, hun nóng lớp khí sát đất, bọt khí nóng tách ra và bốc lên: đó là thermal. Hai con số nói về nó là CAPE (thế năng đối lưu — bao nhiêu 'nhiên liệu') và trần lớp xáo trộn (thermal lên được tới đâu). Bảng này gọi trần ấy là trần thermal.",
-          "Thang ở đây chấm theo hướng ÊM: thermal vừa đủ thì chuyến dài và mượt, còn thermal gắt làm dù xóc và bãi đáp nổi gió xoáy. Phi công bay đường dài đọc ngược lại — với họ càng mạnh càng thích, nên hai bên nhìn cùng một con số mà kết luận khác nhau."
+          "Sườn bãi cất hướng ra thung lũng đón nắng sáng, nhưng ở 1.500m không khí mát và thường ẩm nên thermal Sa Pa hiếm khi gắt; khung mạnh nhất quanh 11–15h vào ngày trời trong. Cần có nắng thật (bức xạ và số phút nắng trong bảng) — ngày âm u 100% mây thì không có gì hun mặt đất, chỉ có bay thả (chênh cao 500m, chừng 10–15 phút).",
+          "Sáng mùa đông thường có nắp nghịch nhiệt ngay trên bãi — thermal lên tới đó là tắt, trần thấp. Tab Skew-T vẽ cột không khí trên bãi theo giờ: dải tím là nắp, đường cam là bọt khí từ bãi, chỗ nó chạm đường đỏ là trần thermal; đáy mây so với vạch bãi cất 1.500m là câu hỏi \"mây có trùm bãi không\"."
         ]
       },
       {
-        "tieuDe": "Mây, mưa và dông",
+        "tieuDe": "Mùa bay ở Sa Pa",
         "y": [
-          "Trần mây tính từ chênh lệch nhiệt độ và điểm sương (khoảng 125m cho mỗi 1°C), rồi cộng thêm chênh độ cao giữa ô lưới mô hình và bãi thật. Trần mây thấp hơn bãi nghĩa là bãi nằm trong mây: không thấy sườn, không thấy bãi đáp, không bay.",
-          "Mưa chia ba mức theo milimét mỗi giờ chứ không theo phần trăm — phần trăm của mô hình là 'có mưa đâu đó trong ô 25km', mùa mưa thì ngày nào cũng 90%. Nguy hiểm nhất không phải hạt mưa mà là DÔNG: trước khi mây dông tới, luồng gió đổ xuống quét qua bãi làm gió đảo chiều và mạnh gấp mấy lần chỉ trong vài phút. Vì vậy nguy cơ dông 40% đã là lý do không cất cánh."
+          "Tháng 9–10 (mùa lúa chín) và tháng 5–6 (mùa nước đổ) là hai mùa đẹp: trời ổn định, sáng ít mù, thung lũng ruộng bậc thang đẹp nhất. Tháng 11–3 gió mùa Đông Bắc: mưa phùn, mù kéo dài, nhiều ngày lạnh dưới 10°C ở bãi cất — bay được nhưng phải chọn ngày theo bảng này, ưu tiên ngày sau khi front đã qua hai ba ngày và trời mở.",
+          "Tháng 7–8 mưa dông chiều: sáng thường bay được, chiều mây tích dựng cao thì dừng — cột mưa cam (mưa rào/dông) trong Meteogram và hàng \"Dông\" nói đúng chuyện đó. Bãi cất lạnh hơn thị trấn Sa Pa 2–3°C, mặc thêm áo. Mặt trời lặn sớm hơn đồng bằng vì núi che, giờ lặn thật ghi ở đầu bảng theo từng ngày."
         ]
       }
     ],
@@ -1290,7 +1291,8 @@
       "ok": "Gió trên cao êm — không ảnh hưởng bãi cất.",
       "warn": "Gió trên cao mạnh ({h}) — cất cánh dễ bị thổi lùi, cần speedbar và bám sườn thấp; hỏi lại phi công.",
       "bad": "Gió trên cao rất mạnh từ hướng xấu ({h}) — bãi cất bị ảnh hưởng xấu dù gió mặt đất nhẹ, khuyến cáo nghỉ bay."
-    }
+    },
+    "introTitle": "Đọc bảng này thế nào ở Sa Pa"
   },
   "pricingPage": {
     "title": "Giá Bay Dù Lượn Sa Pa",

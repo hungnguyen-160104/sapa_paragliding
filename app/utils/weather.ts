@@ -514,7 +514,7 @@ export type PhanTichMu = {
   mayThapMax: number
   /** Trần mây thấp nhất (m trên bãi) trong những giờ có mây thấp. */
   tranMin: number | null
-  gio: Array<{ gio: string; muc: MucMu }>
+  gio: Array<{ gio: string; muc: MucMu; doDac: number }>
 }
 
 export function phanTichMu(ngay: NgayTT, khung: [number, number] = [7, 17]): PhanTichMu {
@@ -562,7 +562,7 @@ export function phanTichMu(ngay: NgayTT, khung: [number, number] = [7, 17]): Pha
     amMax: gio.length ? Math.round(Math.max(...gio.map((g) => g.am ?? 0))) : 0,
     mayThapMax: gio.length ? Math.round(Math.max(...gio.map((g) => g.mayThap ?? 0))) : 0,
     tranMin: tran.length ? Math.min(...tran) : null,
-    gio: ds.map((x) => ({ gio: x.g.gio, muc: x.muc }))
+    gio: ds.map((x) => ({ gio: x.g.gio, muc: x.muc, doDac: doDacMu(x.g) }))
   }
 }
 
@@ -649,4 +649,35 @@ export function phanTichGioCao(ngay: NgayTT, alt: number, khung: [number, number
     huong700: m700?.h ?? null,
     gio: ds
   }
+}
+
+/**
+ * ĐỘ ĐẶC CỦA MÙ (0–1) — thang liên tục để tô xám→đen (chủ 16/09: biểu tượng
+ * không nói được mù "đặc" tới đâu). Bốn dấu hiệu cùng thang với `mucMu`:
+ * chênh nhiệt độ – điểm sương khép lại, độ ẩm sát bão hoà, mây thấp dày, trần
+ * mây sát bãi. Trời khô và ít mây thấp thì kéo về gần 0 dù ẩm cao.
+ */
+export function doDacMu(g: GioTT): number {
+  const kep = (x: number) => Math.max(0, Math.min(1, x))
+  const chenh = g.diemSuong === undefined || !Number.isFinite(g.diemSuong) ? 3 : g.nhietDo - g.diemSuong
+  const am = g.am ?? 0
+  const mayThap = g.mayThap ?? 0
+  const cm = tranMay(g.nhietDo, g.diemSuong, g.mayThap, g.chenhDoCao ?? 0)
+  const s1 = kep((3 - chenh) / 3)
+  const s2 = kep((am - 85) / 15)
+  const s3 = kep(mayThap / 100)
+  const s4 = cm === null ? 0 : kep((600 - cm) / 600)
+  let d = 0.35 * s1 + 0.25 * s2 + 0.2 * s3 + 0.2 * s4
+  /** Không có mây thấp mà cũng chưa bão hoà thì chỉ là ẩm, chưa phải mù. */
+  if (mayThap < 25 && am < 95) d *= 0.3
+  return Math.round(kep(d) * 100) / 100
+}
+
+/** Xám nhạt (quang) → đen (mù dày) theo độ đặc 0–1; chữ tự đổi trắng khi nền tối. */
+export function styleMu(doDac: number): { background: string; color: string } {
+  const f = Math.max(0, Math.min(1, doDac))
+  const a = hexSangRgb('#f8fafc')
+  const b = hexSangRgb('#0f172a')
+  const bg = rgbSangHex(a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f)
+  return { background: bg, color: chuTrenNen(bg) }
 }

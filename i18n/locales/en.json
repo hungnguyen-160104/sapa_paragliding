@@ -1060,10 +1060,11 @@
   },
   "weather": {
     "pageTitle": "Sapa paragliding weather forecast",
-    "pageSubtitle": "10-day forecast for the exact Sapa take-off coordinates — sun, wind, thermals, rain, cloud base, upper winds",
+    "pageSubtitle": "15-day forecast for the exact Sapa take-off (1,500m, Muong Hoa Valley) — wind, fog and low cloud, rain, thermals, upper winds",
     "intro": [
-      "Paragliding depends almost entirely on the wind. The table below takes the ECMWF forecast (the model Windy shows) for the exact take-off coordinates in Sapa (Muong Hoa Valley), then colours it against the safety limits used for flying.",
-      "Green means good wind, amber means flyable but think twice, red means stay on the ground. Use it to plan your trip — the final call always belongs to the pilot at the take-off on the day, because mountain weather changes fast."
+      "The Sapa take-off sits at 1,500m on a ridge facing Muong Hoa Valley; the landing is at Lao Chai village, 1,000m — a 500m drop. The table above takes the ECMWF forecast (or GFS, ICON, UKMO, GEM if you switch) for the exact take-off coordinates, 15 days ahead, and colours it against the thresholds the Sapa flight team actually uses — the same numbers as the mebayluon.com operations system the pilots read.",
+      "At Sapa the thing that grounds flights most often is not strong wind but FOG and low cloud: the site sits right in the cloud layer of moist air rising from the valley, so early mornings are often shrouded until the sun opens it up. Next comes wind direction: north, north-east, east or west above 6 m/s means no flying, lighter is fine; very strong upper wind from those sectors also spoils the take-off even when the ground is calm. Green is good to fly, amber is flyable with caution, red means stay on the ground.",
+      "From day 7 onwards the models only capture the big picture (a monsoon surge arriving, a spell of rain, a clearing) — use it to pick a date and book, not to fix an hour. The final call belongs to the pilot at launch on the day; if a flight is postponed for weather you can reschedule or get a refund."
     ],
     "hourly": "Hour by hour",
     "selectDay": "Tap a day to see the hour-by-hour detail",
@@ -1131,53 +1132,53 @@
     "verdictFair": "Flyable but limited — check with the pilot before heading up.",
     "verdictBad": "A hard day to fly; the pilot decides at launch, and a break in the weather can still open a window.",
     "bookNow": "Book a flight",
-    "widgetTitle": "Flying weather, next 10 days",
-    "widgetNote": "Forecast for the exact take-off coordinates",
+    "widgetTitle": "Flying weather, next 15 days",
+    "widgetNote": "Weather forecast at the take-off",
     "mapToggleOpen": "Open Windy wind map",
     "mapToggleClose": "Hide wind map",
     "disclaimer": "Forecasts are indicative. The pilot decides on site whether to fly, with safety first; if a flight is postponed for weather you may reschedule or get a refund.",
     "khiTuongTieuDe": "How to read the forecast",
     "khiTuong": [
       {
-        "tieuDe": "Pressure — the earliest warning",
+        "tieuDe": "Fog, low cloud and the sea of clouds — Sapa’s number-one factor",
         "y": [
-          "Sea-level pressure does not tell you tomorrow's sunshine; it tells you the AIR MASS IS CHANGING. A steady fall of a few hPa over a day means a trough or front is arriving: wind will back or veer, high cloud thickens first, and afternoon convection runs stronger than usual. A rise means drier, cooler air moving in — clear skies, but usually a stronger gradient wind.",
-          "In the tropics pressure falls 2–3 hPa by itself between about 10:00 and 16:00 and recovers overnight. That is the atmospheric tide, not a warning. This forecast therefore flags a drop only when it is FASTER than that daily rhythm, compared against the same hours the day before."
+          "The take-off at 1,500m sits right at the level where moisture from Muong Hoa Valley condenses into cloud. Early morning, especially after a rainy night or during a monsoon spell, fog covers the site; as the sun heats the slope it burns off, usually by 9–11h. In the afternoon cloud climbing the slope from the valley can close the site again. The \"Fog\" row shades grey→black by density; the \"Fog and low cloud\" panel gives the clearing time and any afternoon return.",
+          "Sapa’s speciality is the SEA OF CLOUDS: the valley brims with cloud while the take-off above sits in sunshine. Stunning for photos, but no flying — you must see the Lao Chai landing at 1,000m and a clear way down. Signs: a calm night, high humidity after rain, a morning cloud base below the take-off. Cloud base in the table is measured ABOVE the take-off — under 150m means cloud is on the site."
         ]
       },
       {
-        "tieuDe": "Surface wind — direction matters as much as speed",
+        "tieuDe": "Surface wind — the site’s own rules",
         "y": [
-          "A launch works only when the wind blows INTO the slope. At the same 5 m/s, straight onto the face inflates the wing evenly and the launch is easy; from behind the wing collapses, and across the face you launch crooked and drift into trees. That is why the arrows here are coloured by each site's own direction rules, not by the number alone.",
-          "Mountain passes add a trap: wind funnels through a gap and accelerates right at the launch edge. The same direction is smooth when light and vicious when strong, so each site has a separate 'venturi' rule that only triggers once the speed is up."
+          "The Sapa site likes light to moderate wind. The flight team’s rule: north, north-east, east or west stronger than 6 m/s means no flying; lighter is fine. The direction arrows turn red exactly when that rule is broken. Gusts alone do not decide — 4 m/s gusting 12 is normal in the mountains; only above 16 is worth watching.",
+          "In the mountains direction matters as much as speed: the same 5 m/s blowing onto the slope is a great day, blowing over the back is turbulence and rotor right at the launch edge. The day’s prevailing direction is printed on each day tile (\"NE · 1.2 m/s\") for a quick check against the site rules."
         ]
       },
       {
-        "tieuDe": "Upper winds and shear",
+        "tieuDe": "Upper wind — at 1,500m the site is close to the 850 hPa level",
         "y": [
-          "Wind at 925, 850 and 700 hPa (roughly 750 m, 1,500 m and 3,000 m) decides more of the flight than most people expect. Calm on the ground with 8–10 m/s at 500 m above launch means thermals are torn apart as soon as they leave the slope: the wing gets rough and you drift backwards. Soaring low on the face is fine; climbing is not.",
-          "A sudden jump between layers is WIND SHEAR. The danger is that the anemometer on launch reads gentle while the air just above is not. The Airgram tab stacks four levels for exactly this: wind increasing gradually with height is normal, a sudden jump or a sharp change of direction is what you avoid."
+          "Because Sapa is high, the 850 hPa level (~1,500m) is not \"upper air\" but the free-air wind at take-off height; 700 hPa (~3,000m) is the wind 1,500m overhead. When these levels blow from the west, east or north and are very strong, the flow presses down the slope, making the launch rough and prone to being blown back even while the meter on the ground reads calm. From 8 m/s at +500m think twice; above 12, no flying is advised.",
+          "The Airgram tab shows wind by altitude for every hour — read down one column to see where wind increases with height or changes direction (shear). The \"Upper wind\" panel summarises the strongest value in the flying window and its direction."
         ]
       },
       {
-        "tieuDe": "Inversion — the invisible lid",
+        "tieuDe": "Pressure — the early warning for monsoon surges and storms",
         "y": [
-          "Air normally cools with height. An inversion is a layer that is WARMER above than below, usually formed overnight under clear skies. It acts as a lid: a rising thermal bubble stops there, so the climb ceiling is low and flights are short.",
-          "An inversion also traps fog and low cloud in the valley until late morning — the reason a pass can be white over while the rain forecast reads zero. Once the sun burns through, the lid breaks and the fog clears within an hour; this page gives the expected clearing time so you can plan when to head up."
+          "Sea-level pressure does not say whether tomorrow is sunny; it says the AIR MASS IS CHANGING. For Sapa the key event is the north-east monsoon surge: pressure rises fast after a cold front passes, with strong N/NE wind, low cloud and drizzle for days — the classic no-fly combination. A steady fall of a few hPa on a summer day signals a trough, with afternoon thunderstorms likely.",
+          "In the tropics pressure naturally drops 2–3 hPa from ~10h to ~16h each day and recovers at night — a daily rhythm, not a storm. The table compares day-to-day trend only (the \"Pressure\" line in the summary) to avoid false alarms."
         ]
       },
       {
-        "tieuDe": "Thermals — the fuel of the flight",
+        "tieuDe": "Thermals at Sapa — moderate, late to start, early to end",
         "y": [
-          "The ground absorbs radiation, heats the air against it, and bubbles of warm air break away and rise: that is a thermal. Two numbers describe it — CAPE (how much convective fuel there is) and the mixing-layer top (how high a bubble can get). This page calls that top the thermal ceiling.",
-          "The scale here rates towards SMOOTH: moderate thermals mean a long, comfortable flight, while rough ones make the wing buck and the landing field gusty. Cross-country pilots read it the other way round — they want it strong, so the same number means opposite things to the two of you."
+          "The launch slope faces the valley and catches the morning sun, but at 1,500m the air is cool and often moist, so Sapa thermals are rarely fierce; the peak is around 11–15h on clear days. Real sunshine is needed (radiation and sunshine minutes in the table) — on an overcast day nothing heats the ground and it is a glide-down flight (500m drop, roughly 10–15 minutes).",
+          "Winter mornings often have an inversion lid just above the site — thermals die there and the ceiling is low. The Skew-T tab draws the air column above the site hour by hour: the purple band is the lid, the orange line is a parcel rising from the site, where it meets the red line is the thermal top; cloud base against the 1,500m take-off mark answers \"is cloud on the site?\"."
         ]
       },
       {
-        "tieuDe": "Cloud, rain and thunderstorms",
+        "tieuDe": "Flying seasons at Sapa",
         "y": [
-          "Cloud base comes from the spread between temperature and dew point (about 125 m per 1 °C), plus the height difference between the model's grid cell and the real launch. A base below launch height means the launch is inside cloud: no slope, no landing field, no flying.",
-          "Rain is graded in millimetres per hour, not per cent — the model's per cent means 'rain somewhere in a 25 km cell', which reads 90% every day of the wet season. The real danger is not the raindrops but the THUNDERSTORM: before the cloud arrives its downdraught sweeps the launch, reversing the wind and multiplying its speed within minutes. A 40% storm risk is already reason enough not to take off."
+          "September–October (golden rice terraces) and May–June (flooded terraces) are the two prime seasons: stable weather, little morning fog, the valley at its most beautiful. November–March brings the north-east monsoon: drizzle, persistent fog, many days below 10°C at take-off — flyable, but pick the day with this table, ideally two or three days after a front has passed and the sky opens.",
+          "July–August means afternoon thunderstorms: mornings usually fly, afternoons stop once towering clouds build — the orange rain bars (showers/storms) in the Meteogram and the \"Storm\" row show exactly that. The take-off is 2–3°C colder than Sapa town, so bring a layer. Sunset comes earlier than in the lowlands because of the mountains; the true sunset time is printed above each day."
         ]
       }
     ],
@@ -1304,7 +1305,8 @@
       "ok": "Upper wind is calm — no effect on the take-off.",
       "warn": "Strong upper wind ({h}) — launch may be pushed back; speedbar and low ridge work needed; check with the pilot.",
       "bad": "Very strong upper wind from a bad sector ({h}) — the take-off is badly affected even with light surface wind; no flying advised."
-    }
+    },
+    "introTitle": "How to read this forecast for Sapa"
   },
   "pricingPage": {
     "title": "Sapa Paragliding Prices",

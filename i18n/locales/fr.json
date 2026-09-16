@@ -1046,10 +1046,11 @@
   },
   "weather": {
     "pageTitle": "Météo de vol parapente à Sapa",
-    "pageSubtitle": "Prévisions à 10 jours aux coordonnées exactes du décollage de Sapa — soleil, vent, thermiques, pluie, base des nuages, vent d’altitude",
+    "pageSubtitle": "Prévisions à 15 jours pour le décollage exact de Sapa (1 500 m, vallée de Muong Hoa) — vent, brouillard et nuages bas, pluie, thermiques, vent d’altitude",
     "intro": [
-      "Le parapente dépend presque entièrement du vent. Le tableau ci-dessous reprend les prévisions ECMWF (le modèle affiché par Windy) aux coordonnées exactes du décollage de Sapa (vallée de Muong Hoa), puis les colore selon les limites de sécurité du vol.",
-      "Vert : vent favorable. Orange : volable mais à réfléchir. Rouge : rester au sol. Servez-vous-en pour organiser votre voyage — la décision finale revient toujours au pilote sur le site le jour même, car la météo de montagne change vite."
+      "Le décollage de Sapa est à 1 500 m sur une crête face à la vallée de Muong Hoa ; l’atterrissage au village de Lao Chai, à 1 000 m — 500 m de dénivelé. Le tableau ci-dessus reprend les prévisions ECMWF (ou GFS, ICON, UKMO, GEM si vous changez) aux coordonnées exactes du décollage, sur 15 jours, et les colore selon les seuils réellement utilisés par l’équipe de vol de Sapa — les mêmes chiffres que le système d’exploitation mebayluon.com lu par les pilotes.",
+      "À Sapa, ce qui cloue le plus souvent au sol n’est pas le vent fort mais le BROUILLARD et les nuages bas : le site se trouve dans la couche nuageuse de l’air humide qui monte de la vallée, et les débuts de matinée sont souvent bouchés jusqu’à ce que le soleil dégage. Vient ensuite la direction du vent : nord, nord-est, est ou ouest au-dessus de 6 m/s, pas de vol ; plus faible, ça vole. Un vent d’altitude très fort de ces secteurs gâche aussi le décollage même par calme au sol. Vert : bon pour voler ; orange : volable avec prudence ; rouge : on reste au sol.",
+      "À partir du 7e jour les modèles ne donnent plus que la tendance (arrivée d’une poussée de mousson, épisode pluvieux, éclaircie) — utile pour choisir une date et réserver, pas pour fixer une heure. La décision finale revient au pilote au décollage le jour même ; en cas de report météo, vous pouvez changer de date ou être remboursé."
     ],
     "hourly": "Heure par heure",
     "selectDay": "Touchez un jour pour voir le détail heure par heure",
@@ -1117,53 +1118,53 @@
     "verdictFair": "Volable mais limité — demandez au pilote avant de monter.",
     "verdictBad": "Journée difficile ; le pilote décide au décollage, une accalmie peut ouvrir un créneau.",
     "bookNow": "Réserver un vol",
-    "widgetTitle": "Météo de vol, 10 prochains jours",
-    "widgetNote": "Prévisions aux coordonnées exactes du décollage",
+    "widgetTitle": "Météo de vol, 15 prochains jours",
+    "widgetNote": "Prévisions météo au décollage",
     "mapToggleOpen": "Ouvrir la carte des vents Windy",
     "mapToggleClose": "Masquer la carte des vents",
     "disclaimer": "Prévisions données à titre indicatif. Le pilote décide sur place, la sécurité avant tout ; en cas de report pour météo, vous pouvez reprogrammer ou être remboursé.",
     "khiTuongTieuDe": "Comprendre le bulletin",
     "khiTuong": [
       {
-        "tieuDe": "Pression — le signal le plus précoce",
+        "tieuDe": "Brouillard, nuages bas et mer de nuages — le facteur n°1 à Sapa",
         "y": [
-          "La pression au niveau de la mer n'annonce pas le soleil de demain : elle dit que LA MASSE D'AIR CHANGE. Une baisse régulière de quelques hPa en une journée signale un thalweg ou un front : le vent tournera, les cirrus s'épaissiront, et la convection de l'après-midi sera plus vive. Une hausse annonce de l'air plus sec et frais — ciel clair, mais vent synoptique souvent plus fort.",
-          "Sous les tropiques, la pression baisse d'elle-même de 2 à 3 hPa entre 10h et 16h, puis remonte la nuit : c'est la marée atmosphérique, pas un avertissement. Ce bulletin ne signale donc une chute que si elle est PLUS RAPIDE que ce rythme quotidien, comparée aux mêmes heures la veille."
+          "Le décollage à 1 500 m se trouve exactement au niveau où l’humidité de la vallée de Muong Hoa se condense en nuages. Tôt le matin, surtout après une nuit de pluie ou pendant un épisode de mousson, le brouillard couvre le site ; le soleil chauffe la pente et le dissipe, en général vers 9h–11h. L’après-midi, des nuages remontant la pente peuvent refermer le site. La ligne « Brume » se grise → noircit selon la densité ; le bloc « Brouillard et nuages bas » donne l’heure de dissipation et un éventuel retour l’après-midi.",
+          "La spécialité de Sapa est la MER DE NUAGES : la vallée déborde de nuages tandis que le décollage au-dessus est au soleil. Superbe en photo, mais pas de vol — il faut voir l’atterrissage de Lao Chai à 1 000 m et un passage clair pour descendre. Signes : nuit calme, humidité élevée après la pluie, base des nuages matinale sous le décollage. La base des nuages du tableau est mesurée AU-DESSUS du décollage — sous 150 m, le nuage est sur le site."
         ]
       },
       {
-        "tieuDe": "Vent au sol — la direction compte autant que la vitesse",
+        "tieuDe": "Vent au sol — les règles propres au site",
         "y": [
-          "Un déco ne fonctionne que si le vent entre DANS la pente. À 5 m/s : de face, l'aile monte droit et le décollage est simple ; de dos, l'aile s'affaisse ; de travers, on part en biais vers les arbres. Les flèches sont donc colorées selon les règles de direction propres à chaque site, pas seulement selon le chiffre.",
-          "En montagne s'ajoute un piège : le vent s'engouffre dans un col et accélère juste au bord du déco. La même direction est douce quand il est faible et brutale quand il forcit ; chaque site a donc une règle « venturi » qui ne se déclenche qu'au-delà d'une certaine vitesse."
+          "Le site de Sapa aime le vent faible à modéré. Règle de l’équipe de vol : nord, nord-est, est ou ouest au-dessus de 6 m/s, pas de vol ; plus faible, ça vole. Les flèches de direction passent au rouge exactement quand cette règle est dépassée. Les rafales seules ne décident pas — 4 m/s avec rafales à 12, c’est normal en montagne ; seul au-delà de 16 mérite l’attention.",
+          "En montagne la direction compte autant que la vitesse : les mêmes 5 m/s face à la pente font une belle journée, par-dessus la crête c’est turbulence et rotor au bord du décollage. La direction dominante du jour est imprimée sur chaque case (« NE · 1.2 m/s ») pour la comparer vite aux règles du site."
         ]
       },
       {
-        "tieuDe": "Vent d'altitude et cisaillement",
+        "tieuDe": "Vent d’altitude — à 1 500 m, le site est proche du niveau 850 hPa",
         "y": [
-          "Le vent à 925, 850 et 700 hPa (environ 750 m, 1 500 m et 3 000 m) pèse plus qu'on ne croit. Calme au sol mais 8–10 m/s à 500 m au-dessus du déco : les thermiques sont déchiquetés dès qu'ils quittent la pente, l'aile devient turbulente et l'on dérive en arrière. Voler bas en soaring reste possible, monter non.",
-          "Un saut brutal entre deux couches est un CISAILLEMENT. Le piège : l'anémomètre du déco reste sage alors que l'air juste au-dessus ne l'est pas. L'onglet Airgram empile quatre niveaux pour cela : une augmentation progressive est normale, un saut ou un virage net de direction est à éviter."
+          "Sapa étant haut, le niveau 850 hPa (~1 500 m) n’est plus de l’« altitude » mais le vent en air libre à hauteur du décollage ; 700 hPa (~3 000 m) est le vent 1 500 m au-dessus. Quand ces niveaux soufflent d’ouest, d’est ou de nord et très fort, le flux plaque la pente, rendant le décollage turbulent et propice au recul même si l’anémomètre au sol reste calme. Dès 8 m/s à +500 m, prudence ; au-delà de 12, vol déconseillé.",
+          "L’onglet Airgram montre le vent par altitude pour chaque heure — lisez une colonne de haut en bas pour voir où le vent augmente ou tourne (cisaillement). Le bloc « Vent d’altitude » résume la valeur maximale de la fenêtre de vol et sa direction."
         ]
       },
       {
-        "tieuDe": "Inversion — le couvercle invisible",
+        "tieuDe": "Pression — l’alerte précoce des poussées de mousson et des orages",
         "y": [
-          "L'air se refroidit normalement avec l'altitude. Une inversion est une couche PLUS CHAUDE en haut qu'en bas, formée la nuit sous ciel clair. Elle agit comme un couvercle : la bulle thermique s'y arrête, le plafond est bas et les vols sont courts.",
-          "Elle retient aussi la brume et les stratus dans la vallée jusqu'en fin de matinée — d'où ces cols blancs alors que la pluie prévue est nulle. Quand le soleil perce, le couvercle cède et la brume se dissipe en une heure ; cette page indique l'heure prévue de dissipation."
+          "La pression au niveau de la mer ne dit pas si demain sera ensoleillé ; elle dit que la MASSE D’AIR CHANGE. Pour Sapa l’événement clé est la poussée de mousson de nord-est : la pression monte vite après le passage d’un front froid, avec vent fort de N/NE, nuages bas et bruine pendant des jours — la combinaison classique du non-vol. Une baisse régulière de quelques hPa un jour d’été annonce un thalweg, avec orages l’après-midi probables.",
+          "Sous les tropiques la pression baisse naturellement de 2–3 hPa de ~10h à ~16h chaque jour et remonte la nuit — un rythme quotidien, pas un orage. Le tableau ne compare que la tendance d’un jour à l’autre (ligne « Pression » du résumé) pour éviter les fausses alertes."
         ]
       },
       {
-        "tieuDe": "Thermiques — le carburant du vol",
+        "tieuDe": "Thermiques à Sapa — modérés, tardifs, brefs",
         "y": [
-          "Le sol absorbe le rayonnement, chauffe l'air au contact, et des bulles chaudes se détachent et montent : voilà le thermique. Deux chiffres le décrivent — la CAPE (le carburant disponible) et le sommet de la couche de mélange (jusqu'où la bulle monte), appelé ici plafond thermique.",
-          "L'échelle privilégie la DOUCEUR : des thermiques modérés donnent un vol long et confortable, tandis que des thermiques hachés secouent l'aile et rendent l'atterrissage rafaleux. Un pilote de distance la lit à l'envers — lui les veut forts."
+          "La pente de décollage face à la vallée prend le soleil du matin, mais à 1 500 m l’air est frais et souvent humide : les thermiques de Sapa sont rarement violents ; le pic se situe vers 11h–15h par ciel clair. Il faut du vrai soleil (rayonnement et minutes d’ensoleillement dans le tableau) — par ciel couvert rien ne chauffe le sol et c’est un vol plané (500 m de dénivelé, environ 10–15 minutes).",
+          "Les matins d’hiver ont souvent une inversion juste au-dessus du site — les thermiques y meurent et le plafond est bas. L’onglet Skew-T dessine la colonne d’air au-dessus du site heure par heure : la bande violette est le couvercle, la ligne orange la particule montant du site, son croisement avec la rouge est le sommet des thermiques ; la base des nuages face au repère 1 500 m répond à « le nuage est-il sur le site ? »."
         ]
       },
       {
-        "tieuDe": "Nuages, pluie et orages",
+        "tieuDe": "Saisons de vol à Sapa",
         "y": [
-          "La base des nuages se déduit de l'écart température/point de rosée (environ 125 m par 1 °C), auquel on ajoute la différence d'altitude entre la maille du modèle et le déco réel. Une base sous le déco signifie déco dans le nuage : ni pente, ni terrain, pas de vol.",
-          "La pluie est classée en millimètres par heure, pas en pourcentage — le pourcentage du modèle signifie « pluie quelque part dans une maille de 25 km », soit 90 % chaque jour en saison humide. Le vrai danger n'est pas la goutte mais l'ORAGE : avant l'arrivée du nuage, sa rafale descendante balaie le déco, inverse le vent et en multiplie la vitesse en quelques minutes. Un risque de 40 % suffit à renoncer."
+          "Septembre–octobre (rizières dorées) et mai–juin (rizières en eau) sont les deux grandes saisons : temps stable, peu de brouillard matinal, vallée au plus beau. Novembre–mars, mousson de nord-est : bruine, brouillard persistant, souvent moins de 10 °C au décollage — volable, mais choisissez le jour avec ce tableau, idéalement deux ou trois jours après un front, quand le ciel s’ouvre.",
+          "Juillet–août, orages d’après-midi : le matin vole en général, l’après-midi s’arrête dès que les cumulus bourgeonnent — les barres de pluie orange (averses/orages) du Meteogram et la ligne « Orage » le montrent. Le décollage est 2–3 °C plus froid que la ville de Sapa : prévoyez une couche. Le soleil se couche plus tôt qu’en plaine à cause des montagnes ; l’heure réelle est indiquée au-dessus de chaque jour."
         ]
       }
     ],
@@ -1290,7 +1291,8 @@
       "ok": "Vent d’altitude calme — sans effet sur le décollage.",
       "warn": "Vent d’altitude fort ({h}) — risque de recul au décollage ; accélérateur et vol bas nécessaires ; demandez au pilote.",
       "bad": "Vent d’altitude très fort d’un secteur défavorable ({h}) — décollage perturbé même par vent faible au sol ; vol déconseillé."
-    }
+    },
+    "introTitle": "Comment lire ces prévisions pour Sapa"
   },
   "pricingPage": {
     "title": "Tarifs du Parapente à Sapa",

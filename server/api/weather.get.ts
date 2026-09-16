@@ -20,7 +20,13 @@ import { laMaMoHinh, MO_HINH_MAC_DINH } from '~/utils/weather'
  *  - Cache 20 phút trong tiến trình theo từng mô hình.
  *  - Khi mebayluon.com chậm hoặc lỗi thì trả bản cũ (tới 6 giờ) thay vì trắng trang.
  */
-const NGUON = 'https://www.mebayluon.com/api/thoi-tiet?spot=muong-hoa-sapa'
+/**
+ * 15 NGÀY (chủ 16/09) — ECMWF trên Open-Meteo phủ tới ~15 ngày, GFS 16; mô hình
+ * nào không đủ thì mebayluon tự cắt những ngày trống. Mặc định bên mebayluon
+ * là 10, nên phải xin rõ `days=15`.
+ */
+const SO_NGAY = 15
+const NGUON = `https://www.mebayluon.com/api/thoi-tiet?spot=muong-hoa-sapa&days=${SO_NGAY}`
 const CACHE_MS = 20 * 60 * 1000
 const CACHE_CU_MS = 6 * 60 * 60 * 1000
 
