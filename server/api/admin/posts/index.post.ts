@@ -217,6 +217,7 @@ export default defineEventHandler(async (event) => {
     }
 
     await postsCollection.insertOne(newPost)
+    clearPostsListCache() // danh sách công khai đổi — bỏ bản cache 60 giây (server/utils/posts-cache.ts)
 
     return {
       success: true,

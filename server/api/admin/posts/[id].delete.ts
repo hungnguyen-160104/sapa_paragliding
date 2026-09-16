@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
     const query = filters.length > 1 ? { $or: filters } : filters[0]
 
     const result = await postsCollection.deleteOne(query)
+    clearPostsListCache() // danh sách công khai đổi — bỏ bản cache 60 giây (server/utils/posts-cache.ts)
 
     if (result.deletedCount === 0) {
       return {

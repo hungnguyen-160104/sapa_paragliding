@@ -286,16 +286,6 @@ function formatDate(date?: string) {
   })
 }
 
-function localizedNavigateTo(path: string) {
-  const fullPath = isVietnamese.value ? path : `/${currentLocale.value}${path}`
-  router.push(fullPath)
-}
-
-function navigateToPost(id: string | number | undefined) {
-  if (!id) return
-  localizedNavigateTo(`/posts/${String(id)}`)
-}
-
 useHead(() => {
   const title = `${t('posts.latestPosts')} | Sapa Paragliding`
   const description = t('posts.latestPostsDescription')

@@ -246,6 +246,7 @@ export default defineEventHandler(async (event) => {
     const result = await postsCollection.updateOne(query as Record<string, any>, {
       $set: updateData
     })
+    clearPostsListCache() // danh sách công khai đổi — bỏ bản cache 60 giây (server/utils/posts-cache.ts)
 
     if (result.matchedCount === 0) {
       return {

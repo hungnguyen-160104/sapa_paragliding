@@ -101,7 +101,14 @@ export default defineNuxtConfig({
 
   nitro: {
     compressPublicAssets: true,
-    minify: true
+    minify: true,
+    // Vercel mặc định cắt hàm ở 10 giây. Khởi động lạnh + kết nối Atlas + truy
+    // vấn có lúc quá mốc đó và khách nhận trang lỗi của Vercel (tải lại thì hết
+    // vì instance đã ấm). Nới lên 30 giây để hàm còn kịp trả 503 tử tế thay vì
+    // bị cắt ngang; gói Hobby cho phép tới 60.
+    vercel: {
+      functions: { maxDuration: 30 }
+    }
   },
 
   runtimeConfig: {

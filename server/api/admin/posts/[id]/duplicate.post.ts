@@ -46,6 +46,7 @@ export default defineEventHandler(async (event) => {
     delete duplicatedPost._id
 
     await postsCollection.insertOne(duplicatedPost)
+    clearPostsListCache() // danh sách công khai đổi — bỏ bản cache 60 giây (server/utils/posts-cache.ts)
 
     return {
       success: true,
