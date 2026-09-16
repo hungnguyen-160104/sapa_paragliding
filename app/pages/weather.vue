@@ -107,7 +107,9 @@
 
         <!-- ===== Dải 10 ngày ===== -->
         <p class="mb-1 text-[11px] text-slate-500">{{ $t('weather.selectDay') }}</p>
-        <div class="grid grid-cols-3 gap-1.5 sm:grid-cols-5 xl:grid-cols-[repeat(15,minmax(0,1fr))] xl:gap-1">
+        <!-- Dải ngày xếp HAI HÀNG trên desktop (chủ 16/09): 10 hay 15 ô một hàng
+             đều chật, chữ gió tràn sang ô cạnh. Số cột = nửa số ngày (10 → 5, 15 → 8). -->
+        <div class="grid grid-cols-3 gap-1.5 sm:grid-cols-5 xl:grid-cols-[repeat(var(--cot),minmax(0,1fr))]" :style="{ '--cot': Math.ceil(du.ngay.length / 2) }">
           <button v-for="n in du.ngay" :key="n.ngay" type="button" @click="chon = n.ngay"
             :class="['rounded-xl border px-1 py-1.5 text-center transition hover:brightness-95', chon === n.ngay ? 'border-orange-500 bg-orange-200 text-orange-950 shadow-md ring-2 ring-orange-500' : VIEN[n.muc]]">
             <div class="text-[11px] font-bold uppercase tracking-wide opacity-80">{{ nhanNgayHienThi(n.ngay) }}</div>
