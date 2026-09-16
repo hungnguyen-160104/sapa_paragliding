@@ -485,7 +485,6 @@ export function formatCustomerEmailHtml(booking: BookingData, locale: EmailLocal
       <tr><td style="font-size:14px;color:${EC.ink};line-height:1.9;">
         ${escapeHtml(s.contactIntro)}<br/>
         📞 Ms. Judy — <a href="tel:+84386887489" style="color:${EC.blue};text-decoration:none;font-weight:600;">+84 386 887 489</a><br/>
-        📞 Mr. August — <a href="tel:+84522794999" style="color:${EC.blue};text-decoration:none;font-weight:600;">+84 522 794 999</a><br/>
         ✉️ <a href="mailto:sapa.paragliding@gmail.com" style="color:${EC.blue};text-decoration:none;">sapa.paragliding@gmail.com</a>
       </td></tr>
 

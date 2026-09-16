@@ -765,9 +765,6 @@ onBeforeUnmount(() => {
               <a href="tel:+84386887489" class="block text-slate-600 text-sm hover:text-green-600 transition-colors">
                 <span class="font-medium">Ms. Judy:</span> +84 386 887 489
               </a>
-              <a href="tel:+84522794999" class="block text-slate-600 text-sm hover:text-green-600 transition-colors">
-                <span class="font-medium">Mr. August:</span> +84 522 794 999
-              </a>
             </div>
           </div>
 

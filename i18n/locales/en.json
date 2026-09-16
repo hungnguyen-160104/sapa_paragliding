@@ -18,6 +18,7 @@
     "preNotice": "Pre-flight Notice",
     "about": "About Us",
     "flyingSite": "Flying Site",
+    "weather": "Weather",
     "prices": "Prices"
   },
   "buttons": {
@@ -1056,6 +1057,254 @@
       "desc": "Meet us in Sapa town center (Sun Plaza) or at your hotel/homestay in the Sapa, Lao Chai or Ta Van area. Sapa Paragliding's shuttle takes you up to the takeoff and picks you up at the landing site."
     },
     "cta": "Book your flight over Muong Hoa"
+  },
+  "weather": {
+    "pageTitle": "Sapa paragliding weather forecast",
+    "pageSubtitle": "10-day forecast for the exact Sapa take-off coordinates — sun, wind, thermals, rain, cloud base, upper winds",
+    "intro": [
+      "Paragliding depends almost entirely on the wind. The table below takes the ECMWF forecast (the model Windy shows) for the exact take-off coordinates in Sapa (Muong Hoa Valley), then colours it against the safety limits used for flying.",
+      "Green means good wind, amber means flyable but think twice, red means stay on the ground. Use it to plan your trip — the final call always belongs to the pilot at the take-off on the day, because mountain weather changes fast."
+    ],
+    "hourly": "Hour by hour",
+    "selectDay": "Tap a day to see the hour-by-hour detail",
+    "temp": "Temp",
+    "good": "GOOD TO FLY",
+    "fair": "MARGINAL",
+    "bad": "NO FLYING",
+    "wind": "Wind",
+    "gust": "Gusts",
+    "rain": "Rain",
+    "direction": "Direction",
+    "cloud": "Cloud",
+    "sky": "Sky",
+    "hour": "Hour",
+    "windUnit": "m/s",
+    "storm": "Storm",
+    "cloudBase": "Cloud base",
+    "thermal": "Thermals",
+    "sunHours": "sunshine hours",
+    "goodSunset": "Great sunset expected",
+    "takeoff": "take-off",
+    "landing": "landing",
+    "heightDiff": "height difference",
+    "modelLabel": "Model",
+    "upperWind": "Upper wind",
+    "inversion": "Inversion",
+    "inversionNone": "no capping layer",
+    "ridge": "Ridge soaring",
+    "ridgeGood": "good",
+    "ridgeVeryGood": "very good",
+    "pressure": "Pressure",
+    "pressureFalling": "falling",
+    "pressureRising": "rising",
+    "pressureSteady": "steady",
+    "thermalPotential": "Thermal potential",
+    "thermalWindow": "peak",
+    "thermalHours": "thermal hours",
+    "canFly": "Fly?",
+    "score": "Score",
+    "thermalLevels": {
+      "khong": "very light",
+      "nhe": "light",
+      "vua": "moderate",
+      "manh": "strong",
+      "gat": "very strong"
+    },
+    "today": "Today",
+    "bestWindow": "Best window",
+    "goodHours": "good hours",
+    "source": "Source",
+    "updated": "Updated",
+    "loading": "Loading forecast…",
+    "error": "Could not load the weather forecast",
+    "retry": "Try again",
+    "sunrise": "Sunrise",
+    "sunset": "sunset",
+    "assessment": "Flying-day assessment",
+    "confidence": "confidence",
+    "hourShort": "h",
+    "noRain": "No rain",
+    "lightRain": "Light drizzle — still flyable",
+    "strongGusts": "Strong gusts",
+    "cloudCover": "Cloud cover",
+    "verdictGood": "Good flying conditions.",
+    "verdictFair": "Flyable but limited — check with the pilot before heading up.",
+    "verdictBad": "A hard day to fly; the pilot decides at launch, and a break in the weather can still open a window.",
+    "bookNow": "Book a flight",
+    "widgetTitle": "Flying weather, next 10 days",
+    "widgetNote": "Forecast for the exact take-off coordinates",
+    "mapToggleOpen": "Open Windy wind map",
+    "mapToggleClose": "Hide wind map",
+    "disclaimer": "Forecasts are indicative. The pilot decides on site whether to fly, with safety first; if a flight is postponed for weather you may reschedule or get a refund.",
+    "khiTuongTieuDe": "How to read the forecast",
+    "khiTuong": [
+      {
+        "tieuDe": "Pressure — the earliest warning",
+        "y": [
+          "Sea-level pressure does not tell you tomorrow's sunshine; it tells you the AIR MASS IS CHANGING. A steady fall of a few hPa over a day means a trough or front is arriving: wind will back or veer, high cloud thickens first, and afternoon convection runs stronger than usual. A rise means drier, cooler air moving in — clear skies, but usually a stronger gradient wind.",
+          "In the tropics pressure falls 2–3 hPa by itself between about 10:00 and 16:00 and recovers overnight. That is the atmospheric tide, not a warning. This forecast therefore flags a drop only when it is FASTER than that daily rhythm, compared against the same hours the day before."
+        ]
+      },
+      {
+        "tieuDe": "Surface wind — direction matters as much as speed",
+        "y": [
+          "A launch works only when the wind blows INTO the slope. At the same 5 m/s, straight onto the face inflates the wing evenly and the launch is easy; from behind the wing collapses, and across the face you launch crooked and drift into trees. That is why the arrows here are coloured by each site's own direction rules, not by the number alone.",
+          "Mountain passes add a trap: wind funnels through a gap and accelerates right at the launch edge. The same direction is smooth when light and vicious when strong, so each site has a separate 'venturi' rule that only triggers once the speed is up."
+        ]
+      },
+      {
+        "tieuDe": "Upper winds and shear",
+        "y": [
+          "Wind at 925, 850 and 700 hPa (roughly 750 m, 1,500 m and 3,000 m) decides more of the flight than most people expect. Calm on the ground with 8–10 m/s at 500 m above launch means thermals are torn apart as soon as they leave the slope: the wing gets rough and you drift backwards. Soaring low on the face is fine; climbing is not.",
+          "A sudden jump between layers is WIND SHEAR. The danger is that the anemometer on launch reads gentle while the air just above is not. The Airgram tab stacks four levels for exactly this: wind increasing gradually with height is normal, a sudden jump or a sharp change of direction is what you avoid."
+        ]
+      },
+      {
+        "tieuDe": "Inversion — the invisible lid",
+        "y": [
+          "Air normally cools with height. An inversion is a layer that is WARMER above than below, usually formed overnight under clear skies. It acts as a lid: a rising thermal bubble stops there, so the climb ceiling is low and flights are short.",
+          "An inversion also traps fog and low cloud in the valley until late morning — the reason a pass can be white over while the rain forecast reads zero. Once the sun burns through, the lid breaks and the fog clears within an hour; this page gives the expected clearing time so you can plan when to head up."
+        ]
+      },
+      {
+        "tieuDe": "Thermals — the fuel of the flight",
+        "y": [
+          "The ground absorbs radiation, heats the air against it, and bubbles of warm air break away and rise: that is a thermal. Two numbers describe it — CAPE (how much convective fuel there is) and the mixing-layer top (how high a bubble can get). This page calls that top the thermal ceiling.",
+          "The scale here rates towards SMOOTH: moderate thermals mean a long, comfortable flight, while rough ones make the wing buck and the landing field gusty. Cross-country pilots read it the other way round — they want it strong, so the same number means opposite things to the two of you."
+        ]
+      },
+      {
+        "tieuDe": "Cloud, rain and thunderstorms",
+        "y": [
+          "Cloud base comes from the spread between temperature and dew point (about 125 m per 1 °C), plus the height difference between the model's grid cell and the real launch. A base below launch height means the launch is inside cloud: no slope, no landing field, no flying.",
+          "Rain is graded in millimetres per hour, not per cent — the model's per cent means 'rain somewhere in a 25 km cell', which reads 90% every day of the wet season. The real danger is not the raindrops but the THUNDERSTORM: before the cloud arrives its downdraught sweeps the launch, reversing the wind and multiplying its speed within minutes. A 40% storm risk is already reason enough not to take off."
+        ]
+      }
+    ],
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "windyLayers": {
+      "wind": "Wind",
+      "gust": "Gusts",
+      "clouds": "Clouds",
+      "lclouds": "Low clouds",
+      "cbase": "Cloud base",
+      "fog": "Fog",
+      "visibility": "Visibility",
+      "rain": "Rain",
+      "rh": "Humidity"
+    },
+    "chartType": "Chart",
+    "hourLabel": "Hour",
+    "skewTemp": "Air temperature",
+    "skewDew": "Dew point (humidity)",
+    "skewParcel": "Thermal from the ground",
+    "skewDry": "Dry adiabat −1°C/100m",
+    "skewTiltNote": "The Skew-T temperature axis is deliberately skewed: a red line leaning right does NOT mean it gets warmer with height — the °C figures printed on the line are the real temperatures. Tap Emagram for an upright axis.",
+    "thermalTop": "thermal top",
+    "skewCaption": "temperature (°C) · wind m/s on the right",
+    "ground": "ground",
+    "swipeDays": "Swipe sideways for the next days · tap a day above to jump there · rain bars: blue = rain, orange = thundery showers",
+    "moreSites": "See the weather at other flying sites in Vietnam",
+    "expert": {
+      "label": "Expert",
+      "good": "Good to fly",
+      "limited": "Limited flying",
+      "rest": "No flying",
+      "window": "best",
+      "note": "Read by an experienced pilot on site; overrides the computed rating."
+    },
+    "tabs": {
+      "basic": "▦ Table",
+      "meteogram": "📊 Meteogram",
+      "airgram": "🪂 Airgram",
+      "skewt": "🌡 Skew-T"
+    },
+    "compare": {
+      "toggle": "⇄ Compare",
+      "title": "Compare (pick 2–3):",
+      "loading": "loading…",
+      "day": "Day",
+      "today": "Today",
+      "consensus": "Consensus",
+      "chooseMore": "Pick another model to compare.",
+      "allAgree": "✔ {n} models agree on all {h} hours — a solid forecast, safe to plan.",
+      "fewDiffer": "{n} models differ for {k} hours ({gio}) — the rest is solid; re-check those hours closer to the day.",
+      "manyDiffer": "⚠ {n} models disagree on {k}/{h} hours ({gio}) — this day is UNCERTAIN, don’t commit early.",
+      "agreeTip": "All models agree",
+      "disagreeTip": "Models DISAGREE — this hour is uncertain"
+    },
+    "skewt": {
+      "loading": "Loading sounding…",
+      "error": "Could not load the sounding",
+      "noLevels": "The model has too few levels for this day.",
+      "inversionBand": "The purple band is an inversion: it gets WARMER with height, thermals die there — the lid.",
+      "noInversion": "No inversion in this layer (it would show as a horizontal purple band).",
+      "windColumn": "Right column: wind at each level — arrow shows where it blows to, number is m/s."
+    },
+    "fog": {
+      "title": "Fog and low cloud at Sapa",
+      "row": "Fog",
+      "risk": {
+        "thap": "LOW fog risk",
+        "vua": "MODERATE fog risk",
+        "cao": "HIGH fog risk"
+      },
+      "levels": {
+        "quang": "clear",
+        "hanChe": "reduced visibility",
+        "trumBai": "cloud on the take-off",
+        "muDay": "dense fog"
+      },
+      "noFog": "No sign of fog in the 07–17h flying window.",
+      "clearsAt": "Morning fog/cloud expected to clear around",
+      "allDay": "Fog/low cloud covers the take-off for most of the window — a postponement is likely.",
+      "returnsAt": "Upslope cloud covers the take-off again from about",
+      "badHours": "hours of fog / cloud on take-off",
+      "spread": "Smallest temperature–dew point spread",
+      "humidity": "Peak humidity",
+      "lowCloud": "Peak low cloud",
+      "baseMin": "Lowest cloud base above take-off",
+      "landingNote": "Take-off 1,500m, landing at Lao Chai 1,000m: the landing must be visible down the valley and the cloud base above take-off before launching. If a sea of cloud fills the valley, wait for it to lift.",
+      "tips": [
+        "Sapa sits at 1,500m, right in the low-cloud layer of moist air rising from Muong Hoa Valley: early-morning fog usually covers the take-off and burns off as the sun climbs (typically 9–11h); in the afternoon upslope cloud from the valley can close it again.",
+        "Fog signs: a temperature–dew point spread under 1–2°C with humidity above 95% and thick low cloud. Wind under 2 m/s and no sun keeps fog in place; 2–4 m/s with sunshine clears it fast.",
+        "During the north-east monsoon (Nov–Mar) drizzle and fog can last for days; in summer fog is mostly a morning affair after a rainy night, and midday usually opens up."
+      ]
+    },
+    "windRules": {
+      "title": "Wind-direction rules at the Sapa site",
+      "item": "{dir} wind above {max} m/s: no flying — lighter is fine.",
+      "upperItem": "Upper wind (+500m) from W, E or N above 12 m/s: the take-off is badly affected even with light surface wind — no flying advised; from 8 m/s think twice.",
+      "source": "Set by the site operator; the same rules used in the mebayluon.com operations system."
+    },
+    "upper": {
+      "title": "Upper wind",
+      "row": "Wind +500m",
+      "plus500": "+500m above take-off",
+      "at850": "at take-off level (850 hPa)",
+      "at700": "~3,000m (700 hPa)",
+      "strongest": "strongest",
+      "ok": "Upper wind is calm — no effect on the take-off.",
+      "warn": "Strong upper wind ({h}) — launch may be pushed back; speedbar and low ridge work needed; check with the pilot.",
+      "bad": "Very strong upper wind from a bad sector ({h}) — the take-off is badly affected even with light surface wind; no flying advised."
+    }
   },
   "pricingPage": {
     "title": "Sapa Paragliding Prices",

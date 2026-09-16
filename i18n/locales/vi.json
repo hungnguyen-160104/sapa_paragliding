@@ -18,6 +18,7 @@
     "preNotice": "Lưu Ý Trước Bay",
     "about": "Về Chúng Tôi",
     "flyingSite": "Điểm Bay",
+    "weather": "Thời Tiết",
     "prices": "Bảng Giá"
   },
   "buttons": {
@@ -1042,6 +1043,254 @@
       "desc": "Điểm hẹn tại trung tâm thị xã Sa Pa (Sun Plaza) hoặc khách sạn/homestay của bạn trong khu vực Sa Pa, Lao Chải, Tả Van. Xe của Sapa Paragliding sẽ đưa bạn lên điểm cất cánh và đón tại điểm hạ cánh."
     },
     "cta": "Đặt chuyến bay tại điểm bay Mường Hoa"
+  },
+  "weather": {
+    "pageTitle": "Dự báo thời tiết bay dù lượn Sa Pa",
+    "pageSubtitle": "Dự báo 10 ngày tới cho đúng toạ độ bãi cất cánh Sa Pa — nắng, gió, thermal, mưa, trần mây, gió tầng trên",
+    "intro": [
+      "Bay dù lượn phụ thuộc gần như hoàn toàn vào gió. Bảng dưới đây lấy dự báo của mô hình ECMWF (mô hình mà Windy hiển thị) cho đúng toạ độ bãi cất cánh tại Sa Pa (thung lũng Mường Hoa), rồi chấm màu theo ngưỡng an toàn khi bay.",
+      "Xanh là gió đẹp, vàng là bay được nhưng phải cân nhắc, đỏ là nên nghỉ. Dự báo chỉ để bạn chuẩn bị lịch trình — quyết định cuối cùng vẫn là của phi công tại bãi vào đúng buổi bay, vì thời tiết núi đổi rất nhanh."
+    ],
+    "hourly": "Chi tiết từng giờ",
+    "selectDay": "Bấm vào một ngày để xem chi tiết từng giờ",
+    "temp": "Nhiệt độ",
+    "good": "BAY TỐT",
+    "fair": "CÂN NHẮC",
+    "bad": "KHÔNG BAY",
+    "wind": "Gió",
+    "gust": "Giật",
+    "rain": "Mưa",
+    "direction": "Hướng",
+    "cloud": "Mây",
+    "sky": "Trời",
+    "hour": "Giờ",
+    "windUnit": "m/s",
+    "storm": "Dông",
+    "cloudBase": "Trần mây",
+    "thermal": "Thermal",
+    "sunHours": "giờ nắng",
+    "goodSunset": "Dự báo hoàng hôn đẹp",
+    "takeoff": "bãi cất",
+    "landing": "bãi hạ",
+    "heightDiff": "chênh cao",
+    "modelLabel": "Mô hình",
+    "upperWind": "Gió trên cao",
+    "inversion": "Nghịch nhiệt",
+    "inversionNone": "không có lớp chặn",
+    "ridge": "Cà vách",
+    "ridgeGood": "tốt",
+    "ridgeVeryGood": "rất tốt",
+    "pressure": "Áp suất",
+    "pressureFalling": "đang giảm",
+    "pressureRising": "đang tăng",
+    "pressureSteady": "gần như không đổi",
+    "thermalPotential": "Tiềm năng thermal",
+    "thermalWindow": "mạnh nhất",
+    "thermalHours": "giờ có thermal",
+    "canFly": "Bay?",
+    "score": "Điểm",
+    "thermalLevels": {
+      "khong": "rất nhẹ",
+      "nhe": "nhẹ",
+      "vua": "vừa",
+      "manh": "mạnh",
+      "gat": "rất mạnh"
+    },
+    "today": "Hôm nay",
+    "bestWindow": "Giờ đẹp",
+    "goodHours": "giờ đẹp",
+    "source": "Nguồn",
+    "updated": "Cập nhật",
+    "loading": "Đang lấy dự báo…",
+    "error": "Chưa lấy được dự báo thời tiết",
+    "retry": "Thử lại",
+    "sunrise": "Mặt trời mọc",
+    "sunset": "lặn",
+    "assessment": "Đánh giá ngày bay",
+    "confidence": "độ tin cậy",
+    "hourShort": "giờ",
+    "noRain": "Không mưa",
+    "lightRain": "Mưa bay — bay vẫn bay",
+    "strongGusts": "Gust mạnh",
+    "cloudCover": "Mây phủ",
+    "verdictGood": "Điều kiện bay tốt.",
+    "verdictFair": "Bay được nhưng hạn chế — hỏi lại phi công trước khi lên bãi.",
+    "verdictBad": "Hôm nay khó bay; phi công quyết tại bãi, trời ngớt vẫn có thể bay.",
+    "bookNow": "Đặt bay",
+    "widgetTitle": "Thời tiết bay 10 ngày tới",
+    "widgetNote": "Dự báo cho đúng toạ độ bãi cất cánh",
+    "mapToggleOpen": "Xem bản đồ gió Windy",
+    "mapToggleClose": "Ẩn bản đồ gió",
+    "disclaimer": "Dự báo mang tính tham khảo. Phi công quyết định bay hay hoãn tại bãi, ưu tiên an toàn tuyệt đối; nếu hoãn do thời tiết, bạn được đổi lịch hoặc hoàn tiền.",
+    "khiTuongTieuDe": "Hiểu bản tin để đọc được bảng",
+    "khiTuong": [
+      {
+        "tieuDe": "Áp suất — thứ báo trước sớm nhất",
+        "y": [
+          "Áp suất mực biển không nói ngày mai nắng hay mưa, nó nói KHỐI KHÍ ĐANG ĐỔI. Áp tụt đều vài hPa trong một ngày là rãnh thấp hoặc front đang tới: gió sẽ đổi hướng, mây dày lên từ tầng cao xuống, và đối lưu buổi chiều mạnh hơn thường lệ. Áp lên là khối khí lạnh khô lấn vào, trời quang nhưng gió nền thường mạnh hơn.",
+          "Ở vùng nhiệt đới, áp suất TỰ tụt 2–3 hPa từ khoảng 10h tới 16h rồi lên lại mỗi ngày — đó là nhịp thuỷ triều khí quyển, không phải dấu hiệu xấu. Vì vậy bảng này chỉ báo động khi áp tụt NHANH HƠN nhịp thường ngày, so với chính giờ ấy của hôm trước."
+        ]
+      },
+      {
+        "tieuDe": "Gió mặt đất — hướng quan trọng ngang tốc độ",
+        "y": [
+          "Một bãi cất cánh chỉ bay được khi gió thổi VÀO sườn. Cùng 5 m/s: thổi thẳng vào sườn thì dù dựng lên đều, cất cánh nhẹ; thổi sau lưng thì dù sập, còn thổi ngang thì cất cánh lệch và dễ chạm cây. Nên bảng này tô màu mũi tên theo luật hướng riêng của từng bãi, chứ không chỉ nhìn con số.",
+          "Ở địa hình đèo còn một cái bẫy nữa: gió luồn qua khe rồi tăng tốc đột ngột ngay mép bãi (hiệu ứng ống). Cùng một hướng, gió nhẹ thì êm mà gió mạnh lại thành gió xiết — vì thế luật hướng của mỗi điểm có riêng mục 'gió xiết' chỉ bật khi tốc độ đã lớn."
+        ]
+      },
+      {
+        "tieuDe": "Gió tầng trên và gió đứt",
+        "y": [
+          "Gió ở mực 925, 850, 700 hPa (xấp xỉ 750m, 1.500m, 3.000m) quyết định chuyến bay nhiều hơn người ta tưởng. Mặt đất lặng mà mực 500m trên bãi đã 8–10 m/s thì thermal vừa lên khỏi sườn là bị xé, dù xóc và bị thổi lùi — bay bám sườn thấp thì được, leo cao là hỏng.",
+          "Chênh lệch đột ngột giữa hai tầng gọi là GIÓ ĐỨT (wind shear). Nguy ở chỗ đứng dưới bãi đo gió thấy hiền, nhưng qua lớp đứt là nhiễu động ngay. Tab Airgram xếp bốn mực chồng nhau đúng để nhìn ra điều đó: gió tăng dần theo độ cao là bình thường, tăng vọt hoặc đổi hướng đột ngột mới là thứ phải tránh."
+        ]
+      },
+      {
+        "tieuDe": "Nghịch nhiệt — cái nắp vô hình",
+        "y": [
+          "Bình thường càng lên cao càng lạnh. Nghịch nhiệt là lớp khí phía trên ẤM HƠN phía dưới, thường hình thành trong đêm quang mây. Nó hoạt động như một cái nắp: thermal bốc lên tới đó là dừng, nên trần thermal thấp, chuyến bay ngắn.",
+          "Nghịch nhiệt còn giữ mù và mây thấp nằm lì trong thung lũng tới gần trưa — lý do nhiều buổi sáng đèo trắng xoá trong khi dự báo mưa bằng không. Nắng đốt đủ mạnh thì lớp nghịch nhiệt vỡ, mù tan nhanh trong vòng một tiếng; bảng này nói giờ dự kiến tan để canh lúc lên bãi cho đúng."
+        ]
+      },
+      {
+        "tieuDe": "Thermal — nhiên liệu của chuyến bay",
+        "y": [
+          "Mặt đất hấp thụ bức xạ, hun nóng lớp khí sát đất, bọt khí nóng tách ra và bốc lên: đó là thermal. Hai con số nói về nó là CAPE (thế năng đối lưu — bao nhiêu 'nhiên liệu') và trần lớp xáo trộn (thermal lên được tới đâu). Bảng này gọi trần ấy là trần thermal.",
+          "Thang ở đây chấm theo hướng ÊM: thermal vừa đủ thì chuyến dài và mượt, còn thermal gắt làm dù xóc và bãi đáp nổi gió xoáy. Phi công bay đường dài đọc ngược lại — với họ càng mạnh càng thích, nên hai bên nhìn cùng một con số mà kết luận khác nhau."
+        ]
+      },
+      {
+        "tieuDe": "Mây, mưa và dông",
+        "y": [
+          "Trần mây tính từ chênh lệch nhiệt độ và điểm sương (khoảng 125m cho mỗi 1°C), rồi cộng thêm chênh độ cao giữa ô lưới mô hình và bãi thật. Trần mây thấp hơn bãi nghĩa là bãi nằm trong mây: không thấy sườn, không thấy bãi đáp, không bay.",
+          "Mưa chia ba mức theo milimét mỗi giờ chứ không theo phần trăm — phần trăm của mô hình là 'có mưa đâu đó trong ô 25km', mùa mưa thì ngày nào cũng 90%. Nguy hiểm nhất không phải hạt mưa mà là DÔNG: trước khi mây dông tới, luồng gió đổ xuống quét qua bãi làm gió đảo chiều và mạnh gấp mấy lần chỉ trong vài phút. Vì vậy nguy cơ dông 40% đã là lý do không cất cánh."
+        ]
+      }
+    ],
+    "dirs": [
+      "B",
+      "BĐB",
+      "ĐB",
+      "ĐĐB",
+      "Đ",
+      "ĐĐN",
+      "ĐN",
+      "NĐN",
+      "N",
+      "NTN",
+      "TN",
+      "TTN",
+      "T",
+      "TTB",
+      "TB",
+      "BTB"
+    ],
+    "windyLayers": {
+      "wind": "Gió",
+      "gust": "Gió giật",
+      "clouds": "Mây",
+      "lclouds": "Mây thấp",
+      "cbase": "Trần mây",
+      "fog": "Sương mù",
+      "visibility": "Tầm nhìn",
+      "rain": "Mưa",
+      "rh": "Độ ẩm"
+    },
+    "chartType": "Kiểu",
+    "hourLabel": "Giờ",
+    "skewTemp": "Nhiệt độ không khí",
+    "skewDew": "Điểm sương (độ ẩm)",
+    "skewParcel": "Thermal từ mặt đất",
+    "skewDry": "Đoạn nhiệt khô −1°C/100m",
+    "skewTiltNote": "Trục nhiệt độ của Skew-T bị xiên: đường đỏ ngả phải KHÔNG phải là càng lên càng nóng — số °C in trên đường mới là nhiệt độ thật. Bấm Emagram để xem trục thẳng.",
+    "thermalTop": "trần thermal",
+    "skewCaption": "nhiệt độ (°C), trục ngang · gió m/s bên phải",
+    "ground": "mặt đất",
+    "swipeDays": "Vuốt ngang để xem các ngày tiếp theo · bấm ngày ở dải trên để nhảy tới · cột mưa: xanh = mưa, cam = mưa giông",
+    "moreSites": "Xem thêm thời tiết các điểm bay khác tại Việt Nam",
+    "expert": {
+      "label": "Chuyên gia",
+      "good": "Bay tốt",
+      "limited": "Bay hạn chế",
+      "rest": "Nghỉ bay",
+      "window": "đẹp",
+      "note": "Nhận định của người có nghề đọc trời tại bãi, đè lên số máy tính."
+    },
+    "tabs": {
+      "basic": "▦ Bảng",
+      "meteogram": "📊 Meteogram",
+      "airgram": "🪂 Airgram",
+      "skewt": "🌡 Skew-T"
+    },
+    "compare": {
+      "toggle": "⇄ So sánh",
+      "title": "So sánh (chọn 2–3):",
+      "loading": "đang lấy…",
+      "day": "Ngày",
+      "today": "Nay",
+      "consensus": "Đồng thuận",
+      "chooseMore": "Chọn thêm mô hình để so.",
+      "allAgree": "✔ {n} mô hình đồng thuận cả {h} giờ — dự báo chắc, chốt lịch được.",
+      "fewDiffer": "{n} mô hình lệch nhau {k} giờ ({gio}) — phần còn lại chắc; riêng mấy giờ đó hỏi lại sát ngày.",
+      "manyDiffer": "⚠ {n} mô hình lệch nhau tới {k}/{h} giờ ({gio}) — dự báo ngày này CHƯA CHẮC, đừng chốt sớm.",
+      "agreeTip": "Mọi mô hình cùng kết luận",
+      "disagreeTip": "Các mô hình KHÔNG đồng ý — giờ này chưa chắc"
+    },
+    "skewt": {
+      "loading": "Đang lấy số thám không…",
+      "error": "Không lấy được dữ liệu thám không",
+      "noLevels": "Mô hình không có đủ mực cho ngày này.",
+      "inversionBand": "Dải tím là lớp nghịch nhiệt: càng lên càng NÓNG, thermal lên tới đó là tắt — cái nắp chặn thermal.",
+      "noInversion": "Không có lớp nghịch nhiệt trong tầng này (nếu có, nó hiện thành dải tím nằm ngang).",
+      "windColumn": "Cột bên phải là gió từng độ cao: mũi tên chỉ chiều gió thổi tới, số là m/s."
+    },
+    "fog": {
+      "title": "Mù và mây thấp tại Sa Pa",
+      "row": "Mù",
+      "risk": {
+        "thap": "Nguy cơ mù THẤP",
+        "vua": "Nguy cơ mù VỪA",
+        "cao": "Nguy cơ mù CAO"
+      },
+      "levels": {
+        "quang": "quang",
+        "hanChe": "tầm nhìn hạn chế",
+        "trumBai": "mây trùm bãi cất",
+        "muDay": "mù dày"
+      },
+      "noFog": "Không có dấu hiệu mù trong khung bay 7–17h.",
+      "clearsAt": "Mù/mây buổi sáng dự kiến tan khoảng",
+      "allDay": "Mù/mây thấp trùm bãi gần như suốt khung bay — nhiều khả năng phải hoãn.",
+      "returnsAt": "Mây leo sườn trùm bãi trở lại từ khoảng",
+      "badHours": "giờ mù / mây trùm bãi",
+      "spread": "Chênh nhiệt độ – điểm sương nhỏ nhất",
+      "humidity": "Độ ẩm cao nhất",
+      "lowCloud": "Mây thấp nhiều nhất",
+      "baseMin": "Trần mây thấp nhất trên bãi cất",
+      "landingNote": "Bãi cất 1.500m, bãi hạ Lao Chải 1.000m: phải nhìn thấy bãi hạ dưới thung lũng và trần mây phải cao hơn bãi cất mới cất cánh. Biển mây lấp thung lũng thì chờ tan.",
+      "tips": [
+        "Sa Pa nằm ở 1.500m, đúng tầng mây thấp của khối khí ẩm bốc lên từ thung lũng Mường Hoa: sáng sớm mù thường trùm bãi cất rồi tan dần khi nắng lên (thường 9–11h); buổi chiều mây leo sườn từ thung lũng lên có thể bịt bãi trở lại.",
+        "Dấu hiệu mù: chênh nhiệt độ – điểm sương dưới 1–2°C kèm độ ẩm trên 95% và mây thấp dày. Gió dưới 2 m/s và không có nắng thì mù lâu tan; gió 2–4 m/s và nắng lên thì tan nhanh.",
+        "Mùa gió mùa đông bắc (tháng 11–3) hay có mưa phùn và mù kéo dài nhiều ngày; mùa hè mù chủ yếu buổi sáng sau đêm mưa, trưa thường mở."
+      ]
+    },
+    "windRules": {
+      "title": "Luật hướng gió bãi Sa Pa",
+      "item": "Gió {dir} trên {max} m/s: nghỉ bay — nhẹ hơn vẫn bay tốt.",
+      "upperItem": "Gió trên cao (+500m) từ Tây, Đông hoặc Bắc trên 12 m/s: bãi cất bị ảnh hưởng xấu dù gió mặt đất nhẹ — khuyến cáo nghỉ; từ 8 m/s đã phải cân nhắc.",
+      "source": "Luật do chủ điểm bay chốt; cùng bộ luật với hệ thống điều hành mebayluon.com."
+    },
+    "upper": {
+      "title": "Gió trên cao",
+      "row": "Gió +500m",
+      "plus500": "+500m trên bãi cất",
+      "at850": "ngang bãi cất (850 hPa)",
+      "at700": "~3.000m (700 hPa)",
+      "strongest": "mạnh nhất",
+      "ok": "Gió trên cao êm — không ảnh hưởng bãi cất.",
+      "warn": "Gió trên cao mạnh ({h}) — cất cánh dễ bị thổi lùi, cần speedbar và bám sườn thấp; hỏi lại phi công.",
+      "bad": "Gió trên cao rất mạnh từ hướng xấu ({h}) — bãi cất bị ảnh hưởng xấu dù gió mặt đất nhẹ, khuyến cáo nghỉ bay."
+    }
   },
   "pricingPage": {
     "title": "Giá Bay Dù Lượn Sa Pa",

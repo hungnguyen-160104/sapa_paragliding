@@ -18,6 +18,7 @@
     "preNotice": "Avant le vol",
     "about": "À propos de nous",
     "flyingSite": "Site de Vol",
+    "weather": "Météo",
     "prices": "Tarifs"
   },
   "buttons": {
@@ -1042,6 +1043,254 @@
       "desc": "Rendez-vous au centre de Sapa (Sun Plaza) ou à votre hôtel/homestay dans les zones de Sapa, Lao Chai ou Ta Van. La navette de Sapa Paragliding vous conduit au décollage et vous récupère à l’atterrissage."
     },
     "cta": "Réserver votre vol au-dessus de Muong Hoa"
+  },
+  "weather": {
+    "pageTitle": "Météo de vol parapente à Sapa",
+    "pageSubtitle": "Prévisions à 10 jours aux coordonnées exactes du décollage de Sapa — soleil, vent, thermiques, pluie, base des nuages, vent d’altitude",
+    "intro": [
+      "Le parapente dépend presque entièrement du vent. Le tableau ci-dessous reprend les prévisions ECMWF (le modèle affiché par Windy) aux coordonnées exactes du décollage de Sapa (vallée de Muong Hoa), puis les colore selon les limites de sécurité du vol.",
+      "Vert : vent favorable. Orange : volable mais à réfléchir. Rouge : rester au sol. Servez-vous-en pour organiser votre voyage — la décision finale revient toujours au pilote sur le site le jour même, car la météo de montagne change vite."
+    ],
+    "hourly": "Heure par heure",
+    "selectDay": "Touchez un jour pour voir le détail heure par heure",
+    "temp": "Temp.",
+    "good": "BON POUR VOLER",
+    "fair": "À ÉVALUER",
+    "bad": "VOL DÉCONSEILLÉ",
+    "wind": "Vent",
+    "gust": "Rafales",
+    "rain": "Pluie",
+    "direction": "Direction",
+    "cloud": "Nuages",
+    "sky": "Ciel",
+    "hour": "Heure",
+    "windUnit": "m/s",
+    "storm": "Orage",
+    "cloudBase": "Base des nuages",
+    "thermal": "Thermiques",
+    "sunHours": "heures de soleil",
+    "goodSunset": "Beau coucher de soleil prévu",
+    "takeoff": "décollage",
+    "landing": "atterrissage",
+    "heightDiff": "dénivelé",
+    "modelLabel": "Modèle",
+    "upperWind": "Vent en altitude",
+    "inversion": "Inversion",
+    "inversionNone": "pas de couche bloquante",
+    "ridge": "Vol de pente",
+    "ridgeGood": "bon",
+    "ridgeVeryGood": "très bon",
+    "pressure": "Pression",
+    "pressureFalling": "en baisse",
+    "pressureRising": "en hausse",
+    "pressureSteady": "stable",
+    "thermalPotential": "Potentiel thermique",
+    "thermalWindow": "pic",
+    "thermalHours": "heures de thermiques",
+    "canFly": "Volable ?",
+    "score": "Score",
+    "thermalLevels": {
+      "khong": "très faibles",
+      "nhe": "faibles",
+      "vua": "modérés",
+      "manh": "forts",
+      "gat": "très forts"
+    },
+    "today": "Aujourd’hui",
+    "bestWindow": "Meilleur créneau",
+    "goodHours": "h de vol",
+    "source": "Source",
+    "updated": "Mis à jour",
+    "loading": "Chargement des prévisions…",
+    "error": "Impossible de charger les prévisions",
+    "retry": "Réessayer",
+    "sunrise": "Lever du soleil",
+    "sunset": "coucher",
+    "assessment": "Évaluation de la journée de vol",
+    "confidence": "fiabilité",
+    "hourShort": "h",
+    "noRain": "Pas de pluie",
+    "lightRain": "Bruine légère — vol possible",
+    "strongGusts": "Rafales fortes",
+    "cloudCover": "Couverture nuageuse",
+    "verdictGood": "Bonnes conditions de vol.",
+    "verdictFair": "Volable mais limité — demandez au pilote avant de monter.",
+    "verdictBad": "Journée difficile ; le pilote décide au décollage, une accalmie peut ouvrir un créneau.",
+    "bookNow": "Réserver un vol",
+    "widgetTitle": "Météo de vol, 10 prochains jours",
+    "widgetNote": "Prévisions aux coordonnées exactes du décollage",
+    "mapToggleOpen": "Ouvrir la carte des vents Windy",
+    "mapToggleClose": "Masquer la carte des vents",
+    "disclaimer": "Prévisions données à titre indicatif. Le pilote décide sur place, la sécurité avant tout ; en cas de report pour météo, vous pouvez reprogrammer ou être remboursé.",
+    "khiTuongTieuDe": "Comprendre le bulletin",
+    "khiTuong": [
+      {
+        "tieuDe": "Pression — le signal le plus précoce",
+        "y": [
+          "La pression au niveau de la mer n'annonce pas le soleil de demain : elle dit que LA MASSE D'AIR CHANGE. Une baisse régulière de quelques hPa en une journée signale un thalweg ou un front : le vent tournera, les cirrus s'épaissiront, et la convection de l'après-midi sera plus vive. Une hausse annonce de l'air plus sec et frais — ciel clair, mais vent synoptique souvent plus fort.",
+          "Sous les tropiques, la pression baisse d'elle-même de 2 à 3 hPa entre 10h et 16h, puis remonte la nuit : c'est la marée atmosphérique, pas un avertissement. Ce bulletin ne signale donc une chute que si elle est PLUS RAPIDE que ce rythme quotidien, comparée aux mêmes heures la veille."
+        ]
+      },
+      {
+        "tieuDe": "Vent au sol — la direction compte autant que la vitesse",
+        "y": [
+          "Un déco ne fonctionne que si le vent entre DANS la pente. À 5 m/s : de face, l'aile monte droit et le décollage est simple ; de dos, l'aile s'affaisse ; de travers, on part en biais vers les arbres. Les flèches sont donc colorées selon les règles de direction propres à chaque site, pas seulement selon le chiffre.",
+          "En montagne s'ajoute un piège : le vent s'engouffre dans un col et accélère juste au bord du déco. La même direction est douce quand il est faible et brutale quand il forcit ; chaque site a donc une règle « venturi » qui ne se déclenche qu'au-delà d'une certaine vitesse."
+        ]
+      },
+      {
+        "tieuDe": "Vent d'altitude et cisaillement",
+        "y": [
+          "Le vent à 925, 850 et 700 hPa (environ 750 m, 1 500 m et 3 000 m) pèse plus qu'on ne croit. Calme au sol mais 8–10 m/s à 500 m au-dessus du déco : les thermiques sont déchiquetés dès qu'ils quittent la pente, l'aile devient turbulente et l'on dérive en arrière. Voler bas en soaring reste possible, monter non.",
+          "Un saut brutal entre deux couches est un CISAILLEMENT. Le piège : l'anémomètre du déco reste sage alors que l'air juste au-dessus ne l'est pas. L'onglet Airgram empile quatre niveaux pour cela : une augmentation progressive est normale, un saut ou un virage net de direction est à éviter."
+        ]
+      },
+      {
+        "tieuDe": "Inversion — le couvercle invisible",
+        "y": [
+          "L'air se refroidit normalement avec l'altitude. Une inversion est une couche PLUS CHAUDE en haut qu'en bas, formée la nuit sous ciel clair. Elle agit comme un couvercle : la bulle thermique s'y arrête, le plafond est bas et les vols sont courts.",
+          "Elle retient aussi la brume et les stratus dans la vallée jusqu'en fin de matinée — d'où ces cols blancs alors que la pluie prévue est nulle. Quand le soleil perce, le couvercle cède et la brume se dissipe en une heure ; cette page indique l'heure prévue de dissipation."
+        ]
+      },
+      {
+        "tieuDe": "Thermiques — le carburant du vol",
+        "y": [
+          "Le sol absorbe le rayonnement, chauffe l'air au contact, et des bulles chaudes se détachent et montent : voilà le thermique. Deux chiffres le décrivent — la CAPE (le carburant disponible) et le sommet de la couche de mélange (jusqu'où la bulle monte), appelé ici plafond thermique.",
+          "L'échelle privilégie la DOUCEUR : des thermiques modérés donnent un vol long et confortable, tandis que des thermiques hachés secouent l'aile et rendent l'atterrissage rafaleux. Un pilote de distance la lit à l'envers — lui les veut forts."
+        ]
+      },
+      {
+        "tieuDe": "Nuages, pluie et orages",
+        "y": [
+          "La base des nuages se déduit de l'écart température/point de rosée (environ 125 m par 1 °C), auquel on ajoute la différence d'altitude entre la maille du modèle et le déco réel. Une base sous le déco signifie déco dans le nuage : ni pente, ni terrain, pas de vol.",
+          "La pluie est classée en millimètres par heure, pas en pourcentage — le pourcentage du modèle signifie « pluie quelque part dans une maille de 25 km », soit 90 % chaque jour en saison humide. Le vrai danger n'est pas la goutte mais l'ORAGE : avant l'arrivée du nuage, sa rafale descendante balaie le déco, inverse le vent et en multiplie la vitesse en quelques minutes. Un risque de 40 % suffit à renoncer."
+        ]
+      }
+    ],
+    "dirs": [
+      "N",
+      "NNE",
+      "NE",
+      "ENE",
+      "E",
+      "ESE",
+      "SE",
+      "SSE",
+      "S",
+      "SSO",
+      "SO",
+      "OSO",
+      "O",
+      "ONO",
+      "NO",
+      "NNO"
+    ],
+    "windyLayers": {
+      "wind": "Vent",
+      "gust": "Rafales",
+      "clouds": "Nuages",
+      "lclouds": "Nuages bas",
+      "cbase": "Base des nuages",
+      "fog": "Brouillard",
+      "visibility": "Visibilité",
+      "rain": "Pluie",
+      "rh": "Humidité"
+    },
+    "chartType": "Type",
+    "hourLabel": "Heure",
+    "skewTemp": "Température de l'air",
+    "skewDew": "Point de rosée (humidité)",
+    "skewParcel": "Thermique depuis le sol",
+    "skewDry": "Adiabatique sèche −1°C/100m",
+    "skewTiltNote": "L'axe des températures du Skew-T est incliné à dessein : une courbe rouge penchée à droite ne signifie PAS qu'il fait plus chaud en altitude — les °C inscrits sur la courbe sont les vraies valeurs. Touchez Emagram pour un axe droit.",
+    "thermalTop": "plafond thermique",
+    "skewCaption": "température (°C) · vent m/s à droite",
+    "ground": "sol",
+    "swipeDays": "Faites glisser pour voir les jours suivants · touchez un jour ci-dessus · barres de pluie : bleu = pluie, orange = averses orageuses",
+    "moreSites": "Voir la météo des autres sites de vol au Vietnam",
+    "expert": {
+      "label": "Expert",
+      "good": "Bon pour voler",
+      "limited": "Vol limité",
+      "rest": "Pas de vol",
+      "window": "idéal",
+      "note": "Lecture d’un pilote expérimenté sur place ; prime sur la note calculée."
+    },
+    "tabs": {
+      "basic": "▦ Tableau",
+      "meteogram": "📊 Meteogram",
+      "airgram": "🪂 Airgram",
+      "skewt": "🌡 Skew-T"
+    },
+    "compare": {
+      "toggle": "⇄ Comparer",
+      "title": "Comparer (2–3 modèles) :",
+      "loading": "chargement…",
+      "day": "Jour",
+      "today": "Auj.",
+      "consensus": "Consensus",
+      "chooseMore": "Choisissez un autre modèle pour comparer.",
+      "allAgree": "✔ {n} modèles d’accord sur les {h} heures — prévision fiable, on peut planifier.",
+      "fewDiffer": "{n} modèles divergent sur {k} heures ({gio}) — le reste est fiable ; revérifiez ces heures la veille.",
+      "manyDiffer": "⚠ {n} modèles divergent sur {k}/{h} heures ({gio}) — journée INCERTAINE, ne réservez pas trop tôt.",
+      "agreeTip": "Tous les modèles concordent",
+      "disagreeTip": "Les modèles DIVERGENT — heure incertaine"
+    },
+    "skewt": {
+      "loading": "Chargement du sondage…",
+      "error": "Impossible de charger le sondage",
+      "noLevels": "Le modèle n’a pas assez de niveaux pour ce jour.",
+      "inversionBand": "La bande violette est une inversion : il fait PLUS CHAUD en montant, les thermiques s’y arrêtent — le couvercle.",
+      "noInversion": "Pas d’inversion dans cette couche (elle apparaîtrait en bande violette).",
+      "windColumn": "Colonne de droite : vent par niveau — la flèche indique où il souffle, le chiffre en m/s."
+    },
+    "fog": {
+      "title": "Brouillard et nuages bas à Sapa",
+      "row": "Brume",
+      "risk": {
+        "thap": "Risque de brouillard FAIBLE",
+        "vua": "Risque de brouillard MODÉRÉ",
+        "cao": "Risque de brouillard ÉLEVÉ"
+      },
+      "levels": {
+        "quang": "dégagé",
+        "hanChe": "visibilité réduite",
+        "trumBai": "nuage sur le décollage",
+        "muDay": "brouillard dense"
+      },
+      "noFog": "Aucun signe de brouillard dans la fenêtre 7h–17h.",
+      "clearsAt": "Brouillard/nuages du matin dissipés vers",
+      "allDay": "Brouillard/nuages bas sur le décollage presque toute la fenêtre — report probable.",
+      "returnsAt": "Les nuages remontent sur le décollage à partir de",
+      "badHours": "heures de brouillard / nuage sur le décollage",
+      "spread": "Écart température–point de rosée minimal",
+      "humidity": "Humidité maximale",
+      "lowCloud": "Nuages bas maximum",
+      "baseMin": "Base des nuages la plus basse au-dessus du décollage",
+      "landingNote": "Décollage 1 500 m, atterrissage à Lao Chai 1 000 m : l’atterrissage doit être visible dans la vallée et la base des nuages au-dessus du décollage. Si une mer de nuages remplit la vallée, on attend.",
+      "tips": [
+        "Sapa est à 1 500 m, en plein dans la couche de nuages bas de l’air humide qui monte de la vallée de Muong Hoa : le brouillard du matin couvre souvent le décollage puis se dissipe avec le soleil (vers 9h–11h) ; l’après-midi, des nuages remontent la pente et peuvent refermer le site.",
+        "Signes de brouillard : écart température–point de rosée sous 1–2 °C, humidité supérieure à 95 % et nuages bas épais. Sous 2 m/s sans soleil, le brouillard persiste ; 2–4 m/s avec du soleil, il se lève vite.",
+        "Pendant la mousson de nord-est (nov.–mars), bruine et brouillard peuvent durer des jours ; en été, le brouillard est surtout matinal après une nuit de pluie et la mi-journée s’ouvre en général."
+      ]
+    },
+    "windRules": {
+      "title": "Règles de direction du vent au site de Sapa",
+      "item": "Vent {dir} au-dessus de {max} m/s : pas de vol — plus faible, ça vole.",
+      "upperItem": "Vent d’altitude (+500 m) d’ouest, d’est ou de nord au-dessus de 12 m/s : le décollage est perturbé même par vent faible au sol — vol déconseillé ; dès 8 m/s, prudence.",
+      "source": "Fixées par l’exploitant du site ; mêmes règles que le système d’exploitation mebayluon.com."
+    },
+    "upper": {
+      "title": "Vent d’altitude",
+      "row": "Vent +500 m",
+      "plus500": "+500 m au-dessus du décollage",
+      "at850": "au niveau du décollage (850 hPa)",
+      "at700": "~3 000 m (700 hPa)",
+      "strongest": "maximum",
+      "ok": "Vent d’altitude calme — sans effet sur le décollage.",
+      "warn": "Vent d’altitude fort ({h}) — risque de recul au décollage ; accélérateur et vol bas nécessaires ; demandez au pilote.",
+      "bad": "Vent d’altitude très fort d’un secteur défavorable ({h}) — décollage perturbé même par vent faible au sol ; vol déconseillé."
+    }
   },
   "pricingPage": {
     "title": "Tarifs du Parapente à Sapa",

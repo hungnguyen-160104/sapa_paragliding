@@ -47,14 +47,17 @@
                hẳn vào nhau, nên chỉ tăng dần từng nấc nhỏ.
                Ẩn ở dải 1024-1279px vì menu ngang 8 mục chiếm hết chỗ.
                Màu #194d9b lấy từ .text-stroke-sapa. -->
-          <div class="hidden xl:flex flex-col justify-center leading-[0.9] text-[#194d9b] font-black">
+          <!-- Tiếng Nga và Pháp: 9 mục menu đã chiếm hết dải 1280–1535px, chữ
+               thương hiệu ("ПАРАПЛАНЕРИЗМ В САПЕ", "PARAPENTE À SAPA") chỉ còn
+               chỗ từ 1536px. -->
+          <div :class="['hidden flex-col justify-center leading-[0.9] text-[#194d9b] font-black', ['ru', 'fr'].includes(locale) ? '2xl:flex' : 'xl:flex']">
             <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
         </NuxtLink>
 
         <!-- Menu Items (Desktop) — hiện từ 1024px.
-             Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 8 mục menu
+             Cỡ chữ và khoảng cách phải co theo bề ngang, nếu không 9 mục menu
              tiếng Việt/Pháp sẽ tràn. Ở 1024px khoảng cách phải hẹp (gap-2) để
              bù cho cỡ chữ đã tăng và logo 105.6px. -->
         <nav class="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4">
@@ -237,7 +240,14 @@ const brandLines = computed<[string, string]>(() => {
 const navTextSize = computed(() =>
   ['zh', 'hi'].includes(locale.value)
     ? 'text-base xl:text-lg 2xl:text-xl'
-    : 'text-[13px] xl:text-[15px] 2xl:text-lg'
+    /* Tiếng Nga dài nhất: thêm mục "ПОГОДА" (mục thứ 9) thì ở 1024px dải
+       menu 13px đè lên logo. 11px ở 1024–1279px là vừa khít; từ 1280px trở
+       lên đủ chỗ nên trả lại cỡ thường. */
+    : locale.value === 'ru'
+      ? 'text-[11px] xl:text-[13px] 2xl:text-[14px]'
+      : locale.value === 'fr'
+        ? 'text-[12px] xl:text-[15px] 2xl:text-base'
+        : 'text-[12px] xl:text-[15px] 2xl:text-lg'
 )
 
 /**
@@ -258,6 +268,7 @@ const menuItems = [
   { path: '/booking', label: 'menu.booking' },
   { path: '/prices', label: 'menu.prices' },
   { path: '/flying-site', label: 'menu.flyingSite' },
+  { path: '/weather', label: 'menu.weather' },
   { path: '/pilots', label: 'menu.pilots' },
   { path: '/posts', label: 'menu.posts' },
   { path: '/pre-notice', label: 'menu.preNotice' },

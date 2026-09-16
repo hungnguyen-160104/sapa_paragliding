@@ -37,6 +37,7 @@ export const PAGE_ROUTES: Array<{
   { path: '/booking', priority: '0.9', changefreq: 'weekly' },
   { path: '/prices', priority: '0.9', changefreq: 'monthly' },
   { path: '/flying-site', priority: '0.8', changefreq: 'monthly' },
+  { path: '/weather', priority: '0.8', changefreq: 'daily' },
   { path: '/posts', priority: '0.8', changefreq: 'weekly' },
   { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/pilots', priority: '0.8', changefreq: 'monthly' },

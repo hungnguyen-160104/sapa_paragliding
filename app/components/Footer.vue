@@ -264,6 +264,7 @@ const menuItems = [
   { path: '/booking', label: 'menu.booking' },
   { path: '/prices', label: 'menu.prices' },
   { path: '/flying-site', label: 'menu.flyingSite' },
+  { path: '/weather', label: 'menu.weather' },
   { path: '/pilots', label: 'menu.pilots' },
   { path: '/posts', label: 'menu.posts' },
   { path: '/pre-notice', label: 'menu.preNotice' },
@@ -280,12 +281,6 @@ const contactData = computed(() => {
         name: 'Ms. Judy',
         role: t('footerContact.customerService'),
         phone: '+84 386 887 489',
-        note: t('footerContact.bookingNote')
-      },
-      {
-        name: 'Mr. August',
-        role: t('footerContact.customerService'),
-        phone: '+84 522 794 999',
         note: t('footerContact.bookingNote')
       },
       {
