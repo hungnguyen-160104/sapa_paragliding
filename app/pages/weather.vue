@@ -2,9 +2,10 @@
   <main class="min-h-screen bg-gray-50">
     <div class="container-custom mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 md:py-16">
       <!-- Tiêu đề -->
-      <div class="mb-6 max-w-3xl">
+      <!-- Không giới hạn bề rộng: dòng phụ đề phải nằm trọn một hàng trên desktop (chủ 16/09). -->
+      <div class="mb-6">
         <h1 class="mb-3 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl">{{ $t('weather.pageTitle') }}</h1>
-        <p class="text-lg leading-relaxed text-gray-600">{{ $t('weather.pageSubtitle') }}</p>
+        <p class="text-base leading-relaxed text-gray-600 lg:whitespace-nowrap lg:overflow-hidden lg:text-ellipsis">{{ $t('weather.pageSubtitle') }}</p>
       </div>
 
       <!-- Chú giải màu -->
