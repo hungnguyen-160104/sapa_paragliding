@@ -1050,7 +1050,7 @@
     "intro": [
       "Bãi cất cánh Sa Pa nằm ở 1.500m trên sườn núi hướng ra thung lũng Mường Hoa, bãi hạ ở bản Lao Chải 1.000m — chênh cao 500m. Bảng trên lấy dự báo ECMWF (và GFS, ICON, UKMO, GEM khi anh chọn) cho đúng toạ độ bãi cất, 15 ngày, rồi chấm màu theo ngưỡng của chính đội bay Sa Pa — cùng bộ số với hệ điều hành mebayluon.com mà phi công đang dùng.",
       "Ở Sa Pa thứ chặn bay nhiều nhất không chỉ gió mạnh mà còn gió thung lũng xiết và thường có MÙ và mây thấp: bãi nằm đúng tầng mây của khối khí ẩm bốc lên từ thung lũng, sáng sớm hay bị mù bao phủ, phải có nắng mới tan. Sau mù là hướng gió: gió Bắc, Đông Bắc, Đông hoặc Tây mạnh hơn 6 m/s cũng gây nhiễu động, nếu nhẹ hơn vẫn bay được; gió trên cao từ ba hướng ấy mạnh cũng làm ảnh hưởng tới chuyến bay dù gió mặt đất êm. Gió dưới thung lũng thường thay đổi nhanh và gắt do đặc tính thung lũng Sa Pa rất hẹp, phi công phải kiểm tra cả gió bãi hạ trước khi cất cánh. Xanh là bay tốt, vàng là bay được nhưng cân nhắc, đỏ là nên nghỉ.",
-      "Từ ngày thứ 7 trở đi mô hình chỉ còn nói được xu thế lớn (đợt gió mùa về, mưa kéo dài hay trời mở) — dùng để chọn ngày và đặt vé, không dùng để chốt giờ. Quyết định cuối cùng là của phi công tại bãi trong đúng buổi bay; hoãn vì thời tiết thì anh được đổi lịch hoặc hoàn tiền."
+      "Từ ngày thứ 7 trở đi mô hình chỉ thể hiện được xu thế lớn (đợt gió mùa, mưa kéo dài hay trời quang) — chỉ nên căn cứ để chọn ngày bay, không nên căn cứ để chốt giờ (vì độ tin cậy không cao). Quyết định bay cuối cùng vẫn là của phi công tại bãi vào đúng buổi bay; hoãn bay vì thời tiết thì khách được đổi lịch hoặc hoàn tiền."
     ],
     "hourly": "Chi tiết từng giờ",
     "selectDay": "Bấm vào một ngày để xem chi tiết từng giờ",
