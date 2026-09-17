@@ -44,9 +44,9 @@
           </div>
           <div v-if="ngayChon.chuyenGiaNguoi" class="mt-1 rounded-lg border-2 border-current/40 bg-white/80 px-2 py-1 text-[12px] leading-snug">
             <span class="mr-1 rounded bg-current/10 px-1 py-0.5 text-[10px] font-black uppercase tracking-wide">👤 Chuyên gia{{ ngayChon.chuyenGiaNguoi.boi ? ` · ${ngayChon.chuyenGiaNguoi.boi}` : '' }}</span>
-            <strong>{{ ngayChon.chuyenGiaNguoi.ket === 'tot' ? 'Bay tốt' : ngayChon.chuyenGiaNguoi.ket === 'han-che' ? 'Bay hạn chế' : 'Nghỉ bay' }}</strong>
+            <strong v-if="ngayChon.chuyenGiaNguoi.ket">{{ ngayChon.chuyenGiaNguoi.ket === 'tot' ? 'Bay tốt' : ngayChon.chuyenGiaNguoi.ket === 'han-che' ? 'Bay hạn chế' : 'Nghỉ bay' }}</strong>
             <span v-if="ngayChon.chuyenGiaNguoi.khung"> · đẹp {{ ngayChon.chuyenGiaNguoi.khung }}</span>
-            <span v-if="ngayChon.chuyenGiaNguoi.ghiChu"> — {{ ngayChon.chuyenGiaNguoi.ghiChu }}</span>
+            <span v-if="ngayChon.chuyenGiaNguoi.ghiChu" :class="ngayChon.chuyenGiaNguoi.ket ? '' : 'font-semibold'">{{ ngayChon.chuyenGiaNguoi.ket || ngayChon.chuyenGiaNguoi.khung ? ' — ' : '' }}{{ ngayChon.chuyenGiaNguoi.ghiChu }}</span>
             <span v-if="ngayChon.mucMay && ngayChon.mucMay !== ngayChon.muc" class="ml-1 opacity-60">(máy chấm {{ ngayChon.mucMay === 'xanh' ? 'bay được' : ngayChon.mucMay === 'vang' ? 'hạn chế' : 'không bay' }})</span>
           </div>
           <div v-if="ngayChon.nhanDinh.kieuNgay" class="mt-1 text-[12px] font-bold leading-snug">🧭 {{ ngayChon.nhanDinh.kieuNgay }}</div>
@@ -94,9 +94,9 @@
           <!-- Lời chuyên gia người (từ sổ mebayluon) — đè lên máy -->
           <div v-if="ngayChon.chuyenGiaNguoi" class="mt-1 rounded-lg border-2 border-current/40 bg-white/80 px-2 py-1 text-[12px] leading-snug" :title="$t('weather.expert.note')">
             <span class="mr-1 rounded bg-current/10 px-1 py-0.5 text-[10px] font-black uppercase tracking-wide">👤 {{ $t('weather.expert.label') }}{{ ngayChon.chuyenGiaNguoi.boi ? ` · ${ngayChon.chuyenGiaNguoi.boi}` : '' }}</span>
-            <strong>{{ ngayChon.chuyenGiaNguoi.ket === 'tot' ? $t('weather.expert.good') : ngayChon.chuyenGiaNguoi.ket === 'han-che' ? $t('weather.expert.limited') : $t('weather.expert.rest') }}</strong>
+            <strong v-if="ngayChon.chuyenGiaNguoi.ket">{{ ngayChon.chuyenGiaNguoi.ket === 'tot' ? $t('weather.expert.good') : ngayChon.chuyenGiaNguoi.ket === 'han-che' ? $t('weather.expert.limited') : $t('weather.expert.rest') }}</strong>
             <span v-if="ngayChon.chuyenGiaNguoi.khung"> · {{ $t('weather.expert.window') }} {{ ngayChon.chuyenGiaNguoi.khung }}</span>
-            <span v-if="ngayChon.chuyenGiaNguoi.ghiChu"> — {{ ngayChon.chuyenGiaNguoi.ghiChu }}</span>
+            <span v-if="ngayChon.chuyenGiaNguoi.ghiChu" :class="ngayChon.chuyenGiaNguoi.ket ? '' : 'font-semibold'">{{ ngayChon.chuyenGiaNguoi.ket || ngayChon.chuyenGiaNguoi.khung ? ' — ' : '' }}{{ ngayChon.chuyenGiaNguoi.ghiChu }}</span>
           </div>
           <ul class="mt-1.5 grid grid-cols-1 gap-x-4 gap-y-0.5 text-xs text-slate-700 sm:grid-cols-2">
             <li v-for="d in tomTatNgay" :key="d.nhan" class="flex items-baseline gap-1">

@@ -27,7 +27,13 @@ import { laMaMoHinh, MO_HINH_MAC_DINH } from '~/utils/weather'
  */
 const SO_NGAY = 15
 const NGUON = `https://www.mebayluon.com/api/thoi-tiet?spot=muong-hoa-sapa&days=${SO_NGAY}`
-const CACHE_MS = 20 * 60 * 1000
+/**
+ * 5 PHÚT chứ không phải 20 (chủ 17/09: ghi lời chuyên gia bên mebayluon mà nửa
+ * tiếng sau web Sapa vẫn chưa hiện). Lời chuyên gia là thứ đổi trong ngày và
+ * phải tới khách nhanh; số mô hình thì vài lần một ngày, 5 phút vẫn thừa.
+ * Cộng với CDN 2 phút bên dưới, tối đa ~7 phút là khách thấy.
+ */
+const CACHE_MS = 5 * 60 * 1000
 const CACHE_CU_MS = 6 * 60 * 60 * 1000
 
 /** Trường của TỪNG GIỜ mà trang khách cần — xem app/utils/weather.ts. */
@@ -121,7 +127,7 @@ export default defineEventHandler(async (event) => {
   const moHinh = laMaMoHinh(q.model) ? q.model : MO_HINH_MAC_DINH
   const cu = cache.get(moHinh)
   if (cu && Date.now() - cu.luc < CACHE_MS) {
-    setHeader(event, 'Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600')
+    setHeader(event, 'Cache-Control', 'public, s-maxage=120, stale-while-revalidate=300')
     return cu.du
   }
   try {
@@ -132,7 +138,7 @@ export default defineEventHandler(async (event) => {
     }
     const du = await p
     cache.set(moHinh, { luc: Date.now(), du })
-    setHeader(event, 'Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600')
+    setHeader(event, 'Cache-Control', 'public, s-maxage=120, stale-while-revalidate=300')
     return du
   } catch (err) {
     console.error(`GET /api/weather (${moHinh}): không lấy được dự báo từ mebayluon.com:`, err)
