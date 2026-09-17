@@ -105,7 +105,7 @@
           </ul>
         </div>
 
-        <!-- ===== Dải 10 ngày ===== -->
+        <!-- ===== Dải 15 ngày ===== -->
         <p class="mb-1 text-[11px] text-slate-500">{{ $t('weather.selectDay') }}</p>
         <!-- Dải ngày xếp HAI HÀNG trên desktop (chủ 16/09): 10 hay 15 ô một hàng
              đều chật, chữ gió tràn sang ô cạnh. Số cột = nửa số ngày (10 → 5, 15 → 8). -->
@@ -492,12 +492,12 @@ const khiTuong = computed<Array<{ tieuDe: string; y: string[] }>>(() => {
 
 const getWeatherSeoMeta = () => {
   const localeMetaMap: Record<string, { title: string; description: string }> = {
-    vi: { title: 'Dự Báo Thời Tiết Bay Dù Lượn Sa Pa 10 Ngày | Sapa Paragliding', description: 'Dự báo thời tiết bay dù lượn Sa Pa 10 ngày tới cho đúng toạ độ bãi cất cánh: gió, mưa, mù, mây, thermal, gió tầng cao, Skew-T, so sánh mô hình. Chấm màu ngày bay tốt, cân nhắc, nên nghỉ.' },
-    en: { title: 'Sapa Paragliding Weather Forecast: 10-Day Flying Conditions', description: '10-day paragliding weather forecast for the exact Sapa take-off: wind, rain, fog, cloud base, thermals, upper winds, Skew-T and model comparison, colour-coded good / marginal / no-fly.' },
-    fr: { title: 'Météo Parapente Sapa : Prévisions de Vol sur 10 Jours', description: "Prévisions météo parapente à Sapa sur 10 jours aux coordonnées exactes du décollage : vent, pluie, brouillard, base des nuages, thermiques, vent d'altitude, Skew-T, comparaison de modèles." },
-    ru: { title: 'Погода для параплана в Сапе: прогноз на 10 дней', description: 'Прогноз погоды для полётов на параплане в Сапе на 10 дней по точным координатам старта: ветер, дождь, туман, облачность, термики, ветер на высоте, Skew-T, сравнение моделей.' },
-    zh: { title: '沙坝滑翔伞天气预报：未来10天飞行条件 | Sapa Paragliding', description: '沙坝滑翔伞起飞场精确坐标的10天天气预报：风、雨、雾、云底、热气流、高空风、Skew-T 与模式对比，按可飞/谨慎/停飞标色。' },
-    hi: { title: 'सापा पैराग्लाइडिंग मौसम पूर्वानुमान: 10 दिन की उड़ान स्थितियाँ', description: 'सापा टेक-ऑफ़ की सटीक स्थिति के लिए 10 दिन का पैराग्लाइडिंग मौसम पूर्वानुमान: हवा, वर्षा, कोहरा, बादल आधार, थर्मल, ऊपरी हवाएँ, Skew-T और मॉडल तुलना।' }
+    vi: { title: 'Dự Báo Thời Tiết Bay Dù Lượn Sa Pa 15 Ngày | Sapa Paragliding', description: 'Dự báo thời tiết bay dù lượn Sa Pa 15 ngày tới cho đúng toạ độ bãi cất cánh: gió, mưa, mù, mây, thermal, gió tầng cao, Skew-T, so sánh mô hình. Chấm màu ngày bay tốt, cân nhắc, nên nghỉ.' },
+    en: { title: 'Sapa Paragliding Weather Forecast: 15-Day Flying Conditions', description: '15-day paragliding weather forecast for the exact Sapa take-off: wind, rain, fog, cloud base, thermals, upper winds, Skew-T and model comparison, colour-coded good / marginal / no-fly.' },
+    fr: { title: 'Météo Parapente Sapa : Prévisions de Vol sur 15 Jours', description: "Prévisions météo parapente à Sapa sur 15 jours aux coordonnées exactes du décollage : vent, pluie, brouillard, base des nuages, thermiques, vent d'altitude, Skew-T, comparaison de modèles." },
+    ru: { title: 'Погода для параплана в Сапе: прогноз на 15 дней', description: 'Прогноз погоды для полётов на параплане в Сапе на 15 дней по точным координатам старта: ветер, дождь, туман, облачность, термики, ветер на высоте, Skew-T, сравнение моделей.' },
+    zh: { title: '沙坝滑翔伞天气预报：未来15天飞行条件 | Sapa Paragliding', description: '沙坝滑翔伞起飞场精确坐标的15天天气预报：风、雨、雾、云底、热气流、高空风、Skew-T 与模式对比，按可飞/谨慎/停飞标色。' },
+    hi: { title: 'सापा पैराग्लाइडिंग मौसम पूर्वानुमान: 15 दिन की उड़ान स्थितियाँ', description: 'सापा टेक-ऑफ़ की सटीक स्थिति के लिए 15 दिन का पैराग्लाइडिंग मौसम पूर्वानुमान: हवा, वर्षा, कोहरा, बादल आधार, थर्मल, ऊपरी हवाएँ, Skew-T और मॉडल तुलना।' }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en!
 }
