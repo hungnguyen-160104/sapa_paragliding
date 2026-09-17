@@ -1142,7 +1142,7 @@
       {
         "tieuDe": "Fog, low cloud and the sea of clouds — Sapa’s number-one factor",
         "y": [
-          "The take-off at 1,500m sits right at the level where moisture from Muong Hoa Valley condenses into cloud. Early morning, especially after a rainy night or during a monsoon spell, fog covers the site; as the sun heats the slope it burns off, usually by 9–11h. In the afternoon cloud climbing the slope from the valley can close the site again. The \"Fog\" row shades grey→black by density; the \"Fog and low cloud\" panel gives the clearing time and any afternoon return.",
+          "The take-off at 1,500m sits right at the level where moisture from Muong Hoa Valley condenses into cloud. Early morning, especially after a rainy night or during a monsoon spell, fog covers the site; as the sun heats the slope it burns off, usually by 9–11h. In the afternoon cloud forming level with the mountain face can cover the take-off again. The \"Fog\" row shades grey→black by density; the \"Fog and low cloud\" panel gives the clearing time and any afternoon return.",
           "Sapa’s speciality is the SEA OF CLOUDS: the valley brims with cloud while the take-off above sits in sunshine. Stunning for photos, but no flying — you must see the Lao Chai landing at 1,000m and a clear way down. Signs: a calm night, high humidity after rain, a morning cloud base below the take-off. Cloud base in the table is measured ABOVE the take-off — under 150m means cloud is on the site."
         ]
       },
@@ -1276,7 +1276,7 @@
       "noFog": "No sign of fog in the 07–17h flying window.",
       "clearsAt": "Morning fog/cloud expected to clear around",
       "allDay": "Fog/low cloud covers the take-off for most of the window — a postponement is likely.",
-      "returnsAt": "Upslope cloud covers the take-off again from about",
+      "returnsAt": "Cloud at take-off level covers the site again from about",
       "badHours": "hours of fog / cloud on take-off",
       "spread": "Smallest temperature–dew point spread",
       "humidity": "Peak humidity",
@@ -1284,7 +1284,7 @@
       "baseMin": "Lowest cloud base above take-off",
       "landingNote": "Take-off 1,500m, landing at Lao Chai 1,000m: the landing must be visible down the valley and the cloud base above take-off before launching. If a sea of cloud fills the valley, wait for it to lift.",
       "tips": [
-        "Sapa sits at 1,500m, right in the low-cloud layer of moist air rising from Muong Hoa Valley: early-morning fog usually covers the take-off and burns off as the sun climbs (typically 9–11h); in the afternoon upslope cloud from the valley can close it again.",
+        "Sapa sits at 1,500m, right in the low-cloud layer of moist air rising from Muong Hoa Valley: early-morning fog usually covers the take-off and burns off as the sun climbs (typically 9–11h); in the afternoon cloud forming level with the mountain face can cover the take-off again.",
         "Fog signs: a temperature–dew point spread under 1–2°C with humidity above 95% and thick low cloud. Wind under 2 m/s and no sun keeps fog in place; 2–4 m/s with sunshine clears it fast.",
         "During the north-east monsoon (Nov–Mar) drizzle and fog can last for days; in summer fog is mostly a morning affair after a rainy night, and midday usually opens up."
       ]

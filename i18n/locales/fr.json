@@ -1128,7 +1128,7 @@
       {
         "tieuDe": "Brouillard, nuages bas et mer de nuages — le facteur n°1 à Sapa",
         "y": [
-          "Le décollage à 1 500 m se trouve exactement au niveau où l’humidité de la vallée de Muong Hoa se condense en nuages. Tôt le matin, surtout après une nuit de pluie ou pendant un épisode de mousson, le brouillard couvre le site ; le soleil chauffe la pente et le dissipe, en général vers 9h–11h. L’après-midi, des nuages remontant la pente peuvent refermer le site. La ligne « Brume » se grise → noircit selon la densité ; le bloc « Brouillard et nuages bas » donne l’heure de dissipation et un éventuel retour l’après-midi.",
+          "Le décollage à 1 500 m se trouve exactement au niveau où l’humidité de la vallée de Muong Hoa se condense en nuages. Tôt le matin, surtout après une nuit de pluie ou pendant un épisode de mousson, le brouillard couvre le site ; le soleil chauffe la pente et le dissipe, en général vers 9h–11h. L’après-midi, des nuages se forment au niveau de la paroi et peuvent recouvrir le décollage. La ligne « Brume » se grise → noircit selon la densité ; le bloc « Brouillard et nuages bas » donne l’heure de dissipation et un éventuel retour l’après-midi.",
           "La spécialité de Sapa est la MER DE NUAGES : la vallée déborde de nuages tandis que le décollage au-dessus est au soleil. Superbe en photo, mais pas de vol — il faut voir l’atterrissage de Lao Chai à 1 000 m et un passage clair pour descendre. Signes : nuit calme, humidité élevée après la pluie, base des nuages matinale sous le décollage. La base des nuages du tableau est mesurée AU-DESSUS du décollage — sous 150 m, le nuage est sur le site."
         ]
       },
@@ -1262,7 +1262,7 @@
       "noFog": "Aucun signe de brouillard dans la fenêtre 7h–17h.",
       "clearsAt": "Brouillard/nuages du matin dissipés vers",
       "allDay": "Brouillard/nuages bas sur le décollage presque toute la fenêtre — report probable.",
-      "returnsAt": "Les nuages remontent sur le décollage à partir de",
+      "returnsAt": "Des nuages au niveau du décollage le recouvrent à nouveau à partir de",
       "badHours": "heures de brouillard / nuage sur le décollage",
       "spread": "Écart température–point de rosée minimal",
       "humidity": "Humidité maximale",
@@ -1270,7 +1270,7 @@
       "baseMin": "Base des nuages la plus basse au-dessus du décollage",
       "landingNote": "Décollage 1 500 m, atterrissage à Lao Chai 1 000 m : l’atterrissage doit être visible dans la vallée et la base des nuages au-dessus du décollage. Si une mer de nuages remplit la vallée, on attend.",
       "tips": [
-        "Sapa est à 1 500 m, en plein dans la couche de nuages bas de l’air humide qui monte de la vallée de Muong Hoa : le brouillard du matin couvre souvent le décollage puis se dissipe avec le soleil (vers 9h–11h) ; l’après-midi, des nuages remontent la pente et peuvent refermer le site.",
+        "Sapa est à 1 500 m, en plein dans la couche de nuages bas de l’air humide qui monte de la vallée de Muong Hoa : le brouillard du matin couvre souvent le décollage puis se dissipe avec le soleil (vers 9h–11h) ; l’après-midi, des nuages se forment au niveau de la paroi et peuvent recouvrir le décollage.",
         "Signes de brouillard : écart température–point de rosée sous 1–2 °C, humidité supérieure à 95 % et nuages bas épais. Sous 2 m/s sans soleil, le brouillard persiste ; 2–4 m/s avec du soleil, il se lève vite.",
         "Pendant la mousson de nord-est (nov.–mars), bruine et brouillard peuvent durer des jours ; en été, le brouillard est surtout matinal après une nuit de pluie et la mi-journée s’ouvre en général."
       ]

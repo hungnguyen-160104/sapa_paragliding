@@ -1128,7 +1128,7 @@
       {
         "tieuDe": "Mù, mây thấp và biển mây — đặc trưng số một của Sa Pa",
         "y": [
-          "Bãi cất ở 1.500m nằm đúng tầng mà hơi ẩm từ thung lũng Mường Hoa ngưng thành mây. Sáng sớm, nhất là sau đêm mưa hoặc trong đợt gió mùa, mù trùm bãi; nắng lên hun nóng sườn núi thì mù tan dần, thường 9–11h. Buổi chiều mây \"leo sườn\" từ dưới thung lũng lên có thể bịt bãi trở lại. Hàng \"Mù\" trong bảng tô xám→đen theo độ đặc; khối \"Mù và mây thấp\" nói giờ tan và giờ trùm lại.",
+          "Bãi cất ở 1.500m nằm đúng tầng mà hơi ẩm từ thung lũng Mường Hoa ngưng thành mây. Sáng sớm, nhất là sau đêm mưa hoặc trong đợt gió mùa, mù trùm bãi; nắng lên hun nóng sườn núi thì mù tan dần, thường 9–11h. Buổi chiều mây hình thành ngang mặt núi có thể trùm bãi cất trở lại. Hàng \"Mù\" trong bảng tô xám→đen theo độ đặc; khối \"Mù và mây thấp\" nói giờ tan và giờ trùm lại.",
           "Còn một kiểu riêng của Sa Pa là BIỂN MÂY: thung lũng đầy mây trong khi bãi cất phía trên trời quang. Đẹp để chụp ảnh nhưng không bay được, vì phải nhìn thấy bãi hạ Lao Chải ở 1.000m và có đường xuống rõ. Dấu hiệu: đêm lặng gió, ẩm cao sau mưa, sáng trần mây thấp hơn bãi cất. Trần mây trong bảng tính TRÊN bãi cất — số nhỏ hơn 150m là mây đã chạm bãi."
         ]
       },
@@ -1262,7 +1262,7 @@
       "noFog": "Không có dấu hiệu mù trong khung bay 7–17h.",
       "clearsAt": "Mù/mây buổi sáng dự kiến tan khoảng",
       "allDay": "Mù/mây thấp trùm bãi gần như suốt khung bay — nhiều khả năng phải hoãn.",
-      "returnsAt": "Mây leo sườn trùm bãi trở lại từ khoảng",
+      "returnsAt": "Mây ngang mặt núi trùm bãi cất trở lại từ khoảng",
       "badHours": "giờ mù / mây trùm bãi",
       "spread": "Chênh nhiệt độ – điểm sương nhỏ nhất",
       "humidity": "Độ ẩm cao nhất",
@@ -1270,9 +1270,9 @@
       "baseMin": "Trần mây thấp nhất trên bãi cất",
       "landingNote": "Bãi cất 1.500m, bãi hạ Lao Chải 1.000m: phải nhìn thấy bãi hạ dưới thung lũng và trần mây phải cao hơn bãi cất mới cất cánh. Biển mây lấp thung lũng thì chờ tan.",
       "tips": [
-        "Sa Pa nằm ở 1.500m, đúng tầng mây thấp của khối khí ẩm bốc lên từ thung lũng Mường Hoa: sáng sớm mù thường trùm bãi cất rồi tan dần khi nắng lên (thường 9–11h); buổi chiều mây leo sườn từ thung lũng lên có thể bịt bãi trở lại.",
+        "Sa Pa nằm ở 1.500m, đúng tầng mây thấp của khối khí ẩm bốc lên từ thung lũng Mường Hoa: sáng sớm mù thường trùm bãi cất rồi tan dần khi nắng lên (thường 9–11h); buổi chiều mây hình thành ngang mặt núi có thể trùm bãi cất trở lại.",
         "Dấu hiệu mù: chênh nhiệt độ – điểm sương dưới 1–2°C kèm độ ẩm trên 95% và mây thấp dày. Gió dưới 2 m/s và không có nắng thì mù lâu tan; gió 2–4 m/s và nắng lên thì tan nhanh.",
-        "Mùa gió mùa đông bắc (tháng 11–3) hay có mưa phùn và mù kéo dài nhiều ngày; mùa hè mù chủ yếu buổi sáng sau đêm mưa, trưa thường mở."
+        "Mùa gió mùa đông bắc (tháng 11–3) hay có mưa phùn và mù kéo dài nhiều ngày; mùa hè mù chủ yếu buổi sáng sau đêm mưa, trưa thường tan mù."
       ]
     },
     "windRules": {

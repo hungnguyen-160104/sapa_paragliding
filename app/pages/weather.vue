@@ -114,8 +114,8 @@
             :class="['rounded-xl border px-1 py-1.5 text-center transition hover:brightness-95', chon === n.ngay ? 'border-orange-500 bg-orange-200 text-orange-950 shadow-md ring-2 ring-orange-500' : VIEN[n.muc]]">
             <div class="text-[11px] font-bold uppercase tracking-wide opacity-80">{{ nhanNgayHienThi(n.ngay) }}</div>
             <div class="mt-0.5 flex justify-center">
-              <span class="whitespace-nowrap rounded-md px-1.5 py-0.5 leading-none" :style="styleGio(n.gioMax, du.nguong)" :title="`${$t('weather.wind')} ${n.gioMax.toFixed(1)} ${$t('weather.windUnit')}`">
-                <span v-if="huongTroi(n) !== null" class="text-[11px] font-black">{{ tenHuong(huongTroi(n) as number) }} · </span>
+              <span class="whitespace-nowrap rounded-md px-1.5 py-0.5 leading-none" :style="styleGio(n.gioMax, du.nguong)" :title="`${$t('weather.wind')} ${n.gioMax.toFixed(1)} ${$t('weather.windUnit')}${huongTroi(n) !== null ? ` · ${tenHuong(huongTroi(n) as number)}` : ''}`">
+                <WeatherWindArrow v-if="huongTroi(n) !== null" :deg="huongTroi(n) as number" size-class="h-4 w-4 -mb-0.5 mr-0.5" />
                 <span class="text-[15px] font-black">{{ n.gioMax.toFixed(1) }}</span>
                 <span class="text-[10px] font-bold opacity-80"> {{ $t('weather.windUnit') }}</span>
               </span>
@@ -198,7 +198,7 @@
                 <template v-if="mu.trumLaiLuc">{{ $t('weather.fog.returnsAt') }} <strong>{{ mu.trumLaiLuc }}</strong>.</template>
               </template>
             </p>
-            <ul class="mt-1 grid grid-cols-1 gap-x-3 gap-y-0.5 text-[11px] text-slate-700 sm:grid-cols-2">
+            <ul class="mt-1 space-y-0.5 text-[11px] text-slate-700">
               <li v-if="mu.gioXau > 0"><span class="text-slate-500">⏱</span> <strong>{{ mu.gioXau }}</strong> {{ $t('weather.fog.badHours') }}</li>
               <li v-if="mu.chenhMin !== null"><span class="text-slate-500">{{ $t('weather.fog.spread') }}:</span> <strong>{{ mu.chenhMin }}°C</strong></li>
               <li><span class="text-slate-500">{{ $t('weather.fog.humidity') }}:</span> <strong>{{ mu.amMax }}%</strong></li>
