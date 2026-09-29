@@ -1021,11 +1021,11 @@
     },
     "valley": {
       "title": "La vallée de Muong Hoa vue du ciel",
-      "desc": "La vallée de Muong Hoa est célèbre pour ses rizières en terrasses à perte de vue, le ruisseau sinueux de Muong Hoa et son champ de pierres anciennes. En vol, vous admirerez la saison de mise en eau (mai–juin), la saison du riz vert (juillet–août) et l’automne, avec le riz doré puis un ciel limpide (septembre–décembre) – les plus beaux moments de l’année."
+      "desc": "La vallée de Muong Hoa est célèbre pour ses rizières en terrasses à perte de vue, le ruisseau sinueux de Muong Hoa et son champ de pierres anciennes. En vol, vous verrez la mise en eau (mai–juin), le riz vert (juillet–août), le riz doré (septembre) et l’automne ensoleillé au ciel limpide (octobre–décembre) – les plus beaux moments de l’année."
     },
     "bestTime": {
       "title": "Meilleure période pour voler",
-      "desc": "On peut voler à Sapa toute l’année selon la météo. Les plus belles périodes sont la mise en eau (mai–juin), le riz vert (juillet–août) et l’automne (septembre–décembre) ; de décembre à mars, c’est la saison de la chasse aux nuages. Les horaires de vol sont confirmés chaque jour selon le vent et la visibilité."
+      "desc": "On peut voler à Sapa toute l’année selon la météo. Les plus belles périodes sont la mise en eau (mai–juin), le riz vert (juillet–août), le riz doré (septembre) et l’automne (octobre–décembre) – ensoleillé, sec, limpide et stable ; de décembre à mars, c’est la saison de la chasse aux nuages. Les horaires de vol sont confirmés chaque jour selon le vent et la visibilité."
     },
     "gettingThere": {
       "title": "Accès au site de vol",
@@ -1152,7 +1152,7 @@
       {
         "tieuDe": "Saisons de vol à Sapa",
         "y": [
-          "Les trois plus belles saisons : mai–juin, la mise en eau des rizières ; juillet–août, le riz vert ; septembre–décembre, l’automne — riz doré au début, puis ciel limpide et bon vent pour voler, peu de brume le matin. De décembre à mars, c’est la saison de la chasse aux nuages : mousson du nord-est, bruine, brouillard persistant, beaucoup de jours sous 10 °C au décollage — on peut voler, mais choisissez le jour avec ce tableau, idéalement deux ou trois jours après le passage d’un front, quand le ciel se dégage.",
+          "Les plus belles saisons : mai–juin, la mise en eau des rizières ; juillet–août, le riz vert ; septembre, le riz doré ; octobre–décembre, l’automne — ensoleillé, sec, ciel limpide, météo stable, bon vent pour voler et peu de brume le matin. De décembre à mars, c’est la saison de la chasse aux nuages : mousson du nord-est, bruine, brouillard persistant, beaucoup de jours sous 10 °C au décollage — on peut voler, mais choisissez le jour avec ce tableau, idéalement deux ou trois jours après le passage d’un front, quand le ciel se dégage.",
           "Juillet–août (riz vert), orages d’après-midi : le matin vole en général, l’après-midi s’arrête dès que les cumulus bourgeonnent — les barres de pluie orange (averses/orages) du Meteogram et la ligne « Orage » le montrent. Le décollage est 2–3 °C plus froid que la ville de Sapa : prévoyez une couche. Le soleil se couche plus tôt qu’en plaine à cause des montagnes ; l’heure réelle est indiquée au-dessus de chaque jour."
         ]
       }

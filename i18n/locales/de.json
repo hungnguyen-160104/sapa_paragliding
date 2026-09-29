@@ -1035,11 +1035,11 @@
     },
     "valley": {
       "title": "Das Muong-Hoa-Tal von oben",
-      "desc": "Das Muong-Hoa-Tal ist berühmt für seine endlosen Reisterrassen, den gewundenen Muong-Hoa-Bach und das uralte Steinfeld. Aus der Luft erleben Sie die Zeit, in der die Felder geflutet werden (Mai–Juni), die Saison des grünen Reises (Juli–August) und den Herbst mit goldenem Reis und danach klarem, frischem Himmel (September–Dezember) – die schönsten Zeiten des Jahres."
+      "desc": "Das Muong-Hoa-Tal ist berühmt für seine endlosen Reisterrassen, den gewundenen Muong-Hoa-Bach und das Feld der alten Steine. Im Flug erleben Sie die Zeit der gefluteten Felder (Mai–Juni), den grünen Reis (Juli–August), den goldenen Reis (September) und den sonnigen Herbst mit klarem, blauem Himmel (Oktober–Dezember) – die schönsten Zeiten des Jahres."
     },
     "bestTime": {
       "title": "Beste Reisezeit zum Fliegen",
-      "desc": "In Sapa kann man das ganze Jahr über fliegen, je nach Wetter. Am schönsten sind die Zeit der gefluteten Felder (Mai–Juni), die Saison des grünen Reises (Juli–August) und der Herbst (September–Dezember); von Dezember bis März ist Wolkenjagd-Saison. Die genauen Flugzeiten werden täglich je nach Wind und Sicht bestätigt."
+      "desc": "In Sapa kann man je nach Wetter das ganze Jahr fliegen. Am schönsten sind die Zeit der gefluteten Felder (Mai–Juni), der grüne Reis (Juli–August), der goldene Reis (September) und der Herbst (Oktober–Dezember) – sonnig, trocken, klar und stabil; von Dezember bis März ist Wolkenjagd-Saison. Die genauen Flugzeiten werden täglich nach Wind und Sicht bestätigt."
     },
     "gettingThere": {
       "title": "Anfahrt zum Fluggebiet",
@@ -1166,7 +1166,7 @@
       {
         "tieuDe": "Flugsaisons in Sapa",
         "y": [
-          "Die drei besten Jahreszeiten: Mai–Juni, die Zeit, in der die Reisfelder geflutet werden; Juli–August, die Zeit des grünen Reises; September–Dezember, der Herbst – zunächst goldener Reis, dann klarer Himmel und guter Flugwind mit wenig Morgennebel. Dezember–März ist die Saison für Wolkenjäger: Nordost-Monsun, Nieselregen, hartnäckiger Nebel, viele Tage unter 10°C am Startplatz – fliegbar, aber wählen Sie den Tag mit dieser Tabelle, am besten zwei oder drei Tage nach dem Durchzug einer Front, wenn der Himmel aufreißt.",
+          "Die schönsten Jahreszeiten: Mai–Juni, die Zeit der gefluteten Felder; Juli–August, der grüne Reis; September, der goldene Reis; Oktober–Dezember, der Herbst — viel Sonne, trocken, klarer blauer Himmel, stabiles Wetter, guter Flugwind und morgens wenig Nebel. Dezember–März ist Wolkenjagd-Saison: Nordost-Monsun, Nieselregen, anhaltender Nebel, viele Tage unter 10 °C am Startplatz — fliegbar, aber wählen Sie den Tag mit dieser Tabelle, am besten zwei bis drei Tage nach Durchzug einer Front, wenn der Himmel aufreißt.",
           "Juli–August (Zeit des grünen Reises) bringt Nachmittagsgewitter: Vormittags wird meist geflogen, nachmittags ist Schluss, sobald sich Quellwolken auftürmen – die orangen Regenbalken (Schauer/Gewitter) im Meteogram und die Zeile „Gewitter“ zeigen genau das. Am Startplatz ist es 2–3°C kälter als im Ort Sapa, nehmen Sie also eine warme Schicht mit. Wegen der Berge geht die Sonne früher unter als im Flachland; die tatsächliche Zeit des Sonnenuntergangs steht über jedem Tag."
         ]
       }

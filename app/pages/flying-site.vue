@@ -98,35 +98,35 @@ const getFlyingSiteSeoMeta = () => {
   const localeMetaMap: Record<string, any> = {
     vi: {
       title: 'Điểm Bay Dù Lượn Sa Pa: Thung Lũng Mường Hoa & Bản Lao Chải',
-      description: 'Điểm bay dù lượn Sa Pa: điểm cất cánh chuẩn an toàn cao nhất Việt Nam, hạ cánh tại bản Lao Chải, thung lũng Mường Hoa. Đẹp nhất mùa nước đổ 5-6, lúa xanh 7-8, mùa thu 9-12.'
+      description: 'Điểm bay dù lượn Sa Pa: cất cánh chuẩn an toàn cao nhất Việt Nam, hạ cánh bản Lao Chải, thung lũng Mường Hoa. Đẹp nhất: nước đổ 5-6, lúa xanh 7-8, lúa chín 9, mùa thu 10-12.'
     },
     en: {
       title: 'Sapa Paragliding Flying Site: Muong Hoa Valley & Lao Chai',
-      description: "Sapa's paragliding site: takeoff built to Vietnam's highest safety standard, landing at Lao Chai village in Muong Hoa Valley. Best seasons: May-Jun, Jul-Aug and Sep-Dec."
+      description: "Sapa's paragliding site: takeoff built to Vietnam's highest safety standard, landing at Lao Chai in Muong Hoa Valley. Best: May-Jun, Jul-Aug, Sep golden rice, Oct-Dec autumn."
     },
     fr: {
       title: 'Site de Vol en Parapente à Sapa : Vallée de Muong Hoa',
-      description: "Site de vol de Sapa : décollage aux normes de sécurité les plus élevées du Vietnam, atterrissage à Lao Chai, vallée de Muong Hoa. Idéal mai-juin, juil.-août et sept.-déc."
+      description: "Site de vol de Sapa : décollage aux normes de sécurité les plus élevées du Vietnam, atterrissage à Lao Chai. Idéal : mai-juin, juil.-août, sept. (riz doré), oct.-déc. (automne)."
     },
     ru: {
       title: 'Место полётов на параплане в Сапе: долина Мыонг Хоа',
-      description: 'Место полётов в Сапе: взлёт по высшим стандартам безопасности Вьетнама, посадка в Лао Чай, долина Мыонг Хоа. Лучшие сезоны: май-июнь, июль-август и сентябрь-декабрь.'
+      description: 'Место полётов в Сапе: взлёт по высшим стандартам безопасности Вьетнама, посадка в Лао Чай. Лучшее время: май-июнь, июль-август, сентябрь (золотой рис), октябрь-декабрь (осень).'
     },
     zh: {
       title: '沙坝滑翔伞飞行点：芒花谷与 Lao Chai 村 | Sapa Paragliding',
-      description: '探索沙坝滑翔伞飞行点：按越南最高安全标准建造的起飞点，降落在芒花谷 Lao Chai 村。最佳季节：5-6月灌水季、7-8月青稻季、9-12月秋季。'
+      description: '探索沙坝滑翔伞飞行点：按越南最高安全标准建造的起飞点，降落在芒花谷 Lao Chai 村。最佳：5-6月灌水季、7-8月青稻、9月金色稻田、10-12月秋季。'
     },
     hi: {
       title: 'सापा पैराग्लाइडिंग उड़ान स्थल: मुओंग होआ घाटी और Lao Chai',
-      description: 'सापा उड़ान स्थल: वियतनाम के उच्चतम सुरक्षा मानक वाला टेकऑफ़, मुओंग होआ घाटी के Lao Chai गाँव में लैंडिंग। सबसे अच्छा समय: मई-जून, जुलाई-अगस्त और सित.-दिस.।'
+      description: 'सापा उड़ान स्थल: वियतनाम के उच्चतम सुरक्षा मानक वाला टेकऑफ़, Lao Chai में लैंडिंग। सबसे अच्छा: मई-जून, जुलाई-अगस्त, सितंबर (सुनहरा धान), अक्टू.-दिस. (शरद)।'
     },
     ko: {
       title: '사파 패러글라이딩 비행장: 므엉호아 계곡과 라오짜이',
-      description: '베트남 최고 수준의 안전 기준으로 만든 사파 이륙장과 므엉호아 계곡 라오짜이 마을 착륙장. 추천 시기: 5–6월, 7–8월, 9–12월.'
+      description: '베트남 최고 수준의 안전 기준으로 만든 사파 이륙장과 라오짜이 마을 착륙장. 추천 시기: 5–6월, 7–8월, 9월 황금 들판, 10–12월 가을.'
     },
     de: {
       title: 'Paragliding Sapa: Fluggebiet Muong-Hoa-Tal & Lao Chai',
-      description: 'Fluggebiet Sapa: Startplatz nach Vietnams höchstem Sicherheitsstandard, Landung im Dorf Lao Chai im Muong-Hoa-Tal. Beste Zeit: Mai–Juni, Juli–August, Sept.–Dez.'
+      description: 'Fluggebiet Sapa: Startplatz nach Vietnams höchstem Sicherheitsstandard, Landung in Lao Chai. Beste Zeit: Mai–Juni, Juli–Aug., Sept. (goldener Reis), Okt.–Dez. (Herbst).'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en
