@@ -191,6 +191,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: label.name,
+    // Theo Giấy chứng nhận đăng ký doanh nghiệp 5300829527 (Sở KH&ĐT Lào Cai)
+    legalName: 'Công ty Cổ phần Thể thao và Du lịch Dù lượn Sa Pa',
+    alternateName: 'Sapa Paragliding Sports and Tourism Joint Stock Company',
+    taxID: '5300829527',
     url: DOMAIN,
     logo: `${DOMAIN}/images/Sapa_logo.png`,
     image: getDefaultOgImage(),

@@ -888,7 +888,13 @@
     "address": "Address",
     "followUs": "Follow Us",
     "quickLinks": "Quick Links",
-    "copyright": "Licensed to fly by the Operations Department – General Staff, Ministry of National Defense of Vietnam. Paragliding business license No. 02/GCN-SVHTT issued by the Department of Culture, Sports and Tourism of Lao Cai Province",
+    "legal": {
+      "company": "SAPA PARAGLIDING SPORTS AND TOURISM JOINT STOCK COMPANY (Công ty Cổ phần Thể thao và Du lịch Dù lượn Sa Pa)",
+      "taxCode": "Enterprise code: 5300829527 — first registered on 15 January 2025 with the Business Registration Office, Department of Planning and Investment of Lao Cai Province.",
+      "address": "Head office: Group 3, Sa Pa Ward, Lao Cai Province · Legal representative: Dang Van My (Director).",
+      "sportLicense": "Certificate of eligibility for sports business (paragliding) No. 02/GCN-SVHTT dated 14 February 2025, issued by the Department of Culture and Sports of Lao Cai Province.",
+      "flightPermit": "Flight operation permit No. 17996/TC-QC dated 30 December 2025, issued by the Operations Department – General Staff, Ministry of National Defence of Vietnam; valid from 2 January 2026 to 31 December 2026."
+    },
     "bookOn": "See our reviews & verify us on"
   },
   "validation": {
@@ -1307,7 +1313,8 @@
       "deposit": "No deposit needed – reserve first, pay when you arrive at the flying site.",
       "payment": "Pay by cash, bank transfer or card.",
       "weather": "If your flight is cancelled due to weather, you can reschedule or get a 100% refund.",
-      "group": "For large groups, contact us directly for group offers."
+      "group": "For large groups, contact us directly for group offers.",
+      "tax": "Listed prices are the final amount you pay, including taxes (if any) and service fees; nothing is charged beyond the add-ons you choose (any pickup surcharge outside the covered area is quoted in advance)."
     },
     "faqTitle": "Pricing FAQ",
     "faq": {
@@ -1331,5 +1338,31 @@
     "takeoffOffice": "Take-off site office",
     "landingOffice": "Landing site office",
     "viewMap": "View on map"
+  },
+  "legal": {
+    "policiesHeading": "Policies & terms",
+    "policies": {
+      "terms": "Terms of use & general conditions",
+      "payment": "Payment policy",
+      "cancellation": "Cancellation, rescheduling & refund policy",
+      "service": "Service delivery policy",
+      "privacy": "Privacy policy",
+      "complaints": "Complaints & dispute resolution"
+    },
+    "company": {
+      "heading": "Company information",
+      "taxCode": "Enterprise / tax code",
+      "firstRegistered": "first registered on",
+      "issuedBy": "Issued by",
+      "headOffice": "Head office",
+      "phone": "Phone",
+      "email": "Email",
+      "representative": "Legal representative"
+    },
+    "effectiveDate": "Effective date",
+    "authoritative": "The Vietnamese version is the authoritative text; this translation is provided for your convenience.",
+    "englishFallback": "This policy is shown in English. The Vietnamese version is the authoritative text.",
+    "customerSupport": "Customer support (24/7)",
+    "otherPolicies": "Other policies"
   }
 }

@@ -305,6 +305,11 @@
           <label for="terms" class="text-xs font-semibold text-gray-800 leading-relaxed">
             {{ $t('booking.terms.agree') }}
             <span class="text-red-600">{{ $t('booking.terms.termsAndConditions') }}</span>
+            <!-- Đồng ý xử lý dữ liệu cá nhân (NĐ 13/2023, Luật BVDLCN): link
+                 tới chính sách bảo mật, mở tab mới để không mất form. -->
+            {{ $t('booking.terms.and') }}
+            <a :href="localePath('/policies/privacy')" target="_blank" rel="noopener"
+              class="text-red-600 underline hover:text-red-700" @click.stop>{{ $t('booking.terms.privacyPolicy') }}</a>
             <span class="text-red-600"> *</span>
           </label>
         </div>
@@ -381,6 +386,7 @@ import { useBookingStore } from '~/stores/booking'
 import { localeToHreflang, type SupportedLocale } from '~/utils/seo'
 
 const { locale, t } = useI18n()
+const localePath = useLocalePath()
 
 /**
  * Giới tính lưu là mã 'male'/'female' cho khỏi phụ thuộc ngôn ngữ; ra màn hình

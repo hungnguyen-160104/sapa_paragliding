@@ -874,7 +874,13 @@
     "address": "Adresse",
     "followUs": "Suivez-nous",
     "quickLinks": "Liens rapides",
-    "copyright": "Opérateur autorisé à effectuer des vols par le Département des opérations – État-major général, Ministère de la Défense du Vietnam. Licence d’activité parapente n° 02/GCN-SVHTT délivrée par le Département de la Culture, des Sports et du Tourisme de la province de Lào Cai",
+    "legal": {
+      "company": "SAPA PARAGLIDING SPORTS AND TOURISM JSC (Công ty Cổ phần Thể thao và Du lịch Dù lượn Sa Pa)",
+      "taxCode": "Numéro d’entreprise : 5300829527 — première immatriculation le 15 janvier 2025 auprès du Bureau d’enregistrement des entreprises, Service du Plan et de l’Investissement de la province de Lao Cai.",
+      "address": "Siège : Groupe 3, quartier de Sa Pa, province de Lao Cai · Représentant légal : Dang Van My (directeur).",
+      "sportLicense": "Certificat d’aptitude à l’exploitation d’activités sportives (parapente) n° 02/GCN-SVHTT du 14 février 2025, délivré par le Service de la Culture et des Sports de la province de Lao Cai.",
+      "flightPermit": "Autorisation de vol n° 17996/TC-QC du 30 décembre 2025, délivrée par le Département des opérations – État-major général, ministère de la Défense du Vietnam ; valable du 2 janvier 2026 au 31 décembre 2026."
+    },
     "bookOn": "Consultez nos avis et vérifiez-nous sur"
   },
   "validation": {
@@ -1293,7 +1299,8 @@
       "deposit": "Aucun acompte – réservez d'abord, payez à votre arrivée sur le site de vol.",
       "payment": "Paiement en espèces, par virement ou par carte.",
       "weather": "Si le vol est annulé pour cause de météo, vous pouvez le reporter ou être remboursé à 100%.",
-      "group": "Pour les groupes, contactez-nous directement pour une offre spéciale."
+      "group": "Pour les groupes, contactez-nous directement pour une offre spéciale.",
+      "tax": "Les prix affichés sont le montant final payé, taxes (le cas échéant) et frais de service compris ; rien n'est facturé en plus des options choisies (tout supplément de prise en charge hors zone est annoncé à l'avance)."
     },
     "faqTitle": "Questions fréquentes sur les tarifs",
     "faq": {
@@ -1317,5 +1324,31 @@
     "takeoffOffice": "Bureau du site de décollage",
     "landingOffice": "Bureau du site d’atterrissage",
     "viewMap": "Voir sur la carte"
+  },
+  "legal": {
+    "policiesHeading": "Politiques & conditions",
+    "policies": {
+      "terms": "Conditions d'utilisation & conditions générales",
+      "payment": "Politique de paiement",
+      "cancellation": "Politique d'annulation, de report et de remboursement",
+      "service": "Politique de prestation du service",
+      "privacy": "Politique de confidentialité",
+      "complaints": "Réclamations & règlement des litiges"
+    },
+    "company": {
+      "heading": "Informations sur l'entreprise",
+      "taxCode": "N° d'entreprise / fiscal",
+      "firstRegistered": "immatriculée le",
+      "issuedBy": "Délivré par",
+      "headOffice": "Siège social",
+      "phone": "Téléphone",
+      "email": "E-mail",
+      "representative": "Représentant légal"
+    },
+    "effectiveDate": "Date d'effet",
+    "authoritative": "La version vietnamienne fait foi ; cette traduction est fournie à titre indicatif.",
+    "englishFallback": "Cette politique est affichée en anglais. La version vietnamienne fait foi.",
+    "customerSupport": "Service client (24h/24, 7j/7)",
+    "otherPolicies": "Autres politiques"
   }
 }

@@ -888,7 +888,13 @@
     "address": "地址",
     "followUs": "关注我们",
     "quickLinks": "快速链接",
-    "copyright": "由越南国防部总参谋部作战部门许可飞行。滑翔伞经营许可证号：02/GCN-SVHTT，由老街省文化、体育与旅游厅颁发",
+    "legal": {
+      "company": "沙坝滑翔伞体育与旅游股份公司（Công ty Cổ phần Thể thao và Du lịch Dù lượn Sa Pa）",
+      "taxCode": "企业编码：5300829527 —— 2025年1月15日首次登记于老街省计划投资厅企业登记处。",
+      "address": "总部：老街省沙坝坊第3组 · 法定代表人：Đặng Văn Mỹ（总经理）。",
+      "sportLicense": "体育经营资格证书（滑翔伞项目）第 02/GCN-SVHTT 号，2025年2月14日由老街省文化体育厅颁发。",
+      "flightPermit": "飞行许可第 17996/TC-QC 号，2025年12月30日由越南国防部总参谋部作战局颁发；有效期 2026年1月2日至2026年12月31日。"
+    },
     "bookOn": "查看我们的评价与信息："
   },
   "validation": {
@@ -1307,7 +1313,8 @@
       "deposit": "无需订金——先预订，到达飞行点再付款。",
       "payment": "支持现金、转账或刷卡支付。",
       "weather": "如因天气原因取消飞行，可改期或获得 100% 退款。",
-      "group": "团队出行请直接联系我们获取团体优惠。"
+      "group": "团队出行请直接联系我们获取团体优惠。",
+      "tax": "标价即您最终支付的金额，已含税费（如有）和服务费；除您选择的附加服务外不收取任何其他费用（服务区域外接送的附加费如有，将事先告知）。"
     },
     "faqTitle": "价格常见问题",
     "faq": {
@@ -1331,5 +1338,31 @@
     "takeoffOffice": "起飞点办公室",
     "landingOffice": "降落点办公室",
     "viewMap": "在地图上查看"
+  },
+  "legal": {
+    "policiesHeading": "政策与条款",
+    "policies": {
+      "terms": "使用条款与一般交易条件",
+      "payment": "付款政策",
+      "cancellation": "取消、改期与退款政策",
+      "service": "服务提供政策",
+      "privacy": "隐私政策",
+      "complaints": "投诉与争议解决机制"
+    },
+    "company": {
+      "heading": "企业信息",
+      "taxCode": "企业代码/税号",
+      "firstRegistered": "首次登记日期",
+      "issuedBy": "签发机关",
+      "headOffice": "总部地址",
+      "phone": "电话",
+      "email": "邮箱",
+      "representative": "法定代表人"
+    },
+    "effectiveDate": "生效日期",
+    "authoritative": "以越南语版本为准，本译文仅供参考。",
+    "englishFallback": "本政策以英文显示，以越南语版本为准。",
+    "customerSupport": "客户服务（24/7）",
+    "otherPolicies": "其他政策"
   }
 }

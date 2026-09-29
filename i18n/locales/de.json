@@ -888,7 +888,13 @@
     "address": "Adresse",
     "followUs": "Folgen Sie uns",
     "quickLinks": "Schnellzugriff",
-    "copyright": "Fluggenehmigung durch die Abteilung für Operationen – Generalstab, Verteidigungsministerium Vietnams. Gewerbelizenz für Paragliding Nr. 02/GCN-SVHTT, ausgestellt vom Amt für Kultur, Sport und Tourismus der Provinz Lao Cai",
+    "legal": {
+      "company": "SAPA PARAGLIDING SPORTS AND TOURISM JSC (Công ty Cổ phần Thể thao và Du lịch Dù lượn Sa Pa)",
+      "taxCode": "Unternehmensnummer: 5300829527 — erstmals eingetragen am 15.01.2025 beim Handelsregisteramt des Amts für Planung und Investitionen der Provinz Lao Cai.",
+      "address": "Sitz: Gruppe 3, Stadtbezirk Sa Pa, Provinz Lao Cai · Gesetzlicher Vertreter: Dang Van My (Direktor).",
+      "sportLicense": "Bescheinigung über die Eignung zum Betrieb sportlicher Aktivitäten (Paragliding) Nr. 02/GCN-SVHTT vom 14.02.2025, ausgestellt vom Amt für Kultur und Sport der Provinz Lao Cai.",
+      "flightPermit": "Fluggenehmigung Nr. 17996/TC-QC vom 30.12.2025, erteilt von der Operationsabteilung des Generalstabs, Verteidigungsministerium Vietnams; gültig vom 02.01.2026 bis 31.12.2026."
+    },
     "bookOn": "Bewertungen lesen & uns überprüfen auf"
   },
   "validation": {
@@ -1307,7 +1313,8 @@
       "deposit": "Keine Anzahlung nötig – erst reservieren, dann bei Ankunft am Fluggelände bezahlen.",
       "payment": "Zahlung bar, per Banküberweisung oder Karte.",
       "weather": "Fällt Ihr Flug wetterbedingt aus, können Sie umbuchen oder erhalten 100 % Ihres Geldes zurück.",
-      "group": "Für größere Gruppen kontaktieren Sie uns bitte direkt für ein Gruppenangebot."
+      "group": "Für größere Gruppen kontaktieren Sie uns bitte direkt für ein Gruppenangebot.",
+      "tax": "Die angegebenen Preise sind der Endbetrag inkl. Steuern (falls anfallend) und Servicegebühren; über die gewählten Extras hinaus wird nichts berechnet (ein Abholzuschlag außerhalb des Gebiets wird vorab mitgeteilt)."
     },
     "faqTitle": "Häufige Fragen zu den Preisen",
     "faq": {
@@ -1331,5 +1338,31 @@
     "takeoffOffice": "Büro am Startplatz",
     "landingOffice": "Büro am Landeplatz",
     "viewMap": "Auf der Karte ansehen"
+  },
+  "legal": {
+    "policiesHeading": "Richtlinien & Bedingungen",
+    "policies": {
+      "terms": "Nutzungsbedingungen & Allgemeine Geschäftsbedingungen",
+      "payment": "Zahlungsrichtlinie",
+      "cancellation": "Stornierungs-, Umbuchungs- & Erstattungsrichtlinie",
+      "service": "Richtlinie zur Leistungserbringung",
+      "privacy": "Datenschutzerklärung",
+      "complaints": "Beschwerden & Streitbeilegung"
+    },
+    "company": {
+      "heading": "Unternehmensangaben",
+      "taxCode": "Unternehmens-/Steuernummer",
+      "firstRegistered": "erstmals eingetragen am",
+      "issuedBy": "Ausgestellt von",
+      "headOffice": "Hauptsitz",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "representative": "Gesetzlicher Vertreter"
+    },
+    "effectiveDate": "Gültig ab",
+    "authoritative": "Maßgeblich ist die vietnamesische Fassung; diese Übersetzung dient nur Ihrer Information.",
+    "englishFallback": "Diese Richtlinie wird auf Englisch angezeigt. Maßgeblich ist die vietnamesische Fassung.",
+    "customerSupport": "Kundenservice (24/7)",
+    "otherPolicies": "Weitere Richtlinien"
   }
 }

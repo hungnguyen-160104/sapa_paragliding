@@ -149,7 +149,8 @@ const packages = [
   }
 ]
 
-const noteKeys = ['deposit', 'payment', 'weather', 'group']
+// 'tax': nói rõ giá đã gồm thuế/phí — bắt buộc khi niêm yết giá trên website TMĐT (NĐ 52/2013).
+const noteKeys = ['deposit', 'payment', 'tax', 'weather', 'group']
 const faqKeys = ['included', 'deposit', 'cancel']
 
 // SEO Meta Tags by Locale

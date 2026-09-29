@@ -216,20 +216,44 @@
         </div>
       </div>
 
+      <!-- Thông tin pháp nhân + chính sách + logo Bộ Công Thương: nội dung bắt
+           buộc khi thông báo website TMĐT (NĐ 52/2013, sửa bởi NĐ 85/2021;
+           TT 47/2014). Dữ liệu pháp nhân và mã Bộ Công Thương nằm ở
+           shared/legal.ts — sửa một chỗ đó là đủ. -->
+      <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 text-sm md:pr-8 lg:pr-20 xl:pr-24">
+        <div class="md:pl-0 lg:pl-2 xl:pl-6 2xl:pl-12">
+          <h3 class="text-base font-bold mb-3">{{ $t('legal.company.heading') }}</h3>
+          <CompanyLegalInfo variant="dark" />
+        </div>
+
+        <div>
+          <h3 class="text-base font-bold mb-3">{{ $t('legal.policiesHeading') }}</h3>
+          <ul class="space-y-1.5">
+            <li v-for="policy in POLICY_PAGES" :key="policy.key">
+              <NuxtLink :to="localePath(`/policies/${policy.slug}`)"
+                class="text-white/90 hover:text-red-400 transition-colors">
+                {{ $t(`legal.policies.${policy.key}`) }}
+              </NuxtLink>
+            </li>
+          </ul>
+          <div class="mt-4">
+            <BctNoticeBadge />
+          </div>
+        </div>
+      </div>
+
       <!-- Copyright -->
       <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 text-center text-sm text-white">
-        <!--
-          Dòng giấy phép dài, trước đây kéo sát hai mép màn hình nên đọc rất
-          mỏi mắt. Bó lại còn 46rem và tự căn giữa: mỗi dòng chỉ khoảng 70–80
-          ký tự, đúng khoảng mắt đọc thoải mái. Trên điện thoại thì max-w
-          không có tác dụng gì, nên nới thêm lề trong bằng px-2.
-        -->
-        <!-- Hai câu (cấp phép bay · giấy phép kinh doanh) mỗi câu một dòng trên
-             desktop (chủ 16/09), thay vì bó 46rem làm câu đầu bị bẻ giữa chừng.
-             Tách tại dấu chấm kết câu của từng thứ tiếng (". " · "。" · "। "). -->
-        <p class="mx-auto max-w-5xl px-2 leading-relaxed max-md:text-xs">
-          <span v-for="(cau, i) in licenseLines" :key="i" class="md:block">{{ cau }}</span>
-        </p>
+        <!-- Thông tin pháp lý (chủ gửi giấy tờ 30/09/2026): tên công ty, mã số
+             doanh nghiệp, trụ sở + người đại diện, giấy chứng nhận đủ điều kiện
+             kinh doanh thể thao, phép bay. KHÔNG đưa số CCCD, ngày sinh, địa
+             chỉ thường trú của người đại diện.
+             Phép bay 17996/TC-QC hết hạn 31/12/2026 — có phép năm 2027 thì
+             sửa footer.legal.flightPermit trong cả 8 file i18n. -->
+        <div class="mx-auto max-w-5xl px-2 leading-relaxed max-md:text-xs">
+          <p class="font-semibold">{{ $t('footer.legal.company') }}</p>
+          <p v-for="key in LEGAL_LINES" :key="key" class="mt-1 text-gray-300">{{ $t(`footer.legal.${key}`) }}</p>
+        </div>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
           Admin
@@ -241,6 +265,7 @@
 
 <script setup lang="ts">
 import { OFFICES } from '~~/shared/flying-site'
+import { POLICY_PAGES } from '~~/shared/legal'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -262,12 +287,8 @@ const contactNowrapClass = computed(() =>
 
 const isDesktop = ref(false)
 
-/** Dòng giấy phép tách thành từng câu — xem ghi chú ở template. */
-const licenseLines = computed(() => {
-  const text = t('footer.copyright')
-  const m = text.match(/^(.*?[.。।])\s*(.+)$/s)
-  return m ? [m[1], m[2]] : [text]
-})
+/** Các dòng pháp lý dưới tên công ty, theo thứ tự hiển thị. */
+const LEGAL_LINES = ['taxCode', 'address', 'sportLicense', 'flightPermit'] as const
 
 const menuItems = [
   { path: '/', label: 'menu.home' },

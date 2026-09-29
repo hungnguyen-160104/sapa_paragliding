@@ -1,5 +1,6 @@
 import { connectToDatabase } from './db'
 import { PILOT_SLUG_BY_KEY, VISIBLE_PILOT_KEYS } from '../../shared/pilots'
+import { POLICY_CONTENT_LOCALES, POLICY_PAGES } from '../../shared/legal'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'en'
@@ -168,6 +169,25 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += `    <changefreq>${page.changefreq}</changefreq>\n`
     xml += `    <priority>${page.priority}</priority>\n`
     xml += '  </url>\n'
+  }
+
+  // Trang chính sách (/policies/...) chỉ có nội dung riêng ở vi/en; ngôn ngữ
+  // khác hiện bản tiếng Anh và canonical về /en — cùng lý do với bài viết.
+  const policyLocales = POLICY_CONTENT_LOCALES as readonly Locale[]
+  if (policyLocales.includes(locale)) {
+    for (const policy of POLICY_PAGES) {
+      const policyPath = `/policies/${policy.slug}`
+      xml += '  <url>\n'
+      xml += `    <loc>${escapeXml(`${DOMAIN}/${locale}${policyPath}`)}</loc>\n`
+      xml += `    <lastmod>${lastmod}</lastmod>\n`
+      for (const altLocale of policyLocales) {
+        xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(`${DOMAIN}/${altLocale}${policyPath}`)}" />\n`
+      }
+      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${DOMAIN}/${DEFAULT_LOCALE}${policyPath}`)}" />\n`
+      xml += '    <changefreq>yearly</changefreq>\n'
+      xml += '    <priority>0.3</priority>\n'
+      xml += '  </url>\n'
+    }
   }
 
   for (const key of VISIBLE_PILOT_KEYS) {
