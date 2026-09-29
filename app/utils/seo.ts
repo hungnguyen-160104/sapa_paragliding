@@ -7,7 +7,7 @@ import { TAKEOFF_OFFICE, LANDING_OFFICE } from '~~/shared/flying-site'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 
-export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
 // 'en': x-default hreflang tro ve ban tieng Anh — khach khong khop ngon
 // ngu nao (da so la khach quoc te) duoc Google dua ve /en thay vi /vi.
@@ -19,7 +19,8 @@ export const localeToHreflang: Record<SupportedLocale, string> = {
   fr: 'fr-FR',
   ru: 'ru-RU',
   zh: 'zh-CN',
-  hi: 'hi-IN'
+  hi: 'hi-IN',
+  ko: 'ko-KR'
 }
 
 type RouteLike = {
@@ -168,6 +169,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
       name: 'Sapa Paragliding',
       description:
         'सापा में पैराग्लाइडिंग का अनुभव लें - जहाँ आप स्वतंत्रता और आकाश को पहले से कहीं अधिक करीब महसूस करते हैं'
+    },
+    ko: {
+      name: 'Sapa Paragliding',
+      description: '사파에서 하늘을 나는 꿈을 이루세요 - 자유를 느끼고 하늘이 그 어느 때보다 가까워지는 곳'
     }
   }
 
@@ -206,7 +211,7 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
         contactType: 'customer service',
         telephone: '+84-386-887-489',
         areaServed: 'VN',
-        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi']
+        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi', 'Korean']
       }
     ]
   }
@@ -293,7 +298,8 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
     fr: "Vol en parapente tandem au site de décollage le plus haut du Vietnam. Pilotes professionnels internationaux, plus de 50 000 clients, sécurité 100%.",
     ru: 'Тандемный полёт на параплане с самой высокой точки взлёта во Вьетнаме. Профессиональные пилоты, более 50 000 довольных клиентов.',
     zh: '在越南最高起飞点体验双人滑翔伞。专业国际飞行员，超过5万名客户，100%安全记录。',
-    hi: 'वियतनाम के सबसे ऊंचे टेकऑफ साइट पर टैंडम पैराग्लाइडिंग का अनुभव करें। पेशेवर अंतरराष्ट्रीय पायलट, 50,000+ ग्राहक।'
+    hi: 'वियतनाम के सबसे ऊंचे टेकऑफ साइट पर टैंडम पैराग्लाइडिंग का अनुभव करें। पेशेवर अंतरराष्ट्रीय पायलट, 50,000+ ग्राहक।',
+    ko: '베트남 최고 높이의 이륙장에서 즐기는 2인 탠덤 패러글라이딩. 국제 자격을 갖춘 전문 파일럿, 5만 명 이상의 고객.'
   }
 
   const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)

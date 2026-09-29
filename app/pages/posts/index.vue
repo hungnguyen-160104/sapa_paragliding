@@ -142,6 +142,8 @@ type LocalizedPost = {
   category?: string
   categoryId?: string
   published?: boolean
+  /** Tiêu đề/mô tả bản dịch fr/ru/zh/hi của những bài đã dịch */
+  translations?: Partial<Record<string, { title?: string; excerpt?: string }>>
 }
 
 const { locale, t } = useI18n()
@@ -155,14 +157,14 @@ const isLoading = ref(false)
 const selectedCategory = ref<string | null>(null)
 const sortBy = ref<'newest' | 'oldest'>('newest')
 
-const categoryLabels: Record<string, { vi: string; en: string }> = {
-  news: { vi: 'Tin tức', en: 'News' },
-  guide: { vi: 'Hướng dẫn', en: 'Guide' },
-  experience: { vi: 'Trải nghiệm', en: 'Experience' },
-  promotion: { vi: 'Khuyến mãi', en: 'Promotion' },
-  adventure: { vi: 'Phiêu lưu', en: 'Adventure' },
-  safety: { vi: 'An toàn', en: 'Safety' },
-  tips: { vi: 'Mẹo hay', en: 'Tips' }
+const categoryLabels: Record<string, { vi: string; en: string; fr?: string; ko?: string }> = {
+  news: { vi: 'Tin tức', en: 'News', fr: 'Actualités', ko: '소식' },
+  guide: { vi: 'Hướng dẫn', en: 'Guide', fr: 'Guide', ko: '가이드' },
+  experience: { vi: 'Trải nghiệm', en: 'Experience', fr: 'Expérience', ko: '체험' },
+  promotion: { vi: 'Khuyến mãi', en: 'Promotion', fr: 'Promotion', ko: '프로모션' },
+  adventure: { vi: 'Phiêu lưu', en: 'Adventure', fr: 'Aventure', ko: '모험' },
+  safety: { vi: 'An toàn', en: 'Safety', fr: 'Sécurité', ko: '안전' },
+  tips: { vi: 'Mẹo hay', en: 'Tips', fr: 'Conseils', ko: '팁' }
 }
 
 // Phải nạp bằng useAsyncData chứ không phải onMounted: onMounted chỉ chạy
@@ -219,6 +221,8 @@ function tabClass(active: boolean) {
 }
 
 function getPostTitle(post: LocalizedPost): string {
+  const translated = post.translations?.[locale.value]?.title
+  if (translated) return translated
   if (isVietnamese.value) {
     return post.titleVi || post.title || ''
   }
@@ -226,6 +230,8 @@ function getPostTitle(post: LocalizedPost): string {
 }
 
 function getPostExcerpt(post: LocalizedPost): string {
+  const translated = post.translations?.[locale.value]
+  if (translated?.title && translated.excerpt) return translated.excerpt
   if (isVietnamese.value) {
     return post.excerptVi || post.excerpt || ''
   }
@@ -239,6 +245,8 @@ function getPostCategory(post: LocalizedPost): string {
 function getCategoryLabel(category: string): string {
   const labels = categoryLabels[category]
   if (!labels) return category
+  if (locale.value === 'fr' && labels.fr) return labels.fr
+  if (locale.value === 'ko' && labels.ko) return labels.ko
   return isVietnamese.value ? labels.vi : labels.en
 }
 
@@ -276,7 +284,8 @@ function formatDate(date?: string) {
     fr: 'fr-FR',
     ru: 'ru-RU',
     zh: 'zh-CN',
-    hi: 'hi-IN'
+    hi: 'hi-IN',
+    ko: 'ko-KR'
   }
 
   return new Date(date).toLocaleDateString(localeMap[currentLocale.value] || 'en-US', {

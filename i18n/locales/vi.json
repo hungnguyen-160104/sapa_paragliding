@@ -128,9 +128,9 @@
     "step3Details": {
       "passenger": "Hành khách",
       "selectGender": "Chọn giới tính",
-      "weightLimit": "Giới hạn cân nặng: < 100 kg",
+      "weightLimit": "Giới hạn cân nặng: tối đa 110 kg (trên 95 kg vui lòng báo trước)",
       "safetyRequirements": "Yêu Cầu An Toàn",
-      "minAge": "Độ tuổi tối thiểu: 4 tuổi ( có sự đồng ý của người bảo hộ)",
+      "minAge": "Độ tuổi tối thiểu: 3 tuổi (có sự đồng ý của người bảo hộ)",
       "goodHealth": "Hoạt động không phù hợp cho: người huyết áp cao / bệnh động kinh / bệnh tim / bệnh hen suyễn / các tình trạng bệnh lý nghiêm trọng khác / phụ nữ mang thai / NKT (người khuyết tật) / người cao tuổi / trẻ sơ sinh",
       "personalInfoNotice": "Vui lòng điền đúng thông tin cá nhân theo giấy tờ tùy thân. Nếu sai, bảo hiểm sẽ không có hiệu lực.",
       "fullName": "Họ và Tên",
@@ -379,8 +379,8 @@
       "des": "Phi công giàu năng lượng thể thao, từ đua xe đạp, bơi lội đến dù lượn, với 2000 chuyến bay, hơn 1500 giờ bay an toàn và 3 lần vô địch hạ cánh chính xác tại Việt Nam.",
       "img": "The Anh_Team Pilot.jpg",
       "fullname": "ĐINH THẾ ANH",
-      "experience": "Thực hiện hơn 2.000 chuyến bay, với tổng thời gian bay an toàn vượt mốc 1.000 giờ. Đại diện Việt Nam bay thẳng sang Olympic 2023 tại Hàn Quốc. Ba lần vô địch nội dung hạ cánh chính xác trong các giải đấu quốc gia. Đã từng cất cánh tại nhiều quốc gia trên thế giới như: Thụy Sĩ, Hàn Quốc, Hoa Kỳ, Thái Lan, Indonesia…",
-      "records": "Ba lần vô địch hạ cánh chính xác tại Việt Nam và là đại diện của Việt Nam tham dự Olympic Dù lượn 2023 tại Hàn Quốc.",
+      "experience": "Thực hiện hơn 2.000 chuyến bay, với tổng thời gian bay an toàn vượt mốc 1.000 giờ. Đại diện Việt Nam tham dự vòng loại World Cup dù lượn 2023 tại Hàn Quốc. Ba lần vô địch nội dung hạ cánh chính xác trong các giải đấu quốc gia. Đã từng cất cánh tại nhiều quốc gia trên thế giới như: Thụy Sĩ, Hàn Quốc, Hoa Kỳ, Thái Lan, Indonesia…",
+      "records": "Ba lần vô địch hạ cánh chính xác tại Việt Nam và là đại diện của Việt Nam tham dự vòng loại World Cup dù lượn 2023 tại Hàn Quốc.",
       "personality": "Được mệnh danh là 'anh trai quốc dân' – sinh ra và lớn lên tại Đà Nẵng, chàng trai miền Trung mang trong mình nét dịu dàng, ấm áp đúng chất gió biển và nắng vàng quê hương. Ấn tượng với nụ cười hiền khô, giọng nói trầm ấm và sự chu đáo, tinh tế trong từng hành động. Không chỉ là phi công đỉnh cao mà còn là nhiếp ảnh gia chuyên nghiệp. Khi bay cùng anh, bạn có thể yên tâm rằng sẽ có vô số tấm hình siêu chất, góc nào cũng đẹp và khoảnh khắc nào cũng đáng nhớ!"
     },
     "pilot8": {
@@ -503,7 +503,7 @@
         "items": {
           "weight": {
             "title": "Cân nặng",
-            "desc": "Dưới 120kg. Trường hợp trên 95kg vui lòng thông báo trước để sắp xếp phi công và trang thiết bị phù hợp."
+            "desc": "Tối đa 110kg. Trường hợp trên 95kg vui lòng thông báo trước để sắp xếp phi công và trang thiết bị phù hợp."
           },
           "health": {
             "title": "Thể lực",
@@ -543,7 +543,7 @@
           },
           "byCustomer": {
             "title": "Huỷ bay do khách hàng",
-            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp. Trước 1 ngày: Miễn phí."
+            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp, chỉ cần báo trước giờ đón vài tiếng: Miễn phí."
           },
           "reschedule": {
             "title": "Đổi lịch bay",
@@ -871,8 +871,8 @@
   "preNoticeSection": {
     "safetyRequirements": {
       "title": "Yêu Cầu An Toàn",
-      "minAge": "Tuổi tối thiểu: 5 tuổi (có sự đồng ý của cha mẹ đối với trẻ vị thành niên)",
-      "weightRange": "Phạm vi cân nặng: < 100 kg",
+      "minAge": "Tuổi tối thiểu: 3 tuổi (có sự đồng ý của cha mẹ đối với trẻ vị thành niên)",
+      "weightRange": "Cân nặng: tối đa 110 kg (trên 95 kg vui lòng báo trước)",
       "goodHealth": "Phải có sức khỏe thể chất và tinh thần tốt",
       "noPregnant": "Phụ nữ mang thai không thể tham gia",
       "notRecommended": "Không khuyến khích cho người có bệnh tim, vấn đề về lưng hoặc sợ độ cao"
@@ -1032,11 +1032,11 @@
     },
     "valley": {
       "title": "Thung lũng Mường Hoa nhìn từ trên cao",
-      "desc": "Thung lũng Mường Hoa nổi tiếng với ruộng bậc thang trải dài, suối Mường Hoa uốn lượn và bãi đá cổ. Khi bay, bạn sẽ được ngắm mùa nước đổ tháng 5–6 và mùa lúa chín vàng tháng 9–10 – hai thời điểm đẹp nhất trong năm."
+      "desc": "Thung lũng Mường Hoa nổi tiếng với ruộng bậc thang trải dài, suối Mường Hoa uốn lượn và bãi đá cổ. Khi bay, bạn sẽ được ngắm mùa nước đổ (tháng 5–6), mùa lúa xanh (tháng 7–8) và mùa thu với lúa chín vàng rồi trời trong xanh (tháng 9–12) – những thời điểm đẹp nhất trong năm."
     },
     "bestTime": {
       "title": "Thời điểm bay đẹp nhất",
-      "desc": "Sa Pa có thể bay quanh năm tùy điều kiện thời tiết. Đẹp nhất là mùa lúa chín (tháng 9–10) và mùa nước đổ (tháng 5–6). Giờ bay cụ thể được xác nhận theo dự báo gió và tầm nhìn từng ngày."
+      "desc": "Sa Pa có thể bay quanh năm tùy điều kiện thời tiết. Đẹp nhất là mùa nước đổ (tháng 5–6), mùa lúa xanh (tháng 7–8) và mùa thu (tháng 9–12); từ tháng 12 đến tháng 3 là mùa săn mây. Giờ bay cụ thể được xác nhận theo dự báo gió và tầm nhìn từng ngày."
     },
     "gettingThere": {
       "title": "Di chuyển đến điểm bay",
@@ -1296,12 +1296,12 @@
   },
   "pricingPage": {
     "title": "Giá Bay Dù Lượn Sa Pa",
-    "subtitle": "Giá trọn gói, không ẩn phí – đặt chỗ trước, thanh toán sau",
+    "subtitle": "Giá trọn gói, không ẩn phí – đặt chỗ trước, thanh toán tại điểm bay",
     "intro": "Bảng giá bay dù lượn đôi tại Sa Pa của Sapa Paragliding: 3 gói trải nghiệm trọn gói đã gồm bảo hiểm, quay phim GoPro và đồ uống tại điểm bay. Không yêu cầu đặt cọc, xác nhận nhanh qua điện thoại hoặc website.",
     "packagesTitle": "Các gói bay và giá chi tiết",
     "notesTitle": "Lưu ý về giá",
     "notes": {
-      "deposit": "Không cần đặt cọc – đặt chỗ trước, thanh toán sau khi bay.",
+      "deposit": "Không cần đặt cọc – đặt chỗ trước, thanh toán khi tới điểm bay.",
       "payment": "Thanh toán bằng tiền mặt, chuyển khoản hoặc thẻ.",
       "weather": "Nếu chuyến bay bị huỷ do thời tiết, bạn được đổi lịch hoặc hoàn tiền 100%.",
       "group": "Đoàn đông người vui lòng liên hệ trực tiếp để nhận ưu đãi nhóm."
@@ -1314,7 +1314,7 @@
       },
       "deposit": {
         "q": "Có cần đặt cọc trước không?",
-        "a": "Không. Bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán sau khi hoàn thành chuyến bay."
+        "a": "Không. Bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán khi tới điểm bay."
       },
       "cancel": {
         "q": "Nếu thời tiết xấu không bay được thì sao?",

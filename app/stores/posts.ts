@@ -28,6 +28,8 @@ export interface Post {
   published: boolean
   slug?: string
   gallery?: GalleryImage[]
+  /** Tiêu đề/mô tả bản dịch fr/ru/zh/hi của những bài đã dịch */
+  translations?: Partial<Record<string, { title?: string; excerpt?: string }>>
 }
 
 export const usePostsStore = defineStore('posts', {

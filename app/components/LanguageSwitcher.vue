@@ -34,7 +34,7 @@
 import { h, ref, computed, onMounted, watch } from 'vue'
 
 /** ✅ Khai báo đúng union type locale code để TS không báo lỗi */
-const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
 type LocaleCode = typeof SUPPORTED_LOCALES[number]
 
 const isLocaleCode = (code: string): code is LocaleCode =>
@@ -124,6 +124,42 @@ const getFlagSvg = (code: string) => {
       h('rect', { width: '30', height: '6.67', y: '13.33', fill: '#138808' }),
       h('circle', { cx: '15', cy: '10', r: '2.2', fill: 'none', stroke: '#000080', 'stroke-width': '0.6' }),
       h('circle', { cx: '15', cy: '10', r: '0.2', fill: '#000080' })
+    ]),
+    /** Cờ Hàn Quốc (giản lược cho cỡ 24px) */
+    ko: () => h('svg', { viewBox: '0 0 30 20', xmlns: 'http://www.w3.org/2000/svg' }, [
+      h('rect', { width: '30', height: '20', fill: '#FFFFFF' }),
+      h('g', { transform: 'rotate(33.7 15 10)' }, [
+        h('path', { d: 'M10 10 A5 5 0 0 1 20 10 Z', fill: '#CD2E3A' }),
+        h('path', { d: 'M10 10 A5 5 0 0 0 20 10 Z', fill: '#0047A0' }),
+        h('circle', { cx: '12.5', cy: '10', r: '2.5', fill: '#CD2E3A' }),
+        h('circle', { cx: '17.5', cy: '10', r: '2.5', fill: '#0047A0' })
+      ]),
+      h('g', { transform: 'rotate(-33.7 6 4)' }, [
+        h('rect', { x: '3.5', y: '2.00', width: '5', height: '1', fill: '#000' }),
+        h('rect', { x: '3.5', y: '3.50', width: '5', height: '1', fill: '#000' }),
+        h('rect', { x: '3.5', y: '5.00', width: '5', height: '1', fill: '#000' })
+      ]),
+      h('g', { transform: 'rotate(-33.7 24 16)' }, [
+        h('rect', { x: '21.5', y: '14.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '24.3', y: '14.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '21.5', y: '15.50', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '24.3', y: '15.50', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '21.5', y: '17.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '24.3', y: '17.00', width: '2.2', height: '1', fill: '#000' })
+      ]),
+      h('g', { transform: 'rotate(33.7 24 4)' }, [
+        h('rect', { x: '21.5', y: '2.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '24.3', y: '2.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '21.5', y: '3.50', width: '5', height: '1', fill: '#000' }),
+        h('rect', { x: '21.5', y: '5.00', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '24.3', y: '5.00', width: '2.2', height: '1', fill: '#000' })
+      ]),
+      h('g', { transform: 'rotate(33.7 6 16)' }, [
+        h('rect', { x: '3.5', y: '14.00', width: '5', height: '1', fill: '#000' }),
+        h('rect', { x: '3.5', y: '15.50', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '6.3', y: '15.50', width: '2.2', height: '1', fill: '#000' }),
+        h('rect', { x: '3.5', y: '17.00', width: '5', height: '1', fill: '#000' })
+      ])
     ])
   }
 

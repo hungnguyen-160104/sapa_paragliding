@@ -295,7 +295,7 @@ const yearOptions = computed<number[]>(() => {
 
 const intlLocale = computed(() => {
   const map: Record<string, string> = {
-    vi: 'vi-VN', en: 'en-US', fr: 'fr-FR', ru: 'ru-RU', zh: 'zh-CN', hi: 'hi-IN'
+    vi: 'vi-VN', en: 'en-US', fr: 'fr-FR', ru: 'ru-RU', zh: 'zh-CN', hi: 'hi-IN', ko: 'ko-KR'
   }
   return map[locale.value as string] || 'en-US'
 })

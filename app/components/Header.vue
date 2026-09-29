@@ -238,7 +238,7 @@ const brandLines = computed<[string, string]>(() => {
  * tiếng Trung 23 ký tự, tiếng Ấn 60, so với tiếng Pháp 78 -> còn thừa chỗ.
  */
 const navTextSize = computed(() =>
-  ['zh', 'hi'].includes(locale.value)
+  ['zh', 'hi', 'ko'].includes(locale.value)
     ? 'text-base xl:text-lg 2xl:text-xl'
     /* Tiếng Nga dài nhất: thêm mục "ПОГОДА" (mục thứ 9) thì ở 1024px dải
        menu 13px đè lên logo. 11px ở 1024–1279px là vừa khít; từ 1280px trở

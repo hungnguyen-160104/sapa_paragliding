@@ -45,7 +45,7 @@ const props = defineProps<{ error: NuxtError }>()
 
 const statusCode = computed(() => props.error?.statusCode ?? 500)
 
-const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
 type LocaleCode = (typeof LOCALES)[number]
 
 const route = useRoute()
@@ -110,6 +110,14 @@ const TEXT: Record<LocaleCode, {
     serverErrorBody: 'सर्वर में समस्या आई है। कृपया कुछ मिनट बाद पुनः प्रयास करें।',
     home: 'होमपेज पर जाएँ',
     posts: 'लेख पढ़ें'
+  },
+  ko: {
+    notFound: '페이지를 찾을 수 없습니다',
+    notFoundBody: '찾으시는 페이지가 없거나 다른 곳으로 옮겨졌습니다. 홈페이지로 돌아가 계속 둘러보세요.',
+    serverError: '문제가 발생했습니다',
+    serverErrorBody: '서버에 문제가 생겼습니다. 몇 분 뒤에 다시 시도해 주세요.',
+    home: '홈페이지로 돌아가기',
+    posts: '블로그 글 보기'
   }
 }
 

@@ -76,6 +76,41 @@ function normalizeSeo(
   }
 }
 
+/**
+ * Bản dịch thêm ngoài vi/en, lưu ở post.translations.<fr|ru|zh|hi|ko>. Chỉ nhận
+ * bản có đủ tiêu đề VÀ nội dung — bản dịch nửa vời mà được khai là trang riêng
+ * thì Google lại thấy một trang mỏng/lẫn tiếng Anh.
+ */
+const TRANSLATION_LOCALES = ['fr', 'ru', 'zh', 'hi', 'ko'] as const
+
+function normalizeTranslations(value: unknown) {
+  const output: Record<string, {
+    title: string
+    excerpt: string
+    contentBlocks: ContentBlock[]
+    seo: { title: string; description: string }
+  }> = {}
+  if (!value || typeof value !== 'object') return output
+
+  for (const lc of TRANSLATION_LOCALES) {
+    const raw = (value as Record<string, any>)[lc]
+    if (!raw || typeof raw !== 'object') continue
+    const title = typeof raw.title === 'string' ? raw.title.trim() : ''
+    const contentBlocks = normalizeBlocks(raw.contentBlocks)
+    if (!title || contentBlocks.length === 0) continue
+    output[lc] = {
+      title,
+      excerpt: typeof raw.excerpt === 'string' ? raw.excerpt : '',
+      contentBlocks,
+      seo: {
+        title: typeof raw.seo?.title === 'string' ? raw.seo.title : '',
+        description: typeof raw.seo?.description === 'string' ? raw.seo.description : ''
+      }
+    }
+  }
+  return output
+}
+
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id')
 
@@ -148,6 +183,7 @@ export default defineEventHandler(async (event) => {
       slug: post.slug || post.id || post._id?.toString(),
       gallery: galleryUrls,
       galleryUrls,
+      translations: normalizeTranslations(post.translations),
       seo: normalizeSeo(post.seo, {
         title,
         titleVi,

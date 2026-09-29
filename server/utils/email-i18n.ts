@@ -5,9 +5,9 @@
  * nhận về một email không đọc được chữ nào. Email NỘI BỘ thì ngược lại — luôn
  * tiếng Việt, vì người đọc là nhân viên.
  *
- * Bản tiếng Việt là bản gốc; sửa chữ thì sửa ở đây rồi dịch lại cho đủ 6 thứ.
+ * Bản tiếng Việt là bản gốc; sửa chữ thì sửa ở đây rồi dịch lại cho đủ 7 thứ.
  */
-export const EMAIL_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+export const EMAIL_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
 
 export type EmailLocale = (typeof EMAIL_LOCALES)[number]
 
@@ -446,6 +446,68 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
     next5: 'तारीख बदलना या बुकिंग रद्द करना मुफ़्त है, बस कुछ घंटे पहले सूचित कर दें।',
     contactIntro: 'किसी भी मदद के लिए हमें कभी भी कॉल या मैसेज करें:',
     rightsReserved: 'सर्वाधिकार सुरक्षित।'
+  },
+  ko: {
+    subject: '사파 패러글라이딩 예약 확인',
+    packageName: '사파 패러글라이딩',
+    genderMale: '남성',
+    genderFemale: '여성',
+    headerTitle: '비행 예약 확인서',
+    bookingIdLabel: '예약 번호:',
+    greeting: '{name} 님, 안녕하세요.',
+    intro: '사파 패러글라이딩의 2인 탠덤 패러글라이딩 비행을 예약해 주셔서 감사합니다. 고객님의 비행이 확정되었으며, 상세 내용은 다음과 같습니다:',
+    secFlight: '비행 정보',
+    secPassengers: '탑승객 명단',
+    secPrice: '요금 내역',
+    secExtras: '선택하신 부가 서비스',
+    secPrepare: '비행 전 준비 사항',
+    secRequests: '특별 요청 사항',
+    secNext: '다음 안내',
+    secContact: '연락처',
+    takeoffPoint: '이륙장',
+    landingPoint: '착륙장',
+    landingName: '라오짜이 다리(Cầu Lao Chải), 따반(Tả Van) 면',
+    package: '비행 패키지',
+    flightDate: '비행 날짜',
+    flightTime: '비행 시간',
+    timeFlexible: '시간 조정 가능',
+    guestCount: '탑승객 수',
+    guestUnit: '명',
+    pickupPoint: '픽업 장소',
+    pickupDefault: '사파 내 고객님 숙소',
+    meetingPoint: '집결 장소',
+    meetingSelfArrive: '탑승객이 이륙장까지 직접 이동',
+    pickupNote: '⏱️ 비행 시간 약 30분 전에 차량이 픽업하러 가며, 도착 전에 기사가 전화를 드립니다.',
+    thName: '성명',
+    thDob: '생년월일',
+    thGender: '성별',
+    thWeight: '체중',
+    thNationality: '국적',
+    thId: '신분증/여권',
+    idMasked: '🔒 개인정보 보호를 위해 신분증 번호의 일부를 가렸습니다.',
+    priceFlight: '비행 패키지 요금',
+    unitGuest: '명',
+    unitTime: '회',
+    groupDiscount: '단체 할인',
+    total: '합계',
+    payNote: '💳 이륙 전 비행 현장에서 직접 결제하시면 됩니다. 예약금은 필요하지 않습니다.',
+    noExtras: '선택하신 부가 서비스가 없습니다.',
+    optHotelTransfer: '🚐 호텔 픽업 및 샌딩',
+    optDrone: '🚁 드론 촬영',
+    optCamera360: '📷 360° 카메라',
+    guideClothingLabel: '👕 복장',
+    guideClothingText: '긴 바지, 긴소매 상의, 운동화를 착용해 주세요. 치마, 하이힐, 슬리퍼는 삼가 주시기 바랍니다.',
+    guideBringLabel: '🎒 준비물',
+    guideBringText: '신분증, 선글라스, 가벼운 겉옷, 모자, 스카프, 셀카봉 모두 지참하셔도 좋습니다. 사진과 영상을 옮겨 받으실 수 있도록 휴대전화에 약 4GB의 여유 공간을 확보해 주시기 바랍니다.',
+    guideAvoidLabel: '🚫 반입 금지 물품',
+    guideAvoidText: '고가품, 날카로운 물건, 부피가 큰 물건, 무거운 물건.',
+    next1: '비행 일정과 기상 상황을 확인해 드리기 위해 곧 연락드리겠습니다.',
+    next2: '체크인과 안전 교육을 위해 비행 시간 15분 전까지 도착해 주시기 바랍니다.',
+    next3: '위의 이륙장 이름을 누르시면 Google 지도에서 길 안내를 여실 수 있습니다.',
+    next4: '신분증과 이 이메일을 지참해 주시기 바랍니다.',
+    next5: '일정 변경이나 취소는 무료입니다. 몇 시간 전에만 미리 알려 주시면 됩니다.',
+    contactIntro: '도움이 필요하시면 언제든지 전화나 메시지로 연락해 주십시오:',
+    rightsReserved: '모든 권리를 보유합니다.'
   }
 }
 

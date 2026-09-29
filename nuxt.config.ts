@@ -62,7 +62,8 @@ export default defineNuxtConfig({
       { code: 'fr', name: 'Français', iso: 'fr-FR', file: 'fr.json' },
       { code: 'ru', name: 'Русский', iso: 'ru-RU', file: 'ru.json' },
       { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' },
-      { code: 'hi', name: 'हिन्दी', iso: 'hi-IN', file: 'hi.json' }
+      { code: 'hi', name: 'हिन्दी', iso: 'hi-IN', file: 'hi.json' },
+      { code: 'ko', name: '한국어', iso: 'ko-KR', file: 'ko.json' }
     ],
     // 'en': da so khach la nguoi nuoc ngoai. May trinh duyet tieng Viet van
     // duoc detectBrowserLanguage dua ve /vi; may ngon ngu KHONG ho tro

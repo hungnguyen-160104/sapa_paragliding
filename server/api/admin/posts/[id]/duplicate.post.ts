@@ -44,6 +44,9 @@ export default defineEventHandler(async (event) => {
 
     // Remove the old _id
     delete duplicatedPost._id
+    // Bản dịch fr/ru/zh/hi thuộc về nội dung bài gốc: bản sao sẽ bị sửa thành
+    // bài khác, giữ lại thì trang /fr của bài mới hiện nội dung bài cũ.
+    delete duplicatedPost.translations
 
     await postsCollection.insertOne(duplicatedPost)
     clearPostsListCache() // danh sách công khai đổi — bỏ bản cache 60 giây (server/utils/posts-cache.ts)

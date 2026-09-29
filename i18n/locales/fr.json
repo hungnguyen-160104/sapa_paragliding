@@ -128,9 +128,9 @@
     "step3Details": {
       "passenger": "Passager",
       "selectGender": "Choisir le genre",
-      "weightLimit": "Limite de poids : < 100 kg",
+      "weightLimit": "Limite de poids : 110 kg maximum (prévenez-nous au-delà de 95 kg)",
       "safetyRequirements": "Exigences de sécurité",
-      "minAge": "Âge minimum : 4 ans (avec l’accord du tuteur légal)",
+      "minAge": "Âge minimum : 3 ans (avec l’accord du tuteur légal)",
       "goodHealth": "Activité déconseillée pour : hypertension / épilepsie / maladie cardiaque / asthme / autres pathologies graves / femmes enceintes / personnes en situation de handicap / personnes âgées / nourrissons",
       "personalInfoNotice": "Veuillez saisir des informations conformes à votre pièce d’identité. En cas d’erreur, l’assurance ne sera pas valable.",
       "fullName": "Nom et prénom",
@@ -379,8 +379,8 @@
       "des": "Pilote énergique, sportif (cyclisme, natation, parapente), avec 2 000 vols, plus de 1 500 heures de vol en sécurité et 3 titres de champion d’atterrissage de précision au Vietnam.",
       "img": "The Anh_Team Pilot.jpg",
       "fullname": "ĐINH THẾ ANH",
-      "experience": "Plus de 2 000 vols réalisés, avec un total dépassant 1 000 heures de vol en sécurité. Représentant du Vietnam lors de l’Olympic 2023 en Corée du Sud. Triple champion national en atterrissage de précision. A décollé dans de nombreux pays : Suisse, Corée du Sud, États-Unis, Thaïlande, Indonésie…",
-      "records": "Trois fois champion d’atterrissage de précision au Vietnam et représentant du Vietnam aux Jeux/Olympic de parapente 2023 en Corée du Sud.",
+      "experience": "Plus de 2 000 vols réalisés, avec un total dépassant 1 000 heures de vol en sécurité. Représentant du Vietnam à la manche qualificative de la Coupe du monde de parapente 2023 en Corée du Sud. Triple champion national en atterrissage de précision. A décollé dans de nombreux pays : Suisse, Corée du Sud, États-Unis, Thaïlande, Indonésie…",
+      "records": "Trois fois champion d’atterrissage de précision au Vietnam et représentant du Vietnam à la manche qualificative de la Coupe du monde de parapente 2023 en Corée du Sud.",
       "personality": "Surnommé « le grand frère national » — né et grandi à Đà Nẵng, il dégage une douceur et une chaleur typiques du soleil et de la mer. Son sourire, sa voix posée et son attention aux détails marquent les esprits. En plus d’être un excellent pilote, il est aussi photographe pro : attendez-vous à des photos incroyables, sous tous les angles !"
     },
     "pilot8": {
@@ -503,7 +503,7 @@
         "items": {
           "weight": {
             "title": "Poids",
-            "desc": "Moins de 120 kg. Au-delà de 95 kg, merci de nous prévenir à l’avance pour organiser le pilote et l’équipement adaptés."
+            "desc": "Jusqu’à 110 kg. Au-delà de 95 kg, merci de nous prévenir à l’avance pour organiser le pilote et l’équipement adaptés."
           },
           "health": {
             "title": "Condition physique",
@@ -543,7 +543,7 @@
           },
           "byCustomer": {
             "title": "Annulation par le client",
-            "desc": "Prévenir par e-mail/hotline/Zalo/WhatsApp. Avant 1 jour : gratuit."
+            "desc": "Prévenir par e-mail/hotline/Zalo/WhatsApp, quelques heures avant la prise en charge suffisent : gratuit."
           },
           "reschedule": {
             "title": "Changement de date",
@@ -871,8 +871,8 @@
   "preNoticeSection": {
     "safetyRequirements": {
       "title": "Exigences de sécurité",
-      "minAge": "Âge minimum : 5 ans (avec l’accord des parents pour les mineurs)",
-      "weightRange": "Plage de poids : < 100 kg",
+      "minAge": "Âge minimum : 3 ans (avec l’accord des parents pour les mineurs)",
+      "weightRange": "Poids : 110 kg maximum (prévenez-nous au-delà de 95 kg)",
       "goodHealth": "Bonne santé physique et mentale requise",
       "noPregnant": "Les femmes enceintes ne peuvent pas participer",
       "notRecommended": "Déconseillé aux personnes ayant une maladie cardiaque, des problèmes de dos ou une peur du vide"
@@ -1032,11 +1032,11 @@
     },
     "valley": {
       "title": "La vallée de Muong Hoa vue du ciel",
-      "desc": "La vallée de Muong Hoa est célèbre pour ses rizières en terrasses, la rivière Muong Hoa et son champ de roches anciennes. En vol, admirez la saison des eaux (mai–juin) et la saison du riz doré (septembre–octobre), les deux plus belles périodes de l'année."
+      "desc": "La vallée de Muong Hoa est célèbre pour ses rizières en terrasses à perte de vue, le ruisseau sinueux de Muong Hoa et son champ de pierres anciennes. En vol, vous admirerez la saison de mise en eau (mai–juin), la saison du riz vert (juillet–août) et l’automne, avec le riz doré puis un ciel limpide (septembre–décembre) – les plus beaux moments de l’année."
     },
     "bestTime": {
       "title": "Meilleure période pour voler",
-      "desc": "On peut voler à Sapa toute l'année selon la météo. Les plus belles périodes sont la saison du riz doré (sept.–oct.) et la saison des eaux (mai–juin). Les horaires exacts sont confirmés chaque jour selon le vent et la visibilité."
+      "desc": "On peut voler à Sapa toute l’année selon la météo. Les plus belles périodes sont la mise en eau (mai–juin), le riz vert (juillet–août) et l’automne (septembre–décembre) ; de décembre à mars, c’est la saison de la chasse aux nuages. Les horaires de vol sont confirmés chaque jour selon le vent et la visibilité."
     },
     "gettingThere": {
       "title": "Accès au site de vol",
@@ -1296,12 +1296,12 @@
   },
   "pricingPage": {
     "title": "Tarifs du Parapente à Sapa",
-    "subtitle": "Prix tout compris, sans frais cachés – réservez maintenant, payez après le vol",
+    "subtitle": "Prix tout compris, sans frais cachés – réservez maintenant, payez sur le site de vol",
     "intro": "Tarifs des vols en parapente tandem à Sapa : 3 forfaits tout compris incluant l'assurance, la vidéo GoPro et les boissons sur le site de vol. Aucun acompte requis – confirmation rapide par téléphone ou via le site.",
     "packagesTitle": "Forfaits de vol et tarifs détaillés",
     "notesTitle": "À savoir sur les tarifs",
     "notes": {
-      "deposit": "Aucun acompte – réservez d'abord, payez après le vol.",
+      "deposit": "Aucun acompte – réservez d'abord, payez à votre arrivée sur le site de vol.",
       "payment": "Paiement en espèces, par virement ou par carte.",
       "weather": "Si le vol est annulé pour cause de météo, vous pouvez le reporter ou être remboursé à 100%.",
       "group": "Pour les groupes, contactez-nous directement pour une offre spéciale."
@@ -1314,7 +1314,7 @@
       },
       "deposit": {
         "q": "Faut-il verser un acompte ?",
-        "a": "Non. Réservez simplement votre créneau sur le site ou par téléphone et payez après votre vol."
+        "a": "Non. Réservez simplement votre créneau sur le site ou par téléphone et payez à votre arrivée sur le site de vol."
       },
       "cancel": {
         "q": "Et si la météo ne permet pas de voler ?",

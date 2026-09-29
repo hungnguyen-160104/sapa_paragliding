@@ -98,6 +98,10 @@ const localeMetaMap: Record<string, SeoMetaData> = {
     title: 'सापा पैराग्लाइडिंग | सर्वश्रेष्ठ उड़ान अनुभव | Sapa Paragliding',
     description:
       'ऑनलाइन बुक करें। वियतनाम का सबसे ऊंचा पैराग्लाइडिंग टेकऑफ़ पॉइंट। पेशेवर पायलटों के साथ सुरक्षित उड़ान और सापा का विहंगम दृश्य। 100% सुरक्षा।'
+  },
+  ko: {
+    title: '사파 패러글라이딩 | 므엉호아 계곡 2인 탠덤 비행',
+    description: '온라인 예약. 베트남 최고 높이의 패러글라이딩 이륙장에서 국제 자격 파일럿과 함께 날아 보세요. 사파 파노라마 전망, 5만 명 이상의 고객.'
   }
 }
 
@@ -557,7 +561,7 @@ onBeforeUnmount(() => {
                   <div class="relative aspect-[16/10] overflow-hidden">
                     <NuxtImg
                       :src="cloudinaryImage(post.image, 600)"
-                      :alt="currentLocale === 'vi' ? post.titleVi : post.title"
+                      :alt="post.translations?.[currentLocale]?.title || (currentLocale === 'vi' ? post.titleVi : post.title)"
                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       width="800"
                       height="500"
@@ -589,11 +593,11 @@ onBeforeUnmount(() => {
                     </div>
 
                     <h3 class="text-xl font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-red-600 transition-colors">
-                      {{ currentLocale === 'vi' ? post.titleVi : post.title }}
+                      {{ post.translations?.[currentLocale]?.title || (currentLocale === 'vi' ? post.titleVi : post.title) }}
                     </h3>
 
                     <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-4">
-                      {{ currentLocale === 'vi' ? post.excerptVi : post.excerpt }}
+                      {{ post.translations?.[currentLocale]?.excerpt || (currentLocale === 'vi' ? post.excerptVi : post.excerpt) }}
                     </p>
 
                     <div class="flex items-center text-red-600 font-bold text-sm group-hover:text-red-700 transition-colors">

@@ -1,9 +1,10 @@
 <template>
   <div class="language-switcher-horizontal">
-    <!-- flex-nowrap: ép cả 6 nút trên MỘT hàng, không xuống dòng. Trên điện
-         thoại nút phải rất gọn (px-1 text-[11px]) vì còn chia chỗ với logo,
-         chữ thương hiệu 1 hàng và nút menu. Từ lg nới ra vì có nhiều chỗ hơn. -->
-    <div class="flex flex-nowrap justify-end gap-0.5 2xl:gap-1 items-center">
+    <!-- Điện thoại (<sm): lưới 4 cột, 7 nút thành hai hàng 4 + 3. Một hàng 7
+         nút rộng ~154px, ở máy 360px đẩy chữ thương hiệu co còn "SA…"; hai
+         hàng chỉ ~88px và vẫn nằm gọn trong header cao 80px.
+         Từ sm trở lên: flex-nowrap, tất cả trên MỘT hàng như trước. -->
+    <div class="grid grid-cols-4 gap-0.5 sm:flex sm:flex-nowrap sm:justify-end 2xl:gap-1 items-center">
       <button
         v-for="localeItem in availableLocales"
         :key="localeItem.code"

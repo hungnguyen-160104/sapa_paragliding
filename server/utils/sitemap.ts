@@ -3,7 +3,7 @@ import { PILOT_SLUG_BY_KEY, VISIBLE_PILOT_KEYS } from '../../shared/pilots'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'en'
-export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi'] as const
+export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
@@ -16,6 +16,27 @@ export type Locale = (typeof LOCALES)[number]
  * Trang tĩnh thì dịch đủ sáu thứ tiếng nên vẫn khai đủ.
  */
 export const POST_LOCALES: readonly Locale[] = ['vi', 'en']
+
+/**
+ * Riêng những bài đã dịch thật sang fr/ru/zh/hi (post.translations.<lc> có
+ * đủ tiêu đề và nội dung) thì bản dịch đó là trang riêng: khai vào sitemap
+ * ngôn ngữ ấy và vào hreflang của bài. Cùng điều kiện với
+ * server/api/posts/[id].get.ts — lệch nhau là khai ra trang canonical về /en.
+ */
+type SitemapPost = {
+  slug: string
+  publishedAt?: Date
+  translations?: Record<string, { title?: string; contentBlocks?: unknown[] }>
+}
+
+export function getPostLocales(post: SitemapPost): Locale[] {
+  const extra = LOCALES.filter((lc) => {
+    if (POST_LOCALES.includes(lc)) return false
+    const tr = post.translations?.[lc]
+    return Boolean(tr?.title?.trim()) && Array.isArray(tr?.contentBlocks) && tr!.contentBlocks!.length > 0
+  })
+  return [...POST_LOCALES, ...extra]
+}
 
 /**
  * Trang phi công thì NGƯỢC LẠI với bài viết: nội dung nằm trong i18n và đã
@@ -58,6 +79,8 @@ export function getLangIso(locale: Locale): string {
       return 'zh-CN'
     case 'hi':
       return 'hi-IN'
+    case 'ko':
+      return 'ko-KR'
   }
 }
 
@@ -95,15 +118,26 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
   // còn CDN không cache phản hồi 5xx. Hỏng ồn ào an toàn hơn hỏng im lặng.
   const { db } = await connectToDatabase()
   const posts = await db.collection('posts')
-    .find({ status: 'PUBLISHED' }, { projection: { slug: 1, publishedAt: 1 } })
-    .toArray() as unknown as Array<{ slug: string; publishedAt?: Date }>
+    .find({ status: 'PUBLISHED' }, {
+      projection: {
+        slug: 1,
+        publishedAt: 1,
+        'translations.fr.title': 1, 'translations.fr.contentBlocks.id': 1,
+        'translations.ru.title': 1, 'translations.ru.contentBlocks.id': 1,
+        'translations.zh.title': 1, 'translations.zh.contentBlocks.id': 1,
+        'translations.hi.title': 1, 'translations.hi.contentBlocks.id': 1,
+        'translations.ko.title': 1, 'translations.ko.contentBlocks.id': 1
+      }
+    })
+    .toArray() as unknown as SitemapPost[]
 
   if (posts.length === 0) {
     throw new Error('Sitemap: truy vấn posts trả về rỗng, không phát hành sitemap thiếu bài')
   }
 
-  // Ngôn ngữ không có bản dịch riêng cho bài thì sitemap chỉ gồm trang tĩnh.
+  // Ngôn ngữ không có bản dịch riêng cho bài thì chỉ khai những bài đã dịch.
   const includePosts = POST_LOCALES.includes(locale)
+  const localePosts = posts.filter((post) => getPostLocales(post).includes(locale))
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -153,7 +187,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += '  </url>\n'
   }
 
-  for (const post of includePosts ? posts : []) {
+  for (const post of localePosts) {
     const postPath = `/posts/${post.slug}`
     const currentUrl = `${DOMAIN}/${locale}${postPath}`
     const postLastmod = post.publishedAt ? new Date(post.publishedAt).toISOString() : lastmod
@@ -162,7 +196,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += `    <loc>${escapeXml(currentUrl)}</loc>\n`
     xml += `    <lastmod>${postLastmod}</lastmod>\n`
 
-    for (const altLocale of POST_LOCALES) {
+    for (const altLocale of getPostLocales(post)) {
       const altUrl = `${DOMAIN}/${altLocale}${postPath}`
       xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(altUrl)}" />\n`
     }

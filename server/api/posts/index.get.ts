@@ -12,7 +12,13 @@ import { clearPostsListCache, getPostsListCache, setPostsListCache } from '../..
  */
 const PROJECTION = {
   id: 1, title: 1, titleVi: 1, excerpt: 1, excerptVi: 1, thumbnailUrl: 1, coverImage: 1,
-  categoryId: 1, publishedAt: 1, updatedAt: 1, createdAt: 1, slug: 1
+  categoryId: 1, publishedAt: 1, updatedAt: 1, createdAt: 1, slug: 1,
+  // Chỉ tiêu đề + mô tả của bản dịch fr/ru/zh/hi, không kéo cả nội dung
+  'translations.fr.title': 1, 'translations.fr.excerpt': 1,
+  'translations.ru.title': 1, 'translations.ru.excerpt': 1,
+  'translations.zh.title': 1, 'translations.zh.excerpt': 1,
+  'translations.hi.title': 1, 'translations.hi.excerpt': 1,
+  'translations.ko.title': 1, 'translations.ko.excerpt': 1
 } as const
 
 async function docDanhSach() {
@@ -43,7 +49,8 @@ async function docDanhSach() {
       category: categoryId,
       categoryId,
       published: true,
-      slug: post.slug || post.id || post._id?.toString()
+      slug: post.slug || post.id || post._id?.toString(),
+      translations: post.translations || {}
     }
   })
 }

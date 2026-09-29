@@ -430,6 +430,13 @@ type GalleryItem = {
   publicId?: string
 }
 
+type PostTranslation = {
+  title?: string
+  excerpt?: string
+  contentBlocks?: ContentBlock[]
+  seo?: { title?: string; description?: string }
+}
+
 type PostWithExtras = {
   id: string | number
   slug?: string | number
@@ -451,6 +458,8 @@ type PostWithExtras = {
   galleryUrls?: GalleryItem[]
   contentBlocks?: ContentBlock[]
   contentBlocksVi?: ContentBlock[]
+  /** Bản dịch fr/ru/zh/hi — chỉ có ở những bài đã dịch thật */
+  translations?: Partial<Record<string, PostTranslation>>
   seo?: {
     title?: string
     titleVi?: string
@@ -470,14 +479,14 @@ const currentLocale = computed(() => locale.value || 'vi')
 const isVietnamese = computed(() => String(currentLocale.value).toLowerCase().startsWith('vi'))
 const postId = computed(() => String(route.params.id ?? ''))
 
-const categoryLabels: Record<string, { vi: string; en: string }> = {
-  news: { vi: 'Tin tức', en: 'News' },
-  guide: { vi: 'Hướng dẫn', en: 'Guide' },
-  experience: { vi: 'Trải nghiệm', en: 'Experience' },
-  promotion: { vi: 'Khuyến mãi', en: 'Promotion' },
-  adventure: { vi: 'Phiêu lưu', en: 'Adventure' },
-  safety: { vi: 'An toàn', en: 'Safety' },
-  tips: { vi: 'Mẹo hay', en: 'Tips' }
+const categoryLabels: Record<string, { vi: string; en: string; fr?: string; ko?: string }> = {
+  news: { vi: 'Tin tức', en: 'News', fr: 'Actualités', ko: '소식' },
+  guide: { vi: 'Hướng dẫn', en: 'Guide', fr: 'Guide', ko: '가이드' },
+  experience: { vi: 'Trải nghiệm', en: 'Experience', fr: 'Expérience', ko: '체험' },
+  promotion: { vi: 'Khuyến mãi', en: 'Promotion', fr: 'Promotion', ko: '프로모션' },
+  adventure: { vi: 'Phiêu lưu', en: 'Adventure', fr: 'Aventure', ko: '모험' },
+  safety: { vi: 'An toàn', en: 'Safety', fr: 'Sécurité', ko: '안전' },
+  tips: { vi: 'Mẹo hay', en: 'Tips', fr: 'Conseils', ko: '팁' }
 }
 
 const {
@@ -530,7 +539,18 @@ onMounted(async () => {
   }
 })
 
+/** Bản dịch của ngôn ngữ đang xem (fr/ru/zh/hi), nếu bài có. */
+function getTranslation(item?: PostWithExtras | null): PostTranslation | null {
+  if (!item || isVietnamese.value || locale.value === 'en') return null
+  const tr = item.translations?.[locale.value]
+  return tr?.title ? tr : null
+}
+
+const translation = computed(() => getTranslation(post.value))
+
 function getLocalizedPostTitle(item: PostWithExtras): string {
+  const tr = getTranslation(item)
+  if (tr?.title) return tr.title
   if (isVietnamese.value) {
     return item.titleVi || item.title || ''
   }
@@ -538,6 +558,8 @@ function getLocalizedPostTitle(item: PostWithExtras): string {
 }
 
 function getLocalizedPostExcerpt(item: PostWithExtras): string {
+  const tr = getTranslation(item)
+  if (tr?.excerpt) return tr.excerpt
   if (isVietnamese.value) {
     return item.excerptVi || item.excerpt || ''
   }
@@ -565,6 +587,9 @@ const displayHtml = computed(() => {
 const displayBlocks = computed<ContentBlock[]>(() => {
   if (!post.value) return []
 
+  const translated = translation.value?.contentBlocks
+  if (Array.isArray(translated) && translated.length) return translated
+
   const preferred = isVietnamese.value ? post.value.contentBlocksVi : post.value.contentBlocks
   const fallback = isVietnamese.value ? post.value.contentBlocks : post.value.contentBlocksVi
 
@@ -582,11 +607,16 @@ const displayCategory = computed(() => {
   const key = String(post.value?.categoryId || post.value?.category || 'news')
   const labels = categoryLabels[key]
   if (!labels) return key
+  if (locale.value === 'fr' && labels.fr) return labels.fr
+  if (locale.value === 'ko' && labels.ko) return labels.ko
   return isVietnamese.value ? labels.vi : labels.en
 })
 
 const seoTitle = computed(() => {
   if (!post.value) return ''
+  if (translation.value) {
+    return translation.value.seo?.title || displayTitle.value
+  }
   if (isVietnamese.value) {
     return post.value.seo?.titleVi || displayTitle.value
   }
@@ -598,6 +628,9 @@ const seoDescription = computed(() => {
   // truncateMetaDescription: excerpt viết cho thẻ bài nên hay dài 190–220 ký
   // tự, Google cắt cụt ở ~160 — cắt chủ động tại ranh giới từ cho gọn.
   // Excerpt hiển thị trên trang không bị ảnh hưởng.
+  if (translation.value) {
+    return truncateMetaDescription(translation.value.seo?.description || displayExcerpt.value)
+  }
   if (isVietnamese.value) {
     return truncateMetaDescription(post.value.seo?.descriptionVi || displayExcerpt.value)
   }
@@ -650,7 +683,8 @@ function formatDate(date?: string) {
     fr: 'fr-FR',
     ru: 'ru-RU',
     zh: 'zh-CN',
-    hi: 'hi-IN'
+    hi: 'hi-IN',
+    ko: 'ko-KR'
   }
 
   return new Date(date).toLocaleDateString(localeMap[currentLocale.value] || 'en-US', {
@@ -700,7 +734,14 @@ useHead(() => {
    * sáu lần với cùng một nội dung. Google xử lý đúng như dự đoán: chọn giùm
    * một bản chính tắc và bỏ lập chỉ mục phần còn lại.
    */
-  const hasOwnTranslation = POST_LOCALES.includes(locale.value as SupportedLocale)
+  // Ngôn ngữ có bản dịch thật cho RIÊNG bài này (post.translations) cũng là
+  // trang riêng — cùng điều kiện với getPostLocales trong server/utils/sitemap.ts.
+  const postLocales: SupportedLocale[] = [
+    ...POST_LOCALES,
+    ...(Object.keys(post.value?.translations || {}) as SupportedLocale[])
+      .filter((lc) => !POST_LOCALES.includes(lc) && post.value?.translations?.[lc]?.title && post.value?.translations?.[lc]?.contentBlocks?.length)
+  ]
+  const hasOwnTranslation = postLocales.includes(locale.value as SupportedLocale)
   const canonicalUrl = hasOwnTranslation
     ? postUrl
     : buildLocalizedUrl(`/posts/${slug}`, POST_SOURCE_LOCALE)
@@ -758,7 +799,7 @@ useHead(() => {
     ],
     link: [
       { rel: 'canonical', href: canonicalUrl },
-      ...buildHreflangLinks(`/posts/${slug}`, locale.value, POST_LOCALES)
+      ...buildHreflangLinks(`/posts/${slug}`, locale.value, postLocales)
     ],
     script: scripts
   }

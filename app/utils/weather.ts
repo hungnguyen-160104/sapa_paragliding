@@ -340,7 +340,7 @@ export function homNayVN(): string {
 }
 
 const MA_NGON_NGU: Record<string, string> = {
-  vi: 'vi-VN', en: 'en-GB', fr: 'fr-FR', ru: 'ru-RU', zh: 'zh-CN', hi: 'hi-IN'
+  vi: 'vi-VN', en: 'en-GB', fr: 'fr-FR', ru: 'ru-RU', zh: 'zh-CN', hi: 'hi-IN', ko: 'ko-KR'
 }
 
 /** "2026-09-10" → "T5 10/09" theo ngôn ngữ đang xem. */
