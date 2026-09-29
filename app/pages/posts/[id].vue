@@ -192,9 +192,14 @@
 
               <template v-else-if="block.type === 'bulletList'">
                 <ul class="my-4 list-inside list-disc space-y-2">
-                  <li v-for="(item, itemIdx) in block.data?.items || []" :key="itemIdx" class="text-gray-700">
-                    {{ item }}
-                  </li>
+                  <!-- renderInlineMarkup như đoạn văn: bài có **đậm** trong danh sách,
+                       in thô thì khách thấy nguyên dấu ** -->
+                  <li
+                    v-for="(item, itemIdx) in block.data?.items || []"
+                    :key="itemIdx"
+                    class="text-gray-700"
+                    v-html="renderInlineMarkup(item)"
+                  />
                 </ul>
               </template>
 
