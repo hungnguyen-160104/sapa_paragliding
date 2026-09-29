@@ -244,15 +244,14 @@
 
       <!-- Copyright -->
       <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 text-center text-sm text-white">
-        <!-- Thông tin pháp lý (chủ gửi giấy tờ 30/09/2026): tên công ty, mã số
-             doanh nghiệp, trụ sở + người đại diện, giấy chứng nhận đủ điều kiện
-             kinh doanh thể thao, phép bay. KHÔNG đưa số CCCD, ngày sinh, địa
-             chỉ thường trú của người đại diện.
-             Phép bay 17996/TC-QC hết hạn 31/12/2026 — có phép năm 2027 thì
-             sửa footer.legal.flightPermit trong cả 8 file i18n. -->
+        <!-- Hai giấy phép hoạt động (chủ gửi giấy tờ 30/09/2026): GCN đủ điều
+             kiện kinh doanh thể thao 02/GCN-SVHTT và phép bay 17996/TC-QC.
+             Thông tin pháp nhân (tên, mã số DN, trụ sở, người đại diện) ở khối
+             CompanyLegalInfo phía trên — không lặp lại ở đây.
+             Phép bay hết hạn 31/12/2026 — có phép năm 2027 thì sửa
+             footer.legal.flightPermit trong cả 8 file i18n. -->
         <div class="mx-auto max-w-5xl px-2 leading-relaxed max-md:text-xs">
-          <p class="font-semibold">{{ $t('footer.legal.company') }}</p>
-          <p v-for="key in LEGAL_LINES" :key="key" class="mt-1 text-gray-300">{{ $t(`footer.legal.${key}`) }}</p>
+          <p v-for="key in LEGAL_LINES" :key="key" class="md:mt-1">{{ $t(`footer.legal.${key}`) }}</p>
         </div>
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
@@ -287,8 +286,8 @@ const contactNowrapClass = computed(() =>
 
 const isDesktop = ref(false)
 
-/** Các dòng pháp lý dưới tên công ty, theo thứ tự hiển thị. */
-const LEGAL_LINES = ['taxCode', 'address', 'sportLicense', 'flightPermit'] as const
+/** Hai dòng giấy phép hoạt động, theo thứ tự hiển thị. */
+const LEGAL_LINES = ['sportLicense', 'flightPermit'] as const
 
 const menuItems = [
   { path: '/', label: 'menu.home' },
