@@ -116,7 +116,7 @@
         "item1": "Sau khi đặt chỗ, chúng tôi sẽ liên hệ để sắp xếp lịch bay, bao gồm thời gian bay, điểm đón và giờ đón.",
         "item2": "Thời gian đón khách trước giờ bay khoảng 30 phút.",
         "item3": "Vào ngày bay, chúng tôi sẽ gửi tên tài xế, số điện thoại và biển số xe/xe máy qua SMS, WhatsApp hoặc Email.",
-        "item4": "Vui lòng có mặt tại điểm hẹn trước 5 phút so với giờ đón để tránh chậm trễ.",
+        "item4": "Vui lòng có mặt tại điểm hẹn trước giờ đón 15–30 phút để tránh chậm trễ.",
         "item5": "Trong trường hợp điều kiện thời tiết thay đổi, chúng tôi sẽ liên hệ để đổi lịch bay hoàn toàn miễn phí."
       },
       "selectTime": "Chọn giờ",
@@ -202,7 +202,7 @@
       "whatsNext": "Tiếp Theo Là Gì?",
       "step1": "Kiểm tra email để xem xác nhận đặt chỗ và chi tiết",
       "step2": "Chúng tôi sẽ liên hệ với bạn 24 giờ trước để xác nhận điều kiện thời tiết",
-      "step3": "Có mặt tại điểm hẹn trước 5 phút so với giờ đón để tránh chậm trễ.",
+      "step3": "Có mặt tại điểm hẹn trước giờ đón 15–30 phút để tránh chậm trễ.",
       "step4": "Tận hưởng trải nghiệm dù lượn tuyệt vời!",
       "backToHome": "Về Trang Chủ",
       "makeAnother": "Đặt Chỗ Khác",
@@ -462,7 +462,7 @@
       },
       "timing": {
         "title": "Có mặt đúng giờ",
-        "description": "Hãy có mặt trước giờ đón 5 phút để đảm bảo không chậm trễ"
+        "description": "Hãy có mặt trước giờ đón 15–30 phút để đảm bảo không chậm trễ"
       },
       "storage": {
         "title": "Bộ nhớ điện thoại",
@@ -514,7 +514,7 @@
           },
           "payment": {
             "title": "Thanh toán",
-            "desc": "Tiền mặt, chuyển khoản ngân hàng hoặc thẻ tín dụng. Không yêu cầu thanh toán trước."
+            "desc": "Tiền mặt, chuyển khoản ngân hàng, thẻ tín dụng hoặc PayPal. Thông thường không cần thanh toán trước; một số trường hợp (đặt homestay, nhóm đông, xe riêng, ngày cao điểm) có thể cần chuyển trước một phần hoặc toàn bộ."
           },
           "confirmation": {
             "title": "Xác nhận",
@@ -532,7 +532,7 @@
           },
           "byCustomer": {
             "title": "Huỷ bay do khách hàng",
-            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp, chỉ cần báo trước giờ đón vài tiếng: Miễn phí."
+            "desc": "Thông báo qua email/hotline/Zalo/WhatsApp trước giờ đón hoặc giờ bay đã hẹn (kể cả hủy ngay trong ngày bay): miễn phí, hoàn tiền đầy đủ."
           },
           "reschedule": {
             "title": "Đổi lịch bay",
@@ -1296,11 +1296,11 @@
     "packagesTitle": "Các gói bay và giá chi tiết",
     "notesTitle": "Lưu ý về giá",
     "notes": {
-      "deposit": "Không cần đặt cọc – đặt chỗ trước, thanh toán khi tới điểm bay.",
-      "payment": "Thanh toán bằng tiền mặt, chuyển khoản hoặc thẻ.",
+      "deposit": "Thông thường không cần đặt cọc – đặt chỗ trước, thanh toán khi tới điểm bay. Một số trường hợp (đặt homestay, nhóm đông, xe riêng, ngày cao điểm) có thể cần chuyển trước một phần hoặc toàn bộ; chúng tôi sẽ báo rõ khi xác nhận đặt chỗ.",
+      "payment": "Thanh toán bằng tiền mặt, chuyển khoản, thẻ hoặc PayPal.",
       "weather": "Nếu chuyến bay bị huỷ do thời tiết, bạn được đổi lịch hoặc hoàn tiền 100%.",
       "group": "Đoàn đông người vui lòng liên hệ trực tiếp để nhận ưu đãi nhóm.",
-      "tax": "Giá niêm yết là số tiền cuối cùng khách thanh toán, đã bao gồm thuế (nếu có) và phí dịch vụ; không thu thêm khoản phí nào ngoài dịch vụ tùy chọn khách chọn (phụ phí đón ngoài khu vực, nếu có, được báo trước)."
+      "tax": "Giá niêm yết đã bao gồm thuế giá trị gia tăng (VAT). Chúng tôi xuất hóa đơn VAT – khách có nhu cầu vui lòng cung cấp thông tin xuất hóa đơn. Không thu thêm khoản phí nào ngoài dịch vụ tùy chọn khách chọn (phụ phí đón ngoài khu vực, nếu có, được báo trước)."
     },
     "faqTitle": "Câu hỏi thường gặp về giá",
     "faq": {
@@ -1310,7 +1310,7 @@
       },
       "deposit": {
         "q": "Có cần đặt cọc trước không?",
-        "a": "Không. Bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán khi tới điểm bay."
+        "a": "Thông thường là không: bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán khi tới điểm bay. Riêng một số trường hợp như đặt homestay, nhóm đông, xe riêng hoặc ngày cao điểm có thể cần chuyển trước một phần hoặc toàn bộ – chúng tôi sẽ báo rõ khi xác nhận đặt chỗ."
       },
       "cancel": {
         "q": "Nếu thời tiết xấu không bay được thì sao?",
@@ -1349,6 +1349,12 @@
     "authoritative": "",
     "englishFallback": "",
     "customerSupport": "Hỗ trợ khách hàng (24/7)",
-    "otherPolicies": "Các chính sách khác"
+    "otherPolicies": "Các chính sách khác",
+    "bank": {
+      "pending": "Nhân viên sẽ gửi thông tin chuyển khoản của công ty khi xác nhận đặt chỗ.",
+      "bank": "Ngân hàng",
+      "accountNumber": "Số tài khoản",
+      "accountHolder": "Chủ tài khoản"
+    }
   }
 }

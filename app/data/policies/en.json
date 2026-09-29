@@ -1,0 +1,718 @@
+{
+  "terms": {
+    "title": "Terms of Use and General Conditions of Sale",
+    "intro": "These terms apply to everyone who visits paraglidingsapa.com and books a tandem paragliding flight in Sa Pa provided by {companyName} (“we”, “us” or “Sapa Paragliding”). By making a booking, you confirm that you have read, understood and accepted the conditions below.",
+    "sections": [
+      {
+        "heading": "1. Scope",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "paraglidingsapa.com presents and takes bookings for tandem paragliding flights (flying with a pilot) in Sa Pa, Lao Cai, and related add-ons: hotel transfer, drone (flycam) filming and 360 camera filming."
+          },
+          {
+            "type": "bullet",
+            "text": "The service is provided directly by {companyName}. Company details are published in the site footer and at the bottom of this page."
+          },
+          {
+            "type": "bullet",
+            "text": "These general conditions apply together with our Payment Policy; Cancellation, Rescheduling & Refund Policy; Service Delivery Policy; Privacy Policy; Complaints & Dispute Resolution procedure; and the “Terms & Commitments for the flight” shown at the end of this page."
+          }
+        ]
+      },
+      {
+        "heading": "2. Booking process and formation of the contract",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "You can book on the website (Booking page) or via hotline / Zalo / WhatsApp {hotline}."
+          },
+          {
+            "type": "bullet",
+            "text": "On the website you choose the service and optional add-ons, your preferred date and time, enter contact and passenger details, read and tick your agreement to the terms, then confirm. Before you confirm, the website shows the full service details and total cost for you to check."
+          },
+          {
+            "type": "bullet",
+            "text": "After we receive your booking, the system emails you an acknowledgement with your booking code. We will contact you within 3 hours to arrange and confirm the flight schedule (flight time, pickup point and pickup time)."
+          },
+          {
+            "type": "bullet",
+            "text": "The contract is formed when we confirm the flight schedule with you. If we cannot meet your request (fully booked, weather, safety conditions…), we will tell you and suggest another schedule."
+          }
+        ]
+      },
+      {
+        "heading": "3. Prices",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Prices are published on the Prices page and in the service-selection step of the booking form, per passenger (per flight). Prices are listed in Vietnamese dong (VND); US dollar (USD) amounts are for reference only. Listed prices include value-added tax (VAT)."
+          },
+          {
+            "type": "bullet",
+            "text": "The total cost of each booking (flight price, optional add-ons and any discount) is shown in the confirmation step and in the booking acknowledgement email."
+          },
+          {
+            "type": "bullet",
+            "text": "We charge nothing beyond the listed price and the add-ons you selected. For pickups outside central Sa Pa, Ta Van and Lao Chai, or transport for companions who do not fly, any surcharge will be quoted and agreed with you in advance."
+          }
+        ]
+      },
+      {
+        "heading": "4. Customer rights and obligations",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Provide accurate and complete information as shown on your ID/passport (full name, date of birth, document number, nationality, weight) and be honest about your health. Incorrect information may invalidate the insurance and affect flight safety."
+          },
+          {
+            "type": "bullet",
+            "text": "Be on time and follow the safety instructions of the pilot and operations staff."
+          },
+          {
+            "type": "bullet",
+            "text": "Pay in full according to the Payment Policy."
+          },
+          {
+            "type": "bullet",
+            "text": "You are entitled to complete and truthful information about the service, prices and conditions; to reschedule, cancel and receive refunds under the Cancellation, Rescheduling & Refund Policy; and to complain under the Complaints & Dispute Resolution procedure."
+          }
+        ]
+      },
+      {
+        "heading": "5. Our rights and obligations",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Provide the service as published and as confirmed with you, with professionally trained pilots and standard-compliant flying equipment."
+          },
+          {
+            "type": "bullet",
+            "text": "Put flight safety first: we may delay, reschedule or cancel a flight when weather or conditions are unsafe, and may refuse service to passengers who do not meet the flight requirements or whose behaviour affects safety."
+          },
+          {
+            "type": "bullet",
+            "text": "Protect your personal data under our Privacy Policy."
+          },
+          {
+            "type": "bullet",
+            "text": "Receive and resolve complaints under our Complaints & Dispute Resolution procedure."
+          }
+        ]
+      },
+      {
+        "heading": "6. Use of the website",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "You must not use the website to submit false information or fake bookings, spread malware or interfere with the system. The booking form uses an anti-bot check."
+          },
+          {
+            "type": "bullet",
+            "text": "Photos, videos, articles and other content on the website belong to Sapa Paragliding or are used lawfully; they may not be copied for commercial purposes without permission."
+          }
+        ]
+      },
+      {
+        "heading": "7. General provisions",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "The waivers in the “Terms & Commitments for the flight” apply to the extent permitted by Vietnamese law and do not limit consumer rights under the Law on Protection of Consumer Rights."
+          },
+          {
+            "type": "bullet",
+            "text": "These terms are governed by the laws of Vietnam. The Vietnamese version is the authoritative text; other language versions are translations for your convenience."
+          },
+          {
+            "type": "bullet",
+            "text": "We may update these terms and policies; new versions are published on the website and apply to bookings made after publication. Bookings already confirmed remain under the terms in force at confirmation, unless the new terms are more favourable to you."
+          },
+          {
+            "type": "bullet",
+            "text": "Questions: hotline / Zalo / WhatsApp {hotline} or email {supportEmail}."
+          }
+        ]
+      }
+    ]
+  },
+  "payment": {
+    "title": "Payment Policy",
+    "intro": "This policy explains how you pay for paragliding flights and related services provided by {companyName}.",
+    "sections": [
+      {
+        "heading": "1. Deposit and prepayment",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Usually you only need to reserve via the website or hotline / Zalo / WhatsApp and pay directly at the flight site before take-off; no deposit is needed."
+          },
+          {
+            "type": "bullet",
+            "text": "In some cases part or all of the cost may need to be paid in advance: bookings that include a homestay, large groups, private transport, peak days. We will state the amount and deadline clearly when confirming; any amount paid is refundable under the Cancellation, Rescheduling & Refund Policy."
+          },
+          {
+            "type": "bullet",
+            "text": "The website does not take online payments and does not store your card details."
+          }
+        ]
+      },
+      {
+        "heading": "2. Payment methods",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Cash."
+          },
+          {
+            "type": "bullet",
+            "text": "Bank transfer to an account in the name of {companyName}: {bankTransferInfo} Please never transfer to a personal account; if in doubt, verify via hotline {hotline}."
+          },
+          {
+            "type": "bullet",
+            "text": "Major credit / debit cards."
+          },
+          {
+            "type": "bullet",
+            "text": "PayPal."
+          }
+        ]
+      },
+      {
+        "heading": "3. Price and currency",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "The amount payable is the total cost shown in the booking confirmation step and in the acknowledgement email, based on the prices published on the website at the time of booking."
+          },
+          {
+            "type": "bullet",
+            "text": "Listed prices include value-added tax (VAT)."
+          },
+          {
+            "type": "bullet",
+            "text": "The payment currency is Vietnamese dong (VND). USD prices on the website are for reference only."
+          },
+          {
+            "type": "bullet",
+            "text": "Group discounts (if your booking qualifies) are deducted directly from the total, as shown when booking."
+          },
+          {
+            "type": "bullet",
+            "text": "Extra services added at the flight site (e.g. drone, 360 camera, companion transport) are charged only if you agree to use them, at the published price or a price quoted in advance."
+          }
+        ]
+      },
+      {
+        "heading": "4. Documents",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "You receive an acknowledgement email with your booking code and can download an e-ticket after booking."
+          },
+          {
+            "type": "bullet",
+            "text": "We issue VAT invoices. If you need one, please provide your invoicing details (company/individual name, tax code, address, email) when booking or paying."
+          }
+        ]
+      },
+      {
+        "heading": "5. Refunds",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "If you have paid and are entitled to a refund, the refund is handled under the Cancellation, Rescheduling & Refund Policy."
+          }
+        ]
+      }
+    ]
+  },
+  "cancellation": {
+    "title": "Cancellation, Rescheduling & Refund Policy",
+    "intro": "Paragliding depends entirely on the weather, especially wind direction and strength. This policy covers rescheduling, cancellation and refunds for services provided by {companyName}.",
+    "sections": [
+      {
+        "heading": "1. Weather cancellation or rescheduling",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Flying forecasts are only accurate in the short term; the final decision is made on the day of the flight. If the forecast is suitable, the flight goes ahead as scheduled."
+          },
+          {
+            "type": "bullet",
+            "text": "In bad weather, unsafe wind or other force-majeure events, the flight may be delayed, moved to another day or cancelled. We will contact you as early as possible."
+          },
+          {
+            "type": "bullet",
+            "text": "In these cases you pay nothing and may choose: move to another time or day free of charge, or cancel and receive a 100% refund of any amount paid."
+          },
+          {
+            "type": "bullet",
+            "text": "Bad-weather days can push passengers to following days; schedules may then be rearranged so that safety remains the top priority. Flights are scheduled on a “first booked, first served” basis."
+          }
+        ]
+      },
+      {
+        "heading": "2. Cancellation by Sapa Paragliding",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "If we cancel a flight for reasons on our side, you pay nothing and receive a full refund of any amount paid, or a free reschedule if you prefer."
+          }
+        ]
+      },
+      {
+        "heading": "3. Cancellation or rescheduling by the customer",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Tell us by email {supportEmail} or hotline / Zalo / WhatsApp {hotline}."
+          },
+          {
+            "type": "bullet",
+            "text": "Rescheduling at your request: free."
+          },
+          {
+            "type": "bullet",
+            "text": "Cancellation: free with a full refund of any amount paid — even on the flight day — provided you let us know before the agreed pickup or flight time."
+          },
+          {
+            "type": "bullet",
+            "text": "If you do not notify us before the agreed pickup/flight time, or cancel after part of the service has been used (e.g. insurance activated, shuttle, drinks or other services used), you pay the actual costs incurred; the rest of any amount paid is refunded."
+          }
+        ]
+      },
+      {
+        "heading": "4. Non-refundable cases",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "You are refused boarding for being drunk, out of control or behaving in a way that endangers safety."
+          },
+          {
+            "type": "bullet",
+            "text": "The flight was completed fully and safely but was shorter than expected because of weak wind (non-powered paragliding depends entirely on the wind)."
+          }
+        ]
+      },
+      {
+        "heading": "5. Filming add-ons",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "If a paid drone, 360 camera or filming service cannot be delivered or is of unacceptable quality due to an unexpected technical fault: the fee for that filming service is refunded 100%; the flight fee is not refunded because the flight itself was completed fully and safely."
+          },
+          {
+            "type": "bullet",
+            "text": "GoPro filming assisted by the pilot is free, so no refund applies."
+          }
+        ]
+      },
+      {
+        "heading": "6. How refunds are made",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Where you have paid (or prepaid) and are entitled to a refund, it is made within 05 working days of agreeing the refund amount, via the same method you used to pay (or another method you agree to)."
+          },
+          {
+            "type": "bullet",
+            "text": "We bear any transfer fees for refunds due to weather cancellations or our own fault."
+          },
+          {
+            "type": "bullet",
+            "text": "Bookings made through intermediaries (agents, online travel platforms) are changed, cancelled and refunded under that platform's policy, unless otherwise agreed."
+          }
+        ]
+      }
+    ]
+  },
+  "service": {
+    "title": "Service Delivery Policy",
+    "intro": "Paragliding is an experience delivered in person in Sa Pa; no goods are shipped. This policy replaces a shipping & delivery policy and describes how {companyName} delivers the service.",
+    "sections": [
+      {
+        "heading": "1. What the service includes",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Tandem paragliding: you fly with a professionally trained, certified pilot using standard-compliant flying equipment."
+          },
+          {
+            "type": "bullet",
+            "text": "Expected airtime is 8–15 minutes per flight; it may be shorter in weak wind or longer in good weather, depending on conditions, the passenger's health and the pilot's decision. The whole experience takes about 90 minutes."
+          },
+          {
+            "type": "bullet",
+            "text": "Items included in each package (GoPro photos & video, drinks at the flight site, paragliding insurance, participation certificate, hotel transfer, drone, 360 camera…) are listed on the Prices page."
+          },
+          {
+            "type": "bullet",
+            "text": "Licensed to fly by the Operations Department – General Staff, Ministry of National Defense of Vietnam; paragliding business license No. 02/GCN-SVHTT issued by the Department of Culture, Sports and Tourism of Lao Cai Province."
+          }
+        ]
+      },
+      {
+        "heading": "2. Flying site",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Take-off: take-off office at {takeoffAddress}."
+          },
+          {
+            "type": "bullet",
+            "text": "Landing: landing office at {landingAddress}."
+          },
+          {
+            "type": "bullet",
+            "text": "Exact locations are confirmed with your booking and may change with the day's weather and wind direction."
+          }
+        ]
+      },
+      {
+        "heading": "3. Pickup and timing",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "After receiving your booking we contact you to arrange the schedule: flight time, pickup point and pickup time. Pickup is about 30 minutes before the flight."
+          },
+          {
+            "type": "bullet",
+            "text": "Meeting point: Sun Plaza shopping centre in central Sa Pa, or your hotel / homestay in Sa Pa, Lao Chai or Ta Van (please give the address when booking)."
+          },
+          {
+            "type": "bullet",
+            "text": "Round-trip hotel transfer covers central Sa Pa, Ta Van and Lao Chai. For other pickup points or non-flying companions, we will quote and agree a suitable surcharge in advance."
+          },
+          {
+            "type": "bullet",
+            "text": "On the flight day we send the driver's name, phone number and vehicle plate by SMS, WhatsApp or email. Please be at the meeting point 15–30 minutes before pickup time."
+          }
+        ]
+      },
+      {
+        "heading": "4. Health, weight and age requirements",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Maximum weight 110 kg. Over 95 kg, please tell us in advance so we can assign a suitable pilot and equipment."
+          },
+          {
+            "type": "bullet",
+            "text": "Basic fitness and the ability to run a short distance at take-off."
+          },
+          {
+            "type": "bullet",
+            "text": "Children from 3 years old can fly with a pilot if they fit the harness and can follow simple instructions. Passengers under 18 must be accompanied by a parent or legal guardian who signs for them."
+          },
+          {
+            "type": "bullet",
+            "text": "Not suitable for: people with high blood pressure, epilepsy, heart disease, asthma or other serious medical conditions; pregnant women; people with disabilities; the elderly; infants; people prone to dizziness or fainting or with spine or joint conditions."
+          }
+        ]
+      },
+      {
+        "heading": "5. Flight safety",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "At take-off you meet your pilot, receive a take-off briefing, put on the flying gear and practise the moves before flying."
+          },
+          {
+            "type": "bullet",
+            "text": "Follow your pilot's instructions: at take-off, run strongly and continuously and do not stop until the pilot tells you to."
+          },
+          {
+            "type": "bullet",
+            "text": "The pilot may refuse or stop a flight whenever safety is at risk (weather, health, passenger behaviour, unsafe items or pets)."
+          },
+          {
+            "type": "bullet",
+            "text": "Clothing: comfortable long sleeves and trousers, sports or hiking shoes; no skirts or high heels; shoes can be borrowed free of charge if needed. A small personal bag (1–2 kg) is allowed; items over 3 kg or that affect safety may be refused."
+          }
+        ]
+      },
+      {
+        "heading": "6. Insurance",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "All flight packages include paragliding insurance for the passenger."
+          },
+          {
+            "type": "bullet",
+            "text": "Please enter your personal details exactly as on your ID/passport when booking. Incorrect details may invalidate the insurance."
+          }
+        ]
+      },
+      {
+        "heading": "7. Photos and videos",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "GoPro photos and videos are usually ready right after the flight and copied straight to your phone (please keep at least 4 GB free). 360 camera videos need editing and are sent within 24 hours via Zalo, Drive or WhatsApp."
+          }
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "intro": "{companyName} (“we”) respects and protects customers' personal data in accordance with Vietnam's Law on Personal Data Protection 2025, Decree 13/2023/ND-CP on personal data protection and its implementing regulations, and Decree 52/2013/ND-CP on e-commerce (amended by Decree 85/2021/ND-CP). This policy explains what we collect, why, how long we keep it, who can access it and your rights.",
+    "sections": [
+      {
+        "heading": "1. Purposes",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Receive, confirm and fulfil your flight booking; contact you about the schedule, pickup point and time; notify you of changes or cancellations."
+          },
+          {
+            "type": "bullet",
+            "text": "Assign a suitable pilot and equipment (based on the weight, age and health information you declare) to keep the flight safe."
+          },
+          {
+            "type": "bullet",
+            "text": "Purchase and activate paragliding insurance for passengers."
+          },
+          {
+            "type": "bullet",
+            "text": "Send booking confirmation emails and e-tickets; provide customer care and handle complaints."
+          },
+          {
+            "type": "bullet",
+            "text": "Traffic statistics to improve the website; prevention of fake and spam bookings."
+          },
+          {
+            "type": "bullet",
+            "text": "Comply with legal obligations (accounting, tax, requests from competent authorities)."
+          }
+        ]
+      },
+      {
+        "heading": "2. Data collected",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Person making the booking: name, email, phone / WhatsApp / Zalo number, pickup location, special requests."
+          },
+          {
+            "type": "bullet",
+            "text": "Each passenger: full name, date of birth, gender, nationality, passport or ID number, weight."
+          },
+          {
+            "type": "bullet",
+            "text": "Health information you choose to declare (if any) to assess fitness to fly. This is sensitive personal data, used only for flight safety and insurance."
+          },
+          {
+            "type": "bullet",
+            "text": "Photos and videos taken during the flight (see section 7)."
+          },
+          {
+            "type": "bullet",
+            "text": "Technical data when you visit the website: cookies, visit statistics, anti-bot verification data when submitting a booking, language preference."
+          },
+          {
+            "type": "bullet",
+            "text": "The website does not collect or store payment card details."
+          }
+        ]
+      },
+      {
+        "heading": "3. Retention",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Personal data is retained for the period required by law."
+          },
+          {
+            "type": "bullet",
+            "text": "When the retention period ends, or when you ask us to delete it (to the extent the law allows), the data is deleted or anonymised."
+          }
+        ]
+      },
+      {
+        "heading": "4. Who can access your data",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Sapa Paragliding's customer service staff, flight coordinators, pilots and drivers — only the data they need for their work."
+          },
+          {
+            "type": "bullet",
+            "text": "The insurance company providing paragliding insurance for passengers: passenger details needed to issue the insurance."
+          },
+          {
+            "type": "bullet",
+            "text": "Providers of data storage, email, messaging and technical infrastructure for the website, bound by confidentiality commitments to us. Some may host servers outside Vietnam; we share only the data needed for operations and follow the legal procedures for transferring personal data abroad."
+          },
+          {
+            "type": "bullet",
+            "text": "Competent authorities when required by law."
+          },
+          {
+            "type": "bullet",
+            "text": "We do not sell or rent customers' personal data."
+          }
+        ]
+      },
+      {
+        "heading": "5. Security",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "The website uses encrypted HTTPS connections; the admin area requires a personal login; only staff who need it can access booking data."
+          },
+          {
+            "type": "bullet",
+            "text": "If a data breach occurs, we will contain it and notify affected customers and the competent authority as required by law."
+          }
+        ]
+      },
+      {
+        "heading": "6. Your rights as a data subject",
+        "lead": "Under Vietnam's personal data protection law you have the right to:",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Be informed about the processing of your personal data."
+          },
+          {
+            "type": "bullet",
+            "text": "Give or refuse consent, and withdraw consent (withdrawal does not affect processing already carried out)."
+          },
+          {
+            "type": "bullet",
+            "text": "View, access, obtain and correct your personal data."
+          },
+          {
+            "type": "bullet",
+            "text": "Request deletion; request restriction of processing; object to processing, including for advertising and marketing."
+          },
+          {
+            "type": "bullet",
+            "text": "Complain, denounce, sue and claim compensation for damages as provided by law."
+          },
+          {
+            "type": "bullet",
+            "text": "Protect your own personal data in accordance with the law."
+          }
+        ]
+      },
+      {
+        "heading": "7. Photos taken during the flight",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Photos and videos recorded during the flight are given to you and may be used for Sapa Paragliding's communication and marketing. If you do not agree, please tell us before or after the flight and we will not use, or will remove, those images."
+          }
+        ]
+      },
+      {
+        "heading": "8. Cookies",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "The website uses cookies to remember your language and to count visits. You can block or delete cookies in your browser settings; the website still works normally."
+          }
+        ]
+      },
+      {
+        "heading": "9. Contact about personal data",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "To exercise your rights, or for questions or complaints about personal data, email {supportEmail} or contact hotline / Zalo / WhatsApp {hotline}. Data controller and processor: {companyName} (company details at the bottom of this page)."
+          },
+          {
+            "type": "bullet",
+            "text": "We will respond to and act on your request within the time limits set by personal data protection law."
+          }
+        ]
+      }
+    ]
+  },
+  "complaints": {
+    "title": "Complaints & Dispute Resolution",
+    "intro": "{companyName} always listens to customer feedback. The procedure below applies to all complaints about services booked via paraglidingsapa.com, in line with Vietnam's Law on Protection of Consumer Rights 2023 and Decree 52/2013/ND-CP (amended by Decree 85/2021/ND-CP).",
+    "sections": [
+      {
+        "heading": "1. How to submit a complaint",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Hotline / Zalo / WhatsApp (24/7): {hotline}."
+          },
+          {
+            "type": "bullet",
+            "text": "Email: {supportEmail}."
+          },
+          {
+            "type": "bullet",
+            "text": "In person at the take-off office ({takeoffAddress}) or the landing office ({landingAddress})."
+          }
+        ]
+      },
+      {
+        "heading": "2. Information to provide",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Your name, phone number or email, booking code (if any) and flight date."
+          },
+          {
+            "type": "bullet",
+            "text": "What the complaint is about, what you are asking for, and any supporting documents or photos."
+          }
+        ]
+      },
+      {
+        "heading": "3. Resolution process",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Step 1 – Acknowledgement: we confirm receipt through the same channel you used."
+          },
+          {
+            "type": "bullet",
+            "text": "Step 2 – Review: we check the booking, talk to the pilot and staff involved, and may ask you for more information."
+          },
+          {
+            "type": "bullet",
+            "text": "Step 3 – Response and remedy: we tell you the outcome and the remedy (reschedule, refund, reimbursement of costs…) in line with our published terms and the law."
+          },
+          {
+            "type": "bullet",
+            "text": "We respond to complaints within 01 working day of receiving complete information; where further review is needed, we will update you on progress and the expected time for a result."
+          }
+        ]
+      },
+      {
+        "heading": "4. Dispute resolution",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "Both parties will first try to settle the matter through good-faith negotiation and mediation."
+          },
+          {
+            "type": "bullet",
+            "text": "If no agreement is reached, you may ask the state consumer protection authority or a consumer protection organisation for support, or bring the dispute to arbitration or a competent court under Vietnamese law."
+          },
+          {
+            "type": "bullet",
+            "text": "We will not obstruct or make it difficult for you to exercise your right to complain."
+          }
+        ]
+      },
+      {
+        "heading": "5. Providing information",
+        "blocks": [
+          {
+            "type": "bullet",
+            "text": "We provide transaction information and documents (booking details, confirmation, payment) when requested by you or a competent authority to resolve a complaint or dispute."
+          }
+        ]
+      }
+    ]
+  }
+}

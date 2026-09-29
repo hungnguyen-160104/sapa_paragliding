@@ -116,7 +116,7 @@
         "item1": "Après la réservation, nous vous contacterons pour organiser le vol : heure, lieu de prise en charge et heure de rendez-vous.",
         "item2": "La prise en charge se fait environ 30 minutes avant l’heure du vol.",
         "item3": "Le jour du vol, nous vous enverrons le nom du chauffeur, son numéro et la plaque du véhicule/moto par SMS, WhatsApp ou e-mail.",
-        "item4": "Veuillez être présent(e) 5 minutes avant l’heure de prise en charge afin d’éviter tout retard.",
+        "item4": "Merci d'être au point de rendez-vous 15 à 30 minutes avant l'heure de prise en charge pour éviter tout retard.",
         "item5": "En cas de changement des conditions météo, nous vous contacterons pour reprogrammer gratuitement."
       },
       "selectTime": "Choisir l’heure",
@@ -202,7 +202,7 @@
       "whatsNext": "Et ensuite ?",
       "step1": "Vérifiez votre e-mail pour la confirmation et les détails",
       "step2": "Nous vous contacterons 24 h avant pour confirmer les conditions météo",
-      "step3": "Soyez présent(e) 5 minutes avant l’heure de prise en charge afin d’éviter tout retard.",
+      "step3": "Soyez au point de rendez-vous 15 à 30 minutes avant l'heure de prise en charge pour éviter tout retard.",
       "step4": "Profitez de votre superbe expérience de parapente !",
       "backToHome": "Retour à l’accueil",
       "makeAnother": "Faire une autre réservation",
@@ -462,7 +462,7 @@
       },
       "timing": {
         "title": "Être à l’heure",
-        "description": "Soyez présent(e) 5 minutes avant l’heure de prise en charge afin d’éviter tout retard"
+        "description": "Merci d'arriver 15 à 30 minutes avant l'heure de prise en charge pour éviter tout retard"
       },
       "storage": {
         "title": "Mémoire du téléphone",
@@ -514,7 +514,7 @@
           },
           "payment": {
             "title": "Paiement",
-            "desc": "Espèces, virement bancaire ou carte bancaire. Aucun paiement anticipé requis."
+            "desc": "Espèces, virement bancaire, carte de crédit ou PayPal. En général aucun prépaiement ; certains cas (réservation en homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance."
           },
           "confirmation": {
             "title": "Confirmation",
@@ -532,7 +532,7 @@
           },
           "byCustomer": {
             "title": "Annulation par le client",
-            "desc": "Prévenir par e-mail/hotline/Zalo/WhatsApp, quelques heures avant la prise en charge suffisent : gratuit."
+            "desc": "Prévenez-nous par e-mail/hotline/Zalo/WhatsApp avant l'heure de prise en charge ou de vol convenue (même le jour du vol) : gratuit, remboursement intégral."
           },
           "reschedule": {
             "title": "Changement de date",
@@ -1296,11 +1296,11 @@
     "packagesTitle": "Forfaits de vol et tarifs détaillés",
     "notesTitle": "À savoir sur les tarifs",
     "notes": {
-      "deposit": "Aucun acompte – réservez d'abord, payez à votre arrivée sur le site de vol.",
-      "payment": "Paiement en espèces, par virement ou par carte.",
+      "deposit": "En général sans acompte – réservez, puis payez à votre arrivée au site de vol. Certains cas (homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance ; nous vous le préciserons à la confirmation.",
+      "payment": "Paiement en espèces, par virement, par carte ou via PayPal.",
       "weather": "Si le vol est annulé pour cause de météo, vous pouvez le reporter ou être remboursé à 100%.",
       "group": "Pour les groupes, contactez-nous directement pour une offre spéciale.",
-      "tax": "Les prix affichés sont le montant final payé, taxes (le cas échéant) et frais de service compris ; rien n'est facturé en plus des options choisies (tout supplément de prise en charge hors zone est annoncé à l'avance)."
+      "tax": "Les prix affichés incluent la TVA. Nous émettons des factures avec TVA – si vous en avez besoin, merci de fournir vos informations de facturation. Rien n'est facturé en plus des options choisies (tout supplément de prise en charge hors zone est annoncé à l'avance)."
     },
     "faqTitle": "Questions fréquentes sur les tarifs",
     "faq": {
@@ -1310,7 +1310,7 @@
       },
       "deposit": {
         "q": "Faut-il verser un acompte ?",
-        "a": "Non. Réservez simplement votre créneau sur le site ou par téléphone et payez à votre arrivée sur le site de vol."
+        "a": "En général non : réservez sur le site ou par téléphone et payez à votre arrivée au site de vol. Certains cas (homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance – nous vous le préciserons à la confirmation."
       },
       "cancel": {
         "q": "Et si la météo ne permet pas de voler ?",
@@ -1349,6 +1349,12 @@
     "authoritative": "La version vietnamienne fait foi ; cette traduction est fournie à titre indicatif.",
     "englishFallback": "Cette politique est affichée en anglais. La version vietnamienne fait foi.",
     "customerSupport": "Service client (24h/24, 7j/7)",
-    "otherPolicies": "Autres politiques"
+    "otherPolicies": "Autres politiques",
+    "bank": {
+      "pending": "Notre équipe vous enverra les coordonnées bancaires de l'entreprise lors de la confirmation de la réservation.",
+      "bank": "Banque",
+      "accountNumber": "Numéro de compte",
+      "accountHolder": "Titulaire du compte"
+    }
   }
 }

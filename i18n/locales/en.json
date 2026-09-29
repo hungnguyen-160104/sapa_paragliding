@@ -116,7 +116,7 @@
         "item1": "After booking, we will contact you to arrange the flight schedule, including flight time, pickup point, and pickup time.",
         "item2": "Pickup time is approximately 30 minutes before the flight.",
         "item3": "On the flight day, we will send you the driver's name, phone number, and vehicle/motorbike license plate via SMS, WhatsApp, or Email.",
-        "item4": "Please arrive at the meeting point 5 minutes before pickup time to avoid delays.",
+        "item4": "Please arrive at the meeting point 15–30 minutes before pickup time to avoid delays.",
         "item5": "In case of weather changes, we will contact you to reschedule completely free of charge."
       },
       "selectTime": "Select time",
@@ -204,7 +204,7 @@
       "whatsNext": "What's Next?",
       "step1": "Check your email for booking confirmation and details",
       "step2": "We will contact you 24 hours before to confirm weather conditions",
-      "step3": "Please arrive at the meeting point at least 5 minutes before the pickup time to avoid delays.",
+      "step3": "Please arrive at the meeting point 15–30 minutes before the pickup time to avoid delays.",
       "step4": "Enjoy your amazing paragliding experience!",
       "backToHome": "Back to Home",
       "makeAnother": "Make Another Booking",
@@ -464,7 +464,7 @@
       },
       "timing": {
         "title": "Arrive On Time",
-        "description": "Please arrive 5 minutes before pickup time to ensure no delays"
+        "description": "Please arrive 15–30 minutes before pickup time to ensure no delays"
       },
       "storage": {
         "title": "Phone Storage",
@@ -516,7 +516,7 @@
           },
           "payment": {
             "title": "Payment",
-            "desc": "Cash, bank transfer, or credit card. No prepayment required."
+            "desc": "Cash, bank transfer, credit card or PayPal. Usually no prepayment is needed; some cases (homestay bookings, large groups, private transport, peak days) may require paying part or all in advance."
           },
           "confirmation": {
             "title": "Confirmation",
@@ -534,7 +534,7 @@
           },
           "byCustomer": {
             "title": "Cancelled by Customer",
-            "desc": "Notify via email/hotline/Zalo/WhatsApp, just a few hours before pick-up: Free."
+            "desc": "Notify us via email/hotline/Zalo/WhatsApp before the agreed pickup or flight time (even on the flight day): free, full refund."
           },
           "reschedule": {
             "title": "Rescheduling",
@@ -1310,11 +1310,11 @@
     "packagesTitle": "Flight packages and detailed prices",
     "notesTitle": "Price notes",
     "notes": {
-      "deposit": "No deposit needed – reserve first, pay when you arrive at the flying site.",
-      "payment": "Pay by cash, bank transfer or card.",
+      "deposit": "Usually no deposit needed – reserve first, pay when you arrive at the flying site. Some cases (homestay bookings, large groups, private transport, peak days) may require paying part or all in advance; we will tell you clearly when confirming.",
+      "payment": "Pay by cash, bank transfer, card or PayPal.",
       "weather": "If your flight is cancelled due to weather, you can reschedule or get a 100% refund.",
       "group": "For large groups, contact us directly for group offers.",
-      "tax": "Listed prices are the final amount you pay, including taxes (if any) and service fees; nothing is charged beyond the add-ons you choose (any pickup surcharge outside the covered area is quoted in advance)."
+      "tax": "Listed prices include value-added tax (VAT). We issue VAT invoices – if you need one, please provide your invoicing details. Nothing is charged beyond the add-ons you choose (any pickup surcharge outside the covered area is quoted in advance)."
     },
     "faqTitle": "Pricing FAQ",
     "faq": {
@@ -1324,7 +1324,7 @@
       },
       "deposit": {
         "q": "Do I need to pay a deposit?",
-        "a": "No. Simply reserve your slot on the website or by phone and pay when you arrive at the flying site."
+        "a": "Usually not: simply reserve on the website or by phone and pay when you arrive at the flying site. Some cases such as homestay bookings, large groups, private transport or peak days may require paying part or all in advance – we will tell you clearly when confirming your booking."
       },
       "cancel": {
         "q": "What if the weather is too bad to fly?",
@@ -1363,6 +1363,12 @@
     "authoritative": "The Vietnamese version is the authoritative text; this translation is provided for your convenience.",
     "englishFallback": "This policy is shown in English. The Vietnamese version is the authoritative text.",
     "customerSupport": "Customer support (24/7)",
-    "otherPolicies": "Other policies"
+    "otherPolicies": "Other policies",
+    "bank": {
+      "pending": "Our staff will send the company's bank transfer details when confirming your booking.",
+      "bank": "Bank",
+      "accountNumber": "Account number",
+      "accountHolder": "Account holder"
+    }
   }
 }

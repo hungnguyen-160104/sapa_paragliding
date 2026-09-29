@@ -116,7 +116,7 @@
         "item1": "Nach der Buchung kontaktieren wir Sie, um den Flugplan abzustimmen – Flugzeit, Abholort und Abholzeit.",
         "item2": "Die Abholung erfolgt etwa 30 Minuten vor dem Flug.",
         "item3": "Am Flugtag senden wir Ihnen Name und Telefonnummer des Fahrers sowie das Kennzeichen von Auto/Motorrad per SMS, WhatsApp oder E-Mail.",
-        "item4": "Bitte seien Sie 5 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
+        "item4": "Bitte seien Sie 15–30 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
         "item5": "Bei Wetteränderungen kontaktieren wir Sie und buchen Ihren Flug völlig kostenlos um."
       },
       "selectTime": "Uhrzeit wählen",
@@ -204,7 +204,7 @@
       "whatsNext": "Wie geht es weiter?",
       "step1": "Prüfen Sie Ihr E-Mail-Postfach auf die Buchungsbestätigung und alle Details",
       "step2": "Wir kontaktieren Sie 24 Stunden vorher, um die Wetterbedingungen zu bestätigen",
-      "step3": "Bitte seien Sie mindestens 5 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
+      "step3": "Bitte seien Sie 15–30 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
       "step4": "Genießen Sie Ihr unvergessliches Paragliding-Erlebnis!",
       "backToHome": "Zur Startseite",
       "makeAnother": "Weitere Buchung",
@@ -464,7 +464,7 @@
       },
       "timing": {
         "title": "Pünktlich sein",
-        "description": "Bitte seien Sie 5 Minuten vor der Abholzeit da, damit es keine Verzögerungen gibt"
+        "description": "Bitte seien Sie 15–30 Minuten vor der Abholzeit da, damit es keine Verzögerungen gibt"
       },
       "storage": {
         "title": "Handyspeicher",
@@ -516,7 +516,7 @@
           },
           "payment": {
             "title": "Zahlung",
-            "desc": "Bar, per Banküberweisung oder Kreditkarte. Keine Vorauszahlung nötig."
+            "desc": "Bar, per Banküberweisung, Kreditkarte oder PayPal. In der Regel keine Vorauszahlung; in manchen Fällen (Homestay-Buchung, große Gruppen, Privattransfer, Spitzentage) kann eine Teil- oder Vollzahlung im Voraus nötig sein."
           },
           "confirmation": {
             "title": "Bestätigung",
@@ -534,7 +534,7 @@
           },
           "byCustomer": {
             "title": "Stornierung durch den Kunden",
-            "desc": "Mitteilung per E-Mail/Hotline/Zalo/WhatsApp, auch nur wenige Stunden vor der Abholung: kostenlos."
+            "desc": "Mitteilung per E-Mail/Hotline/Zalo/WhatsApp vor der vereinbarten Abhol- oder Flugzeit (auch am Flugtag): kostenlos, volle Erstattung."
           },
           "reschedule": {
             "title": "Umbuchung",
@@ -1310,11 +1310,11 @@
     "packagesTitle": "Flugpakete und Preise im Detail",
     "notesTitle": "Hinweise zu den Preisen",
     "notes": {
-      "deposit": "Keine Anzahlung nötig – erst reservieren, dann bei Ankunft am Fluggelände bezahlen.",
-      "payment": "Zahlung bar, per Banküberweisung oder Karte.",
+      "deposit": "In der Regel keine Anzahlung – erst reservieren, dann bei Ankunft am Fluggelände bezahlen. In manchen Fällen (Homestay, große Gruppen, Privattransfer, Spitzentage) kann eine Teil- oder Vollzahlung im Voraus nötig sein; wir sagen es Ihnen bei der Bestätigung klar.",
+      "payment": "Zahlung bar, per Banküberweisung, Karte oder PayPal.",
       "weather": "Fällt Ihr Flug wetterbedingt aus, können Sie umbuchen oder erhalten 100 % Ihres Geldes zurück.",
       "group": "Für größere Gruppen kontaktieren Sie uns bitte direkt für ein Gruppenangebot.",
-      "tax": "Die angegebenen Preise sind der Endbetrag inkl. Steuern (falls anfallend) und Servicegebühren; über die gewählten Extras hinaus wird nichts berechnet (ein Abholzuschlag außerhalb des Gebiets wird vorab mitgeteilt)."
+      "tax": "Die angegebenen Preise enthalten die Mehrwertsteuer (VAT). Wir stellen Rechnungen mit ausgewiesener MwSt. aus – bei Bedarf teilen Sie uns bitte Ihre Rechnungsdaten mit. Über die gewählten Extras hinaus wird nichts berechnet (ein Abholzuschlag außerhalb des Gebiets wird vorab mitgeteilt)."
     },
     "faqTitle": "Häufige Fragen zu den Preisen",
     "faq": {
@@ -1324,7 +1324,7 @@
       },
       "deposit": {
         "q": "Muss ich eine Anzahlung leisten?",
-        "a": "Nein. Reservieren Sie Ihren Platz einfach über die Website oder telefonisch und bezahlen Sie bei Ankunft am Fluggelände."
+        "a": "In der Regel nicht: Reservieren Sie über die Website oder telefonisch und bezahlen Sie bei Ankunft am Fluggelände. In manchen Fällen wie Homestay-Buchungen, großen Gruppen, Privattransfer oder Spitzentagen kann eine Teil- oder Vollzahlung im Voraus nötig sein – wir sagen es Ihnen bei der Bestätigung klar."
       },
       "cancel": {
         "q": "Was passiert, wenn das Wetter zum Fliegen zu schlecht ist?",
@@ -1363,6 +1363,12 @@
     "authoritative": "Maßgeblich ist die vietnamesische Fassung; diese Übersetzung dient nur Ihrer Information.",
     "englishFallback": "Diese Richtlinie wird auf Englisch angezeigt. Maßgeblich ist die vietnamesische Fassung.",
     "customerSupport": "Kundenservice (24/7)",
-    "otherPolicies": "Weitere Richtlinien"
+    "otherPolicies": "Weitere Richtlinien",
+    "bank": {
+      "pending": "Unsere Mitarbeiter senden Ihnen die Bankverbindung des Unternehmens mit der Buchungsbestätigung.",
+      "bank": "Bank",
+      "accountNumber": "Kontonummer",
+      "accountHolder": "Kontoinhaber"
+    }
   }
 }
