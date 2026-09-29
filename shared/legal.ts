@@ -68,7 +68,7 @@ export const COMPANY: CompanyLegalInfo = {
   issuedBy: 'Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư tỉnh Lào Cai',
   headOffice: 'Tổ 3, Phường Cầu Mây, Thị xã Sa Pa, Tỉnh Lào Cai, Việt Nam',
   phone: '0964073555',
-  email: 'dangvm@gmail.com',
+  email: 'sapa.paragliding@gmail.com',
   representative: 'Đặng Văn Mỹ',
   representativeTitle: 'Giám đốc'
 }
