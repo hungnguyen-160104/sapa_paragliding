@@ -153,10 +153,15 @@ export default defineEventHandler(async (event) => {
     const titleVi = post.titleVi || post.title || ''
     const excerpt = post.excerpt || ''
     const excerptVi = post.excerptVi || post.excerpt || ''
-    const contentHtml = post.contentHtml || post.content || ''
-    const contentHtmlVi = post.contentHtmlVi || post.contentVi || post.contentHtml || post.content || ''
     const contentBlocks = normalizeBlocks(post.contentBlocks)
     const contentBlocksVi = normalizeBlocks(post.contentBlocksVi?.length ? post.contentBlocksVi : post.contentBlocks)
+    // HTML chỉ là dự phòng cho bài cũ không có block — trang không dùng tới khi
+    // có block. Gửi kèm thì nó nằm trong payload của trang (Google đọc được)
+    // và hay lệch với block sau khi sửa bài ngoài trình soạn thảo. Có block
+    // thì không gửi.
+    const hasBlocks = contentBlocks.length > 0 || contentBlocksVi.length > 0
+    const contentHtml = hasBlocks ? '' : post.contentHtml || post.content || ''
+    const contentHtmlVi = hasBlocks ? '' : post.contentHtmlVi || post.contentVi || post.contentHtml || post.content || ''
     const image = post.thumbnailUrl || post.coverImage || ''
     const categoryId = post.categoryId || 'news'
     const galleryUrls = normalizeGallery(post.galleryUrls?.length ? post.galleryUrls : post.gallery)
