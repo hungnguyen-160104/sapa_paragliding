@@ -77,11 +77,11 @@ function normalizeSeo(
 }
 
 /**
- * Bản dịch thêm ngoài vi/en, lưu ở post.translations.<fr|ru|zh|hi|ko>. Chỉ nhận
+ * Bản dịch thêm ngoài vi/en, lưu ở post.translations.<fr|ru|zh|hi|ko|de>. Chỉ nhận
  * bản có đủ tiêu đề VÀ nội dung — bản dịch nửa vời mà được khai là trang riêng
  * thì Google lại thấy một trang mỏng/lẫn tiếng Anh.
  */
-const TRANSLATION_LOCALES = ['fr', 'ru', 'zh', 'hi', 'ko'] as const
+const TRANSLATION_LOCALES = ['fr', 'ru', 'zh', 'hi', 'ko', 'de'] as const
 
 function normalizeTranslations(value: unknown) {
   const output: Record<string, {

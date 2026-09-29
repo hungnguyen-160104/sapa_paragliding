@@ -3,7 +3,7 @@ import { PILOT_SLUG_BY_KEY, VISIBLE_PILOT_KEYS } from '../../shared/pilots'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 export const DEFAULT_LOCALE = 'en'
-export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
+export const LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko', 'de'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
@@ -81,6 +81,8 @@ export function getLangIso(locale: Locale): string {
       return 'hi-IN'
     case 'ko':
       return 'ko-KR'
+    case 'de':
+      return 'de-DE'
   }
 }
 
@@ -126,7 +128,8 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
         'translations.ru.title': 1, 'translations.ru.contentBlocks.id': 1,
         'translations.zh.title': 1, 'translations.zh.contentBlocks.id': 1,
         'translations.hi.title': 1, 'translations.hi.contentBlocks.id': 1,
-        'translations.ko.title': 1, 'translations.ko.contentBlocks.id': 1
+        'translations.ko.title': 1, 'translations.ko.contentBlocks.id': 1,
+        'translations.de.title': 1, 'translations.de.contentBlocks.id': 1
       }
     })
     .toArray() as unknown as SitemapPost[]

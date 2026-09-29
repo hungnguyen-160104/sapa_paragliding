@@ -123,6 +123,10 @@ const getFlyingSiteSeoMeta = () => {
     ko: {
       title: '사파 패러글라이딩 비행장: 므엉호아 계곡과 라오짜이',
       description: '베트남 최고 수준의 안전 기준으로 만든 사파 이륙장과 므엉호아 계곡 라오짜이 마을 착륙장. 추천 시기: 5–6월, 7–8월, 9–12월.'
+    },
+    de: {
+      title: 'Paragliding Sapa: Fluggebiet Muong-Hoa-Tal & Lao Chai',
+      description: 'Fluggebiet Sapa: Startplatz nach Vietnams höchstem Sicherheitsstandard, Landung im Dorf Lao Chai im Muong-Hoa-Tal. Beste Zeit: Mai–Juni, Juli–August, Sept.–Dez.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

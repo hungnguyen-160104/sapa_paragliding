@@ -182,6 +182,10 @@ const getPricesSeoMeta = () => {
     ko: {
       title: '사파 패러글라이딩 가격: 2,090,000동부터 올인클루시브',
       description: '사파 패러글라이딩 최신 가격: 보험·고프로 영상 포함 3가지 패키지, 2,090,000동(82달러)부터. 선금 없음, 날씨로 취소 시 100% 환불.'
+    },
+    de: {
+      title: 'Paragliding Sapa Preise: All-inclusive ab 2.090.000 VND',
+      description: 'Aktuelle Paragliding-Preise in Sapa: 3 All-inclusive-Pakete ab 2.090.000 VND (82 USD) mit Versicherung und GoPro-Video. Keine Anzahlung, 100 % Erstattung bei Wetterabsage.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

@@ -7,7 +7,7 @@ import { TAKEOFF_OFFICE, LANDING_OFFICE } from '~~/shared/flying-site'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
 
-export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
+export const SUPPORTED_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko', 'de'] as const
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number]
 // 'en': x-default hreflang tro ve ban tieng Anh — khach khong khop ngon
 // ngu nao (da so la khach quoc te) duoc Google dua ve /en thay vi /vi.
@@ -20,7 +20,8 @@ export const localeToHreflang: Record<SupportedLocale, string> = {
   ru: 'ru-RU',
   zh: 'zh-CN',
   hi: 'hi-IN',
-  ko: 'ko-KR'
+  ko: 'ko-KR',
+  de: 'de-DE'
 }
 
 type RouteLike = {
@@ -173,6 +174,10 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
     ko: {
       name: 'Sapa Paragliding',
       description: '사파에서 하늘을 나는 꿈을 이루세요 - 자유를 느끼고 하늘이 그 어느 때보다 가까워지는 곳'
+    },
+    de: {
+      name: 'Sapa Paragliding',
+      description: 'Erfüllen Sie sich den Traum vom Fliegen in Sapa – wo Freiheit spürbar und der Himmel näher ist als je zuvor'
     }
   }
 
@@ -211,7 +216,7 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
         contactType: 'customer service',
         telephone: '+84-386-887-489',
         areaServed: 'VN',
-        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi', 'Korean']
+        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi', 'Korean', 'German']
       }
     ]
   }
@@ -299,7 +304,8 @@ export const buildLocalBusinessJsonLD = (locale: string = 'en') => {
     ru: 'Тандемный полёт на параплане с самой высокой точки взлёта во Вьетнаме. Профессиональные пилоты, более 50 000 довольных клиентов.',
     zh: '在越南最高起飞点体验双人滑翔伞。专业国际飞行员，超过5万名客户，100%安全记录。',
     hi: 'वियतनाम के सबसे ऊंचे टेकऑफ साइट पर टैंडम पैराग्लाइडिंग का अनुभव करें। पेशेवर अंतरराष्ट्रीय पायलट, 50,000+ ग्राहक।',
-    ko: '베트남 최고 높이의 이륙장에서 즐기는 2인 탠덤 패러글라이딩. 국제 자격을 갖춘 전문 파일럿, 5만 명 이상의 고객.'
+    ko: '베트남 최고 높이의 이륙장에서 즐기는 2인 탠덤 패러글라이딩. 국제 자격을 갖춘 전문 파일럿, 5만 명 이상의 고객.',
+    de: 'Tandem-Paragliding vom höchsten Startplatz Vietnams. International zertifizierte Piloten, über 50.000 Gäste.'
   }
 
   const normalizedLocale: SupportedLocale = SUPPORTED_LOCALES.includes(locale as SupportedLocale)

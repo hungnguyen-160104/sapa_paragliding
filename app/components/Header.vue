@@ -50,7 +50,7 @@
           <!-- Tiếng Nga và Pháp: 9 mục menu đã chiếm hết dải 1280–1535px, chữ
                thương hiệu ("ПАРАПЛАНЕРИЗМ В САПЕ", "PARAPENTE À SAPA") chỉ còn
                chỗ từ 1536px. -->
-          <div :class="['hidden flex-col justify-center leading-[0.9] text-[#194d9b] font-black', ['ru', 'fr'].includes(locale) ? '2xl:flex' : 'xl:flex']">
+          <div :class="['hidden flex-col justify-center leading-[0.9] text-[#194d9b] font-black', ['ru', 'fr', 'de'].includes(locale) ? '2xl:flex' : 'xl:flex']">
             <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>
@@ -245,7 +245,7 @@ const navTextSize = computed(() =>
        lên đủ chỗ nên trả lại cỡ thường. */
     : locale.value === 'ru'
       ? 'text-[11px] xl:text-[13px] 2xl:text-[14px]'
-      : locale.value === 'fr'
+      : ['fr', 'de'].includes(locale.value)
         ? 'text-[12px] xl:text-[15px] 2xl:text-base'
         : 'text-[12px] xl:text-[15px] 2xl:text-lg'
 )

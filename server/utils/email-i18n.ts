@@ -5,9 +5,9 @@
  * nhận về một email không đọc được chữ nào. Email NỘI BỘ thì ngược lại — luôn
  * tiếng Việt, vì người đọc là nhân viên.
  *
- * Bản tiếng Việt là bản gốc; sửa chữ thì sửa ở đây rồi dịch lại cho đủ 7 thứ.
+ * Bản tiếng Việt là bản gốc; sửa chữ thì sửa ở đây rồi dịch lại cho đủ 8 thứ.
  */
-export const EMAIL_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko'] as const
+export const EMAIL_LOCALES = ['vi', 'en', 'fr', 'ru', 'zh', 'hi', 'ko', 'de'] as const
 
 export type EmailLocale = (typeof EMAIL_LOCALES)[number]
 
@@ -508,6 +508,68 @@ export const EMAIL_STRINGS: Record<EmailLocale, EmailStrings> = {
     next5: '일정 변경이나 취소는 무료입니다. 몇 시간 전에만 미리 알려 주시면 됩니다.',
     contactIntro: '도움이 필요하시면 언제든지 전화나 메시지로 연락해 주십시오:',
     rightsReserved: '모든 권리를 보유합니다.'
+  },
+  de: {
+    subject: 'Buchungsbestätigung – Sapa Paragliding',
+    packageName: 'Sapa Paragliding',
+    genderMale: 'Männlich',
+    genderFemale: 'Weiblich',
+    headerTitle: 'BESTÄTIGUNG IHRER FLUGBUCHUNG',
+    bookingIdLabel: 'Buchungsnummer:',
+    greeting: 'Hallo {name},',
+    intro: 'Vielen Dank, dass Sie einen Tandemflug mit dem Gleitschirm bei Sapa Paragliding gebucht haben. Ihr Flug ist bestätigt – hier sind die Details:',
+    secFlight: 'Flugdetails',
+    secPassengers: 'Passagierliste',
+    secPrice: 'Preisübersicht',
+    secExtras: 'Ihre gewählten Zusatzleistungen',
+    secPrepare: 'Vor Ihrem Flug',
+    secRequests: 'Ihre besonderen Wünsche',
+    secNext: 'So geht es weiter',
+    secContact: 'Kontakt',
+    takeoffPoint: 'Startplatz',
+    landingPoint: 'Landeplatz',
+    landingName: 'Cầu Lao Chải, Gemeinde Tả Van',
+    package: 'Flugpaket',
+    flightDate: 'Flugdatum',
+    flightTime: 'Flugzeit',
+    timeFlexible: 'Flexibel',
+    guestCount: 'Passagiere',
+    guestUnit: 'Passagiere',
+    pickupPoint: 'Abholort',
+    pickupDefault: 'Ihr Hotel in Sa Pa',
+    meetingPoint: 'Treffpunkt',
+    meetingSelfArrive: 'Anreise zum Startplatz auf eigene Faust',
+    pickupNote: '⏱️ Das Auto holt Sie etwa 30 Minuten vor Ihrer Flugzeit ab; der Fahrer ruft Sie vor der Ankunft an.',
+    thName: 'Vollständiger Name',
+    thDob: 'Geburtsdatum',
+    thGender: 'Geschlecht',
+    thWeight: 'Gewicht',
+    thNationality: 'Staatsangehörigkeit',
+    thId: 'Ausweis/Reisepass',
+    idMasked: '🔒 Ausweisnummern werden zum Schutz Ihrer persönlichen Daten teilweise ausgeblendet.',
+    priceFlight: 'Preis des Flugpakets',
+    unitGuest: 'Passagier',
+    unitTime: 'Leistung',
+    groupDiscount: 'Gruppenrabatt',
+    total: 'GESAMT',
+    payNote: '💳 Die Bezahlung erfolgt direkt am Fluggelände vor dem Start. Keine Anzahlung erforderlich.',
+    noExtras: 'Sie haben keine Zusatzleistungen gewählt.',
+    optHotelTransfer: '🚐 Abholung und Rücktransfer zum Hotel',
+    optDrone: '🚁 Drohnenaufnahmen',
+    optCamera360: '📷 360°-Kamera',
+    guideClothingLabel: '👕 Kleidung',
+    guideClothingText: 'Lange Hose, langärmeliges Oberteil, Sportschuhe. Keine Röcke, keine hohen Absätze, keine Flip-Flops.',
+    guideBringLabel: '🎒 Mitbringen',
+    guideBringText: 'Ausweis, Sonnenbrille, eine leichte Jacke, eine Mütze, ein Schal, ein Selfie-Stick – all das dürfen Sie gerne mitnehmen. Bitte halten Sie etwa 4GB freien Speicher auf Ihrem Handy bereit, um Fotos und Videos zu übertragen.',
+    guideAvoidLabel: '🚫 Bitte nicht mitbringen',
+    guideAvoidText: 'Wertgegenstände, spitze oder scharfe Gegenstände, sperrige Gegenstände, schwere Gegenstände.',
+    next1: 'Wir rufen Sie in Kürze an, um Ihren Flugtermin und die Wetterbedingungen zu bestätigen.',
+    next2: 'Bitte kommen Sie 15 Minuten vor Ihrer Flugzeit zum Check-in und zur Sicherheitseinweisung.',
+    next3: 'Tippen Sie oben auf den Namen des Startplatzes, um die Wegbeschreibung in Google Maps zu öffnen.',
+    next4: 'Bringen Sie Ihren Ausweis und diese E-Mail mit.',
+    next5: 'Umbuchung oder Stornierung ist kostenlos – geben Sie uns einfach ein paar Stunden vorher Bescheid.',
+    contactIntro: 'Wenn Sie Hilfe benötigen, rufen Sie uns jederzeit an oder schreiben Sie uns eine Nachricht:',
+    rightsReserved: 'Alle Rechte vorbehalten.'
   }
 }
 

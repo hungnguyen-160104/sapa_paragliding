@@ -100,6 +100,10 @@ const getBookingSeoMeta = () => {
     ko: {
       title: '사파 패러글라이딩 예약: 최저가, 빠른 확인',
       description: '사파 패러글라이딩을 온라인으로 간편하게 예약하고 빠르게 확인받으세요. 선금 없이 이륙장에서 결제합니다.'
+    },
+    de: {
+      title: 'Paragliding in Sapa buchen: Bester Preis, schnelle Bestätigung',
+      description: 'Paragliding in Sapa einfach online buchen und schnell bestätigen lassen. Keine Anzahlung – Sie bezahlen am Startplatz.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

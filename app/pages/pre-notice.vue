@@ -372,6 +372,10 @@ const getPreNoticeSeoMeta = () => {
     ko: {
       title: '비행 전 안내 - 사파 패러글라이딩',
       description: '사파 패러글라이딩 비행 전 꼭 알아야 할 정보: 체중·나이 조건, 복장, 날씨, 취소 규정과 안전 수칙.'
+    },
+    de: {
+      title: 'Vor dem Flug – Sapa Paragliding',
+      description: 'Wichtige Infos vor Ihrem Paragliding-Flug in Sapa: Gewicht und Alter, Kleidung, Wetter, Stornobedingungen und Sicherheitsregeln.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

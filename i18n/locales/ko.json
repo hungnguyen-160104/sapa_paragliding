@@ -781,7 +781,7 @@
       },
       "multiLanguage": {
         "title": "다국어 지원",
-        "description": "영어, 베트남어, 프랑스어, 러시아어 지원"
+        "description": "베트남어, 영어, 프랑스어, 러시아어, 중국어, 한국어 지원"
       },
       "safetyRecord": {
         "title": "안전 우선",

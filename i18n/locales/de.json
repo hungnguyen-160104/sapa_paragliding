@@ -1,0 +1,1346 @@
+{
+  "hero": {
+    "title": "SAPA PARAGLIDING",
+    "subtitle": "Paragliding ist ein Abenteuersport – deshalb ist ein professioneller Anbieter mit den besten Piloten Vietnams entscheidend für ein sicheres Flugerlebnis. Der Startplatz von Sapa Paragliding ist nach den höchsten Standards Vietnams angelegt und liegt ideal im Wind: für einen spannenden Flug und einen möglichst sicheren Start.",
+    "bookNow": "Online buchen",
+    "chatZalo": "Chat über Zalo",
+    "chatWhatsApp": "Chat über WhatsApp",
+    "chatMessenger": "Chat über Messenger"
+  },
+  "common": {
+    "scroll": "Scrollen"
+  },
+  "menu": {
+    "home": "Start",
+    "booking": "Buchen",
+    "pilots": "Piloten",
+    "posts": "Blog",
+    "preNotice": "Vor dem Flug",
+    "about": "Über uns",
+    "flyingSite": "Fluggebiet",
+    "weather": "Wetter",
+    "prices": "Preise"
+  },
+  "buttons": {
+    "book": "Jetzt buchen",
+    "learnMore": "Mehr entdecken",
+    "viewMore": "Mehr anzeigen",
+    "next": "Weiter",
+    "back": "Zurück",
+    "backToHome": "Zur Startseite",
+    "confirm": "Bestätigen",
+    "submit": "Absenden",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen"
+  },
+  "booking": {
+    "title": "Paragliding in Sapa buchen",
+    "step1": "Leistung wählen",
+    "step2": "Flugtermin",
+    "step3": "Passagierdaten",
+    "step4": "Buchung bestätigen",
+    "step5": "Fertig",
+    "selectService": "Bitte wählen Sie Ihr Flugangebot",
+    "contactInfo": "Geben Sie Ihre Kontaktdaten ein",
+    "passengerInfo": "Angaben zu den Passagieren",
+    "confirmDetails": "Prüfen und bestätigen",
+    "bookingComplete": "Buchung abgeschlossen!",
+    "thankYou": "Vielen Dank für Ihre Buchung!",
+    "confirmationSent": "Eine Bestätigung wurde an Ihre E-Mail-Adresse gesendet.",
+    "contactUs": "Wir melden uns in Kürze, um Ihre Flugdetails zu bestätigen.",
+    "scanQR": "Oder scannen Sie den QR-Code, um mit uns zu chatten:",
+    "step1Details": {
+      "serviceName": "Sapa Paragliding",
+      "numberOfPassengers": "Anzahl",
+      "numberOfPeople": "Personenzahl",
+      "quantity": "Anzahl",
+      "people": "Pers.",
+      "estimatedTotal": "Voraussichtlicher Gesamtpreis",
+      "flightPrice": "Flugpreis",
+      "from": "Ab",
+      "perFlight": "/Flug",
+      "tourDuration": "Dauer der Tour",
+      "durationText": "Ab 90 Minuten, je nach Wetterlage",
+      "included": "Inklusive:",
+      "optionalServices": "Zusatzleistungen:",
+      "locations": "Orte:",
+      "takeoffPoint": "Startplatz: Berg Hau Thao",
+      "landingPoint": "Landeplatz: Dorf Lao Chai",
+      "viewMap": "Karte ansehen →",
+      "promotionInfo": "50.000 VND Rabatt pro Person für Gruppen ab 4 Personen",
+      "youSave": "🎉 Sie sparen:",
+      "priceSummary": "Preisübersicht",
+      "flightPriceFor": "Flugpreis",
+      "optionalServicesTotal": "Zusatzleistungen",
+      "groupDiscount": "Gruppenrabatt",
+      "discount": "Rabatt",
+      "total": "Gesamt:",
+      "continue": "Weiter →",
+      "includedItems": {
+        "flight": "1 Gleitschirmflug von 8–15 Minuten (je nach Wetter, Gesundheit des Passagiers und Entscheidung des Piloten auch länger)",
+        "photoVideo": "Foto- und Videoaufnahmen mit GoPro, gestellt von Sapa Paragliding",
+        "drinks": "Getränke am Fluggelände",
+        "insurance": "Paragliding-Versicherung",
+        "certificate": "Teilnahmezertifikat",
+        "equipment": "Zertifizierte Standard-Gleitschirmausrüstung",
+        "reschedulePolicy": "Keine Umbuchungsgebühr und kostenlose Stornierung bei schlechtem Wetter"
+      },
+      "optionalItems": {
+        "hotelTransfer": {
+          "name": "Hoteltransfer hin und zurück (Zentrum Sapa, Ta Van, Lao Chai)",
+          "description": "(Bei anderen Abholorten kontaktieren wir Sie vorab, um einen angemessenen Aufpreis zu vereinbaren.)"
+        },
+        "drone": {
+          "title": "Panoramaaufnahmen des Tals & Ihres Flugs per Drohne (Flycam):",
+          "name": "Panoramaaufnahmen des Tals & Ihres Flugs per Drohne (Flycam)",
+          "description": "Sie erhalten alle Originalaufnahmen"
+        },
+        "camera360": {
+          "title": "Einzigartige Aufnahmen Ihres Flugs mit 360°-Kamera (inkl. Videoschnitt):",
+          "name": "Einzigartige Aufnahmen Ihres Flugs mit 360°-Kamera (inkl. Videoschnitt)",
+          "description": "Das Video wird vor dem Versand für Sie geschnitten."
+        },
+        "gopro": "Standard-Flugaufnahme mit GoPro: GRATIS"
+      },
+      "promotions": {
+        "group4": "Gruppe ab 4 Personen"
+      }
+    },
+    "step2Details": {
+      "pickupLocation": "Abholort *",
+      "pickupPlaceholder": "Beispiel: Sapa Charm Hotel, Zentrum Sapa",
+      "pickupNote": "Bitte geben Sie den Hotelnamen oder eine genaue Adresse in Sapa, im Dorf Lao Chai oder in Ta Van an",
+      "importantNotice": "Wichtiger Hinweis",
+      "weatherNotice": {
+        "item1": "Nach der Buchung kontaktieren wir Sie, um den Flugplan abzustimmen – Flugzeit, Abholort und Abholzeit.",
+        "item2": "Die Abholung erfolgt etwa 30 Minuten vor dem Flug.",
+        "item3": "Am Flugtag senden wir Ihnen Name und Telefonnummer des Fahrers sowie das Kennzeichen von Auto/Motorrad per SMS, WhatsApp oder E-Mail.",
+        "item4": "Bitte seien Sie 5 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
+        "item5": "Bei Wetteränderungen kontaktieren wir Sie und buchen Ihren Flug völlig kostenlos um."
+      },
+      "selectTime": "Uhrzeit wählen",
+      "contactName": "Name der Kontaktperson",
+      "email": "E-Mail",
+      "phone": "Telefonnummer",
+      "pickupRequired": "Bitte geben Sie Ihren Abholort an, damit wir den Transfer organisieren können."
+    },
+    "step3Details": {
+      "passenger": "Passagier",
+      "selectGender": "Geschlecht wählen",
+      "weightLimit": "Gewichtsgrenze: bis 110 kg (bitte vorab mitteilen, wenn über 95 kg)",
+      "safetyRequirements": "Sicherheitsanforderungen",
+      "minAge": "Mindestalter: 3 Jahre (mit Zustimmung der Eltern bzw. Erziehungsberechtigten)",
+      "weightRange": "Gewicht: bis 110 kg (bitte vorab mitteilen, wenn über 95 kg)",
+      "goodHealth": "Passagiere müssen gesund sein",
+      "noPregnant": "Schwangere können nicht teilnehmen",
+      "personalInfoNotice": "Bitte tragen Sie Ihre persönlichen Daten exakt wie in Ihrem Ausweisdokument ein. Bei falschen Angaben ist die Versicherung nicht gültig.",
+      "fullName": "Vollständiger Name",
+      "dateOfBirth": "Geburtsdatum",
+      "weight": "Gewicht",
+      "fillContactInfo": "Daten des Buchenden übernehmen"
+    },
+    "step4Details": {
+      "serviceDetails": "Leistungsdetails",
+      "service": "Leistung",
+      "passengers": "Passagiere",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "flexible": "Flexibel",
+      "contactInformation": "Kontaktdaten",
+      "name": "Name:",
+      "email": "E-Mail:",
+      "phone": "Telefon:",
+      "specialRequests": "Besondere Wünsche:",
+      "passengerInformation": "Passagierdaten",
+      "fullName": "Vollständiger Name:",
+      "dateOfBirth": "Geburtsdatum",
+      "gender": "Geschlecht",
+      "weight": "Gewicht",
+      "nationality": "Staatsangehörigkeit",
+      "idNumber": "Ausweis-/Passnummer",
+      "pickupLocation": "Abholort:",
+      "launchSite": "Startplatz",
+      "pickupTime": "Abholzeit:",
+      "pickupTimeDefault": "30 Minuten vor dem Flug",
+      "additionalServices": "Zusatzleistungen",
+      "hotelTransfer": "Hoteltransfer:",
+      "camera360": "360°-Kamera:",
+      "droneCamera": "Drohnenkamera:",
+      "gopro": "GoPro:",
+      "drinks": "Getränke:",
+      "certificate": "Zertifikat:",
+      "yes": "JA",
+      "no": "NEIN",
+      "free": "GRATIS",
+      "included": "INKLUSIVE",
+      "priceBreakdown": "Preisaufstellung",
+      "flightCost": "Flugpreis",
+      "transferCost": "Transfer",
+      "camera360Cost": "360°-Kamera",
+      "droneCost": "Drohnenkamera",
+      "groupDiscount": "Gruppenrabatt",
+      "totalCost": "Gesamtpreis",
+      "paymentMethod": "Zahlungsart",
+      "cashPayment": "Bar",
+      "bankTransfer": "Banküberweisung",
+      "paypalPayment": "PayPal",
+      "creditCard": "Kreditkarte",
+      "priceSummary": "Preisübersicht",
+      "basePrice": "Grundpreis",
+      "discount": "Rabatt",
+      "paymentInfo": "Zahlungsinformationen",
+      "paymentText": "Die Zahlung erfolgt vor Ort vor dem Flug. Wir akzeptieren Bargeld sowie gängige Kredit- und Debitkarten. Nach der Buchung kontaktieren wir Sie per WhatsApp/Zalo oder über die angegebene E-Mail-Adresse, um Ihre Reservierung zu bestätigen.",
+      "processing": "Wird bearbeitet..."
+    },
+    "step5Details": {
+      "bookingId": "Buchungsnummer",
+      "bookingSummary": "Buchungsübersicht",
+      "service": "Leistung:",
+      "date": "Datum:",
+      "time": "Startzeit:",
+      "passengers": "Passagiere:",
+      "total": "Gesamt:",
+      "whatsNext": "Wie geht es weiter?",
+      "step1": "Prüfen Sie Ihr E-Mail-Postfach auf die Buchungsbestätigung und alle Details",
+      "step2": "Wir kontaktieren Sie 24 Stunden vorher, um die Wetterbedingungen zu bestätigen",
+      "step3": "Bitte seien Sie mindestens 5 Minuten vor der Abholzeit am Treffpunkt, um Verspätungen zu vermeiden.",
+      "step4": "Genießen Sie Ihr unvergessliches Paragliding-Erlebnis!",
+      "backToHome": "Zur Startseite",
+      "makeAnother": "Weitere Buchung",
+      "openZalo": "Zalo öffnen",
+      "openWhatsApp": "WhatsApp öffnen"
+    },
+    "ticket": {
+      "title": "SAPA PARAGLIDING TICKET",
+      "subtitle": "Sapa Paragliding – Paragliding-Erlebnis",
+      "bookingId": "Buchungsnummer",
+      "pickupPoint": "Abholort",
+      "pickupTime": "Abholzeit",
+      "notProvided": "Nicht angegeben",
+      "flightDetails": "Flugdetails",
+      "passengerInfo": "Kontaktdaten",
+      "passengersList": "Passagierliste",
+      "validationDate": "Ausstellungsdatum",
+      "footer": "Dieses Ticket ist nach Bestätigung durch Sapa Paragliding gültig. Bitte bewahren Sie es für Ihren Flug auf.",
+      "downloadPDF": "PDF herunterladen",
+      "downloadImage": "Bild herunterladen",
+      "preFlightInfo": {
+        "title": "INFORMATIONEN VOR DEM FLUG",
+        "pickup": "Nach der Buchung kontaktieren wir Sie, um den Flugplan mit Uhrzeit und Abholort abzustimmen. Abgeholt werden Sie im Zentrum von Sa Pa oder an Ihrem Hotel, wie in der Buchung bestätigt.",
+        "clothing": "Empfohlene Kleidung: bequem, winddicht, mit Sonnenschutz; Turnschuhe (keine hohen Absätze)",
+        "storage": "Sorgen Sie für mindestens 4 GB freien Speicher auf Ihrem Handy, um die Fotos und Videos nach dem Flug zu speichern",
+        "belongings": "Sie können eine kleine persönliche Tasche (1–2 kg) mit dem Nötigsten wie Handy, Schlüssel und Ausweis mitnehmen",
+        "launchLanding": "Start- und Landeplatz werden mit der Buchungsbestätigung festgelegt – abhängig von Wetter und Windrichtung am Flugtag.",
+        "transport": "Sie erhalten eine genaue Wegbeschreibung zum Start- bzw. Landeplatz. Eventuelle Transportkosten teilen wir Ihnen vorab mit, damit Sie planen können."
+      },
+      "boardingPass": "BORDKARTE IN DEN HIMMEL",
+      "slogan": "Wir sehen uns über den Wolken von Sa Pa",
+      "enjoy": "Einen wunderbaren Flug!",
+      "seat": "Sitz",
+      "takeoffPoint": "Startplatz",
+      "scanForDirections": "Scannen für die Route in Google Maps",
+      "exportFailed": "Das Ticket konnte nicht heruntergeladen werden",
+      "phoneShort": "Tel."
+    },
+    "fields": {
+      "fullName": "Vollständiger Name",
+      "email": "E-Mail",
+      "phone": "Telefonnummer / WhatsApp / Zalo",
+      "date": "Flugdatum",
+      "time": "Flugzeit",
+      "passengers": "Anzahl der Passagiere",
+      "specialRequests": "Besondere Wünsche",
+      "dateOfBirth": "Geburtsdatum",
+      "gender": "Geschlecht",
+      "nationality": "Staatsangehörigkeit",
+      "passportOrId": "Reisepass/Personalausweis",
+      "passportOrIdPlaceholder": "Pass- oder Ausweisnummer eingeben",
+      "weight": "Gewicht",
+      "male": "Männlich",
+      "female": "Weiblich",
+      "other": "Divers",
+      "openCalendar": "Kalender öffnen",
+      "today": "Heute"
+    },
+    "terms": {
+      "agree": "Ich habe Folgendes gelesen und stimme zu:",
+      "termsAndConditions": "Bedingungen & Verpflichtungen für den Flug",
+      "and": "und",
+      "privacyPolicy": "Datenschutzerklärung",
+      "scrollHint": "Zum Lesen scrollen",
+      "authoritative": "Maßgeblich ist die vietnamesische Fassung; diese Übersetzung dient nur Ihrer Information."
+    },
+    "captcha": {
+      "verify": "Bitte bestätigen Sie, dass Sie kein Roboter sind",
+      "error": "Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "required": "Bitte schließen Sie die Überprüfung ab."
+    },
+    "services": {
+      "discovery": {
+        "name": "Schnupperflug",
+        "description": "Ideal für Erstflieger. Erleben Sie den Nervenkitzel des Gleitschirmfliegens bei einem kurzen Flug von 15–20 Minuten.",
+        "duration": "15–20 Minuten",
+        "price": "1.200.000 VND"
+      },
+      "adventure": {
+        "name": "Abenteuerflug",
+        "description": "Längere Flugzeit mit akrobatischen Manövern für alle, die den Kick suchen.",
+        "duration": "25–30 Minuten",
+        "price": "1.800.000 VND"
+      },
+      "premium": {
+        "name": "Premium-Erlebnis",
+        "description": "Der längste Flug mit Foto-/Videopaket und den schönsten Ausblicken auf Sapa.",
+        "duration": "35–40 Minuten",
+        "price": "2.500.000 VND"
+      }
+    },
+    "discount": {
+      "group4": "Ab 4 Personen: 50.000 VND Rabatt pro Person"
+    },
+    "submitFailed": "Die Buchung konnte nicht gesendet werden. Bitte versuchen Sie es erneut – falls es weiterhin nicht klappt, schreiben Sie uns auf WhatsApp unter +84 386 887 489, und wir halten Ihren Platz frei."
+  },
+  "pilots": {
+    "title": "Unsere erfahrenen Piloten",
+    "subtitle": "Lernen Sie unser professionelles Team zertifizierter Gleitschirmpiloten kennen",
+    "experience": "Erfahrung",
+    "records": "Erfolge",
+    "personality": "Persönlichkeit",
+    "backToList": "Zurück zu den Piloten",
+    "pilot1": {
+      "name": "Dang Van My",
+      "nickname": "Captain America",
+      "role": "Teamleiter",
+      "des": "Organisator nationaler Gleitschirmwettbewerbe, der zudem über 1000 Seiten Fachliteratur aus den drei weltweit führenden Quellen übersetzt hat – ein bedeutender Beitrag für die Luftsport-Community Vietnams.",
+      "img": "Dang Van My_Team Leader.jpg",
+      "fullname": "DANG VAN MY",
+      "experience": "Über 10 Jahre Erfahrung im Gleitschirmfliegen, mit mehr als 1.000 Soloflügen und 10.000 Tandemflügen. Erster Heli-Pilot Vietnams und zugleich der erste und einzige Tumbling-Pilot des Landes. Er beherrscht anspruchsvolle technische Manöver und seltene Kunstflugfiguren. Er fliegt sowohl Gleitschirm als auch Motorschirm. Übersetzer von über 1.000 Seiten vertiefender Gleitschirm-Fachliteratur und Autor von 3 Bestsellern: „Thermikfliegen“, „Streckenfliegen“ und „Den Himmel verstehen“. Mit seinem fundierten Fachwissen hat er umfangreiche Flugmaterialien übersetzt und ist der erste vietnamesische Pilot, der in Japan die IPPI5-Zertifizierung erhalten hat.",
+      "records": "Hält derzeit den Rekord für das größte geschlossene Flugdreieck im zentralen Hochland (über 100 km) und ist der Pilot mit den meisten Flugstunden in Vietnam.",
+      "personality": "Am Boden ist er äußerst diszipliniert und ernsthaft in seiner Arbeit und seiner Rolle als Teamleiter. Doch sobald er abhebt, verwandelt er sich in ein „Kind des Windes“ – er versprüht Freude und positive Energie und steckt alle Passagiere, die mit ihm fliegen, mit seiner Leidenschaft an."
+    },
+    "pilot2": {
+      "name": "Alish Thapa",
+      "nickname": "Phantom der Lüfte",
+      "role": "Internationaler APPI-Fluglehrer",
+      "des": "Professioneller Gleitschirmlehrer mit internationaler APPI-Zertifizierung, der von vielen Organisationen als Ausbilder eingeladen wird. Er ist nicht nur fachlich hervorragend, sondern auch ein fröhlicher, freundlicher Pilot, der stets für sichere und spannende Flüge sorgt – und seine Passagiere vom ersten Moment an für sich gewinnt.",
+      "img": "Alish Thapa_Team Pilot.jpg",
+      "fullname": "ALISH THAPA",
+      "experience": "Er ist leitender Ausbilder und S&TA-Experte (Safety and Training Advisor) bei Skydive Chiang Mai. Gleichzeitig ist er Operations Director bei Insky Skydive und Everest Paragliding sowie professioneller Fluglehrer bei Fishtail Nepal Paragliding. Er ist international zertifizierter APPI-Gleitschirmlehrer und außerdem Fallschirmsprunglehrer (AFF-I, TAN-I) nach USPA-Standard. Er verfügt über Tausende Stunden Ausbildungs- und Flugerfahrung in vielen asiatischen Ländern, darunter Vietnam, Thailand und Nepal.",
+      "records": "Internationaler APPI-Fluglehrer, der an vielen großen Fluggebieten in Vietnam, Thailand und China unterrichtet hat. Hat Management- und Betriebspositionen bei mehreren renommierten Gleitschirm- und Fallschirmsprungorganisationen der Region inne.",
+      "personality": "Er gehört zu den führenden Gleitschirmpiloten Nepals und hat einen unterhaltsamen, inspirierenden Unterrichtsstil. Bei ihm erleben seine Schüler das Fliegen wie einen Tanz in der Luft – sie lernen nicht nur die Technik, sondern auch, den Himmel zu lieben. Er bringt positive Energie in jeden Flug, sodass seine Gäste nicht nur die Reise in Erinnerung behalten, sondern auch diesen besonderen Begleiter."
+    },
+    "pilot3": {
+      "name": "Subash Thapa",
+      "nickname": "Ritter der Lüfte",
+      "role": "Professioneller Gleitschirmlehrer",
+      "des": "Professioneller Gleitschirmlehrer, der schon viele Gleitschirmpiloten auf der ganzen Welt ausgebildet hat. Neben dem Gleitschirmfliegen gilt seine Leidenschaft der Musik – deshalb ist jeder Tandemflug mit ihm lebendig und voller Inspiration.",
+      "img": "Subash Thapa_Team Pilot.jpg",
+      "fullname": "SUBASH THAPA",
+      "experience": "Er ist Chefpilot, Gleitschirmlehrer und Fallschirmsprunglehrer in Pokhara. Zudem war er Chefpilot bei Acro Paragliding und New Para World Paragliding. Er hat über 1.000 Stunden professionelle Tandemflugerfahrung und stellt die Sicherheit stets an erste Stelle. Mit mehr als 3 Jahren Flugbetrieb in Vietnam kennt Subash das Gelände und die Wetterbedingungen der verschiedenen Fluggebiete bestens.",
+      "records": "Über 1.000 Stunden professionelle Tandemflüge, ehemaliger Chefpilot bei mehreren renommierten Gleitschirmorganisationen und mehr als 3 Jahre Flugerfahrung in Vietnam.",
+      "personality": "Subash Thapa ist nicht nur ein erstklassiger Gleitschirmlehrer, sondern auch ein „DJ am Himmel“ mit glühender Leidenschaft für Musik – jeder Tandemflug mit ihm fühlt sich an wie eine ausgelassene Party in den Wolken. Er sorgt stets für absolute Sicherheit, sodass Sie ganz unbeschwert fliegen können. Mit ihm erleben Sie nicht nur das Schweben über den Himmel, sondern gewinnen auch einen fröhlichen Freund voller positiver Energie!"
+    },
+    "pilot4": {
+      "name": "Suman Thapa",
+      "nickname": "Sky Ryder",
+      "role": "Acro-Pilot",
+      "des": "Die meisten spektakulären Kunstflugvideos aus Sapa stammen von ihm – einem erfahrenen Piloten mit tiefem Verständnis für das Gleitschirmfliegen. Für ihn ist Fliegen nicht nur Leidenschaft, sondern Beruf. Seine Gäste nennen ihn liebevoll „Kind des Windgottes“.",
+      "img": "Suman Thapa_Team Pilot.jpg",
+      "fullname": "SUMAN THAPA",
+      "experience": "Hat eine professionelle Pilotenausbildung in Nepal absolviert. Ein Acro-Pilot mit außergewöhnlichen Kunstflugfähigkeiten, der viele komplexe technische Manöver beherrscht. Er hat über 1.000 Stunden professionelle Tandemflüge absolviert und sorgt stets für die absolute Sicherheit seiner Passagiere. Seit über 3 Jahren ist er in Vietnam aktiv und kennt das Gelände und die Wetterbedingungen der Fluggebiete des Landes genau. Derzeit strebt er die internationale Zertifizierung als APPI-Gleitschirmlehrer an.",
+      "records": "Führender Acro-Pilot (Kunstflug) in Vietnam, bekannt für seine spektakulären Vorführungen in Sapa. Über 1.000 Stunden Tandemflug und 3 Jahre professionelle Tätigkeit in Vietnam.",
+      "personality": "Wenn der Wind auffrischt, hört man sein Herz schon vor dem Start jubeln: „Lass uns zusammen fliegen!“. Er liebt das Gleitschirmfliegen wie andere ihren Morgenkaffee – unverzichtbar und nicht zu bremsen. Bei ihm ist jedes Kunstflugmanöver ein Lächeln, das sagt: „Wir leben, um zu fliegen.“"
+    },
+    "pilot5": {
+      "name": "Bishal Thapa",
+      "nickname": "Windkommando",
+      "role": "Experte für Präzisionslandungen",
+      "des": "Seine Leidenschaft gilt der Präzisionslandung – er setzt stets genau in der Mitte des Ziels auf, mit minimaler Abweichung. So verläuft jeder Flug sicher und präzise wie nach Plan. Fröhlich und nahbar, hört er seinen Passagieren immer zu und achtet auf ihr Wohlbefinden, um ihnen ein rundum gelungenes Flugerlebnis zu bieten.",
+      "img": "Bishal Thapa.jpg",
+      "fullname": "BISHAL THAPA",
+      "experience": "Er begann 2016 mit dem Gleitschirmfliegen und wurde 2019 professioneller Tandempilot. Mit über 2.000 Tandemflügen und mehr als 800 Flugstunden gehört er zu den erfahrensten und zuverlässigsten Piloten im Team. Bishal hat bei nationalen und internationalen Wettbewerben beeindruckende Ergebnisse erzielt, darunter: Pre-World Cup Mizoram Open Accuracy Championship 2018 (2. Platz Einzel, 1. Platz Team), Accuracy Paragliding Pre-World Cup 2023 (2. Platz Einzel, 1. Platz Team) und Indian Accuracy Cup Bilaspur (Einzelsieger).",
+      "records": "Führender Experte für Präzisionslandungen – zahlreiche Titel bei Pre-World-Cup- und internationalen Accuracy-Cup-Wettbewerben. Über 2.000 Flüge und mehr als 800 Stunden sicheres Fliegen.",
+      "personality": "Bishal Thapa hat auf jedem Flug eine „Energiebatterie“ und ein strahlendes Lächeln dabei. Er ist fröhlich, sympathisch und gibt seinen Passagieren immer das Gefühl, mit einem guten Freund zu fliegen. Mit seiner Leidenschaft für millimetergenaue Präzisionslandungen verwandelt er jede Landung in einen wunderschönen „Tanz“ am Himmel. Mit ihm erleben Sie nicht nur das Gefühl des Fliegens, sondern ein Abenteuer voller Lachen und Emotionen."
+    },
+    "pilot6": {
+      "name": "Bishal Skyboy",
+      "nickname": "Skyboy",
+      "role": "Acro-Pilot",
+      "des": "Professioneller Pilot aus Nepal, weltweit bekannt für seine beeindruckenden Acro-Kunstflugkünste. Er erobert den Himmel nicht nur mit erstklassiger Technik, sondern ist auch ein erfahrener Tandempilot, der jedem Passagier ein aufregendes und unvergessliches Flugerlebnis schenkt.",
+      "img": "Bishal Skyboy_Team Pilot.jpg",
+      "fullname": "BISHAL SKYBOY",
+      "experience": "Professioneller Acro-Pilot aus Nepal mit langjähriger Erfahrung in Kunstflugvorführungen und Tandemflügen. Er hat an zahlreichen internationalen Flugveranstaltungen teilgenommen und ist bekannt für seine komplexen Kunstflugtechniken und die absolute Sicherheit seiner Passagiere. Er bietet spannende, emotionale und atemberaubende Flugerlebnisse.",
+      "records": "Weltweit bekannter Acro-Pilot mit außergewöhnlichen Kunstflugfähigkeiten. Umfangreiche Tandemflugerfahrung und hervorragende Sicherheitsbilanz, Teilnahme an zahlreichen internationalen Flugveranstaltungen.",
+      "personality": "Bishal Skyboy besticht durch sein fliegerisches Können und sein souveränes Auftreten in der Luft. Er schenkt allen Passagieren erfrischende, aufregende und unvergessliche Flugerlebnisse und bleibt dabei stets professionell, nahbar und freundlich."
+    },
+    "pilot7": {
+      "name": "Dinh The Anh",
+      "nickname": "Wolkenjäger",
+      "role": "Teampilot",
+      "des": "Ein Pilot voller sportlicher Energie – vom Radfahren über Schwimmen bis zum Gleitschirmfliegen – mit 2000 Flügen, über 1500 Stunden sicherem Fliegen und dreifacher vietnamesischer Meister im Präzisionslanden.",
+      "img": "The Anh_Team Pilot.jpg",
+      "fullname": "DINH THE ANH",
+      "experience": "Über 2.000 absolvierte Flüge mit insgesamt mehr als 1.000 Stunden sicherer Flugzeit. Vertrat Vietnam bei der Qualifikation zum Paragliding World Cup 2023 in Südkorea. Dreifacher Meister im Präzisionslanden bei nationalen Wettbewerben. Ist schon in vielen Ländern der Welt gestartet, darunter in der Schweiz, Südkorea, den USA, Thailand und Indonesien...",
+      "records": "Dreifacher vietnamesischer Meister im Präzisionslanden und Vertreter Vietnams bei der Qualifikation zum Paragliding World Cup 2023 in Südkorea.",
+      "personality": "Bekannt als „großer Bruder der Nation“ – geboren und aufgewachsen in Da Nang, trägt dieser Mann aus Zentralvietnam die Sanftheit und Wärme der Meeresbrise und des goldenen Sonnenscheins seiner Heimat in sich. Er beeindruckt mit einem sanften Lächeln, einer warmen Stimme und viel Aufmerksamkeit in allem, was er tut. Er ist nicht nur ein erstklassiger Pilot, sondern auch ein professioneller Fotograf. Wenn Sie mit ihm fliegen, können Sie sich auf unzählige großartige Fotos freuen – jeder Blickwinkel ist schön und jeder Moment unvergesslich!"
+    },
+    "pilot8": {
+      "name": "Tuan Nguyen",
+      "nickname": "Nhi Ca",
+      "role": "Teampilot",
+      "des": "Ein sanfter, fürsorglicher Pilot, der stets auf die Wünsche seiner Passagiere eingeht. Ob Sie es wild mögen oder lieber entspannt „chillen“ – er hat den perfekten Kamerawinkel und die passende Flugroute. Garantiert möchte danach jeder … sein größter Fan werden!",
+      "img": "Tuan Nguyen_Team Pilot.jpg",
+      "fullname": "TUAN NGUYEN",
+      "experience": "Hat über 1.000 Tandemflüge in Vietnam sicher und erfolgreich absolviert. Er kennt die Meteorologie der Fluggebiete im ganzen Land genau und kann das Flugwetter präzise einschätzen und vorhersagen. Er beherrscht sowohl das Gleitschirmfliegen ohne Motor als auch das Motorschirmfliegen. Als professioneller Gleitschirmlehrer hat er viele Piloten auf ihrem Weg, den Himmel über Vietnam zu erobern, ausgebildet und begleitet.",
+      "records": "Über 1.000 sichere Tandemflüge, führender Experte für Wettervorhersagen in der Fliegerszene und erfahrener Fluglehrer an großen Fluggebieten im ganzen Land.",
+      "personality": "Sein Spitzname „Nhi Ca“ („Zweiter Bruder“) klingt nach ritterlichem Heldenmut, doch sein Wesen ist ausgesprochen freundlich und liebenswert. Besonders Kinder liebt er – nach jedem Flug erinnern sich die kleinen Engel an den netten Piloten und schicken ihm Dankesbriefe. Wenn Sie als Eltern jemanden suchen, der vertrauenswürdig, engagiert und voller positiver Energie ist, um Ihr Kind auf seiner Reise zu den Wolken zu begleiten – dann ist „Zweiter Bruder“ die perfekte Wahl!"
+    },
+    "pilot9": {
+      "name": "Minh Trung",
+      "nickname": "Weltraumkrieger",
+      "role": "Teampilot",
+      "des": "Über 2.000 Tandemflüge, 7 Jahre am Himmel, mehr als 1.000 Stunden „Spiel mit Wolken und Wind“. Sein Spitzname ist Trung Chocolate – mit ihm wird geplaudert und gelacht, bis Ihnen die Wangen wehtun!",
+      "img": "Minh Trung_Team Pilot.jpg",
+      "fullname": "MINH TRUNG",
+      "experience": "Über 2.000 sichere Tandemflüge mit Passagieren. 7 Jahre Erfahrung im Gleitschirmfliegen, spezialisiert auf Tandem- und Streckenflüge. Mehr als 1.000 Stunden tatsächlicher Flugzeit, souverän bei unterschiedlichsten Wetterbedingungen und in anspruchsvollem Gelände. Hat einen Flugsicherheitskurs in Nepal absolviert – einem Land mit strengen Flugbedingungen und hohen internationalen Standards.",
+      "records": "Über 2.000 sichere Tandemflüge, mehr als 1.000 Flugstunden und einer der wenigen vietnamesischen Piloten, die den Flugsicherheitskurs in Nepal absolviert haben.",
+      "personality": "Sein Gleitschirm ist eine leuchtend rot-gelbe Flagge – Fliegen bedeutet für ihn, die Liebe zum Land, zum Himmel und zum Leben selbst weiterzugeben. Mit ihm bekommt Ihr Video auf TikTok leicht Millionen Aufrufe, Fotos und Videos sind auch ohne Bearbeitung „erste Sahne“ – genug, um Ihren Schwarm aus dem Takt zu bringen. Freundlich und fröhlich, wie er ist, werden Sie garantiert mit offenem Mund lachen und jede Höhenangst vergessen. Der einzige Haken? Die Sonne macht ihn braun, der Regen kräuselt ihm die Haare – aber seine Ausstrahlung bleibt erstklassig und sein Lächeln makellos!"
+    },
+    "pilot10": {
+      "name": "Phan Hung",
+      "nickname": "Himmelswanderer",
+      "role": "Teampilot",
+      "des": "Mit ihm bekommen Sie Clips mit Millionen-Aufrufe-Potenzial und äußerst kunstvollen Kameraperspektiven. Absolut sicheres Erlebnis und wunderschön festgehaltene Momente am Himmel – Sie nehmen von jedem Tandemflug wertvolle, unvergessliche Aufnahmen mit nach Hause.",
+      "img": "phan_hung.jpg",
+      "fullname": "PHAN HUNG",
+      "experience": "Seit 2018 folgt er seiner Leidenschaft für das Gleitschirmfliegen und ist heute ein professioneller Pilot mit langjähriger Flugerfahrung in Vietnam. Er kennt Meteorologie und Gelände der Fluggebiete im ganzen Land genau – entscheidende Faktoren dafür, dass jeder Flug sicher ist und ein optimales Erlebnis bietet. Er hat über 1.000 professionelle Tandemflüge absolviert und nimmt kontinuierlich an Gleitschirm-Aus- und Weiterbildungsprogrammen nach internationalem Standard teil.",
+      "records": "Über 1.000 professionelle Tandemflüge, Experte für Wetter- und Geländeanalyse, aktiver Teilnehmer an Ausbildungsprogrammen nach internationalem Standard.",
+      "personality": "Darf ich vorstellen: Phan Hung – der „Rocker“ der Lüfte, dessen lange Haare im Wind wehen wie der Gleitschirm selbst. Mit ihm bekommen Sie nicht nur Clips mit Millionen Aufrufen, sondern auch eine Million Emotionen. Über 1.000 Flüge – jeder davon eine Geschichte, ein Moment fürs Leben. Voller Energie, geländekundig und mit „brennender“ Leidenschaft – er ist immer bereit, mit Ihnen die Wolken zu berühren!"
+    },
+    "pilot11": {
+      "name": "Ngo Van Doi",
+      "nickname": "Manöver-Krieger",
+      "role": "Teampilot",
+      "des": "Nimmt an jedem Gleitschirmwettbewerb in Vietnam teil und hält den Rekord von 7 Stunden Dauerflug am Buu-Hügel – Chuong My. Mit seiner Leidenschaft für das Gleitschirmfliegen schenkt er seinen Passagieren aufregende, sichere und fröhliche Flugerlebnisse.",
+      "img": "Ngo Van Doi_Team Pilot.jpeg",
+      "fullname": "NGO VAN DOI",
+      "experience": "Von 2023 bis 2025 hat er über 500 Solo- und Tandemflüge an den meisten bekannten Fluggebieten Vietnams absolviert. Er hat über 300 Stunden tatsächlicher Flugzeit gesammelt und bringt 5 Jahre solide Erfahrung im Gleitschirmfliegen mit. Bei allen Gleitschirmwettbewerben von Süd bis Nord ist er ein bekanntes Gesicht – stets mit professionellem Wettkampfgeist und großer Leidenschaft dabei. Besonders bemerkenswert: Er stellte einen Rekord von 7 Stunden Dauerflug am Buu-Hügel – Chuong My auf, ein stolzer Meilenstein in seiner Fliegerkarriere.",
+      "records": "Rekord von 7 Stunden Dauerflug am Buu-Hügel – Chuong My, über 500 Flüge in 2 Jahren und ein aktiver Pilot, der an allen Gleitschirmwettbewerben im ganzen Land teilnimmt.",
+      "personality": "Ein junger Mann, der den Wind in seinem Lächeln trägt – er fliegt hoch hinaus, ganz ohne „Aufzug“! Mit seiner brennenden Leidenschaft für das Gleitschirmfliegen „hebt“ bei jedem Flug auch sein Herz ab. Mit ihm spüren Sie, wie sich Freude am blauen Himmel ausbreitet – wo kräftiger Wind wie Applaus klingt, der Sie anfeuert. Ein unglaublich engagierter Begleiter, der jederzeit bereit ist, Ihren Traum vom Fliegen in ein spannendes Abenteuer zu verwandeln!"
+    },
+    "pilot12": {
+      "name": "Minh Vo",
+      "nickname": "Stahladler",
+      "role": "Teampilot",
+      "des": "Fliegen Sie mit dem „Millionen-Likes-Piloten“ mit 14 Jahren Erfahrung. Seit seiner Kindheit begeistert vom Himmel, gibt er dieses Feuer mit jedem Tandemflug weiter und schenkt jedem Gast ein Spitzenerlebnis und unvergessliche Momente hoch oben am Himmel.",
+      "img": "Minh Vo_Team Pilot.jpg",
+      "fullname": "MINH VO",
+      "experience": "Mit 14 Jahren Erfahrung im Gleitschirmfliegen und über 2.000 sicheren Tandemflügen gehört er zu den erfahrensten und zuverlässigsten Piloten Vietnams. Als einer der Top 5 Piloten der ersten Generation hat er dazu beigetragen, das Fundament der vietnamesischen Gleitschirm-Community zu legen. 2023 gewann er mit seinem Team souverän den ersten Platz in der Disziplin Präzisionslandung beim MCC-Wettbewerb – ein Beweis für solides fliegerisches Können und Wettkampfgeist.",
+      "records": "14 Jahre Erfahrung, über 2.000 sichere Tandemflüge. Top 5 Pilot der ersten Generation Vietnams und Sieger im Präzisionslanden beim MCC 2023.",
+      "personality": "Minh Vo – der „Millionen-Likes-Pilot“, seit seiner Kindheit vom Himmel begeistert, wollte schon als Junge nur mit den Wolken plaudern und mit dem Wind spielen. Mit ihm zu fliegen heißt nicht nur, hoch hinauszukommen, sondern auch in Hochstimmung! Traumhafte Ausblicke, herzhaftes Lachen und positive Energie begleiten Sie die ganze Tour. Er gibt sein Feuer leicht, aber kraftvoll weiter – sodass jeder, der mit ihm fliegt, gleich … noch einmal fliegen möchte!"
+    },
+    "pilot13": {
+      "name": "Toan Nguyen",
+      "nickname": "Rambo",
+      "role": "Teampilot",
+      "des": "Über 10 Jahre auf den Wolken unterwegs, fast 5.000 Flüge. Er fliegt quer durch Vietnam: Kon Tum, Ly Son, Dien Bien... Das GPS hat noch nicht mal geladen, da ist er schon gelandet! Gleitschirmfliegen ist für ihn nicht nur Leidenschaft – es ist ein Lebensstil in den Wolken.",
+      "img": "Toan Nguyen_team Pilot.jpg",
+      "fullname": "TOAN NGUYEN",
+      "experience": "Mit über 10 Jahren Erfahrung am Himmel und fast 5.000 Solo- und Tandemflügen gehört er zu den erfahrensten und zuverlässigsten Piloten Vietnams. Er hat einen Flugsicherheitskurs nach internationalem Standard absolviert. Er ist bereits über die meisten bekannten Fluggebiete des Landes geflogen, darunter Kon Tum, Dak Nong, Nha Trang, Ly Son und Dien Bien Phu. Regelmäßig nimmt er an Präzisionslande-Wettbewerben in Hanoi, Mu Cang Chai und Da Nang teil – ein Beleg für sein solides fliegerisches Können und seinen beständigen Wettkampfgeist.",
+      "records": "Über 10 Jahre Erfahrung und fast 5.000 Flüge in ganz Vietnam. Teilnahme an den meisten Präzisionslande-Wettbewerben und absolvierter Flugsicherheitskurs nach internationalem Standard.",
+      "personality": "Wenn Sie mit Toan Nguyen fliegen – dem „Rambo der Lüfte“ –, dürfen Sie nicht nur „auf den Wolken reiten“, sondern auch lachen, bis Ihnen die Wangen wehtun! Er fliegt wie der Wind, redet wie der Wind und vermittelt ein Gefühl von Sicherheit und unglaublichem Spaß zugleich. Nach dem Flug möchte ihn jeder als „persönlichen Piloten“ für alle weiteren Reisen. Eines ist garantiert: Wer mit Toan fliegt, will gar nicht mehr runter!"
+    },
+    "pilot14": {
+      "name": "Chien Thang",
+      "nickname": "Blitzsieger",
+      "role": "Teampilot",
+      "des": "7 Jahre mit Wolken und Wind, über 1.500 sichere Tandemflüge, mehr als 1.000 Stunden am Himmel. Er hielt einst den Rekord von 9,5 Stunden Soloflug in Vietnam! Er „räumt“ bei Gleitschirmwettbewerben von Nord bis Süd ab und ist immer in Topform.",
+      "img": "Chien Thang_Team Pilot.jpg",
+      "fullname": "CHIEN THANG",
+      "experience": "Seit 7 Jahren ist er ein Begleiter von Himmel und Wolken, hat über 1.500 sichere und professionelle Tandemflüge absolviert und mehr als 1.000 Flugstunden gesammelt. Er hielt einst Vietnams zweitlängsten Soloflug-Rekord – 9,5 Stunden am Stück – und bewies damit bemerkenswerte Ausdauer und hervorragende Schirmbeherrschung. Mit seinem tiefen Verständnis für Gleitschirmtechnik und die Wetterbedingungen der Fluggebiete im ganzen Land sorgt er dafür, dass jeder Flug sicher ist und zugleich begeistert.",
+      "records": "Hält Vietnams zweitlängsten Soloflug-Rekord – 9,5 Stunden am Stück. Über 1.500 Tandemflüge und mehr als 1.000 Flugstunden in 7 Jahren am Himmel.",
+      "personality": "Chien Thang – der „Donnergott“ – fliegt blitzschnell und gibt Ihnen trotzdem das Gefühl absoluter Sicherheit. Wenn Sie mit ihm am Himmel schweben, werden Sie vor Freude lachen und gar nicht mehr landen wollen. Ein Flug mit ihm ist nicht nur ein Erlebnis, sondern ein Abenteuer voller Lachen. Er fliegt so lange, dass selbst die Wolken staunen: „Hey, brauchst du keine Pause?“"
+    }
+  },
+  "preNotice": {
+    "title": "Vorbereitung auf den Flug",
+    "subtitle": "Wichtige Informationen vor Ihrem Flug",
+    "viewTakeoffLocation": "Startplatz ansehen",
+    "viewLandingLocation": "Landeplatz ansehen",
+    "items": {
+      "photoSupport": {
+        "title": "Hilfe bei Luftaufnahmen",
+        "description": "Unsere Piloten finden für Sie die besten Perspektiven am Himmel – sagen Sie einfach Bescheid, und sie halten Ihre schönsten Momente fest!"
+      },
+      "timing": {
+        "title": "Pünktlich sein",
+        "description": "Bitte seien Sie 5 Minuten vor der Abholzeit da, damit es keine Verzögerungen gibt"
+      },
+      "storage": {
+        "title": "Handyspeicher",
+        "description": "Ihr Handy braucht mindestens 4 GB freien Speicher für die Fotos/Videos nach dem Flug"
+      },
+      "baggage": {
+        "title": "Persönliche Tasche",
+        "description": "Sie können eine kleine persönliche Tasche (1–2 kg) für das Nötigste mitnehmen (Handy, Schlüssel, Dokumente)"
+      },
+      "clothing": {
+        "title": "Passende Kleidung",
+        "description": "Bequeme Sportkleidung (lange Ärmel, lange Hose); keine Röcke, keine hohen Absätze; Turnschuhe oder Wanderschuhe tragen (Tipp: Kräftige Farben sehen auf Fotos toll aus)"
+      },
+      "beginner": {
+        "title": "Ideal für Anfänger",
+        "description": "Auch für Erstflieger geeignet"
+      },
+      "weather": {
+        "title": "Wetterbedingungen",
+        "description": "Die Flüge sind wetterabhängig (Wind, Regen, Nebel). Ist eine Verschiebung nötig, informieren wir Sie mindestens 1 Tag vorher – kostenlos; möchten Sie nicht umbuchen, erhalten Sie 100 % Ihres Geldes zurück"
+      }
+    },
+    "tabs": {
+      "requirements": {
+        "title": "Voraussetzungen",
+        "subtitle": "Teilnahmevoraussetzungen",
+        "items": {
+          "weight": {
+            "title": "Gewicht",
+            "desc": "Bis 110 kg. Bei über 95 kg geben Sie uns bitte vorab Bescheid, damit wir einen passenden Piloten und die richtige Ausrüstung einplanen."
+          },
+          "health": {
+            "title": "Körperliche Fitness",
+            "desc": "Eine Grundfitness ist nötig – Sie sollten kurz laufen können. Nicht geeignet für stark übergewichtige Personen oder Menschen mit ernsthaften Bewegungseinschränkungen."
+          },
+          "age": {
+            "title": "Alter",
+            "desc": "Ab 3 Jahren ist ein Tandemflug mit einem Piloten möglich. Passagiere unter 18 Jahren müssen von einem Elternteil oder Erziehungsberechtigten begleitet werden, der die Einverständniserklärung unterschreibt."
+          }
+        }
+      },
+      "booking": {
+        "title": "Buchung",
+        "subtitle": "Informationen zur Buchung",
+        "items": {
+          "method": {
+            "title": "Buchungsweg",
+            "desc": "Buchen Sie direkt über die Website oder kontaktieren Sie uns per Hotline / Zalo / WhatsApp."
+          },
+          "payment": {
+            "title": "Zahlung",
+            "desc": "Bar, per Banküberweisung oder Kreditkarte. Keine Vorauszahlung nötig."
+          },
+          "confirmation": {
+            "title": "Bestätigung",
+            "desc": "Wir melden uns innerhalb von 3 Stunden nach Eingang Ihrer Buchung."
+          }
+        }
+      },
+      "cancellation": {
+        "title": "Stornierung",
+        "subtitle": "Stornierungs- und Umbuchungsbedingungen",
+        "items": {
+          "byUs": {
+            "title": "Absage durch Sapa Paragliding",
+            "desc": "Keine Kosten für Sie. Volle Rückerstattung. Keine zusätzlichen Gebühren."
+          },
+          "byCustomer": {
+            "title": "Stornierung durch den Kunden",
+            "desc": "Mitteilung per E-Mail/Hotline/Zalo/WhatsApp, auch nur wenige Stunden vor der Abholung: kostenlos."
+          },
+          "reschedule": {
+            "title": "Umbuchung",
+            "desc": "Kostenlose Umbuchung auf Wunsch."
+          }
+        }
+      },
+      "weather": {
+        "title": "Wetter",
+        "subtitle": "Wetterbedingungen zum Fliegen",
+        "items": {
+          "condition": {
+            "title": "Flugbedingungen",
+            "desc": "Windrichtung und Windstärke sind die entscheidenden Faktoren. Ist die Vorhersage passend, findet der Flug wie geplant statt."
+          },
+          "cancel": {
+            "title": "Absage wegen Wetter",
+            "desc": "Die endgültige Entscheidung fällt am Flugtag. Bei Absage: keine Kosten, Umbuchung oder 100 % Rückerstattung."
+          }
+        }
+      },
+      "clothing": {
+        "title": "Kleidung",
+        "subtitle": "Hinweise zur Kleidung",
+        "items": {
+          "clothes": {
+            "title": "Kleidung",
+            "desc": "Bequeme Sportkleidung (lange Ärmel, lange Hose); keine Röcke. Tipp: Kräftige Farben wirken auf Fotos wunderschön."
+          },
+          "shoes": {
+            "title": "Schuhe",
+            "desc": "Keine hohen Absätze. Turnschuhe oder Wanderschuhe empfohlen. Bei Bedarf leihen wir Ihnen kostenlos Schuhe."
+          },
+          "glasses": {
+            "title": "Brillen",
+            "desc": "Eine Sonnenbrille schützt Ihre Augen vor UV-Strahlung und starkem Fahrtwind (~40 km/h). Korrekturbrillen können getragen werden."
+          }
+        }
+      },
+      "schedule": {
+        "title": "Ablauf",
+        "subtitle": "Informationen zum Flugablauf",
+        "items": {
+          "duration": {
+            "title": "Dauer des Erlebnisses",
+            "desc": "Das gesamte Erlebnis dauert etwa 1 Stunde 30 Minuten."
+          },
+          "contact": {
+            "title": "Kommunikation",
+            "desc": "Achten Sie auf E-Mails/Nachrichten zu eventuellen Änderungen oder Absagen."
+          },
+          "spectators": {
+            "title": "Zuschauer",
+            "desc": "Familienangehörige können am Startplatz warten und den Flug beobachten."
+          },
+          "parking": {
+            "title": "Parken",
+            "desc": "Kostenlose Parkplätze vorhanden (geöffnet 6:00–22:00 Uhr, Camping nicht erlaubt)."
+          }
+        }
+      },
+      "transport": {
+        "title": "Transfer",
+        "subtitle": "Shuttle-Service",
+        "items": {
+          "shuttle": {
+            "title": "Abholung/Rückfahrt",
+            "desc": "Abholung und Rückfahrt ab Ihrem Hotel gemäß den Buchungsangaben."
+          },
+          "companion": {
+            "title": "Begleitpersonen",
+            "desc": "Für nicht fliegende Begleitpersonen teilen Sie uns bitte die Anzahl mit, damit wir planen und Ihnen den passenden Preis nennen können."
+          }
+        }
+      },
+      "meetingPoint": {
+        "title": "Treffpunkt",
+        "subtitle": "Wo wir uns treffen",
+        "items": {
+          "center": {
+            "title": "Zentrum Sapa",
+            "desc": "Einkaufszentrum Sun Plaza im Zentrum von Sapa."
+          },
+          "hotel": {
+            "title": "Hotel/Homestay",
+            "desc": "Sapa, Lao Chai, Ta Van: Bitte geben Sie Ihren Standort bei der Buchung an."
+          }
+        }
+      },
+      "flyingSpot": {
+        "title": "Fluggelände",
+        "subtitle": "Start- & Landeplatz",
+        "items": {
+          "takeoff": {
+            "title": "Startplatz",
+            "desc": "Nach den höchsten Sicherheitsstandards Vietnams angelegt, ideal im Wind gelegen – für einen sicheren Start und ein beeindruckendes Erlebnis."
+          },
+          "landing": {
+            "title": "Landeplatz",
+            "desc": "Landung im Kulturdorf Lao Chai, nahe einem traditionellen Markt mit Handwerkskunst der Dorfbewohner."
+          }
+        }
+      },
+      "faq": {
+        "title": "Ablauf",
+        "subtitle": "Der Flug im Detail",
+        "items": {
+          "meet": {
+            "title": "Ihr Pilot",
+            "desc": "Am Startplatz lernen Sie Ihren Piloten kennen, können Fragen stellen und Ihr Gepäck abgeben."
+          },
+          "baggage": {
+            "title": "Startbriefing",
+            "desc": "Einweisung anhören, Flugausrüstung anlegen und die Startbewegung üben."
+          },
+          "takeoff": {
+            "title": "Start",
+            "desc": "Kräftig und gleichmäßig laufen und erst anhalten, wenn der Pilot es sagt. Nach dem Start entspannen und die Aussicht genießen."
+          },
+          "safety": {
+            "title": "Landung",
+            "desc": "Sichere, bequeme Ausrüstung. Sanfte Landung – je nach Bedingungen im Stehen oder im Sitzen."
+          }
+        }
+      }
+    },
+    "locations": {
+      "title": "Flugorte",
+      "takeoff": "Startplatz",
+      "landing": "Landeplatz",
+      "getDirections": "Route anzeigen"
+    }
+  },
+  "about": {
+    "title": "Über Sapa Paragliding",
+    "subtitle": "Ihr verlässlicher Partner für unvergessliche Flugerlebnisse",
+    "tagline": "Höher fliegen. Mehr fühlen. Voll leben.",
+    "intro": {
+      "title": "Willkommen bei Sapa Paragliding",
+      "description": "Wir sind ein professionelles Paragliding-Team mit Sitz in Sapa, Vietnam. Mit langjähriger Erfahrung und Leidenschaft fürs Fliegen bieten wir sichere und aufregende Gleitschirmflüge über die atemberaubenden Landschaften von Sapa.",
+      "highlight": "50.000+ sichere Flüge • 15+ Jahre Erfahrung • Internationales Pilotenteam"
+    },
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Sichere, unvergessliche und mitreißende Paragliding-Erlebnisse zu bieten – und die atemberaubende Schönheit Sapas aus der Vogelperspektive zu zeigen.",
+      "points": {
+        "safety": "Absolute Sicherheit bei jedem Flug",
+        "experience": "Erlebnis auf Weltniveau mit professionellem Service",
+        "nature": "Sapas Schönheit aus einer einzigartigen Perspektive"
+      }
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "description": "Der führende Paragliding-Anbieter Vietnams zu werden – bekannt für Sicherheit, Professionalität und herausragende Kundenerlebnisse.",
+      "goals": {
+        "leader": "Führend im vietnamesischen Paragliding",
+        "international": "Internationale Sicherheitszertifizierung erreichen",
+        "community": "Eine Community von Paragliding-Begeisterten aufbauen"
+      }
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "safety": {
+        "title": "Sicherheit an erster Stelle",
+        "description": "100 % der Flüge erfüllen internationale Sicherheitsstandards. Die Ausrüstung wird regelmäßig geprüft, die Piloten sind professionell ausgebildet."
+      },
+      "excellence": {
+        "title": "Exzellenter Service",
+        "description": "Von der Buchung bis zur Landung setzen wir alles daran, Ihnen ein perfektes Erlebnis zu bieten."
+      },
+      "passion": {
+        "title": "Leidenschaft und Hingabe",
+        "description": "Jeder Pilot ist nicht nur Experte, sondern auch ein Himmelsliebhaber, der seine Begeisterung gern mit Ihnen teilt."
+      },
+      "innovation": {
+        "title": "Ständige Weiterentwicklung",
+        "description": "Wir setzen auf neueste Technik und moderne Flugmethoden, um die Qualität unseres Service stetig zu verbessern."
+      }
+    },
+    "story": {
+      "title": "Unsere Geschichte",
+      "founded": "Gegründet 2010",
+      "description": "Aus der Leidenschaft fürs Fliegen und der Liebe zu Sapa haben wir das erste professionelle Pilotenteam der Region aufgebaut. In über 15 Jahren ist Sapa Paragliding zu einer vertrauenswürdigen Adresse für Zehntausende Gäste aus Vietnam und aller Welt geworden.",
+      "milestones": {
+        "2010": "Gründung mit 3 Piloten",
+        "2015": "Internationale APPI-Sicherheitszertifizierung",
+        "2020": "Erweiterung des Teams um internationale Piloten",
+        "2024": "Über 50.000 sichere Flüge"
+      }
+    },
+    "commitment": {
+      "title": "Unser Versprechen",
+      "safety": "Absolute Sicherheit – ohne Kompromisse",
+      "quality": "Servicequalität auf internationalem Niveau",
+      "support": "Kundenservice rund um die Uhr",
+      "satisfaction": "100 % Zufriedenheitsgarantie oder Geld zurück"
+    },
+    "whyChoose": {
+      "title": "Warum Sapa Paragliding?",
+      "cta": {
+        "title": "Bereit, Sapa von oben zu erleben?",
+        "description": "Schließen Sie sich Tausenden zufriedener Gäste an, die den Nervenkitzel des Gleitschirmfliegens in Sapa erlebt haben"
+      }
+    },
+    "features": {
+      "safety": {
+        "title": "Sicherheit zuerst",
+        "description": "Professionelle Piloten mit Tausenden sicherer Flüge"
+      },
+      "photoVideo": {
+        "title": "Foto & Video",
+        "description": "Halten Sie Ihre unvergesslichen Momente am Himmel fest"
+      },
+      "bestViews": {
+        "title": "Beste Aussicht",
+        "description": "Atemberaubender Panoramablick über das Tal von Sapa"
+      },
+      "expertTeam": {
+        "title": "Expertenteam",
+        "description": "Professionelle Piloten mit Tausenden erfolgreicher Flüge"
+      },
+      "bestExperience": {
+        "title": "Bestes Erlebnis",
+        "description": "Unvergessliche Ausblicke und Erinnerungen fürs Leben"
+      },
+      "professionalPhoto": {
+        "title": "Foto & Video",
+        "description": "Professionelle Aufnahmen Ihres Abenteuers"
+      },
+      "bestValue": {
+        "title": "Bestes Preis-Leistungs-Verhältnis",
+        "description": "Faire Preise mit Gruppenrabatt"
+      },
+      "multiLanguage": {
+        "title": "Mehrsprachig",
+        "description": "Betreuung auf Vietnamesisch, Englisch, Französisch, Russisch, Chinesisch und Koreanisch"
+      },
+      "safetyRecord": {
+        "title": "Sicherheit zuerst",
+        "description": "100 % Sicherheitsbilanz mit zertifizierten Piloten und hochwertiger Ausrüstung"
+      }
+    },
+    "process": {
+      "title": "Ablauf des Flugs",
+      "step1": {
+        "title": "Sicherheitseinweisung",
+        "description": "Ausführliche Sicherheitshinweise und Ausrüstungscheck"
+      },
+      "step2": {
+        "title": "Vorbereitung",
+        "description": "Ausrüstung anlegen und zum Startplatz gehen"
+      },
+      "step3": {
+        "title": "Start",
+        "description": "Ein paar Schritte laufen und in den Himmel abheben"
+      },
+      "step4": {
+        "title": "Flug",
+        "description": "Die atemberaubende Aussicht und das Gefühl des Fliegens genießen"
+      },
+      "step5": {
+        "title": "Landung",
+        "description": "Sanfte Landung unter Anleitung Ihres Piloten"
+      },
+      "step6": {
+        "title": "Ihr Paragliding-Zertifikat",
+        "description": "Genießen Sie nach dem Flug ein Freigetränk, während Ihr Pilot alle Fotos und Videos auf Ihr Handy überträgt"
+      }
+    }
+  },
+  "pricing": {
+    "title": "Flugpreise",
+    "subtitle": "Jetzt reservieren – später zahlen – keine Anzahlung",
+    "packages": {
+      "basic": {
+        "name": "Basis-Paket",
+        "price": "2.090k",
+        "priceUsd": "82 USD/Flug",
+        "included": "Inklusive:",
+        "items": {
+          "flight": "Gleitschirmflug von 8–15 Minuten",
+          "photoVideo": "Foto- & Videoaufnahmen mit GoPro",
+          "drinks": "Getränke am Fluggelände",
+          "insurance": "Paragliding-Versicherung",
+          "certificate": "Zertifikat"
+        }
+      },
+      "standard": {
+        "name": "Standard-Paket",
+        "badge": "BELIEBT",
+        "price": "2.190k",
+        "priceUsd": "88 USD/Flug",
+        "included": "Inklusive:",
+        "items": {
+          "flight": "Gleitschirmflug von 8–15 Minuten",
+          "photoVideo": "Foto- & Videoaufnahmen mit GoPro",
+          "drinks": "Getränke am Fluggelände",
+          "insurance": "Paragliding-Versicherung",
+          "certificate": "Zertifikat",
+          "hotelTransfer": "Abholung und Rückfahrt zum Hotel"
+        }
+      },
+      "premium": {
+        "name": "Premium-Paket",
+        "price": "2.990k",
+        "priceUsd": "116 USD/Flug",
+        "included": "Inklusive:",
+        "items": {
+          "flight": "Gleitschirmflug von 8–15 Minuten",
+          "photoVideo": "Foto- & Videoaufnahmen mit GoPro",
+          "drinks": "Getränke am Fluggelände",
+          "insurance": "Paragliding-Versicherung",
+          "certificate": "Zertifikat",
+          "hotelTransfer": "Abholung und Rückfahrt zum Hotel",
+          "drone": "FLYCAM (Drohnenkamera)",
+          "camera360": "360°-Kamera"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "Unsere Angebote",
+    "subtitle": "Wählen Sie das passende Flugerlebnis"
+  },
+  "gallery": {
+    "title": "Paragliding-Momente",
+    "subtitle": "Unvergessliche Erlebnisse"
+  },
+  "cta": {
+    "title": "Bereit für Ihr Abenteuer?",
+    "description": "Buchen Sie noch heute Ihr Paragliding-Erlebnis und sammeln Sie Erinnerungen fürs Leben",
+    "readyToFly": {
+      "title": "Bereit zum Abheben?",
+      "description": "Buchen Sie jetzt Ihr Paragliding-Abenteuer und erleben Sie das Gefühl des Fliegens"
+    }
+  },
+  "preNoticeSection": {
+    "safetyRequirements": {
+      "title": "Sicherheitsanforderungen",
+      "minAge": "Mindestalter: 3 Jahre (bei Minderjährigen mit Zustimmung der Eltern)",
+      "weightRange": "Gewicht: bis 110 kg (bitte vorab mitteilen, wenn über 95 kg)",
+      "goodHealth": "Gute körperliche und geistige Gesundheit erforderlich",
+      "noPregnant": "Schwangere können nicht teilnehmen",
+      "notRecommended": "Nicht empfohlen bei Herzerkrankungen, Rückenproblemen oder Höhenangst"
+    }
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "followUs": "Folgen Sie uns",
+    "quickLinks": "Schnellzugriff",
+    "copyright": "Fluggenehmigung durch die Abteilung für Operationen – Generalstab, Verteidigungsministerium Vietnams. Gewerbelizenz für Paragliding Nr. 02/GCN-SVHTT, ausgestellt vom Amt für Kultur, Sport und Tourismus der Provinz Lao Cai",
+    "bookOn": "Bewertungen lesen & uns überprüfen auf"
+  },
+  "validation": {
+    "required": "Dieses Feld ist ein Pflichtfeld",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+    "phone": "Bitte geben Sie eine gültige Telefonnummer ein",
+    "minLength": "Mindestens {min} Zeichen",
+    "maxLength": "Höchstens {max} Zeichen"
+  },
+  "posts": {
+    "latestPosts": "Neueste Beiträge",
+    "latestPostsDescription": "Geschichten, Tipps und Ratgeber rund ums Paragliding in Sapa: die besten Fluggebiete, Wetter, Preise, Tipps zur Vorbereitung und Flüge über dem Muong-Hoa-Tal",
+    "readMore": "Weiterlesen",
+    "relatedPosts": "Ähnliche Beiträge",
+    "notFound": "Beitrag nicht gefunden"
+  },
+  "admin": {
+    "login": {
+      "title": "Admin-Anmeldung",
+      "subtitle": "Beiträge und Inhalte verwalten",
+      "username": "Benutzername",
+      "usernamePlaceholder": "Benutzername eingeben",
+      "password": "Passwort",
+      "passwordPlaceholder": "Passwort eingeben",
+      "submit": "Anmelden",
+      "loading": "Wird geladen...",
+      "demo": "Demo-Konto:"
+    },
+    "dashboard": {
+      "title": "Admin-Dashboard",
+      "welcome": "Willkommen",
+      "logout": "Abmelden",
+      "managePosts": "Beiträge verwalten",
+      "addPost": "Beitrag hinzufügen",
+      "editPost": "Beitrag bearbeiten",
+      "published": "Veröffentlicht",
+      "draft": "Entwurf",
+      "publish": "Veröffentlichen",
+      "unpublish": "Zurückziehen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "table": {
+        "title": "Titel",
+        "category": "Kategorie",
+        "date": "Datum",
+        "status": "Status",
+        "actions": "Aktionen"
+      },
+      "form": {
+        "titleEn": "Titel (Englisch)",
+        "titleVi": "Titel (Vietnamesisch)",
+        "excerptEn": "Auszug (Englisch)",
+        "excerptVi": "Auszug (Vietnamesisch)",
+        "contentEn": "Inhalt (Englisch)",
+        "contentVi": "Inhalt (Vietnamesisch)",
+        "image": "Bild-URL",
+        "category": "Kategorie",
+        "author": "Autor",
+        "published": "Sofort veröffentlichen"
+      }
+    }
+  },
+  "homePage": {
+    "heroBadge": "Unvergessliches Paragliding-Erlebnis",
+    "statsPilots": "Piloten",
+    "statsFlights": "Flüge",
+    "statsSafety": "Sicherheit",
+    "pricingHeading": "Unsere Preise",
+    "newBadge": "NEU",
+    "contactBadge": "Kontakt",
+    "contactTitle": "Kontaktinformationen",
+    "contactSubtitle": "So erreichen Sie uns",
+    "zaloDesc": "Direkter Chat",
+    "zaloBtn": "Nachricht",
+    "facebookDesc": "Offizielle Fanpage",
+    "followBtn": "Folgen",
+    "tiktokDesc": "Flugvideos",
+    "youtubeDesc": "Offizieller Kanal",
+    "subscribeBtn": "Abonnieren",
+    "instagramDesc": "Tägliche Fotos",
+    "address": "Adresse",
+    "flightHours": "Flugzeiten",
+    "weatherDependent": "(Wetterabhängig)",
+    "ctaTitle": "Bereit für Ihr Abenteuer?",
+    "ctaSubtitle": "Buchen Sie noch heute Ihr Paragliding-Erlebnis und sammeln Sie Erinnerungen fürs Leben"
+  },
+  "pilotPage": {
+    "professionalTeam": "Professionelles Team",
+    "meetTheTeam": "Unser Team",
+    "professionalPilots": "professionelle Piloten",
+    "readyToExperience": "Bereit für Ihr Abenteuer?",
+    "ctaDescription": "Buchen Sie noch heute Ihren Flug und genießen Sie ein unvergessliches Paragliding-Erlebnis mit unserem professionellen Pilotenteam",
+    "bookNow": "Jetzt buchen",
+    "nickname": "Spitzname: ",
+    "flyWithMe": "Flieg mit mir",
+    "aboutMe": "Über mich",
+    "experienceAchievements": "Erfahrung & Erfolge",
+    "personality": "Persönlichkeit",
+    "photoGallery": "Fotogalerie",
+    "photos": "Fotos",
+    "photoLabel": "Foto",
+    "memorableMoments": "Unvergessliche Momente beim Fliegen mit ",
+    "exploreOtherPilots": "Weitere Piloten entdecken",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "notFound": "Pilot nicht gefunden",
+    "notFoundDesc": "Der gesuchte Pilot existiert nicht oder wurde entfernt.",
+    "backToList": "Zurück zu den Piloten"
+  },
+  "footerContact": {
+    "titleVi": "Hotline / WhatsApp / Zalo (rund um die Uhr erreichbar)",
+    "customerService": "Service",
+    "bookingNote": " (Buchung)",
+    "chiefPilot": "Chefpilot",
+    "flightCoordinator": "Flugkoordinator"
+  },
+  "postPage": {
+    "all": "Alle",
+    "newest": "Neueste",
+    "oldest": "Älteste",
+    "loading": "Wird geladen...",
+    "readMore": "Artikel lesen",
+    "noPosts": "Keine Beiträge gefunden",
+    "noPostsDesc": "Passen Sie Ihre Suche oder Filter an, um das Gewünschte zu finden.",
+    "clearFilters": "Filter zurücksetzen",
+    "relatedPosts": "Ähnliche Beiträge",
+    "latestPosts": "Neueste Beiträge",
+    "viewAll": "Alle ansehen",
+    "gallery": "Fotogalerie"
+  },
+  "flyingSite": {
+    "title": "Fluggebiet von Sapa Paragliding",
+    "subtitle": "Muong-Hoa-Tal – eines der schönsten Fluggebiete Vietnams",
+    "intro": "Das Fluggebiet von Sapa Paragliding liegt an einem Berghang über dem Muong-Hoa-Tal mit seinen spektakulären Reisterrassen und den Dörfern Lao Chai und Ta Van. Der Startplatz ist nach dem höchsten Sicherheitsstandard Vietnams angelegt, bekommt stabilen Wind und bietet einen Panoramablick über Sapa.",
+    "takeoff": {
+      "title": "Startplatz",
+      "desc": "Der Startplatz ist nach dem höchsten Sicherheitsstandard Vietnams angelegt und ideal zum Wind ausgerichtet – für ruhige, sichere Starts. Von hier überblicken Sie das gesamte Muong-Hoa-Tal und das Hoang-Lien-Son-Gebirge.",
+      "mapLabel": "Startplatz in Google Maps ansehen"
+    },
+    "landing": {
+      "title": "Landeplatz – Dorf Lao Chai",
+      "desc": "Sie landen sanft im Kulturdorf Lao Chai mitten im Muong-Hoa-Tal, nahe einem traditionellen Markt mit Handwerkskunst der Einheimischen.",
+      "mapLabel": "Landeplatz in Google Maps ansehen"
+    },
+    "valley": {
+      "title": "Das Muong-Hoa-Tal von oben",
+      "desc": "Das Muong-Hoa-Tal ist berühmt für seine endlosen Reisterrassen, den gewundenen Muong-Hoa-Bach und das uralte Steinfeld. Aus der Luft erleben Sie die Zeit, in der die Felder geflutet werden (Mai–Juni), die Saison des grünen Reises (Juli–August) und den Herbst mit goldenem Reis und danach klarem, frischem Himmel (September–Dezember) – die schönsten Zeiten des Jahres."
+    },
+    "bestTime": {
+      "title": "Beste Reisezeit zum Fliegen",
+      "desc": "In Sapa kann man das ganze Jahr über fliegen, je nach Wetter. Am schönsten sind die Zeit der gefluteten Felder (Mai–Juni), die Saison des grünen Reises (Juli–August) und der Herbst (September–Dezember); von Dezember bis März ist Wolkenjagd-Saison. Die genauen Flugzeiten werden täglich je nach Wind und Sicht bestätigt."
+    },
+    "gettingThere": {
+      "title": "Anfahrt zum Fluggebiet",
+      "desc": "Treffpunkt ist im Zentrum von Sapa (Sun Plaza) oder an Ihrem Hotel/Homestay in Sapa, Lao Chai oder Ta Van. Das Shuttle von Sapa Paragliding bringt Sie zum Startplatz und holt Sie am Landeplatz wieder ab."
+    },
+    "cta": "Jetzt Flug über das Muong-Hoa-Tal buchen"
+  },
+  "weather": {
+    "pageTitle": "Gleitschirm-Wettervorhersage Sapa",
+    "pageSubtitle": "15-Tage-Vorhersage für den Startplatz Sapa (1.500 m, Muong-Hoa-Tal) – Wind, Nebel und tiefe Wolken, Regen, Thermik, Höhenwind",
+    "intro": [
+      "Der Startplatz Sapa liegt auf 1.500 m auf einem Grat mit Blick ins Muong-Hoa-Tal; gelandet wird im Dorf Lao Chai auf 1.000 m – 500 m Höhenunterschied. Die Tabelle oben zeigt die ECMWF-Vorhersage (oder GFS, ICON, UKMO, GEM, wenn Sie umschalten) für die exakten Koordinaten des Startplatzes, 15 Tage im Voraus, und färbt sie nach den Grenzwerten ein, die das Flugteam in Sapa tatsächlich verwendet – dieselben Werte wie im Betriebssystem von mebayluon.com, das die Piloten nutzen.",
+      "In Sapa wird der Flugbetrieb nicht nur bei starkem Wind eingestellt, sondern auch bei düsenartig verstärktem Talwind und sehr häufig wegen NEBEL und tiefer Wolken: Der Startplatz liegt mitten in der Wolkenschicht der feuchten Luft, die aus dem Tal aufsteigt; frühmorgens ist er oft eingehüllt, und erst die Sonne löst das auf. Danach zählt die Windrichtung: Nord, Nordost, Ost oder West stärker als 6 m/s bringt Turbulenzen, schwächer ist noch fliegbar; starker Höhenwind aus diesen Sektoren beeinflusst den Flug auch dann, wenn es am Boden ruhig ist. Der Wind unten im Tal ändert sich schnell und abrupt, weil das Tal bei Sapa sehr eng ist – deshalb prüft der Pilot vor dem Start auch den Wind am Landeplatz. Grün heißt gut fliegbar, Gelb heißt fliegbar mit Vorsicht, Rot heißt am Boden bleiben.",
+      "Ab Tag 7 zeigen die Modelle nur noch den groben Trend (eine Monsunphase, eine Regenperiode oder klarer Himmel) – nutzen Sie ihn, um einen Flugtag auszuwählen, nicht um eine Uhrzeit festzulegen, denn so weit im Voraus ist die Vorhersage unsicher. Die endgültige Entscheidung trifft der Pilot am Flugtag am Startplatz; wird ein Flug wetterbedingt verschoben, können Gäste umbuchen oder erhalten eine Rückerstattung."
+    ],
+    "hourly": "Stündlich",
+    "selectDay": "Tippen Sie auf einen Tag, um die stündlichen Details zu sehen",
+    "temp": "Temp.",
+    "good": "GUT FLIEGBAR",
+    "fair": "GRENZWERTIG",
+    "bad": "KEIN FLUGBETRIEB",
+    "wind": "Wind",
+    "gust": "Böen",
+    "rain": "Regen",
+    "direction": "Richtung",
+    "cloud": "Wolken",
+    "sky": "Himmel",
+    "hour": "Uhrzeit",
+    "windUnit": "m/s",
+    "storm": "Gewitter",
+    "cloudBase": "Wolkenbasis",
+    "thermal": "Thermik",
+    "sunHours": "Sonnenstunden",
+    "goodSunset": "Schöner Sonnenuntergang erwartet",
+    "takeoff": "Startplatz",
+    "landing": "Landeplatz",
+    "heightDiff": "Höhenunterschied",
+    "modelLabel": "Modell",
+    "upperWind": "Höhenwind",
+    "inversion": "Inversion",
+    "inversionNone": "keine Sperrschicht",
+    "ridge": "Soaring am Hang",
+    "ridgeGood": "gut",
+    "ridgeVeryGood": "sehr gut",
+    "pressure": "Luftdruck",
+    "pressureFalling": "fallend",
+    "pressureRising": "steigend",
+    "pressureSteady": "gleichbleibend",
+    "thermalPotential": "Thermikpotenzial",
+    "thermalWindow": "Spitze",
+    "thermalHours": "Thermikstunden",
+    "canFly": "Fliegbar?",
+    "score": "Wertung",
+    "thermalLevels": {
+      "khong": "sehr schwach",
+      "nhe": "schwach",
+      "vua": "mäßig",
+      "manh": "stark",
+      "gat": "sehr stark"
+    },
+    "today": "Heute",
+    "bestWindow": "Bestes Zeitfenster",
+    "goodHours": "gute Stunden",
+    "source": "Quelle",
+    "updated": "Aktualisiert",
+    "loading": "Vorhersage wird geladen…",
+    "error": "Die Wettervorhersage konnte nicht geladen werden",
+    "retry": "Erneut versuchen",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "assessment": "Einschätzung des Flugtags",
+    "confidence": "Zuverlässigkeit",
+    "hourShort": "h",
+    "noRain": "Kein Regen",
+    "lightRain": "Leichter Nieselregen – noch fliegbar",
+    "strongGusts": "Starke Böen",
+    "cloudCover": "Bewölkung",
+    "verdictGood": "Gute Flugbedingungen.",
+    "verdictFair": "Fliegbar, aber eingeschränkt – sprechen Sie vor dem Aufstieg mit dem Piloten.",
+    "verdictBad": "Ein schwieriger Flugtag; der Pilot entscheidet am Startplatz, und eine Wetterberuhigung kann dennoch ein Zeitfenster öffnen.",
+    "bookNow": "Flug buchen",
+    "widgetTitle": "Flugwetter der nächsten 15 Tage",
+    "widgetNote": "Wettervorhersage am Startplatz",
+    "mapToggleOpen": "Windy-Windkarte öffnen",
+    "mapToggleClose": "Windkarte ausblenden",
+    "disclaimer": "Vorhersagen sind Richtwerte. Der Pilot entscheidet vor Ort, ob geflogen wird – Sicherheit geht vor; wird ein Flug wetterbedingt verschoben, können Sie umbuchen oder erhalten eine Rückerstattung.",
+    "khiTuongTieuDe": "So lesen Sie die Vorhersage",
+    "khiTuong": [
+      {
+        "tieuDe": "Nebel, tiefe Wolken und Wolkenmeer – der wichtigste Faktor in Sapa",
+        "y": [
+          "Der Startplatz auf 1.500 m liegt genau auf der Höhe, auf der die Feuchtigkeit aus dem Muong-Hoa-Tal zu Wolken kondensiert. Frühmorgens, besonders nach einer Regennacht oder während einer Monsunphase, liegt Nebel über dem Startplatz; sobald die Sonne den Hang erwärmt, löst er sich auf, meist gegen 9–11 Uhr. Am Nachmittag können sich auf Höhe der Bergflanke erneut Wolken bilden und den Startplatz wieder einhüllen. Die Zeile „Nebel“ wird je nach Dichte von grau bis schwarz eingefärbt; das Feld „Nebel und tiefe Wolken“ zeigt die Auflösungszeit und eine eventuelle Rückkehr am Nachmittag.",
+          "Die Besonderheit von Sapa ist das WOLKENMEER: Das Tal ist bis zum Rand mit Wolken gefüllt, während der Startplatz darüber in der Sonne liegt. Traumhaft für Fotos, aber nicht fliegbar – der Landeplatz in Lao Chai auf 1.000 m und ein freier Weg nach unten müssen sichtbar sein. Anzeichen: eine windstille Nacht, hohe Luftfeuchtigkeit nach Regen, eine morgendliche Wolkenbasis unterhalb des Startplatzes. Die Wolkenbasis in der Tabelle wird ÜBER dem Startplatz gemessen – unter 150 m bedeutet, dass die Wolke auf dem Startplatz liegt."
+        ]
+      },
+      {
+        "tieuDe": "Bodenwind – die eigenen Regeln des Fluggebiets",
+        "y": [
+          "Das Fluggebiet Sapa mag schwachen bis mäßigen Wind. Die Regel des Flugteams: Nord, Nordost, Ost oder West stärker als 6 m/s bedeutet kein Flugbetrieb; schwächer ist in Ordnung. Die Richtungspfeile werden genau dann rot, wenn diese Regel verletzt ist. Böen allein entscheiden nicht – 4 m/s mit Böen bis 12 sind in den Bergen normal; erst über 16 ist Aufmerksamkeit geboten.",
+          "In den Bergen ist die Richtung genauso wichtig wie die Stärke: Dieselben 5 m/s ergeben, wenn sie auf den Hang wehen, einen tollen Tag – wehen sie über die Rückseite, gibt es Lee-Turbulenzen und Rotor direkt an der Startkante. Die vorherrschende Richtung des Tages steht auf jeder Tageskachel („NO · 1.2 m/s“), damit Sie sie schnell mit den Regeln des Fluggebiets abgleichen können."
+        ]
+      },
+      {
+        "tieuDe": "Höhenwind – auf 1.500 m liegt der Startplatz nahe der 850-hPa-Fläche",
+        "y": [
+          "Weil Sapa so hoch liegt, ist die 850-hPa-Fläche (~1.500 m) keine „Höhenluft“, sondern der freie Wind auf Starthöhe; 700 hPa (~3.000 m) ist der Wind 1.500 m darüber. Weht es auf diesen Höhen aus West, Ost oder Nord und sehr stark, drückt die Strömung den Hang hinab – der Start wird ruppig, und man kann zurückgeblasen werden, selbst wenn der Windmesser am Boden Windstille anzeigt. Ab 8 m/s auf +500 m sollten Sie es sich gut überlegen; über 12 wird vom Fliegen abgeraten.",
+          "Der Tab Airgram zeigt den Wind nach Höhe für jede Stunde – lesen Sie eine Spalte von oben nach unten, um zu sehen, wo der Wind mit der Höhe zunimmt oder die Richtung ändert (Windscherung). Das Feld „Höhenwind“ fasst den stärksten Wert im Flugzeitfenster und seine Richtung zusammen."
+        ]
+      },
+      {
+        "tieuDe": "Luftdruck – die Frühwarnung für Monsunvorstöße und Gewitter",
+        "y": [
+          "Der Luftdruck auf Meereshöhe sagt nicht, ob morgen die Sonne scheint; er zeigt, dass sich die LUFTMASSE ÄNDERT. Für Sapa ist das entscheidende Ereignis der Vorstoß des Nordost-Monsuns: Nach dem Durchzug einer Kaltfront steigt der Druck schnell, mit starkem N/NO-Wind, tiefen Wolken und tagelangem Nieselregen – die klassische Kombination ohne Flugbetrieb. Ein stetiger Abfall um einige hPa an einem Sommertag deutet auf einen Trog hin, mit wahrscheinlichen Nachmittagsgewittern.",
+          "In den Tropen sinkt der Luftdruck jeden Tag von ~10 bis ~16 Uhr natürlicherweise um 2–3 hPa und erholt sich nachts – ein Tagesrhythmus, kein Unwetter. Die Tabelle vergleicht nur den Trend von Tag zu Tag (die Zeile „Luftdruck“ in der Übersicht), um Fehlalarme zu vermeiden."
+        ]
+      },
+      {
+        "tieuDe": "Thermik in Sapa – mäßig, beginnt spät, endet früh",
+        "y": [
+          "Der Starthang ist dem Tal zugewandt und bekommt die Morgensonne, doch auf 1.500 m ist die Luft kühl und oft feucht, daher ist die Thermik in Sapa selten kräftig; die Spitze liegt an klaren Tagen etwa zwischen 11 und 15 Uhr. Es braucht echten Sonnenschein (Einstrahlung und Sonnenminuten in der Tabelle) – an einem bedeckten Tag erwärmt sich der Boden nicht, und es wird ein Abgleiter (500 m Höhenunterschied, etwa 10–15 Minuten).",
+          "An Wintermorgen liegt oft ein Inversionsdeckel knapp über dem Startplatz – dort stirbt die Thermik, und die Arbeitshöhe ist niedrig. Der Tab Skew-T zeichnet die Luftsäule über dem Startplatz Stunde für Stunde: Das violette Band ist der Deckel, die orange Linie ist ein vom Startplatz aufsteigendes Luftpaket, wo sie die rote Linie trifft, liegt die Thermikobergrenze; die Wolkenbasis im Vergleich zur 1.500-m-Marke des Startplatzes beantwortet die Frage „Liegt die Wolke auf dem Startplatz?“."
+        ]
+      },
+      {
+        "tieuDe": "Flugsaisons in Sapa",
+        "y": [
+          "Die drei besten Jahreszeiten: Mai–Juni, die Zeit, in der die Reisfelder geflutet werden; Juli–August, die Zeit des grünen Reises; September–Dezember, der Herbst – zunächst goldener Reis, dann klarer Himmel und guter Flugwind mit wenig Morgennebel. Dezember–März ist die Saison für Wolkenjäger: Nordost-Monsun, Nieselregen, hartnäckiger Nebel, viele Tage unter 10°C am Startplatz – fliegbar, aber wählen Sie den Tag mit dieser Tabelle, am besten zwei oder drei Tage nach dem Durchzug einer Front, wenn der Himmel aufreißt.",
+          "Juli–August (Zeit des grünen Reises) bringt Nachmittagsgewitter: Vormittags wird meist geflogen, nachmittags ist Schluss, sobald sich Quellwolken auftürmen – die orangen Regenbalken (Schauer/Gewitter) im Meteogram und die Zeile „Gewitter“ zeigen genau das. Am Startplatz ist es 2–3°C kälter als im Ort Sapa, nehmen Sie also eine warme Schicht mit. Wegen der Berge geht die Sonne früher unter als im Flachland; die tatsächliche Zeit des Sonnenuntergangs steht über jedem Tag."
+        ]
+      }
+    ],
+    "dirs": [
+      "N",
+      "NNO",
+      "NO",
+      "ONO",
+      "O",
+      "OSO",
+      "SO",
+      "SSO",
+      "S",
+      "SSW",
+      "SW",
+      "WSW",
+      "W",
+      "WNW",
+      "NW",
+      "NNW"
+    ],
+    "windyLayers": {
+      "wind": "Wind",
+      "gust": "Böen",
+      "clouds": "Wolken",
+      "lclouds": "Tiefe Wolken",
+      "cbase": "Wolkenbasis",
+      "fog": "Nebel",
+      "visibility": "Sichtweite",
+      "rain": "Regen",
+      "rh": "Luftfeuchtigkeit"
+    },
+    "chartType": "Diagramm",
+    "hourLabel": "Uhrzeit",
+    "skewTemp": "Lufttemperatur",
+    "skewDew": "Taupunkt (Feuchte)",
+    "skewParcel": "Thermik vom Boden",
+    "skewDry": "Trockenadiabate −1°C/100m",
+    "skewTiltNote": "Die Temperaturachse im Skew-T ist absichtlich schräg: Eine nach rechts geneigte rote Linie bedeutet NICHT, dass es mit der Höhe wärmer wird – die auf der Linie angegebenen °C-Werte sind die tatsächlichen Temperaturen. Tippen Sie auf Emagram für eine senkrechte Achse.",
+    "thermalTop": "Thermikobergrenze",
+    "skewCaption": "Temperatur (°C) · Wind in m/s rechts",
+    "ground": "Boden",
+    "swipeDays": "Seitlich wischen für die nächsten Tage · oben auf einen Tag tippen, um dorthin zu springen · Regenbalken: blau = Regen, orange = Gewitterschauer",
+    "moreSites": "Wetter an anderen Fluggebieten in Vietnam ansehen",
+    "expert": {
+      "label": "Experte",
+      "good": "Gut fliegbar",
+      "limited": "Eingeschränkt fliegbar",
+      "rest": "Kein Flugbetrieb",
+      "window": "am besten",
+      "note": "Einschätzung eines erfahrenen Piloten vor Ort; hat Vorrang vor der berechneten Bewertung."
+    },
+    "tabs": {
+      "basic": "▦ Tabelle",
+      "meteogram": "📊 Meteogram",
+      "airgram": "🪂 Airgram",
+      "skewt": "🌡 Skew-T"
+    },
+    "compare": {
+      "toggle": "⇄ Vergleichen",
+      "title": "Vergleichen (2–3 wählen):",
+      "loading": "wird geladen…",
+      "day": "Tag",
+      "today": "Heute",
+      "consensus": "Übereinstimmung",
+      "chooseMore": "Wählen Sie ein weiteres Modell zum Vergleich.",
+      "allAgree": "✔ {n} Modelle stimmen in allen {h} Stunden überein – eine solide Vorhersage, gut planbar.",
+      "fewDiffer": "{n} Modelle weichen in {k} Stunden ab ({gio}) – der Rest ist solide; prüfen Sie diese Stunden kurz vorher erneut.",
+      "manyDiffer": "⚠ {n} Modelle sind sich in {k}/{h} Stunden uneinig ({gio}) – dieser Tag ist UNSICHER, legen Sie sich nicht zu früh fest.",
+      "agreeTip": "Alle Modelle stimmen überein",
+      "disagreeTip": "Modelle UNEINIG – diese Stunde ist unsicher"
+    },
+    "skewt": {
+      "loading": "Sondierung wird geladen…",
+      "error": "Die Sondierung konnte nicht geladen werden",
+      "noLevels": "Das Modell hat für diesen Tag zu wenige Höhenstufen.",
+      "inversionBand": "Das violette Band ist eine Inversion: Dort wird es mit der Höhe WÄRMER, die Thermik stirbt – der Deckel.",
+      "noInversion": "Keine Inversion in dieser Schicht (sie würde als waagerechtes violettes Band erscheinen).",
+      "windColumn": "Rechte Spalte: Wind auf jeder Höhe – der Pfeil zeigt, wohin er weht, die Zahl ist m/s."
+    },
+    "fog": {
+      "title": "Nebel und tiefe Wolken in Sapa",
+      "row": "Nebel",
+      "risk": {
+        "thap": "GERINGES Nebelrisiko",
+        "vua": "MITTLERES Nebelrisiko",
+        "cao": "HOHES Nebelrisiko"
+      },
+      "levels": {
+        "quang": "klar",
+        "hanChe": "eingeschränkte Sicht",
+        "trumBai": "Wolke auf dem Startplatz",
+        "muDay": "dichter Nebel"
+      },
+      "noFog": "Keine Anzeichen von Nebel im Flugzeitfenster 07–17 Uhr.",
+      "clearsAt": "Morgennebel/Wolken lösen sich voraussichtlich auf gegen",
+      "allDay": "Nebel/tiefe Wolken liegen den Großteil des Zeitfensters auf dem Startplatz – eine Verschiebung ist wahrscheinlich.",
+      "returnsAt": "Wolken auf Starthöhe hüllen den Startplatz erneut ein ab etwa",
+      "badHours": "Stunden mit Nebel / Wolke auf dem Startplatz",
+      "spread": "Geringste Differenz Temperatur–Taupunkt",
+      "humidity": "Höchste Luftfeuchtigkeit",
+      "lowCloud": "Höchster Anteil tiefer Wolken",
+      "baseMin": "Niedrigste Wolkenbasis über dem Startplatz",
+      "landingNote": "Startplatz 1.500 m, Landeplatz in Lao Chai 1.000 m: Vor dem Start muss der Landeplatz unten im Tal sichtbar sein und die Wolkenbasis über dem Startplatz liegen. Füllt ein Wolkenmeer das Tal, warten Sie, bis es sich hebt.",
+      "tips": [
+        "Sapa liegt auf 1.500 m, mitten in der Schicht tiefer Wolken aus feuchter Luft, die aus dem Muong-Hoa-Tal aufsteigt: Frühmorgens liegt meist Nebel auf dem Startplatz, der sich mit steigender Sonne auflöst (typischerweise 9–11 Uhr); am Nachmittag können sich auf Höhe der Bergflanke erneut Wolken bilden und den Startplatz wieder einhüllen.",
+        "Anzeichen für Nebel: eine Differenz Temperatur–Taupunkt unter 1–2°C bei über 95 % Luftfeuchtigkeit und dichten tiefen Wolken. Wind unter 2 m/s ohne Sonne hält den Nebel fest; 2–4 m/s mit Sonnenschein lösen ihn schnell auf.",
+        "Während des Nordost-Monsuns (Nov.–März) können Nieselregen und Nebel tagelang anhalten; im Sommer tritt Nebel meist nur morgens nach einer Regennacht auf, und mittags reißt es in der Regel auf."
+      ]
+    },
+    "windRules": {
+      "title": "Windrichtungsregeln am Fluggebiet Sapa",
+      "item": "{dir}-Wind über {max} m/s: kein Flugbetrieb – schwächer ist in Ordnung.",
+      "upperItem": "Höhenwind (+500 m) aus W, O oder N über 12 m/s: Der Startplatz ist stark beeinträchtigt, selbst bei schwachem Bodenwind – vom Fliegen wird abgeraten; ab 8 m/s gut überlegen.",
+      "source": "Vom Betreiber des Fluggebiets festgelegt; dieselben Regeln wie im Betriebssystem von mebayluon.com."
+    },
+    "upper": {
+      "title": "Höhenwind",
+      "row": "Wind +500m",
+      "plus500": "+500m über dem Startplatz",
+      "at850": "auf Starthöhe (850 hPa)",
+      "at700": "~3.000 m (700 hPa)",
+      "strongest": "am stärksten",
+      "ok": "Der Höhenwind ist ruhig – kein Einfluss auf den Startplatz.",
+      "warn": "Starker Höhenwind ({h}) – beim Start kann man zurückgedrückt werden; Beschleuniger und tiefes Fliegen am Hang nötig; sprechen Sie mit dem Piloten.",
+      "bad": "Sehr starker Höhenwind aus einem ungünstigen Sektor ({h}) – der Startplatz ist stark beeinträchtigt, selbst bei schwachem Bodenwind; vom Fliegen wird abgeraten."
+    },
+    "introTitle": "So lesen Sie diese Vorhersage für Sapa"
+  },
+  "pricingPage": {
+    "title": "Preise von Sapa Paragliding",
+    "subtitle": "Alles inklusive, keine versteckten Kosten – jetzt reservieren, am Fluggelände bezahlen",
+    "intro": "Preise für Tandem-Paragliding in Sapa: 3 All-inclusive-Pakete mit Versicherung, GoPro-Aufnahmen und Getränken am Fluggelände. Keine Anzahlung nötig – schnelle Bestätigung per Telefon oder über die Website.",
+    "packagesTitle": "Flugpakete und Preise im Detail",
+    "notesTitle": "Hinweise zu den Preisen",
+    "notes": {
+      "deposit": "Keine Anzahlung nötig – erst reservieren, dann bei Ankunft am Fluggelände bezahlen.",
+      "payment": "Zahlung bar, per Banküberweisung oder Karte.",
+      "weather": "Fällt Ihr Flug wetterbedingt aus, können Sie umbuchen oder erhalten 100 % Ihres Geldes zurück.",
+      "group": "Für größere Gruppen kontaktieren Sie uns bitte direkt für ein Gruppenangebot."
+    },
+    "faqTitle": "Häufige Fragen zu den Preisen",
+    "faq": {
+      "included": {
+        "q": "Was ist im Preis für Paragliding in Sapa enthalten?",
+        "a": "Jedes Paket umfasst einen Tandemflug von 8–15 Minuten mit einem international zertifizierten Piloten, GoPro-Fotos & -Video, Paragliding-Versicherung, Getränke am Fluggelände und ein Teilnahmezertifikat."
+      },
+      "deposit": {
+        "q": "Muss ich eine Anzahlung leisten?",
+        "a": "Nein. Reservieren Sie Ihren Platz einfach über die Website oder telefonisch und bezahlen Sie bei Ankunft am Fluggelände."
+      },
+      "cancel": {
+        "q": "Was passiert, wenn das Wetter zum Fliegen zu schlecht ist?",
+        "a": "Ihr Flug wird auf eine andere passende Uhrzeit oder einen anderen Tag verlegt; passt Ihnen das nicht, erstatten wir 100 %."
+      }
+    },
+    "cta": "Jetzt zum besten Preis buchen"
+  },
+  "offices": {
+    "offices": "Unsere Büros",
+    "takeoffOffice": "Büro am Startplatz",
+    "landingOffice": "Büro am Landeplatz",
+    "viewMap": "Auf der Karte ansehen"
+  }
+}

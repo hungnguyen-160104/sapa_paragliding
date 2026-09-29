@@ -102,6 +102,10 @@ const localeMetaMap: Record<string, SeoMetaData> = {
   ko: {
     title: '사파 패러글라이딩 | 므엉호아 계곡 2인 탠덤 비행',
     description: '온라인 예약. 베트남 최고 높이의 패러글라이딩 이륙장에서 국제 자격 파일럿과 함께 날아 보세요. 사파 파노라마 전망, 5만 명 이상의 고객.'
+  },
+  de: {
+    title: 'Paragliding Sapa | Tandemflüge über dem Muong-Hoa-Tal',
+    description: 'Online buchen: Tandem-Paragliding vom höchsten Startplatz Vietnams mit international zertifizierten Piloten. Panoramablick über Sapa, über 50.000 Gäste.'
   }
 }
 

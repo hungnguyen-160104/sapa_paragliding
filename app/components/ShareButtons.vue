@@ -121,7 +121,7 @@
  * Máy có Web Share API sẽ hiện thêm nút gọi bảng chia sẻ của hệ điều hành.
  */
 
-type Lang = 'vi' | 'en' | 'fr' | 'ru' | 'zh' | 'hi' | 'ko'
+type Lang = 'vi' | 'en' | 'fr' | 'ru' | 'zh' | 'hi' | 'ko' | 'de'
 
 const props = withDefaults(
   defineProps<{
@@ -142,7 +142,8 @@ const I18N: Record<Lang, Record<string, string>> = {
   ru: { share: 'Поделиться', shareArticle: 'Поделиться статьёй', shareSpot: 'Поделиться местом полётов', copyLink: 'Скопировать ссылку', copied: 'Скопировано!', nativeShare: 'Поделиться', zaloCopied: 'Скопировано — вставьте в Zalo' },
   zh: { share: '分享', shareArticle: '分享这篇文章', shareSpot: '分享此飞行点', copyLink: '复制链接', copied: '已复制！', nativeShare: '分享', zaloCopied: '已复制 — 粘贴到 Zalo' },
   hi: { share: 'साझा करें', shareArticle: 'यह लेख साझा करें', shareSpot: 'यह उड़ान स्थल साझा करें', copyLink: 'लिंक कॉपी करें', copied: 'कॉपी हो गया!', nativeShare: 'साझा करें', zaloCopied: 'कॉपी हो गया — Zalo में पेस्ट करें' },
-  ko: { share: '공유', shareArticle: '이 글 공유하기', shareSpot: '이 비행장 공유하기', copyLink: '링크 복사', copied: '복사했습니다!', nativeShare: '공유', zaloCopied: '복사했습니다 — Zalo에 붙여넣기' }
+  ko: { share: '공유', shareArticle: '이 글 공유하기', shareSpot: '이 비행장 공유하기', copyLink: '링크 복사', copied: '복사했습니다!', nativeShare: '공유', zaloCopied: '복사했습니다 — Zalo에 붙여넣기' },
+  de: { share: 'Teilen', shareArticle: 'Beitrag teilen', shareSpot: 'Fluggebiet teilen', copyLink: 'Link kopieren', copied: 'Kopiert!', nativeShare: 'Teilen', zaloCopied: 'Kopiert — in Zalo einfügen' }
 }
 
 const { locale } = useI18n()

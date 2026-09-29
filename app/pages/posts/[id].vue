@@ -479,14 +479,14 @@ const currentLocale = computed(() => locale.value || 'vi')
 const isVietnamese = computed(() => String(currentLocale.value).toLowerCase().startsWith('vi'))
 const postId = computed(() => String(route.params.id ?? ''))
 
-const categoryLabels: Record<string, { vi: string; en: string; fr?: string; ko?: string }> = {
-  news: { vi: 'Tin tức', en: 'News', fr: 'Actualités', ko: '소식' },
-  guide: { vi: 'Hướng dẫn', en: 'Guide', fr: 'Guide', ko: '가이드' },
-  experience: { vi: 'Trải nghiệm', en: 'Experience', fr: 'Expérience', ko: '체험' },
-  promotion: { vi: 'Khuyến mãi', en: 'Promotion', fr: 'Promotion', ko: '프로모션' },
-  adventure: { vi: 'Phiêu lưu', en: 'Adventure', fr: 'Aventure', ko: '모험' },
-  safety: { vi: 'An toàn', en: 'Safety', fr: 'Sécurité', ko: '안전' },
-  tips: { vi: 'Mẹo hay', en: 'Tips', fr: 'Conseils', ko: '팁' }
+const categoryLabels: Record<string, { vi: string; en: string; fr?: string; ko?: string; de?: string }> = {
+  news: { vi: 'Tin tức', en: 'News', fr: 'Actualités', ko: '소식', de: 'Aktuelles' },
+  guide: { vi: 'Hướng dẫn', en: 'Guide', fr: 'Guide', ko: '가이드', de: 'Ratgeber' },
+  experience: { vi: 'Trải nghiệm', en: 'Experience', fr: 'Expérience', ko: '체험', de: 'Erlebnis' },
+  promotion: { vi: 'Khuyến mãi', en: 'Promotion', fr: 'Promotion', ko: '프로모션', de: 'Angebot' },
+  adventure: { vi: 'Phiêu lưu', en: 'Adventure', fr: 'Aventure', ko: '모험', de: 'Abenteuer' },
+  safety: { vi: 'An toàn', en: 'Safety', fr: 'Sécurité', ko: '안전', de: 'Sicherheit' },
+  tips: { vi: 'Mẹo hay', en: 'Tips', fr: 'Conseils', ko: '팁', de: 'Tipps' }
 }
 
 const {
@@ -609,6 +609,7 @@ const displayCategory = computed(() => {
   if (!labels) return key
   if (locale.value === 'fr' && labels.fr) return labels.fr
   if (locale.value === 'ko' && labels.ko) return labels.ko
+  if (locale.value === 'de' && labels.de) return labels.de
   return isVietnamese.value ? labels.vi : labels.en
 })
 
@@ -684,7 +685,8 @@ function formatDate(date?: string) {
     ru: 'ru-RU',
     zh: 'zh-CN',
     hi: 'hi-IN',
-    ko: 'ko-KR'
+    ko: 'ko-KR',
+    de: 'de-DE'
   }
 
   return new Date(date).toLocaleDateString(localeMap[currentLocale.value] || 'en-US', {

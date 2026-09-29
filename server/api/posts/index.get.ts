@@ -18,7 +18,8 @@ const PROJECTION = {
   'translations.ru.title': 1, 'translations.ru.excerpt': 1,
   'translations.zh.title': 1, 'translations.zh.excerpt': 1,
   'translations.hi.title': 1, 'translations.hi.excerpt': 1,
-  'translations.ko.title': 1, 'translations.ko.excerpt': 1
+  'translations.ko.title': 1, 'translations.ko.excerpt': 1,
+  'translations.de.title': 1, 'translations.de.excerpt': 1
 } as const
 
 async function docDanhSach() {

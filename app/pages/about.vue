@@ -383,6 +383,10 @@ const getAboutSeoMeta = () => {
     ko: {
       title: '사파 패러글라이딩 소개: 팀과 므엉호아 비행장',
       description: '베트남 사파에서 잊지 못할 비행을 선사하는 사파 패러글라이딩을 소개합니다. 13명 이상의 전문 파일럿.'
+    },
+    de: {
+      title: 'Über Sapa Paragliding: Unser Team & Fluggebiet Muong Hoa',
+      description: 'Lernen Sie Sapa Paragliding kennen – Ihr zuverlässiger Partner für unvergessliche Flüge in Sapa, Vietnam. Über 13 professionelle Piloten.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

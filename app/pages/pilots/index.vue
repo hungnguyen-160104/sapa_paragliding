@@ -155,6 +155,10 @@ const getPilotsSeoMeta = () => {
     ko: {
       title: '사파 패러글라이딩 파일럿: 자격을 갖춘 13명 이상의 탠덤 파일럿',
       description: '사파의 자격을 갖춘 전문 패러글라이딩 파일럿 팀을 만나 보세요. 경험 많은 13명 이상의 파일럿이 여러분의 비행을 함께합니다.'
+    },
+    de: {
+      title: 'Sapa Paragliding Piloten: 13+ zertifizierte Tandempiloten',
+      description: 'Lernen Sie unser Team zertifizierter Paragliding-Piloten in Sapa kennen. Über 13 erfahrene Piloten begleiten Ihr Abenteuer.'
     }
   }
   return localeMetaMap[locale.value] || localeMetaMap.en

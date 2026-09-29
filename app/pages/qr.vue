@@ -97,11 +97,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-type LocaleKey = "vi" | "en" | "fr" | "ru" | "zh" | "hi" | "ko";
+type LocaleKey = "vi" | "en" | "fr" | "ru" | "zh" | "hi" | "ko" | "de";
 
 const { locale } = useI18n();
 
-const supportedLocales: LocaleKey[] = ["vi", "en", "fr", "ru", "zh", "hi", "ko"];
+const supportedLocales: LocaleKey[] = ["vi", "en", "fr", "ru", "zh", "hi", "ko", "de"];
 
 const currentLocale = computed<LocaleKey>(() => {
   const value = locale.value as LocaleKey;
@@ -213,6 +213,18 @@ const pageContent: Record<
     secondaryCta: "여기",
     supportText: "또는 저희 팀과 채팅으로 바로 상담하세요 (24/7)",
     reviewCta: "TripAdvisor에 리뷰 남기기"
+  },
+  de: {
+    title1: "Danke, dass Sie sich für einen Flug entschieden haben",
+    title2: "Mit ",
+    title3: "",
+    subtitle1: "Wir fliegen täglich und bieten",
+    subtitle2: "Abholung und Rücktransfer ab Hotel",
+    primaryCta: "Buchung fortsetzen",
+    infoText: "Infos zu Fluggebiet, Paketen und Leistungen...",
+    secondaryCta: "Hier",
+    supportText: "Oder chatten Sie direkt mit unserem Team (24/7)",
+    reviewCta: "Bewerten Sie uns auf TripAdvisor"
   },
 };
 
