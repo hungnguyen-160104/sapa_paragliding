@@ -115,7 +115,7 @@ const currentLocale = computed(() => locale.value || 'vi')
 
 /**
  * Danh sách phi công lấy từ shared/pilots.ts — nơi duy nhất biết ai còn hiện,
- * ai đã nghỉ (pilot8 = Tuấn Nguyễn, đã chuyển công ty khác). Trước đây trang
+ * ai tạm ẩn. Trước đây trang
  * này và trang chi tiết mỗi bên giữ một danh sách ẩn riêng, sửa một bên quên
  * bên kia là phi công đã nghỉ lại hiện ra, hoặc bấm vào ra 404.
  *

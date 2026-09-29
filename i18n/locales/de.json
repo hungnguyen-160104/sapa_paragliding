@@ -385,17 +385,6 @@
       "records": "Dreifacher vietnamesischer Meister im Präzisionslanden und Vertreter Vietnams bei der Qualifikation zum Paragliding World Cup 2023 in Südkorea.",
       "personality": "Bekannt als „großer Bruder der Nation“ – geboren und aufgewachsen in Da Nang, trägt dieser Mann aus Zentralvietnam die Sanftheit und Wärme der Meeresbrise und des goldenen Sonnenscheins seiner Heimat in sich. Er beeindruckt mit einem sanften Lächeln, einer warmen Stimme und viel Aufmerksamkeit in allem, was er tut. Er ist nicht nur ein erstklassiger Pilot, sondern auch ein professioneller Fotograf. Wenn Sie mit ihm fliegen, können Sie sich auf unzählige großartige Fotos freuen – jeder Blickwinkel ist schön und jeder Moment unvergesslich!"
     },
-    "pilot8": {
-      "name": "Tuan Nguyen",
-      "nickname": "Nhi Ca",
-      "role": "Teampilot",
-      "des": "Ein sanfter, fürsorglicher Pilot, der stets auf die Wünsche seiner Passagiere eingeht. Ob Sie es wild mögen oder lieber entspannt „chillen“ – er hat den perfekten Kamerawinkel und die passende Flugroute. Garantiert möchte danach jeder … sein größter Fan werden!",
-      "img": "Tuan Nguyen_Team Pilot.jpg",
-      "fullname": "TUAN NGUYEN",
-      "experience": "Hat über 1.000 Tandemflüge in Vietnam sicher und erfolgreich absolviert. Er kennt die Meteorologie der Fluggebiete im ganzen Land genau und kann das Flugwetter präzise einschätzen und vorhersagen. Er beherrscht sowohl das Gleitschirmfliegen ohne Motor als auch das Motorschirmfliegen. Als professioneller Gleitschirmlehrer hat er viele Piloten auf ihrem Weg, den Himmel über Vietnam zu erobern, ausgebildet und begleitet.",
-      "records": "Über 1.000 sichere Tandemflüge, führender Experte für Wettervorhersagen in der Fliegerszene und erfahrener Fluglehrer an großen Fluggebieten im ganzen Land.",
-      "personality": "Sein Spitzname „Nhi Ca“ („Zweiter Bruder“) klingt nach ritterlichem Heldenmut, doch sein Wesen ist ausgesprochen freundlich und liebenswert. Besonders Kinder liebt er – nach jedem Flug erinnern sich die kleinen Engel an den netten Piloten und schicken ihm Dankesbriefe. Wenn Sie als Eltern jemanden suchen, der vertrauenswürdig, engagiert und voller positiver Energie ist, um Ihr Kind auf seiner Reise zu den Wolken zu begleiten – dann ist „Zweiter Bruder“ die perfekte Wahl!"
-    },
     "pilot9": {
       "name": "Minh Trung",
       "nickname": "Weltraumkrieger",
@@ -780,8 +769,8 @@
         "description": "Faire Preise mit Gruppenrabatt"
       },
       "multiLanguage": {
-        "title": "Mehrsprachig",
-        "description": "Betreuung auf Vietnamesisch, Englisch, Französisch, Russisch, Chinesisch und Koreanisch"
+        "title": "Vietnamesisch & Englisch",
+        "description": "Unser Team betreut Sie auf Vietnamesisch und Englisch"
       },
       "safetyRecord": {
         "title": "Sicherheit zuerst",

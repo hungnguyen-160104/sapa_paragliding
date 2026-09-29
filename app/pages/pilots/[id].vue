@@ -408,8 +408,9 @@ const pilotParam = route.params.id as string
  * Chỉ ID hợp lệ mới được mở trang; mọi ID khác trả 404 thật.
  *
  * Ba lỗ hổng đã vá ở đây:
- *   - Phi công đã ẩn (pilot8 — đã nghỉ việc): trước chỉ gỡ khỏi danh sách,
- *     trang cá nhân vẫn 200 nên Google vẫn lập chỉ mục được hồ sơ.
+ *   - Phi công đã ẩn: trước chỉ gỡ khỏi danh sách, trang cá nhân vẫn 200
+ *     nên Google vẫn lập chỉ mục được hồ sơ. (Người đã nghỉ hẳn thì xoá khỏi
+ *     shared/pilots.ts, slug lạ rơi xuống nhánh 404 bên dưới.)
  *   - ID không tồn tại (/pilots/99, /pilots/xyz...): trang vẫn render với
  *     khoá dịch thô, title "pilots.99.fullname | pilots.99.role", kèm
  *     robots index,follow và canonical trỏ về chính nó — tức MỌI chuỗi bất kỳ

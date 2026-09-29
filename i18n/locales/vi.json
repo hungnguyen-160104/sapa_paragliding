@@ -383,17 +383,6 @@
       "records": "Ba lần vô địch hạ cánh chính xác tại Việt Nam và là đại diện của Việt Nam tham dự vòng loại World Cup dù lượn 2023 tại Hàn Quốc.",
       "personality": "Được mệnh danh là 'anh trai quốc dân' – sinh ra và lớn lên tại Đà Nẵng, chàng trai miền Trung mang trong mình nét dịu dàng, ấm áp đúng chất gió biển và nắng vàng quê hương. Ấn tượng với nụ cười hiền khô, giọng nói trầm ấm và sự chu đáo, tinh tế trong từng hành động. Không chỉ là phi công đỉnh cao mà còn là nhiếp ảnh gia chuyên nghiệp. Khi bay cùng anh, bạn có thể yên tâm rằng sẽ có vô số tấm hình siêu chất, góc nào cũng đẹp và khoảnh khắc nào cũng đáng nhớ!"
     },
-    "pilot8": {
-      "name": "Tuấn Nguyễn",
-      "nickname": "Nhị ca",
-      "role": "Phi công đội tuyển",
-      "des": "Phi công nhẹ nhàng, ân cần, luôn lắng nghe yêu cầu khách. Bạn thích bay mạnh tay hay 'chill' nhẹ nhàng, anh đều có cách chọn góc quay và đường bay siêu phẩm, đảm bảo bay xong ai cũng muốn… làm fan cứng!",
-      "img": "Tuan Nguyen_Team Pilot.jpg",
-      "fullname": "TUẤN NGUYỄN",
-      "experience": "Đã thực hiện thành công hơn 1.000 chuyến bay đôi (tandem) an toàn tại Việt Nam. Hiểu biết sâu về khí tượng tại các điểm bay trên toàn quốc, với khả năng đánh giá và dự báo thời tiết chính xác phục vụ cho hoạt động bay. Thuần thục kỹ năng bay dù lượn không động cơ và có động cơ. Là hướng dẫn viên dù lượn chuyên nghiệp, đã đào tạo và đồng hành cùng nhiều phi công trên hành trình chinh phục bầu trời Việt Nam.",
-      "records": "Hơn 1.000 chuyến bay tandem an toàn, chuyên gia dự báo khí tượng hàng đầu trong cộng đồng bay, và là huấn luyện viên giàu kinh nghiệm tại các điểm bay lớn trên cả nước.",
-      "personality": "Biệt danh mang đậm chất kiếm hiệp 'Nhị ca' nhưng tính cách anh vô cùng thân thiện và dễ thương. Anh đặc biệt yêu quý trẻ nhỏ — sau mỗi chuyến bay, các thiên thần nhỏ đều nhớ đến chú phi công hiền lành và gửi thư cảm ơn. Nếu cha mẹ đang tìm kiếm một người đáng tin cậy, tận tâm và tràn đầy năng lượng tích cực để đồng hành cùng bé yêu trên hành trình chạm mây — thì không ai khác, Nhị ca chính là lựa chọn tuyệt vời!"
-    },
     "pilot9": {
       "name": "Minh Trung",
       "nickname": "Chiến thần không gian",
@@ -770,8 +759,8 @@
         "description": "Giá cạnh tranh với ưu đãi hấp dẫn cho nhóm"
       },
       "multiLanguage": {
-        "title": "Đa Ngôn Ngữ",
-        "description": "Hỗ trợ Việt, Anh, Pháp, Nga, Trung, Hàn"
+        "title": "Song Ngữ Việt – Anh",
+        "description": "Đội ngũ hỗ trợ bằng tiếng Việt và tiếng Anh"
       }
     },
     "process": {

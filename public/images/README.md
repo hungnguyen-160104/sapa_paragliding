@@ -25,7 +25,6 @@ Place in `gallery/` subdirectory:
 Place in `pilots/` subdirectory:
 - `Long Nguyen_Chief Pilot.jpg`
 - `Minh Tran_Senior Pilot.jpg`
-- `Tuan Nguyen_Team Pilot.jpg`
 - `Hai Le_Team Pilot.jpg`
 - `Nam Pham_Team Pilot.jpg`
 
@@ -92,7 +91,6 @@ public/images/
 └── pilots/
     ├── Long Nguyen_Chief Pilot.jpg
     ├── Minh Tran_Senior Pilot.jpg
-    ├── Tuan Nguyen_Team Pilot.jpg
     ├── Hai Le_Team Pilot.jpg
     └── Nam Pham_Team Pilot.jpg
 ```

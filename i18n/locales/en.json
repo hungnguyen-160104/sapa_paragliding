@@ -385,17 +385,6 @@
       "records": "Three-time precision landing champion in Vietnam and Vietnam's representative at the 2023 Paragliding World Cup qualifier in South Korea.",
       "personality": "Known as the 'national brother' – born and raised in Da Nang, this Central Vietnamese guy carries the gentleness and warmth of sea breeze and golden sunshine of his homeland. Impressive with a gentle smile, warm voice, and thoughtfulness in every action. Not only a top-notch pilot but also a professional photographer. Flying with him, you can be sure you'll have countless amazing photos, every angle is beautiful and every moment is memorable!"
     },
-    "pilot8": {
-      "name": "Tuan Nguyen",
-      "nickname": "Nhi Ca",
-      "role": "Team Pilot",
-      "des": "A gentle, caring pilot who always listens to passenger requests. Whether you like aggressive flying or gentle 'chill', he has the perfect camera angle and flight path, guaranteed everyone wants to... become a hardcore fan!",
-      "img": "Tuan Nguyen_Team Pilot.jpg",
-      "fullname": "TUAN NGUYEN",
-      "experience": "Has successfully completed over 1,000 tandem flights safely in Vietnam. Deep understanding of meteorology at flying sites across the country, with the ability to accurately assess and forecast weather for flying activities. Proficient in motorless and powered paragliding skills. A professional paragliding instructor who has trained and guided many pilots on their journey to conquer Vietnam's skies.",
-      "records": "Over 1,000 safe tandem flights, leading weather forecasting expert in the flying community, and experienced instructor at major flying sites across the country.",
-      "personality": "His nickname carries the chivalrous spirit of 'Nhị Ca' (Second Brother) but his personality is extremely friendly and adorable. He especially loves children — after each flight, the little angels remember the kind pilot and send thank you letters. If parents are looking for someone trustworthy, dedicated, and full of positive energy to accompany their child on a journey to touch the clouds — then no one else, Second Voice is the perfect choice!"
-    },
     "pilot9": {
       "name": "Minh Trung",
       "nickname": "Space Warrior",
@@ -780,8 +769,8 @@
         "description": "Competitive prices with group discounts available"
       },
       "multiLanguage": {
-        "title": "Multi-Language",
-        "description": "Support in Vietnamese, English, French, Russian, Chinese and Korean"
+        "title": "Vietnamese & English",
+        "description": "Our team supports you in Vietnamese and English"
       },
       "safetyRecord": {
         "title": "Safety First",

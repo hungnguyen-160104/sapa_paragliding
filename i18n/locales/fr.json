@@ -383,17 +383,6 @@
       "records": "Trois fois champion d’atterrissage de précision au Vietnam et représentant du Vietnam à la manche qualificative de la Coupe du monde de parapente 2023 en Corée du Sud.",
       "personality": "Surnommé « le grand frère national » — né et grandi à Đà Nẵng, il dégage une douceur et une chaleur typiques du soleil et de la mer. Son sourire, sa voix posée et son attention aux détails marquent les esprits. En plus d’être un excellent pilote, il est aussi photographe pro : attendez-vous à des photos incroyables, sous tous les angles !"
     },
-    "pilot8": {
-      "name": "Tuấn Nguyễn",
-      "nickname": "Deuxième grand frère",
-      "role": "Pilote d’équipe",
-      "des": "Pilote doux et attentionné, toujours à l’écoute. Que vous vouliez un vol intense ou un vol « chill », il sait choisir des trajectoires et des angles de prise de vue exceptionnels — après le vol, tout le monde veut devenir fan !",
-      "img": "Tuan Nguyen_Team Pilot.jpg",
-      "fullname": "TUẤN NGUYỄN",
-      "experience": "Plus de 1 000 vols biplace (tandem) réussis en toute sécurité au Vietnam. Grande connaissance de la météo des sites de vol du pays, avec une capacité d’évaluation et de prévision précise au service de l’activité. Maîtrise du parapente et du paramoteur. Instructeur de parapente, il a formé et accompagné de nombreux pilotes sur leur chemin vers le ciel vietnamien.",
-      "records": "Plus de 1 000 vols biplace en sécurité, expert en prévision météo dans la communauté, instructeur expérimenté sur de nombreux sites majeurs du pays.",
-      "personality": "Surnom de style arts martiaux, mais un caractère super gentil et attachant. Il adore les enfants — après chaque vol, les petits anges se souviennent de lui et envoient des messages de remerciement. Si vous cherchez quelqu’un de fiable, attentionné et positif pour faire voler votre enfant, « Nhị ca » est un choix parfait !"
-    },
     "pilot9": {
       "name": "Minh Trung",
       "nickname": "Dieu du ciel",
@@ -770,8 +759,8 @@
         "description": "Prix compétitifs et offres de groupe attractives"
       },
       "multiLanguage": {
-        "title": "Multilingue",
-        "description": "Support : Vietnamien, Anglais, Français, Russe, Chinois, Coréen"
+        "title": "Vietnamien et anglais",
+        "description": "Notre équipe vous accompagne en vietnamien et en anglais"
       }
     },
     "process": {

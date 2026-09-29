@@ -216,7 +216,9 @@ export const buildOrganizationJsonLD = (locale: string = 'en') => {
         contactType: 'customer service',
         telephone: '+84-386-887-489',
         areaServed: 'VN',
-        availableLanguage: ['Vietnamese', 'English', 'French', 'Russian', 'Chinese', 'Hindi', 'Korean', 'German']
+        // Ngôn ngữ nhân viên thật sự nói được khi khách gọi — không phải số bản
+        // dịch của website (site có 8 thứ tiếng, đội chỉ nói Việt và Anh).
+        availableLanguage: ['Vietnamese', 'English']
       }
     ]
   }

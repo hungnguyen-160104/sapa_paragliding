@@ -22,7 +22,6 @@ export const PILOT_SLUG_BY_KEY = {
   pilot5: 'bishal-thapa',
   pilot6: 'bishal-skyboy',
   pilot7: 'dinh-the-anh',
-  pilot8: 'tuan-nguyen',
   pilot9: 'minh-trung',
   pilot10: 'phan-hung',
   pilot11: 'ngo-van-doi',
@@ -40,13 +39,14 @@ const SLUG_TO_KEY = new Map<string, PilotKey>(
 )
 
 /**
- * Phi công đã nghỉ, không hiển thị nữa.
- * pilot8 = Tuấn Nguyễn (Nhị ca) — đã chuyển sang công ty khác.
+ * Phi công tạm ẩn (còn giữ hồ sơ, chưa hiện lên trang).
  *
- * Giữ slug trong bảng trên để địa chỉ của anh ấy vẫn được nhận diện rồi trả
- * 404 thật, thay vì rơi vào nhánh "không biết đây là gì".
+ * Phi công đã nghỉ hẳn thì XOÁ khỏi bảng trên và khỏi i18n, đừng để ở đây:
+ * slug không còn trong bảng thì trang chi tiết trả 404 thật như mọi địa chỉ
+ * lạ. pilot8 (đã nghỉ) bị xoá theo cách đó ngày 29/09/2026 — không dùng lại
+ * số 8 cho người mới, để link cũ /pilots/pilot8 không trỏ nhầm sang người khác.
  */
-export const HIDDEN_PILOT_KEYS: readonly PilotKey[] = ['pilot8']
+export const HIDDEN_PILOT_KEYS: readonly PilotKey[] = []
 
 export function isHiddenPilot(key: PilotKey): boolean {
   return HIDDEN_PILOT_KEYS.includes(key)
