@@ -1354,8 +1354,7 @@
       "headOffice": "본사",
       "phone": "전화",
       "email": "이메일",
-      "representative": "대표자",
-      "registrationLine": "사업자 등록 {date} 발급 ({issuer})"
+      "representative": "대표자"
     },
     "effectiveDate": "시행일",
     "authoritative": "베트남어본이 정본이며, 본 번역본은 편의를 위해 제공됩니다.",

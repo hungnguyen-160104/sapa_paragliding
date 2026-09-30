@@ -46,8 +46,6 @@ export interface CompanyLegalInfo {
   latestChange: string
   /** Cơ quan cấp. */
   issuedBy: string
-  /** Cơ quan cấp, viết tắt cho footer. */
-  issuedByShort: string
   /** Địa chỉ trụ sở chính. */
   headOffice: string
   /** Điện thoại của pháp nhân. */
@@ -73,8 +71,6 @@ export const COMPANY: CompanyLegalInfo = {
   // Chưa đăng ký thay đổi lần nào. Khi có: 'đăng ký thay đổi lần 1 ngày dd/mm/yyyy'.
   latestChange: '',
   issuedBy: 'Phòng Đăng ký kinh doanh – Sở Kế hoạch và Đầu tư tỉnh Lào Cai',
-  // Viết tắt cho dòng chữ nhỏ ở footer — cùng cơ quan với issuedBy.
-  issuedByShort: 'Phòng ĐKKD – Sở KH&ĐT Lào Cai',
   headOffice: 'Tổ 3, Phường Cầu Mây, Thị xã Sa Pa, Tỉnh Lào Cai, Việt Nam',
   phone: '0964073555',
   email: 'sapa.paragliding@gmail.com',

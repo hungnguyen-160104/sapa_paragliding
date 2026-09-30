@@ -230,7 +230,8 @@
             <p>{{ $t('footer.legal.flightPermit') }}</p>
             <p>{{ $t('footer.legal.sportLicense') }}</p>
             <!-- Dòng 4 (chủ duyệt: "cứ cho lên đủ, chữ nhỏ gọn"): trụ sở · ĐT ·
-                 email · đại diện · ĐKDN ngày + nơi cấp. Giá trị từ shared/legal.ts. -->
+                 email · đại diện. Chủ chốt KHÔNG hiện ngày/nơi cấp ĐKDN ở footer
+                 (bản đầy đủ ở cuối các trang /policies). Giá trị từ shared/legal.ts. -->
             <p class="text-[11px] text-gray-500">{{ legalDetailLine }}</p>
           </div>
         </div>
@@ -277,8 +278,7 @@ const legalDetailLine = computed(() =>
     `${t('legal.company.headOffice')}: ${COMPANY.headOffice}`,
     `${t('legal.company.phone')} ${COMPANY.phone}`,
     COMPANY.email,
-    `${t('legal.company.representative')}: ${COMPANY.representative}`,
-    t('legal.company.registrationLine', { date: COMPANY.firstRegisteredDate, issuer: COMPANY.issuedByShort })
+    `${t('legal.company.representative')}: ${COMPANY.representative}`
   ].join(' · ')
 )
 

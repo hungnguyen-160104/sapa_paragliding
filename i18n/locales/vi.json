@@ -1340,8 +1340,7 @@
       "headOffice": "Trụ sở",
       "phone": "ĐT",
       "email": "Email",
-      "representative": "Đại diện",
-      "registrationLine": "ĐKDN cấp {date} tại {issuer}"
+      "representative": "Đại diện"
     },
     "effectiveDate": "Ngày áp dụng",
     "authoritative": "",

@@ -1354,8 +1354,7 @@
       "headOffice": "Sitz",
       "phone": "Tel.",
       "email": "E-Mail",
-      "representative": "Vertreter",
-      "registrationLine": "Handelsregistrierung ausgestellt am {date} von {issuer}"
+      "representative": "Vertreter"
     },
     "effectiveDate": "Gültig ab",
     "authoritative": "Maßgeblich ist die vietnamesische Fassung; diese Übersetzung dient nur Ihrer Information.",
