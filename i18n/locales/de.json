@@ -516,7 +516,7 @@
           },
           "payment": {
             "title": "Zahlung",
-            "desc": "Bar, per Banküberweisung, Kreditkarte oder PayPal. In der Regel keine Vorauszahlung; in manchen Fällen (Homestay-Buchung, große Gruppen, Privattransfer, Spitzentage) kann eine Teil- oder Vollzahlung im Voraus nötig sein."
+            "desc": "Bar, per Banküberweisung, Kreditkarte oder PayPal. Keine Anzahlung — vorab reservieren, am Fluggelände bezahlen."
           },
           "confirmation": {
             "title": "Bestätigung",
@@ -1307,7 +1307,7 @@
     "packagesTitle": "Flugpakete und Preise im Detail",
     "notesTitle": "Hinweise zu den Preisen",
     "notes": {
-      "deposit": "In der Regel keine Anzahlung – erst reservieren, dann bei Ankunft am Fluggelände bezahlen. In manchen Fällen (Homestay, große Gruppen, Privattransfer, Spitzentage) kann eine Teil- oder Vollzahlung im Voraus nötig sein; wir sagen es Ihnen bei der Bestätigung klar.",
+      "deposit": "Keine Anzahlung — vorab reservieren, am Fluggelände bezahlen.",
       "payment": "Zahlung bar, per Banküberweisung, Karte oder PayPal.",
       "weather": "Fällt Ihr Flug wetterbedingt aus, können Sie umbuchen oder erhalten 100 % Ihres Geldes zurück.",
       "group": "Für größere Gruppen kontaktieren Sie uns bitte direkt für ein Gruppenangebot.",
@@ -1321,7 +1321,7 @@
       },
       "deposit": {
         "q": "Muss ich eine Anzahlung leisten?",
-        "a": "In der Regel nicht: Reservieren Sie über die Website oder telefonisch und bezahlen Sie bei Ankunft am Fluggelände. In manchen Fällen wie Homestay-Buchungen, großen Gruppen, Privattransfer oder Spitzentagen kann eine Teil- oder Vollzahlung im Voraus nötig sein – wir sagen es Ihnen bei der Bestätigung klar."
+        "a": "Nein. Reservieren Sie einfach über die Website oder telefonisch und bezahlen Sie am Fluggelände."
       },
       "cancel": {
         "q": "Was passiert, wenn das Wetter zum Fliegen zu schlecht ist?",

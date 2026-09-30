@@ -141,15 +141,15 @@
     "intro": "This policy explains how you pay for paragliding flights and related services provided by {companyName}.",
     "sections": [
       {
-        "heading": "1. Deposit and prepayment",
+        "heading": "1. No deposit, no prepayment",
         "blocks": [
           {
             "type": "bullet",
-            "text": "Usually you only need to reserve via the website or hotline / Zalo / WhatsApp and pay directly at the flight site before take-off; no deposit is needed."
+            "text": "No deposit — reserve in advance, pay at the flying site. You only need to book via the website or hotline / Zalo / WhatsApp; we never require a deposit or prepayment."
           },
           {
             "type": "bullet",
-            "text": "In some cases part or all of the cost may need to be paid in advance: bookings that include a homestay, large groups, private transport, peak days. We will state the amount and deadline clearly when confirming; any amount paid is refundable under the Cancellation, Rescheduling & Refund Policy."
+            "text": "Payment is made directly at the flight site before take-off."
           },
           {
             "type": "bullet",
@@ -313,7 +313,7 @@
         "blocks": [
           {
             "type": "bullet",
-            "text": "Where you have paid (or prepaid) and are entitled to a refund, it is made within 05 working days of agreeing the refund amount, via the same method you used to pay (or another method you agree to)."
+            "text": "Where you have already paid (e.g. through an intermediary platform or by PayPal) and are entitled to a refund, it is made within 05 working days of agreeing the refund amount, via the same method you used to pay (or another method you agree to)."
           },
           {
             "type": "bullet",

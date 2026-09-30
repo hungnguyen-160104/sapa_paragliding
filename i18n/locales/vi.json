@@ -514,7 +514,7 @@
           },
           "payment": {
             "title": "Thanh toán",
-            "desc": "Tiền mặt, chuyển khoản ngân hàng, thẻ tín dụng hoặc PayPal. Thông thường không cần thanh toán trước; một số trường hợp (đặt homestay, nhóm đông, xe riêng, ngày cao điểm) có thể cần chuyển trước một phần hoặc toàn bộ."
+            "desc": "Tiền mặt, chuyển khoản ngân hàng, thẻ tín dụng hoặc PayPal. Không đặt cọc — đặt chỗ trước, thanh toán tại điểm bay."
           },
           "confirmation": {
             "title": "Xác nhận",
@@ -1293,7 +1293,7 @@
     "packagesTitle": "Các gói bay và giá chi tiết",
     "notesTitle": "Lưu ý về giá",
     "notes": {
-      "deposit": "Thông thường không cần đặt cọc – đặt chỗ trước, thanh toán khi tới điểm bay. Một số trường hợp (đặt homestay, nhóm đông, xe riêng, ngày cao điểm) có thể cần chuyển trước một phần hoặc toàn bộ; chúng tôi sẽ báo rõ khi xác nhận đặt chỗ.",
+      "deposit": "Không đặt cọc — đặt chỗ trước, thanh toán tại điểm bay.",
       "payment": "Thanh toán bằng tiền mặt, chuyển khoản, thẻ hoặc PayPal.",
       "weather": "Nếu chuyến bay bị huỷ do thời tiết, bạn được đổi lịch hoặc hoàn tiền 100%.",
       "group": "Đoàn đông người vui lòng liên hệ trực tiếp để nhận ưu đãi nhóm.",
@@ -1307,7 +1307,7 @@
       },
       "deposit": {
         "q": "Có cần đặt cọc trước không?",
-        "a": "Thông thường là không: bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán khi tới điểm bay. Riêng một số trường hợp như đặt homestay, nhóm đông, xe riêng hoặc ngày cao điểm có thể cần chuyển trước một phần hoặc toàn bộ – chúng tôi sẽ báo rõ khi xác nhận đặt chỗ."
+        "a": "Không. Bạn chỉ cần đặt chỗ trước qua website hoặc điện thoại và thanh toán tại điểm bay."
       },
       "cancel": {
         "q": "Nếu thời tiết xấu không bay được thì sao?",

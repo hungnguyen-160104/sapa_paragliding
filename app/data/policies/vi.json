@@ -141,15 +141,15 @@
     "intro": "Chính sách này quy định cách khách hàng thanh toán cho dịch vụ bay dù lượn và dịch vụ đi kèm do {companyName} cung cấp.",
     "sections": [
       {
-        "heading": "1. Đặt cọc và thanh toán trước",
+        "heading": "1. Không đặt cọc, không thanh toán trước",
         "blocks": [
           {
             "type": "bullet",
-            "text": "Thông thường khách chỉ cần đặt chỗ trước qua website hoặc hotline / Zalo / WhatsApp và thanh toán trực tiếp tại điểm bay, trước giờ cất cánh; không cần đặt cọc."
+            "text": "Không đặt cọc — đặt chỗ trước, thanh toán tại điểm bay. Khách chỉ cần đặt chỗ qua website hoặc hotline / Zalo / WhatsApp; chúng tôi không yêu cầu đặt cọc hay chuyển trước trong bất kỳ trường hợp nào."
           },
           {
             "type": "bullet",
-            "text": "Một số trường hợp có thể phải chuyển trước một phần hoặc toàn bộ chi phí: đặt kèm homestay, nhóm đông, xe riêng, ngày cao điểm. Chúng tôi sẽ báo rõ số tiền và thời hạn khi xác nhận đặt chỗ; khoản đã chuyển được hoàn theo Chính sách hủy, đổi lịch và hoàn tiền."
+            "text": "Việc thanh toán được thực hiện trực tiếp tại điểm bay, trước giờ cất cánh."
           },
           {
             "type": "bullet",
@@ -313,7 +313,7 @@
         "blocks": [
           {
             "type": "bullet",
-            "text": "Khi khách đã thanh toán (hoặc đã chuyển trước) và thuộc diện được hoàn, tiền được hoàn trong vòng 05 ngày làm việc kể từ khi hai bên thống nhất số tiền hoàn, qua đúng phương thức khách đã thanh toán (hoặc phương thức khác nếu khách đồng ý)."
+            "text": "Trường hợp khách đã thanh toán (ví dụ đặt qua nền tảng trung gian hoặc thanh toán PayPal) và thuộc diện được hoàn, tiền được hoàn trong vòng 05 ngày làm việc kể từ khi hai bên thống nhất số tiền hoàn, qua đúng phương thức khách đã thanh toán (hoặc phương thức khác nếu khách đồng ý)."
           },
           {
             "type": "bullet",

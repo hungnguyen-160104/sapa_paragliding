@@ -514,7 +514,7 @@
           },
           "payment": {
             "title": "Paiement",
-            "desc": "Espèces, virement bancaire, carte de crédit ou PayPal. En général aucun prépaiement ; certains cas (réservation en homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance."
+            "desc": "Espèces, virement bancaire, carte de crédit ou PayPal. Sans acompte — réservez à l'avance, payez sur le site de vol."
           },
           "confirmation": {
             "title": "Confirmation",
@@ -1293,7 +1293,7 @@
     "packagesTitle": "Forfaits de vol et tarifs détaillés",
     "notesTitle": "À savoir sur les tarifs",
     "notes": {
-      "deposit": "En général sans acompte – réservez, puis payez à votre arrivée au site de vol. Certains cas (homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance ; nous vous le préciserons à la confirmation.",
+      "deposit": "Sans acompte — réservez à l'avance, payez sur le site de vol.",
       "payment": "Paiement en espèces, par virement, par carte ou via PayPal.",
       "weather": "Si le vol est annulé pour cause de météo, vous pouvez le reporter ou être remboursé à 100%.",
       "group": "Pour les groupes, contactez-nous directement pour une offre spéciale.",
@@ -1307,7 +1307,7 @@
       },
       "deposit": {
         "q": "Faut-il verser un acompte ?",
-        "a": "En général non : réservez sur le site ou par téléphone et payez à votre arrivée au site de vol. Certains cas (homestay, grands groupes, véhicule privé, jours de forte affluence) peuvent nécessiter un paiement partiel ou total à l'avance – nous vous le préciserons à la confirmation."
+        "a": "Non. Réservez simplement sur le site ou par téléphone et payez sur le site de vol."
       },
       "cancel": {
         "q": "Et si la météo ne permet pas de voler ?",
