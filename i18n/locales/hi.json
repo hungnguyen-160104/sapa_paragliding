@@ -1340,7 +1340,8 @@
       "headOffice": "मुख्यालय",
       "phone": "फ़ोन",
       "email": "ईमेल",
-      "representative": "प्रतिनिधि"
+      "representative": "प्रतिनिधि",
+      "registrationLine": "व्यवसाय पंजीकरण {date} को {issuer} द्वारा जारी"
     },
     "effectiveDate": "प्रभावी तिथि",
     "authoritative": "वियतनामी संस्करण ही मान्य पाठ है; यह अनुवाद केवल सुविधा के लिए है।",

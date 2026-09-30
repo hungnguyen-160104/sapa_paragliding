@@ -1340,7 +1340,8 @@
       "headOffice": "Siège",
       "phone": "Tél.",
       "email": "E-mail",
-      "representative": "Représentant"
+      "representative": "Représentant",
+      "registrationLine": "Immatriculation délivrée le {date} par {issuer}"
     },
     "effectiveDate": "Date d'effet",
     "authoritative": "La version vietnamienne fait foi ; cette traduction est fournie à titre indicatif.",

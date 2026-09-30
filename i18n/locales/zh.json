@@ -1354,7 +1354,8 @@
       "headOffice": "总部",
       "phone": "电话",
       "email": "邮箱",
-      "representative": "法定代表人"
+      "representative": "法定代表人",
+      "registrationLine": "企业登记于 {date} 由 {issuer} 签发"
     },
     "effectiveDate": "生效日期",
     "authoritative": "以越南语版本为准，本译文仅供参考。",

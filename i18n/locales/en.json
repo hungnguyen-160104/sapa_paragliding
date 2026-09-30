@@ -1354,7 +1354,8 @@
       "headOffice": "Head office",
       "phone": "Tel",
       "email": "Email",
-      "representative": "Representative"
+      "representative": "Representative",
+      "registrationLine": "Business registration issued {date} by {issuer}"
     },
     "effectiveDate": "Effective date",
     "authoritative": "The Vietnamese version is the authoritative text; this translation is provided for your convenience.",

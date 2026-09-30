@@ -1340,7 +1340,8 @@
       "headOffice": "Адрес",
       "phone": "Тел.",
       "email": "Эл. почта",
-      "representative": "Представитель"
+      "representative": "Представитель",
+      "registrationLine": "Регистрация выдана {date}: {issuer}"
     },
     "effectiveDate": "Дата вступления в силу",
     "authoritative": "Юридическую силу имеет вьетнамская версия; данный перевод носит справочный характер.",

@@ -222,14 +222,16 @@
            shared/legal.ts — sửa một chỗ đó là đủ. -->
       <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-8 text-sm md:pr-8 lg:pr-20 xl:pr-24">
         <div class="md:pl-0 lg:pl-2 xl:pl-6 2xl:pl-12">
-          <!-- ĐÚNG 3 dòng, chữ nhỏ, không ngày (chủ chốt 30/09/2026): tên rút
-               gọn + MST, phép bay, giấy phép kinh doanh. Thông tin pháp nhân
-               đầy đủ (trụ sở, ĐKDN ngày/nơi cấp, đại diện, ĐT, email) nằm ở cuối
-               các trang /policies (CompanyLegalInfo). -->
+          <!-- 3 dòng chính (chủ chốt 30/09/2026): tên rút gọn + MST, phép bay,
+               giấy phép kinh doanh — không ngày giấy phép; thêm dòng 4 chữ rất
+               nhỏ. Bản đầy đủ nằm ở cuối các trang /policies (CompanyLegalInfo). -->
           <div class="space-y-1 text-xs leading-relaxed text-gray-400">
             <p class="font-semibold text-gray-300">{{ COMPANY.footerName }} ({{ COMPANY.taxCode }})</p>
             <p>{{ $t('footer.legal.flightPermit') }}</p>
             <p>{{ $t('footer.legal.sportLicense') }}</p>
+            <!-- Dòng 4 (chủ duyệt: "cứ cho lên đủ, chữ nhỏ gọn"): trụ sở · ĐT ·
+                 email · đại diện · ĐKDN ngày + nơi cấp. Giá trị từ shared/legal.ts. -->
+            <p class="text-[11px] text-gray-500">{{ legalDetailLine }}</p>
           </div>
         </div>
 
@@ -268,6 +270,17 @@ import { COMPANY, POLICY_PAGES } from '~~/shared/legal'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+
+/** Dòng pháp nhân chữ nhỏ thứ 4 trong footer. */
+const legalDetailLine = computed(() =>
+  [
+    `${t('legal.company.headOffice')}: ${COMPANY.headOffice}`,
+    `${t('legal.company.phone')} ${COMPANY.phone}`,
+    COMPANY.email,
+    `${t('legal.company.representative')}: ${COMPANY.representative}`,
+    t('legal.company.registrationLine', { date: COMPANY.firstRegisteredDate, issuer: COMPANY.issuedByShort })
+  ].join(' · ')
+)
 
 /**
  * Từ cỡ màn nào thì cấm dòng liên hệ xuống hàng.
