@@ -47,10 +47,10 @@
                hẳn vào nhau, nên chỉ tăng dần từng nấc nhỏ.
                Ẩn ở dải 1024-1279px vì menu ngang 8 mục chiếm hết chỗ.
                Màu #194d9b lấy từ .text-stroke-sapa. -->
-          <!-- Tiếng Nga và Pháp: 9 mục menu đã chiếm hết dải 1280–1535px, chữ
-               thương hiệu ("ПАРАПЛАНЕРИЗМ В САПЕ", "PARAPENTE À SAPA") chỉ còn
-               chỗ từ 1536px. -->
-          <div :class="['hidden flex-col justify-center leading-[0.9] text-[#194d9b] font-black', ['ru', 'fr', 'de'].includes(locale) ? '2xl:flex' : 'xl:flex']">
+          <!-- Từ khi có 8 nút ngôn ngữ, 9 mục menu chiếm hết dải 1280–1535px ở
+               MỌI thứ tiếng (tiếng Việt "DÙ LƯỢN SAPA" đè lên "TRANG CHỦ"), nên
+               chữ thương hiệu cạnh logo chỉ hiện từ 1700px (ở 1536px menu tăng cỡ chữ, vẫn đè). -->
+          <div class="hidden min-[1700px]:flex flex-col justify-center leading-[0.9] text-[#194d9b] font-black">
             <span class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[0] }}</span>
             <span v-if="brandLines[1]" class="text-[1.35rem] 2xl:text-2xl">{{ brandLines[1] }}</span>
           </div>

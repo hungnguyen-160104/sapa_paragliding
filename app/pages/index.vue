@@ -63,6 +63,19 @@ if (import.meta.server && postsStore.error) {
 const currentLocale = computed(() => locale.value || 'vi')
 const currentPostIndex = ref(0)
 
+/** Câu ngắn trên hero (chủ 30/09). Đặt tại đây thay vì i18n cho gọn một chỗ. */
+const HERO_TAGLINE: Record<string, string> = {
+  vi: 'Bay cùng đội phi công hàng đầu Việt Nam — an toàn, cảnh đẹp không giới hạn',
+  en: 'Fly with Vietnam’s leading pilot team — safe flights, limitless views',
+  fr: 'Volez avec la meilleure équipe de pilotes du Vietnam — en toute sécurité, des paysages à perte de vue',
+  ru: 'Летайте с лучшей командой пилотов Вьетнама — безопасно и с бескрайними видами',
+  zh: '与越南顶尖飞行员团队一起飞翔——安全无忧，美景无限',
+  hi: 'वियतनाम की शीर्ष पायलट टीम के साथ उड़ान भरें — सुरक्षित, असीम नज़ारे',
+  ko: '베트남 최고의 파일럿 팀과 함께 날아요 — 안전하게, 끝없는 절경 속으로',
+  de: 'Fliegen Sie mit Vietnams führendem Pilotenteam – sicher und mit grenzenloser Aussicht'
+}
+const heroTagline = computed(() => HERO_TAGLINE[currentLocale.value] ?? HERO_TAGLINE.en)
+
 type SeoMetaData = {
   title: string
   description: string
@@ -306,15 +319,15 @@ onBeforeUnmount(() => {
           loop
           playsinline
           preload="none"
-          class="w-full h-full object-cover"
+          class="block w-full h-full object-cover"
         ></video>
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-900/70"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.45)_0%,rgba(15,23,42,0.10)_40%,rgba(15,23,42,0.55)_78%,rgba(15,23,42,0.80)_100%)]"></div>
       </div>
 
       <div class="relative z-10 text-center text-white px-6 w-full max-w-5xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-500/20 border border-red-400/30 mb-6 animate-fade-in">
-          <div class="w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
-          <span class="text-red-300 text-sm font-medium uppercase tracking-wider">
+        <div class="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm border border-white/20 rounded-full text-white mb-6 animate-fade-in">
+          <div class="w-2 h-2 bg-[#f87171] rounded-full animate-pulse"></div>
+          <span class="text-white text-sm font-medium uppercase tracking-wider">
             {{ $t('homePage.heroBadge') }}
           </span>
         </div>
@@ -322,13 +335,16 @@ onBeforeUnmount(() => {
         <!-- text-hero-shadow: cùng công thức đổ bóng với chữ hero của
              mebayluon.com — xem app/assets/css/main.css -->
         <h1
-          class="text-hero-shadow text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none mb-5 animate-fade-in uppercase tracking-wider"
+          class="text-hero-shadow text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-none mb-5 animate-fade-in uppercase tracking-wider drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]"
         >
           {{ $t('hero.title') }}
         </h1>
 
-        <p class="text-base md:text-lg mb-8 text-slate-200 max-w-4xl mx-auto leading-relaxed animate-fade-in-delay">
-          {{ $t('hero.subtitle') }}
+        <!-- Câu ngắn thay đoạn mô tả 376 ký tự (chủ 30/09): chữ dài đè lên
+             video đọc rất mệt. Đoạn dài chuyển xuống đầu section #about bên
+             dưới, vẫn nằm trong HTML nên không mất nội dung SEO. -->
+        <p class="text-base md:text-lg mb-8 text-slate-200 max-w-[620px] mx-auto leading-relaxed animate-fade-in-delay drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+          {{ heroTagline }}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-3 justify-center animate-fade-in-delay-2">
@@ -350,16 +366,16 @@ onBeforeUnmount(() => {
 
         <div class="grid grid-cols-3 gap-6 mt-8 max-w-2xl mx-auto animate-fade-in-delay-2">
           <div class="text-center">
-            <p class="text-3xl font-black text-red-400">13+</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsPilots') }}</p>
+            <p class="text-3xl font-black text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">13+</p>
+            <p class="text-sm font-semibold text-white/90 uppercase tracking-wider mt-1 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">{{ $t('homePage.statsPilots') }}</p>
           </div>
           <div class="text-center">
-            <p class="text-3xl font-black text-red-400">50K+</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsFlights') }}</p>
+            <p class="text-3xl font-black text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">50K+</p>
+            <p class="text-sm font-semibold text-white/90 uppercase tracking-wider mt-1 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">{{ $t('homePage.statsFlights') }}</p>
           </div>
           <div class="text-center">
-            <p class="text-3xl font-black text-red-400">100%</p>
-            <p class="text-sm text-slate-400 uppercase tracking-wider mt-1">{{ $t('homePage.statsSafety') }}</p>
+            <p class="text-3xl font-black text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">100%</p>
+            <p class="text-sm font-semibold text-white/90 uppercase tracking-wider mt-1 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">{{ $t('homePage.statsSafety') }}</p>
           </div>
         </div>
       </div>
@@ -373,6 +389,11 @@ onBeforeUnmount(() => {
 
     <section id="about" class="py-12 lg:py-16 bg-gradient-to-b from-slate-50 to-white">
       <div class="container mx-auto px-6 lg:px-10">
+        <!-- Đoạn giới thiệu dài trước nằm trên hero — giữ ở đây cho SEO. -->
+        <p class="mb-8 max-w-4xl text-slate-600 leading-relaxed">
+          {{ $t('hero.subtitle') }}
+        </p>
+
         <div class="flex items-center gap-4 mb-6 scroll-reveal">
           <div class="w-12 h-12 flex items-center justify-center">
             <NuxtImg src="/images/Sapa_logo.png" class="w-full h-full object-contain" format="webp" alt="Sapa Paragliding Logo" />
