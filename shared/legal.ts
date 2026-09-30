@@ -36,6 +36,8 @@ export interface CompanyLegalInfo {
   nameEn: string
   /** Tên viết tắt (nếu có). */
   shortName: string
+  /** Tên rút gọn tiếng Việt cho footer ("CTCP ..."). */
+  footerName: string
   /** Mã số doanh nghiệp (đồng thời là mã số thuế). */
   taxCode: string
   /** Ngày đăng ký lần đầu, dạng dd/mm/yyyy. */
@@ -61,6 +63,9 @@ export const COMPANY: CompanyLegalInfo = {
   name: 'CÔNG TY CỔ PHẦN THỂ THAO VÀ DU LỊCH DÙ LƯỢN SA PA',
   nameEn: 'SAPA PARAGLIDING SPORTS AND TOURISM JOINT STOCK COMPANY',
   shortName: 'SAPA PARAGLIDING .,JSC',
+  // Tên rút gọn hiện ở dòng đầu footer, theo đúng định dạng chủ chốt:
+  // "CTCP THỂ THAO VÀ DU LỊCH DÙ LƯỢN SA PA (5300829527)".
+  footerName: 'CTCP THỂ THAO VÀ DU LỊCH DÙ LƯỢN SA PA',
   taxCode: '5300829527',
   firstRegisteredDate: '15/01/2025',
   // Chưa đăng ký thay đổi lần nào. Khi có: 'đăng ký thay đổi lần 1 ngày dd/mm/yyyy'.

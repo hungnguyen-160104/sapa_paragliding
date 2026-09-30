@@ -889,8 +889,8 @@
     "followUs": "关注我们",
     "quickLinks": "快速链接",
     "legal": {
-      "sportLicense": "体育经营资格证书（滑翔伞项目）第 02/GCN-SVHTT 号，2025年2月14日由老街省文化体育厅颁发。",
-      "flightPermit": "飞行许可第 17996/TC-QC 号，2025年12月30日由越南国防部总参谋部作战局颁发。"
+      "flightPermit": "经越南国防部总参谋部作战局批准飞行，许可证号 17996/TC-QC",
+      "sportLicense": "滑翔伞经营许可证第 02/GCN-SVHTT 号，由老街省文化体育厅颁发"
     },
     "bookOn": "查看我们的评价与信息："
   },
@@ -1348,10 +1348,10 @@
     },
     "company": {
       "heading": "企业信息",
-      "taxCode": "企业代码/税号",
-      "firstRegistered": "首次登记日期",
-      "issuedBy": "签发机关",
-      "headOffice": "总部地址",
+      "taxCode": "税号/企业代码",
+      "firstRegistered": "签发于",
+      "issuedBy": "由",
+      "headOffice": "总部",
       "phone": "电话",
       "email": "邮箱",
       "representative": "法定代表人"

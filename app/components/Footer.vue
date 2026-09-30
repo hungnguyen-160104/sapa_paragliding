@@ -220,10 +220,17 @@
            buộc khi thông báo website TMĐT (NĐ 52/2013, sửa bởi NĐ 85/2021;
            TT 47/2014). Dữ liệu pháp nhân và mã Bộ Công Thương nằm ở
            shared/legal.ts — sửa một chỗ đó là đủ. -->
-      <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 text-sm md:pr-8 lg:pr-20 xl:pr-24">
+      <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-8 text-sm md:pr-8 lg:pr-20 xl:pr-24">
         <div class="md:pl-0 lg:pl-2 xl:pl-6 2xl:pl-12">
-          <h3 class="text-base font-bold mb-3">{{ $t('legal.company.heading') }}</h3>
-          <CompanyLegalInfo variant="dark" />
+          <!-- ĐÚNG 3 dòng, chữ nhỏ, không ngày (chủ chốt 30/09/2026): tên rút
+               gọn + MST, phép bay, giấy phép kinh doanh. Thông tin pháp nhân
+               đầy đủ (trụ sở, ĐKDN ngày/nơi cấp, đại diện, ĐT, email) nằm ở cuối
+               các trang /policies (CompanyLegalInfo). -->
+          <div class="space-y-1 text-xs leading-relaxed text-gray-400">
+            <p class="font-semibold text-gray-300">{{ COMPANY.footerName }} ({{ COMPANY.taxCode }})</p>
+            <p>{{ $t('footer.legal.flightPermit') }}</p>
+            <p>{{ $t('footer.legal.sportLicense') }}</p>
+          </div>
         </div>
 
         <div>
@@ -243,16 +250,9 @@
       </div>
 
       <!-- Copyright -->
-      <div class="border-t border-gray-800 mt-8 pt-8 max-md:px-3 text-center text-sm text-white">
-        <!-- Hai giấy phép hoạt động (chủ gửi giấy tờ 30/09/2026): GCN đủ điều
-             kiện kinh doanh thể thao 02/GCN-SVHTT và phép bay 17996/TC-QC.
-             Thông tin pháp nhân (tên, mã số DN, trụ sở, người đại diện) ở khối
-             CompanyLegalInfo phía trên — không lặp lại ở đây.
-             Phép bay hết hạn 31/12/2026 — có phép năm 2027 thì sửa
-             footer.legal.flightPermit trong cả 8 file i18n. -->
-        <div class="mx-auto max-w-5xl px-2 leading-relaxed max-md:text-xs">
-          <p v-for="key in LEGAL_LINES" :key="key" class="md:mt-1">{{ $t(`footer.legal.${key}`) }}</p>
-        </div>
+      <div class="border-t border-gray-800 mt-6 pt-4 max-md:px-3 text-center text-sm text-white">
+        <!-- Hai dòng giấy phép nằm trong khối pháp nhân phía trên — sửa chữ ở
+             footer.legal.* trong 8 file i18n. -->
         <NuxtLink :to="localePath('/admin/login')"
           class="mt-4 text-xs text-gray-500 hover:text-gray-300 transition-colors">
           Admin
@@ -264,7 +264,7 @@
 
 <script setup lang="ts">
 import { OFFICES } from '~~/shared/flying-site'
-import { POLICY_PAGES } from '~~/shared/legal'
+import { COMPANY, POLICY_PAGES } from '~~/shared/legal'
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -286,8 +286,6 @@ const contactNowrapClass = computed(() =>
 
 const isDesktop = ref(false)
 
-/** Hai dòng giấy phép hoạt động, theo thứ tự hiển thị. */
-const LEGAL_LINES = ['sportLicense', 'flightPermit'] as const
 
 const menuItems = [
   { path: '/', label: 'menu.home' },

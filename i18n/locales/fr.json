@@ -875,8 +875,8 @@
     "followUs": "Suivez-nous",
     "quickLinks": "Liens rapides",
     "legal": {
-      "sportLicense": "Certificat d’aptitude à l’exploitation d’activités sportives (parapente) n° 02/GCN-SVHTT du 14 février 2025, délivré par le Service de la Culture et des Sports de la province de Lao Cai.",
-      "flightPermit": "Autorisation de vol n° 17996/TC-QC du 30 décembre 2025, délivrée par le Département des opérations – État-major général, ministère de la Défense du Vietnam."
+      "flightPermit": "Autorisé à voler par le Département des opérations – État-major général, ministère de la Défense nationale du Vietnam, autorisation n° 17996/TC-QC",
+      "sportLicense": "Licence d'exploitation de parapente n° 02/GCN-SVHTT délivrée par le Service de la Culture et des Sports de la province de Lao Cai"
     },
     "bookOn": "Consultez nos avis et vérifiez-nous sur"
   },
@@ -1334,13 +1334,13 @@
     },
     "company": {
       "heading": "Informations sur l'entreprise",
-      "taxCode": "N° d'entreprise / fiscal",
-      "firstRegistered": "immatriculée le",
-      "issuedBy": "Délivré par",
-      "headOffice": "Siège social",
-      "phone": "Téléphone",
+      "taxCode": "N° fiscal/d'entreprise",
+      "firstRegistered": "délivré le",
+      "issuedBy": "par",
+      "headOffice": "Siège",
+      "phone": "Tél.",
       "email": "E-mail",
-      "representative": "Représentant légal"
+      "representative": "Représentant"
     },
     "effectiveDate": "Date d'effet",
     "authoritative": "La version vietnamienne fait foi ; cette traduction est fournie à titre indicatif.",

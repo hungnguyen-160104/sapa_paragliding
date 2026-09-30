@@ -889,8 +889,8 @@
     "followUs": "팔로우하기",
     "quickLinks": "바로가기",
     "legal": {
-      "sportLicense": "스포츠 사업(패러글라이딩) 적격 인증서 제02/GCN-SVHTT호, 2025년 2월 14일 라오까이성 문화체육국 발급.",
-      "flightPermit": "비행 허가 제17996/TC-QC호, 2025년 12월 30일 베트남 국방부 총참모부 작전국 발급."
+      "flightPermit": "베트남 국방부 총참모부 작전국의 비행 허가, 허가 번호 17996/TC-QC",
+      "sportLicense": "패러글라이딩 사업 허가 제02/GCN-SVHTT호, 라오까이성 문화체육국 발급"
     },
     "bookOn": "리뷰 확인 및 업체 인증:"
   },
@@ -1349,12 +1349,12 @@
     "company": {
       "heading": "회사 정보",
       "taxCode": "사업자/세금 번호",
-      "firstRegistered": "최초 등록일",
+      "firstRegistered": "발급일",
       "issuedBy": "발급 기관",
-      "headOffice": "본사 주소",
+      "headOffice": "본사",
       "phone": "전화",
       "email": "이메일",
-      "representative": "법정 대표자"
+      "representative": "대표자"
     },
     "effectiveDate": "시행일",
     "authoritative": "베트남어본이 정본이며, 본 번역본은 편의를 위해 제공됩니다.",

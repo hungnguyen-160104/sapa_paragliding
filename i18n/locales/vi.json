@@ -875,8 +875,8 @@
     "followUs": "Theo Dõi",
     "quickLinks": "Liên Kết Nhanh",
     "legal": {
-      "sportLicense": "Giấy chứng nhận đủ điều kiện kinh doanh hoạt động thể thao môn Dù lượn số 02/GCN-SVHTT ngày 14/02/2025 do Sở Văn hóa và Thể thao tỉnh Lào Cai cấp.",
-      "flightPermit": "Giấy phép hoạt động bay số 17996/TC-QC ngày 30/12/2025 của Cục Tác chiến – Bộ Tổng Tham mưu, Bộ Quốc phòng."
+      "flightPermit": "Đơn vị được cấp phép bay bởi Cục Tác chiến – Bộ Tổng Tham mưu, Bộ Quốc phòng Việt Nam, số giấy phép 17996/TC-QC",
+      "sportLicense": "Giấy phép kinh doanh dù lượn số 02/GCN-SVHTT do Sở Văn hóa và Thể thao tỉnh Lào Cai cấp"
     },
     "bookOn": "Tham khảo & đối chiếu thông tin về chúng tôi trên"
   },
@@ -1334,13 +1334,13 @@
     },
     "company": {
       "heading": "Thông tin doanh nghiệp",
-      "taxCode": "Mã số doanh nghiệp/MST",
-      "firstRegistered": "đăng ký lần đầu ngày",
-      "issuedBy": "Nơi cấp",
-      "headOffice": "Trụ sở chính",
-      "phone": "Điện thoại",
+      "taxCode": "MST/ĐKDN",
+      "firstRegistered": "cấp",
+      "issuedBy": "tại",
+      "headOffice": "Trụ sở",
+      "phone": "ĐT",
       "email": "Email",
-      "representative": "Người đại diện theo pháp luật"
+      "representative": "Đại diện"
     },
     "effectiveDate": "Ngày áp dụng",
     "authoritative": "",

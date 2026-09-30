@@ -889,8 +889,8 @@
     "followUs": "Folgen Sie uns",
     "quickLinks": "Schnellzugriff",
     "legal": {
-      "sportLicense": "Bescheinigung über die Eignung zum Betrieb sportlicher Aktivitäten (Paragliding) Nr. 02/GCN-SVHTT vom 14.02.2025, ausgestellt vom Amt für Kultur und Sport der Provinz Lao Cai.",
-      "flightPermit": "Fluggenehmigung Nr. 17996/TC-QC vom 30.12.2025, erteilt von der Operationsabteilung des Generalstabs, Verteidigungsministerium Vietnams."
+      "flightPermit": "Fluggenehmigung der Operationsabteilung – Generalstab, Ministerium für Nationale Verteidigung Vietnams, Genehmigung Nr. 17996/TC-QC",
+      "sportLicense": "Paragliding-Betriebslizenz Nr. 02/GCN-SVHTT, ausgestellt vom Amt für Kultur und Sport der Provinz Lao Cai"
     },
     "bookOn": "Bewertungen lesen & uns überprüfen auf"
   },
@@ -1348,13 +1348,13 @@
     },
     "company": {
       "heading": "Unternehmensangaben",
-      "taxCode": "Unternehmens-/Steuernummer",
-      "firstRegistered": "erstmals eingetragen am",
-      "issuedBy": "Ausgestellt von",
-      "headOffice": "Hauptsitz",
-      "phone": "Telefon",
+      "taxCode": "Steuer-/Unternehmensnr.",
+      "firstRegistered": "ausgestellt am",
+      "issuedBy": "von",
+      "headOffice": "Sitz",
+      "phone": "Tel.",
       "email": "E-Mail",
-      "representative": "Gesetzlicher Vertreter"
+      "representative": "Vertreter"
     },
     "effectiveDate": "Gültig ab",
     "authoritative": "Maßgeblich ist die vietnamesische Fassung; diese Übersetzung dient nur Ihrer Information.",
