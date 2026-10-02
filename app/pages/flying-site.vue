@@ -86,7 +86,8 @@ import {
   buildLocalizedUrl,
   getCanonicalUrl,
   getDefaultOgImage,
-  getOgLocale
+  getOgLocale,
+  truncateMetaDescription
 } from '~/utils/seo'
 
 const { locale, t } = useI18n()
@@ -147,9 +148,9 @@ const breadcrumbJsonLd = computed(() =>
 useHead(() => ({
   title: seoData.value.title,
   meta: [
-    { name: 'description', content: seoData.value.description },
+    { name: 'description', content: truncateMetaDescription(seoData.value.description) },
     { property: 'og:title', content: seoData.value.title },
-    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:description', content: truncateMetaDescription(seoData.value.description) },
     { property: 'og:url', content: canonicalUrl.value },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: getOgLocale(locale.value) },
@@ -157,7 +158,7 @@ useHead(() => ({
     { property: 'og:image:alt', content: seoData.value.title },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: seoData.value.title },
-    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:description', content: truncateMetaDescription(seoData.value.description) },
     { name: 'twitter:image', content: ogImage }
   ],
   link: [

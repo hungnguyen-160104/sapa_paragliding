@@ -387,7 +387,8 @@ import {
     buildPersonJsonLD,
     getCanonicalUrl,
     getDefaultOgImage,
-    getOgLocale
+    getOgLocale,
+    truncateMetaDescription
 } from '~/utils/seo'
 import {
     VISIBLE_PILOT_KEYS,
@@ -629,7 +630,8 @@ const seoDescription = computed(() => {
         return t('pilots.subtitle')
     }
 
-    return pilot.value.des
+    // Tiểu sử phi công dài 180–270 ký tự, Google cắt ở ~160: cắt gọn tại ranh giới từ.
+    return truncateMetaDescription(pilot.value.des)
 })
 const ogImage = computed(() => {
     const image = contentImages.value[0] || heroImage.value

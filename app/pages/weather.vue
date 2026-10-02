@@ -292,7 +292,7 @@
 </template>
 
 <script setup lang="ts">
-import { buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getCanonicalUrl, getDefaultOgImage, getOgLocale } from '~/utils/seo'
+import { buildBreadcrumbJsonLD, buildHreflangLinks, buildLocalizedUrl, getCanonicalUrl, getDefaultOgImage, getOgLocale, truncateMetaDescription } from '~/utils/seo'
 import {
   BIEU_TUONG_MUC, MO_HINH, MO_HINH_MAC_DINH, MUA_BAY, WINDY_LAYERS, WINDY_MODELS,
   gioNangCuaNgay, gioTrenBai, hoangHonDep, huongTroiNgay, phanTichGioCao, phanTichMu, styleGio, styleMu, trongCung, windyEmbedUrl, windyPageUrl,
@@ -514,9 +514,9 @@ const breadcrumbJsonLd = computed(() => buildBreadcrumbJsonLD([
 useHead(() => ({
   title: seoData.value.title,
   meta: [
-    { name: 'description', content: seoData.value.description },
+    { name: 'description', content: truncateMetaDescription(seoData.value.description) },
     { property: 'og:title', content: seoData.value.title },
-    { property: 'og:description', content: seoData.value.description },
+    { property: 'og:description', content: truncateMetaDescription(seoData.value.description) },
     { property: 'og:url', content: canonicalUrl.value },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: getOgLocale(locale.value) },
@@ -524,7 +524,7 @@ useHead(() => ({
     { property: 'og:image:alt', content: seoData.value.title },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: seoData.value.title },
-    { name: 'twitter:description', content: seoData.value.description },
+    { name: 'twitter:description', content: truncateMetaDescription(seoData.value.description) },
     { name: 'twitter:image', content: ogImage }
   ],
   link: [{ rel: 'canonical', href: canonicalUrl.value }, ...hreflangLinks.value],
