@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { createError, defineEventHandler, getRouterParam } from 'h3'
+import { createError, defineEventHandler, getRouterParam, setHeader } from 'h3'
 import { connectToDatabase } from '../../utils/db'
 
 type ContentBlock = {
@@ -125,15 +125,18 @@ export default defineEventHandler(async (event) => {
     const { db } = await connectToDatabase()
     const postsCollection = db.collection('posts')
 
-    let post = await postsCollection.findOne({ id })
-
-    if (!post) {
-      post = await postsCollection.findOne({ slug: id })
-    }
-
-    if (!post && ObjectId.isValid(id)) {
-      post = await postsCollection.findOne({ _id: new ObjectId(id) })
-    }
+    // MỘT lượt truy vấn thay vì ba lượt nối nhau: link bài dùng slug nên lối cũ
+    // (tìm theo id, trượt, rồi mới tìm slug) tốn hai chuyến tới database mỗi lần
+    // mở bài. Thứ tự ưu tiên giữ nguyên: id → slug → _id.
+    const candidates = await postsCollection
+      .find({ $or: [{ id }, { slug: id }, ...(ObjectId.isValid(id) ? [{ _id: new ObjectId(id) }] : [])] })
+      .limit(3)
+      .toArray()
+    const post =
+      candidates.find((p) => p.id === id) ??
+      candidates.find((p) => p.slug === id) ??
+      candidates.find((p) => String(p._id) === id) ??
+      null
 
     if (!post) {
       throw createError({
@@ -197,6 +200,11 @@ export default defineEventHandler(async (event) => {
         ogImage: image
       })
     }
+
+    // Chuyển trang phía client gọi thẳng API này: CDN Vercel giữ 60 giây, hết hạn
+    // vẫn trả bản cũ ngay rồi mới lấy mới — khách bấm vào bài không phải chờ
+    // database (trước đây ~1 giây mỗi lần). Sửa bài trong admin hiện sau ≤ 1 phút.
+    setHeader(event, 'Cache-Control', 'public, s-maxage=60, stale-while-revalidate=600')
 
     return {
       success: true,
