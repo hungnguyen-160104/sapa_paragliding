@@ -210,15 +210,18 @@
 
               <template v-else-if="block.type === 'image'">
                 <figure class="my-8">
-                  <NuxtImg
-                    v-if="block.data?.url"
-                    :src="block.data.url"
-                    :alt="block.data?.alt || displayTitle"
-                    class="w-full rounded-2xl shadow-lg"
-                    loading="lazy"
-                    decoding="async"
-                    format="webp"
-                  />
+                  <!-- span bọc ảnh: bố cục mới cần một lớp ngoài để đổ bóng theo
+                       mép giấy xé (mask đặt trên ảnh sẽ cắt mất bóng của chính nó) -->
+                  <span v-if="block.data?.url" class="post-img-wrap block">
+                    <NuxtImg
+                      :src="block.data.url"
+                      :alt="block.data?.alt || displayTitle"
+                      class="w-full rounded-2xl shadow-lg"
+                      loading="lazy"
+                      decoding="async"
+                      format="webp"
+                    />
+                  </span>
                   <figcaption v-if="block.data?.caption" class="mt-3 text-center text-sm text-gray-500">
                     {{ block.data.caption }}
                   </figcaption>
@@ -1109,23 +1112,47 @@ useHead(() => {
   background: var(--v2-green);
 }
 /* Ảnh trong bài: không cao quá ~2/3 màn hình (chủ: ảnh to quá, một màn
-   hình nhìn không hết) và mép bo không đều cho tự nhiên, không vuông sắc. */
+   hình nhìn không hết). Mép ảnh kiểu GIẤY XÉ (chủ 06/10): mask SVG làm mép
+   lởm chởm không đều; bóng đổ đặt ở lớp bọc ngoài (figure / .post-img-wrap)
+   vì mask trên ảnh sẽ cắt mất bóng của chính nó. Ba mẫu mép xoay vòng để
+   các ảnh trong cùng bài không xé giống hệt nhau. */
 .post-v2 .v2-content figure { text-align: center; }
+.post-v2 .v2-content figure .post-img-wrap {
+  display: inline-block;
+  max-width: 100%;
+  filter: drop-shadow(0 7px 9px rgba(19, 36, 28, 0.32));
+}
 .post-v2 .v2-content figure img {
   display: inline-block;
   width: auto;
   max-width: 100%;
   max-height: min(66vh, 560px);
   object-fit: cover;
-  border-radius: 28px 14px 30px 16px / 16px 30px 14px 28px;
-  box-shadow: 0 10px 30px -18px rgba(19, 36, 28, 0.45);
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.11'%20numOctaves='3'%20seed='7'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.11'%20numOctaves='3'%20seed='7'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
+.post-v2 .v2-content > div:nth-child(3n) figure img {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.09'%20numOctaves='3'%20seed='23'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5.5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.09'%20numOctaves='3'%20seed='23'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5.5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+}
+.post-v2 .v2-content > div:nth-child(3n + 1) figure img {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.1'%20numOctaves='3'%20seed='41'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.1'%20numOctaves='3'%20seed='41'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+}
+.post-v2 .v2-content figure.v2-cover { filter: drop-shadow(0 8px 10px rgba(19, 36, 28, 0.32)); }
 .post-v2 .v2-content figure.v2-cover img {
   display: block;
   width: 100%;
   max-height: 62vh;
   aspect-ratio: 4 / 3;
-  border-radius: 30px 16px 28px 14px / 14px 28px 16px 30px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.09'%20numOctaves='3'%20seed='23'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5.5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%20preserveAspectRatio='none'%3E%3Cfilter%20id='t'%20x='-10%25'%20y='-10%25'%20width='120%25'%20height='120%25'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.09'%20numOctaves='3'%20seed='23'%20result='n'/%3E%3CfeDisplacementMap%20in='SourceGraphic'%20in2='n'%20scale='5.5'%20xChannelSelector='R'%20yChannelSelector='G'/%3E%3C/filter%3E%3Crect%20x='3'%20y='3'%20width='94'%20height='94'%20fill='black'%20filter='url%28%23t%29'/%3E%3C/svg%3E");
 }
 .post-v2 .v2-content figcaption { color: var(--v2-muted); font-size: 0.85rem; font-weight: 300; text-align: center; }
 .post-v2 .v2-content blockquote {
