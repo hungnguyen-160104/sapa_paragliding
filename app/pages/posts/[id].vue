@@ -1065,7 +1065,7 @@ useHead(() => {
 .post-v2 .v2-content { max-width: 60rem; }
 .post-v2 .v2-content::after { content: ''; display: block; clear: both; }
 .post-v2 .v2-cover { float: right; width: 48%; margin: 0.5rem 0 1.5rem 2.5rem; }
-.post-v2 .v2-cover img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
 @media (max-width: 1023px) {
   .post-v2 .v2-cover { float: none; width: 100%; margin: 0 0 2rem; }
 }
@@ -1108,8 +1108,26 @@ useHead(() => {
   height: 0.45rem;
   background: var(--v2-green);
 }
-.post-v2 .v2-content figure img { border-radius: 0; box-shadow: none; }
-.post-v2 .v2-content figcaption { color: var(--v2-muted); font-size: 0.85rem; font-weight: 300; text-align: left; }
+/* Ảnh trong bài: không cao quá ~2/3 màn hình (chủ: ảnh to quá, một màn
+   hình nhìn không hết) và mép bo không đều cho tự nhiên, không vuông sắc. */
+.post-v2 .v2-content figure { text-align: center; }
+.post-v2 .v2-content figure img {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  max-height: min(66vh, 560px);
+  object-fit: cover;
+  border-radius: 28px 14px 30px 16px / 16px 30px 14px 28px;
+  box-shadow: 0 10px 30px -18px rgba(19, 36, 28, 0.45);
+}
+.post-v2 .v2-content figure.v2-cover img {
+  display: block;
+  width: 100%;
+  max-height: 62vh;
+  aspect-ratio: 4 / 3;
+  border-radius: 30px 16px 28px 14px / 14px 28px 16px 30px;
+}
+.post-v2 .v2-content figcaption { color: var(--v2-muted); font-size: 0.85rem; font-weight: 300; text-align: center; }
 .post-v2 .v2-content blockquote {
   border-left: 4px solid var(--v2-green);
   border-radius: 0;
