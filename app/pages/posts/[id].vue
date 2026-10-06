@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50 font-sans">
+  <div :class="['min-h-screen font-sans', isV2 ? 'post-v2' : 'bg-gray-50']">
     <main class="px-4 py-12 sm:px-6 md:py-20">
       <div v-if="isLoading" class="flex flex-col items-center justify-center py-32 text-center">
         <div class="relative mb-8">
@@ -46,7 +46,35 @@
           </button>
         </nav>
 
-        <header class="mx-auto mb-16 max-w-3xl text-center">
+        <!-- BỐ CỤC MỚI (xem thử: thêm ?layout=new vào địa chỉ bài). Căn trái,
+             tiêu đề chữ hẹp viết hoa, ba ô thông tin, ảnh bìa nằm bên phải
+             phần mở đầu. Chưa bật mặc định — chờ chủ duyệt. -->
+        <header v-if="isV2" class="v2-header">
+          <p class="v2-eyebrow">Sapa Paragliding · {{ displayCategory }}</p>
+          <h1 class="v2-title">{{ displayTitle }}</h1>
+          <p v-if="displayExcerpt" class="v2-lead">{{ displayExcerpt }}</p>
+
+          <div class="v2-chips">
+            <div class="v2-chip">
+              <strong>{{ readingMinutes }} {{ v2Labels.min }}</strong>
+              <span>{{ v2Labels.read }}</span>
+            </div>
+            <div class="v2-chip">
+              <strong>{{ formatDateShort(post.date) }}</strong>
+              <span>{{ v2Labels.updated }}</span>
+            </div>
+            <div class="v2-chip">
+              <strong>{{ displayCategory }}</strong>
+              <span>{{ v2Labels.category }}</span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <ShareButtons variant="article" :title="displayTitle" />
+          </div>
+        </header>
+
+        <header v-else class="mx-auto mb-16 max-w-3xl text-center">
           <div class="mb-6 inline-flex items-center justify-center">
             <span class="rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-bold uppercase tracking-wide text-gray-900 shadow-sm">
               {{ displayCategory }}
@@ -93,7 +121,7 @@
           </div>
         </header>
 
-        <div class="relative mb-16 overflow-hidden rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200">
+        <div v-if="!isV2" class="relative mb-16 overflow-hidden rounded-3xl border border-gray-100 shadow-2xl shadow-gray-200">
           <div class="aspect-video w-full bg-gray-100">
             <NuxtImg
               v-if="post.image || post.thumbnailUrl"
@@ -111,7 +139,21 @@
           </div>
         </div>
 
-        <div class="prose prose-lg prose-slate mx-auto max-w-4xl prose-a:text-red-600 prose-img:rounded-2xl prose-img:shadow-lg prose-headings:font-bold prose-headings:tracking-tight hover:prose-a:text-red-700">
+        <div
+          :class="isV2
+            ? 'v2-content'
+            : 'prose prose-lg prose-slate mx-auto max-w-4xl prose-a:text-red-600 prose-img:rounded-2xl prose-img:shadow-lg prose-headings:font-bold prose-headings:tracking-tight hover:prose-a:text-red-700'"
+        >
+          <figure v-if="isV2 && (post.image || post.thumbnailUrl)" class="v2-cover">
+            <NuxtImg
+              :src="cloudinaryImage(post.image || post.thumbnailUrl, 1200)"
+              :alt="displayTitle"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              format="webp"
+            />
+          </figure>
           <template v-if="displayBlocks.length > 0">
             <div v-for="block in displayBlocks" :key="block.id" class="mb-6">
               <template v-if="block.type === 'heading'">
@@ -481,6 +523,21 @@ const localePath = useLocalePath()
 const postsStore = usePostsStore()
 
 const currentLocale = computed(() => locale.value || 'vi')
+
+/** Bố cục mới — chỉ bật khi địa chỉ có ?layout=new (bản xem thử cho chủ). */
+const isV2 = computed(() => route.query.layout === 'new')
+
+const V2_LABELS: Record<string, { min: string; read: string; updated: string; category: string }> = {
+  vi: { min: 'phút', read: 'thời gian đọc', updated: 'ngày đăng', category: 'chuyên mục' },
+  en: { min: 'min', read: 'reading time', updated: 'published', category: 'category' },
+  fr: { min: 'min', read: 'temps de lecture', updated: 'publié le', category: 'rubrique' },
+  ru: { min: 'мин', read: 'время чтения', updated: 'опубликовано', category: 'рубрика' },
+  zh: { min: '分钟', read: '阅读时间', updated: '发布日期', category: '栏目' },
+  hi: { min: 'मिनट', read: 'पढ़ने का समय', updated: 'प्रकाशित', category: 'श्रेणी' },
+  ko: { min: '분', read: '읽는 시간', updated: '게시일', category: '카테고리' },
+  de: { min: 'Min.', read: 'Lesezeit', updated: 'veröffentlicht', category: 'Rubrik' }
+}
+const v2Labels = computed(() => V2_LABELS[currentLocale.value] ?? V2_LABELS.en!)
 const isVietnamese = computed(() => String(currentLocale.value).toLowerCase().startsWith('vi'))
 const postId = computed(() => String(route.params.id ?? ''))
 
@@ -680,6 +737,25 @@ const latestPosts = computed<PostWithExtras[]>(() => {
     .slice(0, 3)
 })
 
+/** Số phút đọc ước lượng: ~200 từ/phút; chữ Hán/Hàn không có dấu cách nên tính ~500 ký tự/phút. */
+const readingMinutes = computed(() => {
+  const text = displayBlocks.value
+    .map((b) => [b.data?.text, ...(b.data?.items || [])].filter(Boolean).join(' '))
+    .join(' ')
+  const cjk = (text.match(/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/g) || []).length
+  const words = text.replace(/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/g, ' ').split(/\s+/).filter(Boolean).length
+  return Math.max(1, Math.round(words / 200 + cjk / 500))
+})
+
+function formatDateShort(date?: string) {
+  if (!date) return ''
+  return new Date(date).toLocaleDateString(currentLocale.value === 'vi' ? 'vi-VN' : 'en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  })
+}
+
 function formatDate(date?: string) {
   if (!date) return ''
 
@@ -805,6 +881,14 @@ useHead(() => {
       { name: 'twitter:image', content: image }
     ],
     link: [
+      // Font của bố cục mới — chỉ nạp khi đang xem thử (?layout=new)
+      ...(isV2.value
+        ? [
+            { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+            { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&family=Saira+Condensed:wght@600;700;800&display=swap' }
+          ]
+        : []),
       { rel: 'canonical', href: canonicalUrl },
       ...buildHreflangLinks(`/posts/${slug}`, locale.value, postLocales)
     ],
@@ -916,4 +1000,132 @@ useHead(() => {
     transform: translateY(-5px) scale(1.08);
   }
 }
+</style>
+<style>
+/* ===== Bố cục bài viết kiểu mới (?layout=new) ===== */
+.post-v2 {
+  --v2-ink: #13241c;
+  --v2-green: #1e5b45;
+  --v2-red: #d1343f;
+  --v2-muted: #5d6d65;
+  --v2-line: #dfe6e3;
+  background: #f2f5f5;
+  color: #2a3a33;
+  font-family: 'Lexend', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.post-v2 .v2-header { margin-bottom: 3rem; }
+.post-v2 .v2-eyebrow {
+  margin-bottom: 1rem;
+  color: var(--v2-red);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.post-v2 .v2-title {
+  max-width: 18ch;
+  margin-bottom: 1.25rem;
+  color: var(--v2-ink);
+  font-family: 'Saira Condensed', 'Arial Narrow', 'Lexend', sans-serif;
+  font-size: clamp(2.5rem, 7.2vw, 5rem);
+  font-weight: 800;
+  /* 1.1 chứ không phải 1: dấu tiếng Việt chồng (Ể, Ồ) cao hơn chữ Latin,
+     line-height 1 làm dấu chạm dòng nhãn phía trên và dòng chữ kề trên. */
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  word-break: keep-all; /* tiếng Hàn: không ngắt giữa từ */
+}
+.post-v2 .v2-lead {
+  max-width: 44rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.75;
+}
+.post-v2 .v2-chips { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.post-v2 .v2-chip {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6rem 1rem 0.7rem;
+  border: 1px solid var(--v2-line);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.post-v2 .v2-chip strong {
+  color: var(--v2-green);
+  font-family: 'Saira Condensed', 'Arial Narrow', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.post-v2 .v2-chip span { color: var(--v2-muted); font-size: 0.8rem; font-weight: 300; }
+
+/* Nội dung */
+.post-v2 .v2-content { max-width: 60rem; }
+.post-v2 .v2-content::after { content: ''; display: block; clear: both; }
+.post-v2 .v2-cover { float: right; width: 48%; margin: 0.5rem 0 1.5rem 2.5rem; }
+.post-v2 .v2-cover img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 1023px) {
+  .post-v2 .v2-cover { float: none; width: 100%; margin: 0 0 2rem; }
+}
+.post-v2 .v2-content h2,
+.post-v2 section > div > h2,
+.post-v2 section > h2 {
+  margin: 3rem 0 1rem;
+  color: var(--v2-green);
+  font-family: 'Saira Condensed', 'Arial Narrow', sans-serif;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.post-v2 .v2-content h3 {
+  margin: 2rem 0 0.6rem;
+  color: var(--v2-ink);
+  font-family: 'Saira Condensed', 'Arial Narrow', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.post-v2 .v2-content h4 { color: var(--v2-ink); font-weight: 600; }
+.post-v2 .v2-content p { color: #2a3a33; font-size: 1.05rem; font-weight: 300; line-height: 1.8; }
+.post-v2 .v2-content strong { color: var(--v2-ink); font-weight: 600; }
+.post-v2 .v2-content ul { list-style: none; padding-left: 0; }
+.post-v2 .v2-content ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: #2a3a33;
+  font-weight: 300;
+  line-height: 1.75;
+}
+.post-v2 .v2-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.15rem;
+  top: 0.7em;
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--v2-green);
+}
+.post-v2 .v2-content figure img { border-radius: 0; box-shadow: none; }
+.post-v2 .v2-content figcaption { color: var(--v2-muted); font-size: 0.85rem; font-weight: 300; text-align: left; }
+.post-v2 .v2-content blockquote {
+  border-left: 4px solid var(--v2-green);
+  border-radius: 0;
+  background: #fff;
+}
+.post-v2 .v2-content table { background: #fff; font-weight: 300; }
+.post-v2 .v2-content thead tr { background: #e7efec; }
+.post-v2 .v2-content th { color: var(--v2-ink); font-family: 'Saira Condensed', 'Arial Narrow', sans-serif; font-size: 1.05rem; text-transform: uppercase; }
+.post-v2 .v2-content a[class*='bg-red-600'] {
+  border-radius: 0.375rem;
+  background: var(--v2-red);
+  font-family: 'Saira Condensed', 'Arial Narrow', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+.post-v2 .v2-content .not-prose.text-center { text-align: left; }
 </style>
