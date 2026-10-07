@@ -1,5 +1,6 @@
 import { connectToDatabase } from './db'
 import { PILOT_SLUG_BY_KEY, VISIBLE_PILOT_KEYS } from '../../shared/pilots'
+import { SAPA_STOP_SLUGS } from '../../shared/sapa-map'
 import { POLICY_CONTENT_LOCALES, POLICY_PAGES } from '../../shared/legal'
 
 export const DOMAIN = 'https://www.paraglidingsapa.com'
@@ -193,6 +194,22 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
       xml += '    <priority>0.3</priority>\n'
       xml += '  </url>\n'
     }
+  }
+
+  // Các điểm dừng trên bản đồ Sa Pa (/sapa-map/<slug>) — nội dung vi/en nên
+  // chỉ khai ở hai sitemap đó, cùng lý do với trang /sapa-map ở trên.
+  for (const slug of POST_LOCALES.includes(locale) ? SAPA_STOP_SLUGS : []) {
+    const stopPath = `/sapa-map/${slug}`
+    xml += '  <url>\n'
+    xml += `    <loc>${escapeXml(`${DOMAIN}/${locale}${stopPath}`)}</loc>\n`
+    xml += `    <lastmod>${lastmod}</lastmod>\n`
+    for (const altLocale of POST_LOCALES) {
+      xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(`${DOMAIN}/${altLocale}${stopPath}`)}" />\n`
+    }
+    xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${DOMAIN}/${DEFAULT_LOCALE}${stopPath}`)}" />\n`
+    xml += '    <changefreq>monthly</changefreq>\n'
+    xml += '    <priority>0.6</priority>\n'
+    xml += '  </url>\n'
   }
 
   for (const key of VISIBLE_PILOT_KEYS) {

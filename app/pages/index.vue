@@ -549,6 +549,32 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
+    <!-- Sơ đồ checkpoint Sa Pa (chủ 07/10: đưa bản đồ lên trang chủ). Bấm một
+         điểm → trang mô tả điểm đó (/sapa-map/<slug>). Nhãn đặt tại chỗ vì
+         nội dung bản đồ chỉ có hai bản vi/en. -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="container mx-auto px-6 lg:px-12">
+        <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
+              {{ currentLocale === 'vi' ? 'Bản đồ Sa Pa' : 'Sapa map' }}
+            </h2>
+            <p class="mt-1 text-slate-500">
+              {{ currentLocale === 'vi'
+                ? '14 điểm check-in, cung trek và điểm bay dù lượn — bấm một điểm để xem đường đi.'
+                : '14 checkpoints, trekking routes and the paragliding site — tap a stop for directions.' }}
+            </p>
+          </div>
+          <NuxtLink :to="localePath('/sapa-map')" class="font-bold text-red-600 hover:text-red-700">
+            {{ currentLocale === 'vi' ? 'Xem tất cả điểm dừng' : 'See all stops' }} →
+          </NuxtLink>
+        </div>
+        <div class="mx-auto max-w-5xl">
+          <SapaMap />
+        </div>
+      </div>
+    </section>
+
     <section class="py-12 lg:py-18 bg-gradient-to-b from-slate-50 to-white">
       <div class="container mx-auto px-6 lg:px-12">
         <div class="flex items-center justify-between mb-6 scroll-reveal">
