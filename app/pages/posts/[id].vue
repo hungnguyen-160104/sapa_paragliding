@@ -1033,11 +1033,12 @@ useHead(() => {
   text-transform: uppercase;
 }
 .post-v2 .v2-title {
-  max-width: 18ch;
+  /* Không bó bề ngang: bó 18ch làm tiêu đề dài xuống 3–4 dòng (chủ muốn 2). */
+  max-width: 100%;
   margin-bottom: 1.25rem;
   color: var(--v2-ink);
   font-family: 'Saira Condensed', 'Arial Narrow', 'Lexend', sans-serif;
-  font-size: clamp(2.15rem, 6vw, 4.2rem);
+  font-size: clamp(1.85rem, 3.9vw, 2.8rem);
   font-weight: 800;
   /* 1.1 chứ không phải 1: dấu tiếng Việt chồng (Ể, Ồ) cao hơn chữ Latin,
      line-height 1 làm dấu chạm dòng nhãn phía trên và dòng chữ kề trên. */
