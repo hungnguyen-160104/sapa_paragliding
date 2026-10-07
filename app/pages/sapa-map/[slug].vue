@@ -49,7 +49,7 @@
               </ul>
             </section>
 
-            <!-- ảnh chen giữa bài: sau mục 1 và mục 3 -->
+            <!-- ảnh chen giữa bài: sau mỗi hai mục một ảnh -->
             <figure v-if="inlineImage(i)" class="smd-figure">
               <span class="smd-figure-wrap">
                 <NuxtImg :src="bodyImage(inlineImage(i)!.src)" :alt="inlineImage(i)![lang]" loading="lazy" decoding="async" format="webp" />
@@ -63,6 +63,31 @@
             </figure>
           </template>
         </div>
+
+        <!-- Hỏi đáp -->
+        <section v-if="text.faq?.length" class="smd-body smd-faq">
+          <h2 class="smp-h2">{{ ui.faq }}</h2>
+          <details v-for="(item, i) in text.faq" :key="i" :open="i === 0">
+            <summary>{{ item.q }}</summary>
+            <p v-html="renderInlineMarkup(item.a)" />
+          </details>
+        </section>
+
+        <!-- Ảnh còn lại -->
+        <section v-if="galleryImages.length" class="mt-10">
+          <h2 class="smp-h2">{{ ui.gallery }}</h2>
+          <div class="smd-gallery">
+            <figure v-for="(img, i) in galleryImages" :key="i">
+              <NuxtImg :src="gridImage(img.src)" :alt="img[lang]" loading="lazy" decoding="async" format="webp" />
+              <figcaption>
+                {{ img[lang] }}
+                <template v-if="img.credit">
+                  · {{ ui.photo }}: <a :href="img.credit.source" target="_blank" rel="noopener nofollow">{{ img.credit.author }}</a> / Wikimedia Commons · {{ img.credit.license }}
+                </template>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
 
         <div class="mt-8 flex flex-wrap gap-3">
           <NuxtLink :to="localePath('/booking')" class="smp-cta">{{ ui.cta }} →</NuxtLink>
@@ -105,6 +130,7 @@ type StopText = {
   intro: string
   facts: Array<{ value: string; label: string }>
   sections: Array<{ h: string; p?: string[]; list?: string[] }>
+  faq?: Array<{ q: string; a: string }>
   metaTitle: string
   metaDesc: string
 }
@@ -126,13 +152,20 @@ const lang = computed<'vi' | 'en'>(() => (locale.value === 'vi' ? 'vi' : 'en'))
 const text = computed(() => CONTENT[stop.slug]![lang.value])
 
 const hero = computed(() => stop.images[0])
-/** Ảnh chen trong bài: ảnh thứ 2 sau mục đầu, ảnh thứ 3 sau mục thứ ba, ảnh thứ 4 sau mục thứ tư. */
+/**
+ * Ảnh chen trong bài: sau mục 1, 3, 5 (chỉ số 0, 2, 4) lần lượt là ảnh thứ
+ * 2, 3, 4. Ảnh còn lại (từ ảnh thứ 5) xếp thành lưới cuối bài.
+ */
+const INLINE_AFTER = [0, 2, 4]
 const inlineImage = (sectionIndex: number) => {
-  if (sectionIndex === 0) return stop.images[1]
-  if (sectionIndex === 2) return stop.images[2]
-  if (sectionIndex === 3) return stop.images[3]
-  return undefined
+  const k = INLINE_AFTER.indexOf(sectionIndex)
+  return k === -1 ? undefined : stop.images[k + 1]
 }
+const galleryImages = computed(() => {
+  const used = 1 + INLINE_AFTER.filter((i) => i < text.value.sections.length).length
+  return stop.images.slice(used)
+})
+const gridImage = (src: string) => src.replace('/upload/', '/upload/c_fill,w_800,h_560,q_auto,f_auto/')
 const heroImage = (src: string) => src.replace('/upload/', '/upload/c_fill,w_1600,h_900,q_auto,f_auto/')
 const bodyImage = (src: string) => src.replace('/upload/', '/upload/c_limit,w_1200,q_auto,f_auto/')
 
@@ -142,8 +175,8 @@ const next = index < SAPA_STOPS.length - 1 ? SAPA_STOPS[index + 1] : undefined
 const gmaps = `https://www.google.com/maps/search/?api=1&query=${stop.lat},${stop.lon}`
 
 const UI = {
-  vi: { back: 'Bản đồ Sa Pa', stop: 'Điểm dừng', photo: 'Ảnh', openMap: 'mở chỉ đường', approx: 'vị trí gần đúng', cta: 'Đặt bay dù lượn Sa Pa', onMap: 'Vị trí trên sơ đồ', prev: 'Điểm trước', next: 'Điểm tiếp theo', crumb: 'Bản đồ Sa Pa' },
-  en: { back: 'Sapa map', stop: 'Stop', photo: 'Photo', openMap: 'open directions', approx: 'approximate position', cta: 'Book a paragliding flight in Sapa', onMap: 'Where it is on the map', prev: 'Previous stop', next: 'Next stop', crumb: 'Sapa map' }
+  vi: { back: 'Bản đồ Sa Pa', stop: 'Điểm dừng', photo: 'Ảnh', openMap: 'mở chỉ đường', approx: 'vị trí gần đúng', cta: 'Đặt bay dù lượn Sa Pa', onMap: 'Vị trí trên sơ đồ', faq: 'Hỏi nhanh – đáp gọn', gallery: 'Thêm ảnh', prev: 'Điểm trước', next: 'Điểm tiếp theo', crumb: 'Bản đồ Sa Pa' },
+  en: { back: 'Sapa map', stop: 'Stop', photo: 'Photo', openMap: 'open directions', approx: 'approximate position', cta: 'Book a paragliding flight in Sapa', onMap: 'Where it is on the map', faq: 'Quick questions', gallery: 'More photos', prev: 'Previous stop', next: 'Next stop', crumb: 'Sapa map' }
 }
 const ui = computed(() => UI[lang.value])
 
@@ -181,6 +214,16 @@ useHead(() => {
     link: [{ rel: 'canonical', href: canonical }, ...buildHreflangLinks(path, locale.value, MAP_LOCALES)],
     script: [
       { type: 'application/ld+json', innerHTML: JSON.stringify(place) },
+      ...(text.value.faq?.length
+        ? [{
+            type: 'application/ld+json',
+            innerHTML: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: text.value.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/\*\*/g, '') } }))
+            })
+          }]
+        : []),
       {
         type: 'application/ld+json',
         innerHTML: JSON.stringify(buildBreadcrumbJsonLD([
@@ -233,6 +276,13 @@ useHead(() => {
 .smd-figure img { display: block; max-width: 100%; max-height: min(66vh, 520px); width: auto; border-radius: 0.5rem; }
 .smd-figure figcaption { margin-top: 0.6rem; color: var(--smp-muted); font-size: 0.8rem; font-weight: 300; line-height: 1.5; }
 
+.smd-faq details { margin-bottom: 0.6rem; padding: 0.8rem 1rem; border: 1px solid var(--smp-line); border-radius: 0.5rem; background: #fff; }
+.smd-faq summary { color: var(--smp-ink); font-weight: 500; cursor: pointer; }
+.smd-faq details p { margin: 0.6rem 0 0; font-size: 1rem; }
+.smd-gallery { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.smd-gallery figure { margin: 0; }
+.smd-gallery img { width: 100%; aspect-ratio: 10 / 7; object-fit: cover; border-radius: 0.5rem; }
+.smd-gallery figcaption { margin-top: 0.4rem; color: var(--smp-muted); font-size: 0.78rem; font-weight: 300; line-height: 1.45; }
 .smd-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
 .smd-nav-item { display: flex; flex-direction: column; padding: 0.9rem 1.1rem; border: 1px solid var(--smp-line); border-radius: 0.6rem; background: #fff; }
 .smd-nav-item:hover { border-color: var(--smp-green); }

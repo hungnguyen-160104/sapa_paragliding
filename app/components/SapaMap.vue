@@ -1,64 +1,68 @@
 <template>
   <!--
-    Sơ đồ checkpoint Sa Pa (kiểu sơ đồ Hà Giang Loop): KHÔNG phải bản đồ địa
-    lý — các điểm xếp theo hướng thật nhưng nới ra cho dễ nhìn. Mỗi điểm là
-    một link sang /sapa-map/<slug>. Dùng chung cho trang bản đồ và trang chủ.
-    Vị trí điểm lấy từ shared/sapa-map.ts; đường vẽ bằng các mốc bên dưới.
+    Sơ đồ checkpoint Sa Pa (kiểu sơ đồ Hà Giang Loop) trên nền địa hình thật
+    hiện mờ. Mỗi điểm là một link sang /sapa-map/<slug>. Dùng chung cho trang
+    bản đồ, trang từng điểm và trang chủ. Vị trí điểm: shared/sapa-map.ts;
+    đường đi: app/data/sapa-map-geo.json; ảnh nền: /images/sapa-map/topo.jpg.
   -->
   <nav class="smap" :aria-label="lang === 'vi' ? 'Sơ đồ checkpoint Sa Pa' : 'Sapa checkpoint map'">
+    <!-- Nền địa hình thật của vùng Sa Pa (OpenTopoMap), hiện mờ. Các điểm và
+         đường đi đặt đúng toạ độ trên nền này. -->
+    <img src="/images/sapa-map/topo.jpg" alt="" class="smap-topo" loading="lazy" decoding="async" aria-hidden="true" />
+
     <svg viewBox="0 0 1000 780" class="smap-svg" aria-hidden="true" focusable="false">
-      <!-- núi trang trí -->
-      <g opacity="0.5">
-        <path d="M110 560 L205 430 L300 560 Z" fill="#244a3c" />
-        <path d="M170 478 L205 430 L240 478 L222 470 L205 486 L190 468 Z" fill="#e9efe9" opacity="0.85" />
-        <path d="M30 600 L120 500 L210 600 Z" fill="#1f4234" />
-        <path d="M250 610 L330 520 L410 610 Z" fill="#1f4234" />
-      </g>
-
-      <!-- suối Mường Hoa -->
-      <path :d="P.river" fill="none" stroke="#1d6f7d" stroke-width="13" stroke-linecap="round" opacity="0.35" />
-      <path :d="P.river" fill="none" stroke="#3fb4bf" stroke-width="6" stroke-linecap="round" />
-      <path :d="P.river" fill="none" stroke="#bff0ea" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="14 22" opacity="0.8" class="smap-flow" />
-
       <!-- đường ô tô / xe máy -->
-      <g v-for="(d, i) in roads" :key="`r${i}`">
-        <path :d="d" fill="none" stroke="#050a07" stroke-width="11" stroke-linecap="round" opacity="0.28" transform="translate(0 4)" />
-        <path :d="d" fill="none" stroke="#e9dcc4" stroke-width="5.5" stroke-linecap="round" />
-        <path :d="d" fill="none" stroke="#d9772b" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="7 9" opacity="0.9" />
+      <g v-for="(d, i) in GEO.roads" :key="`r${i}`">
+        <path :d="d" fill="none" stroke="#050a07" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.35" transform="translate(0 3)" />
+        <path :d="d" fill="none" stroke="#e9dcc4" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path :d="d" fill="none" stroke="#d9772b" stroke-width="1" stroke-linecap="round" stroke-dasharray="7 9" opacity="0.9" />
       </g>
 
       <!-- cung trek (đi bộ) -->
-      <path v-for="(d, i) in treks" :key="`t${i}`" :d="d" fill="none" stroke="#9fe08f" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 9" />
+      <g v-for="(d, i) in GEO.treks" :key="`t${i}`">
+        <path :d="d" fill="none" stroke="#0b1d17" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" />
+        <path :d="d" fill="none" stroke="#a8ec93" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5 8" />
+      </g>
+      <!-- người đi bộ trên cung trek -->
+      <g v-for="(h, i) in GEO.hikers" :key="`h${i}`" :transform="`translate(${h[0]} ${h[1]})`" class="smap-hiker">
+        <circle r="13" />
+        <g transform="translate(-8.5 -9.5) scale(0.72)" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="13" cy="4" r="2.6" fill="currentColor" stroke="none" />
+          <path d="M13 9 L10 16 L13 20 L12 25" />
+          <path d="M10 16 L6 25" />
+          <path d="M12 11 L17 14 L20 13" />
+          <path d="M11 11 L8 13 L8 16" />
+          <path d="M20 9 L20 25" />
+        </g>
+      </g>
 
       <!-- tàu leo núi + cáp treo Fansipan -->
-      <path :d="P.funicular" fill="none" stroke="#cdb6f2" stroke-width="4" stroke-linecap="round" />
-      <path :d="P.cable" fill="none" stroke="#cdb6f2" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="10 7" />
-      <circle cx="385" cy="335" r="6" fill="#16332a" stroke="#cdb6f2" stroke-width="2.5" />
+      <path :d="GEO.funicular" fill="none" stroke="#cdb6f2" stroke-width="4" stroke-linecap="round" />
+      <path :d="GEO.cable" fill="none" stroke="#cdb6f2" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="10 7" />
+      <circle :cx="GEO.station[0]" :cy="GEO.station[1]" r="5.5" fill="#16332a" stroke="#cdb6f2" stroke-width="2.5" />
 
       <!-- đường bay dù lượn -->
-      <path :d="P.flight" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 8" />
-      <g transform="translate(742 478) rotate(18)">
-        <path d="M-17 0 Q0 -19 17 0 Q0 -8 -17 0 Z" fill="#ff6b6b" stroke="#fff" stroke-width="1.2" />
-        <path d="M-12 -2 L0 13 L12 -2" fill="none" stroke="#fff" stroke-width="0.9" />
-        <circle cx="0" cy="14" r="2.6" fill="#fff" />
+      <path :d="GEO.flight" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 8" />
+      <g :transform="`translate(${GEO.glider[0]} ${GEO.glider[1]}) rotate(12)`">
+        <path d="M-15 0 Q0 -17 15 0 Q0 -7 -15 0 Z" fill="#ff6b6b" stroke="#fff" stroke-width="1.2" />
+        <path d="M-10 -2 L0 12 L10 -2" fill="none" stroke="#fff" stroke-width="0.9" />
+        <circle cx="0" cy="13" r="2.4" fill="#fff" />
       </g>
 
       <!-- chữ phụ trên sơ đồ -->
       <g class="smap-minor">
-        <text x="385" y="358" text-anchor="middle">{{ lang === 'vi' ? 'Ga cáp treo' : 'Cable car station' }}</text>
-        <text x="536" y="492" text-anchor="middle">Ý Linh Hồ</text>
-        <text x="872" y="622" text-anchor="start">Giàng Tà Chải</text>
-        <text x="232" y="262" text-anchor="start">{{ lang === 'vi' ? 'Thác Tình Yêu' : 'Love Waterfall' }}</text>
-        <text x="120" y="330" text-anchor="start">Trạm Tôn</text>
-        <text x="470" y="548" text-anchor="middle" class="smap-river-name" transform="rotate(27 470 548)">{{ lang === 'vi' ? 'suối Mường Hoa' : 'Muong Hoa stream' }}</text>
+        <text :x="GEO.labels.station[0] - 8" :y="GEO.labels.station[1] + 34" text-anchor="end">{{ lang === 'vi' ? 'Ga cáp treo' : 'Cable car station' }}</text>
+        <text :x="GEO.labels.ylinhho[0] - 4" :y="GEO.labels.ylinhho[1] + 22" text-anchor="end">Ý Linh Hồ</text>
+        <text :x="GEO.labels.giangtachai[0] - 2" :y="GEO.labels.giangtachai[1] + 24" text-anchor="middle">Giàng Tà Chải</text>
+        <text :x="GEO.labels.muonghoa[0]" :y="GEO.labels.muonghoa[1]" text-anchor="middle" class="smap-river-name" :transform="`rotate(27 ${GEO.labels.muonghoa[0]} ${GEO.labels.muonghoa[1]})`">{{ lang === 'vi' ? 'thung lũng Mường Hoa' : 'Muong Hoa Valley' }}</text>
       </g>
 
       <!-- tên sơ đồ -->
-      <text x="255" y="690" class="smap-title" transform="rotate(-6 255 690)">Sapa Map</text>
+      <text x="70" y="690" class="smap-title" transform="rotate(-6 70 690)">Sapa Map</text>
 
       <!-- la bàn -->
-      <g transform="translate(930 70)" opacity="0.8">
-        <circle r="22" fill="none" stroke="#e9dcc4" stroke-width="1.2" />
+      <g transform="translate(940 62)" opacity="0.85">
+        <circle r="22" fill="rgba(8,22,17,0.6)" stroke="#e9dcc4" stroke-width="1.2" />
         <path d="M0 -17 L5 0 L0 17 L-5 0 Z" fill="#e9dcc4" opacity="0.35" />
         <path d="M0 -17 L5 0 L-5 0 Z" fill="#ff6b6b" />
         <text y="-27" text-anchor="middle" class="smap-compass">N</text>
@@ -89,10 +93,12 @@
       <li><i class="lg-cable"></i>{{ lang === 'vi' ? 'Tàu & cáp treo' : 'Funicular & cable car' }}</li>
       <li><i class="lg-fly"></i>{{ lang === 'vi' ? 'Đường bay' : 'Flight' }}</li>
     </ul>
+    <p class="smap-attr">© <a href="https://opentopomap.org" target="_blank" rel="noopener">OpenTopoMap</a> (CC-BY-SA) · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></p>
   </nav>
 </template>
 
 <script setup lang="ts">
+import mapGeo from '~/data/sapa-map-geo.json'
 import { SAPA_STOPS } from '~~/shared/sapa-map'
 
 defineProps<{ active?: string }>()
@@ -115,7 +121,7 @@ useHead({
 const NAMES: Record<string, { vi: string; en: string }> = {
   'sun-plaza': { vi: 'Sun Plaza · Sân quần', en: 'Sun Plaza · Square' },
   'ham-rong': { vi: 'Núi Hàm Rồng', en: 'Ham Rong Mountain' },
-  moana: { vi: 'Moana Sapa', en: 'Moana Sapa' },
+  moana: { vi: 'Moana', en: 'Moana' },
   fansipan: { vi: 'Đỉnh Fansipan', en: 'Fansipan summit' },
   'cat-cat': { vi: 'Bản Cát Cát', en: 'Cat Cat village' },
   takeoff: { vi: 'Điểm cất cánh', en: 'Take-off' },
@@ -147,48 +153,21 @@ const TAGS: Record<string, { vi: string; en: string }> = {
   'rong-may': { vi: '20 km', en: '20 km' }
 }
 
-/** Nối các mốc thành đường cong mềm (Catmull-Rom → Bézier). */
-function smooth(pts: Array<[number, number]>): string {
-  if (pts.length < 2) return ''
-  let d = `M${pts[0]![0]} ${pts[0]![1]}`
-  for (let i = 0; i < pts.length - 1; i++) {
-    const p0 = pts[Math.max(0, i - 1)]!
-    const p1 = pts[i]!
-    const p2 = pts[i + 1]!
-    const p3 = pts[Math.min(pts.length - 1, i + 2)]!
-    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6]
-    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6]
-    d += ` C${c1[0]!.toFixed(1)} ${c1[1]!.toFixed(1)}, ${c2[0]!.toFixed(1)} ${c2[1]!.toFixed(1)}, ${p2[0]} ${p2[1]}`
-  }
-  return d
+/**
+ * Đường đi đã chiếu sẵn lên khung 1000x780: đường xe và cung trek thung lũng
+ * là hình học thật từ OpenStreetMap; cung leo Fansipan chỉ là sơ đồ nối các mốc.
+ */
+const GEO = mapGeo as unknown as {
+  roads: string[]
+  treks: string[]
+  funicular: string
+  cable: string
+  flight: string
+  glider: [number, number]
+  station: [number, number]
+  hikers: Array<[number, number]>
+  labels: Record<'station' | 'ylinhho' | 'giangtachai' | 'love' | 'tramton' | 'muonghoa', [number, number]>
 }
-
-const P = {
-  river: smooth([[330, 398], [415, 462], [500, 512], [585, 565], [660, 600], [760, 632], [850, 672], [965, 742]]),
-  funicular: smooth([[500, 300], [440, 322], [385, 335]]),
-  cable: smooth([[385, 335], [300, 400], [205, 478]]),
-  flight: 'M705 428 Q770 470 672 548'
-}
-
-const roads = [
-  // QL4D: Sa Pa → Thác Bạc → Ô Quy Hồ → Rồng Mây
-  smooth([[500, 300], [452, 268], [410, 228], [352, 205], [322, 168], [285, 150], [238, 172], [205, 215], [150, 232], [108, 196], [128, 150], [118, 108]]),
-  // Sa Pa → Tả Phìn
-  smooth([[500, 300], [532, 240], [505, 178], [548, 128], [575, 78]]),
-  // Sa Pa → Moana → Hang Đá → Lao Chải → Tả Van → Bản Hồ
-  smooth([[500, 300], [528, 338], [560, 372], [628, 378], [705, 428], [742, 486], [672, 548], [738, 574], [795, 592], [842, 640], [892, 672], [925, 700]]),
-  // Tả Van → Séo Mý Tỷ
-  smooth([[795, 592], [770, 646], [712, 660], [690, 706], [640, 712]]),
-  // lối lên Hàm Rồng
-  smooth([[500, 300], [556, 268], [612, 248]])
-]
-
-const treks = [
-  // Sa Pa → Cát Cát → Ý Linh Hồ → Lao Chải → Tả Van → Giàng Tà Chải → Bản Hồ
-  smooth([[500, 300], [448, 352], [398, 420], [468, 462], [540, 506], [612, 536], [672, 548], [735, 600], [795, 592], [860, 606], [905, 648], [925, 700]]),
-  // Trạm Tôn → Fansipan
-  smooth([[150, 232], [162, 320], [150, 400], [205, 478]])
-]
 </script>
 
 <style>
@@ -204,13 +183,15 @@ const treks = [
   font-family: 'Lexend', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   overflow: hidden;
 }
+.smap-topo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; opacity: 0.42; pointer-events: none; }
 .smap-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.smap-flow { animation: smap-flow 6s linear infinite; }
-@keyframes smap-flow { to { stroke-dashoffset: -72; } }
-@media (prefers-reduced-motion: reduce) { .smap-flow { animation: none; } }
-.smap-minor text { fill: #c9d8cf; font-size: 13px; font-weight: 300; opacity: 0.85; }
+.smap-hiker circle { fill: #0b1d17; stroke: #a8ec93; stroke-width: 1.6; }
+.smap-hiker g { color: #a8ec93; stroke: #a8ec93; }
+.smap-attr { position: absolute; right: 10px; bottom: 8px; margin: 0; color: rgba(201, 216, 207, 0.75); font-size: 9.5px; font-weight: 300; }
+.smap-attr a { text-decoration: underline; }
+.smap-minor text { fill: #dbe7df; font-size: 12.5px; font-weight: 400; paint-order: stroke; stroke: #0b1d17; stroke-width: 3px; stroke-linejoin: round; }
 .smap-minor .smap-river-name { fill: #9fdfe3; font-size: 12px; font-style: italic; letter-spacing: 0.08em; }
-.smap-title { fill: #f0b775; font-family: 'Yellowtail', 'Brush Script MT', cursive; font-size: 74px; opacity: 0.95; paint-order: stroke; stroke: #0b1d17; stroke-width: 5px; stroke-linejoin: round; }
+.smap-title { fill: #f0b775; font-family: 'Yellowtail', 'Brush Script MT', cursive; font-size: 66px; opacity: 0.95; paint-order: stroke; stroke: #0b1d17; stroke-width: 5px; stroke-linejoin: round; }
 .smap-compass { fill: #e9dcc4; font-size: 13px; font-weight: 600; }
 
 /* điểm dừng */
@@ -240,6 +221,11 @@ const treks = [
 .smap-side-left .smap-label { right: 22px; top: 0; transform: translateY(-50%); align-items: flex-end; }
 .smap-side-top .smap-label { left: 0; bottom: 22px; transform: translateX(-50%); align-items: center; }
 .smap-side-bottom .smap-label { left: 0; top: 22px; transform: translateX(-50%); align-items: center; }
+/* nhãn chéo: dùng ở mép sơ đồ và cụm thị trấn cho nhãn khỏi đè nhau */
+.smap-side-tr .smap-label { left: -6px; bottom: 20px; }
+.smap-side-tl .smap-label { right: -6px; bottom: 20px; align-items: flex-end; }
+.smap-side-br .smap-label { left: -6px; top: 20px; }
+.smap-side-bl .smap-label { right: -6px; top: 20px; align-items: flex-end; }
 .smap-stop:hover .smap-dot, .smap-stop:focus-visible .smap-dot, .smap-active .smap-dot { transform: translate(-50%, -50%) scale(1.18); }
 .smap-stop:hover .smap-label, .smap-stop:focus-visible .smap-label, .smap-active .smap-label { border-color: #f0b775; background: rgba(8, 22, 17, 0.96); }
 .smap-stop:hover, .smap-active { z-index: 5; }
@@ -258,6 +244,7 @@ const treks = [
   .smap { border-radius: 0.75rem; }
   .smap-dot { width: 24px; height: 24px; border-width: 2px; font-size: 13px; }
   .smap-label { display: none; font-size: 12px; }
+  .smap-attr { font-size: 7px; right: 6px; bottom: 4px; }
   .smap-active .smap-label { display: flex; }
   .smap-side-right .smap-label { left: 17px; }
   .smap-side-left .smap-label { right: 17px; }
