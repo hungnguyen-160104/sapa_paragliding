@@ -63,7 +63,8 @@ export const PAGE_ROUTES: Array<{
   { path: '/posts', priority: '0.8', changefreq: 'weekly' },
   { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/pilots', priority: '0.8', changefreq: 'monthly' },
-  { path: '/pre-notice', priority: '0.7', changefreq: 'monthly' }
+  { path: '/pre-notice', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sapa-map', priority: '0.7', changefreq: 'monthly' }
 ]
 
 export function getLangIso(locale: Locale): string {
@@ -151,6 +152,10 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     // còn lại hiện đúng danh sách tiêu đề tiếng Anh, nên bỏ khỏi sitemap
     // cùng lý do với từng bài.
     if (page.path === '/posts' && !includePosts) continue
+    // Bản đồ Sa Pa chỉ có nội dung tiếng Việt và tiếng Anh (ngôn ngữ khác
+    // hiện bản tiếng Anh, canonical về /en) — chỉ khai ở hai sitemap đó.
+    const viEnOnly = page.path === '/sapa-map'
+    if (viEnOnly && !POST_LOCALES.includes(locale)) continue
 
     const pagePath = page.path === '/' ? '' : page.path
     const currentUrl = `${DOMAIN}/${locale}${pagePath}`
@@ -159,7 +164,7 @@ export async function buildLocaleSpecificSitemap(locale: Locale): Promise<string
     xml += `    <loc>${escapeXml(currentUrl)}</loc>\n`
     xml += `    <lastmod>${lastmod}</lastmod>\n`
 
-    for (const altLocale of LOCALES) {
+    for (const altLocale of viEnOnly ? POST_LOCALES : LOCALES) {
       const altUrl = `${DOMAIN}/${altLocale}${pagePath}`
       xml += `    <xhtml:link rel="alternate" hreflang="${getLangIso(altLocale)}" href="${escapeXml(altUrl)}" />\n`
     }

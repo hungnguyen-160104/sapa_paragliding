@@ -61,6 +61,11 @@
       <section class="mb-12 max-w-3xl">
         <h2 class="mb-3 text-2xl font-bold text-gray-900">{{ $t('flyingSite.gettingThere.title') }}</h2>
         <p class="leading-relaxed text-gray-600">{{ $t('flyingSite.gettingThere.desc') }}</p>
+        <!-- Bản đồ Sa Pa (điểm check-in, cung trek, điểm cất/hạ cánh). Nhãn đặt
+             tại chỗ vì trang bản đồ chỉ có nội dung vi/en. -->
+        <NuxtLink :to="localePath('/sapa-map')" class="mt-4 inline-flex items-center font-semibold text-red-600 hover:text-red-700">
+          {{ locale === 'vi' ? 'Xem bản đồ Sa Pa: điểm check-in, cung trek và điểm bay' : 'See the Sapa map: checkpoints, treks and the flying site' }} →
+        </NuxtLink>
       </section>
 
       <!-- CTA -->
