@@ -51,16 +51,6 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.84048,
     "images": [
       {
-        "src": "/images/sapa-map/sun-plaza-1.jpg",
-        "vi": "Nhà thờ Đá Sa Pa nhìn từ các bậc đá quảng trường; phía sau là núi Hàm Rồng",
-        "en": "Sapa's stone church seen from the steps of the square, with Ham Rong Mountain behind",
-        "credit": {
-          "author": "Bùi Thụy Đào Nguyên",
-          "license": "CC BY-SA 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Nh%C3%A0_th%E1%BB%9D_%C4%91%C3%A1_Sa_Pa.jpg"
-        }
-      },
-      {
         "src": "/images/sapa-map/sun-plaza-2.jpg",
         "vi": "Sun Plaza với tháp đồng hồ mái vòm xanh; biển \"Sapa Station\" là lối vào ga tàu leo núi Mường Hoa",
         "en": "Sun Plaza and its green-domed clock tower; the \"Sapa Station\" sign marks the Muong Hoa funicular station",
@@ -68,6 +58,16 @@ export const SAPA_STOPS: SapaStop[] = [
           "author": "Christophe95",
           "license": "CC BY-SA 4.0",
           "source": "https://commons.wikimedia.org/wiki/File:Sa_Pa_Station.jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/sun-plaza-4.jpg",
+        "vi": "Mặt trước và tháp chuông nhà thờ Đá, xây bằng đá đẽo",
+        "en": "The front and bell tower of the stone church, built of dressed stone",
+        "credit": {
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Sapa_Church.jpg"
         }
       },
       {
@@ -81,13 +81,13 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/sun-plaza-4.jpg",
-        "vi": "Mặt trước và tháp chuông nhà thờ Đá, xây bằng đá đẽo",
-        "en": "The front and bell tower of the stone church, built of dressed stone",
+        "src": "/images/sapa-map/sun-plaza-1.jpg",
+        "vi": "Nhà thờ Đá Sa Pa nhìn từ các bậc đá quảng trường; phía sau là núi Hàm Rồng",
+        "en": "Sapa's stone church seen from the steps of the square, with Ham Rong Mountain behind",
         "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Sapa_Church.jpg"
+          "author": "Bùi Thụy Đào Nguyên",
+          "license": "CC BY-SA 3.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Nh%C3%A0_th%E1%BB%9D_%C4%91%C3%A1_Sa_Pa.jpg"
         }
       },
       {
@@ -123,14 +123,9 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.8468,
     "images": [
       {
-        "src": "/images/sapa-map/ham-rong-1.jpg",
-        "vi": "Toàn cảnh thị trấn và hồ Sa Pa nhìn từ núi Hàm Rồng",
-        "en": "Sapa town and its lake seen from Ham Rong Mountain",
-        "credit": {
-          "author": "Bùi Thụy Đào Nguyên",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Th%E1%BB%8B_tr%E1%BA%A5n_Sa_Pa.jpg"
-        }
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1777604177/posts/content/h37cbbseardfir4kygnb.jpg",
+        "vi": "Vườn hoa trên núi Hàm Rồng nhìn từ trên cao",
+        "en": "The flower gardens on Ham Rong Mountain seen from above"
       },
       {
         "src": "/images/sapa-map/ham-rong-2.jpg",
@@ -143,43 +138,23 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/ham-rong-3.jpg",
-        "vi": "Vườn hoa trên núi Hàm Rồng trong một ngày sương mù",
-        "en": "The flower gardens on Ham Rong Mountain on a misty day",
+        "src": "/images/sapa-map/ham-rong-1.jpg",
+        "vi": "Toàn cảnh thị trấn và hồ Sa Pa nhìn từ núi Hàm Rồng",
+        "en": "Sapa town and its lake seen from Ham Rong Mountain",
         "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:V%C6%B0%E1%BB%9Dn_hoa_Sa_Pa_-_panoramio.jpg"
+          "author": "Bùi Thụy Đào Nguyên",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Th%E1%BB%8B_tr%E1%BA%A5n_Sa_Pa.jpg"
         }
       },
       {
-        "src": "/images/sapa-map/ham-rong-4.jpg",
-        "vi": "Hàng chữ Hàm Rồng xếp bằng cây giữa vườn hoa và những khối đá vôi",
-        "en": "The name Ham Rong spelled out in plants between the flower beds and limestone outcrops",
+        "src": "/images/sapa-map/ham-rong-b1.jpg",
+        "vi": "Thị trấn Sa Pa và hồ nhìn từ núi Hàm Rồng",
+        "en": "Sapa town and its lake seen from Ham Rong Mountain",
         "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:H%C3%A0m_r%E1%BB%93ng_-_panoramio.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/ham-rong-5.jpg",
-        "vi": "Khối đá vôi dựng đứng ở Cổng Trời 2, bên lối đi lát đá",
-        "en": "A limestone pinnacle at Heaven's Gate 2 (Cổng Trời 2), beside the stone-paved path",
-        "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:C%E1%BB%95ng_tr%E1%BB%9Di_-_panoramio.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/ham-rong-6.jpg",
-        "vi": "Lối đi lát đá luồn dưới vách đá phủ rêu; đường ướt và trơn khi có sương",
-        "en": "The stone path passing under a mossy rock wall; wet and slippery in mist",
-        "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2n_m%C3%A2y_-_panoramio.jpg"
+          "author": "Zeugma fr (talk) (Antoine FLEURY-GOBERT)",
+          "license": "CC BY-SA 3.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Sapa_vu_du_mont_Ham_Rong.jpg"
         }
       }
     ],
@@ -196,6 +171,11 @@ export const SAPA_STOPS: SapaStop[] = [
     "approx": true,
     "images": [
       {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785815231/posts/content/wfarlhfqatts4mlrb5yc.avif",
+        "vi": "Tượng cô gái Moana, tiểu cảnh trùng tên với khu check-in",
+        "en": "The Moana girl statue, the set that shares the park's name"
+      },
+      {
         "src": "/images/sapa-map/moana-1.jpg",
         "vi": "Ảnh minh hoạ: dãy Hoàng Liên Sơn và ruộng bậc thang nhìn từ rìa thị trấn Sa Pa, hướng nhìn giống phông nền ở Moana",
         "en": "Illustrative photo: the Hoang Lien Son range and terraces seen from the edge of Sapa town, the same outlook that forms Moana's backdrop",
@@ -204,11 +184,6 @@ export const SAPA_STOPS: SapaStop[] = [
           "license": "CC BY-SA 4.0",
           "source": "https://commons.wikimedia.org/wiki/File:Ho%C3%A0ng_Li%C3%AAn_S%C6%A1n_mountains_from_Sa_Pa.jpg"
         }
-      },
-      {
-        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785815231/posts/content/wfarlhfqatts4mlrb5yc.avif",
-        "vi": "Tượng cô gái Moana, tiểu cảnh trùng tên với khu check-in",
-        "en": "The Moana girl statue, the set that shares the park's name"
       },
       {
         "src": "/images/sapa-map/moana-3.jpg",
@@ -244,6 +219,46 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.77544,
     "images": [
       {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785816035/posts/content/xhmnlgos6gcn0kdm5pix.jpg",
+        "vi": "Sân đỉnh Fansipan với cột cờ trong một ngày trời xanh",
+        "en": "The Fansipan summit platform and flagpole on a blue-sky day"
+      },
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785926313/posts/content/rnyd4r01xhftvzxzc2k5.jpg",
+        "vi": "Cabin cáp treo Fansipan phía trên biển mây",
+        "en": "A Fansipan cable-car cabin above a sea of cloud"
+      },
+      {
+        "src": "/images/sapa-map/fansipan-b1.jpg",
+        "vi": "Chóp inox trên đỉnh Fansipan lúc hoàng hôn, phía dưới là biển mây",
+        "en": "The steel pyramid on the Fansipan summit at sunset, above a sea of cloud",
+        "credit": {
+          "author": "Vivu Vietnam",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Fansipan_summit_pyramid_monument_sunset_sea_of_clouds_Sa_Pa_Vietnam.jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/fansipan-b2.jpg",
+        "vi": "Quần thể chùa và bảo tháp gần đỉnh Fansipan nhìn từ trên cao",
+        "en": "The pagoda and stupa complex near the Fansipan summit, from the air",
+        "credit": {
+          "author": "Vivu Vietnam",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Fansipan_summit_pagoda_stupa_sea_of_clouds_aerial_view_Sa_Pa_Vietnam.jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/fansipan-b3.jpg",
+        "vi": "Quần thể tâm linh trên đỉnh Fansipan giữa biển mây",
+        "en": "The spiritual complex on Fansipan above the clouds",
+        "credit": {
+          "author": "Vivu Vietnam",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Fansipan_summit_spiritual_complex_bare_tree_sea_of_clouds_Sa_Pa_Vietnam.jpg"
+        }
+      },
+      {
         "src": "/images/sapa-map/fansipan-1.jpg",
         "vi": "Cabin cáp treo gần ga trên; qua khoảng trống của mây thấy thị trấn Sa Pa phía dưới",
         "en": "A cable-car cabin near the top station, with Sapa town visible through a gap in the cloud",
@@ -251,46 +266,6 @@ export const SAPA_STOPS: SapaStop[] = [
           "author": "Christophe95",
           "license": "CC BY-SA 4.0",
           "source": "https://commons.wikimedia.org/wiki/File:Fansipan_Cable_Car.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/fansipan-2.jpg",
-        "vi": "Kim Sơn Bảo Thắng Tự và bảo tháp nhìn từ trên đỉnh xuống",
-        "en": "Kim Son Bao Thang pagoda and its tower seen from the summit",
-        "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Kim_Son_Bao_Thang_Pagoda_from_the_summit.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/fansipan-3.jpg",
-        "vi": "Đại tượng Phật A Di Đà và đường bậc thang lên đỉnh trong mây",
-        "en": "The Great Amitabha Buddha and the stairway to the summit in cloud",
-        "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Amit%C4%81bha_statue_on_Fansipan_2.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/fansipan-4.jpg",
-        "vi": "Cột mốc Fansipan 3.143 m trong một ngày mù trắng trời",
-        "en": "The Fansipan 3,143 m summit marker on a white-out day",
-        "credit": {
-          "author": "MinhVN1863",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Fansipan_Summit_Mark_2024.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/fansipan-5.jpg",
-        "vi": "Khu lán nghỉ 2.800 m trên cung leo bộ, giữa rừng trúc lùn",
-        "en": "The 2,800 m camp on the trekking route, among dwarf bamboo",
-        "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Fansipan_base_camp.jpg"
         }
       }
     ],
@@ -305,6 +280,11 @@ export const SAPA_STOPS: SapaStop[] = [
     "lat": 22.32853,
     "lon": 103.83468,
     "images": [
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785814838/posts/content/rvwnxb8dszpqrykt4shy.jpg",
+        "vi": "Trung tâm bản Cát Cát bên suối với guồng nước và nhà gỗ",
+        "en": "The heart of Cat Cat village by the stream, with water wheels and timber houses"
+      },
       {
         "src": "/images/sapa-map/cat-cat-1.jpg",
         "vi": "Thác Cát Cát và những nếp nhà gỗ bên suối dưới đáy thung lũng",
@@ -333,16 +313,6 @@ export const SAPA_STOPS: SapaStop[] = [
           "author": "Jakub Hałun",
           "license": "CC BY 4.0",
           "source": "https://commons.wikimedia.org/wiki/File:Water_wheels_in_Cat_Cat_village,_Sa_Pa,_Vietnam,_20240126_1140_3535.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/cat-cat-4.jpg",
-        "vi": "Guồng nước và những mái nhà trong bản Cát Cát",
-        "en": "Water wheels and village houses in Cat Cat",
-        "credit": {
-          "author": "Jakub Hałun",
-          "license": "CC BY 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Water_wheel_in_Cat_Cat_village,_Sa_Pa,_Vietnam,_20240126_1144_3561.jpg"
         }
       },
       {
@@ -425,6 +395,11 @@ export const SAPA_STOPS: SapaStop[] = [
         "en": "A wing coming in over the ripe rice at the landing field, with village children out to watch"
       },
       {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785819305/posts/content/qlncynirymkkbid7uhzs.jpg",
+        "vi": "Khách đi bộ trên bờ ruộng bậc thang giữa Lao Chải và Tả Van",
+        "en": "Walkers on the terrace paths between Lao Chai and Ta Van"
+      },
+      {
         "src": "/images/sapa-map/lao-chai-2.jpg",
         "vi": "Ruộng lúa xanh dưới đáy thung lũng ở Lao Chải, nhà trong bản nằm rải phía xa (tháng 8)",
         "en": "Green rice on the valley floor at Lao Chai, with village houses scattered beyond (August)",
@@ -477,13 +452,23 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.88858,
     "images": [
       {
-        "src": "/images/sapa-map/ta-van-1.jpg",
-        "vi": "Bản Tả Van nằm dưới đáy thung lũng Mường Hoa, nhìn từ ruộng bậc thang phía trên",
-        "en": "Ta Van on the floor of Muong Hoa Valley, seen from the rice terraces above",
+        "src": "/images/sapa-map/ta-van-6.jpg",
+        "vi": "Ruộng bậc thang ở Tả Van, phía xa là suối Mường Hoa và mây thấp trên sườn núi",
+        "en": "Rice terraces in Ta Van with the Muong Hoa stream and low cloud on the hillside beyond",
         "credit": {
           "author": "Christophe95",
           "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:M%C6%B0%E1%BB%9Dng_Hoa_Valley_08.jpg"
+          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces_in_T%E1%BA%A3_Van_03.jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/ta-van-b1.jpg",
+        "vi": "Một xóm nhà giữa ruộng bậc thang trong thung lũng Mường Hoa, trên đường đi Tả Van",
+        "en": "A hamlet among the terraces of Muong Hoa Valley on the way to Ta Van",
+        "credit": {
+          "author": "Andre Hospers",
+          "license": "CC BY 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Ta_Van_Muong_Ha_vallei_(84346).jpg"
         }
       },
       {
@@ -497,13 +482,13 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/ta-van-3.jpg",
-        "vi": "Cây cầu nhỏ qua suối giữa ruộng bậc thang ở khu Tả Van – Lao Chải",
-        "en": "A small footbridge over a stream among the terraces in the Ta Van – Lao Chai area",
+        "src": "/images/sapa-map/ta-van-1.jpg",
+        "vi": "Bản Tả Van nằm dưới đáy thung lũng Mường Hoa, nhìn từ ruộng bậc thang phía trên",
+        "en": "Ta Van on the floor of Muong Hoa Valley, seen from the rice terraces above",
         "credit": {
-          "author": "Lori_NY",
-          "license": "CC BY-SA 2.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Village_bridge.jpg"
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:M%C6%B0%E1%BB%9Dng_Hoa_Valley_08.jpg"
         }
       },
       {
@@ -525,16 +510,6 @@ export const SAPA_STOPS: SapaStop[] = [
           "license": "CC BY 3.0",
           "source": "https://commons.wikimedia.org/wiki/File:B%C3%A3i_%C4%91%C3%A1_c%E1%BB%95.jpg"
         }
-      },
-      {
-        "src": "/images/sapa-map/ta-van-6.jpg",
-        "vi": "Ruộng bậc thang ở Tả Van, phía xa là suối Mường Hoa và mây thấp trên sườn núi",
-        "en": "Rice terraces in Ta Van with the Muong Hoa stream and low cloud on the hillside beyond",
-        "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces_in_T%E1%BA%A3_Van_03.jpg"
-        }
       }
     ],
     "n": 8
@@ -550,16 +525,6 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.96805,
     "approx": true,
     "images": [
-      {
-        "src": "/images/sapa-map/ban-ho-1.jpg",
-        "vi": "Ảnh minh hoạ: ruộng bậc thang mùa lúa ở vùng Sa Pa (chưa xác định vị trí chính xác, không phải ảnh chụp bản Hồ)",
-        "en": "Illustration: rice terraces in the Sapa area (exact location unconfirmed; not a photo of Ban Ho village)",
-        "credit": {
-          "author": "David McKelvey",
-          "license": "CC BY 2.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Sapa_view_3.jpg"
-        }
-      },
       {
         "src": "/images/sapa-map/ban-ho-2.jpg",
         "vi": "Ảnh minh hoạ: đường đèo quanh co xuống một thung lũng sông ở vùng Sa Pa (chưa xác định vị trí chính xác)",
@@ -588,6 +553,16 @@ export const SAPA_STOPS: SapaStop[] = [
           "author": "David McKelvey",
           "license": "CC BY 2.0",
           "source": "https://commons.wikimedia.org/wiki/File:Sapa_view_1.jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/ban-ho-1.jpg",
+        "vi": "Ảnh minh hoạ: ruộng bậc thang mùa lúa ở vùng Sa Pa (chưa xác định vị trí chính xác, không phải ảnh chụp bản Hồ)",
+        "en": "Illustration: rice terraces in the Sapa area (exact location unconfirmed; not a photo of Ban Ho village)",
+        "credit": {
+          "author": "David McKelvey",
+          "license": "CC BY 2.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Sapa_view_3.jpg"
         }
       }
     ],
@@ -647,6 +622,16 @@ export const SAPA_STOPS: SapaStop[] = [
     "lon": 103.84303,
     "images": [
       {
+        "src": "/images/sapa-map/ta-phin-5.jpg",
+        "vi": "Ruộng bậc thang và núi ở Tả Phìn vào mùa lúa xanh",
+        "en": "Rice terraces and peaks at Ta Phin in green-rice season",
+        "credit": {
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces_in_T%E1%BA%A3_Ph%C3%ACn_03.jpg"
+        }
+      },
+      {
         "src": "/images/sapa-map/ta-phin-1.jpg",
         "vi": "Bản Tả Phìn giữa ruộng bậc thang, nhìn từ sườn đồi phía trên",
         "en": "Ta Phin village among rice terraces, seen from the slope above",
@@ -687,16 +672,6 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/ta-phin-5.jpg",
-        "vi": "Ruộng bậc thang và núi ở Tả Phìn vào mùa lúa xanh",
-        "en": "Rice terraces and peaks at Ta Phin in green-rice season",
-        "credit": {
-          "author": "Christophe95",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces_in_T%E1%BA%A3_Ph%C3%ACn_03.jpg"
-        }
-      },
-      {
         "src": "/images/sapa-map/ta-phin-6.jpg",
         "vi": "Ngô phơi trên lối đi bê tông bên ruộng lúa ở Tả Phìn",
         "en": "Maize drying on a concrete lane beside the paddies in Ta Phin",
@@ -712,8 +687,8 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "thac-bac",
     "kind": "waterfall",
-    "x": 150,
-    "y": 96,
+    "x": 152,
+    "y": 108,
     "side": "right",
     "far": true,
     "lat": 22.36324,
@@ -740,26 +715,6 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/thac-bac-3.jpg",
-        "vi": "Thác Bạc trong một ngày mù sương",
-        "en": "Silver Waterfall on a misty day",
-        "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Th%C3%A1c_b%E1%BA%A1c,_c%E1%BA%A7u_may_-_panoramio.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/thac-bac-4.jpg",
-        "vi": "Lối bậc thang và chòi nghỉ bên dòng Thác Bạc",
-        "en": "Stairway and rest shelter beside Silver Waterfall",
-        "credit": {
-          "author": "ChieuTimViet",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Th%C3%A1c_b%E1%BA%A1c_-_panoramio.jpg"
-        }
-      },
-      {
         "src": "/images/sapa-map/thac-bac-5.jpg",
         "vi": "Hàng đá kê bước qua suối Vàng trong Vườn quốc gia Hoàng Liên – dòng suối của Thác Tình Yêu",
         "en": "Stepping stones across the Golden Stream (Suoi Vang) in Hoang Lien National Park – the stream of Love Waterfall",
@@ -775,8 +730,8 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "o-quy-ho",
     "kind": "pass",
-    "x": 92,
-    "y": 58,
+    "x": 96,
+    "y": 66,
     "side": "right",
     "far": true,
     "lat": 22.35297,
@@ -793,33 +748,13 @@ export const SAPA_STOPS: SapaStop[] = [
         }
       },
       {
-        "src": "/images/sapa-map/o-quy-ho-2.jpg",
-        "vi": "Nắng chiều trên đèo Ô Quy Hồ",
-        "en": "Late-afternoon light over O Quy Ho Pass",
+        "src": "/images/sapa-map/o-quy-ho-6.jpg",
+        "vi": "Đồi chè Ô Quy Hồ mùa hoa anh đào",
+        "en": "The O Quy Ho tea hills in cherry-blossom season",
         "credit": {
-          "author": "Dansapa",
+          "author": "Kiếm Anh",
           "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Sunset_on_O_Quy_Ho_pass.jpg"
-        }
-      },
-      {
-        "src": "/images/sapa-map/o-quy-ho-3.jpg",
-        "vi": "Con đường đèo giữa mây, nhìn từ khu vực đỉnh đèo",
-        "en": "The pass road among the clouds, seen from near the top",
-        "credit": {
-          "author": "Liftold",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:%C4%90%C3%A8o_%C3%94_Quy_H%E1%BB%93_2.JPG"
-        }
-      },
-      {
-        "src": "/images/sapa-map/o-quy-ho-4.jpg",
-        "vi": "Một khúc cua trên đèo Ô Quy Hồ trong mây mù",
-        "en": "A bend on O Quy Ho Pass in the mist",
-        "credit": {
-          "author": "Liftold",
-          "license": "CC BY 3.0",
-          "source": "https://commons.wikimedia.org/wiki/File:%C4%90%C3%A8o_%C3%94_Quy_H%E1%BB%93_1.JPG"
+          "source": "https://commons.wikimedia.org/wiki/File:%C4%90%E1%BB%93i_ch%C3%A8_%C3%94_Qu%C3%BD_H%E1%BB%93.jpg"
         }
       },
       {
@@ -831,16 +766,6 @@ export const SAPA_STOPS: SapaStop[] = [
           "license": "CC BY-SA 4.0",
           "source": "https://commons.wikimedia.org/wiki/File:Nui_Xe_Ranger_Station.jpg"
         }
-      },
-      {
-        "src": "/images/sapa-map/o-quy-ho-6.jpg",
-        "vi": "Đồi chè Ô Quy Hồ mùa hoa anh đào",
-        "en": "The O Quy Ho tea hills in cherry-blossom season",
-        "credit": {
-          "author": "Kiếm Anh",
-          "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:%C4%90%E1%BB%93i_ch%C3%A8_%C3%94_Qu%C3%BD_H%E1%BB%93.jpg"
-        }
       }
     ],
     "n": 13
@@ -849,7 +774,7 @@ export const SAPA_STOPS: SapaStop[] = [
     "slug": "rong-may",
     "kind": "bridge",
     "x": 40,
-    "y": 26,
+    "y": 25,
     "side": "right",
     "far": true,
     "lat": 22.3727,
@@ -857,13 +782,23 @@ export const SAPA_STOPS: SapaStop[] = [
     "images": [
       {
         "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785905971/posts/covers/ehtgnil9hwuzwwmduvpe.jpg",
-        "vi": "Tháp thang máy và hành lang trên cao của khu Rồng Mây, phía dưới là đèo Ô Quy Hồ",
-        "en": "The lift tower and elevated walkway at Rong May, with O Quy Ho Pass below"
+        "vi": "Tháp thang máy và cầu kính Rồng Mây nhìn ra dãy Hoàng Liên Sơn",
+        "en": "The Rong May lift tower and glass bridge facing the Hoang Lien Son range"
+      },
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785905859/posts/covers/ke1bu9aj7a5zsrn5kl0c.jpg",
+        "vi": "Cầu kính Rồng Mây vươn ra khỏi vách núi, nhìn từ trên cao",
+        "en": "The Rong May glass bridge reaching out from the cliff, from above"
       },
       {
         "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785926405/posts/content/xwykwsjhgooo5367wgvv.webp",
         "vi": "Du khách đi trên cầu kính Rồng Mây",
         "en": "Visitors walking on the Rong May glass bridge"
+      },
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785925109/posts/content/mzdlwkpzpxlzvjjjovrj.jpg",
+        "vi": "Xích đu trên mép vực ở khu Rồng Mây, phía dưới là đèo Ô Quy Hồ",
+        "en": "The cliff-edge swing at Rong May, with O Quy Ho Pass below"
       }
     ],
     "n": 14
@@ -880,19 +815,44 @@ export const SAPA_STOPS: SapaStop[] = [
     "q": "Best View Sapa",
     "images": [
       {
-        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1790841055/posts/content/zm1tifc17uanfxjryvmq.jpg",
-        "vi": "Ảnh minh hoạ: thung lũng Mường Hoa nhìn từ sườn núi khu Hang Đá, cùng hướng nhìn với Best View",
-        "en": "Illustrative photo: Muong Hoa Valley from the Hang Da hillside, the same outlook as Best View"
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1785490067/posts/content/avokbvemtyrypjy1xorh.jpg",
+        "vi": "Mây buổi sáng tan dần trên thung lũng Mường Hoa, chụp từ sườn núi khu Hang Đá, cách Best View khoảng 1 km",
+        "en": "Morning cloud lifting off Muong Hoa Valley, taken from the Hang Da hillside about 1 km from Best View"
       },
       {
-        "src": "/images/sapa-map/moana-4.jpg",
-        "vi": "Ảnh minh hoạ: thung lũng phía dưới Sa Pa trong một ngày nhiều mây",
-        "en": "Illustrative photo: the valley below Sapa on a cloudy day",
+        "src": "/images/sapa-map/bestview-b1.jpg",
+        "vi": "Ảnh minh hoạ: tia nắng xuyên mây trên ruộng bậc thang Sa Pa",
+        "en": "Illustrative photo: sun rays breaking through cloud over Sapa rice terraces",
+        "credit": {
+          "author": "Phi Phi Hoang",
+          "license": "CC BY 2.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Ray_over_terrace_rice_field_in_Sapa_-_Trung_Ch%E1%BA%A3i..jpg"
+        }
+      },
+      {
+        "src": "/images/sapa-map/bestview-b2.jpg",
+        "vi": "Ruộng bậc thang và nhà gỗ ở Hầu Thào, khu vực quanh Best View",
+        "en": "Rice terraces and a timber house in Hau Thao, the area around Best View",
         "credit": {
           "author": "Christophe95",
           "license": "CC BY-SA 4.0",
-          "source": "https://commons.wikimedia.org/wiki/File:Landcape_in_Sa_Pa_01.jpg"
+          "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces_in_H%E1%BA%A7u_Th%C3%A0o_5.jpg"
         }
+      },
+      {
+        "src": "/images/sapa-map/bestview-b3.jpg",
+        "vi": "Thung lũng Mường Hoa mùa lúa xanh, hướng nhìn từ sườn núi Hầu Thào",
+        "en": "Muong Hoa Valley in the green-rice season, the outlook from the Hau Thao hillside",
+        "credit": {
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:M%C6%B0%E1%BB%9Dng_Hoa_Valley_06.jpg"
+        }
+      },
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1790841060/posts/content/cnfuekgwmrxlcojl2ols.jpg",
+        "vi": "Bay dù lượn phía trên thung lũng trong một sáng nhiều mây, bãi cất cánh cách Best View khoảng 1 km",
+        "en": "Paragliding above the valley on a cloudy morning; the take-off is about 1 km from Best View"
       }
     ],
     "n": 15
