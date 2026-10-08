@@ -7,23 +7,24 @@
     đường đi: app/data/sapa-map-geo.json; ảnh nền: /images/sapa-map/topo.jpg.
   -->
   <nav class="smap" :aria-label="lang === 'vi' ? 'Sơ đồ checkpoint Sa Pa' : 'Sapa checkpoint map'">
-    <!-- Nền địa hình thật của vùng trung tâm (OpenTopoMap), làm nhạt. Các điểm
-         gần và đường đi đặt đúng toạ độ trên nền này. -->
+    <!-- Nền địa hình của vùng trung tâm: tô màu theo độ cao + bóng đổ, dựng từ
+         dữ liệu độ cao AWS Terrain Tiles (không có đường nhỏ, chữ — cho rõ cung
+         đường). Các điểm gần và đường đi đặt đúng toạ độ trên nền này. -->
     <img src="/images/sapa-map/topo.jpg" alt="" class="smap-topo" loading="lazy" decoding="async" aria-hidden="true" />
 
     <svg viewBox="0 0 1000 780" class="smap-svg" aria-hidden="true" focusable="false">
       <!-- đường ô tô / xe máy (hình học thật, cắt ở mép với các điểm xa) -->
       <g v-for="(d, i) in GEO.roads" :key="`r${i}`">
-        <path :d="d" fill="none" stroke="#7a4e22" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
-        <path :d="d" fill="none" stroke="#fff8e8" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" />
+        <path :d="d" fill="none" stroke="#5c1e0e" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />
+        <path :d="d" fill="none" stroke="#e24a28" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" />
       </g>
       <!-- đoạn đường rút gọn tới các điểm xa: không theo tỉ lệ, chỉ ghi số km -->
-      <path v-for="(d, i) in GEO.stubs" :key="`s${i}`" :d="d" fill="none" stroke="#7a4e22" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 8" />
+      <path v-for="(d, i) in GEO.stubs" :key="`s${i}`" :d="d" fill="none" stroke="#5c1e0e" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 8" />
 
       <!-- cung trek (đi bộ) -->
       <g v-for="(d, i) in GEO.treks" :key="`t${i}`">
-        <path :d="d" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
-        <path :d="d" fill="none" stroke="#0f8a43" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5 8" />
+        <path :d="d" fill="none" stroke="#fffdf6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+        <path :d="d" fill="none" stroke="#14703a" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1.5 8" />
       </g>
       <!-- người đi bộ trên cung trek -->
       <g v-for="(h, i) in GEO.hikers" :key="`h${i}`" :transform="`translate(${h[0]} ${h[1]})`" class="smap-hiker">
@@ -39,12 +40,12 @@
       </g>
 
       <!-- tàu leo núi Mường Hoa (đường ray thật) + cáp treo Fansipan -->
-      <path :d="GEO.cable" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.7" />
-      <path :d="GEO.cable" fill="none" stroke="#6d3fc0" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="10 7" />
-      <path :d="GEO.funicular" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
-      <path :d="GEO.funicular" fill="none" stroke="#4b2a8f" stroke-width="6" stroke-linecap="butt" stroke-linejoin="round" />
-      <path :d="GEO.funicular" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="7 7" />
-      <circle :cx="GEO.station[0]" :cy="GEO.station[1]" r="7" fill="#fff" stroke="#4b2a8f" stroke-width="3" />
+      <path :d="GEO.cable" fill="none" stroke="#fffdf6" stroke-width="6" stroke-linecap="round" />
+      <path :d="GEO.cable" fill="none" stroke="#164e6e" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 7" />
+      <path :d="GEO.funicular" fill="none" stroke="#fffdf6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+      <path :d="GEO.funicular" fill="none" stroke="#164e6e" stroke-width="6.5" stroke-linecap="butt" stroke-linejoin="round" />
+      <path :d="GEO.funicular" fill="none" stroke="#fffdf6" stroke-width="2.8" stroke-linecap="butt" stroke-linejoin="round" stroke-dasharray="7 7" />
+      <circle :cx="GEO.station[0]" :cy="GEO.station[1]" r="7.5" fill="#fffdf6" stroke="#164e6e" stroke-width="3.2" />
 
       <!-- dấu ngắt: từ đây ra điểm xa không còn đúng tỉ lệ -->
       <g v-for="(b, i) in GEO.breaks" :key="`b${i}`" :transform="`translate(${b[0]} ${b[1]}) rotate(${b[2]})`" class="smap-break">
@@ -53,12 +54,12 @@
       </g>
 
       <!-- đường bay dù lượn -->
-      <path :d="GEO.flight" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0.7" />
-      <path :d="GEO.flight" fill="none" stroke="#e11d2e" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="3 8" />
+      <path :d="GEO.flight" fill="none" stroke="#fffdf6" stroke-width="7" stroke-linecap="round" />
+      <path :d="GEO.flight" fill="none" stroke="#78146e" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="10 7" />
       <g :transform="`translate(${GEO.glider[0]} ${GEO.glider[1]}) rotate(12)`">
-        <path d="M-17 0 Q0 -19 17 0 Q0 -8 -17 0 Z" fill="#e11d2e" stroke="#fff" stroke-width="1.4" />
-        <path d="M-11 -2 L0 14 L11 -2" fill="none" stroke="#7a1019" stroke-width="1" />
-        <circle cx="0" cy="15" r="2.8" fill="#7a1019" />
+        <path d="M-17 0 Q0 -19 17 0 Q0 -8 -17 0 Z" fill="#f2963e" stroke="#1c1a16" stroke-width="1.6" />
+        <path d="M-11 -2 L0 14 L11 -2" fill="none" stroke="#1c1a16" stroke-width="1.1" />
+        <circle cx="0" cy="15" r="3" fill="#1c1a16" />
       </g>
 
       <!-- chữ phụ trên sơ đồ -->
@@ -74,9 +75,9 @@
 
       <!-- la bàn -->
       <g transform="translate(944 58)">
-        <circle r="22" fill="rgba(255,255,255,0.88)" stroke="#16332a" stroke-width="1.2" />
-        <path d="M0 -17 L5 0 L0 17 L-5 0 Z" fill="#16332a" opacity="0.3" />
-        <path d="M0 -17 L5 0 L-5 0 Z" fill="#e11d2e" />
+        <circle r="22" fill="#fffdf6" stroke="#1c1a16" stroke-width="1.8" />
+        <path d="M0 -17 L5 0 L0 17 L-5 0 Z" fill="#1c1a16" opacity="0.3" />
+        <path d="M0 -17 L5 0 L-5 0 Z" fill="#d4261c" />
         <text y="-27" text-anchor="middle" class="smap-compass">N</text>
       </g>
     </svg>
@@ -106,7 +107,7 @@
       <li><i class="lg-cable"></i>{{ lang === 'vi' ? 'Tàu & cáp treo' : 'Funicular & cable car' }}</li>
       <li><i class="lg-fly"></i>{{ lang === 'vi' ? 'Đường bay' : 'Flight' }}</li>
     </ul>
-    <p class="smap-attr">© <a href="https://opentopomap.org" target="_blank" rel="noopener">OpenTopoMap</a> (CC-BY-SA) · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></p>
+    <p class="smap-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors · {{ lang === 'vi' ? 'Độ cao' : 'Elevation' }}: AWS Terrain Tiles (SRTM)</p>
   </nav>
 </template>
 
@@ -187,79 +188,86 @@ const GEO = mapGeo as unknown as {
 </script>
 
 <style>
+/* Bảng màu theo bản đồ "Đường đến điểm bay Khau Phạ" của mebayluon.com: nền
+   địa hình tô theo độ cao, đường đỏ viền nâu, nhãn giấy viền mực, ô km đỏ sẫm,
+   cất cánh xanh rêu, hạ cánh xanh dương, đường bay tím. */
 .smap {
+  --ink: #1c1a16; --paper: #fffdf6; --road: #e24a28; --km: #781e14; --green: #0f2e21; --blue: #164e6e; --orange: #f2963e; --flight: #78146e;
   position: relative;
   aspect-ratio: 1000 / 780;
   width: 100%;
-  border: 1px solid rgba(22, 51, 42, 0.14);
+  border: 2px solid var(--green);
   border-radius: 1rem;
-  background: #eef1e4;
+  background: #c4d292;
   font-family: 'Lexend', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   overflow: hidden;
 }
 .smap-topo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
 .smap-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.smap-hiker circle { fill: #fff; stroke: #0f8a43; stroke-width: 2; }
-.smap-hiker g { color: #0b6b33; stroke: #0b6b33; }
-.smap-break rect { fill: #fff; }
-.smap-break path { fill: none; stroke: #5b3a17; stroke-width: 2; stroke-linecap: round; }
-.smap-attr { position: absolute; right: 10px; bottom: 8px; margin: 0; padding: 1px 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.7); color: #47594f; font-size: 9.5px; font-weight: 400; }
+.smap-hiker circle { fill: var(--paper); stroke: #14703a; stroke-width: 2.2; }
+.smap-hiker g { color: #14703a; stroke: #14703a; }
+.smap-break rect { fill: var(--paper); }
+.smap-break path { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; }
+.smap-attr { position: absolute; right: 8px; bottom: 6px; margin: 0; padding: 1px 6px; border-radius: 5px; background: rgba(255, 253, 246, 0.8); color: var(--ink); font-size: 9.5px; font-weight: 400; }
 .smap-attr a { text-decoration: underline; }
-.smap-minor text { fill: #24443a; font-size: 12.5px; font-weight: 500; paint-order: stroke; stroke: #fff; stroke-width: 3.5px; stroke-linejoin: round; }
-.smap-minor .smap-river-name { fill: #1b6f86; font-size: 13px; font-style: italic; letter-spacing: 0.08em; }
-.smap-minor .smap-rail-name { fill: #4b2a8f; font-weight: 600; }
-.smap-title { fill: #d1541a; font-family: 'Yellowtail', 'Brush Script MT', cursive; font-size: 66px; paint-order: stroke; stroke: #fff; stroke-width: 6px; stroke-linejoin: round; }
-.smap-compass { fill: #16332a; font-size: 13px; font-weight: 600; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.smap-minor text { fill: var(--ink); font-size: 12.5px; font-weight: 500; paint-order: stroke; stroke: var(--paper); stroke-width: 3.5px; stroke-linejoin: round; }
+.smap-minor .smap-river-name { fill: var(--blue); font-size: 13.5px; font-style: italic; font-weight: 600; letter-spacing: 0.08em; }
+.smap-minor .smap-rail-name { fill: var(--blue); font-weight: 700; }
+.smap-title { fill: var(--green); font-family: 'Yellowtail', 'Brush Script MT', cursive; font-size: 66px; paint-order: stroke; stroke: var(--paper); stroke-width: 6px; stroke-linejoin: round; }
+.smap-compass { fill: var(--ink); font-size: 13px; font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 3px; }
 
 /* điểm dừng */
 .smap-stop { position: absolute; z-index: 2; width: 0; height: 0; text-decoration: none; }
 .smap-dot {
   position: absolute; left: 0; top: 0; transform: translate(-50%, -50%);
   display: flex; align-items: center; justify-content: center;
-  width: 30px; height: 30px; border: 2.5px solid #fff; border-radius: 50%;
-  background: #2f8f63; color: #fff;
+  width: 30px; height: 30px; border: 2.5px solid var(--paper); border-radius: 50%;
+  background: var(--ink); color: var(--paper);
   font-family: 'Saira Condensed', 'Arial Narrow', sans-serif; font-size: 16px; font-weight: 700; line-height: 1;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); transition: transform 0.15s;
+  box-shadow: 0 0 0 1.5px var(--ink), 0 2px 5px rgba(0, 0, 0, 0.4); transition: transform 0.15s;
 }
-.smap-kind-town .smap-dot { background: #2b74c9; }
-.smap-kind-peak .smap-dot { background: #7b4bb3; }
-.smap-kind-fly .smap-dot { background: #e11d2e; box-shadow: 0 0 0 5px rgba(225, 29, 46, 0.22), 0 2px 6px rgba(0, 0, 0, 0.35); }
-.smap-kind-waterfall .smap-dot, .smap-kind-spring .smap-dot, .smap-kind-lake .smap-dot { background: #1a9aa8; }
-.smap-kind-pass .smap-dot, .smap-kind-bridge .smap-dot { background: #e08a12; }
+.smap-far .smap-dot { background: var(--km); }
+.smap-stop[href*='takeoff'] .smap-dot { background: var(--green); width: 36px; height: 36px; font-size: 18px; }
+.smap-stop[href*='lao-chai'] .smap-dot { background: var(--blue); width: 36px; height: 36px; font-size: 18px; }
 .smap-label {
   position: absolute; display: flex; flex-direction: column; align-items: flex-start;
-  padding: 5px 10px 6px; border: 1px solid rgba(22, 51, 42, 0.16); border-radius: 9px;
-  background: rgba(255, 255, 255, 0.95); color: #16332a; white-space: nowrap;
-  font-size: 14.5px; font-weight: 600; line-height: 1.2; box-shadow: 0 2px 8px rgba(22, 51, 42, 0.16);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  padding: 4px 10px 5px; border: 1.8px solid var(--ink); border-radius: 7px;
+  background: var(--paper); color: var(--ink); white-space: nowrap;
+  font-size: 15px; font-weight: 700; line-height: 1.2;
+  transition: box-shadow 0.15s;
 }
-.smap-label small { color: #c2571a; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
-.smap-label em { margin-top: 3px; padding: 1px 7px; border-radius: 99px; background: #e11d2e; color: #fff; font-size: 10px; font-style: normal; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
-/* điểm xa: thẻ gọn một dòng "tên · km" */
-.smap-far .smap-label { flex-direction: row-reverse; align-items: baseline; gap: 7px; padding: 4px 9px; border-style: dashed; border-color: rgba(122, 78, 34, 0.55); font-size: 13.5px; }
-.smap-far .smap-label small { font-size: 11px; letter-spacing: 0.02em; text-transform: none; }
+.smap-label small { color: var(--km); font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.smap-label em { display: none; }
+/* cất cánh / hạ cánh: bảng màu đậm như hai bảng điểm bay của bản đồ Khau Phạ */
+.smap-kind-fly .smap-label { padding: 6px 12px 7px; border-color: var(--orange); background: var(--green); color: var(--paper); font-size: 16px; }
+.smap-kind-fly .smap-label small { color: var(--orange); font-size: 11.5px; }
+.smap-stop[href*='lao-chai'] .smap-label { border-color: var(--paper); background: var(--blue); }
+.smap-stop[href*='lao-chai'] .smap-label small { color: #ffd9a8; }
+/* điểm xa: tên + ô km đỏ sẫm */
+.smap-far .smap-label { flex-direction: row-reverse; align-items: center; gap: 7px; padding: 3px 4px 3px 9px; font-size: 13.5px; font-weight: 600; }
+.smap-far .smap-label small { padding: 2px 8px; border-radius: 99px; background: var(--km); color: #fbf6ea; font-size: 11.5px; letter-spacing: 0; text-transform: none; }
 .smap-side-right .smap-label { left: 22px; top: 0; transform: translateY(-50%); }
 .smap-side-left .smap-label { right: 22px; top: 0; transform: translateY(-50%); align-items: flex-end; }
 .smap-side-top .smap-label { left: 0; bottom: 22px; transform: translateX(-50%); align-items: center; }
 .smap-side-bottom .smap-label { left: 0; top: 22px; transform: translateX(-50%); align-items: center; }
 /* nhãn chéo: dùng ở mép sơ đồ và cụm thị trấn cho nhãn khỏi đè nhau */
-.smap-side-tr .smap-label { left: -6px; bottom: 20px; }
-.smap-side-tl .smap-label { right: -6px; bottom: 20px; align-items: flex-end; }
-.smap-side-br .smap-label { left: -6px; top: 20px; }
-.smap-side-bl .smap-label { right: -6px; top: 20px; align-items: flex-end; }
-.smap-far.smap-side-left .smap-label, .smap-far.smap-side-tl .smap-label, .smap-far.smap-side-bl .smap-label { align-items: baseline; }
+.smap-side-tr .smap-label { left: -6px; bottom: 22px; }
+.smap-side-tl .smap-label { right: -6px; bottom: 22px; align-items: flex-end; }
+.smap-side-br .smap-label { left: -6px; top: 22px; }
+.smap-side-bl .smap-label { right: -6px; top: 22px; align-items: flex-end; }
+.smap-far.smap-side-left .smap-label, .smap-far.smap-side-tl .smap-label, .smap-far.smap-side-bl .smap-label { align-items: center; }
 .smap-stop:hover .smap-dot, .smap-stop:focus-visible .smap-dot, .smap-active .smap-dot { transform: translate(-50%, -50%) scale(1.18); }
-.smap-stop:hover .smap-label, .smap-stop:focus-visible .smap-label, .smap-active .smap-label { border-color: #d1541a; border-style: solid; box-shadow: 0 0 0 2px rgba(209, 84, 26, 0.25), 0 2px 8px rgba(22, 51, 42, 0.2); }
+.smap-stop:hover .smap-label, .smap-stop:focus-visible .smap-label, .smap-active .smap-label { box-shadow: 0 0 0 3px var(--orange); }
 .smap-stop:hover, .smap-active { z-index: 5; }
 
-.smap-legend { position: absolute; left: 12px; bottom: 10px; display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 5px 11px; border-radius: 9px; background: rgba(255, 255, 255, 0.86); list-style: none; color: #24443a; font-size: 11.5px; font-weight: 400; }
+.smap-legend { position: absolute; left: 10px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 5px 11px; border: 1.5px solid var(--ink); border-radius: 7px; background: var(--paper); list-style: none; color: var(--ink); font-size: 11.5px; font-weight: 500; }
 .smap-legend li { display: inline-flex; align-items: center; gap: 6px; }
-.smap-legend i { display: inline-block; width: 26px; height: 0; border-top: 3px solid; }
-.smap-legend .lg-road { border-color: #7a4e22; }
-.smap-legend .lg-far { border-top: 3px dotted #7a4e22; }
-.smap-legend .lg-trek { border-top: 3px dotted #0f8a43; }
-.smap-legend .lg-cable { border-top: 3px dashed #6d3fc0; }
-.smap-legend .lg-fly { border-top: 3px dotted #e11d2e; }
+.smap-legend i { display: inline-block; width: 26px; height: 0; border-top: 4px solid; }
+.smap-legend .lg-road { border-color: var(--road); }
+.smap-legend .lg-far { border-top: 4px dotted #5c1e0e; }
+.smap-legend .lg-trek { border-top: 4px dotted #14703a; }
+.smap-legend .lg-cable { border-top: 4px dashed var(--blue); }
+.smap-legend .lg-fly { border-top: 4px dashed var(--flight); }
 
 /* Điện thoại: sơ đồ co nhỏ → chỉ hiện chấm số, tên nằm ở dãy thẻ bên dưới;
    điểm đang xem vẫn hiện nhãn. */
