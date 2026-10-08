@@ -561,8 +561,8 @@ onBeforeUnmount(() => {
             </h2>
             <p class="mt-1 text-slate-500">
               {{ currentLocale === 'vi'
-                ? '14 điểm check-in, cung trek và điểm bay dù lượn — bấm một điểm để xem đường đi.'
-                : '14 checkpoints, trekking routes and the paragliding site — tap a stop for directions.' }}
+                ? '15 điểm check-in, cung trek và điểm bay dù lượn — bấm một điểm để xem đường đi.'
+                : '15 checkpoints, trekking routes and the paragliding site — tap a stop for directions.' }}
             </p>
           </div>
           <NuxtLink :to="localePath('/sapa-map')" class="font-bold text-red-600 hover:text-red-700">

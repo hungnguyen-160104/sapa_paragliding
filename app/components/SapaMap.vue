@@ -56,14 +56,14 @@
       <!-- đường bay dù lượn -->
       <path :d="GEO.flight" fill="none" stroke="#fffdf6" stroke-width="7" stroke-linecap="round" />
       <path :d="GEO.flight" fill="none" stroke="#78146e" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="10 7" />
-      <g :transform="`translate(${GEO.glider[0]} ${GEO.glider[1]}) rotate(12)`">
-        <path d="M-17 0 Q0 -19 17 0 Q0 -8 -17 0 Z" fill="#f2963e" stroke="#1c1a16" stroke-width="1.6" />
-        <path d="M-11 -2 L0 14 L11 -2" fill="none" stroke="#1c1a16" stroke-width="1.1" />
-        <circle cx="0" cy="15" r="3" fill="#1c1a16" />
-      </g>
+      <!-- logo Sapa Paragliding (chú khỉ bay) trên đường bay -->
+      <image href="/images/sapa-map/logo-fly.png" :x="GEO.glider[0] - 6" :y="GEO.glider[1] - 34" width="84" height="68" />
 
       <!-- chữ phụ trên sơ đồ -->
       <g class="smap-minor">
+        <circle :cx="GEO.labels.tramton[0]" :cy="GEO.labels.tramton[1]" r="5" fill="#fffdf6" stroke="#14703a" stroke-width="2.5" />
+        <text x="58" y="150" class="smap-trek-name">Trạm Tôn → Fansipan</text>
+        <text x="58" y="166">{{ lang === 'vi' ? 'leo bộ 1–2 ngày' : '1–2 day climb' }}</text>
         <text :x="GEO.labels.station[0] - 14" :y="GEO.labels.station[1] - 16" text-anchor="middle" class="smap-rail-name">{{ lang === 'vi' ? 'Ga cáp treo Fansipan' : 'Fansipan cable car station' }}</text>
         <text :x="GEO.labels.rail[0] - 14" :y="GEO.labels.rail[1] - 15" text-anchor="middle" class="smap-rail-name">{{ lang === 'vi' ? 'Tàu leo núi' : 'Funicular' }}</text>
         <text :x="GEO.labels.ylinhho[0] - 4" :y="GEO.labels.ylinhho[1] + 22" text-anchor="end">Ý Linh Hồ</text>
@@ -146,7 +146,8 @@ const NAMES: Record<string, { vi: string; en: string }> = {
   'ta-phin': { vi: 'Bản Tả Phìn', en: 'Ta Phin village' },
   'thac-bac': { vi: 'Thác Bạc', en: 'Silver Waterfall' },
   'o-quy-ho': { vi: 'Đèo Ô Quy Hồ', en: 'O Quy Ho Pass' },
-  'rong-may': { vi: 'Cầu kính Rồng Mây', en: 'Rong May Glass Bridge' }
+  'rong-may': { vi: 'Cầu kính Rồng Mây', en: 'Rong May Glass Bridge' },
+  bestview: { vi: 'Best View', en: 'Best View' }
 }
 
 /** Dòng nhỏ trên tên: quãng đường bộ từ Sun Plaza (OpenStreetMap) hoặc độ cao. */
@@ -164,7 +165,8 @@ const TAGS: Record<string, { vi: string; en: string }> = {
   'ta-phin': { vi: '13 km', en: '13 km' },
   'thac-bac': { vi: '14 km', en: '14 km' },
   'o-quy-ho': { vi: '17 km', en: '17 km' },
-  'rong-may': { vi: '20 km', en: '20 km' }
+  'rong-may': { vi: '20 km', en: '20 km' },
+  bestview: { vi: 'Ngắm cảnh', en: 'Viewpoint' }
 }
 
 /**
@@ -183,7 +185,7 @@ const GEO = mapGeo as unknown as {
   glider: [number, number]
   station: [number, number]
   hikers: Array<[number, number]>
-  labels: Record<'station' | 'rail' | 'ylinhho' | 'giangtachai' | 'muonghoa', [number, number]>
+  labels: Record<'tramton' | 'station' | 'rail' | 'ylinhho' | 'giangtachai' | 'muonghoa', [number, number]>
 }
 </script>
 
@@ -212,6 +214,7 @@ const GEO = mapGeo as unknown as {
 .smap-attr a { text-decoration: underline; }
 .smap-minor text { fill: var(--ink); font-size: 12.5px; font-weight: 500; paint-order: stroke; stroke: var(--paper); stroke-width: 3.5px; stroke-linejoin: round; }
 .smap-minor .smap-river-name { fill: var(--blue); font-size: 13.5px; font-style: italic; font-weight: 600; letter-spacing: 0.08em; }
+.smap-minor .smap-trek-name { fill: #0f5a2e; font-weight: 700; }
 .smap-minor .smap-rail-name { fill: var(--blue); font-weight: 700; }
 .smap-title { fill: var(--green); font-family: 'Yellowtail', 'Brush Script MT', cursive; font-size: 66px; paint-order: stroke; stroke: var(--paper); stroke-width: 6px; stroke-linejoin: round; }
 .smap-compass { fill: var(--ink); font-size: 13px; font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 3px; }

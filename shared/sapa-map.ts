@@ -33,6 +33,8 @@ export interface SapaStop {
   lon: number
   /** true: điểm xa — x, y là vị trí sơ đồ sát mép, đường tới đó không theo tỉ lệ. */
   far?: boolean
+  /** Tên để tìm trên Google Maps khi chưa có toạ độ chính xác (dùng thay lat, lon cho link chỉ đường). */
+  q?: string
   /** true: vị trí gần đúng (chưa có ghim chính thức trên OpenStreetMap). */
   approx?: boolean
   images: SapaStopImage[]
@@ -865,6 +867,35 @@ export const SAPA_STOPS: SapaStop[] = [
       }
     ],
     "n": 14
+  },
+  {
+    "slug": "bestview",
+    "kind": "town",
+    "x": 606,
+    "y": 354,
+    "side": "top",
+    "lat": 22.3232,
+    "lon": 103.8676,
+    "approx": true,
+    "q": "Best View Sapa",
+    "images": [
+      {
+        "src": "https://res.cloudinary.com/dxtzvakgd/image/upload/v1790841055/posts/content/zm1tifc17uanfxjryvmq.jpg",
+        "vi": "Ảnh minh hoạ: thung lũng Mường Hoa nhìn từ sườn núi khu Hang Đá, cùng hướng nhìn với Best View",
+        "en": "Illustrative photo: Muong Hoa Valley from the Hang Da hillside, the same outlook as Best View"
+      },
+      {
+        "src": "/images/sapa-map/moana-4.jpg",
+        "vi": "Ảnh minh hoạ: thung lũng phía dưới Sa Pa trong một ngày nhiều mây",
+        "en": "Illustrative photo: the valley below Sapa on a cloudy day",
+        "credit": {
+          "author": "Christophe95",
+          "license": "CC BY-SA 4.0",
+          "source": "https://commons.wikimedia.org/wiki/File:Landcape_in_Sa_Pa_01.jpg"
+        }
+      }
+    ],
+    "n": 15
   }
 ]
 

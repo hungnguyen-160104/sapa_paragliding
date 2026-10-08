@@ -172,7 +172,7 @@ const bodyImage = (src: string) => src.replace('/upload/', '/upload/c_limit,w_12
 const index = SAPA_STOPS.findIndex((s) => s.slug === stop.slug)
 const prev = index > 0 ? SAPA_STOPS[index - 1] : undefined
 const next = index < SAPA_STOPS.length - 1 ? SAPA_STOPS[index + 1] : undefined
-const gmaps = `https://www.google.com/maps/search/?api=1&query=${stop.lat},${stop.lon}`
+const gmaps = `https://www.google.com/maps/search/?api=1&query=${stop.q ? encodeURIComponent(stop.q) : `${stop.lat},${stop.lon}`}`
 
 const UI = {
   vi: { back: 'Bản đồ Sa Pa', stop: 'Điểm dừng', photo: 'Ảnh', openMap: 'mở chỉ đường', approx: 'vị trí gần đúng', cta: 'Đặt bay dù lượn Sa Pa', onMap: 'Vị trí trên sơ đồ', faq: 'Hỏi nhanh – đáp gọn', gallery: 'Thêm ảnh', prev: 'Điểm trước', next: 'Điểm tiếp theo', crumb: 'Bản đồ Sa Pa' },
