@@ -2,10 +2,11 @@
  * Bản đồ checkpoint Sa Pa — danh sách điểm dừng, nguồn duy nhất cho sơ đồ
  * (components/SapaMap.vue), các trang /sapa-map/<slug> và sitemap.
  *
- * x, y: vị trí trên sơ đồ (khung 1000 x 780) = toạ độ thật chiếu Mercator lên
- * đúng khung của ảnh nền địa hình (public/images/sapa-map/topo.jpg); riêng
- * cụm thị trấn nới vài chục px cho chấm khỏi chồng nhau. Đường đi nằm ở
- * app/data/sapa-map-geo.json. Sinh bằng script geo.py (ngoài repo).
+ * x, y: vị trí trên sơ đồ (khung 1000 x 780). Sơ đồ phóng to vùng trung tâm:
+ * điểm gần = toạ độ thật chiếu Mercator lên đúng khung của ảnh nền địa hình
+ * (public/images/sapa-map/topo.jpg); điểm xa (far) đặt sát mép theo đúng
+ * hướng, chỉ ghi số km. Đường đi nằm ở app/data/sapa-map-geo.json. Sinh bằng
+ * script geo2.py (ngoài repo).
  * lat, lon: toạ độ thật (OpenStreetMap) dùng cho link Google Maps.
  * Ảnh có `credit` là ảnh Wikimedia Commons (CC BY / CC BY-SA / CC0): giấy phép
  * yêu cầu ghi tác giả — trang hiển thị dòng ghi công dưới ảnh, đừng gỡ.
@@ -30,6 +31,8 @@ export interface SapaStop {
   side: 'left' | 'right' | 'top' | 'bottom' | 'tl' | 'tr' | 'bl' | 'br'
   lat: number
   lon: number
+  /** true: điểm xa — x, y là vị trí sơ đồ sát mép, đường tới đó không theo tỉ lệ. */
+  far?: boolean
   /** true: vị trí gần đúng (chưa có ghim chính thức trên OpenStreetMap). */
   approx?: boolean
   images: SapaStopImage[]
@@ -39,9 +42,9 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "sun-plaza",
     "kind": "town",
-    "x": 406,
-    "y": 320,
-    "side": "tl",
+    "x": 347,
+    "y": 237,
+    "side": "top",
     "lat": 22.33456,
     "lon": 103.84048,
     "images": [
@@ -111,8 +114,8 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "ham-rong",
     "kind": "town",
-    "x": 462,
-    "y": 306,
+    "x": 416,
+    "y": 243,
     "side": "right",
     "lat": 22.33363,
     "lon": 103.8468,
@@ -183,8 +186,8 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "moana",
     "kind": "town",
-    "x": 454,
-    "y": 372,
+    "x": 405,
+    "y": 317,
     "side": "right",
     "lat": 22.32736,
     "lon": 103.84628,
@@ -231,9 +234,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "fansipan",
     "kind": "peak",
-    "x": 145,
-    "y": 463,
+    "x": 62,
+    "y": 299,
     "side": "right",
+    "far": true,
     "lat": 22.30308,
     "lon": 103.77544,
     "images": [
@@ -293,9 +297,9 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "cat-cat",
     "kind": "village",
-    "x": 372,
-    "y": 359,
-    "side": "left",
+    "x": 292,
+    "y": 299,
+    "side": "bl",
     "lat": 22.32853,
     "lon": 103.83468,
     "images": [
@@ -365,9 +369,9 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "takeoff",
     "kind": "fly",
-    "x": 566,
-    "y": 374,
-    "side": "right",
+    "x": 692,
+    "y": 367,
+    "side": "tr",
     "lat": 22.3219262,
     "lon": 103.8766636,
     "images": [
@@ -407,8 +411,8 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "lao-chai",
     "kind": "fly",
-    "x": 546,
-    "y": 439,
+    "x": 684,
+    "y": 492,
     "side": "bl",
     "lat": 22.3097778,
     "lon": 103.8757778,
@@ -464,9 +468,9 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "ta-van",
     "kind": "village",
-    "x": 606,
-    "y": 465,
-    "side": "right",
+    "x": 806,
+    "y": 565,
+    "side": "br",
     "lat": 22.30266,
     "lon": 103.88858,
     "images": [
@@ -536,9 +540,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "ban-ho",
     "kind": "spring",
-    "x": 931,
-    "y": 637,
+    "x": 958,
+    "y": 640,
     "side": "left",
+    "far": true,
     "lat": 22.26369,
     "lon": 103.96805,
     "approx": true,
@@ -589,9 +594,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "seo-my-ty",
     "kind": "lake",
-    "x": 619,
-    "y": 695,
+    "x": 802,
+    "y": 680,
     "side": "right",
+    "far": true,
     "lat": 22.25059,
     "lon": 103.89161,
     "images": [
@@ -631,9 +637,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "ta-phin",
     "kind": "village",
-    "x": 421,
-    "y": 56,
+    "x": 494,
+    "y": 49,
     "side": "right",
+    "far": true,
     "lat": 22.39529,
     "lon": 103.84303,
     "images": [
@@ -704,8 +711,9 @@ export const SAPA_STOPS: SapaStop[] = [
     "slug": "thac-bac",
     "kind": "waterfall",
     "x": 150,
-    "y": 198,
+    "y": 96,
     "side": "right",
+    "far": true,
     "lat": 22.36324,
     "lon": 103.77683,
     "images": [
@@ -765,9 +773,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "o-quy-ho",
     "kind": "pass",
-    "x": 101,
-    "y": 243,
-    "side": "br",
+    "x": 92,
+    "y": 58,
+    "side": "right",
+    "far": true,
     "lat": 22.35297,
     "lon": 103.76481,
     "images": [
@@ -837,9 +846,10 @@ export const SAPA_STOPS: SapaStop[] = [
   {
     "slug": "rong-may",
     "kind": "bridge",
-    "x": 71,
-    "y": 156,
-    "side": "tr",
+    "x": 40,
+    "y": 26,
+    "side": "right",
+    "far": true,
     "lat": 22.3727,
     "lon": 103.75729,
     "images": [
