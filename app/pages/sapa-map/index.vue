@@ -69,29 +69,29 @@ const cardImage = (src: string) => src.replace('/upload/', '/upload/c_fill,w_640
 const UI = {
   vi: {
     eyebrow: 'Bản đồ checkpoint',
-    title: 'Bản đồ Sa Pa: 15 điểm check‑in, cung trek và điểm bay dù lượn',
+    title: 'Bản đồ du lịch Sa Pa',
     lead: 'Sơ đồ tổng quan các điểm nổi tiếng nhất Sa Pa — từ Sun Plaza, Fansipan, Cát Cát tới thung lũng Mường Hoa, Thác Bạc, đèo Ô Quy Hồ — cùng điểm cất cánh và hạ cánh dù lượn.',
     hint: 'Bấm vào một điểm trên sơ đồ để xem đường đi, chỗ check-in và mẹo nhỏ.',
     cardsTitle: 'Các điểm dừng',
     cardLink: 'Đường đi & check-in',
     note: 'Sơ đồ mang tính minh hoạ, không theo tỉ lệ. Quãng đường tính theo đường bộ từ Sun Plaza (dữ liệu OpenStreetMap).',
     cta: 'Đặt bay dù lượn Sa Pa',
-    metaTitle: 'Bản đồ Sa Pa: 15 điểm check-in, cung trek & điểm bay dù lượn',
+    metaTitle: 'Bản đồ du lịch Sa Pa: 16 điểm check-in, cung trek & điểm bay dù lượn',
     metaDesc: 'Sơ đồ checkpoint Sa Pa: Sun Plaza, Fansipan, Cát Cát, Moana, Lao Chải, Tả Van, Thác Bạc, Ô Quy Hồ, Rồng Mây, hồ Séo Mý Tỷ… Bấm từng điểm để xem đường đi và chỗ check-in.',
-    crumb: 'Bản đồ Sa Pa'
+    crumb: 'Bản đồ du lịch Sa Pa'
   },
   en: {
     eyebrow: 'Checkpoint map',
-    title: 'Sapa map: 15 checkpoints, trekking routes and the paragliding site',
+    title: 'Sapa travel map',
     lead: "An overview of Sapa's best-known places — from Sun Plaza, Fansipan and Cat Cat to Muong Hoa Valley, Silver Waterfall and O Quy Ho Pass — with the paragliding take-off and landing.",
     hint: 'Tap a stop on the map for directions, photo spots and tips.',
     cardsTitle: 'The stops',
     cardLink: 'Directions & photo spots',
     note: 'The map is an illustration and not to scale. Distances are by road from Sun Plaza (OpenStreetMap data).',
     cta: 'Book a paragliding flight in Sapa',
-    metaTitle: 'Sapa Map: 15 Checkpoints, Trekking Routes & Paragliding Site',
+    metaTitle: 'Sapa Travel Map: 16 Checkpoints, Trekking Routes & Paragliding Site',
     metaDesc: 'Sapa checkpoint map: Sun Plaza, Fansipan, Cat Cat, Moana, Lao Chai, Ta Van, Silver Waterfall, O Quy Ho, Rong May, Seo My Ty Lake… Tap a stop for directions and photo spots.',
-    crumb: 'Sapa map'
+    crumb: 'Sapa travel map'
   }
 }
 const ui = computed(() => UI[lang.value])

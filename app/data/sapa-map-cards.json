@@ -1,0 +1,82 @@
+{
+ "sun-plaza": {
+  "img": "/images/sapa-map/sun-plaza-p1.jpg",
+  "vi": "Tâm điểm Sa Pa: ga tàu leo núi, quảng trường, nhà thờ Đá và điểm hẹn đón khách bay dù lượn.",
+  "en": "The heart of Sapa: funicular station, town square, stone church and the paragliding pick-up point."
+ },
+ "ham-rong": {
+  "img": "/images/sapa-map/ham-rong-p1.jpg",
+  "vi": "Ngọn núi đá vôi nằm sát trung tâm: leo qua vườn hoa, rừng đá, Cổng Trời rồi nhìn toàn cảnh Sa Pa từ Sân Mây.",
+  "en": "A limestone mountain beside the town centre: climb past gardens, a stone forest and Heaven's Gate to a view over Sapa."
+ },
+ "moana": {
+  "img": "/images/sapa-map/moana-p1.jpg",
+  "vi": "Khu chụp ảnh phong cách đảo nhiệt đới trên đường Violet, nhìn thẳng ra thung lũng Mường Hoa.",
+  "en": "A tropical-island-style photo park on Violet road, looking straight out over Muong Hoa Valley."
+ },
+ "fansipan": {
+  "img": "/images/sapa-map/fansipan-p1.jpg",
+  "vi": "Lên nóc nhà Đông Dương bằng tàu leo núi và cáp treo từ Sun Plaza, hoặc leo bộ 1–2 ngày từ Trạm Tôn.",
+  "en": "Reach the Roof of Indochina by funicular and cable car from Sun Plaza, or trek 1–2 days from Tram Ton."
+ },
+ "cat-cat": {
+  "img": "/images/sapa-map/cat-cat-p1.jpg",
+  "vi": "Bản H'Mông gần thị trấn nhất: đi bộ xuống theo đường lát đá, qua guồng nước tới thác Cát Cát.",
+  "en": "The Hmong village closest to town: walk down a stone path past water wheels to Cat Cat waterfall."
+ },
+ "takeoff": {
+  "img": "https://res.cloudinary.com/dxtzvakgd/image/upload/c_fill,w_520,h_340,q_auto,f_auto/v1790841055/posts/content/zm1tifc17uanfxjryvmq.jpg",
+  "vi": "Nơi chuyến bay bắt đầu: quầy check-in, khu chờ có mái che và bãi cỏ nhìn thẳng xuống Mường Hoa.",
+  "en": "Where the flight begins: check-in counter, covered waiting area and a grass launch facing Muong Hoa Valley."
+ },
+ "lao-chai": {
+  "img": "/images/sapa-map/lao-chai-p1.jpg",
+  "vi": "Bản H'Mông Đen dưới đáy thung lũng Mường Hoa: nơi dù hạ cánh giữa ruộng và bắt đầu đường đi bộ sang Tả Van.",
+  "en": "A Black Hmong village on the floor of Muong Hoa Valley, where gliders land in the fields and the walk to Ta Van begins."
+ },
+ "ta-van": {
+  "img": "/images/sapa-map/ta-van-p1.jpg",
+  "vi": "Bản người Giáy bên suối Mường Hoa, nhiều homestay, gần bãi đá cổ và là điểm kết quen thuộc của cung trek một ngày.",
+  "en": "A Giay village on the Muong Hoa stream: homestays, the ancient rock field nearby, and the usual end of the one-day trek."
+ },
+ "ban-ho": {
+  "img": "/images/sapa-map/ban-ho-s1.jpg",
+  "vi": "Bản người Tày ở cuối thung lũng Mường Hoa, có suối khoáng nóng ở thôn Bản Dền – điểm kết của cung trek dài.",
+  "en": "A Tay village at the far end of Muong Hoa Valley, with a hot mineral spring in Ban Den hamlet – the finish of the long trek."
+ },
+ "seo-my-ty": {
+  "img": "/images/sapa-map/seo-my-ty-p1.jpg",
+  "vi": "Hồ thuỷ điện ở độ cao hơn 1.600 m phía trên Tả Van, cuối con đường dốc quanh co – dành cho người chắc tay lái.",
+  "en": "A hydropower reservoir more than 1,600 m up above Ta Van, at the end of a steep, winding road – for confident riders."
+ },
+ "ta-phin": {
+  "img": "/images/sapa-map/ta-phin-p1.jpg",
+  "vi": "Bản người Dao Đỏ phía bắc Sa Pa, nổi tiếng với thổ cẩm thêu tay, bài thuốc tắm lá và phế tích tu viện đá.",
+  "en": "A Red Dao village north of Sapa, known for hand-embroidered brocade, herbal baths and the ruins of a stone monastery."
+ },
+ "thac-bac": {
+  "img": "/images/sapa-map/thac-bac-p1.jpg",
+  "vi": "Thác Bạc ngay sát quốc lộ 4D, Thác Tình Yêu sau khoảng 30 phút đi bộ xuyên rừng Hoàng Liên – cùng một cung đường.",
+  "en": "Silver Waterfall sits beside road QL4D; Love Waterfall is a 30-minute forest walk into Hoang Lien – both on the same road."
+ },
+ "o-quy-ho": {
+  "img": "/images/sapa-map/o-quy-ho-p1.jpg",
+  "vi": "Con đèo dài gần 50 km nối Lào Cai với Lai Châu, vượt dãy Hoàng Liên Sơn – điểm ngắm hoàng hôn và biển mây.",
+  "en": "A pass of nearly 50 km linking Lao Cai and Lai Chau across the Hoang Lien Son range – a place for sunsets and cloud seas."
+ },
+ "rong-may": {
+  "img": "/images/sapa-map/rong-may-p1.jpg",
+  "vi": "Thang máy kính ngoài trời đưa bạn lên cầu kính vươn ra khỏi vách núi, ở độ cao khoảng 2.200 m.",
+  "en": "An outdoor glass lift takes you up to a glass walkway reaching out from the cliff at about 2,200 m."
+ },
+ "bestview": {
+  "img": "/images/sapa-map/bestview-p1.jpg",
+  "vi": "Khu check-in trên sườn núi cao khoảng 1.600 m, nhìn xuống thung lũng Mường Hoa và bản Tả Van, gần bãi cất cánh dù lượn.",
+  "en": "A hillside check-in spot at about 1,600 m, looking down on Muong Hoa Valley and Ta Van, close to the paragliding take-off."
+ },
+ "tau-leo-nui": {
+  "img": "/images/sapa-map/tau-leo-nui-t1.jpg",
+  "vi": "Chuyến tàu khoảng 6 phút từ ga trong Sun Plaza xuống ga cáp treo Fansipan, chạy qua hầm, cầu cạn và nhìn ra thung lũng Mường Hoa.",
+  "en": "A ride of about 6 minutes from the station inside Sun Plaza to the Fansipan cable car station, through tunnels and over viaducts above Muong Hoa Valley."
+ }
+}

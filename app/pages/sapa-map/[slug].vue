@@ -21,7 +21,7 @@
       </div>
     </header>
     <p v-if="hero?.credit" class="smd-credit container-custom mx-auto max-w-5xl">
-      {{ ui.photo }}: <a :href="hero.credit.source" target="_blank" rel="noopener nofollow">{{ hero.credit.author }}</a> / Wikimedia Commons · {{ hero.credit.license }}
+      {{ ui.photo }}: <a :href="hero.credit.source" target="_blank" rel="noopener nofollow">{{ hero.credit.author }}</a> / {{ hero.credit.site || 'Wikimedia Commons' }}<template v-if="hero.credit.license"> · {{ hero.credit.license }}</template>
     </p>
 
     <main class="px-4 pb-16 pt-8 sm:px-6">
@@ -57,7 +57,7 @@
               <figcaption>
                 {{ inlineImage(i)![lang] }}
                 <template v-if="inlineImage(i)!.credit">
-                  · {{ ui.photo }}: <a :href="inlineImage(i)!.credit!.source" target="_blank" rel="noopener nofollow">{{ inlineImage(i)!.credit!.author }}</a> / Wikimedia Commons · {{ inlineImage(i)!.credit!.license }}
+                  · {{ ui.photo }}: <a :href="inlineImage(i)!.credit!.source" target="_blank" rel="noopener nofollow">{{ inlineImage(i)!.credit!.author }}</a> / {{ inlineImage(i)!.credit!.site || 'Wikimedia Commons' }}<template v-if="inlineImage(i)!.credit!.license"> · {{ inlineImage(i)!.credit!.license }}</template>
                 </template>
               </figcaption>
             </figure>
@@ -82,7 +82,7 @@
               <figcaption>
                 {{ img[lang] }}
                 <template v-if="img.credit">
-                  · {{ ui.photo }}: <a :href="img.credit.source" target="_blank" rel="noopener nofollow">{{ img.credit.author }}</a> / Wikimedia Commons · {{ img.credit.license }}
+                  · {{ ui.photo }}: <a :href="img.credit.source" target="_blank" rel="noopener nofollow">{{ img.credit.author }}</a> / {{ img.credit.site || 'Wikimedia Commons' }}<template v-if="img.credit.license"> · {{ img.credit.license }}</template>
                 </template>
               </figcaption>
             </figure>
