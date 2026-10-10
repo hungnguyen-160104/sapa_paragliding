@@ -104,6 +104,15 @@
         <circle cx="0" cy="15" r="3.2" fill="#1c1a16" />
       </g>
 
+      <!-- vài cánh dù đang bay lượn quanh bãi cất cánh và bãi hạ cánh -->
+      <g v-for="(p, i) in soaring" :key="`so${i}`" :transform="`translate(${p[0]} ${p[1]})`">
+        <g class="smap-soar smap-ico" :style="{ animationDelay: `${-i * 1.7}s`, animationDuration: `${6 + (i % 3)}s` }">
+          <path d="M-12 0 Q0 -13 12 0 Q0 -5.5 -12 0 Z" :fill="SOAR_COLORS[i % SOAR_COLORS.length]" stroke="#1c1a16" stroke-width="1.3" stroke-linejoin="round" />
+          <path d="M-8 -1.5 L0 9.5 L8 -1.5" fill="none" stroke="#1c1a16" stroke-width="0.9" />
+          <circle cx="0" cy="10.5" r="2.1" fill="#1c1a16" />
+        </g>
+      </g>
+
       <!-- chữ phụ trên sơ đồ -->
       <g class="smap-minor">
         <circle class="smap-ico" :cx="g.labels.tramton[0]" :cy="g.labels.tramton[1]" r="5" fill="#fffdf6" stroke="#14703a" stroke-width="2.5" />
@@ -175,6 +184,11 @@
       <button type="button" :class="{ on: view === '3d' }" :aria-pressed="view === '3d'" @click="view = '3d'">3D</button>
       <button type="button" :class="{ on: view === '2d' }" :aria-pressed="view === '2d'" @click="view = '2d'">2D</button>
     </div>
+
+    <!-- chú thích đánh số (chỉ hiện trên điện thoại, nơi nhãn tên bị ẩn); bấm một dòng = bấm điểm đó -->
+    <ol class="smap-key" :aria-label="lang === 'vi' ? 'Danh sách điểm' : 'Stops'">
+      <li v-for="s in SAPA_STOPS" :key="s.slug"><button type="button" @click.stop="onKeyClick(s.slug)"><b>{{ s.n }}</b>{{ (KEY_NAMES[s.slug] ?? NAMES[s.slug])?.[lang] }}</button></li>
+    </ol>
 
     <!-- chú giải -->
     <ul class="smap-legend">
@@ -315,6 +329,29 @@ const ICONS: Record<string, string> = {
   bestview: '<circle cx="8" cy="8" r="3"/><path d="M8 2v1.5M2.5 8H4M4 4l1 1M12 4l-1 1"/><path d="M7 19h10a3.5 3.5 0 0 0 .4-7 5 5 0 0 0-9.3 1.3A3 3 0 0 0 7 19Z"/>'
 }
 
+/** Tên ngắn cho chú thích đánh số trên điện thoại (bảng phải hẹp để không che các điểm ở góc phải). */
+const KEY_NAMES: Record<string, { vi: string; en: string }> = {
+  takeoff: { vi: 'Cất cánh dù lượn', en: 'Take-off' },
+  'lao-chai': { vi: 'Lao Chải · hạ cánh', en: 'Lao Chai · landing' },
+  'ban-ho': { vi: 'Suối nóng Bản Hồ', en: 'Ban Ho spring' },
+  'seo-my-ty': { vi: 'Hồ Séo Mý Tỷ', en: 'Seo My Ty Lake' },
+  'o-quy-ho': { vi: 'Ô Quy Hồ', en: 'O Quy Ho' },
+  'rong-may': { vi: 'Rồng Mây', en: 'Rong May' },
+  'tau-leo-nui': { vi: 'Tàu leo núi', en: 'Funicular' },
+  'ham-rong': { vi: 'Hàm Rồng', en: 'Ham Rong' },
+  'cat-cat': { vi: 'Cát Cát', en: 'Cat Cat' },
+  'ta-van': { vi: 'Tả Van', en: 'Ta Van' },
+  'ta-phin': { vi: 'Tả Phìn', en: 'Ta Phin' }
+}
+
+/** Dù lượn bay quanh bãi cất cánh / hạ cánh (vị trí lệch so với hai điểm, theo đơn vị sơ đồ). */
+const SOAR_COLORS = ['#f2963e', '#e11d2e', '#2b74c9', '#14a37f', '#f2c12e']
+const soaring = computed(() => {
+  const at = (slug: string) => { const s = SAPA_STOPS.find((x) => x.slug === slug)!; return g.value.pos?.[slug] ?? [s.x, s.y] }
+  const tk = at('takeoff'), ld = at('lao-chai')
+  return [[tk[0] - 46, tk[1] - 34], [tk[0] + 58, tk[1] - 26], [tk[0] + 70, tk[1] + 52], [ld[0] - 62, ld[1] - 40], [ld[0] + 52, ld[1] - 58]]
+})
+
 /** Bề rộng nét [viền, lõi] theo cấp đường. */
 const ROAD_W: Record<number, [number, number]> = { 1: [9.5, 6.4], 2: [6.6, 4], 3: [4.2, 2.2] }
 
@@ -366,6 +403,7 @@ function onStopClick(e: MouseEvent, slug: string) {
   if (failed3d.value) preloadHi()
   selectStop(slug)
 }
+function onKeyClick(slug: string) { if (failed3d.value) preloadHi(); selectStop(slug) }
 function openStop(slug: string) { router.push(localePath(`/sapa-map/${slug}`)) }
 /** Có WebGL thì dùng bản đồ 3D thật; lỗi thì quay về hiệu ứng phóng sơ đồ cũ. */
 const failed3d = ref(false)
@@ -411,6 +449,9 @@ watch(view, closeZoom)
 .smap-svg { z-index: 2; }
 .smap-stop { transition: scale 1.25s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .smap-zooming .smap-stop { scale: 0.36; }
+.smap-soar { animation: smap-soar 6s ease-in-out infinite; }
+@keyframes smap-soar { 0%, 100% { translate: 0 0; rotate: -6deg; } 25% { translate: 7px -5px; rotate: 4deg; } 50% { translate: 12px 2px; rotate: 9deg; } 75% { translate: 4px 6px; rotate: -2deg; } }
+@media (prefers-reduced-motion: reduce) { .smap-soar { animation: none; } }
 .smap-ico { transform-box: fill-box; transform-origin: center; scale: var(--zi); }
 .smap-town path { stroke-width: calc(2.2px * var(--zk)); }
 .smap-zooming .smap-title, .smap-zooming .smap-compass-g { opacity: 0; transition: opacity 0.3s; }
@@ -518,6 +559,7 @@ watch(view, closeZoom)
 .smap-toggle button { padding: 4px 11px; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; }
 .smap-toggle button.on { background: var(--green); color: var(--paper); }
 .smap-3d .smap-title { fill: var(--paper); stroke: var(--green); }
+.smap-key { display: none; }
 .smap-legend { position: absolute; left: 10px; bottom: 8px; display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0; padding: 5px 11px; border: 1.5px solid var(--ink); border-radius: 7px; background: var(--paper); list-style: none; color: var(--ink); font-size: 11.5px; font-weight: 500; }
 .smap-legend li { display: inline-flex; align-items: center; gap: 6px; }
 .smap-legend i { display: inline-block; width: 26px; height: 0; border-top: 4px solid; }
@@ -552,6 +594,13 @@ watch(view, closeZoom)
   .smap-active .smap-label { display: flex; }
   .smap-side-right .smap-label { left: 17px; }
   .smap-side-left .smap-label { right: 17px; }
+  /* điện thoại: nhãn tên ẩn → chú thích đánh số chữ nhỏ ở góc dưới trái (đè lên phần đế màu nâu) */
+  .smap-key { position: absolute; left: 5px; bottom: 5px; z-index: 6; display: grid; grid-template-columns: repeat(3, auto); grid-template-rows: repeat(6, auto); grid-auto-flow: column; gap: 0 6px; margin: 0; padding: 2px 5px; border-radius: 5px; background: rgba(255, 253, 246, 0.82); max-width: 68%; list-style: none; }
+  .smap-key button { display: flex; align-items: baseline; gap: 3px; padding: 0; border: 0; background: none; color: var(--ink); font: 500 6.8px/1.3 Lexend, system-ui, sans-serif; text-align: left; white-space: nowrap; cursor: pointer; }
+  .smap-key button span, .smap-key button { overflow: hidden; text-overflow: ellipsis; }
+  .smap-key b { min-width: 8px; color: var(--km); font-weight: 700; text-align: right; }
+  .smap-title { display: none; }
+  .smap-flying .smap-key { display: none; }
   /* sơ đồ co nhỏ không đủ chỗ cho chú giải → ẩn trên điện thoại */
   .smap-legend { display: none; }
   .smap-toggle { top: 6px; right: 44px; }

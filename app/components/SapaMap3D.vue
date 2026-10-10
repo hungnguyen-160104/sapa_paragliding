@@ -95,6 +95,39 @@ function style() {
   }
 }
 
+/**
+ * Dù lượn bay vòng quanh bãi cất cánh (bản Hang Đá) và bãi hạ cánh (Lao Chải): marker HTML
+ * giữ cỡ cố định trên màn hình, vị trí đổi theo từng khung hình (bay vòng tròn, hơi lệch tâm).
+ */
+const GLIDERS = [
+  { c: [103.8772, 22.3205], r: 0.0026, t: 46, ph: 0 }, { c: [103.8772, 22.3205], r: 0.0018, t: 38, ph: 2.1 },
+  { c: [103.8790, 22.3165], r: 0.0032, t: 55, ph: 4.0 }, { c: [103.8761, 22.3112], r: 0.0022, t: 42, ph: 1.0 },
+  { c: [103.8749, 22.3125], r: 0.0016, t: 34, ph: 3.3 }, { c: [103.8805, 22.3140], r: 0.0028, t: 60, ph: 5.2 }
+]
+const GL_COLORS = ['#f2963e', '#e11d2e', '#2b74c9', '#14a37f', '#f2c12e', '#7b4bb3']
+let raf = 0
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addGliders(ml: any) {
+  const ms = GLIDERS.map((g, i) => {
+    const el = document.createElement('div')
+    el.className = 'sm3-glider'
+    el.innerHTML = `<svg viewBox="-16 -16 32 34" width="30" height="32" aria-hidden="true"><path d="M-14 0 Q0 -15 14 0 Q0 -6 -14 0Z" fill="${GL_COLORS[i % GL_COLORS.length]}" stroke="#1c1a16" stroke-width="1.4" stroke-linejoin="round"/><path d="M-9 -1.5 L0 11 L9 -1.5" fill="none" stroke="#1c1a16" stroke-width="1"/><circle cx="0" cy="12.5" r="2.4" fill="#1c1a16"/></svg>`
+    return new ml.Marker({ element: el, anchor: 'bottom', offset: [0, -26] }).setLngLat(g.c as [number, number]).addTo(map)
+  })
+  const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  const tick = (now: number) => {
+    GLIDERS.forEach((g, i) => {
+      const a = g.ph + (reduce ? 0 : (now / 1000) * (2 * Math.PI / g.t))
+      const lon = g.c[0] + Math.cos(a) * g.r * 1.08, lat = g.c[1] + Math.sin(a) * g.r * 0.72
+      ms[i].setLngLat([lon, lat])
+      const el = ms[i].getElement().firstElementChild as HTMLElement
+      if (el) el.style.transform = `rotate(${Math.sin(a) * 14}deg)`
+    })
+    if (!reduce) raf = requestAnimationFrame(tick)
+  }
+  raf = requestAnimationFrame(tick)
+}
+
 function camera(slug: string) {
   const s = SAPA_STOPS.find((x) => x.slug === slug)
   if (!s) return null
@@ -129,6 +162,7 @@ onMounted(async () => {
     map.addControl(new ml.NavigationControl({ visualizePitch: true }), 'bottom-right')
     map.on('error', (e: { error?: { message?: string } }) => console.warn('[SapaMap3D]', e?.error?.message))
     map.once('load', () => {
+      addGliders(ml)
       shown.value = true
       setTimeout(() => fly(props.slug), 250)
     })
@@ -141,7 +175,7 @@ onMounted(async () => {
   }
 })
 watch(() => props.slug, (s) => fly(s))
-onBeforeUnmount(() => { map?.remove(); map = null })
+onBeforeUnmount(() => { cancelAnimationFrame(raf); map?.remove(); map = null })
 </script>
 
 <style>
@@ -149,4 +183,6 @@ onBeforeUnmount(() => { map?.remove(); map = null })
 .sm3.sm3-on { opacity: 1; pointer-events: auto; }
 .sm3 .sm3-map, .sm3 .sm3-map.maplibregl-map { position: absolute; inset: 0; width: 100%; height: 100%; }
 .sm3 .maplibregl-ctrl-attrib { font-size: 10px; }
+.sm3-glider { pointer-events: none; filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.28)); }
+.sm3-glider svg { display: block; transition: transform 0.2s linear; }
 </style>

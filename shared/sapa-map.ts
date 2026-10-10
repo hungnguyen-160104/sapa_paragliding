@@ -563,7 +563,7 @@ export const SAPA_STOPS: SapaStop[] = [
     "kind": "fly",
     "x": 692,
     "y": 367,
-    "side": "right",
+    "side": "top",
     "lat": 22.3219262,
     "lon": 103.8766636,
     "images": [
@@ -605,7 +605,7 @@ export const SAPA_STOPS: SapaStop[] = [
     "kind": "fly",
     "x": 684,
     "y": 492,
-    "side": "right",
+    "side": "top",
     "lat": 22.3097778,
     "lon": 103.8757778,
     "images": [
@@ -1419,7 +1419,7 @@ export const SAPA_STOPS: SapaStop[] = [
     "kind": "town",
     "x": 606,
     "y": 354,
-    "side": "top",
+    "side": "bottom",
     "lat": 22.3232,
     "lon": 103.8676,
     "approx": true,

@@ -557,7 +557,7 @@ onBeforeUnmount(() => {
         <div class="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 class="text-3xl lg:text-4xl font-black text-slate-900 drop-shadow-[0_3px_6px_rgba(0,0,0,0.25)]">
-              {{ currentLocale === 'vi' ? 'Bản đồ Sa Pa' : 'Sapa map' }}
+              {{ currentLocale === 'vi' ? 'Bản đồ du lịch Sa Pa' : 'Sapa travel map' }}
             </h2>
             <p class="mt-1 text-slate-500">
               {{ currentLocale === 'vi'

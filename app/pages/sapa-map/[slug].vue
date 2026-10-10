@@ -175,8 +175,8 @@ const next = index < SAPA_STOPS.length - 1 ? SAPA_STOPS[index + 1] : undefined
 const gmaps = `https://www.google.com/maps/search/?api=1&query=${stop.q ? encodeURIComponent(stop.q) : `${stop.lat},${stop.lon}`}`
 
 const UI = {
-  vi: { back: 'Bản đồ Sa Pa', stop: 'Điểm dừng', photo: 'Ảnh', openMap: 'mở chỉ đường', approx: 'vị trí gần đúng', cta: 'Đặt bay dù lượn Sa Pa', onMap: 'Vị trí trên sơ đồ', faq: 'Hỏi nhanh – đáp gọn', gallery: 'Thêm ảnh', prev: 'Điểm trước', next: 'Điểm tiếp theo', crumb: 'Bản đồ Sa Pa' },
-  en: { back: 'Sapa map', stop: 'Stop', photo: 'Photo', openMap: 'open directions', approx: 'approximate position', cta: 'Book a paragliding flight in Sapa', onMap: 'Where it is on the map', faq: 'Quick questions', gallery: 'More photos', prev: 'Previous stop', next: 'Next stop', crumb: 'Sapa map' }
+  vi: { back: 'Bản đồ du lịch Sa Pa', stop: 'Điểm dừng', photo: 'Ảnh', openMap: 'mở chỉ đường', approx: 'vị trí gần đúng', cta: 'Đặt bay dù lượn Sa Pa', onMap: 'Vị trí trên sơ đồ', faq: 'Hỏi nhanh – đáp gọn', gallery: 'Thêm ảnh', prev: 'Điểm trước', next: 'Điểm tiếp theo', crumb: 'Bản đồ du lịch Sa Pa' },
+  en: { back: 'Sapa travel map', stop: 'Stop', photo: 'Photo', openMap: 'open directions', approx: 'approximate position', cta: 'Book a paragliding flight in Sapa', onMap: 'Where it is on the map', faq: 'Quick questions', gallery: 'More photos', prev: 'Previous stop', next: 'Next stop', crumb: 'Sapa travel map' }
 }
 const ui = computed(() => UI[lang.value])
 

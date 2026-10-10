@@ -64,7 +64,7 @@
         <!-- Bản đồ Sa Pa (điểm check-in, cung trek, điểm cất/hạ cánh). Nhãn đặt
              tại chỗ vì trang bản đồ chỉ có nội dung vi/en. -->
         <NuxtLink :to="localePath('/sapa-map')" class="mt-4 inline-flex items-center font-semibold text-red-600 hover:text-red-700">
-          {{ locale === 'vi' ? 'Xem bản đồ Sa Pa: điểm check-in, cung trek và điểm bay' : 'See the Sapa map: checkpoints, treks and the flying site' }} →
+          {{ locale === 'vi' ? 'Xem bản đồ du lịch Sa Pa: điểm check-in, cung trek và điểm bay' : 'See the Sapa travel map: checkpoints, treks and the flying site' }} →
         </NuxtLink>
       </section>
 
